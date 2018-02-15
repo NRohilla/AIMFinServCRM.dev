@@ -1,0 +1,48 @@
+﻿<div style="text-align:center;padding:5%;">
+    <div class="container">
+        <div class="row" id="pwd-container">
+            <div class="col-md-4"></div>
+            <div class="col-md-4" style="background-color:#d8dfe4; border-radius:10px;">
+                <div class="login">
+                    <h3>Login</h3>
+                    <form (ngSubmit)="LoginVaidate()" #loginForm="ngForm">
+                        <div class="form-group emailInput has-feedback">
+                            <label for="email" class="w-100 text-left">Username/Email</label>
+                            <input type="text" class="form-control" name="_Username" id="_Username" [(ngModel)]="_Username" placeholder="Email address" />
+                            <div>
+                                <label *ngIf="_IsUsernameBlank" class="has-error w-100 text-left" style="color:#f59090;">
+                                    Please enter Username
+                                </label>
+                                <label *ngIf="_IsValidUsername" class="has-error w-100 text-left" style="color:#f59090;">
+                                    Please enter Valid Username
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group passwordInput has-feedback">
+                            <label for="password" class="w-100 text-left">Password</label>
+                            <input type="password" class="form-control" name="_Password" id="_Password" [(ngModel)]="_Password" placeholder="Password" />
+                            <div>
+                                <label *ngIf="_IsPasswordBlank" class="has-error w-100 text-left" style="color:#f59090;">
+                                    Please enter Password                                    
+                                </label>
+                                <label *ngIf="_IsValidPassword" class="has-error w-100 text-left" style="color:#f59090;">
+                                    Please enter Valid Password
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-default" [disabled]="!loginForm.form.valid" style="font-size:18px;">Login</button>
+                        <button type="button" class="btn btn-default" (click)="ResetFields()" style="font-size:18px;">Cancel</button>
+                        <div class="clearfix"></div>
+                        <p *ngIf="_FormErrors">
+                            <label   class="has-error" style="color:red;">
+                               {{_FormErrorsDescription}}
+                            </label>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>
+<div class="loader-custom" *ngIf="_ShowLoader">&nbsp;</div>
+
