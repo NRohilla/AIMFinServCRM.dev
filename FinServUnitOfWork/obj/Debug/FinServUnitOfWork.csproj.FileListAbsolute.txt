@@ -1,0 +1,9 @@
+D:\Clients Project\Nick\code\AIMFinServCRM\FinServUnitOfWork\bin\Debug\FinServUnitOfWork.dll
+D:\Clients Project\Nick\code\AIMFinServCRM\FinServUnitOfWork\bin\Debug\FinServUnitOfWork.pdb
+D:\Clients Project\Nick\code\AIMFinServCRM\FinServUnitOfWork\bin\Debug\FinServBussinessEntities.dll
+D:\Clients Project\Nick\code\AIMFinServCRM\FinServUnitOfWork\bin\Debug\FinServDataModel.dll
+D:\Clients Project\Nick\code\AIMFinServCRM\FinServUnitOfWork\bin\Debug\FinServBussinessEntities.pdb
+D:\Clients Project\Nick\code\AIMFinServCRM\FinServUnitOfWork\bin\Debug\FinServDataModel.pdb
+D:\Clients Project\Nick\code\AIMFinServCRM\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.dll
+D:\Clients Project\Nick\code\AIMFinServCRM\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.pdb
+D:\Clients Project\Nick\code\AIMFinServCRM\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.csprojResolveAssemblyReference.cache

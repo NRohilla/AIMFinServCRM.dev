@@ -1,0 +1,4 @@
+D:\Clients Project\Nick\code\AIMFinServCRM\FinServDataModel\bin\Debug\FinServDataModel.dll
+D:\Clients Project\Nick\code\AIMFinServCRM\FinServDataModel\bin\Debug\FinServDataModel.pdb
+D:\Clients Project\Nick\code\AIMFinServCRM\FinServDataModel\obj\Debug\FinServDataModel.dll
+D:\Clients Project\Nick\code\AIMFinServCRM\FinServDataModel\obj\Debug\FinServDataModel.pdb
