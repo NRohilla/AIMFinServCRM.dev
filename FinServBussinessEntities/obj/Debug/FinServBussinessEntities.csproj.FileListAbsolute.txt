@@ -5,3 +5,10 @@ D:\Clients Project\Nick\code\AIMFinServCRM\FinServBussinessEntities\bin\Debug\Fi
 D:\Clients Project\Nick\code\AIMFinServCRM\FinServBussinessEntities\obj\Debug\FinServBussinessEntities.csprojResolveAssemblyReference.cache
 D:\Clients Project\Nick\code\AIMFinServCRM\FinServBussinessEntities\obj\Debug\FinServBussinessEntities.dll
 D:\Clients Project\Nick\code\AIMFinServCRM\FinServBussinessEntities\obj\Debug\FinServBussinessEntities.pdb
+D:\Clients Project\Nick\code\devcloned\AIMFinServCRM.dev\FinServBussinessEntities\bin\Debug\FinServBussinessEntities.dll
+D:\Clients Project\Nick\code\devcloned\AIMFinServCRM.dev\FinServBussinessEntities\bin\Debug\FinServBussinessEntities.pdb
+D:\Clients Project\Nick\code\devcloned\AIMFinServCRM.dev\FinServBussinessEntities\bin\Debug\FinServDataModel.dll
+D:\Clients Project\Nick\code\devcloned\AIMFinServCRM.dev\FinServBussinessEntities\bin\Debug\FinServDataModel.pdb
+D:\Clients Project\Nick\code\devcloned\AIMFinServCRM.dev\FinServBussinessEntities\obj\Debug\FinServBussinessEntities.csprojResolveAssemblyReference.cache
+D:\Clients Project\Nick\code\devcloned\AIMFinServCRM.dev\FinServBussinessEntities\obj\Debug\FinServBussinessEntities.dll
+D:\Clients Project\Nick\code\devcloned\AIMFinServCRM.dev\FinServBussinessEntities\obj\Debug\FinServBussinessEntities.pdb

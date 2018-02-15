@@ -40,10 +40,8 @@ export class ApploginComponent {
     }
 
     RequestSuccess(result) {
-        debugger;
     }
     RequestError(err) {
-        debugger;
     }
 
 }
