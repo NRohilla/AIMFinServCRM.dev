@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+body { margin: 0px; padding: 0px; background: url(/assets/images/bg-img.jpg) center center no-repeat; background-size: cover;}
+img { max-width: 100%;}
+.login-page { margin: 0px; padding: 0px;}
+.login-page .login {max-width: 600px; margin: 10% auto; background: #f4f4f5; border-radius: 5px;}
+.header-section { background: #555555;; border: 1px solid #555555; border-radius: 5px 5px 0px 0px;}
+.header-section img { max-width: 200px;}
+.login-page .login form { border: 1px solid #dddddd; border-radius: 0px 0px 5px 5px;}
+
+.side-nav-out {margin:0px; position:fixed; z-index: 100; width: 255px; left: 0px;top: 0px; height: 100%;background: #333333; padding: 10px;}
+.logo { margin: 0px; padding: 10px; border-bottom: 1px solid #666666; color: #fff; font-size: 25px; text-align: left; font-style: italic; text-transform: uppercase; box-shadow:0px 0px 8px #999999; text-shadow: 2px 2px 10px #ffffff;}
+.side-nav-out .side-nav ul {margin: 0px; padding: 0px;}
+.side-nav-out .side-nav ul li {display: block;}
+.side-nav-out .side-nav ul li a {text-decoration: none; color: #fff; padding: 10px 0px; display: block;}
+.headertop {margin-left: 255px; padding: 0px; background: #fff; position: fixed; top: 0px; width:100%; left: 0px; z-index: 90;border-bottom: 1px solid #eeeeee;}
+.headertext {margin: 10px 30px;}
+.content-area {margin:60px 0px 60px 255px; padding: 15px;}
+.text-box {background: #fff; padding:20px 15px;border-radius: 5px; margin: 5px 0px;}
+.nomargin {margin: 0px;}
+.carousel-caption {background: rgba(0, 0, 0, .5); margin-bottom:50px; font-size:3.6vw;}
+.mobile-nav {position: absolute; top: 10px; right: 10px; z-index: 100; cursor: pointer;font-size: 21px; padding: 5px 10px; background: #000; color: #fff; border-radius: 5px; display: none;}
+.google-map {margin: 10px 0px; border: 1px solid #ddd;padding: 2px; background: #fff;}
+.google-map agm-map {width: 100%; height: 500px;}
+.address-section { margin: 0px;padding: 0px;}
+.address-section ul {margin: 0px; padding: 0px;}
+.address-section ul li {display: block; padding:5px 0px;}

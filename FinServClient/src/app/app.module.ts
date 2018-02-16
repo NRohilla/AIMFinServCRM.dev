@@ -14,12 +14,15 @@ import { appRoutes } from "./app.routes";
 /*custom components and packages*/
 import { AppRouteMasterComponent } from './components/shared/app.routemaster';
 import { ApploginComponent } from "./components/shared/app.login";
+import { AppMenuComponent } from './components/shared/app.menu';
+import {DashboardComponent} from './components/app.dashboard';
 
 /*custom services*/
 import {AuthenticateService} from './services/app.authservice';
+
 @NgModule({
     declarations: [
-        AppRouteMasterComponent, ApploginComponent
+        AppRouteMasterComponent, ApploginComponent, AppMenuComponent, DashboardComponent
     ],
     imports: [
         BrowserModule, FormsModule, HttpModule, appRoutes, BrowserAnimationsModule, PlunkerMaterialModule,

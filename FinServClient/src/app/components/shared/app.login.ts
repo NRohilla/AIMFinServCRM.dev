@@ -10,7 +10,6 @@ import { environment } from '../../../environments/environment';
 import {AuthenticateService} from '../../services/app.authservice';
 @Component({
     templateUrl: './app.login.html',
-    styleUrls: ['./app.login.css'],
     providers: [AuthenticateService]
 })
 export class ApploginComponent {
