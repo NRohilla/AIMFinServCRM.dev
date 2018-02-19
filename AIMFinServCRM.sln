@@ -32,6 +32,27 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinServBussinessEntities", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinServUnitOfWork", "FinServUnitOfWork\FinServUnitOfWork.csproj", "{6E3746D6-97C4-47FB-890E-C5C4E512EDEF}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AIMFinServClientApp", "AIMFinServClientApp\", "{BDE04712-C08B-43BA-BEFD-41E682EAC90C}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_56103"
+		Debug.AspNetCompiler.PhysicalPath = "..\SB-Admin-BS4-Angular-5-master\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_56103\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_56103"
+		Release.AspNetCompiler.PhysicalPath = "..\SB-Admin-BS4-Angular-5-master\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_56103\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "56103"
+		SlnRelativePath = "..\SB-Admin-BS4-Angular-5-master\"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +79,10 @@ Global
 		{6E3746D6-97C4-47FB-890E-C5C4E512EDEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E3746D6-97C4-47FB-890E-C5C4E512EDEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E3746D6-97C4-47FB-890E-C5C4E512EDEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDE04712-C08B-43BA-BEFD-41E682EAC90C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDE04712-C08B-43BA-BEFD-41E682EAC90C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDE04712-C08B-43BA-BEFD-41E682EAC90C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDE04712-C08B-43BA-BEFD-41E682EAC90C}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
