@@ -12,3 +12,12 @@ D:\Clients Project\Nick\code\devcloned\AIMFinServCRM.dev\FinServBussinessEntitie
 D:\Clients Project\Nick\code\devcloned\AIMFinServCRM.dev\FinServBussinessEntities\obj\Debug\FinServBussinessEntities.csprojResolveAssemblyReference.cache
 D:\Clients Project\Nick\code\devcloned\AIMFinServCRM.dev\FinServBussinessEntities\obj\Debug\FinServBussinessEntities.dll
 D:\Clients Project\Nick\code\devcloned\AIMFinServCRM.dev\FinServBussinessEntities\obj\Debug\FinServBussinessEntities.pdb
+D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServBussinessEntities\bin\Debug\FinServBussinessEntities.dll
+D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServBussinessEntities\bin\Debug\FinServBussinessEntities.pdb
+D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServBussinessEntities\bin\Debug\FinServDataModel.dll
+D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServBussinessEntities\bin\Debug\EntityFramework.dll
+D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServBussinessEntities\bin\Debug\FinServDataModel.pdb
+D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServBussinessEntities\bin\Debug\EntityFramework.xml
+D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServBussinessEntities\obj\Debug\FinServBussinessEntities.csprojResolveAssemblyReference.cache
+D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServBussinessEntities\obj\Debug\FinServBussinessEntities.dll
+D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServBussinessEntities\obj\Debug\FinServBussinessEntities.pdb

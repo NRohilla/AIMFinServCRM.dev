@@ -16,3 +16,16 @@ D:\Clients Project\Nick\code\devcloned\AIMFinServCRM.dev\FinServUnitOfWork\bin\D
 D:\Clients Project\Nick\code\devcloned\AIMFinServCRM.dev\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.csprojResolveAssemblyReference.cache
 D:\Clients Project\Nick\code\devcloned\AIMFinServCRM.dev\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.dll
 D:\Clients Project\Nick\code\devcloned\AIMFinServCRM.dev\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.pdb
+D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.dll
+D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.pdb
+D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\FinServUnitOfWork.dll
+D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\FinServUnitOfWork.pdb
+D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\EntityFramework.dll
+D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\EntityFramework.SqlServer.dll
+D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\FinServBussinessEntities.dll
+D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\FinServDataModel.dll
+D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\EntityFramework.xml
+D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\EntityFramework.SqlServer.xml
+D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\FinServBussinessEntities.pdb
+D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\FinServDataModel.pdb
+D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.csprojResolveAssemblyReference.cache

@@ -8,6 +8,6 @@ namespace FinServUnitOfWork.Interface
 {
     public interface IAuthenticate
     {
-        List<KeyValuePair<Guid, string>> AuthenticateLogin(string UserEmailId, string password);
+        bool AuthenticateLogin(string UserEmailId, string password);
     }
 }
