@@ -6,16 +6,21 @@
             <form role="form">
                 <div class="form-content">
                     <div class="form-group">
-                        <input type="text" ng-model="name" class="form-control input-underline input-lg" id="" placeholder="Email">
+                        <input type="text"   name="_Username" id="_Username" [(ngModel)]="_Username" class="form-control input-underline input-lg" placeholder="Email">
                     </div>
-
                     <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Password">
+                        <input type="password" class="form-control input-underline input-lg"  name="_Password" id="_Password" [(ngModel)]="_Password"  placeholder="Password">
                     </div>
                 </div>
-                <a class="btn rounded-btn" [routerLink]="['/dashboard']" (click)="onLoggedin()"> Log in </a>
+                <a class="btn rounded-btn"  (click)="LoginVaidate()"> Log in </a>
                 &nbsp;
                 <a class="btn rounded-btn" [routerLink]="['/signup']">Register</a>
+                <div class="clearfix"></div>
+                <p *ngIf="_FormErrors">
+                    <label class="has-error" style="color:red;">
+                        {{_FormErrorsDescription}}
+                    </label>
+                </p>
             </form>
         </div>
     </div>
