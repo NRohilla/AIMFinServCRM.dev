@@ -51,8 +51,11 @@
             "config": "./karma.conf.js"
         }
     },
-    "defaults": {
-        "styleExt": "scss",
-        "component": {}
+  "defaults": {
+    "styleExt": "scss",
+    "component": {},
+    "serve": {
+      "port": 8080
     }
+  }
 }

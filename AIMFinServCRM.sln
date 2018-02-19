@@ -36,21 +36,21 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AIMFinServClientApp", "AIMF
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_56103"
-		Debug.AspNetCompiler.PhysicalPath = "..\SB-Admin-BS4-Angular-5-master\"
+		Debug.AspNetCompiler.PhysicalPath = "AIMFinServClientApp\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_56103\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_56103"
-		Release.AspNetCompiler.PhysicalPath = "..\SB-Admin-BS4-Angular-5-master\"
+		Release.AspNetCompiler.PhysicalPath = "AIMFinServClientApp\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_56103\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "56103"
-		SlnRelativePath = "..\SB-Admin-BS4-Angular-5-master\"
+		SlnRelativePath = "AIMFinServClientApp\"
 	EndProjectSection
 EndProject
 Global
