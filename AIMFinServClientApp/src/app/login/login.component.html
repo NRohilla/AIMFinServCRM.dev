@@ -1,20 +1,25 @@
 <div class="login-page" [@routerTransition]>
     <div class="row justify-content-md-center">
+        <div class="col-md-6">
+            <img src="assets/images/AIM_white.png" />
+            <h1>Your mortgage and insurance experts</h1>
+        </div>
+       
+    </div>
+    <div class="row justify-content-md-center">
         <div class="col-md-4">
-            <img src="assets/images/logo.png" width="150px" class="user-avatar" />
-            <h1>AIMFinServ Login</h1>
             <form role="form">
                 <div class="form-content">
                     <div class="form-group">
-                        <input type="text"   name="_Username" id="_Username" [(ngModel)]="_Username" class="form-control input-underline input-lg" placeholder="Email">
+                        <input type="text" name="_Username" id="_Username" [(ngModel)]="_Username" class="form-control input-underline input-lg" placeholder="Email">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg"  name="_Password" id="_Password" [(ngModel)]="_Password"  placeholder="Password">
+                        <input type="password" class="form-control input-underline input-lg" name="_Password" id="_Password" [(ngModel)]="_Password" placeholder="Password">
                     </div>
                 </div>
-                <a class="btn rounded-btn"  (click)="LoginVaidate()"> Log in </a>
+                <a class="btn rounded-btn" (click)="LoginVaidate()"> Log in </a>
                 &nbsp;
-                <a class="btn rounded-btn" [routerLink]="['/signup']">Register</a>
+                <a class="btn rounded-btn" (click)="ResetFields()">Cancel</a>
                 <div class="clearfix"></div>
                 <p *ngIf="_FormErrors">
                     <br />
@@ -24,5 +29,8 @@
                 </p>
             </form>
         </div>
+
     </div>
+
+   
 </div>

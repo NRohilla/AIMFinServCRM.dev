@@ -52,4 +52,9 @@ export class LoginComponent implements OnInit {
     RequestError(err) {
         debugger;
     }
+
+    ResetFields() {
+        this._Username = '';
+        this._Password = '';
+    }
 }

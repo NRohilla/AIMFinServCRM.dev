@@ -36,6 +36,8 @@ $topnav-background-color: #222;
         border-bottom: 2px solid rgba(255, 255, 255, 0.5);
         color: #fff;
         border-radius: 0;
+        font-size:18px;
+        font-weight:700;
     }
 
     .input-underline:focus {
@@ -64,7 +66,7 @@ $topnav-background-color: #222;
     }
 
     h1 {
-        font-weight: 300;
+        font-weight: 500;
         margin-top: 20px;
         margin-bottom: 10px;
         font-size: 36px;
