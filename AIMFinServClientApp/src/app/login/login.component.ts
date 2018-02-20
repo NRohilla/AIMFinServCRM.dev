@@ -31,7 +31,9 @@ export class LoginComponent implements OnInit {
     RequestSuccess(result) {
         debugger;
         this.router.navigateByUrl('dashboard');
+        localStorage.setItem('isLoggedin', 'true');
     }
+
     RequestError(err) {
         debugger;
     }
