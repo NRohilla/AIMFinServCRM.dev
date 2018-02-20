@@ -1,9 +1,10 @@
 ﻿<div [@routerTransition]>
     <app-page-header [heading]="'Clients'" [icon]="'fa-bar-chart-o'"></app-page-header>
+    Clients list
     <br />
     <br />
-    this is the client component
-    <br />
-    <br />
+    <kendo-grid #servicerequest [kendoGridBinding]="ServiceRequestGridData" [pageSize]="5" [pageable]="true" [sortable]="true" [scrollable]="true"
+                 [filterable]="true" [groupable]="true" selectable="true" >
+        <kendo-grid-column field="Customername" [width]="120" title="Customer Name"></kendo-grid-column>
+    </kendo-grid>
 </div>
-

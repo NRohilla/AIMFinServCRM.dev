@@ -11,7 +11,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import 'hammerjs';
 import { LocalStorageModule, ILocalStorageServiceConfig } from 'angular-2-local-storage';
-//import { GridModule } from '@progress/kendo-angular-grid';//https://www.telerik.com/kendo-angular-ui/components/grid/
+
 //import {PlunkerMaterialModule} from './app.angular.material';
 
 import { AppRoutingModule } from './app-routing.module';
