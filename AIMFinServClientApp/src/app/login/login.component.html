@@ -17,6 +17,7 @@
                 <a class="btn rounded-btn" [routerLink]="['/signup']">Register</a>
                 <div class="clearfix"></div>
                 <p *ngIf="_FormErrors">
+                    <br />
                     <label class="has-error" style="color:red;">
                         {{_FormErrorsDescription}}
                     </label>
