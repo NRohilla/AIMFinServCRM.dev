@@ -5,7 +5,7 @@ import { Form, FormControl, Validators  } from '@angular/forms';
 import 'rxjs/Rx';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { environment } from '../../environments/environment';
-import {AuthenticateService} from '../services/app.authservice';
+import {AuthenticateService} from '../services/app.auth.service';
 
 @Component({
     selector: 'app-login',
@@ -15,9 +15,9 @@ import {AuthenticateService} from '../services/app.authservice';
     providers: [AuthenticateService]
 })
 export class LoginComponent implements OnInit {
-    private _Password: string;
-    private _Username: string;
-    private _FormErrors;
+    public _Password: string;
+    public _Username: string;
+    public _FormErrors;
     public _FormErrorsDescription: string = '';
     constructor(public router: Router, private _AuthenticateService: AuthenticateService, private _LocalStorageService: LocalStorageService) { }
 
