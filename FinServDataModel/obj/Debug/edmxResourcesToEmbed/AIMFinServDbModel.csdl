@@ -58,5 +58,130 @@
     <EntitySet Name="tblRoles" EntityType="Self.tblRole" />
     <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
     <EntitySet Name="tblUsersRoles" EntityType="Self.tblUsersRole" />
+    <EntitySet Name="tblApplicantCommunicationDetails" EntityType="AIMFinServDBModel.tblApplicantCommunicationDetail" />
+    <EntitySet Name="tblApplicantEmploymentDetails" EntityType="AIMFinServDBModel.tblApplicantEmploymentDetail" />
+    <EntitySet Name="tblApplicants" EntityType="AIMFinServDBModel.tblApplicant" />
+    <EntitySet Name="tblApplicantTypes" EntityType="AIMFinServDBModel.tblApplicantType" />
+    <AssociationSet Name="FK_tblApplicantCommunicationDetails_tblApplicants" Association="AIMFinServDBModel.FK_tblApplicantCommunicationDetails_tblApplicants">
+      <End Role="tblApplicant" EntitySet="tblApplicants" />
+      <End Role="tblApplicantCommunicationDetail" EntitySet="tblApplicantCommunicationDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblApplicantEmploymentDetails_tblApplicants" Association="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblApplicants">
+      <End Role="tblApplicant" EntitySet="tblApplicants" />
+      <End Role="tblApplicantEmploymentDetail" EntitySet="tblApplicantEmploymentDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblApplicants_tblApplicantType" Association="AIMFinServDBModel.FK_tblApplicants_tblApplicantType">
+      <End Role="tblApplicantType" EntitySet="tblApplicantTypes" />
+      <End Role="tblApplicant" EntitySet="tblApplicants" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="tblApplicantCommunicationDetail">
+    <Key>
+      <PropertyRef Name="CommunicationID" />
+    </Key>
+    <Property Name="AutoID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CommunicationID" Type="Guid" Nullable="false" />
+    <Property Name="ApplicantID" Type="Guid" Nullable="false" />
+    <Property Name="AddressLine1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AddressLine3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Duration" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblApplicant" Relationship="AIMFinServDBModel.FK_tblApplicantCommunicationDetails_tblApplicants" FromRole="tblApplicantCommunicationDetail" ToRole="tblApplicant" />
+  </EntityType>
+  <EntityType Name="tblApplicantEmploymentDetail">
+    <Key>
+      <PropertyRef Name="EmploymentID" />
+    </Key>
+    <Property Name="AutoID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmploymentID" Type="Guid" Nullable="false" />
+    <Property Name="ApplicantID" Type="Guid" Nullable="false" />
+    <Property Name="SourceOfIncome" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EmployerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Duration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Income" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblApplicant" Relationship="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblApplicants" FromRole="tblApplicantEmploymentDetail" ToRole="tblApplicant" />
+  </EntityType>
+  <EntityType Name="tblApplicant">
+    <Key>
+      <PropertyRef Name="ApplicantID" />
+    </Key>
+    <Property Name="AutoID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ApplicantID" Type="Guid" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="DateOfBirth" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MaritalStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NoOfDependents" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="NZResidents" Type="Boolean" />
+    <Property Name="CountryOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="HomePhoneNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="WorkPhoneNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="EmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ApplicantTypeID" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblApplicantCommunicationDetail" Relationship="AIMFinServDBModel.FK_tblApplicantCommunicationDetails_tblApplicants" FromRole="tblApplicant" ToRole="tblApplicantCommunicationDetail" />
+    <NavigationProperty Name="tblApplicantEmploymentDetails" Relationship="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblApplicants" FromRole="tblApplicant" ToRole="tblApplicantEmploymentDetail" />
+    <NavigationProperty Name="tblApplicantType" Relationship="AIMFinServDBModel.FK_tblApplicants_tblApplicantType" FromRole="tblApplicant" ToRole="tblApplicantType" />
+  </EntityType>
+  <EntityType Name="tblApplicantType">
+    <Key>
+      <PropertyRef Name="ApplicantTypeID" />
+    </Key>
+    <Property Name="ApplicantTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ApplicantType" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblApplicants" Relationship="AIMFinServDBModel.FK_tblApplicants_tblApplicantType" FromRole="tblApplicantType" ToRole="tblApplicant" />
+  </EntityType>
+  <Association Name="FK_tblApplicantCommunicationDetails_tblApplicants">
+    <End Type="AIMFinServDBModel.tblApplicant" Role="tblApplicant" Multiplicity="1" />
+    <End Type="AIMFinServDBModel.tblApplicantCommunicationDetail" Role="tblApplicantCommunicationDetail" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tblApplicant">
+        <PropertyRef Name="ApplicantID" />
+      </Principal>
+      <Dependent Role="tblApplicantCommunicationDetail">
+        <PropertyRef Name="CommunicationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblApplicantEmploymentDetails_tblApplicants">
+    <End Type="AIMFinServDBModel.tblApplicant" Role="tblApplicant" Multiplicity="1" />
+    <End Type="AIMFinServDBModel.tblApplicantEmploymentDetail" Role="tblApplicantEmploymentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblApplicant">
+        <PropertyRef Name="ApplicantID" />
+      </Principal>
+      <Dependent Role="tblApplicantEmploymentDetail">
+        <PropertyRef Name="ApplicantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblApplicants_tblApplicantType">
+    <End Type="AIMFinServDBModel.tblApplicantType" Role="tblApplicantType" Multiplicity="0..1" />
+    <End Type="AIMFinServDBModel.tblApplicant" Role="tblApplicant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblApplicantType">
+        <PropertyRef Name="ApplicantTypeID" />
+      </Principal>
+      <Dependent Role="tblApplicant">
+        <PropertyRef Name="ApplicantTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -68,9 +68,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interface\IAuth.cs" />
+    <Compile Include="Interface\IClients.cs" />
     <Compile Include="Interface\IUserOps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\UOWAuth.cs" />
+    <Compile Include="Repository\UOWClients.cs" />
     <Compile Include="Repository\UOWUserOps.cs" />
   </ItemGroup>
   <ItemGroup>

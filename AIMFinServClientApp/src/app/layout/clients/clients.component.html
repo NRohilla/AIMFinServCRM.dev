@@ -1,10 +1,30 @@
 ﻿<div [@routerTransition]>
     <app-page-header [heading]="'Clients'" [icon]="'fa-bar-chart-o'"></app-page-header>
-    Clients list
-    <br />
-    <br />
-    <kendo-grid #servicerequest [kendoGridBinding]="ServiceRequestGridData" [pageSize]="5" [pageable]="true" [sortable]="true" [scrollable]="true"
-                 [filterable]="true" [groupable]="true" selectable="true" >
-        <kendo-grid-column field="Customername" [width]="120" title="Customer Name"></kendo-grid-column>
+    <kendo-grid [kendoGridBinding]="gridData"
+                [pageSize]="2"
+                [sortable]="true"
+                [pageable]="true"
+                [scrollable]="true" 
+                [filterable]="true" 
+                [groupable]="true"
+                selectable="true">
+        <kendo-grid-column title="Applicant name" [width]="120" [filter]="'text'">
+            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                <label>{{dataItem.FirstName}} {{dataItem.MiddleName}} {{dataItem.LastName}}</label>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="MobileNo" title="Contact">
+        </kendo-grid-column>
+        <kendo-grid-column field="CountryOfBirth" title="Country">
+        </kendo-grid-column>
+        <kendo-grid-column field="EmailID" title="Email">
+        </kendo-grid-column>
+        <kendo-grid-column field="ApplicantType.ApplicantTypeDesc" title="Applicant type">
+        </kendo-grid-column>
+        <kendo-grid-command-column>
+            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                <button class="btn btn-lg btn-link" type="button" (click)="ViewClientDetails(dataItem.ApplicantID)">View details</button>
+            </ng-template>
+        </kendo-grid-command-column>
     </kendo-grid>
 </div>

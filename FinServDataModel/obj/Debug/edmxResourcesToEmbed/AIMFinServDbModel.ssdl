@@ -1,5 +1,72 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="AIMFinServDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblApplicantCommunicationDetails">
+    <Key>
+      <PropertyRef Name="CommunicationID" />
+    </Key>
+    <Property Name="AutoID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CommunicationID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ApplicantID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AddressLine1" Type="nvarchar" MaxLength="100" />
+    <Property Name="AddressLine2" Type="nvarchar" MaxLength="100" />
+    <Property Name="AddressLine3" Type="nvarchar" MaxLength="100" />
+    <Property Name="Duration" Type="nchar" MaxLength="10" />
+    <Property Name="Status" Type="nchar" MaxLength="10" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblApplicantEmploymentDetails">
+    <Key>
+      <PropertyRef Name="EmploymentID" />
+    </Key>
+    <Property Name="AutoID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmploymentID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ApplicantID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SourceOfIncome" Type="nvarchar" MaxLength="100" />
+    <Property Name="EmployerName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Duration" Type="nvarchar" MaxLength="50" />
+    <Property Name="Income" Type="nchar" MaxLength="10" />
+    <Property Name="Status" Type="nchar" MaxLength="10" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblApplicants">
+    <Key>
+      <PropertyRef Name="ApplicantID" />
+    </Key>
+    <Property Name="AutoID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApplicantID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="Gender" Type="nchar" MaxLength="10" />
+    <Property Name="DateOfBirth" Type="nvarchar" MaxLength="20" />
+    <Property Name="MaritalStatus" Type="varchar" MaxLength="20" />
+    <Property Name="NoOfDependents" Type="nchar" MaxLength="10" />
+    <Property Name="NZResidents" Type="bit" />
+    <Property Name="CountryOfBirth" Type="varchar" MaxLength="50" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="15" />
+    <Property Name="HomePhoneNo" Type="nvarchar" MaxLength="15" />
+    <Property Name="WorkPhoneNo" Type="nvarchar" MaxLength="15" />
+    <Property Name="EmailID" Type="nvarchar" MaxLength="50" />
+    <Property Name="ApplicantTypeID" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblApplicantType">
+    <Key>
+      <PropertyRef Name="ApplicantTypeID" />
+    </Key>
+    <Property Name="ApplicantTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApplicantType" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
   <EntityType Name="tblRole">
     <Key>
       <PropertyRef Name="RoleId" />
@@ -54,9 +121,61 @@
     <Property Name="UserGuid" Type="uniqueidentifier" />
     <Property Name="IsActive" Type="bit" />
   </EntityType>
+  <Association Name="FK_tblApplicantCommunicationDetails_tblApplicants">
+    <End Role="tblApplicants" Type="Self.tblApplicants" Multiplicity="1" />
+    <End Role="tblApplicantCommunicationDetails" Type="Self.tblApplicantCommunicationDetails" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tblApplicants">
+        <PropertyRef Name="ApplicantID" />
+      </Principal>
+      <Dependent Role="tblApplicantCommunicationDetails">
+        <PropertyRef Name="CommunicationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblApplicantEmploymentDetails_tblApplicants">
+    <End Role="tblApplicants" Type="Self.tblApplicants" Multiplicity="1" />
+    <End Role="tblApplicantEmploymentDetails" Type="Self.tblApplicantEmploymentDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblApplicants">
+        <PropertyRef Name="ApplicantID" />
+      </Principal>
+      <Dependent Role="tblApplicantEmploymentDetails">
+        <PropertyRef Name="ApplicantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblApplicants_tblApplicantType">
+    <End Role="tblApplicantType" Type="Self.tblApplicantType" Multiplicity="0..1" />
+    <End Role="tblApplicants" Type="Self.tblApplicants" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblApplicantType">
+        <PropertyRef Name="ApplicantTypeID" />
+      </Principal>
+      <Dependent Role="tblApplicants">
+        <PropertyRef Name="ApplicantTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="AIMFinServDBModelStoreContainer">
+    <EntitySet Name="tblApplicantCommunicationDetails" EntityType="Self.tblApplicantCommunicationDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblApplicantEmploymentDetails" EntityType="Self.tblApplicantEmploymentDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblApplicants" EntityType="Self.tblApplicants" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblApplicantType" EntityType="Self.tblApplicantType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblRole" EntityType="Self.tblRole" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblUsers" EntityType="Self.tblUsers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblUsersRole" EntityType="Self.tblUsersRole" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tblApplicantCommunicationDetails_tblApplicants" Association="Self.FK_tblApplicantCommunicationDetails_tblApplicants">
+      <End Role="tblApplicants" EntitySet="tblApplicants" />
+      <End Role="tblApplicantCommunicationDetails" EntitySet="tblApplicantCommunicationDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblApplicantEmploymentDetails_tblApplicants" Association="Self.FK_tblApplicantEmploymentDetails_tblApplicants">
+      <End Role="tblApplicants" EntitySet="tblApplicants" />
+      <End Role="tblApplicantEmploymentDetails" EntitySet="tblApplicantEmploymentDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblApplicants_tblApplicantType" Association="Self.FK_tblApplicants_tblApplicantType">
+      <End Role="tblApplicantType" EntitySet="tblApplicantType" />
+      <End Role="tblApplicants" EntitySet="tblApplicants" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -8,6 +8,13 @@
         <EntityTypeShape EntityType="AIMFinServDBModel.tblRole" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblUser" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblUsersRole" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIMFinServDBModel.tblApplicantCommunicationDetail" Width="1.5" PointX="9.875" PointY="8.5" />
+        <EntityTypeShape EntityType="AIMFinServDBModel.tblApplicantEmploymentDetail" Width="1.5" PointX="9.875" PointY="4.25" />
+        <EntityTypeShape EntityType="AIMFinServDBModel.tblApplicant" Width="1.5" PointX="7.625" PointY="5.25" />
+        <EntityTypeShape EntityType="AIMFinServDBModel.tblApplicantType" Width="1.5" PointX="5.375" PointY="7.25" />
+        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantCommunicationDetails_tblApplicants" />
+        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblApplicants" />
+        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicants_tblApplicantType" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
