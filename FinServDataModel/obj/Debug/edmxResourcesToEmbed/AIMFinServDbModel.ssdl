@@ -6,7 +6,6 @@
     </Key>
     <Property Name="AutoID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CommunicationID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="ApplicantID" Type="uniqueidentifier" Nullable="false" />
     <Property Name="AddressLine1" Type="nvarchar" MaxLength="100" />
     <Property Name="AddressLine2" Type="nvarchar" MaxLength="100" />
     <Property Name="AddressLine3" Type="nvarchar" MaxLength="100" />
@@ -16,6 +15,7 @@
     <Property Name="CreatedOn" Type="datetime" />
     <Property Name="ModifiedBy" Type="uniqueidentifier" />
     <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ApplicantID" Type="uniqueidentifier" />
   </EntityType>
   <EntityType Name="tblApplicantEmploymentDetails">
     <Key>
@@ -29,6 +29,21 @@
     <Property Name="Duration" Type="nvarchar" MaxLength="50" />
     <Property Name="Income" Type="nchar" MaxLength="10" />
     <Property Name="Status" Type="nchar" MaxLength="10" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblApplicantExpenseSheet">
+    <Key>
+      <PropertyRef Name="ExpenseID" />
+    </Key>
+    <Property Name="AutoID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExpenseID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ApplicantID" Type="uniqueidentifier" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="Frequency" Type="nvarchar" MaxLength="50" />
+    <Property Name="NetAmount" Type="numeric" Precision="18" Scale="2" />
     <Property Name="CreatedBy" Type="uniqueidentifier" />
     <Property Name="CreatedOn" Type="datetime" />
     <Property Name="ModifiedBy" Type="uniqueidentifier" />
@@ -66,6 +81,97 @@
     </Key>
     <Property Name="ApplicantTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ApplicantType" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblAssets">
+    <Key>
+      <PropertyRef Name="AssetID" />
+    </Key>
+    <Property Name="AutoID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssetID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AssetTypeID" Type="uniqueidentifier" />
+    <Property Name="Description" Type="nvarchar" MaxLength="100" />
+    <Property Name="NetValue" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="Ownership" Type="nvarchar" MaxLength="100" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblAssetTypes">
+    <Key>
+      <PropertyRef Name="AssetTypeID" />
+    </Key>
+    <Property Name="AutoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssetTypeID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblExpenseType">
+    <Key>
+      <PropertyRef Name="ExpenseTypeID" />
+    </Key>
+    <Property Name="AutoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExpenseTypeID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="100" />
+    <Property Name="Frequency" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblLiabilities">
+    <Key>
+      <PropertyRef Name="LiabilityID" />
+    </Key>
+    <Property Name="AutoID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LiabilityID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="LiabilityTypeID" Type="uniqueidentifier" />
+    <Property Name="Description" Type="nvarchar" MaxLength="100" />
+    <Property Name="NetValue" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="Ownership" Type="nvarchar" MaxLength="100" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblLiabilityTypes">
+    <Key>
+      <PropertyRef Name="LiabilityTypeID" />
+    </Key>
+    <Property Name="AutoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LiabilityTypeID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblMasterProfession">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Profession" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblMasterQualification">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Qualifications" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblMasterRelationship">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RelationshipWithApplicant" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblMasterTypeOfEmployment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployementType" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="tblRole">
     <Key>
@@ -121,15 +227,15 @@
     <Property Name="UserGuid" Type="uniqueidentifier" />
     <Property Name="IsActive" Type="bit" />
   </EntityType>
-  <Association Name="FK_tblApplicantCommunicationDetails_tblApplicants">
-    <End Role="tblApplicants" Type="Self.tblApplicants" Multiplicity="1" />
-    <End Role="tblApplicantCommunicationDetails" Type="Self.tblApplicantCommunicationDetails" Multiplicity="0..1" />
+  <Association Name="FK__tblApplic__Appli__5070F446">
+    <End Role="tblApplicants" Type="Self.tblApplicants" Multiplicity="0..1" />
+    <End Role="tblApplicantCommunicationDetails" Type="Self.tblApplicantCommunicationDetails" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tblApplicants">
         <PropertyRef Name="ApplicantID" />
       </Principal>
       <Dependent Role="tblApplicantCommunicationDetails">
-        <PropertyRef Name="CommunicationID" />
+        <PropertyRef Name="ApplicantID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -141,6 +247,18 @@
         <PropertyRef Name="ApplicantID" />
       </Principal>
       <Dependent Role="tblApplicantEmploymentDetails">
+        <PropertyRef Name="ApplicantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblApplicantExpenseSheet_tblApplicants">
+    <End Role="tblApplicants" Type="Self.tblApplicants" Multiplicity="0..1" />
+    <End Role="tblApplicantExpenseSheet" Type="Self.tblApplicantExpenseSheet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblApplicants">
+        <PropertyRef Name="ApplicantID" />
+      </Principal>
+      <Dependent Role="tblApplicantExpenseSheet">
         <PropertyRef Name="ApplicantID" />
       </Dependent>
     </ReferentialConstraint>
@@ -157,15 +275,49 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tblAssets_tblAssetTypes">
+    <End Role="tblAssetTypes" Type="Self.tblAssetTypes" Multiplicity="0..1" />
+    <End Role="tblAssets" Type="Self.tblAssets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblAssetTypes">
+        <PropertyRef Name="AssetTypeID" />
+      </Principal>
+      <Dependent Role="tblAssets">
+        <PropertyRef Name="AssetTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblLiabilities_tblLiabilityTypes">
+    <End Role="tblLiabilityTypes" Type="Self.tblLiabilityTypes" Multiplicity="0..1" />
+    <End Role="tblLiabilities" Type="Self.tblLiabilities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblLiabilityTypes">
+        <PropertyRef Name="LiabilityTypeID" />
+      </Principal>
+      <Dependent Role="tblLiabilities">
+        <PropertyRef Name="LiabilityTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="AIMFinServDBModelStoreContainer">
     <EntitySet Name="tblApplicantCommunicationDetails" EntityType="Self.tblApplicantCommunicationDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblApplicantEmploymentDetails" EntityType="Self.tblApplicantEmploymentDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblApplicantExpenseSheet" EntityType="Self.tblApplicantExpenseSheet" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblApplicants" EntityType="Self.tblApplicants" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblApplicantType" EntityType="Self.tblApplicantType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblAssets" EntityType="Self.tblAssets" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblAssetTypes" EntityType="Self.tblAssetTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblExpenseType" EntityType="Self.tblExpenseType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLiabilities" EntityType="Self.tblLiabilities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLiabilityTypes" EntityType="Self.tblLiabilityTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMasterProfession" EntityType="Self.tblMasterProfession" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMasterQualification" EntityType="Self.tblMasterQualification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMasterRelationship" EntityType="Self.tblMasterRelationship" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMasterTypeOfEmployment" EntityType="Self.tblMasterTypeOfEmployment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblRole" EntityType="Self.tblRole" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblUsers" EntityType="Self.tblUsers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblUsersRole" EntityType="Self.tblUsersRole" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_tblApplicantCommunicationDetails_tblApplicants" Association="Self.FK_tblApplicantCommunicationDetails_tblApplicants">
+    <AssociationSet Name="FK__tblApplic__Appli__5070F446" Association="Self.FK__tblApplic__Appli__5070F446">
       <End Role="tblApplicants" EntitySet="tblApplicants" />
       <End Role="tblApplicantCommunicationDetails" EntitySet="tblApplicantCommunicationDetails" />
     </AssociationSet>
@@ -173,9 +325,21 @@
       <End Role="tblApplicants" EntitySet="tblApplicants" />
       <End Role="tblApplicantEmploymentDetails" EntitySet="tblApplicantEmploymentDetails" />
     </AssociationSet>
+    <AssociationSet Name="FK_tblApplicantExpenseSheet_tblApplicants" Association="Self.FK_tblApplicantExpenseSheet_tblApplicants">
+      <End Role="tblApplicants" EntitySet="tblApplicants" />
+      <End Role="tblApplicantExpenseSheet" EntitySet="tblApplicantExpenseSheet" />
+    </AssociationSet>
     <AssociationSet Name="FK_tblApplicants_tblApplicantType" Association="Self.FK_tblApplicants_tblApplicantType">
       <End Role="tblApplicantType" EntitySet="tblApplicantType" />
       <End Role="tblApplicants" EntitySet="tblApplicants" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblAssets_tblAssetTypes" Association="Self.FK_tblAssets_tblAssetTypes">
+      <End Role="tblAssetTypes" EntitySet="tblAssetTypes" />
+      <End Role="tblAssets" EntitySet="tblAssets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblLiabilities_tblLiabilityTypes" Association="Self.FK_tblLiabilities_tblLiabilityTypes">
+      <End Role="tblLiabilityTypes" EntitySet="tblLiabilityTypes" />
+      <End Role="tblLiabilities" EntitySet="tblLiabilities" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

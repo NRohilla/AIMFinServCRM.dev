@@ -12,20 +12,18 @@ namespace FinServDataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class tblApplicantCommunicationDetail
+    public partial class tblApplicantExpenseSheet
     {
         public long AutoID { get; set; }
-        public System.Guid CommunicationID { get; set; }
-        public string AddressLine1 { get; set; }
-        public string AddressLine2 { get; set; }
-        public string AddressLine3 { get; set; }
-        public string Duration { get; set; }
-        public string Status { get; set; }
+        public System.Guid ExpenseID { get; set; }
+        public Nullable<System.Guid> ApplicantID { get; set; }
+        public string Description { get; set; }
+        public string Frequency { get; set; }
+        public Nullable<decimal> NetAmount { get; set; }
         public Nullable<System.Guid> CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<System.Guid> ApplicantID { get; set; }
     
         public virtual tblApplicant tblApplicant { get; set; }
     }

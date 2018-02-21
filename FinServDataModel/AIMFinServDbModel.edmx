@@ -11,7 +11,6 @@
           </Key>
           <Property Name="AutoID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CommunicationID" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="ApplicantID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="AddressLine1" Type="nvarchar" MaxLength="100" />
           <Property Name="AddressLine2" Type="nvarchar" MaxLength="100" />
           <Property Name="AddressLine3" Type="nvarchar" MaxLength="100" />
@@ -21,6 +20,7 @@
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="ModifiedBy" Type="uniqueidentifier" />
           <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="ApplicantID" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="tblApplicantEmploymentDetails">
           <Key>
@@ -34,6 +34,21 @@
           <Property Name="Duration" Type="nvarchar" MaxLength="50" />
           <Property Name="Income" Type="nchar" MaxLength="10" />
           <Property Name="Status" Type="nchar" MaxLength="10" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblApplicantExpenseSheet">
+          <Key>
+            <PropertyRef Name="ExpenseID" />
+          </Key>
+          <Property Name="AutoID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExpenseID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ApplicantID" Type="uniqueidentifier" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="Frequency" Type="nvarchar" MaxLength="50" />
+          <Property Name="NetAmount" Type="numeric" Precision="18" Scale="2" />
           <Property Name="CreatedBy" Type="uniqueidentifier" />
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="ModifiedBy" Type="uniqueidentifier" />
@@ -71,6 +86,97 @@
           </Key>
           <Property Name="ApplicantTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ApplicantType" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAssets">
+          <Key>
+            <PropertyRef Name="AssetID" />
+          </Key>
+          <Property Name="AutoID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssetID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AssetTypeID" Type="uniqueidentifier" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="NetValue" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Ownership" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblAssetTypes">
+          <Key>
+            <PropertyRef Name="AssetTypeID" />
+          </Key>
+          <Property Name="AutoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssetTypeID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblExpenseType">
+          <Key>
+            <PropertyRef Name="ExpenseTypeID" />
+          </Key>
+          <Property Name="AutoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExpenseTypeID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="Frequency" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblLiabilities">
+          <Key>
+            <PropertyRef Name="LiabilityID" />
+          </Key>
+          <Property Name="AutoID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LiabilityID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LiabilityTypeID" Type="uniqueidentifier" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="NetValue" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Ownership" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblLiabilityTypes">
+          <Key>
+            <PropertyRef Name="LiabilityTypeID" />
+          </Key>
+          <Property Name="AutoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LiabilityTypeID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblMasterProfession">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Profession" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblMasterQualification">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Qualifications" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblMasterRelationship">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RelationshipWithApplicant" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblMasterTypeOfEmployment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployementType" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="tblRole">
           <Key>
@@ -126,15 +232,15 @@
           <Property Name="UserGuid" Type="uniqueidentifier" />
           <Property Name="IsActive" Type="bit" />
         </EntityType>
-        <Association Name="FK_tblApplicantCommunicationDetails_tblApplicants">
-          <End Role="tblApplicants" Type="Self.tblApplicants" Multiplicity="1" />
-          <End Role="tblApplicantCommunicationDetails" Type="Self.tblApplicantCommunicationDetails" Multiplicity="0..1" />
+        <Association Name="FK__tblApplic__Appli__5070F446">
+          <End Role="tblApplicants" Type="Self.tblApplicants" Multiplicity="0..1" />
+          <End Role="tblApplicantCommunicationDetails" Type="Self.tblApplicantCommunicationDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblApplicants">
               <PropertyRef Name="ApplicantID" />
             </Principal>
             <Dependent Role="tblApplicantCommunicationDetails">
-              <PropertyRef Name="CommunicationID" />
+              <PropertyRef Name="ApplicantID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -146,6 +252,18 @@
               <PropertyRef Name="ApplicantID" />
             </Principal>
             <Dependent Role="tblApplicantEmploymentDetails">
+              <PropertyRef Name="ApplicantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblApplicantExpenseSheet_tblApplicants">
+          <End Role="tblApplicants" Type="Self.tblApplicants" Multiplicity="0..1" />
+          <End Role="tblApplicantExpenseSheet" Type="Self.tblApplicantExpenseSheet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblApplicants">
+              <PropertyRef Name="ApplicantID" />
+            </Principal>
+            <Dependent Role="tblApplicantExpenseSheet">
               <PropertyRef Name="ApplicantID" />
             </Dependent>
           </ReferentialConstraint>
@@ -162,15 +280,49 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblAssets_tblAssetTypes">
+          <End Role="tblAssetTypes" Type="Self.tblAssetTypes" Multiplicity="0..1" />
+          <End Role="tblAssets" Type="Self.tblAssets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAssetTypes">
+              <PropertyRef Name="AssetTypeID" />
+            </Principal>
+            <Dependent Role="tblAssets">
+              <PropertyRef Name="AssetTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLiabilities_tblLiabilityTypes">
+          <End Role="tblLiabilityTypes" Type="Self.tblLiabilityTypes" Multiplicity="0..1" />
+          <End Role="tblLiabilities" Type="Self.tblLiabilities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLiabilityTypes">
+              <PropertyRef Name="LiabilityTypeID" />
+            </Principal>
+            <Dependent Role="tblLiabilities">
+              <PropertyRef Name="LiabilityTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="AIMFinServDBModelStoreContainer">
           <EntitySet Name="tblApplicantCommunicationDetails" EntityType="Self.tblApplicantCommunicationDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblApplicantEmploymentDetails" EntityType="Self.tblApplicantEmploymentDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblApplicantExpenseSheet" EntityType="Self.tblApplicantExpenseSheet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblApplicants" EntityType="Self.tblApplicants" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblApplicantType" EntityType="Self.tblApplicantType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAssets" EntityType="Self.tblAssets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAssetTypes" EntityType="Self.tblAssetTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblExpenseType" EntityType="Self.tblExpenseType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLiabilities" EntityType="Self.tblLiabilities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLiabilityTypes" EntityType="Self.tblLiabilityTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMasterProfession" EntityType="Self.tblMasterProfession" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMasterQualification" EntityType="Self.tblMasterQualification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMasterRelationship" EntityType="Self.tblMasterRelationship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMasterTypeOfEmployment" EntityType="Self.tblMasterTypeOfEmployment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblRole" EntityType="Self.tblRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUsers" EntityType="Self.tblUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUsersRole" EntityType="Self.tblUsersRole" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_tblApplicantCommunicationDetails_tblApplicants" Association="Self.FK_tblApplicantCommunicationDetails_tblApplicants">
+          <AssociationSet Name="FK__tblApplic__Appli__5070F446" Association="Self.FK__tblApplic__Appli__5070F446">
             <End Role="tblApplicants" EntitySet="tblApplicants" />
             <End Role="tblApplicantCommunicationDetails" EntitySet="tblApplicantCommunicationDetails" />
           </AssociationSet>
@@ -178,9 +330,21 @@
             <End Role="tblApplicants" EntitySet="tblApplicants" />
             <End Role="tblApplicantEmploymentDetails" EntitySet="tblApplicantEmploymentDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblApplicantExpenseSheet_tblApplicants" Association="Self.FK_tblApplicantExpenseSheet_tblApplicants">
+            <End Role="tblApplicants" EntitySet="tblApplicants" />
+            <End Role="tblApplicantExpenseSheet" EntitySet="tblApplicantExpenseSheet" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblApplicants_tblApplicantType" Association="Self.FK_tblApplicants_tblApplicantType">
             <End Role="tblApplicantType" EntitySet="tblApplicantType" />
             <End Role="tblApplicants" EntitySet="tblApplicants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAssets_tblAssetTypes" Association="Self.FK_tblAssets_tblAssetTypes">
+            <End Role="tblAssetTypes" EntitySet="tblAssetTypes" />
+            <End Role="tblAssets" EntitySet="tblAssets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLiabilities_tblLiabilityTypes" Association="Self.FK_tblLiabilities_tblLiabilityTypes">
+            <End Role="tblLiabilityTypes" EntitySet="tblLiabilityTypes" />
+            <End Role="tblLiabilities" EntitySet="tblLiabilities" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -245,14 +409,9 @@
           <EntitySet Name="tblRoles" EntityType="Self.tblRole" />
           <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
           <EntitySet Name="tblUsersRoles" EntityType="Self.tblUsersRole" />
-          <EntitySet Name="tblApplicantCommunicationDetails" EntityType="AIMFinServDBModel.tblApplicantCommunicationDetail" />
           <EntitySet Name="tblApplicantEmploymentDetails" EntityType="AIMFinServDBModel.tblApplicantEmploymentDetail" />
           <EntitySet Name="tblApplicants" EntityType="AIMFinServDBModel.tblApplicant" />
           <EntitySet Name="tblApplicantTypes" EntityType="AIMFinServDBModel.tblApplicantType" />
-          <AssociationSet Name="FK_tblApplicantCommunicationDetails_tblApplicants" Association="AIMFinServDBModel.FK_tblApplicantCommunicationDetails_tblApplicants">
-            <End Role="tblApplicant" EntitySet="tblApplicants" />
-            <End Role="tblApplicantCommunicationDetail" EntitySet="tblApplicantCommunicationDetails" />
-          </AssociationSet>
           <AssociationSet Name="FK_tblApplicantEmploymentDetails_tblApplicants" Association="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblApplicants">
             <End Role="tblApplicant" EntitySet="tblApplicants" />
             <End Role="tblApplicantEmploymentDetail" EntitySet="tblApplicantEmploymentDetails" />
@@ -261,25 +420,34 @@
             <End Role="tblApplicantType" EntitySet="tblApplicantTypes" />
             <End Role="tblApplicant" EntitySet="tblApplicants" />
           </AssociationSet>
+          <EntitySet Name="tblApplicantExpenseSheets" EntityType="AIMFinServDBModel.tblApplicantExpenseSheet" />
+          <EntitySet Name="tblAssets" EntityType="AIMFinServDBModel.tblAsset" />
+          <EntitySet Name="tblAssetTypes" EntityType="AIMFinServDBModel.tblAssetType" />
+          <EntitySet Name="tblExpenseTypes" EntityType="AIMFinServDBModel.tblExpenseType" />
+          <EntitySet Name="tblLiabilities" EntityType="AIMFinServDBModel.tblLiability" />
+          <EntitySet Name="tblLiabilityTypes" EntityType="AIMFinServDBModel.tblLiabilityType" />
+          <EntitySet Name="tblMasterProfessions" EntityType="AIMFinServDBModel.tblMasterProfession" />
+          <EntitySet Name="tblMasterQualifications" EntityType="AIMFinServDBModel.tblMasterQualification" />
+          <EntitySet Name="tblMasterRelationships" EntityType="AIMFinServDBModel.tblMasterRelationship" />
+          <EntitySet Name="tblMasterTypeOfEmployments" EntityType="AIMFinServDBModel.tblMasterTypeOfEmployment" />
+          <AssociationSet Name="FK_tblApplicantExpenseSheet_tblApplicants" Association="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblApplicants">
+            <End Role="tblApplicant" EntitySet="tblApplicants" />
+            <End Role="tblApplicantExpenseSheet" EntitySet="tblApplicantExpenseSheets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAssets_tblAssetTypes" Association="AIMFinServDBModel.FK_tblAssets_tblAssetTypes">
+            <End Role="tblAssetType" EntitySet="tblAssetTypes" />
+            <End Role="tblAsset" EntitySet="tblAssets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLiabilities_tblLiabilityTypes" Association="AIMFinServDBModel.FK_tblLiabilities_tblLiabilityTypes">
+            <End Role="tblLiabilityType" EntitySet="tblLiabilityTypes" />
+            <End Role="tblLiability" EntitySet="tblLiabilities" />
+          </AssociationSet>
+          <EntitySet Name="tblApplicantCommunicationDetails" EntityType="AIMFinServDBModel.tblApplicantCommunicationDetail" />
+          <AssociationSet Name="FK__tblApplic__Appli__5070F446" Association="AIMFinServDBModel.FK__tblApplic__Appli__5070F446">
+            <End Role="tblApplicant" EntitySet="tblApplicants" />
+            <End Role="tblApplicantCommunicationDetail" EntitySet="tblApplicantCommunicationDetails" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="tblApplicantCommunicationDetail">
-          <Key>
-            <PropertyRef Name="CommunicationID" />
-          </Key>
-          <Property Name="AutoID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CommunicationID" Type="Guid" Nullable="false" />
-          <Property Name="ApplicantID" Type="Guid" Nullable="false" />
-          <Property Name="AddressLine1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="AddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="AddressLine3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Duration" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="CreatedBy" Type="Guid" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedBy" Type="Guid" />
-          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="tblApplicant" Relationship="AIMFinServDBModel.FK_tblApplicantCommunicationDetails_tblApplicants" FromRole="tblApplicantCommunicationDetail" ToRole="tblApplicant" />
-        </EntityType>
         <EntityType Name="tblApplicantEmploymentDetail">
           <Key>
             <PropertyRef Name="EmploymentID" />
@@ -323,9 +491,10 @@
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="ModifiedBy" Type="Guid" />
           <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="tblApplicantCommunicationDetail" Relationship="AIMFinServDBModel.FK_tblApplicantCommunicationDetails_tblApplicants" FromRole="tblApplicant" ToRole="tblApplicantCommunicationDetail" />
           <NavigationProperty Name="tblApplicantEmploymentDetails" Relationship="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblApplicants" FromRole="tblApplicant" ToRole="tblApplicantEmploymentDetail" />
           <NavigationProperty Name="tblApplicantType" Relationship="AIMFinServDBModel.FK_tblApplicants_tblApplicantType" FromRole="tblApplicant" ToRole="tblApplicantType" />
+          <NavigationProperty Name="tblApplicantExpenseSheets" Relationship="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblApplicants" FromRole="tblApplicant" ToRole="tblApplicantExpenseSheet" />
+          <NavigationProperty Name="tblApplicantCommunicationDetails" Relationship="AIMFinServDBModel.FK__tblApplic__Appli__5070F446" FromRole="tblApplicant" ToRole="tblApplicantCommunicationDetail" />
         </EntityType>
         <EntityType Name="tblApplicantType">
           <Key>
@@ -334,19 +503,8 @@
           <Property Name="ApplicantTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ApplicantType" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblApplicants" Relationship="AIMFinServDBModel.FK_tblApplicants_tblApplicantType" FromRole="tblApplicantType" ToRole="tblApplicant" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
-        <Association Name="FK_tblApplicantCommunicationDetails_tblApplicants">
-          <End Type="AIMFinServDBModel.tblApplicant" Role="tblApplicant" Multiplicity="1" />
-          <End Type="AIMFinServDBModel.tblApplicantCommunicationDetail" Role="tblApplicantCommunicationDetail" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="tblApplicant">
-              <PropertyRef Name="ApplicantID" />
-            </Principal>
-            <Dependent Role="tblApplicantCommunicationDetail">
-              <PropertyRef Name="CommunicationID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_tblApplicantEmploymentDetails_tblApplicants">
           <End Type="AIMFinServDBModel.tblApplicant" Role="tblApplicant" Multiplicity="1" />
           <End Type="AIMFinServDBModel.tblApplicantEmploymentDetail" Role="tblApplicantEmploymentDetail" Multiplicity="*" />
@@ -368,6 +526,182 @@
             </Principal>
             <Dependent Role="tblApplicant">
               <PropertyRef Name="ApplicantTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblApplicantExpenseSheet">
+          <Key>
+            <PropertyRef Name="ExpenseID" />
+          </Key>
+          <Property Name="AutoID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExpenseID" Type="Guid" Nullable="false" />
+          <Property Name="ApplicantID" Type="Guid" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Frequency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NetAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblApplicant" Relationship="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblApplicants" FromRole="tblApplicantExpenseSheet" ToRole="tblApplicant" />
+        </EntityType>
+        <EntityType Name="tblAsset">
+          <Key>
+            <PropertyRef Name="AssetID" />
+          </Key>
+          <Property Name="AutoID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssetID" Type="Guid" Nullable="false" />
+          <Property Name="AssetTypeID" Type="Guid" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NetValue" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Ownership" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblAssetType" Relationship="AIMFinServDBModel.FK_tblAssets_tblAssetTypes" FromRole="tblAsset" ToRole="tblAssetType" />
+        </EntityType>
+        <EntityType Name="tblAssetType">
+          <Key>
+            <PropertyRef Name="AssetTypeID" />
+          </Key>
+          <Property Name="AutoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssetTypeID" Type="Guid" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblAssets" Relationship="AIMFinServDBModel.FK_tblAssets_tblAssetTypes" FromRole="tblAssetType" ToRole="tblAsset" />
+        </EntityType>
+        <EntityType Name="tblExpenseType">
+          <Key>
+            <PropertyRef Name="ExpenseTypeID" />
+          </Key>
+          <Property Name="AutoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExpenseTypeID" Type="Guid" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Frequency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblLiability">
+          <Key>
+            <PropertyRef Name="LiabilityID" />
+          </Key>
+          <Property Name="AutoID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LiabilityID" Type="Guid" Nullable="false" />
+          <Property Name="LiabilityTypeID" Type="Guid" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NetValue" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Ownership" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblLiabilityType" Relationship="AIMFinServDBModel.FK_tblLiabilities_tblLiabilityTypes" FromRole="tblLiability" ToRole="tblLiabilityType" />
+        </EntityType>
+        <EntityType Name="tblLiabilityType">
+          <Key>
+            <PropertyRef Name="LiabilityTypeID" />
+          </Key>
+          <Property Name="AutoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LiabilityTypeID" Type="Guid" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblLiabilities" Relationship="AIMFinServDBModel.FK_tblLiabilities_tblLiabilityTypes" FromRole="tblLiabilityType" ToRole="tblLiability" />
+        </EntityType>
+        <EntityType Name="tblMasterProfession">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Profession" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblMasterQualification">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Qualifications" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblMasterRelationship">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RelationshipWithApplicant" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblMasterTypeOfEmployment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployementType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tblApplicantExpenseSheet_tblApplicants">
+          <End Type="AIMFinServDBModel.tblApplicant" Role="tblApplicant" Multiplicity="0..1" />
+          <End Type="AIMFinServDBModel.tblApplicantExpenseSheet" Role="tblApplicantExpenseSheet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblApplicant">
+              <PropertyRef Name="ApplicantID" />
+            </Principal>
+            <Dependent Role="tblApplicantExpenseSheet">
+              <PropertyRef Name="ApplicantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAssets_tblAssetTypes">
+          <End Type="AIMFinServDBModel.tblAssetType" Role="tblAssetType" Multiplicity="0..1" />
+          <End Type="AIMFinServDBModel.tblAsset" Role="tblAsset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAssetType">
+              <PropertyRef Name="AssetTypeID" />
+            </Principal>
+            <Dependent Role="tblAsset">
+              <PropertyRef Name="AssetTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLiabilities_tblLiabilityTypes">
+          <End Type="AIMFinServDBModel.tblLiabilityType" Role="tblLiabilityType" Multiplicity="0..1" />
+          <End Type="AIMFinServDBModel.tblLiability" Role="tblLiability" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLiabilityType">
+              <PropertyRef Name="LiabilityTypeID" />
+            </Principal>
+            <Dependent Role="tblLiability">
+              <PropertyRef Name="LiabilityTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblApplicantCommunicationDetail">
+          <Key>
+            <PropertyRef Name="CommunicationID" />
+          </Key>
+          <Property Name="AutoID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommunicationID" Type="Guid" Nullable="false" />
+          <Property Name="AddressLine1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Duration" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ApplicantID" Type="Guid" />
+          <NavigationProperty Name="tblApplicant" Relationship="AIMFinServDBModel.FK__tblApplic__Appli__5070F446" FromRole="tblApplicantCommunicationDetail" ToRole="tblApplicant" />
+        </EntityType>
+        <Association Name="FK__tblApplic__Appli__5070F446">
+          <End Type="AIMFinServDBModel.tblApplicant" Role="tblApplicant" Multiplicity="0..1" />
+          <End Type="AIMFinServDBModel.tblApplicantCommunicationDetail" Role="tblApplicantCommunicationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblApplicant">
+              <PropertyRef Name="ApplicantID" />
+            </Principal>
+            <Dependent Role="tblApplicantCommunicationDetail">
+              <PropertyRef Name="ApplicantID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -434,24 +768,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblApplicantCommunicationDetails">
-            <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicantCommunicationDetail">
-              <MappingFragment StoreEntitySet="tblApplicantCommunicationDetails">
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Duration" ColumnName="Duration" />
-                <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
-                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
-                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
-                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
-                <ScalarProperty Name="CommunicationID" ColumnName="CommunicationID" />
-                <ScalarProperty Name="AutoID" ColumnName="AutoID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tblApplicantEmploymentDetails">
             <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicantEmploymentDetail">
               <MappingFragment StoreEntitySet="tblApplicantEmploymentDetails">
@@ -500,8 +816,142 @@
           <EntitySetMapping Name="tblApplicantTypes">
             <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicantType">
               <MappingFragment StoreEntitySet="tblApplicantType">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="ApplicantType" ColumnName="ApplicantType" />
                 <ScalarProperty Name="ApplicantTypeID" ColumnName="ApplicantTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblApplicantExpenseSheets">
+            <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicantExpenseSheet">
+              <MappingFragment StoreEntitySet="tblApplicantExpenseSheet">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
+                <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+                <ScalarProperty Name="ExpenseID" ColumnName="ExpenseID" />
+                <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAssets">
+            <EntityTypeMapping TypeName="AIMFinServDBModel.tblAsset">
+              <MappingFragment StoreEntitySet="tblAssets">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Ownership" ColumnName="Ownership" />
+                <ScalarProperty Name="NetValue" ColumnName="NetValue" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AssetTypeID" ColumnName="AssetTypeID" />
+                <ScalarProperty Name="AssetID" ColumnName="AssetID" />
+                <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAssetTypes">
+            <EntityTypeMapping TypeName="AIMFinServDBModel.tblAssetType">
+              <MappingFragment StoreEntitySet="tblAssetTypes">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AssetTypeID" ColumnName="AssetTypeID" />
+                <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblExpenseTypes">
+            <EntityTypeMapping TypeName="AIMFinServDBModel.tblExpenseType">
+              <MappingFragment StoreEntitySet="tblExpenseType">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ExpenseTypeID" ColumnName="ExpenseTypeID" />
+                <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLiabilities">
+            <EntityTypeMapping TypeName="AIMFinServDBModel.tblLiability">
+              <MappingFragment StoreEntitySet="tblLiabilities">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Ownership" ColumnName="Ownership" />
+                <ScalarProperty Name="NetValue" ColumnName="NetValue" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LiabilityTypeID" ColumnName="LiabilityTypeID" />
+                <ScalarProperty Name="LiabilityID" ColumnName="LiabilityID" />
+                <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLiabilityTypes">
+            <EntityTypeMapping TypeName="AIMFinServDBModel.tblLiabilityType">
+              <MappingFragment StoreEntitySet="tblLiabilityTypes">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LiabilityTypeID" ColumnName="LiabilityTypeID" />
+                <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMasterProfessions">
+            <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterProfession">
+              <MappingFragment StoreEntitySet="tblMasterProfession">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Profession" ColumnName="Profession" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMasterQualifications">
+            <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterQualification">
+              <MappingFragment StoreEntitySet="tblMasterQualification">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Qualifications" ColumnName="Qualifications" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMasterRelationships">
+            <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterRelationship">
+              <MappingFragment StoreEntitySet="tblMasterRelationship">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RelationshipWithApplicant" ColumnName="RelationshipWithApplicant" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMasterTypeOfEmployments">
+            <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterTypeOfEmployment">
+              <MappingFragment StoreEntitySet="tblMasterTypeOfEmployment">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EmployementType" ColumnName="EmployementType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblApplicantCommunicationDetails">
+            <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicantCommunicationDetail">
+              <MappingFragment StoreEntitySet="tblApplicantCommunicationDetails">
+                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="CommunicationID" ColumnName="CommunicationID" />
+                <ScalarProperty Name="AutoID" ColumnName="AutoID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

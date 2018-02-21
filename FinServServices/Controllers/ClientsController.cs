@@ -17,5 +17,12 @@ namespace FinServServices.Controllers
         {
             return Repository.GetAllClients();
         }
+
+        [HttpGet]
+        [Route("GetClientDetails")]
+        public Applicants GetClientDetails(string ClientID)
+        {
+            return Repository.GetClientDetails(ClientID);
+        }
     }
 }

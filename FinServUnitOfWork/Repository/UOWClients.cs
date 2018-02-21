@@ -53,5 +53,71 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
+
+        public Applicants GetClientDetails(string ClientID)
+        {
+            try
+            {
+                Applicants objApplicants = new Applicants();
+                Guid ApplicantID = Guid.Parse(ClientID);
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetApplicantDetails = db.tblApplicants.Where(p => p.IsActive == true && p.ApplicantID == ApplicantID).FirstOrDefault();
+
+                    objApplicants.ApplicantID = GetApplicantDetails.ApplicantID;
+                    objApplicants.ApplicantTypeID = GetApplicantDetails.ApplicantTypeID;
+                    objApplicants.AutoID = GetApplicantDetails.AutoID;
+                    objApplicants.CountryOfBirth = GetApplicantDetails.CountryOfBirth;
+                    objApplicants.DateOfBirth = GetApplicantDetails.DateOfBirth;
+                    objApplicants.EmailID = GetApplicantDetails.EmailID;
+                    objApplicants.FirstName = GetApplicantDetails.FirstName;
+                    objApplicants.Gender = GetApplicantDetails.Gender;
+                    objApplicants.HomePhoneNo = GetApplicantDetails.HomePhoneNo;
+                    objApplicants.IsActive = GetApplicantDetails.IsActive;
+                    objApplicants.LastName = GetApplicantDetails.LastName;
+                    objApplicants.MaritalStatus = GetApplicantDetails.MaritalStatus;
+                    objApplicants.MiddleName = GetApplicantDetails.MiddleName;
+                    objApplicants.MobileNo = GetApplicantDetails.MobileNo;
+                    objApplicants.NoOfDependents = GetApplicantDetails.NoOfDependents;
+                    objApplicants.NZResidents = GetApplicantDetails.NZResidents;
+                    objApplicants.WorkPhoneNo = GetApplicantDetails.WorkPhoneNo;
+
+                    objApplicants.ApplicantType = new ApplicantType();
+                    objApplicants.ApplicantType.ApplicantTypeDesc = GetApplicantDetails.tblApplicantType.ApplicantType;
+
+                    foreach (var itemEmployementDetail in GetApplicantDetails.tblApplicantEmploymentDetails)
+                    {
+                        objApplicants.ApplicantEmployementDetails.Add(new ApplicantEmployementDetails
+                        {
+                            ApplicantID = itemEmployementDetail.ApplicantID,
+                            AutoID = itemEmployementDetail.AutoID,
+                            EmployerName = itemEmployementDetail.EmployerName,
+                            Income = itemEmployementDetail.Income,
+                            SourceOfIncome = itemEmployementDetail.SourceOfIncome,
+                            EmploymentID = itemEmployementDetail.EmploymentID,
+                            Status = itemEmployementDetail.Status,
+                        });
+                    }
+
+                    foreach (var itemApplicantCommDetails in GetApplicantDetails.tblApplicantCommunicationDetails)
+                    {
+                        objApplicants.ApplicantCommunicationDetails.Add(new ApplicantCommunicationDetails
+                        {
+                            AddressLine1 = itemApplicantCommDetails.AddressLine1,
+                            AddressLine2 = itemApplicantCommDetails.AddressLine2,
+                            AddressLine3 = itemApplicantCommDetails.AddressLine3,
+                            AutoID = itemApplicantCommDetails.AutoID,
+                            CommunicationID= itemApplicantCommDetails.CommunicationID,
+                            Status = itemApplicantCommDetails.Status,
+                        });
+                    }
+                    return objApplicants;
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
     }
 }

@@ -20,4 +20,8 @@ export class ClientsService {
     GetAllClients() {
         return this._http.get(this.baseurl + "Clients/GetAllClients", this.options);
     }
+
+    GetClientDetails(ClientID) {
+        return this._http.get(this.baseurl + "Clients/GetClientDetails?ClientID=" + ClientID , this.options);
+    }
 }

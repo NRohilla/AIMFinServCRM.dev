@@ -12,21 +12,19 @@ namespace FinServDataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class tblApplicantCommunicationDetail
+    public partial class tblLiability
     {
         public long AutoID { get; set; }
-        public System.Guid CommunicationID { get; set; }
-        public string AddressLine1 { get; set; }
-        public string AddressLine2 { get; set; }
-        public string AddressLine3 { get; set; }
-        public string Duration { get; set; }
-        public string Status { get; set; }
+        public System.Guid LiabilityID { get; set; }
+        public Nullable<System.Guid> LiabilityTypeID { get; set; }
+        public string Description { get; set; }
+        public Nullable<decimal> NetValue { get; set; }
+        public string Ownership { get; set; }
         public Nullable<System.Guid> CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<System.Guid> ApplicantID { get; set; }
     
-        public virtual tblApplicant tblApplicant { get; set; }
+        public virtual tblLiabilityType tblLiabilityType { get; set; }
     }
 }

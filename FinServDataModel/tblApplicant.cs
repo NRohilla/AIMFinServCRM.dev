@@ -18,6 +18,8 @@ namespace FinServDataModel
         public tblApplicant()
         {
             this.tblApplicantEmploymentDetails = new HashSet<tblApplicantEmploymentDetail>();
+            this.tblApplicantExpenseSheets = new HashSet<tblApplicantExpenseSheet>();
+            this.tblApplicantCommunicationDetails = new HashSet<tblApplicantCommunicationDetail>();
         }
     
         public long AutoID { get; set; }
@@ -42,9 +44,12 @@ namespace FinServDataModel
         public Nullable<System.Guid> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
     
-        public virtual tblApplicantCommunicationDetail tblApplicantCommunicationDetail { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblApplicantEmploymentDetail> tblApplicantEmploymentDetails { get; set; }
         public virtual tblApplicantType tblApplicantType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblApplicantExpenseSheet> tblApplicantExpenseSheets { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblApplicantCommunicationDetail> tblApplicantCommunicationDetails { get; set; }
     }
 }

@@ -76,7 +76,37 @@
     <Compile Include="tblApplicantEmploymentDetail.cs">
       <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="tblApplicantExpenseSheet.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblApplicantType.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblAsset.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblAssetType.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblExpenseType.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblLiability.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblLiabilityType.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMasterProfession.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMasterQualification.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMasterRelationship.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMasterTypeOfEmployment.cs">
       <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblRole.cs">

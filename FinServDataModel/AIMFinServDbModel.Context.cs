@@ -28,9 +28,19 @@ namespace FinServDataModel
         public virtual DbSet<tblRole> tblRoles { get; set; }
         public virtual DbSet<tblUser> tblUsers { get; set; }
         public virtual DbSet<tblUsersRole> tblUsersRoles { get; set; }
-        public virtual DbSet<tblApplicantCommunicationDetail> tblApplicantCommunicationDetails { get; set; }
         public virtual DbSet<tblApplicantEmploymentDetail> tblApplicantEmploymentDetails { get; set; }
         public virtual DbSet<tblApplicant> tblApplicants { get; set; }
         public virtual DbSet<tblApplicantType> tblApplicantTypes { get; set; }
+        public virtual DbSet<tblApplicantExpenseSheet> tblApplicantExpenseSheets { get; set; }
+        public virtual DbSet<tblAsset> tblAssets { get; set; }
+        public virtual DbSet<tblAssetType> tblAssetTypes { get; set; }
+        public virtual DbSet<tblExpenseType> tblExpenseTypes { get; set; }
+        public virtual DbSet<tblLiability> tblLiabilities { get; set; }
+        public virtual DbSet<tblLiabilityType> tblLiabilityTypes { get; set; }
+        public virtual DbSet<tblMasterProfession> tblMasterProfessions { get; set; }
+        public virtual DbSet<tblMasterQualification> tblMasterQualifications { get; set; }
+        public virtual DbSet<tblMasterRelationship> tblMasterRelationships { get; set; }
+        public virtual DbSet<tblMasterTypeOfEmployment> tblMasterTypeOfEmployments { get; set; }
+        public virtual DbSet<tblApplicantCommunicationDetail> tblApplicantCommunicationDetails { get; set; }
     }
 }

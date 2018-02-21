@@ -1,30 +1,40 @@
 ﻿<div [@routerTransition]>
     <app-page-header [heading]="'Clients'" [icon]="'fa-bar-chart-o'"></app-page-header>
-    <kendo-grid [kendoGridBinding]="gridData"
-                [pageSize]="2"
-                [sortable]="true"
-                [pageable]="true"
-                [scrollable]="true" 
-                [filterable]="true" 
-                [groupable]="true"
-                selectable="true">
-        <kendo-grid-column title="Applicant name" [width]="120" [filter]="'text'">
-            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                <label>{{dataItem.FirstName}} {{dataItem.MiddleName}} {{dataItem.LastName}}</label>
-            </ng-template>
-        </kendo-grid-column>
-        <kendo-grid-column field="MobileNo" title="Contact">
-        </kendo-grid-column>
-        <kendo-grid-column field="CountryOfBirth" title="Country">
-        </kendo-grid-column>
-        <kendo-grid-column field="EmailID" title="Email">
-        </kendo-grid-column>
-        <kendo-grid-column field="ApplicantType.ApplicantTypeDesc" title="Applicant type">
-        </kendo-grid-column>
-        <kendo-grid-command-column>
-            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                <button class="btn btn-lg btn-link" type="button" (click)="ViewClientDetails(dataItem.ApplicantID)">View details</button>
-            </ng-template>
-        </kendo-grid-command-column>
-    </kendo-grid>
+    <div *ngIf="!_ViewApplicantDetails">
+        <kendo-grid [kendoGridBinding]="gridData"
+                    [pageSize]="2"
+                    [sortable]="true"
+                    [pageable]="true"
+                    [scrollable]="true"
+                    [filterable]="true"
+                    [groupable]="true"
+                    selectable="true">
+            <kendo-grid-column title="Client name" [filter]="'text'">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label>{{dataItem.FirstName}} {{dataItem.MiddleName}} {{dataItem.LastName}}</label>
+                </ng-template>
+            </kendo-grid-column>
+            <kendo-grid-column field="MobileNo" title="Contact">
+            </kendo-grid-column>
+            <kendo-grid-column field="EmailID" title="Email">
+            </kendo-grid-column>
+            <kendo-grid-column field="ApplicantType.ApplicantTypeDesc" title="Applicant type">
+            </kendo-grid-column>
+            <kendo-grid-command-column>
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <button class="btn btn-lg btn-link" type="button" (click)="ViewClientDetails(dataItem.ApplicantID)">View details</button>
+                </ng-template>
+            </kendo-grid-command-column>
+        </kendo-grid>
+    </div>
+
+    <div class="mat-app-background" *ngIf="_ViewApplicantDetails">
+        <button class="btn btn-lg btn-link" type="button" (click)="ViewClientDetails('ViewList')" style="float:right;">Back to clients list</button>
+        <div id="exTab1" class="basic-container">
+            <mat-tab-group>
+                <mat-tab label="Personal details"><client-personal-details></client-personal-details></mat-tab>
+                <mat-tab label="Employement details">Employement details</mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
 </div>

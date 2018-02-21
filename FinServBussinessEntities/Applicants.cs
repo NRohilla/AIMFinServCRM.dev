@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinServBussinessEntities
 {
-  public  class Applicants
+    public class Applicants
     {
         public long AutoID { get; set; }
         public System.Guid ApplicantID { get; set; }
@@ -30,5 +30,7 @@ namespace FinServBussinessEntities
         public Nullable<System.Guid> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public ApplicantType ApplicantType { get; set; }
+        public List<ApplicantEmployementDetails> ApplicantEmployementDetails { get; set; }
+        public List<ApplicantCommunicationDetails> ApplicantCommunicationDetails { get; set; }
     }
 }

@@ -19,6 +19,7 @@ import {ClientsService} from '../../services/app.clients.service';
     providers: [ClientsService]
 })
 export class ClientsComponent implements OnInit {
+    public _ViewApplicantDetails: boolean = false;
     public _FormErrors;
     public _FormErrorsDescription: string = '';
     public gridData: any[];
@@ -36,6 +37,8 @@ export class ClientsComponent implements OnInit {
     GetAllClientsError(Res) { }
 
     ViewClientDetails(ApplicantID) {
-        debugger;
+        this._ViewApplicantDetails = !this._ViewApplicantDetails;
+        this._LocalStorageService.set("ApplicantID", ApplicantID);
     }
+
 }
