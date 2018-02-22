@@ -17,9 +17,9 @@ namespace FinServDataModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblApplicant()
         {
+            this.tblApplicantCommunicationDetails = new HashSet<tblApplicantCommunicationDetail>();
             this.tblApplicantEmploymentDetails = new HashSet<tblApplicantEmploymentDetail>();
             this.tblApplicantExpenseSheets = new HashSet<tblApplicantExpenseSheet>();
-            this.tblApplicantCommunicationDetails = new HashSet<tblApplicantCommunicationDetail>();
         }
     
         public long AutoID { get; set; }
@@ -33,10 +33,6 @@ namespace FinServDataModel
         public string NoOfDependents { get; set; }
         public Nullable<bool> NZResidents { get; set; }
         public string CountryOfBirth { get; set; }
-        public string MobileNo { get; set; }
-        public string HomePhoneNo { get; set; }
-        public string WorkPhoneNo { get; set; }
-        public string EmailID { get; set; }
         public Nullable<int> ApplicantTypeID { get; set; }
         public bool IsActive { get; set; }
         public Nullable<System.Guid> CreatedBy { get; set; }
@@ -45,11 +41,11 @@ namespace FinServDataModel
         public Nullable<System.DateTime> ModifiedOn { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblApplicantCommunicationDetail> tblApplicantCommunicationDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblApplicantEmploymentDetail> tblApplicantEmploymentDetails { get; set; }
-        public virtual tblApplicantType tblApplicantType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblApplicantExpenseSheet> tblApplicantExpenseSheets { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblApplicantCommunicationDetail> tblApplicantCommunicationDetails { get; set; }
+        public virtual tblApplicantType tblApplicantType { get; set; }
     }
 }

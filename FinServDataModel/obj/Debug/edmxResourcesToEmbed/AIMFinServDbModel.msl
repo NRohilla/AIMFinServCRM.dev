@@ -76,33 +76,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tblApplicants">
-      <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicant">
-        <MappingFragment StoreEntitySet="tblApplicants">
-          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="ApplicantTypeID" ColumnName="ApplicantTypeID" />
-          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
-          <ScalarProperty Name="WorkPhoneNo" ColumnName="WorkPhoneNo" />
-          <ScalarProperty Name="HomePhoneNo" ColumnName="HomePhoneNo" />
-          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
-          <ScalarProperty Name="CountryOfBirth" ColumnName="CountryOfBirth" />
-          <ScalarProperty Name="NZResidents" ColumnName="NZResidents" />
-          <ScalarProperty Name="NoOfDependents" ColumnName="NoOfDependents" />
-          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
-          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-          <ScalarProperty Name="Gender" ColumnName="Gender" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
-          <ScalarProperty Name="AutoID" ColumnName="AutoID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tblApplicantTypes">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicantType">
         <MappingFragment StoreEntitySet="tblApplicantType">
@@ -230,6 +203,10 @@
     <EntitySetMapping Name="tblApplicantCommunicationDetails">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicantCommunicationDetail">
         <MappingFragment StoreEntitySet="tblApplicantCommunicationDetails">
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="WorkPhoneNo" ColumnName="WorkPhoneNo" />
+          <ScalarProperty Name="HomePhoneNo" ColumnName="HomePhoneNo" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
           <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
           <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
           <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
@@ -241,6 +218,29 @@
           <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
           <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
           <ScalarProperty Name="CommunicationID" ColumnName="CommunicationID" />
+          <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblApplicants">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicant">
+        <MappingFragment StoreEntitySet="tblApplicants">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ApplicantTypeID" ColumnName="ApplicantTypeID" />
+          <ScalarProperty Name="CountryOfBirth" ColumnName="CountryOfBirth" />
+          <ScalarProperty Name="NZResidents" ColumnName="NZResidents" />
+          <ScalarProperty Name="NoOfDependents" ColumnName="NoOfDependents" />
+          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
           <ScalarProperty Name="AutoID" ColumnName="AutoID" />
         </MappingFragment>
       </EntityTypeMapping>

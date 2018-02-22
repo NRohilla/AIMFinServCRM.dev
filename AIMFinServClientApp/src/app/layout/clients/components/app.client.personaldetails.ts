@@ -56,6 +56,10 @@ export class ClientsPersonalDetailsComponent implements OnInit {
         Duration: '',
         Status: '',
         ApplicantID: '',
+        MobileNo: '',
+        HomePhoneNo: '',
+        WorkPhoneNo: '',
+        EmailID: '',
     }
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { }

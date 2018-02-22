@@ -9,10 +9,7 @@
         <EntityTypeShape EntityType="AIMFinServDBModel.tblUser" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblUsersRole" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblApplicantEmploymentDetail" Width="1.5" PointX="9.875" PointY="4.25" />
-        <EntityTypeShape EntityType="AIMFinServDBModel.tblApplicant" Width="1.5" PointX="7.625" PointY="5.25" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblApplicantType" Width="1.5" PointX="5.375" PointY="7.25" />
-        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblApplicants" />
-        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicants_tblApplicantType" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblApplicantExpenseSheet" Width="1.5" PointX="10.25" PointY="13.75" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblAsset" Width="1.5" PointX="15" PointY="1" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblAssetType" Width="1.5" PointX="12.75" PointY="1.5" />
@@ -23,11 +20,14 @@
         <EntityTypeShape EntityType="AIMFinServDBModel.tblMasterQualification" Width="1.5" PointX="2.75" PointY="7.75" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblMasterRelationship" Width="1.5" PointX="9.75" PointY="0.75" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblMasterTypeOfEmployment" Width="1.5" PointX="12.75" PointY="5.75" />
-        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblApplicants" />
         <AssociationConnector Association="AIMFinServDBModel.FK_tblAssets_tblAssetTypes" />
         <AssociationConnector Association="AIMFinServDBModel.FK_tblLiabilities_tblLiabilityTypes" />
-        <EntityTypeShape EntityType="AIMFinServDBModel.tblApplicantCommunicationDetail" Width="1.5" PointX="9.875" PointY="9.375" />
+        <EntityTypeShape EntityType="AIMFinServDBModel.tblApplicantCommunicationDetail" Width="1.5" PointX="9.875" PointY="19" />
+        <EntityTypeShape EntityType="AIMFinServDBModel.tblApplicant" Width="1.5" PointX="7.625" PointY="18.625" />
         <AssociationConnector Association="AIMFinServDBModel.FK__tblApplic__Appli__5070F446" />
+        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblApplicants" />
+        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblApplicants" />
+        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicants_tblApplicantType" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -22,7 +22,7 @@ export class ClientsService {
     }
 
     GetClientDetails(ClientID) {
-        return this._http.get(this.baseurl + "Clients/GetClientDetails?ClientID=" + ClientID , this.options);
+        return this._http.get(this.baseurl + "Clients/GetClientDetails?ClientID=" + ClientID, this.options);
     }
 
     GetClientCommunicationDetails(ClientID) {
@@ -31,5 +31,9 @@ export class ClientsService {
 
     GetClientEmployementDetails(ClientID) {
         return this._http.get(this.baseurl + "Clients/GetClientEmployementDetails?ClientID=" + ClientID, this.options);
+    }
+
+    updateclientEmploymentdetails(ApplicantEmployementDetails) {
+        return this._http.post(this.baseurl + "Clients/UpdateClientEmploymentDetails", ApplicantEmployementDetails, this.options);
     }
 }

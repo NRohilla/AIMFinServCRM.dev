@@ -19,12 +19,12 @@ namespace FinServBussinessEntities
         public string NoOfDependents { get; set; }
         public Nullable<bool> NZResidents { get; set; }
         public string CountryOfBirth { get; set; }
+        public Nullable<int> ApplicantTypeID { get; set; }
+        public bool IsActive { get; set; }
         public string MobileNo { get; set; }
         public string HomePhoneNo { get; set; }
         public string WorkPhoneNo { get; set; }
         public string EmailID { get; set; }
-        public Nullable<int> ApplicantTypeID { get; set; }
-        public bool IsActive { get; set; }
         public Nullable<System.Guid> CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }

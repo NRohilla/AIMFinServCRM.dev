@@ -16,6 +16,10 @@
     <Property Name="ModifiedBy" Type="uniqueidentifier" />
     <Property Name="ModifiedOn" Type="datetime" />
     <Property Name="ApplicantID" Type="uniqueidentifier" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="15" />
+    <Property Name="HomePhoneNo" Type="nvarchar" MaxLength="15" />
+    <Property Name="WorkPhoneNo" Type="nvarchar" MaxLength="15" />
+    <Property Name="EmailID" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="tblApplicantEmploymentDetails">
     <Key>
@@ -64,10 +68,6 @@
     <Property Name="NoOfDependents" Type="nchar" MaxLength="10" />
     <Property Name="NZResidents" Type="bit" />
     <Property Name="CountryOfBirth" Type="varchar" MaxLength="50" />
-    <Property Name="MobileNo" Type="nvarchar" MaxLength="15" />
-    <Property Name="HomePhoneNo" Type="nvarchar" MaxLength="15" />
-    <Property Name="WorkPhoneNo" Type="nvarchar" MaxLength="15" />
-    <Property Name="EmailID" Type="nvarchar" MaxLength="50" />
     <Property Name="ApplicantTypeID" Type="int" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="CreatedBy" Type="uniqueidentifier" />

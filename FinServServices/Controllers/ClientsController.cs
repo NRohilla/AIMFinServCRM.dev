@@ -13,7 +13,7 @@ namespace FinServServices.Controllers
 
         [HttpGet]
         [Route("GetAllClients")]
-        public IEnumerable<Applicants> GetAllClients()
+        public List<Applicants> GetAllClients()
         {
             return Repository.GetAllClients();
         }
@@ -37,6 +37,13 @@ namespace FinServServices.Controllers
         public List<ApplicantEmployementDetails> GetClientEmployementDetails(string ClientID)
         {
             return Repository.GetClientEmployementDetails(ClientID);
+        }
+
+        [HttpPost]
+        [Route("UpdateClientEmploymentDetails")]
+        public bool UpdateClientEmploymentDetails(List<ApplicantEmployementDetails> ApplicantEmployementDetails)
+        {
+            return Repository.UpdateClientEmploymentDetails(ApplicantEmployementDetails);
         }
     }
 }
