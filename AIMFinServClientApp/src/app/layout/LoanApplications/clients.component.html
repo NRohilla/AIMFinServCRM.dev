@@ -1,5 +1,5 @@
 ﻿<div [@routerTransition]>
-    <app-page-header [heading]="'Clients'" [icon]="'fa-bar-chart-o'"></app-page-header>
+    <app-page-header [heading]="'Loan Applications'" [icon]="'fa-bar-chart-o'"></app-page-header>
     <div *ngIf="!_ViewApplicantDetails">
         <kendo-grid [kendoGridBinding]="gridData"
                     [pageSize]="2"
@@ -9,7 +9,7 @@
                     [filterable]="true"
                     [groupable]="true"
                     selectable="true">
-            <kendo-grid-column title="Client name" [filter]="'text'">
+            <kendo-grid-column title="Applicant name" [filter]="'text'">
                 <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
                     <label>{{dataItem.FirstName}} {{dataItem.MiddleName}} {{dataItem.LastName}}</label>
                 </ng-template>

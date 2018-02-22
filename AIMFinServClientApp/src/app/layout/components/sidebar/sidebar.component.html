@@ -6,12 +6,30 @@
         <a [routerLink]="['/clients']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;{{ 'Clients' | translate }}
         </a>
-        <a [routerLink]="['/LoanApplications']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <a [routerLink]="['/loanapplications']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;{{ 'Loan Applications' | translate }}
         </a>
-        <a [routerLink]="['/Masters']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;{{ 'Masters' | translate }}
-        </a>
+        <div class="nested-menu">
+            <a class="list-group-item" (click)="addExpandClass('pages')">
+                <span><i class="fa fa-plus"></i>&nbsp; {{ 'Masters' | translate }}</span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'pages'">
+                <ul class="submenu">
+                    <li>
+                        <a href="javascript:void(0)"><span>{{ 'Profession' | translate }}</span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><span>{{ 'Qualification' | translate }}</span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><span>{{ 'Relationship' | translate }}</span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><span>{{ 'Employment' | translate }}</span></a>
+                    </li>
+                </ul>
+            </li>
+        </div>
         <!--<a [routerLink]="['/charts']" [routerLinkActive]="['router-link-active']" class="list-group-item" >
             <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;{{ 'Charts' | translate }}
         </a>
