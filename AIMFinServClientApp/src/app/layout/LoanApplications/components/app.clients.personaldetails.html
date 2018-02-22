@@ -1,43 +1,69 @@
-﻿<input type="button" value="Add Client" (click)="AddClient()" *ngIf="!_EditPersonalDetails" style="float:right;margin-top:20px; " class="btn btn-lg btn-success" />
-<div id="exTab1" class="" style="margin-left:0; margin-top:70px; width:99%;">
+﻿<div id="exTab1" class="" style="margin-left:0; margin-top:70px; width:99%;">
     <div class="row">
         <div class="col-md-12">
             <div class="section_box">
                 <div class="box_title">Applicant Personal Details</div>
                 <div class="tab-content clearfix" style="margin-left:0;">
-                    
+
                     <div class="tab-pane active">
                         <div class="field_set">
                             <div class="field_label">Name</div>
                             <div class="field_info">
                                 <p *ngIf="!_EditPersonalDetails">{{_ApplicantDetails.FirstName}} {{_ApplicantDetails.MiddleName}} {{_ApplicantDetails.LastName}}</p>
-                                <input type="text" placeholder="Field One" value="{{_ApplicantDetails.FirstName}}" *ngIf="_EditPersonalDetails" [(ngModel)]="_ApplicantDetails.FirstName" #Firstname />
-                                <input type="text" placeholder="Field One" value="{{_ApplicantDetails.MiddleName}}" *ngIf="_EditPersonalDetails" [(ngModel)]="_ApplicantDetails.MiddleName" #Firstname />
-                                <input type="text" placeholder="Field One" value="{{_ApplicantDetails.LastName}}" *ngIf="_EditPersonalDetails" [(ngModel)]="_ApplicantDetails.LastName" #Firstname />
+                                <mat-form-field class="example-full-width" *ngIf="_EditPersonalDetails">
+                                    <input matInput placeholder="First" value="{{_ApplicantDetails.FirstName}}" [(ngModel)]="_ApplicantDetails.FirstName" #FirstName>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width" *ngIf="_EditPersonalDetails">
+                                    <input matInput placeholder="Middle" value="{{_ApplicantDetails.MiddleName}}" [(ngModel)]="_ApplicantDetails.MiddleName" #MiddleName>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width" *ngIf="_EditPersonalDetails">
+                                    <input matInput placeholder="Last" value="{{_ApplicantDetails.LastName}}" [(ngModel)]="_ApplicantDetails.LastName" #LastName>
+                                </mat-form-field>
                             </div>
                         </div>
                         <div class="field_set">
                             <div class="field_label">Date of Birth</div>
                             <div class="field_info">
                                 <p *ngIf="!_EditPersonalDetails">{{_ApplicantDetails.DateOfBirth}}</p>
-                                <input type="text" placeholder="Field One" value="{{_ApplicantDetails.DateOfBirth}}" *ngIf="_EditPersonalDetails" [(ngModel)]="_ApplicantDetails.DateOfBirth" #Firstname />
+                                <mat-form-field class="example-full-width" *ngIf="_EditPersonalDetails">
+                                    <input matInput placeholder="Last" value="{{_ApplicantDetails.DateOfBirth}}" [(ngModel)]="_ApplicantDetails.DateOfBirth" #DateOfBirth>
+                                </mat-form-field>
                             </div>
                         </div>
                         <div class="field_set">
                             <div class="field_label">No of dependents</div>
                             <div class="field_info">
+                                <mat-form-field *ngIf="_EditPersonalDetails">
+                                    <mat-select [(value)]="_ApplicantDetails.NoOfDependents">
+                                        <mat-option>None</mat-option>
+                                        <mat-option value="0">0</mat-option>
+                                        <mat-option value="1">1</mat-option>
+                                        <mat-option value="2">2</mat-option>
+                                        <mat-option value="3">3</mat-option>
+                                        <mat-option value="4">4</mat-option>
+                                        <mat-option value="5">5</mat-option>
+                                        <mat-option value="6">6</mat-option>
+                                        <mat-option value="7">7</mat-option>
+                                        <mat-option value="8">8</mat-option>
+                                        <mat-option value="9">9</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
                                 <p *ngIf="!_EditPersonalDetails">{{_ApplicantDetails.NoOfDependents}}</p>
-                                <input type="text" placeholder="Field One" value="{{_ApplicantDetails.NoOfDependents}}" *ngIf="_EditPersonalDetails" [(ngModel)]="_ApplicantDetails.NoOfDependents" #Firstname />
                             </div>
                         </div>
                         <div class="field_set">
                             <div class="field_label">Marital status</div>
                             <div class="field_info">
                                 <p *ngIf="!_EditPersonalDetails">{{_ApplicantDetails.MaritalStatus}}</p>
-                                <input type="text" placeholder="Field One" value="{{_ApplicantDetails.MaritalStatus}}" *ngIf="_EditPersonalDetails" [(ngModel)]="_ApplicantDetails.MaritalStatus" #Firstname />
+                                <mat-form-field *ngIf="_EditPersonalDetails">
+                                    <mat-select [(value)]="_ApplicantDetails.MaritalStatus">
+                                        <mat-option>None</mat-option>
+                                        <mat-option value="Married">Married</mat-option>
+                                        <mat-option value="Unmarried">Unmarried</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
                             </div>
                         </div>
-                        
                     </div>
                     <input type="button" value="Save" (click)="UpdatePersonalDetails()" *ngIf="_EditPersonalDetails" style="float:right;    margin-left: 5px;" class="btn btn-lg btn-primary" />
                     <input type="button" value="Cancel" (click)="EditPersonalDetails()" *ngIf="_EditPersonalDetails" style="float:right;" class="btn btn-lg btn-primary" />
@@ -51,50 +77,65 @@
             <div class="section_box">
                 <div class="box_title">Applicant Communication Details</div>
                 <div class="tab-content clearfix" style="margin-left:0;">
-                    
+
                     <div class="tab-pane active" *ngFor="let _ApplicantCommunicationDetail of _ApplicantCommunicationDetails;">
                         <div class="field_set">
                             <div class="field_label">Email address</div>
                             <div class="field_info">
                                 <p *ngIf="!_EditCommunicationDetails">{{_ApplicantCommunicationDetail.EmailID}}</p>
-                                <input type="text" placeholder="Field One" value="{{_ApplicantCommunicationDetail.EmailID}}" *ngIf="_EditCommunicationDetails" [(ngModel)]="_ApplicantCommunicationDetail.EmailID" #EmailID />
+                                <mat-form-field class="example-full-width" *ngIf="_EditCommunicationDetails">
+                                    <input matInput placeholder="Email address" value="{{_ApplicantCommunicationDetail.EmailID}}" [(ngModel)]="_ApplicantCommunicationDetail.EmailID" #EmailID>
+                                </mat-form-field>
+
                             </div>
                         </div>
                         <div class="field_set">
                             <div class="field_label">Mobile No</div>
                             <div class="field_info">
                                 <p *ngIf="!_EditCommunicationDetails">{{_ApplicantCommunicationDetail.MobileNo}}</p>
-                                <input type="text" placeholder="Field One" value="{{_ApplicantCommunicationDetail.MobileNo}}" *ngIf="_EditCommunicationDetails" [(ngModel)]="_ApplicantCommunicationDetail.MobileNo" #MobileNo />
+                                <mat-form-field class="example-full-width" *ngIf="_EditCommunicationDetails">
+                                    <input matInput placeholder="Mobile No" value="{{_ApplicantCommunicationDetail.MobileNo}}" [(ngModel)]="_ApplicantCommunicationDetail.MobileNo" #MobileNo>
+                                </mat-form-field>
                             </div>
                         </div>
                         <div class="field_set">
                             <div class="field_label">Home Phone No</div>
                             <div class="field_info">
                                 <p *ngIf="!_EditCommunicationDetails">{{_ApplicantCommunicationDetail.HomePhoneNo}}</p>
-                                <input type="text" placeholder="Field One" value="{{_ApplicantCommunicationDetail.HomePhoneNo}}" *ngIf="_EditCommunicationDetails" [(ngModel)]="_ApplicantCommunicationDetail.HomePhoneNo" #HomePhoneNo />
+                                <mat-form-field class="example-full-width" *ngIf="_EditCommunicationDetails">
+                                    <input matInput placeholder="Home Phone No" value="{{_ApplicantCommunicationDetail.HomePhoneNo}}" [(ngModel)]="_ApplicantCommunicationDetail.HomePhoneNo" #HomePhoneNo>
+                                </mat-form-field>
                             </div>
                         </div>
                         <div class="field_set">
                             <div class="field_label">Work Phone No</div>
                             <div class="field_info">
                                 <p *ngIf="!_EditCommunicationDetails">{{_ApplicantCommunicationDetail.WorkPhoneNo}}</p>
-                                <input type="text" placeholder="Field One" value="{{_ApplicantCommunicationDetail.WorkPhoneNo}}" *ngIf="_EditCommunicationDetails" [(ngModel)]="_ApplicantCommunicationDetail.WorkPhoneNo" #WorkPhoneNo />
+                                <mat-form-field class="example-full-width" *ngIf="_EditCommunicationDetails">
+                                    <input matInput placeholder="Work Phone No" value="{{_ApplicantCommunicationDetail.WorkPhoneNo}}" [(ngModel)]="_ApplicantCommunicationDetail.WorkPhoneNo" #WorkPhoneNo>
+                                </mat-form-field>
                             </div>
                         </div>
-                        
+
                         <div class="field_set">
                             <div class="field_label">Address</div>
                             <div class="field_info">
                                 <p *ngIf="!_EditCommunicationDetails">{{_ApplicantCommunicationDetail.AddressLine1}} {{_ApplicantCommunicationDetail.AddressLine2}} {{_ApplicantCommunicationDetail.AddressLine3}}</p>
-                                <input type="text" placeholder="Field One" value="{{_ApplicantCommunicationDetail.AddressLine1}}" *ngIf="_EditCommunicationDetails" [(ngModel)]="_ApplicantCommunicationDetail.AddressLine1" #AddressLine1 />
-                                <input type="text" placeholder="Field One" value="{{_ApplicantCommunicationDetail.AddressLine2}}" *ngIf="_EditCommunicationDetails" [(ngModel)]="_ApplicantCommunicationDetail.AddressLine2" #AddressLine2 />
-                                <input type="text" placeholder="Field One" value="{{_ApplicantCommunicationDetail.AddressLine3}}" *ngIf="_EditCommunicationDetails" [(ngModel)]="_ApplicantCommunicationDetail.AddressLine3" #AddressLine3 />
+                                <mat-form-field class="example-full-width" *ngIf="_EditCommunicationDetails">
+                                    <input matInput placeholder="Address Line 1" value="{{_ApplicantCommunicationDetail.AddressLine1}}" [(ngModel)]="_ApplicantCommunicationDetail.AddressLine1" #AddressLine1>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width" *ngIf="_EditCommunicationDetails">
+                                    <input matInput placeholder="Address Line 2" value="{{_ApplicantCommunicationDetail.AddressLine2}}" [(ngModel)]="_ApplicantCommunicationDetail.AddressLine2" #AddressLine2>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width" *ngIf="_EditCommunicationDetails">
+                                    <input matInput placeholder="Address Line 3" value="{{_ApplicantCommunicationDetail.AddressLine3}}" [(ngModel)]="_ApplicantCommunicationDetail.AddressLine3" #AddressLine3>
+                                </mat-form-field>
                             </div>
                         </div>
                     </div>
                     <input type="button" value="Edit" (click)="EditCommunicationDetails()" *ngIf="!_EditCommunicationDetails" style="float:right;" class="btn btn-lg btn-primary" />
                     <input type="button" value="Cancel" (click)="EditCommunicationDetails()" *ngIf="_EditCommunicationDetails" style="float:right;    margin-left: 5px;" class="btn btn-lg btn-primary" />
-                    <input type="button" value="Save" (click)="UpdateCommunicationDetails()" *ngIf="_EditCommunicationDetails" style="float:right;" class="btn btn-lg btn-primary"/>
+                    <input type="button" value="Save" (click)="UpdateCommunicationDetails()" *ngIf="_EditCommunicationDetails" style="float:right;" class="btn btn-lg btn-primary" />
                 </div>
             </div>
         </div>

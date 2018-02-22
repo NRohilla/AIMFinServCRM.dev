@@ -46,7 +46,7 @@ export class ClientsEmployementComponent implements OnInit {
     GetClientDetailsError(res) { }
 
     EditEmployementDetails() {
-        this._EditEmployementDetails = true;
+        this._EditEmployementDetails = !this._EditEmployementDetails;
     }
 
     UpdateEmployementDetails() {

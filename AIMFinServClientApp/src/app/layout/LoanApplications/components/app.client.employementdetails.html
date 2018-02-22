@@ -2,34 +2,39 @@
     <div class="row">
         <div class="col-md-12">
             <div class="section_box" *ngFor="let _ApplicantEmployementDetail of _ApplicantEmployementDetails;">
-                
+
                 <div class="box_title">Applicant Employement Details</div>
                 <div class="tab-content clearfix" style="margin-left:0;">
-                    
+
                     <div class="tab-pane active">
                         <div class="field_set">
                             <div class="field_label">Employer</div>
                             <div class="field_info">
                                 <p *ngIf="!_EditEmployementDetails">{{_ApplicantEmployementDetail.EmployerName}}</p>
-                                <input type="text" class="form-control" placeholder="Field One" value="{{_ApplicantEmployementDetail.EmployerName}}" *ngIf="_EditEmployementDetails" [(ngModel)]="_ApplicantEmployementDetail.EmployerName" #EmployerName />
+                                <mat-form-field class="example-full-width" *ngIf="_EditEmployementDetails">
+                                    <input matInput placeholder="Employer" value="{{_ApplicantEmployementDetail.EmployerName}}" [(ngModel)]="_ApplicantEmployementDetail.EmployerName" #EmployerName>
+                                </mat-form-field>
+
                             </div>
                         </div>
                         <div class="field_set">
                             <div class="field_label">Source Of Income</div>
                             <div class="field_info">
                                 <p *ngIf="!_EditEmployementDetails">{{_ApplicantEmployementDetail.SourceOfIncome}}</p>
-                                <input type="text" class="form-control" placeholder="Field One" value="{{_ApplicantEmployementDetail.SourceOfIncome}}" *ngIf="_EditEmployementDetails" [(ngModel)]="_ApplicantEmployementDetail.SourceOfIncome" #SourceOfIncome />
+                                <mat-form-field class="example-full-width" *ngIf="_EditEmployementDetails">
+                                    <input matInput placeholder="Employer" value="{{_ApplicantEmployementDetail.SourceOfIncome}}" [(ngModel)]="_ApplicantEmployementDetail.SourceOfIncome" #SourceOfIncome>
+                                </mat-form-field>
                             </div>
                         </div>
                         <div class="field_set">
                             <div class="field_label">Income</div>
                             <div class="field_info">
                                 <p *ngIf="!_EditEmployementDetails">{{_ApplicantEmployementDetail.Income}}</p>
-                                <input type="text" class="form-control" placeholder="Field One" value="{{_ApplicantEmployementDetail.Income}}" *ngIf="_EditEmployementDetails" [(ngModel)]="_ApplicantEmployementDetail.Income" #Income />
+                                <mat-form-field class="example-full-width" *ngIf="_EditEmployementDetails">
+                                    <input matInput placeholder="Employer" value="{{_ApplicantEmployementDetail.Income}}" [(ngModel)]="_ApplicantEmployementDetail.Income" #Income>
+                                </mat-form-field>
                             </div>
                         </div>
-                         
-                        
                     </div>
                     <input type="button" value="Save" (click)="UpdateEmployementDetails()" *ngIf="_EditEmployementDetails" style="float:right;    margin-left: 5px;" class="btn btn-lg btn-primary" />
                     <input type="button" value="Cancel" (click)="EditEmployementDetails()" *ngIf="_EditEmployementDetails" style="float:right;" class="btn btn-lg btn-primary" />

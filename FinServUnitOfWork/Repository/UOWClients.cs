@@ -74,20 +74,20 @@ namespace FinServUnitOfWork.Repository
                         objApplicants.ApplicantID = GetApplicantDetails.ApplicantID;
                         objApplicants.ApplicantTypeID = GetApplicantDetails.ApplicantTypeID;
                         objApplicants.AutoID = GetApplicantDetails.AutoID;
-                        objApplicants.CountryOfBirth = GetApplicantDetails.CountryOfBirth;
-                        objApplicants.DateOfBirth = GetApplicantDetails.DateOfBirth;
-                        objApplicants.EmailID = GetApplicantDetails.tblApplicantCommunicationDetails.ToList()[0].EmailID;
-                        objApplicants.FirstName = GetApplicantDetails.FirstName;
-                        objApplicants.Gender = GetApplicantDetails.Gender;
-                        objApplicants.HomePhoneNo = GetApplicantDetails.tblApplicantCommunicationDetails.ToList()[0].HomePhoneNo;
+                        objApplicants.CountryOfBirth = GetApplicantDetails.CountryOfBirth.Trim();
+                        objApplicants.DateOfBirth = GetApplicantDetails.DateOfBirth.Trim();
+                        objApplicants.EmailID = GetApplicantDetails.tblApplicantCommunicationDetails.ToList()[0].EmailID.Trim();
+                        objApplicants.FirstName = GetApplicantDetails.FirstName.Trim();
+                        objApplicants.Gender = GetApplicantDetails.Gender.Trim();
+                        objApplicants.HomePhoneNo = GetApplicantDetails.tblApplicantCommunicationDetails.ToList()[0].HomePhoneNo.Trim();
                         objApplicants.IsActive = GetApplicantDetails.IsActive;
-                        objApplicants.LastName = GetApplicantDetails.LastName;
-                        objApplicants.MaritalStatus = GetApplicantDetails.MaritalStatus;
-                        objApplicants.MiddleName = GetApplicantDetails.MiddleName;
-                        objApplicants.MobileNo = GetApplicantDetails.tblApplicantCommunicationDetails.ToList()[0].MobileNo;
-                        objApplicants.NoOfDependents = GetApplicantDetails.NoOfDependents;
+                        objApplicants.LastName = GetApplicantDetails.LastName.Trim();
+                        objApplicants.MaritalStatus = GetApplicantDetails.MaritalStatus.Trim();
+                        objApplicants.MiddleName = GetApplicantDetails.MiddleName.Trim();
+                        objApplicants.MobileNo = GetApplicantDetails.tblApplicantCommunicationDetails.ToList()[0].MobileNo.Trim();
+                        objApplicants.NoOfDependents = GetApplicantDetails.NoOfDependents.Trim();
                         objApplicants.NZResidents = GetApplicantDetails.NZResidents;
-                        objApplicants.WorkPhoneNo = GetApplicantDetails.tblApplicantCommunicationDetails.ToList()[0].WorkPhoneNo;
+                        objApplicants.WorkPhoneNo = GetApplicantDetails.tblApplicantCommunicationDetails.ToList()[0].WorkPhoneNo.Trim();
 
                         objApplicants.ApplicantType = new ApplicantType();
                         objApplicants.ApplicantType.ApplicantTypeDesc = GetApplicantDetails.tblApplicantType.ApplicantType;
@@ -239,6 +239,10 @@ namespace FinServUnitOfWork.Repository
                         FetchDetailsOfEmployement.AddressLine1 = item.AddressLine1;
                         FetchDetailsOfEmployement.AddressLine2 = item.AddressLine2;
                         FetchDetailsOfEmployement.AddressLine3 = item.AddressLine3;
+                        FetchDetailsOfEmployement.EmailID = item.EmailID;
+                        FetchDetailsOfEmployement.HomePhoneNo = item.HomePhoneNo;
+                        FetchDetailsOfEmployement.MobileNo = item.MobileNo;
+                        FetchDetailsOfEmployement.WorkPhoneNo = item.WorkPhoneNo;
                         TotalRecordsUpdated += db.SaveChanges();
                     }
                 }
