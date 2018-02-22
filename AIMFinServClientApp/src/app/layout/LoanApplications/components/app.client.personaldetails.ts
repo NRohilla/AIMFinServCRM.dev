@@ -56,6 +56,10 @@ export class ClientsPersonalDetailsComponent implements OnInit {
         Duration: '',
         Status: '',
         ApplicantID: '',
+        MobileNo: '',
+        HomePhoneNo: '',
+        WorkPhoneNo: '',
+        EmailID: '',
     }
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { }
@@ -90,11 +94,28 @@ export class ClientsPersonalDetailsComponent implements OnInit {
     UpdatePersonalDetails() {
         debugger;
         this._EditPersonalDetails = false;
+        this._ClientsService.UpdateClientPersonalDetails(this._ApplicantDetails).subscribe(res => this.updateclientPersonalSuccess(res), res => this.updateclientPersonalError(res));
+    }
+    updateclientPersonalSuccess(res) {
+        debugger;
+    }
+
+    updateclientPersonalError(res) {
+        debugger;
     }
 
     UpdateCommunicationDetails() {
         debugger;
         this._EditCommunicationDetails = false;
+        this._ClientsService.UpdateClientCommunicationDetails(this._ApplicantCommunicationDetails).subscribe(res => this.updateclientCommunicationSuccess(res), res => this.updateclientCommunicationError(res));
+    }
+
+    updateclientCommunicationSuccess(res) {
+        debugger;
+    }
+
+    updateclientCommunicationError(res) {
+        debugger;
     }
 
     AddClient() {

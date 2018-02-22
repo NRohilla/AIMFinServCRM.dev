@@ -19,10 +19,14 @@ export class ClientsEmployementComponent implements OnInit {
     public _FormErrors;
     public _FormErrorsDescription: string = '';
     public _EditEmployementDetails: boolean = false;
+
     public _ApplicantEmployementDetails: {
         EmployerName: '',
         SourceOfIncome: '',
         Income: '',
+        ApplicantID: '',
+        AutoID: '',
+        EmploymentID: ''
     };
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { }
@@ -48,5 +52,9 @@ export class ClientsEmployementComponent implements OnInit {
     UpdateEmployementDetails() {
         debugger;
         this._EditEmployementDetails = false;
+        this._ClientsService.updateclientEmploymentdetails(this._ApplicantEmployementDetails).subscribe(res => this.updateclientEmploymentSuccess(res), res => this.updateclientEmploymentError(res));
     }
+
+    updateclientEmploymentSuccess(res) { debugger; }
+    updateclientEmploymentError(res) { }
 }
