@@ -1,0 +1,38 @@
+﻿<div id="exTab1" class="" style="margin-left:0; margin-top:70px; width:99%;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="section_box" *ngFor="let _ApplicantEmployementDetail of _ApplicantEmployementDetails;">
+                
+                <div class="box_title">Employement Details</div>
+                <div class="tab-content clearfix" style="margin-left:0;">
+                    <input type="button" value="Edit" (click)="EditEmployementDetails()" *ngIf="!_EditEmployementDetails" style="float:right;" />
+                    <div class="tab-pane active">
+                        <div class="field_set">
+                            <div class="field_label">Employer</div>
+                            <div class="field_va">
+                                <p *ngIf="!_EditEmployementDetails">{{_ApplicantEmployementDetail.EmployerName}}</p>
+                                <input type="text" placeholder="Field One" value="{{_ApplicantEmployementDetail.EmployerName}}" *ngIf="_EditEmployementDetails" [(ngModel)]="_ApplicantEmployementDetail.EmployerName" #EmployerName />
+                            </div>
+                        </div>
+                        <div class="field_set">
+                            <div class="field_label">Source Of Income</div>
+                            <div class="field_va">
+                                <p *ngIf="!_EditEmployementDetails">{{_ApplicantEmployementDetail.SourceOfIncome}}</p>
+                                <input type="text" placeholder="Field One" value="{{_ApplicantEmployementDetail.SourceOfIncome}}" *ngIf="_EditEmployementDetails" [(ngModel)]="_ApplicantEmployementDetail.SourceOfIncome" #SourceOfIncome />
+                            </div>
+                        </div>
+                        <div class="field_set">
+                            <div class="field_label">Income</div>
+                            <div class="field_va">
+                                <p *ngIf="!_EditEmployementDetails">{{_ApplicantEmployementDetail.Income}}</p>
+                                <input type="text" placeholder="Field One" value="{{_ApplicantEmployementDetail.Income}}" *ngIf="_EditEmployementDetails" [(ngModel)]="_ApplicantEmployementDetail.Income" #Income />
+                            </div>
+                        </div>
+                         
+                        <input type="button" value="Save" (click)="UpdateEmployementDetails()" *ngIf="_EditEmployementDetails" style="float:right;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -24,5 +24,19 @@ namespace FinServServices.Controllers
         {
             return Repository.GetClientDetails(ClientID);
         }
+
+        [HttpGet]
+        [Route("GetClientCommincationDetails")]
+        public List<ApplicantCommunicationDetails> GetClientCommincationDetails(string ClientID)
+        {
+            return Repository.GetClientCommincationDetails(ClientID);
+        }
+
+        [HttpGet]
+        [Route("GetClientEmployementDetails")]
+        public List<ApplicantEmployementDetails> GetClientEmployementDetails(string ClientID)
+        {
+            return Repository.GetClientEmployementDetails(ClientID);
+        }
     }
 }

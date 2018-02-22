@@ -20,7 +20,7 @@ export class ClientsPersonalDetailsComponent implements OnInit {
     public _FormErrors;
     public _FormErrorsDescription: string = '';
     public _EditPersonalDetails: boolean = false;
-
+    public _EditCommunicationDetails: boolean = false;
 
     public _ApplicantDetails = {
         AutoID: '',
@@ -45,11 +45,10 @@ export class ClientsPersonalDetailsComponent implements OnInit {
         ModifiedBy: '',
         ModifiedOn: '',
         ApplicantType: {},
-        ApplicantEmployementDetails: {},
-        ApplicantCommunicationDetails: {},
+        ApplicantCommunicationDetails: {}
     }
 
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) {}
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { }
 
     ngOnInit() {
         if (this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null)
@@ -57,7 +56,10 @@ export class ClientsPersonalDetailsComponent implements OnInit {
     }
 
     GetClientDetailsSuccess(res) {
-        this._ApplicantDetails = JSON.parse(res._body);
+        if (res._body != null && res._body != undefined && res._body.toString().trim().length > 0) {
+            debugger;
+            this._ApplicantDetails = JSON.parse(res._body);
+        }
     }
 
     GetClientDetailsError(res) { }
@@ -66,9 +68,21 @@ export class ClientsPersonalDetailsComponent implements OnInit {
         this._EditPersonalDetails = true;
     }
 
-    UpdatePersonalDetails()
-    {
+    EditCommunicationDetails() {
+        this._EditCommunicationDetails = true;
+    }
+
+    UpdatePersonalDetails() {
         debugger;
         this._EditPersonalDetails = false;
+    }
+
+    UpdateCommunicationDetails() {
+        debugger;
+        this._EditCommunicationDetails = false;
+    }
+
+    AddClient() {
+
     }
 }

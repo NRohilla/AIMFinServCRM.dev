@@ -1,4 +1,5 @@
-﻿<div id="exTab1" class="" style="margin-left:0; margin-top:40px; width:99%;">
+﻿<input type="button" value="Add Client" (click)="AddClient()" *ngIf="!_EditPersonalDetails" style="float:right;margin-top:20px; " />
+<div id="exTab1" class="" style="margin-left:0; margin-top:70px; width:99%;">
     <div class="row">
         <div class="col-md-12">
             <div class="section_box">
@@ -11,29 +12,29 @@
                             <div class="field_va">
                                 <p *ngIf="!_EditPersonalDetails">{{_ApplicantDetails.FirstName}} {{_ApplicantDetails.MiddleName}} {{_ApplicantDetails.LastName}}</p>
                                 <input type="text" placeholder="Field One" value="{{_ApplicantDetails.FirstName}}" *ngIf="_EditPersonalDetails" [(ngModel)]="_ApplicantDetails.FirstName" #Firstname />
-                                <input type="text" placeholder="Field One" value="{{_ApplicantDetails.MiddleName}}" *ngIf="_EditPersonalDetails"  [(ngModel)]="_ApplicantDetails.MiddleName" #Firstname />
-                                <input type="text" placeholder="Field One" value="{{_ApplicantDetails.LastName}}" *ngIf="_EditPersonalDetails"  [(ngModel)]="_ApplicantDetails.LastName" #Firstname />
+                                <input type="text" placeholder="Field One" value="{{_ApplicantDetails.MiddleName}}" *ngIf="_EditPersonalDetails" [(ngModel)]="_ApplicantDetails.MiddleName" #Firstname />
+                                <input type="text" placeholder="Field One" value="{{_ApplicantDetails.LastName}}" *ngIf="_EditPersonalDetails" [(ngModel)]="_ApplicantDetails.LastName" #Firstname />
                             </div>
                         </div>
                         <div class="field_set">
                             <div class="field_label">Date of Birth</div>
                             <div class="field_va">
                                 <p *ngIf="!_EditPersonalDetails">{{_ApplicantDetails.DateOfBirth}}</p>
-                                <input type="text" placeholder="Field One" value="{{_ApplicantDetails.DateOfBirth}}" *ngIf="_EditPersonalDetails" [(ngModel)]="_ApplicantDetails.DateOfBirth" #Firstname  />
+                                <input type="text" placeholder="Field One" value="{{_ApplicantDetails.DateOfBirth}}" *ngIf="_EditPersonalDetails" [(ngModel)]="_ApplicantDetails.DateOfBirth" #Firstname />
                             </div>
                         </div>
                         <div class="field_set">
                             <div class="field_label">No of dependents</div>
                             <div class="field_va">
                                 <p *ngIf="!_EditPersonalDetails">{{_ApplicantDetails.NoOfDependents}}</p>
-                                <input type="text" placeholder="Field One" value="{{_ApplicantDetails.NoOfDependents}}" *ngIf="_EditPersonalDetails" [(ngModel)]="_ApplicantDetails.NoOfDependents" #Firstname  />
+                                <input type="text" placeholder="Field One" value="{{_ApplicantDetails.NoOfDependents}}" *ngIf="_EditPersonalDetails" [(ngModel)]="_ApplicantDetails.NoOfDependents" #Firstname />
                             </div>
                         </div>
                         <div class="field_set">
                             <div class="field_label">Marital status</div>
                             <div class="field_va">
                                 <p *ngIf="!_EditPersonalDetails">{{_ApplicantDetails.MaritalStatus}}</p>
-                                <input type="text" placeholder="Field One" value="{{_ApplicantDetails.MaritalStatus}}" *ngIf="_EditPersonalDetails"  [(ngModel)]="_ApplicantDetails.MaritalStatus" #Firstname />
+                                <input type="text" placeholder="Field One" value="{{_ApplicantDetails.MaritalStatus}}" *ngIf="_EditPersonalDetails" [(ngModel)]="_ApplicantDetails.MaritalStatus" #Firstname />
                             </div>
                         </div>
                         <input type="button" value="Save" (click)="UpdatePersonalDetails()" *ngIf="_EditPersonalDetails" style="float:right;" />
@@ -47,20 +48,52 @@
             <div class="section_box">
                 <div class="box_title">Communiction Details</div>
                 <div class="tab-content clearfix" style="margin-left:0;">
-                    <div class="tab-pane active">
-                        Content's background color is the same for the tab
+                    <input type="button" value="Edit" (click)="EditCommunicationDetails()" *ngIf="!_EditCommunicationDetails" style="float:right;" />
+                    <div class="tab-pane active" *ngFor="let _ApplicantCommunicationDetail of _ApplicantDetails.ApplicantCommunicationDetails;">
+                        <div class="field_set">
+                            <div class="field_label">Address</div>
+                            <div class="field_va">
+                                <p *ngIf="!_EditCommunicationDetails">{{_ApplicantCommunicationDetail.AddressLine1}} {{_ApplicantCommunicationDetail.AddressLine2}} {{_ApplicantCommunicationDetail.AddressLine3}}</p>
+                                <input type="text" placeholder="Field One" value="{{_ApplicantCommunicationDetail.AddressLine1}}" *ngIf="_EditCommunicationDetails" [(ngModel)]="_ApplicantCommunicationDetail.AddressLine1" #AddressLine1 />
+                                <input type="text" placeholder="Field One" value="{{_ApplicantCommunicationDetail.AddressLine2}}" *ngIf="_EditCommunicationDetails" [(ngModel)]="_ApplicantCommunicationDetail.AddressLine2" #AddressLine2 />
+                                <input type="text" placeholder="Field One" value="{{_ApplicantCommunicationDetail.AddressLine3}}" *ngIf="_EditCommunicationDetails" [(ngModel)]="_ApplicantCommunicationDetail.AddressLine3" #AddressLine3 />
+                            </div>
+                        </div>
+                        <div class="field_set">
+                            <div class="field_label">Mobile No</div>
+                            <div class="field_va">
+                                <p *ngIf="!_EditCommunicationDetails">{{_ApplicantDetails.MobileNo}}</p>
+                                <input type="text" placeholder="Field One" value="{{_ApplicantDetails.MobileNo}}" *ngIf="_EditCommunicationDetails" [(ngModel)]="_ApplicantDetails.MobileNo" #MobileNo />
+                            </div>
+                        </div>
+                        <div class="field_set">
+                            <div class="field_label">Home Phone No</div>
+                            <div class="field_va">
+                                <p *ngIf="!_EditCommunicationDetails">{{_ApplicantDetails.HomePhoneNo}}</p>
+                                <input type="text" placeholder="Field One" value="{{_ApplicantDetails.HomePhoneNo}}" *ngIf="_EditCommunicationDetails" [(ngModel)]="_ApplicantDetails.HomePhoneNo" #HomePhoneNo />
+                            </div>
+                        </div>
+                        <div class="field_set">
+                            <div class="field_label">Work Phone No</div>
+                            <div class="field_va">
+                                <p *ngIf="!_EditCommunicationDetails">{{_ApplicantDetails.WorkPhoneNo}}</p>
+                                <input type="text" placeholder="Field One" value="{{_ApplicantDetails.WorkPhoneNo}}" *ngIf="_EditCommunicationDetails" [(ngModel)]="_ApplicantDetails.WorkPhoneNo" #WorkPhoneNo />
+                            </div>
+                        </div>
+                        <div class="field_set">
+                            <div class="field_label">Email address</div>
+                            <div class="field_va">
+                                <p *ngIf="!_EditCommunicationDetails">{{_ApplicantDetails.EmailID}}</p>
+                                <input type="text" placeholder="Field One" value="{{_ApplicantDetails.EmailID}}" *ngIf="_EditCommunicationDetails" [(ngModel)]="_ApplicantDetails.EmailID" #EmailID />
+                            </div>
+                        </div>
                     </div>
-                    <div class="tab-pane active">
-                        We applied clearfix to the tab-content to rid of the gap between the tab and the content
-                    </div>
-                    <div class="tab-pane active">
-                        We use css to change the background color of the content to be equal to the tab
-                    </div>
+                    <input type="button" value="Save" (click)="UpdateCommunicationDetails()" *ngIf="_EditCommunicationDetails" style="float:right;" />
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" style="display:none;">
         <div class="col-md-12">
             <div class="section_box">
                 <div class="box_title">Qualification Details</div>

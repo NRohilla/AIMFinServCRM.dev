@@ -6,5 +6,7 @@ namespace FinServUnitOfWork.Interface
     {
         IEnumerable<Applicants> GetAllClients();
         Applicants GetClientDetails(string ClientID);
+        List<ApplicantCommunicationDetails> GetClientCommincationDetails(string ClientID);
+        List<ApplicantEmployementDetails> GetClientEmployementDetails(string ClientID);
     }
 }
