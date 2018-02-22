@@ -5,7 +5,7 @@
             <div class="section_box">
                 <div class="box_title">Client Personal Details</div>
                 <div class="tab-content clearfix" style="margin-left:0;">
-                    
+
                     <div class="tab-pane active">
                         <div class="field_set">
                             <div class="field_label">Name</div>
@@ -37,9 +37,10 @@
                                 <input type="text" placeholder="Field One" value="{{_ApplicantDetails.MaritalStatus}}" *ngIf="_EditPersonalDetails" [(ngModel)]="_ApplicantDetails.MaritalStatus" #Firstname />
                             </div>
                         </div>
-                        
+
                     </div>
-                    <input type="button" value="Save" (click)="UpdatePersonalDetails()" *ngIf="_EditPersonalDetails" style="float:right;" class="btn btn-lg btn-primary" />
+                    <input type="button" value="Save" (click)="UpdatePersonalDetails()" *ngIf="_EditPersonalDetails" style="float:right;    margin-left: 5px;" class="btn btn-lg btn-primary" />
+                    <input type="button" value="Cancel" (click)="EditPersonalDetails()" *ngIf="_EditPersonalDetails" style="float:right;" class="btn btn-lg btn-primary" />
                     <input type="button" value="Edit" (click)="EditPersonalDetails()" *ngIf="!_EditPersonalDetails" style="float:right;" class="btn btn-lg btn-primary" />
                 </div>
             </div>
@@ -50,7 +51,7 @@
             <div class="section_box">
                 <div class="box_title">Client Communication Details</div>
                 <div class="tab-content clearfix" style="margin-left:0;">
-                    
+
                     <div class="tab-pane active" *ngFor="let _ApplicantCommunicationDetail of _ApplicantCommunicationDetails;">
                         <div class="field_set">
                             <div class="field_label">Email address</div>
@@ -80,7 +81,7 @@
                                 <input type="text" placeholder="Field One" value="{{_ApplicantCommunicationDetail.WorkPhoneNo}}" *ngIf="_EditCommunicationDetails" [(ngModel)]="_ApplicantCommunicationDetail.WorkPhoneNo" #WorkPhoneNo />
                             </div>
                         </div>
-                        
+
                         <div class="field_set">
                             <div class="field_label">Address</div>
                             <div class="field_info">
@@ -92,7 +93,8 @@
                         </div>
                     </div>
                     <input type="button" value="Edit" (click)="EditCommunicationDetails()" *ngIf="!_EditCommunicationDetails" style="float:right;" class="btn btn-lg btn-primary" />
-                    <input type="button" value="Save" (click)="UpdateCommunicationDetails()" *ngIf="_EditCommunicationDetails" style="float:right;" class="btn btn-lg btn-primary"/>
+                    <input type="button" value="Cancel" (click)="EditCommunicationDetails()" *ngIf="_EditCommunicationDetails" style="float:right;    margin-left: 5px;" class="btn btn-lg btn-primary" />
+                    <input type="button" value="Save" (click)="UpdateCommunicationDetails()" *ngIf="_EditCommunicationDetails" style="float:right;" class="btn btn-lg btn-primary" />
                 </div>
             </div>
         </div>

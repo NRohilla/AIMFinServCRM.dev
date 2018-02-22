@@ -84,11 +84,11 @@ export class ClientsPersonalDetailsComponent implements OnInit {
     }
     GetClientCommDetailsError(res) { }
     EditPersonalDetails() {
-        this._EditPersonalDetails = true;
+        this._EditPersonalDetails = !this._EditPersonalDetails ;
     }
 
     EditCommunicationDetails() {
-        this._EditCommunicationDetails = true;
+        this._EditCommunicationDetails = !this._EditCommunicationDetails;
     }
 
     UpdatePersonalDetails() {
