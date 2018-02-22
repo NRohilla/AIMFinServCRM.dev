@@ -28,7 +28,6 @@ D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debu
 D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\EntityFramework.SqlServer.xml
 D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\FinServBussinessEntities.pdb
 D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\FinServDataModel.pdb
-D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.csprojResolveAssemblyReference.cache
 D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\FinServUnitOfWork.dll.config
 D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\EntityFramework.SqlServerCompact.dll
 D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\Newtonsoft.Json.dll

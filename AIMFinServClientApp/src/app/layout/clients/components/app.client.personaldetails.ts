@@ -45,14 +45,26 @@ export class ClientsPersonalDetailsComponent implements OnInit {
         ModifiedBy: '',
         ModifiedOn: '',
         ApplicantType: {},
-        ApplicantCommunicationDetails: {}
+    }
+
+    public _ApplicantCommunicationDetails: {
+        AutoID: '',
+        CommunicationID: '',
+        AddressLine1: '',
+        AddressLine2: '',
+        AddressLine3: '',
+        Duration: '',
+        Status: '',
+        ApplicantID: '',
     }
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { }
 
     ngOnInit() {
-        if (this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null)
+        if (this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
             this._ClientsService.GetClientDetails(<string>this._LocalStorageService.get("ApplicantID")).subscribe(res => this.GetClientDetailsSuccess(res), res => this.GetClientDetailsError(res));
+            this._ClientsService.GetClientCommunicationDetails(<string>this._LocalStorageService.get("ApplicantID")).subscribe(res => this.GetClientCommDetailsSuccess(res), res => this.GetClientCommDetailsError(res));
+        }
     }
 
     GetClientDetailsSuccess(res) {
@@ -61,9 +73,12 @@ export class ClientsPersonalDetailsComponent implements OnInit {
             this._ApplicantDetails = JSON.parse(res._body);
         }
     }
-
     GetClientDetailsError(res) { }
 
+    GetClientCommDetailsSuccess(res) {
+        this._ApplicantCommunicationDetails = JSON.parse(res._body);
+    }
+    GetClientCommDetailsError(res) { }
     EditPersonalDetails() {
         this._EditPersonalDetails = true;
     }

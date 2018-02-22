@@ -122,7 +122,7 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
-        public List<ApplicantCommunicationDetails> GetClientCommincationDetails(string ClientID)
+        public List<ApplicantCommunicationDetails> GetClientCommunicationDetails(string ClientID)
         {
             try
             {
@@ -171,10 +171,10 @@ namespace FinServUnitOfWork.Repository
                             {
                                 ApplicantID = itemEmployementDetail.ApplicantID,
                                 AutoID = itemEmployementDetail.AutoID,
+                                EmploymentID = itemEmployementDetail.EmploymentID,
                                 EmployerName = itemEmployementDetail.EmployerName,
                                 Income = itemEmployementDetail.Income,
                                 SourceOfIncome = itemEmployementDetail.SourceOfIncome,
-                                EmploymentID = itemEmployementDetail.EmploymentID,
                                 Status = itemEmployementDetail.Status,
                             });
                         }

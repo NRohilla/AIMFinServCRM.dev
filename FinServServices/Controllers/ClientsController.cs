@@ -26,10 +26,10 @@ namespace FinServServices.Controllers
         }
 
         [HttpGet]
-        [Route("GetClientCommincationDetails")]
-        public List<ApplicantCommunicationDetails> GetClientCommincationDetails(string ClientID)
+        [Route("GetClientCommunicationDetails")]
+        public List<ApplicantCommunicationDetails> GetClientCommunicationDetails(string ClientID)
         {
-            return Repository.GetClientCommincationDetails(ClientID);
+            return Repository.GetClientCommunicationDetails(ClientID);
         }
 
         [HttpGet]
