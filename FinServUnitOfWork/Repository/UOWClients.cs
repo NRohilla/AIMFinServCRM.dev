@@ -225,7 +225,6 @@ namespace FinServUnitOfWork.Repository
             else
                 return false;
         }
-
         public bool UpdateClientCommunicationDetails(List<ApplicantCommunicationDetails> ApplicantCommunicationDetails)
         {
             int TotalRecords = ApplicantCommunicationDetails.Count();
@@ -248,6 +247,33 @@ namespace FinServUnitOfWork.Repository
                 return true;
             else
                 return false;
+        }
+        public bool UpdateClientPersonalDetails(Applicants ApplicantPersonalDetails)
+        {
+            int RecordUpdate = 0;
+            try
+            {
+
+                Guid ApplicantID = ApplicantPersonalDetails.ApplicantID;
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var FetchApplicantPersonalDetails = db.tblApplicants.Where(p => p.ApplicantID == ApplicantID).FirstOrDefault();
+                    if (FetchApplicantPersonalDetails != null)
+                    {
+                        FetchApplicantPersonalDetails.FirstName = ApplicantPersonalDetails.FirstName;
+                        FetchApplicantPersonalDetails.MiddleName = ApplicantPersonalDetails.MiddleName;
+                        FetchApplicantPersonalDetails.LastName = ApplicantPersonalDetails.LastName;
+                        FetchApplicantPersonalDetails.MaritalStatus = ApplicantPersonalDetails.MaritalStatus;
+                        FetchApplicantPersonalDetails.DateOfBirth = ApplicantPersonalDetails.DateOfBirth;
+                        FetchApplicantPersonalDetails.NoOfDependents = ApplicantPersonalDetails.NoOfDependents;
+                        RecordUpdate = db.SaveChanges();
+                        return true;
+                    }
+                }
+            }
+            catch (Exception e)
+            { }
+            return false;
         }
     }
 }

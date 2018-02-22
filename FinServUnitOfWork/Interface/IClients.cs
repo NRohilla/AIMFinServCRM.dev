@@ -10,5 +10,6 @@ namespace FinServUnitOfWork.Interface
         List<ApplicantEmployementDetails> GetClientEmployementDetails(string ClientID);
         bool UpdateClientEmploymentDetails(List<ApplicantEmployementDetails> _ApplicantEmployementDetails);
         bool UpdateClientCommunicationDetails(List<ApplicantCommunicationDetails> ApplicantCommunicationDetails);
+        bool UpdateClientPersonalDetails(Applicants ApplicantPersonalDetails);
     }
 }

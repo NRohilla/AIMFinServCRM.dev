@@ -20,3 +20,4 @@ D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServBussinessEntities\b
 D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServBussinessEntities\bin\Debug\EntityFramework.xml
 D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServBussinessEntities\obj\Debug\FinServBussinessEntities.dll
 D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServBussinessEntities\obj\Debug\FinServBussinessEntities.pdb
+D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServBussinessEntities\obj\Debug\FinServBussinessEntities.csprojResolveAssemblyReference.cache

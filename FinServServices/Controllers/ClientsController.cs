@@ -45,5 +45,19 @@ namespace FinServServices.Controllers
         {
             return Repository.UpdateClientEmploymentDetails(ApplicantEmployementDetails);
         }
+
+        [HttpPost]
+        [Route("UpdateClientCommunicationDetails")]
+        public bool UpdateClientCommunicationDetails(List<ApplicantCommunicationDetails> ApplicantCommunicationDetails)
+        {
+            return Repository.UpdateClientCommunicationDetails(ApplicantCommunicationDetails);
+        }
+
+        [HttpPost]
+        [Route("UpdateClientPersonalDetails")]
+        public bool UpdateClientPersonalDetails(Applicants ApplicantPersonalDetails)
+        {
+            return Repository.UpdateClientPersonalDetails(ApplicantPersonalDetails);
+        }
     }
 }

@@ -36,4 +36,12 @@ export class ClientsService {
     updateclientEmploymentdetails(ApplicantEmployementDetails) {
         return this._http.post(this.baseurl + "Clients/UpdateClientEmploymentDetails", ApplicantEmployementDetails, this.options);
     }
+
+    UpdateClientCommunicationDetails(ApplicantCommunicationDetails) {
+        return this._http.post(this.baseurl + "Clients/UpdateClientCommunicationDetails", ApplicantCommunicationDetails, this.options);
+    }
+
+    UpdateClientPersonalDetails(ApplicantPersonalDetails) {
+        return this._http.post(this.baseurl + "Clients/UpdateClientPersonalDetails", ApplicantPersonalDetails, this.options);
+    }
 }
