@@ -1,1 +1,23 @@
-﻿this is the relationship component
+﻿<div [@routerTransition]>
+    <app-page-header [heading]="'Relationship Types'" [icon]="'fa-bar-chart-o'"></app-page-header>
+    <kendo-grid [kendoGridBinding]="_RelationshipTypes"
+                [pageSize]="10"
+                [sortable]="true"
+                [pageable]="true"
+                [scrollable]="true"
+                [filterable]="true"
+                [groupable]="true"
+                selectable="true">
+        <kendo-grid-column field="RelationshipWithApplicant" title="Relationship With Applicant">
+        </kendo-grid-column>
+        <kendo-grid-column field="IsActive" title="Is Active">
+        </kendo-grid-column>
+
+        <kendo-grid-command-column>
+            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                <button class="btn btn-lg btn-link" type="button" (click)="SwitchStatus(dataItem.ID)" *ngIf="dataItem.IsActive">Deactivate</button>
+                <button class="btn btn-lg btn-link" type="button" (click)="SwitchStatus(dataItem.ID)" *ngIf="!dataItem.IsActive">Activate</button>
+            </ng-template>
+        </kendo-grid-command-column>
+    </kendo-grid>
+</div>

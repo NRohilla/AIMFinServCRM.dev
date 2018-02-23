@@ -7,23 +7,34 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import {MastersService} from '../../../services/app.masters.service';
 
 @Component({
     templateUrl: './employment.component.html',
     animations: [routerTransition()],
+    providers: [MastersService]
 })
 export class EmploymentComponent implements OnInit {
-    public _ViewApplicantDetails: boolean = false;
-    public _FormErrors;
-    public _FormErrorsDescription: string = '';
-    public gridData: any[];
+    public _EmploymentTypes: {
+        EmployementType: '',
+        ID: '',
+        IsActive: '',
+    };
 
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService) { }
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _MastersService: MastersService) { }
 
     ngOnInit() {
-        
+        this._MastersService.GetEmploymentTypes().subscribe(res => this.GetEmploymentSuccess(res), res => this.GetEmploymentError(res));
     }
+    GetEmploymentSuccess(res) {
+        this._EmploymentTypes = JSON.parse(res._body);
+    }
+    GetEmploymentError(res) { }
 
-    
-
+    SwitchStatus(ID) {
+        debugger;
+        this._MastersService.SwitchEmploymentEntityStatus(ID).subscribe(res => this.SwitchEmploymentSuccess(res), res => this.SwitchEmploymentError(res));
+    }
+    SwitchEmploymentSuccess(res) { this._MastersService.GetEmploymentTypes().subscribe(res => this.GetEmploymentSuccess(res), res => this.GetEmploymentError(res));}
+    SwitchEmploymentError(res) { }
 }

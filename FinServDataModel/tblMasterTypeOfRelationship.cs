@@ -12,10 +12,10 @@ namespace FinServDataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class tblMasterProfession
+    public partial class tblMasterTypeOfRelationship
     {
         public int ID { get; set; }
-        public string Profession { get; set; }
+        public string RelationshipWithApplicant { get; set; }
         public bool IsActive { get; set; }
     }
 }

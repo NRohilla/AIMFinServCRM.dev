@@ -47,7 +47,11 @@
     <Compile Include="ApplicantType.cs" />
     <Compile Include="ApplicantEmployementDetails.cs" />
     <Compile Include="Applicants.cs" />
+    <Compile Include="EmploymentTypeMaster.cs" />
+    <Compile Include="ProfessionTypeMaster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QualificationTypeMaster.cs" />
+    <Compile Include="RelationshipTypeMaster.cs" />
     <Compile Include="UserOps.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

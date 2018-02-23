@@ -15,4 +15,3 @@ D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServDataModel\bin\Debug
 D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServDataModel\bin\Debug\EntityFramework.SqlServer.xml
 D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServDataModel\obj\Debug\FinServDataModel.dll
 D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServDataModel\obj\Debug\FinServDataModel.pdb
-D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServDataModel\obj\Debug\FinServDataModel.csprojResolveAssemblyReference.cache

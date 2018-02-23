@@ -7,23 +7,33 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
-
+import {MastersService} from '../../../services/app.masters.service';
 @Component({
     templateUrl: './proffession.component.html',
     animations: [routerTransition()],
+    providers: [MastersService]
 })
 export class ProffessionComponent implements OnInit {
-    public _ViewApplicantDetails: boolean = false;
-    public _FormErrors;
-    public _FormErrorsDescription: string = '';
-    public gridData: any[];
+    public _ProfessionTypes: {
+        Profession: '',
+        ID: '',
+        IsActive: '',
+    };
 
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService) { }
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _MastersService: MastersService) { }
 
     ngOnInit() {
-        
+        this._MastersService.GetProfessionTypes().subscribe(res => this.GetProfessionSuccess(res), res => this.GetProfessionError(res));
     }
+    GetProfessionSuccess(res) {
+        this._ProfessionTypes = JSON.parse(res._body);
+    }
+    GetProfessionError(res) { }
 
-    
-
+    SwitchStatus(ID) {
+        debugger;
+        this._MastersService.SwitchProfessionEntityStatus(ID).subscribe(res => this.SwitchProfessionSuccess(res), res => this.SwitchProfessionError(res));
+    }
+    SwitchProfessionSuccess(res) { this._MastersService.GetProfessionTypes().subscribe(res => this.GetProfessionSuccess(res), res => this.GetProfessionError(res)); }
+    SwitchProfessionError(res) { }
 }

@@ -97,16 +97,16 @@
     <Compile Include="tblLiabilityType.cs">
       <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblMasterProfession.cs">
-      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblMasterQualification.cs">
-      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblMasterRelationship.cs">
-      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="tblMasterTypeOfEmployment.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMasterTypeOfProfession.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMasterTypeOfQualification.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMasterTypeOfRelationship.cs">
       <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblRole.cs">

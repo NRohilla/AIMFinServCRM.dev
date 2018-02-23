@@ -141,7 +141,15 @@
     <Property Name="Description" Type="nvarchar" MaxLength="100" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
   </EntityType>
-  <EntityType Name="tblMasterProfession">
+  <EntityType Name="tblMasterTypeOfEmployment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployementType" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblMasterTypeOfProfession">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
@@ -149,7 +157,7 @@
     <Property Name="Profession" Type="nvarchar" MaxLength="50" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
   </EntityType>
-  <EntityType Name="tblMasterQualification">
+  <EntityType Name="tblMasterTypeOfQualification">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
@@ -157,20 +165,12 @@
     <Property Name="Qualifications" Type="nvarchar" MaxLength="50" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
   </EntityType>
-  <EntityType Name="tblMasterRelationship">
+  <EntityType Name="tblMasterTypeOfRelationship">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RelationshipWithApplicant" Type="nvarchar" MaxLength="50" />
-    <Property Name="IsActive" Type="bit" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tblMasterTypeOfEmployment">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="EmployementType" Type="nvarchar" MaxLength="50" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="tblRole">
@@ -310,10 +310,10 @@
     <EntitySet Name="tblExpenseType" EntityType="Self.tblExpenseType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblLiabilities" EntityType="Self.tblLiabilities" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblLiabilityTypes" EntityType="Self.tblLiabilityTypes" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tblMasterProfession" EntityType="Self.tblMasterProfession" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tblMasterQualification" EntityType="Self.tblMasterQualification" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tblMasterRelationship" EntityType="Self.tblMasterRelationship" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblMasterTypeOfEmployment" EntityType="Self.tblMasterTypeOfEmployment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMasterTypeOfProfession" EntityType="Self.tblMasterTypeOfProfession" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMasterTypeOfQualification" EntityType="Self.tblMasterTypeOfQualification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMasterTypeOfRelationship" EntityType="Self.tblMasterTypeOfRelationship" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblRole" EntityType="Self.tblRole" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblUsers" EntityType="Self.tblUsers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblUsersRole" EntityType="Self.tblUsersRole" Schema="dbo" store:Type="Tables" />

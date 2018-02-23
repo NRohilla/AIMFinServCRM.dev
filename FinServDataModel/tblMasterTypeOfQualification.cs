@@ -12,7 +12,7 @@ namespace FinServDataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class tblMasterQualification
+    public partial class tblMasterTypeOfQualification
     {
         public int ID { get; set; }
         public string Qualifications { get; set; }
