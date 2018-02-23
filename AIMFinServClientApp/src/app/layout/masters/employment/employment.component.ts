@@ -46,13 +46,20 @@ export class EmploymentComponent implements OnInit {
     SwitchEmploymentError(res) { }
 
     GridSelectionChange(data, selection) {
-        debugger;
         this._EditEmployementDetails = true;
         this._EmploymentObj = data.data.data[selection.index]
     }
 
-    UpdateEmployementType() { }
+    UpdateEmployementType() {
+        debugger;
+        this._MastersService.UpdateEmploymentEntity(this._EmploymentObj).subscribe(res => this.UpdateEmploymentSuccess(res), res => this.UpdateEmploymentError(res));
+    }
 
+    UpdateEmploymentSuccess(res) {
+        this._MastersService.GetEmploymentTypes().subscribe(res => this.GetEmploymentSuccess(res), res => this.GetEmploymentError(res));
+        this.CancelEmployementType();
+    }
+    UpdateEmploymentError(res) { }
     CancelEmployementType() {
         debugger;
         this._EditEmployementDetails = false;

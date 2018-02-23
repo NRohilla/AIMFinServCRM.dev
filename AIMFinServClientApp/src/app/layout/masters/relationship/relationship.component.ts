@@ -53,8 +53,18 @@ export class RelationshipComponent implements OnInit {
         this._EditRelationshipDetails = true;
     }
 
-    UpdateQualificationType() { }
-    CancelQualificationType() {
+    UpdateRelationShipType() {
+        this._MastersService.UpdateRelationshipEntity(this._RelationshipObj).subscribe(res => this.UpdateRelationshipSuccess(res), res => this.UpdateRelationshipError(res));
+    }
+
+    UpdateRelationshipSuccess(res) {
+        this._MastersService.GetRelationshipTypes().subscribe(res => this.GetRelationshipSuccess(res), res => this.GetRelationshipError(res));
+        this.CancelRelationShipType();
+    }
+    UpdateRelationshipError(res) { }
+
+
+    CancelRelationShipType() {
         debugger;
         this._EditRelationshipDetails = false;
         this._RelationshipObj = {

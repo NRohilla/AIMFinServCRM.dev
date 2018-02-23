@@ -52,7 +52,17 @@ export class QualificationComponent implements OnInit {
         this._EditQualificationDetails = true;
     }
 
-    UpdateQualificationType() { }
+    UpdateQualificationType() {
+        this._MastersService.UpdateQualificationEntity(this._QualificationObj).subscribe(res => this.UpdateQualificationSuccess(res), res => this.UpdateQualificationError(res));
+    }
+
+    UpdateQualificationSuccess(res) {
+        this._MastersService.GetQualificationTypes().subscribe(res => this.GetQualificationSuccess(res), res => this.GetQualificationError(res));
+        this.CancelQualificationType();
+    }
+    UpdateQualificationError(res) { }
+
+
     CancelQualificationType() {
         debugger;
         this._EditQualificationDetails = false;

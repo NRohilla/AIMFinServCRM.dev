@@ -50,7 +50,15 @@ export class ProffessionComponent implements OnInit {
         this._EditProffessionDetails = true;
     }
 
-    UpdateProfessionType() { }
+    UpdateProfessionType() {
+        this._MastersService.UpdateProffessionEntity(this._ProfessionObj).subscribe(res => this.UpdateProffessionSuccess(res), res => this.UpdateProffessionError(res));
+    }
+
+    UpdateProffessionSuccess(res) {
+        this._MastersService.GetProfessionTypes().subscribe(res => this.GetProfessionSuccess(res), res => this.GetProfessionError(res));
+        this.CancelProfessionType();
+    }
+    UpdateProffessionError(res) { }
 
     CancelProfessionType() {
         debugger;
