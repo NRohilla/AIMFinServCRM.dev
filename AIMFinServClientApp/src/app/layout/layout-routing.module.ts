@@ -12,6 +12,12 @@ const routes: Routes = [
             { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
             { path: 'clients', loadChildren: './clients/clients.module#ClientsModule' },
             { path: 'loanapplications', loadChildren: './LoanApplications/clients.module#ClientsModule' },
+
+            { path: 'master-employment', loadChildren: './masters/employment/employment.module#EmploymentModule' },
+            { path: 'master-proffession', loadChildren: './masters/proffession/proffession.module#ProffessionModule' },
+            { path: 'master-qualification', loadChildren: './masters/qualification/qualification.module#QualificationModule' },
+            { path: 'master-relationship', loadChildren: './masters/relationship/relationship.module#RelationshipModule' },
+            
             { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
             { path: 'forms', loadChildren: './form/form.module#FormModule' },
             { path: 'bs-element', loadChildren: './bs-element/bs-element.module#BsElementModule' },

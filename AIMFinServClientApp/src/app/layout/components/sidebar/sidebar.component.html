@@ -16,16 +16,25 @@
             <li class="nested" [class.expand]="showMenu === 'pages'">
                 <ul class="submenu">
                     <li>
-                        <a href="javascript:void(0)"><span>{{ 'Profession' | translate }}</span></a>
+                        <a [routerLink]="['/master-employment']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Employment' | translate }}
+                        </a>
+                        
                     </li>
                     <li>
-                        <a href="javascript:void(0)"><span>{{ 'Qualification' | translate }}</span></a>
+                        <a [routerLink]="['/master-qualification']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Qualification' | translate }}
+                        </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)"><span>{{ 'Relationship' | translate }}</span></a>
+                        <a [routerLink]="['/master-relationship']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Relationship' | translate }}
+                        </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)"><span>{{ 'Employment' | translate }}</span></a>
+                        <a [routerLink]="['/master-proffession']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Proffession' | translate }}
+                        </a>
                     </li>
                 </ul>
             </li>
