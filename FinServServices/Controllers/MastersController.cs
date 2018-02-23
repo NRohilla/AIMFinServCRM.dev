@@ -66,5 +66,33 @@ namespace FinServServices.Controllers
         {
             return Repository.SwitchProfessionEntityStatus(Convert.ToInt32(ID));
         }
+
+        [HttpPost]
+        [Route("UpdateEmploymentEntity")]
+        public bool UpdateEmploymentEntity(EmploymentTypeMaster EmploymentTypeMaster)
+        {
+            return Repository.UpdateEmploymentEntity(EmploymentTypeMaster);
+        }
+
+        [HttpPost]
+        [Route("UpdateQualificationEntity")]
+        public bool UpdateQualificationEntity(QualificationTypeMaster QualificationTypeMaster)
+        {
+            return Repository.UpdateQualificationEntity(QualificationTypeMaster);
+        }
+
+        [HttpPost]
+        [Route("UpdateRelationshipEntity")]
+        public bool UpdateRelationshipEntity(RelationshipTypeMaster RelationshipTypeMaster)
+        {
+            return Repository.UpdateRelationshipEntity(RelationshipTypeMaster);
+        }
+
+        [HttpPost]
+        [Route("UpdateProffessionEntity")]
+        public bool UpdateProffessionEntity(ProfessionTypeMaster ProfessionTypeMaster)
+        {
+            return Repository.UpdateProffessionEntity(ProfessionTypeMaster);
+        }
     }
 }

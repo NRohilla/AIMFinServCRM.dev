@@ -21,6 +21,14 @@ export class QualificationComponent implements OnInit {
         IsActive: '',
     };
 
+    public _QualificationObj: {
+        Qualifications: '',
+        ID: '',
+        IsActive: '',
+    };
+
+    public _EditQualificationDetails: boolean = false;
+
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _MastersService: MastersService) { }
 
     ngOnInit() {
@@ -37,4 +45,21 @@ export class QualificationComponent implements OnInit {
     }
     SwitchQualificationSuccess(res) { this._MastersService.GetQualificationTypes().subscribe(res => this.GetQualificationSuccess(res), res => this.GetQualificationError(res)); }
     SwitchQualificationError(res) { }
+
+    GridSelectionChange(data, selection) {
+        debugger;
+        this._QualificationObj = data.data.data[selection.index];
+        this._EditQualificationDetails = true;
+    }
+
+    UpdateQualificationType() { }
+    CancelQualificationType() {
+        debugger;
+        this._EditQualificationDetails = false;
+        this._QualificationObj = {
+            Qualifications: '',
+            ID: '',
+            IsActive: '',
+        };
+    }
 }

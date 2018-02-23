@@ -20,6 +20,13 @@ export class ProffessionComponent implements OnInit {
         IsActive: '',
     };
 
+    public _ProfessionObj: {
+        Profession: '',
+        ID: '',
+        IsActive: '',
+    };
+    public _EditProffessionDetails: boolean = false;
+
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _MastersService: MastersService) { }
 
     ngOnInit() {
@@ -36,4 +43,22 @@ export class ProffessionComponent implements OnInit {
     }
     SwitchProfessionSuccess(res) { this._MastersService.GetProfessionTypes().subscribe(res => this.GetProfessionSuccess(res), res => this.GetProfessionError(res)); }
     SwitchProfessionError(res) { }
+
+    GridSelectionChange(data, selection) {
+        debugger;
+        this._ProfessionObj = data.data.data[selection.index];
+        this._EditProffessionDetails = true;
+    }
+
+    UpdateProfessionType() { }
+
+    CancelProfessionType() {
+        debugger;
+        this._EditProffessionDetails = false;
+        this._ProfessionObj = {
+            Profession: '',
+            ID: '',
+            IsActive: '',
+        };
+    }
 }

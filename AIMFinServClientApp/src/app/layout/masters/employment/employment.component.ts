@@ -15,7 +15,14 @@ import {MastersService} from '../../../services/app.masters.service';
     providers: [MastersService]
 })
 export class EmploymentComponent implements OnInit {
+    public _EditEmployementDetails: boolean = false;
     public _EmploymentTypes: {
+        EmployementType: '',
+        ID: '',
+        IsActive: '',
+    };
+
+    public _EmploymentObj: {
         EmployementType: '',
         ID: '',
         IsActive: '',
@@ -35,6 +42,24 @@ export class EmploymentComponent implements OnInit {
         debugger;
         this._MastersService.SwitchEmploymentEntityStatus(ID).subscribe(res => this.SwitchEmploymentSuccess(res), res => this.SwitchEmploymentError(res));
     }
-    SwitchEmploymentSuccess(res) { this._MastersService.GetEmploymentTypes().subscribe(res => this.GetEmploymentSuccess(res), res => this.GetEmploymentError(res));}
+    SwitchEmploymentSuccess(res) { this._MastersService.GetEmploymentTypes().subscribe(res => this.GetEmploymentSuccess(res), res => this.GetEmploymentError(res)); }
     SwitchEmploymentError(res) { }
+
+    GridSelectionChange(data, selection) {
+        debugger;
+        this._EditEmployementDetails = true;
+        this._EmploymentObj = data.data.data[selection.index]
+    }
+
+    UpdateEmployementType() { }
+
+    CancelEmployementType() {
+        debugger;
+        this._EditEmployementDetails = false;
+        this._EmploymentObj = {
+            EmployementType: '',
+            ID: '',
+            IsActive: '',
+        };
+    }
 }

@@ -21,6 +21,14 @@ export class RelationshipComponent implements OnInit {
         IsActive: '',
     };
 
+    public _RelationshipObj: {
+        RelationshipWithApplicant: '',
+        ID: '',
+        IsActive: '',
+    };
+
+    public _EditRelationshipDetails: boolean = false;
+
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _MastersService: MastersService) { }
 
     ngOnInit() {
@@ -38,4 +46,21 @@ export class RelationshipComponent implements OnInit {
     }
     SwitchRelationshipSuccess(res) { this._MastersService.GetRelationshipTypes().subscribe(res => this.GetRelationshipSuccess(res), res => this.GetRelationshipError(res));}
     SwitchRelationshipError(res) { }
+
+    GridSelectionChange(data, selection) {
+        debugger;
+        this._RelationshipObj = data.data.data[selection.index];
+        this._EditRelationshipDetails = true;
+    }
+
+    UpdateQualificationType() { }
+    CancelQualificationType() {
+        debugger;
+        this._EditRelationshipDetails = false;
+        this._RelationshipObj = {
+            RelationshipWithApplicant: '',
+            ID: '',
+            IsActive: '',
+        };
+    }
 }

@@ -116,7 +116,8 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
-        public bool SwitchQualificationEntityStatus(int ID) {
+        public bool SwitchQualificationEntityStatus(int ID)
+        {
             int operationResult = 0;
             try
             {
@@ -139,7 +140,8 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
-        public bool SwitchRelationshipEntityStatus(int ID) {
+        public bool SwitchRelationshipEntityStatus(int ID)
+        {
             int operationResult = 0;
             try
             {
@@ -162,7 +164,8 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
-        public bool SwitchProfessionEntityStatus(int ID) {
+        public bool SwitchProfessionEntityStatus(int ID)
+        {
             int operationResult = 0;
             try
             {
@@ -172,6 +175,104 @@ namespace FinServUnitOfWork.Repository
                     if (GetProfessionEntity != null)
                     {
                         GetProfessionEntity.IsActive = !GetProfessionEntity.IsActive;
+                        operationResult = db.SaveChanges();
+                    }
+                }
+                if (operationResult > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool UpdateEmploymentEntity(EmploymentTypeMaster EmploymentTypeMaster)
+        {
+            int operationResult = 0;
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetEmploymentEntity = db.tblMasterTypeOfEmployments.Where(p => p.ID == EmploymentTypeMaster.ID).FirstOrDefault();
+                    if (GetEmploymentEntity != null)
+                    {
+                        GetEmploymentEntity.EmployementType = EmploymentTypeMaster.EmployementType;
+                        operationResult = db.SaveChanges();
+                    }
+                }
+                if (operationResult > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        public bool UpdateQualificationEntity(QualificationTypeMaster QualificationTypeMaster)
+        {
+            int operationResult = 0;
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetQualificationEntity = db.tblMasterTypeOfQualifications.Where(p => p.ID == QualificationTypeMaster.ID).FirstOrDefault();
+                    if (GetQualificationEntity != null)
+                    {
+                        GetQualificationEntity.Qualifications = QualificationTypeMaster.Qualifications;
+                        operationResult = db.SaveChanges();
+                    }
+                }
+                if (operationResult > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+        }
+        public bool UpdateRelationshipEntity(RelationshipTypeMaster RelationshipTypeMaster)
+        {
+            int operationResult = 0;
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetRelationshipEntity = db.tblMasterTypeOfRelationships.Where(p => p.ID == RelationshipTypeMaster.ID).FirstOrDefault();
+                    if (GetRelationshipEntity != null)
+                    {
+                        GetRelationshipEntity.RelationshipWithApplicant = RelationshipTypeMaster.RelationshipWithApplicant;
+                        operationResult = db.SaveChanges();
+                    }
+                }
+                if (operationResult > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        public bool UpdateProffessionEntity(ProfessionTypeMaster ProfessionTypeMaster)
+        {
+            int operationResult = 0;
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetProfessionEntity = db.tblMasterTypeOfProfessions.Where(p => p.ID == ProfessionTypeMaster.ID).FirstOrDefault();
+                    if (GetProfessionEntity != null)
+                    {
+                        GetProfessionEntity.Profession = ProfessionTypeMaster.Profession;
                         operationResult = db.SaveChanges();
                     }
                 }

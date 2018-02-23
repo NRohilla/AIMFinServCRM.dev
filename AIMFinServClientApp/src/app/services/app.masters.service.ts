@@ -48,4 +48,20 @@ export class MastersService {
     SwitchProfessionEntityStatus(ID) {
         return this._http.get(this.baseurl + "Masters/SwitchProfessionEntityStatus?ID=" + ID, this.options);
     }
+
+    UpdateEmploymentEntity(EmploymentTypeMaster) {
+        return this._http.post(this.baseurl + "Masters/UpdateEmploymentEntity", EmploymentTypeMaster, this.options);
+    }
+
+    UpdateQualificationEntity(QualificationTypeMaster) {
+        return this._http.post(this.baseurl + "Masters/UpdateQualificationEntity", QualificationTypeMaster, this.options);
+    }
+
+    UpdateRelationshipEntity(RelationshipTypeMaster) {
+        return this._http.post(this.baseurl + "Masters/UpdateRelationshipEntity", RelationshipTypeMaster, this.options);
+    }
+
+    UpdateProffessionEntity(ProfessionTypeMaster) {
+        return this._http.post(this.baseurl + "Masters/UpdateProffessionEntity", ProfessionTypeMaster, this.options);
+    }
 }

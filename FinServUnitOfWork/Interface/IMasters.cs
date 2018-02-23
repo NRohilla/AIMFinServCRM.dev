@@ -14,5 +14,10 @@ namespace FinServUnitOfWork.Interface
         bool SwitchQualificationEntityStatus(int ID);
         bool SwitchRelationshipEntityStatus(int ID);
         bool SwitchProfessionEntityStatus(int ID);
+
+        bool UpdateEmploymentEntity(EmploymentTypeMaster EmploymentTypeMaster);
+        bool UpdateQualificationEntity(QualificationTypeMaster QualificationTypeMaster);
+        bool UpdateRelationshipEntity(RelationshipTypeMaster RelationshipTypeMaster);
+        bool UpdateProffessionEntity(ProfessionTypeMaster ProfessionTypeMaster);
     }
 }

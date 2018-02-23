@@ -7,12 +7,14 @@
                 [scrollable]="true"
                 [filterable]="true"
                 [groupable]="true"
-                selectable="true">
+                selectable="true"
+                #EmploymentTypes
+                (selectionChange)="GridSelectionChange(EmploymentTypes, $event)">
         <kendo-grid-column field="EmployementType" title="Employment Type">
         </kendo-grid-column>
         <kendo-grid-column field="IsActive" title="Is Active">
         </kendo-grid-column>
-        
+
         <kendo-grid-command-column>
             <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
                 <button class="btn btn-lg btn-link" type="button" (click)="SwitchStatus(dataItem.ID)" *ngIf="dataItem.IsActive">Deactivate</button>
@@ -20,4 +22,28 @@
             </ng-template>
         </kendo-grid-command-column>
     </kendo-grid>
+
+    <div id="exTab1" class="" style="margin-left:0; margin-top:70px; width:99%;" *ngIf="_EditEmployementDetails">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section_box">
+                    <div class="box_title">Edit Employment Type</div>
+                    <div class="tab-content clearfix">
+                        <div class="tab-pane active">
+                            <div class="field_set">
+                                <div class="field_label">Employment Type</div>
+                                <div class="field_info">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Employment type" value="{{_EmploymentObj.EmployementType}}" [(ngModel)]="_EmploymentObj.EmployementType" #EmployementType>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="button" value="Update" (click)="UpdateEmployementType()" style="float:right; margin-left: 5px;" class="btn btn-lg btn-primary" />
+                        <input type="button" value="Cancel" (click)="CancelEmployementType()" style="float:right;" class="btn btn-lg btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

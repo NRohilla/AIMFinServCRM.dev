@@ -7,7 +7,9 @@
                 [scrollable]="true"
                 [filterable]="true"
                 [groupable]="true"
-                selectable="true">
+                selectable="true"
+                 #RelationshipTypes
+                 (selectionChange)="GridSelectionChange(RelationshipTypes, $event)">
         <kendo-grid-column field="RelationshipWithApplicant" title="Relationship With Applicant">
         </kendo-grid-column>
         <kendo-grid-column field="IsActive" title="Is Active">
@@ -20,4 +22,28 @@
             </ng-template>
         </kendo-grid-command-column>
     </kendo-grid>
+
+    <div id="exTab1" class="" style="margin-left:0; margin-top:70px; width:99%;" *ngIf="_EditRelationshipDetails">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section_box">
+                    <div class="box_title">Edit Relationship Type</div>
+                    <div class="tab-content clearfix">
+                        <div class="tab-pane active">
+                            <div class="field_set">
+                                <div class="field_label">Relationship Type</div>
+                                <div class="field_info">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Relationship type" value="{{_RelationshipObj.RelationshipWithApplicant}}" [(ngModel)]="_RelationshipObj.RelationshipWithApplicant" #RelationshipWithApplicant>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="button" value="Update" (click)="UpdateQualificationType()" style="float:right; margin-left: 5px;" class="btn btn-lg btn-primary" />
+                        <input type="button" value="Cancel" (click)="CancelQualificationType()" style="float:right;" class="btn btn-lg btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
