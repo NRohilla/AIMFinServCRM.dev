@@ -17,7 +17,10 @@ const routes: Routes = [
             { path: 'master-proffession', loadChildren: './masters/proffession/proffession.module#ProffessionModule' },
             { path: 'master-qualification', loadChildren: './masters/qualification/qualification.module#QualificationModule' },
             { path: 'master-relationship', loadChildren: './masters/relationship/relationship.module#RelationshipModule' },
-            
+            { path: 'master-assets', loadChildren: './masters/assets/assets.module#AssetsModule' },
+            { path: 'master-expense', loadChildren: './masters/expense/expense.module#ExpenseModule' },
+            { path: 'master-liability', loadChildren: './masters/liability/liability.module#LiabilityModule' },
+
             { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
             { path: 'forms', loadChildren: './form/form.module#FormModule' },
             { path: 'bs-element', loadChildren: './bs-element/bs-element.module#BsElementModule' },

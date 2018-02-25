@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     public _FormErrorsDescription: string = '';
     constructor(public router: Router, private _AuthenticateService: AuthenticateService, private _LocalStorageService: LocalStorageService) { }
 
-    ngOnInit() { }
+    ngOnInit() { localStorage.setItem('isLoggedin', 'true'); }
 
     LoginVaidate() {
         this._FormErrors = false;

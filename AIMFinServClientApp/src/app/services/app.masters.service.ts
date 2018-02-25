@@ -33,6 +33,18 @@ export class MastersService {
         return this._http.get(this.baseurl + "Masters/GetProfessionTypes", this.options);
     }
 
+    GetExpenseTypes() {
+        return this._http.get(this.baseurl + "Masters/GetExpenseTypes", this.options);
+    }
+
+    GetAssetsTypes() {
+        return this._http.get(this.baseurl + "Masters/GetAssetsTypes", this.options);
+    }
+
+    GetLiabilityTypes() {
+        return this._http.get(this.baseurl + "Masters/GetLiabilityTypes", this.options);
+    }
+
     SwitchEmploymentEntityStatus(ID) {
         return this._http.get(this.baseurl + "Masters/SwitchEmploymentEntityStatus?ID=" + ID, this.options);
     }
@@ -49,6 +61,18 @@ export class MastersService {
         return this._http.get(this.baseurl + "Masters/SwitchProfessionEntityStatus?ID=" + ID, this.options);
     }
 
+    SwitchAssetsEntityStatus(ID) {
+        return this._http.get(this.baseurl + "Masters/SwitchAssetsEntityStatus?ID=" + ID, this.options);
+    }
+
+    SwitchExpenseEntityStatus(ID) {
+        return this._http.get(this.baseurl + "Masters/SwitchExpenseEntityStatus?ID=" + ID, this.options);
+    }
+
+    SwitchLiabilityEntityStatus(ID) {
+        return this._http.get(this.baseurl + "Masters/SwitchLiabilityEntityStatus?ID=" + ID, this.options);
+    }
+
     UpdateEmploymentEntity(EmploymentTypeMaster) {
         return this._http.post(this.baseurl + "Masters/UpdateEmploymentEntity", EmploymentTypeMaster, this.options);
     }
@@ -63,5 +87,17 @@ export class MastersService {
 
     UpdateProffessionEntity(ProfessionTypeMaster) {
         return this._http.post(this.baseurl + "Masters/UpdateProffessionEntity", ProfessionTypeMaster, this.options);
+    }
+
+    UpdateAssetsEntity(AssetsTypeMaster) {
+        return this._http.post(this.baseurl + "Masters/UpdateAssetsEntity", AssetsTypeMaster, this.options);
+    }
+
+    UpdateExpenseEntity(ExpenseTypeMaster) {
+        return this._http.post(this.baseurl + "Masters/UpdateExpenseEntity", ExpenseTypeMaster, this.options);
+    }
+
+    UpdateLiabilityEntity(LiabilityTypeMaster) {
+        return this._http.post(this.baseurl + "Masters/UpdateLiabilityEntity", LiabilityTypeMaster, this.options);
     }
 }

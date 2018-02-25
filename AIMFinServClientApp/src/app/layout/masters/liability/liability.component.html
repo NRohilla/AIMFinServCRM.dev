@@ -1,0 +1,49 @@
+﻿<div [@routerTransition]>
+    <app-page-header [heading]="'Liability Types'" [icon]="'fa-bar-chart-o'"></app-page-header>
+    <kendo-grid [kendoGridBinding]="_LiabilityTypes"
+                [pageSize]="10"
+                [sortable]="true"
+                [pageable]="true"
+                [scrollable]="true"
+                [filterable]="true"
+                [groupable]="true"
+                selectable="true"
+                #LiabilityTypes
+                (selectionChange)="GridSelectionChange(LiabilityTypes, $event)">
+        <kendo-grid-column field="LiabilityType" title="Liability Type">
+        </kendo-grid-column>
+        <kendo-grid-column field="IsActive" title="Is Active">
+        </kendo-grid-column>
+
+        <kendo-grid-command-column>
+            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                <button class="btn btn-lg btn-link" type="button" (click)="SwitchStatus(dataItem.ID)" *ngIf="dataItem.IsActive">Deactivate</button>
+                <button class="btn btn-lg btn-link" type="button" (click)="SwitchStatus(dataItem.ID)" *ngIf="!dataItem.IsActive">Activate</button>
+            </ng-template>
+        </kendo-grid-command-column>
+    </kendo-grid>
+
+    <div id="exTab1" class="" style="margin-left:0; margin-top:70px; width:99%;" *ngIf="_EditLiabilityDetails">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section_box">
+                    <div class="box_title">Edit Liability Type</div>
+                    <div class="tab-content clearfix">
+                        <div class="tab-pane active">
+                            <div class="field_set">
+                                <div class="field_label">Liability Type</div>
+                                <div class="field_info">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Liability type" value="{{_LiabilityObj.LiabilityType}}" [(ngModel)]="_LiabilityObj.LiabilityType" #LiabilityType>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="button" value="Update" (click)="UpdateLiabilityType()" style="float:right; margin-left: 5px;" class="btn btn-lg btn-primary" />
+                        <input type="button" value="Cancel" (click)="CancelLiabilityType()" style="float:right;" class="btn btn-lg btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

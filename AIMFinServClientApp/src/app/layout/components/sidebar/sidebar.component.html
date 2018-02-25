@@ -16,14 +16,28 @@
             <li class="nested" [class.expand]="showMenu === 'pages'">
                 <ul class="submenu">
                     <li>
+                        <a [routerLink]="['/master-assets']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Assets' | translate }}
+                        </a>
+                    </li>
+                    <li>
                         <a [routerLink]="['/master-employment']" [routerLinkActive]="['router-link-active']" class="list-group-item">
                             <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Employment' | translate }}
                         </a>
-                        
                     </li>
                     <li>
-                        <a [routerLink]="['/master-qualification']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Qualification' | translate }}
+                        <a [routerLink]="['/master-expense']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Expense' | translate }}
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/master-liability']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Liability' | translate }}
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/master-proffession']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Proffession' | translate }}
                         </a>
                     </li>
                     <li>
@@ -32,10 +46,11 @@
                         </a>
                     </li>
                     <li>
-                        <a [routerLink]="['/master-proffession']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Proffession' | translate }}
+                        <a [routerLink]="['/master-qualification']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Qualification' | translate }}
                         </a>
                     </li>
+                    
                 </ul>
             </li>
         </div>
