@@ -15,21 +15,22 @@ import {MastersService} from '../../../services/app.masters.service';
     providers: [MastersService]
 })
 export class ApplicantComponent implements OnInit {
+
+    public _Operationtitle: string = "Add";
+    public _ApplicantObj: {};
     public _ApplicantTypes: {
         ApplicantType: "",
         ApplicantTypeID: "",
         IsActive: ""
     };
 
-    public _ApplicantObj: {
-        ApplicantType: "",
-        ApplicantTypeID: "",
-        IsActive: ""
-    };
-
-    public _EditApplicantDetails: boolean = false;
-
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _MastersService: MastersService) { }
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _MastersService: MastersService) {
+        this._ApplicantObj = {
+            ApplicantType: "",
+            ApplicantTypeID: "",
+            IsActive: ""
+        };
+    }
 
     ngOnInit() {
         this._MastersService.GetApplicantTypes().subscribe(res => this.GetApplicantSuccess(res), res => this.GetApplicantError(res));
@@ -48,30 +49,32 @@ export class ApplicantComponent implements OnInit {
     SwitchApplicantSuccess(res) { this._MastersService.GetApplicantTypes().subscribe(res => this.GetApplicantSuccess(res), res => this.GetApplicantError(res)); }
     SwitchApplicantError(res) { }
 
-    GridSelectionChange(data, selection) {
-        debugger;
-        this._ApplicantObj = data.data.data[selection.index];
-        this._EditApplicantDetails = true;
-    }
-
     UpdateApplicantType() {
         this._MastersService.UpdateApplicantEntity(this._ApplicantObj).subscribe(res => this.UpdateApplicantSuccess(res), res => this.UpdateApplicantError(res));
     }
-
     UpdateApplicantSuccess(res) {
         this._MastersService.GetApplicantTypes().subscribe(res => this.GetApplicantSuccess(res), res => this.GetApplicantError(res));
         this.CancelApplicantType();
     }
     UpdateApplicantError(res) { }
 
-
+    GridSelectionChange(data, selection) {
+        debugger;
+        this._Operationtitle = "Update";
+        this._ApplicantObj = data.data.data[selection.index];
+    }
     CancelApplicantType() {
         debugger;
-        this._EditApplicantDetails = false;
+        this._Operationtitle = "Add";
         this._ApplicantObj = {
-            ApplicantWithApplicant: '',
-            ID: '',
-            IsActive: '',
+            ApplicantType: "",
+            ApplicantTypeID: "",
+            IsActive: ""
         };
+    }
+
+    AddApplicantType()
+    {
+        debugger;
     }
 }

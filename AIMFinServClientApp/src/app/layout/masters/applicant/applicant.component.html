@@ -28,24 +28,25 @@
         </kendo-grid-command-column>
     </kendo-grid>
 
-    <div id="exTab1" *ngIf="_EditApplicantDetails">
+    <div id="exTab1">
         <div class="row">
             <div class="col-md-12">
                 <div class="section_box">
-                    <div class="box_title">Edit Applicant Type</div>
+                    <div class="box_title">{{_Operationtitle}} Applicant Type</div>
                     <div class="tab-content clearfix">
                         <div class="tab-pane active">
                             <div class="field_set">
                                 <div class="field_label">Applicant Type</div>
                                 <div class="field_info">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Applicant type" value="{{_ApplicantObj.ApplicantType}}" [(ngModel)]="_ApplicantObj.ApplicantType" #ApplicantType>
+                                        <input matInput placeholder="Applicant Type" value="{{_ApplicantObj.ApplicantType}}" [(ngModel)]="_ApplicantObj.ApplicantType" #ApplicantType>
                                     </mat-form-field>
                                 </div>
                             </div>
                         </div>
                         <div class="float-right">
-                            <input type="button" value="Update" (click)="UpdateApplicantType()" class="btn btn-success" />
+                            <input type="button" value="Save" (click)="AddApplicantType()" class="btn btn-success" *ngIf="_Operationtitle=='Add'" />
+                            <input type="button" value="Update" (click)="UpdateApplicantType()" class="btn btn-success" *ngIf="_Operationtitle=='Update'"/>
                             <input type="button" value="Cancel" (click)="CancelApplicantType()" class="btn btn-secondary" />
                         </div>
                     </div>

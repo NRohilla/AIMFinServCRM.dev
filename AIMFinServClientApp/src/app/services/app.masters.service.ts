@@ -125,7 +125,7 @@ export class MastersService {
 
     //update types
     UpdateApplicantEntity(ApplicantTypeMaster) {
-        return this._http.post(this.baseurl + "Masters/ApplicantTypeMaster", ApplicantTypeMaster, this.options);
+        return this._http.post(this.baseurl + "Masters/UpdateApplicantEntity", ApplicantTypeMaster, this.options);
     }
 
     UpdateAssetsEntity(AssetsTypeMaster) {
