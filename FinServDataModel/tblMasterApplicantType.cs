@@ -12,20 +12,19 @@ namespace FinServDataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class tblAssetType
+    public partial class tblMasterApplicantType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblAssetType()
+        public tblMasterApplicantType()
         {
-            this.tblAssets = new HashSet<tblAsset>();
+            this.tblApplicants = new HashSet<tblApplicant>();
         }
     
-        public int AutoID { get; set; }
-        public System.Guid AssetTypeID { get; set; }
-        public string Description { get; set; }
+        public int ApplicantTypeID { get; set; }
+        public string ApplicantType { get; set; }
         public bool IsActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblAsset> tblAssets { get; set; }
+        public virtual ICollection<tblApplicant> tblApplicants { get; set; }
     }
 }

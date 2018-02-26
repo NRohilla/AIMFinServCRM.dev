@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicantCommunicationDetails.cs" />
-    <Compile Include="ApplicantType.cs" />
+    <Compile Include="ApplicantTypeMaster.cs" />
     <Compile Include="ApplicantEmployementDetails.cs" />
     <Compile Include="Applicants.cs" />
     <Compile Include="EmploymentTypeMaster.cs" />

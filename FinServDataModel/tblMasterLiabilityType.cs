@@ -12,10 +12,10 @@ namespace FinServDataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class tblLiabilityType
+    public partial class tblMasterLiabilityType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblLiabilityType()
+        public tblMasterLiabilityType()
         {
             this.tblLiabilities = new HashSet<tblLiability>();
         }

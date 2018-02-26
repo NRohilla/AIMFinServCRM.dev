@@ -29,7 +29,7 @@ namespace FinServBussinessEntities
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public ApplicantType ApplicantType { get; set; }
+        public ApplicantTypeMaster ApplicantType { get; set; }
         public List<ApplicantEmployementDetails> ApplicantEmployementDetails { get; set; }
         public List<ApplicantCommunicationDetails> ApplicantCommunicationDetails { get; set; }
     }

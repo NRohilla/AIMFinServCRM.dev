@@ -79,25 +79,52 @@
     <Compile Include="tblApplicantExpenseSheet.cs">
       <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblApplicantType.cs">
+    <Compile Include="tblApplicantQualificationDetail.cs">
       <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblAsset.cs">
       <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblAssetType.cs">
-      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblExpenseType.cs">
-      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="tblLiability.cs">
       <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblLiabilityType.cs">
+    <Compile Include="tblLoanApplicationForm.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblLoanGuarantor.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblLoanMaster.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMasterApplicantType.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMasterAssetType.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMasterExpenseType.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMasterLiabilityType.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMasterPropertyType.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMasterPurposeOfLoan.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMasterRateTypeOfLoan.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMasterSalutation.cs">
       <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMasterTypeOfEmployment.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMasterTypeOfLoan.cs">
       <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMasterTypeOfProfession.cs">

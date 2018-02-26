@@ -12,12 +12,10 @@ namespace FinServDataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class tblExpenseType
+    public partial class tblMasterSalutation
     {
-        public int AutoID { get; set; }
-        public System.Guid ExpenseTypeID { get; set; }
-        public string Description { get; set; }
-        public string Frequency { get; set; }
+        public int ID { get; set; }
+        public string Salutation { get; set; }
         public bool IsActive { get; set; }
     }
 }

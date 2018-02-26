@@ -4,14 +4,23 @@
     <EntitySet Name="tblApplicantCommunicationDetails" EntityType="AIMFinServDBModel.tblApplicantCommunicationDetail" />
     <EntitySet Name="tblApplicantEmploymentDetails" EntityType="AIMFinServDBModel.tblApplicantEmploymentDetail" />
     <EntitySet Name="tblApplicantExpenseSheets" EntityType="AIMFinServDBModel.tblApplicantExpenseSheet" />
+    <EntitySet Name="tblApplicantQualificationDetails" EntityType="AIMFinServDBModel.tblApplicantQualificationDetail" />
     <EntitySet Name="tblApplicants" EntityType="AIMFinServDBModel.tblApplicant" />
-    <EntitySet Name="tblApplicantTypes" EntityType="AIMFinServDBModel.tblApplicantType" />
     <EntitySet Name="tblAssets" EntityType="AIMFinServDBModel.tblAsset" />
-    <EntitySet Name="tblAssetTypes" EntityType="AIMFinServDBModel.tblAssetType" />
-    <EntitySet Name="tblExpenseTypes" EntityType="AIMFinServDBModel.tblExpenseType" />
     <EntitySet Name="tblLiabilities" EntityType="AIMFinServDBModel.tblLiability" />
-    <EntitySet Name="tblLiabilityTypes" EntityType="AIMFinServDBModel.tblLiabilityType" />
+    <EntitySet Name="tblLoanApplicationForms" EntityType="AIMFinServDBModel.tblLoanApplicationForm" />
+    <EntitySet Name="tblLoanGuarantors" EntityType="AIMFinServDBModel.tblLoanGuarantor" />
+    <EntitySet Name="tblLoanMasters" EntityType="AIMFinServDBModel.tblLoanMaster" />
+    <EntitySet Name="tblMasterApplicantTypes" EntityType="AIMFinServDBModel.tblMasterApplicantType" />
+    <EntitySet Name="tblMasterAssetTypes" EntityType="AIMFinServDBModel.tblMasterAssetType" />
+    <EntitySet Name="tblMasterExpenseTypes" EntityType="AIMFinServDBModel.tblMasterExpenseType" />
+    <EntitySet Name="tblMasterLiabilityTypes" EntityType="AIMFinServDBModel.tblMasterLiabilityType" />
+    <EntitySet Name="tblMasterPropertyTypes" EntityType="AIMFinServDBModel.tblMasterPropertyType" />
+    <EntitySet Name="tblMasterPurposeOfLoans" EntityType="AIMFinServDBModel.tblMasterPurposeOfLoan" />
+    <EntitySet Name="tblMasterRateTypeOfLoans" EntityType="AIMFinServDBModel.tblMasterRateTypeOfLoan" />
+    <EntitySet Name="tblMasterSalutations" EntityType="AIMFinServDBModel.tblMasterSalutation" />
     <EntitySet Name="tblMasterTypeOfEmployments" EntityType="AIMFinServDBModel.tblMasterTypeOfEmployment" />
+    <EntitySet Name="tblMasterTypeOfLoans" EntityType="AIMFinServDBModel.tblMasterTypeOfLoan" />
     <EntitySet Name="tblMasterTypeOfProfessions" EntityType="AIMFinServDBModel.tblMasterTypeOfProfession" />
     <EntitySet Name="tblMasterTypeOfQualifications" EntityType="AIMFinServDBModel.tblMasterTypeOfQualification" />
     <EntitySet Name="tblMasterTypeOfRelationships" EntityType="AIMFinServDBModel.tblMasterTypeOfRelationship" />
@@ -31,15 +40,19 @@
       <End Role="tblApplicantExpenseSheet" EntitySet="tblApplicantExpenseSheets" />
     </AssociationSet>
     <AssociationSet Name="FK_tblApplicants_tblApplicantType" Association="AIMFinServDBModel.FK_tblApplicants_tblApplicantType">
-      <End Role="tblApplicantType" EntitySet="tblApplicantTypes" />
+      <End Role="tblMasterApplicantType" EntitySet="tblMasterApplicantTypes" />
       <End Role="tblApplicant" EntitySet="tblApplicants" />
     </AssociationSet>
+    <AssociationSet Name="FK_tblLoanApplicationForm_tblApplicants" Association="AIMFinServDBModel.FK_tblLoanApplicationForm_tblApplicants">
+      <End Role="tblApplicant" EntitySet="tblApplicants" />
+      <End Role="tblLoanApplicationForm" EntitySet="tblLoanApplicationForms" />
+    </AssociationSet>
     <AssociationSet Name="FK_tblAssets_tblAssetTypes" Association="AIMFinServDBModel.FK_tblAssets_tblAssetTypes">
-      <End Role="tblAssetType" EntitySet="tblAssetTypes" />
+      <End Role="tblMasterAssetType" EntitySet="tblMasterAssetTypes" />
       <End Role="tblAsset" EntitySet="tblAssets" />
     </AssociationSet>
     <AssociationSet Name="FK_tblLiabilities_tblLiabilityTypes" Association="AIMFinServDBModel.FK_tblLiabilities_tblLiabilityTypes">
-      <End Role="tblLiabilityType" EntitySet="tblLiabilityTypes" />
+      <End Role="tblMasterLiabilityType" EntitySet="tblMasterLiabilityTypes" />
       <End Role="tblLiability" EntitySet="tblLiabilities" />
     </AssociationSet>
   </EntityContainer>
@@ -99,6 +112,22 @@
     <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
     <NavigationProperty Name="tblApplicant" Relationship="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblApplicants" FromRole="tblApplicantExpenseSheet" ToRole="tblApplicant" />
   </EntityType>
+  <EntityType Name="tblApplicantQualificationDetail">
+    <Key>
+      <PropertyRef Name="QualificationID" />
+    </Key>
+    <Property Name="AutoID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QualificationID" Type="Guid" Nullable="false" />
+    <Property Name="ApplicantID" Type="Guid" />
+    <Property Name="TypeOfQualification" Type="Int32" />
+    <Property Name="PassingYear" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="CourseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UniversityName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+  </EntityType>
   <EntityType Name="tblApplicant">
     <Key>
       <PropertyRef Name="ApplicantID" />
@@ -123,16 +152,8 @@
     <NavigationProperty Name="tblApplicantCommunicationDetails" Relationship="AIMFinServDBModel.FK__tblApplic__Appli__5070F446" FromRole="tblApplicant" ToRole="tblApplicantCommunicationDetail" />
     <NavigationProperty Name="tblApplicantEmploymentDetails" Relationship="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblApplicants" FromRole="tblApplicant" ToRole="tblApplicantEmploymentDetail" />
     <NavigationProperty Name="tblApplicantExpenseSheets" Relationship="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblApplicants" FromRole="tblApplicant" ToRole="tblApplicantExpenseSheet" />
-    <NavigationProperty Name="tblApplicantType" Relationship="AIMFinServDBModel.FK_tblApplicants_tblApplicantType" FromRole="tblApplicant" ToRole="tblApplicantType" />
-  </EntityType>
-  <EntityType Name="tblApplicantType">
-    <Key>
-      <PropertyRef Name="ApplicantTypeID" />
-    </Key>
-    <Property Name="ApplicantTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ApplicantType" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="IsActive" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="tblApplicants" Relationship="AIMFinServDBModel.FK_tblApplicants_tblApplicantType" FromRole="tblApplicantType" ToRole="tblApplicant" />
+    <NavigationProperty Name="tblMasterApplicantType" Relationship="AIMFinServDBModel.FK_tblApplicants_tblApplicantType" FromRole="tblApplicant" ToRole="tblMasterApplicantType" />
+    <NavigationProperty Name="tblLoanApplicationForms" Relationship="AIMFinServDBModel.FK_tblLoanApplicationForm_tblApplicants" FromRole="tblApplicant" ToRole="tblLoanApplicationForm" />
   </EntityType>
   <EntityType Name="tblAsset">
     <Key>
@@ -148,27 +169,7 @@
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
     <Property Name="ModifiedBy" Type="Guid" />
     <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="tblAssetType" Relationship="AIMFinServDBModel.FK_tblAssets_tblAssetTypes" FromRole="tblAsset" ToRole="tblAssetType" />
-  </EntityType>
-  <EntityType Name="tblAssetType">
-    <Key>
-      <PropertyRef Name="AssetTypeID" />
-    </Key>
-    <Property Name="AutoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="AssetTypeID" Type="Guid" Nullable="false" />
-    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="IsActive" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="tblAssets" Relationship="AIMFinServDBModel.FK_tblAssets_tblAssetTypes" FromRole="tblAssetType" ToRole="tblAsset" />
-  </EntityType>
-  <EntityType Name="tblExpenseType">
-    <Key>
-      <PropertyRef Name="ExpenseTypeID" />
-    </Key>
-    <Property Name="AutoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ExpenseTypeID" Type="Guid" Nullable="false" />
-    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Frequency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tblMasterAssetType" Relationship="AIMFinServDBModel.FK_tblAssets_tblAssetTypes" FromRole="tblAsset" ToRole="tblMasterAssetType" />
   </EntityType>
   <EntityType Name="tblLiability">
     <Key>
@@ -184,9 +185,128 @@
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
     <Property Name="ModifiedBy" Type="Guid" />
     <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="tblLiabilityType" Relationship="AIMFinServDBModel.FK_tblLiabilities_tblLiabilityTypes" FromRole="tblLiability" ToRole="tblLiabilityType" />
+    <NavigationProperty Name="tblMasterLiabilityType" Relationship="AIMFinServDBModel.FK_tblLiabilities_tblLiabilityTypes" FromRole="tblLiability" ToRole="tblMasterLiabilityType" />
   </EntityType>
-  <EntityType Name="tblLiabilityType">
+  <EntityType Name="tblLoanApplicationForm">
+    <Key>
+      <PropertyRef Name="AutoID" />
+    </Key>
+    <Property Name="AutoID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoanApplicationNo" Type="Guid" Nullable="false" />
+    <Property Name="ApplicantID" Type="Guid" Nullable="false" />
+    <Property Name="IsPreApproval" Type="Boolean" />
+    <Property Name="TypeOfLoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Priority" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FinanceRequired" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CashInHand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LoanTerm" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="RateType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Frequency" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="IsApplicationApproved" Type="Boolean" />
+    <Property Name="ApprovalExpiryDate" Type="DateTime" Precision="3" />
+    <Property Name="ReasonForNotApproval" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IsAnyGuarantor" Type="Boolean" />
+    <Property Name="CostOfProperty" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="PropertyType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="IsShifted" Type="Boolean" />
+    <Property Name="AgeOfProperty" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ShiftedDuration" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="PropertyUsedFor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsPropertyDecided" Type="Boolean" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblApplicant" Relationship="AIMFinServDBModel.FK_tblLoanApplicationForm_tblApplicants" FromRole="tblLoanApplicationForm" ToRole="tblApplicant" />
+  </EntityType>
+  <EntityType Name="tblLoanGuarantor">
+    <Key>
+      <PropertyRef Name="GuarantorID" />
+    </Key>
+    <Property Name="AutoID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GuarantorID" Type="Guid" Nullable="false" />
+    <Property Name="LoanApplicationNo" Type="Guid" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="DateOfBirth" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MaritalStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="HomePhoneNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="WorkPhoneNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="EmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NZResidents" Type="Boolean" />
+    <Property Name="Duration" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="CountryOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AddressLine1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AddressLine3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tblLoanMaster">
+    <Key>
+      <PropertyRef Name="LANNumber" />
+    </Key>
+    <Property Name="AutoID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LANNumber" Type="Guid" Nullable="false" />
+    <Property Name="LoanApplicationNo" Type="Guid" />
+    <Property Name="ROIOffered" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="LoanTermOffered" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="RateTypeOffered" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="FrequencyOffered" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="LoanValueRatio" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="LoanAmountOffered" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="LoanType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ClientID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMIStartDay" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="EMIStartMonth" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="LoanProcessingFee" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="AnyLegalCharges" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="NoOfEMI" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Loanprovider" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PropertyCost" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="PropertyType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tblMasterApplicantType">
+    <Key>
+      <PropertyRef Name="ApplicantTypeID" />
+    </Key>
+    <Property Name="ApplicantTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ApplicantType" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tblApplicants" Relationship="AIMFinServDBModel.FK_tblApplicants_tblApplicantType" FromRole="tblMasterApplicantType" ToRole="tblApplicant" />
+  </EntityType>
+  <EntityType Name="tblMasterAssetType">
+    <Key>
+      <PropertyRef Name="AssetTypeID" />
+    </Key>
+    <Property Name="AutoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AssetTypeID" Type="Guid" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tblAssets" Relationship="AIMFinServDBModel.FK_tblAssets_tblAssetTypes" FromRole="tblMasterAssetType" ToRole="tblAsset" />
+  </EntityType>
+  <EntityType Name="tblMasterExpenseType">
+    <Key>
+      <PropertyRef Name="ExpenseTypeID" />
+    </Key>
+    <Property Name="AutoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ExpenseTypeID" Type="Guid" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Frequency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblMasterLiabilityType">
     <Key>
       <PropertyRef Name="LiabilityTypeID" />
     </Key>
@@ -194,7 +314,39 @@
     <Property Name="LiabilityTypeID" Type="Guid" Nullable="false" />
     <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="tblLiabilities" Relationship="AIMFinServDBModel.FK_tblLiabilities_tblLiabilityTypes" FromRole="tblLiabilityType" ToRole="tblLiability" />
+    <NavigationProperty Name="tblLiabilities" Relationship="AIMFinServDBModel.FK_tblLiabilities_tblLiabilityTypes" FromRole="tblMasterLiabilityType" ToRole="tblLiability" />
+  </EntityType>
+  <EntityType Name="tblMasterPropertyType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PropertyType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsAvtive" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblMasterPurposeOfLoan">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PurposeOfLoan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblMasterRateTypeOfLoan">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoanRateType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblMasterSalutation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Salutation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="tblMasterTypeOfEmployment">
     <Key>
@@ -202,6 +354,14 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="EmployementType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblMasterTypeOfLoan">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoanType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="tblMasterTypeOfProfession">
@@ -319,10 +479,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_tblApplicants_tblApplicantType">
-    <End Type="AIMFinServDBModel.tblApplicantType" Role="tblApplicantType" Multiplicity="0..1" />
+    <End Type="AIMFinServDBModel.tblMasterApplicantType" Role="tblMasterApplicantType" Multiplicity="0..1" />
     <End Type="AIMFinServDBModel.tblApplicant" Role="tblApplicant" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="tblApplicantType">
+      <Principal Role="tblMasterApplicantType">
         <PropertyRef Name="ApplicantTypeID" />
       </Principal>
       <Dependent Role="tblApplicant">
@@ -330,11 +490,23 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tblLoanApplicationForm_tblApplicants">
+    <End Type="AIMFinServDBModel.tblApplicant" Role="tblApplicant" Multiplicity="1" />
+    <End Type="AIMFinServDBModel.tblLoanApplicationForm" Role="tblLoanApplicationForm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblApplicant">
+        <PropertyRef Name="ApplicantID" />
+      </Principal>
+      <Dependent Role="tblLoanApplicationForm">
+        <PropertyRef Name="ApplicantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tblAssets_tblAssetTypes">
-    <End Type="AIMFinServDBModel.tblAssetType" Role="tblAssetType" Multiplicity="0..1" />
+    <End Type="AIMFinServDBModel.tblMasterAssetType" Role="tblMasterAssetType" Multiplicity="0..1" />
     <End Type="AIMFinServDBModel.tblAsset" Role="tblAsset" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="tblAssetType">
+      <Principal Role="tblMasterAssetType">
         <PropertyRef Name="AssetTypeID" />
       </Principal>
       <Dependent Role="tblAsset">
@@ -343,10 +515,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_tblLiabilities_tblLiabilityTypes">
-    <End Type="AIMFinServDBModel.tblLiabilityType" Role="tblLiabilityType" Multiplicity="0..1" />
+    <End Type="AIMFinServDBModel.tblMasterLiabilityType" Role="tblMasterLiabilityType" Multiplicity="0..1" />
     <End Type="AIMFinServDBModel.tblLiability" Role="tblLiability" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="tblLiabilityType">
+      <Principal Role="tblMasterLiabilityType">
         <PropertyRef Name="LiabilityTypeID" />
       </Principal>
       <Dependent Role="tblLiability">

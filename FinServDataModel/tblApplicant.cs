@@ -20,6 +20,7 @@ namespace FinServDataModel
             this.tblApplicantCommunicationDetails = new HashSet<tblApplicantCommunicationDetail>();
             this.tblApplicantEmploymentDetails = new HashSet<tblApplicantEmploymentDetail>();
             this.tblApplicantExpenseSheets = new HashSet<tblApplicantExpenseSheet>();
+            this.tblLoanApplicationForms = new HashSet<tblLoanApplicationForm>();
         }
     
         public long AutoID { get; set; }
@@ -46,6 +47,8 @@ namespace FinServDataModel
         public virtual ICollection<tblApplicantEmploymentDetail> tblApplicantEmploymentDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblApplicantExpenseSheet> tblApplicantExpenseSheets { get; set; }
-        public virtual tblApplicantType tblApplicantType { get; set; }
+        public virtual tblMasterApplicantType tblMasterApplicantType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblLoanApplicationForm> tblLoanApplicationForms { get; set; }
     }
 }

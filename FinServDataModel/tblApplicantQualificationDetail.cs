@@ -12,19 +12,18 @@ namespace FinServDataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class tblAsset
+    public partial class tblApplicantQualificationDetail
     {
         public long AutoID { get; set; }
-        public System.Guid AssetID { get; set; }
-        public Nullable<System.Guid> AssetTypeID { get; set; }
-        public string Description { get; set; }
-        public Nullable<decimal> NetValue { get; set; }
-        public string Ownership { get; set; }
+        public System.Guid QualificationID { get; set; }
+        public Nullable<System.Guid> ApplicantID { get; set; }
+        public Nullable<int> TypeOfQualification { get; set; }
+        public string PassingYear { get; set; }
+        public string CourseName { get; set; }
+        public string UniversityName { get; set; }
         public Nullable<System.Guid> CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-    
-        public virtual tblMasterAssetType tblMasterAssetType { get; set; }
     }
 }

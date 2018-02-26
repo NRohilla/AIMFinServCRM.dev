@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinServBussinessEntities
 {
-    public class ApplicantType
+    public class ApplicantTypeMaster
     {
         public int ApplicantTypeID { get; set; }
         public string ApplicantTypeDesc { get; set; }

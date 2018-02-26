@@ -28,14 +28,23 @@ namespace FinServDataModel
         public virtual DbSet<tblApplicantCommunicationDetail> tblApplicantCommunicationDetails { get; set; }
         public virtual DbSet<tblApplicantEmploymentDetail> tblApplicantEmploymentDetails { get; set; }
         public virtual DbSet<tblApplicantExpenseSheet> tblApplicantExpenseSheets { get; set; }
+        public virtual DbSet<tblApplicantQualificationDetail> tblApplicantQualificationDetails { get; set; }
         public virtual DbSet<tblApplicant> tblApplicants { get; set; }
-        public virtual DbSet<tblApplicantType> tblApplicantTypes { get; set; }
         public virtual DbSet<tblAsset> tblAssets { get; set; }
-        public virtual DbSet<tblAssetType> tblAssetTypes { get; set; }
-        public virtual DbSet<tblExpenseType> tblExpenseTypes { get; set; }
         public virtual DbSet<tblLiability> tblLiabilities { get; set; }
-        public virtual DbSet<tblLiabilityType> tblLiabilityTypes { get; set; }
+        public virtual DbSet<tblLoanApplicationForm> tblLoanApplicationForms { get; set; }
+        public virtual DbSet<tblLoanGuarantor> tblLoanGuarantors { get; set; }
+        public virtual DbSet<tblLoanMaster> tblLoanMasters { get; set; }
+        public virtual DbSet<tblMasterApplicantType> tblMasterApplicantTypes { get; set; }
+        public virtual DbSet<tblMasterAssetType> tblMasterAssetTypes { get; set; }
+        public virtual DbSet<tblMasterExpenseType> tblMasterExpenseTypes { get; set; }
+        public virtual DbSet<tblMasterLiabilityType> tblMasterLiabilityTypes { get; set; }
+        public virtual DbSet<tblMasterPropertyType> tblMasterPropertyTypes { get; set; }
+        public virtual DbSet<tblMasterPurposeOfLoan> tblMasterPurposeOfLoans { get; set; }
+        public virtual DbSet<tblMasterRateTypeOfLoan> tblMasterRateTypeOfLoans { get; set; }
+        public virtual DbSet<tblMasterSalutation> tblMasterSalutations { get; set; }
         public virtual DbSet<tblMasterTypeOfEmployment> tblMasterTypeOfEmployments { get; set; }
+        public virtual DbSet<tblMasterTypeOfLoan> tblMasterTypeOfLoans { get; set; }
         public virtual DbSet<tblMasterTypeOfProfession> tblMasterTypeOfProfessions { get; set; }
         public virtual DbSet<tblMasterTypeOfQualification> tblMasterTypeOfQualifications { get; set; }
         public virtual DbSet<tblMasterTypeOfRelationship> tblMasterTypeOfRelationships { get; set; }

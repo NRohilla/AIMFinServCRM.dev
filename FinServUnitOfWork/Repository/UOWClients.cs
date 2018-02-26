@@ -44,10 +44,10 @@ namespace FinServUnitOfWork.Repository
                             WorkPhoneNo = ApplicantCommDetails != null ? ApplicantCommDetails.WorkPhoneNo : "",
                             EmailID = ApplicantCommDetails != null ? ApplicantCommDetails.EmailID : "",
                             HomePhoneNo = ApplicantCommDetails != null ? ApplicantCommDetails.HomePhoneNo : "",
-                            ApplicantType = new ApplicantType()
+                            ApplicantType = new ApplicantTypeMaster()
                             {
-                                ApplicantTypeID = itemGetAllApplicants.tblApplicantType.ApplicantTypeID,
-                                ApplicantTypeDesc = itemGetAllApplicants.tblApplicantType.ApplicantType
+                                ApplicantTypeID = itemGetAllApplicants.tblMasterApplicantType.ApplicantTypeID,
+                                ApplicantTypeDesc = itemGetAllApplicants.tblMasterApplicantType.ApplicantType
                             },
                         });
                     }
@@ -89,8 +89,8 @@ namespace FinServUnitOfWork.Repository
                         objApplicants.NZResidents = GetApplicantDetails.NZResidents;
                         objApplicants.WorkPhoneNo = GetApplicantDetails.tblApplicantCommunicationDetails.ToList()[0].WorkPhoneNo.Trim();
 
-                        objApplicants.ApplicantType = new ApplicantType();
-                        objApplicants.ApplicantType.ApplicantTypeDesc = GetApplicantDetails.tblApplicantType.ApplicantType;
+                        objApplicants.ApplicantType = new ApplicantTypeMaster();
+                        objApplicants.ApplicantType.ApplicantTypeDesc = GetApplicantDetails.tblMasterApplicantType.ApplicantType;
 
                         objApplicants.ApplicantEmployementDetails = new List<ApplicantEmployementDetails>();
                         foreach (var itemEmployementDetail in GetApplicantDetails.tblApplicantEmploymentDetails)
