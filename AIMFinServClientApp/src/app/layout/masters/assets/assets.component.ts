@@ -67,9 +67,10 @@ export class AssetsComponent implements OnInit {
         debugger;
         this._EditAssetsDetails = false;
         this._AssetsObj = {
-            AssetsType: '',
-            ID: '',
-            IsActive: '',
+            AssetTypeID: "",
+            AutoID: "",
+            Description: "",
+            IsActive: ""
         };
     }
 }
