@@ -946,12 +946,12 @@ namespace FinServUnitOfWork.Repository
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var GetObjEntity = db.tblMasterAssetTypes.Where(p => p.AutoID == AssetsTypeMaster.AutoID).FirstOrDefault();
-                    if (GetObjEntity != null)
-                    {
-                        GetObjEntity.Description = AssetsTypeMaster.Description;
-                        operationResult = db.SaveChanges();
-                    }
+                    tblMasterAssetType Obj = new tblMasterAssetType();
+                    Obj.AssetTypeID = Guid.NewGuid();
+                    Obj.Description = AssetsTypeMaster.Description;
+                    Obj.IsActive = true;
+                    db.tblMasterAssetTypes.Add(Obj);
+                    operationResult = db.SaveChanges();
                 }
                 if (operationResult > 0)
                     return true;
@@ -970,12 +970,11 @@ namespace FinServUnitOfWork.Repository
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var GetEmploymentEntity = db.tblMasterTypeOfEmployments.Where(p => p.ID == EmploymentTypeMaster.ID).FirstOrDefault();
-                    if (GetEmploymentEntity != null)
-                    {
-                        GetEmploymentEntity.EmployementType = EmploymentTypeMaster.EmployementType;
-                        operationResult = db.SaveChanges();
-                    }
+                    tblMasterTypeOfEmployment Obj = new tblMasterTypeOfEmployment();
+                    Obj.EmployementType = EmploymentTypeMaster.EmployementType;
+                    Obj.IsActive = true;
+                    db.tblMasterTypeOfEmployments.Add(Obj);
+                    operationResult = db.SaveChanges();
                 }
                 if (operationResult > 0)
                     return true;
@@ -994,13 +993,13 @@ namespace FinServUnitOfWork.Repository
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var GetObjEntity = db.tblMasterExpenseTypes.Where(p => p.AutoID == ExpenseTypeMaster.AutoID).FirstOrDefault();
-                    if (GetObjEntity != null)
-                    {
-                        GetObjEntity.Description = ExpenseTypeMaster.Description;
-                        GetObjEntity.Frequency = ExpenseTypeMaster.Frequency;
-                        operationResult = db.SaveChanges();
-                    }
+                   tblMasterExpenseType Obj = new tblMasterExpenseType();
+                    Obj.Description = ExpenseTypeMaster.Description;
+                    Obj.ExpenseTypeID = Guid.NewGuid();
+                    Obj.IsActive = true;
+                    db.tblMasterExpenseTypes.Add(Obj);
+
+                    operationResult = db.SaveChanges();
                 }
                 if (operationResult > 0)
                     return true;
@@ -1019,12 +1018,12 @@ namespace FinServUnitOfWork.Repository
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var GetObjEntity = db.tblMasterLiabilityTypes.Where(p => p.AutoID == LiabilityTypeMaster.AutoID).FirstOrDefault();
-                    if (GetObjEntity != null)
-                    {
-                        GetObjEntity.Description = LiabilityTypeMaster.Description;
-                        operationResult = db.SaveChanges();
-                    }
+                    tblMasterLiabilityType Obj = new tblMasterLiabilityType();
+                    Obj.LiabilityTypeID = Guid.NewGuid();
+                    Obj.Description = LiabilityTypeMaster.Description;
+                    Obj.IsActive = true;
+                    db.tblMasterLiabilityTypes.Add(Obj);
+                    operationResult = db.SaveChanges();
                 }
                 if (operationResult > 0)
                     return true;
@@ -1043,12 +1042,11 @@ namespace FinServUnitOfWork.Repository
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var GetObjEntity = db.tblMasterTypeOfLoans.Where(p => p.ID == LoanTypeMaster.ID).FirstOrDefault();
-                    if (GetObjEntity != null)
-                    {
-                        GetObjEntity.LoanType = LoanTypeMaster.LoanType;
-                        operationResult = db.SaveChanges();
-                    }
+                    tblMasterTypeOfLoan Obj = new tblMasterTypeOfLoan();
+                    Obj.LoanType= LoanTypeMaster.LoanType;
+                    Obj.IsActive = true;
+                    db.tblMasterTypeOfLoans.Add(Obj);
+                    operationResult = db.SaveChanges();
                 }
                 if (operationResult > 0)
                     return true;
@@ -1067,12 +1065,11 @@ namespace FinServUnitOfWork.Repository
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var GetObjEntity = db.tblMasterLoanRateTypes.Where(p => p.ID == LoanRateTypeMaster.ID).FirstOrDefault();
-                    if (GetObjEntity != null)
-                    {
-                        GetObjEntity.LoanRateType = LoanRateTypeMaster.LoanRateType;
-                        operationResult = db.SaveChanges();
-                    }
+                    tblMasterLoanRateType Obj = new tblMasterLoanRateType();
+                    Obj.LoanRateType = LoanRateTypeMaster.LoanRateType;
+                    Obj.IsActive = true;
+                    db.tblMasterLoanRateTypes.Add(Obj);
+                    operationResult = db.SaveChanges();
                 }
                 if (operationResult > 0)
                     return true;
@@ -1091,12 +1088,11 @@ namespace FinServUnitOfWork.Repository
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var GetProfessionEntity = db.tblMasterTypeOfProfessions.Where(p => p.ID == ProfessionTypeMaster.ID).FirstOrDefault();
-                    if (GetProfessionEntity != null)
-                    {
-                        GetProfessionEntity.Profession = ProfessionTypeMaster.Profession;
-                        operationResult = db.SaveChanges();
-                    }
+                    tblMasterTypeOfProfession Obj = new tblMasterTypeOfProfession();
+                    Obj.Profession = ProfessionTypeMaster.Profession;
+                    Obj.IsActive = true;
+                    db.tblMasterTypeOfProfessions.Add(Obj);
+                    operationResult = db.SaveChanges();
                 }
                 if (operationResult > 0)
                     return true;
@@ -1115,12 +1111,11 @@ namespace FinServUnitOfWork.Repository
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var GetObjEntity = db.tblMasterPropertyTypes.Where(p => p.ID == PropertyTypeMaster.ID).FirstOrDefault();
-                    if (GetObjEntity != null)
-                    {
-                        GetObjEntity.PropertyType = PropertyTypeMaster.PropertyType;
-                        operationResult = db.SaveChanges();
-                    }
+                    tblMasterPropertyType Obj = new tblMasterPropertyType();
+                    Obj.PropertyType = PropertyTypeMaster.PropertyType;
+                    Obj.IsAvtive = true;
+                    db.tblMasterPropertyTypes.Add(Obj);
+                    operationResult = db.SaveChanges();
                 }
                 if (operationResult > 0)
                     return true;
@@ -1139,12 +1134,11 @@ namespace FinServUnitOfWork.Repository
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var GetObjEntity = db.tblMasterPurposeOfLoans.Where(p => p.ID == PurposeOfLoanMaster.ID).FirstOrDefault();
-                    if (GetObjEntity != null)
-                    {
-                        GetObjEntity.PurposeOfLoan = PurposeOfLoanMaster.PurposeOfLoan;
-                        operationResult = db.SaveChanges();
-                    }
+                    tblMasterPurposeOfLoan Obj = new tblMasterPurposeOfLoan();
+                    Obj.PurposeOfLoan = PurposeOfLoanMaster.PurposeOfLoan;
+                    Obj.IsActive = true;
+                    db.tblMasterPurposeOfLoans.Add(Obj);
+                    operationResult = db.SaveChanges();
                 }
                 if (operationResult > 0)
                     return true;
@@ -1163,12 +1157,11 @@ namespace FinServUnitOfWork.Repository
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var GetQualificationEntity = db.tblMasterTypeOfQualifications.Where(p => p.ID == QualificationTypeMaster.ID).FirstOrDefault();
-                    if (GetQualificationEntity != null)
-                    {
-                        GetQualificationEntity.Qualifications = QualificationTypeMaster.Qualifications;
-                        operationResult = db.SaveChanges();
-                    }
+                    tblMasterTypeOfQualification Obj = new tblMasterTypeOfQualification();
+                    Obj.Qualifications = QualificationTypeMaster.Qualifications;
+                    Obj.IsActive = true;
+                    db.tblMasterTypeOfQualifications.Add(Obj);
+                    operationResult = db.SaveChanges();
                 }
                 if (operationResult > 0)
                     return true;
@@ -1188,12 +1181,11 @@ namespace FinServUnitOfWork.Repository
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var GetRelationshipEntity = db.tblMasterTypeOfRelationships.Where(p => p.ID == RelationshipTypeMaster.ID).FirstOrDefault();
-                    if (GetRelationshipEntity != null)
-                    {
-                        GetRelationshipEntity.RelationshipWithApplicant = RelationshipTypeMaster.RelationshipWithApplicant;
-                        operationResult = db.SaveChanges();
-                    }
+                    tblMasterTypeOfRelationship Obj = new tblMasterTypeOfRelationship();
+                    Obj.RelationshipWithApplicant = RelationshipTypeMaster.RelationshipWithApplicant;
+                    Obj.IsActive = true;
+                    db.tblMasterTypeOfRelationships.Add(Obj);
+                    operationResult = db.SaveChanges();
                 }
                 if (operationResult > 0)
                     return true;
@@ -1212,12 +1204,11 @@ namespace FinServUnitOfWork.Repository
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var GetObjEntity = db.tblMasterSalutations.Where(p => p.ID == SalutationTypeMaster.ID).FirstOrDefault();
-                    if (GetObjEntity != null)
-                    {
-                        GetObjEntity.Salutation = SalutationTypeMaster.Salutation;
-                        operationResult = db.SaveChanges();
-                    }
+                    tblMasterSalutation Obj = new tblMasterSalutation();
+                    Obj.Salutation = SalutationTypeMaster.Salutation;
+                    Obj.IsActive = true;
+                    db.tblMasterSalutations.Add(Obj);
+                    operationResult = db.SaveChanges();
                 }
                 if (operationResult > 0)
                     return true;
