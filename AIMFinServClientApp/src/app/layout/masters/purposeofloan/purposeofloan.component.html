@@ -1,5 +1,5 @@
 ﻿<div [@routerTransition] class="master-forms">
-    <app-page-header [heading]="'Purposeofloan Types'" [icon]="'fa-bar-chart-o'"></app-page-header>
+    <app-page-header [heading]="'Purpose Of Loan Types'" [icon]="'fa-bar-chart-o'"></app-page-header>
     <kendo-grid [kendoGridBinding]="_PurposeofloanTypes"
                 [pageSize]="10"
                 [sortable]="true"
@@ -12,10 +12,10 @@
                  (selectionChange)="GridSelectionChange(PurposeofloanTypes, $event)">
         <kendo-grid-column field="PurposeOfLoan" title="Purpose of Loan">
         </kendo-grid-column>
-        <kendo-grid-column field="IsActive" title="Is Active">
+        <kendo-grid-column field="IsActive" title="Status">
             <ng-template kendoGridCellTemplate let-dataItem>
-                <label *ngIf="dataItem.IsActive">Yes</label>
-                <label *ngIf="!dataItem.IsActive">No</label>
+                <label *ngIf="dataItem.IsActive">Activated</label>
+                <label *ngIf="!dataItem.IsActive">Deactivated</label>
             </ng-template>
         </kendo-grid-column>
 

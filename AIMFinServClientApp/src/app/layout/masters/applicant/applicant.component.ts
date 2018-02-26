@@ -73,8 +73,13 @@ export class ApplicantComponent implements OnInit {
         };
     }
 
-    AddApplicantType()
-    {
+    AddApplicantType() {
         debugger;
+        this._MastersService.AddApplicantEntity(this._ApplicantObj).subscribe(res => this.AddApplicantSuccess(res), res => this.AddApplicantError(res));
     }
+    AddApplicantSuccess(res) {
+        this._MastersService.GetApplicantTypes().subscribe(res => this.GetApplicantSuccess(res), res => this.GetApplicantError(res));
+        this.CancelApplicantType();
+    }
+    AddApplicantError(res) { }
 }

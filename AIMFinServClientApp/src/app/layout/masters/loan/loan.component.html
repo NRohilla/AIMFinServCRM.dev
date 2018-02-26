@@ -12,10 +12,10 @@
                  (selectionChange)="GridSelectionChange(LoanTypes, $event)">
         <kendo-grid-column field="LoanType" title="Loan Type">
         </kendo-grid-column>
-        <kendo-grid-column field="IsActive" title="Is Active">
+        <kendo-grid-column field="IsActive" title="Status">
             <ng-template kendoGridCellTemplate let-dataItem>
-                <label *ngIf="dataItem.IsActive">Yes</label>
-                <label *ngIf="!dataItem.IsActive">No</label>
+                <label *ngIf="dataItem.IsActive">Activated</label>
+                <label *ngIf="!dataItem.IsActive">Deactivated</label>
             </ng-template>
         </kendo-grid-column>
 

@@ -34,4 +34,3 @@ D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debu
 D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\System.Data.SqlServerCe.dll
 D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\EntityFramework.SqlServerCompact.xml
 D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\Newtonsoft.Json.xml
-D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.csprojResolveAssemblyReference.cache

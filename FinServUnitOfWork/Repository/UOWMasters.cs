@@ -9,6 +9,7 @@ namespace FinServUnitOfWork.Repository
 {
     public class UOWMasters : IMasters
     {
+        #region Get
         public List<ApplicantTypeMaster> GetApplicantTypes()
         {
             try
@@ -278,8 +279,10 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
+        #endregion
 
 
+        #region Switch Status
         public bool SwitchApplicantEntityStatus(int ID)
         {
             int operationResult = 0;
@@ -592,7 +595,9 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
+        #endregion
 
+        #region Update entity
         public bool UpdateApplicantEntity(ApplicantTypeMaster ApplicantTypeMaster)
         {
             int operationResult = 0;
@@ -907,5 +912,323 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
+        #endregion
+
+        #region Add entity
+        public bool AddApplicantEntity(ApplicantTypeMaster ApplicantTypeMaster)
+        {
+            int operationResult = 0;
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    tblMasterApplicantType Obj = new tblMasterApplicantType();
+                    Obj.ApplicantType = ApplicantTypeMaster.ApplicantType;
+                    Obj.IsActive = true;
+                    db.tblMasterApplicantTypes.Add(Obj);
+
+                    operationResult = db.SaveChanges();
+                }
+                if (operationResult > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        public bool AddAssetsEntity(AssetsTypeMaster AssetsTypeMaster)
+        {
+            int operationResult = 0;
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetObjEntity = db.tblMasterAssetTypes.Where(p => p.AutoID == AssetsTypeMaster.AutoID).FirstOrDefault();
+                    if (GetObjEntity != null)
+                    {
+                        GetObjEntity.Description = AssetsTypeMaster.Description;
+                        operationResult = db.SaveChanges();
+                    }
+                }
+                if (operationResult > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        public bool AddEmploymentEntity(EmploymentTypeMaster EmploymentTypeMaster)
+        {
+            int operationResult = 0;
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetEmploymentEntity = db.tblMasterTypeOfEmployments.Where(p => p.ID == EmploymentTypeMaster.ID).FirstOrDefault();
+                    if (GetEmploymentEntity != null)
+                    {
+                        GetEmploymentEntity.EmployementType = EmploymentTypeMaster.EmployementType;
+                        operationResult = db.SaveChanges();
+                    }
+                }
+                if (operationResult > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        public bool AddExpenseEntity(ExpenseTypeMaster ExpenseTypeMaster)
+        {
+            int operationResult = 0;
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetObjEntity = db.tblMasterExpenseTypes.Where(p => p.AutoID == ExpenseTypeMaster.AutoID).FirstOrDefault();
+                    if (GetObjEntity != null)
+                    {
+                        GetObjEntity.Description = ExpenseTypeMaster.Description;
+                        GetObjEntity.Frequency = ExpenseTypeMaster.Frequency;
+                        operationResult = db.SaveChanges();
+                    }
+                }
+                if (operationResult > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        public bool AddLiabilityEntity(LiabilityTypeMaster LiabilityTypeMaster)
+        {
+            int operationResult = 0;
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetObjEntity = db.tblMasterLiabilityTypes.Where(p => p.AutoID == LiabilityTypeMaster.AutoID).FirstOrDefault();
+                    if (GetObjEntity != null)
+                    {
+                        GetObjEntity.Description = LiabilityTypeMaster.Description;
+                        operationResult = db.SaveChanges();
+                    }
+                }
+                if (operationResult > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        public bool AddLoanEntity(LoanTypeMaster LoanTypeMaster)
+        {
+            int operationResult = 0;
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetObjEntity = db.tblMasterTypeOfLoans.Where(p => p.ID == LoanTypeMaster.ID).FirstOrDefault();
+                    if (GetObjEntity != null)
+                    {
+                        GetObjEntity.LoanType = LoanTypeMaster.LoanType;
+                        operationResult = db.SaveChanges();
+                    }
+                }
+                if (operationResult > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        public bool AddLoanrateEntity(LoanRateTypeMaster LoanRateTypeMaster)
+        {
+            int operationResult = 0;
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetObjEntity = db.tblMasterLoanRateTypes.Where(p => p.ID == LoanRateTypeMaster.ID).FirstOrDefault();
+                    if (GetObjEntity != null)
+                    {
+                        GetObjEntity.LoanRateType = LoanRateTypeMaster.LoanRateType;
+                        operationResult = db.SaveChanges();
+                    }
+                }
+                if (operationResult > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        public bool AddProffessionEntity(ProfessionTypeMaster ProfessionTypeMaster)
+        {
+            int operationResult = 0;
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetProfessionEntity = db.tblMasterTypeOfProfessions.Where(p => p.ID == ProfessionTypeMaster.ID).FirstOrDefault();
+                    if (GetProfessionEntity != null)
+                    {
+                        GetProfessionEntity.Profession = ProfessionTypeMaster.Profession;
+                        operationResult = db.SaveChanges();
+                    }
+                }
+                if (operationResult > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        public bool AddPropertyEntity(PropertyTypeMaster PropertyTypeMaster)
+        {
+            int operationResult = 0;
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetObjEntity = db.tblMasterPropertyTypes.Where(p => p.ID == PropertyTypeMaster.ID).FirstOrDefault();
+                    if (GetObjEntity != null)
+                    {
+                        GetObjEntity.PropertyType = PropertyTypeMaster.PropertyType;
+                        operationResult = db.SaveChanges();
+                    }
+                }
+                if (operationResult > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        public bool AddPurposeofloanEntity(PurposeOfLoanMaster PurposeOfLoanMaster)
+        {
+            int operationResult = 0;
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetObjEntity = db.tblMasterPurposeOfLoans.Where(p => p.ID == PurposeOfLoanMaster.ID).FirstOrDefault();
+                    if (GetObjEntity != null)
+                    {
+                        GetObjEntity.PurposeOfLoan = PurposeOfLoanMaster.PurposeOfLoan;
+                        operationResult = db.SaveChanges();
+                    }
+                }
+                if (operationResult > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        public bool AddQualificationEntity(QualificationTypeMaster QualificationTypeMaster)
+        {
+            int operationResult = 0;
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetQualificationEntity = db.tblMasterTypeOfQualifications.Where(p => p.ID == QualificationTypeMaster.ID).FirstOrDefault();
+                    if (GetQualificationEntity != null)
+                    {
+                        GetQualificationEntity.Qualifications = QualificationTypeMaster.Qualifications;
+                        operationResult = db.SaveChanges();
+                    }
+                }
+                if (operationResult > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+        }
+        public bool AddRelationshipEntity(RelationshipTypeMaster RelationshipTypeMaster)
+        {
+            int operationResult = 0;
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetRelationshipEntity = db.tblMasterTypeOfRelationships.Where(p => p.ID == RelationshipTypeMaster.ID).FirstOrDefault();
+                    if (GetRelationshipEntity != null)
+                    {
+                        GetRelationshipEntity.RelationshipWithApplicant = RelationshipTypeMaster.RelationshipWithApplicant;
+                        operationResult = db.SaveChanges();
+                    }
+                }
+                if (operationResult > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        public bool AddSalutationEntity(SalutationTypeMaster SalutationTypeMaster)
+        {
+            int operationResult = 0;
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetObjEntity = db.tblMasterSalutations.Where(p => p.ID == SalutationTypeMaster.ID).FirstOrDefault();
+                    if (GetObjEntity != null)
+                    {
+                        GetObjEntity.Salutation = SalutationTypeMaster.Salutation;
+                        operationResult = db.SaveChanges();
+                    }
+                }
+                if (operationResult > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        #endregion
     }
 }

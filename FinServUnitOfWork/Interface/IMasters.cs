@@ -50,5 +50,21 @@ namespace FinServUnitOfWork.Interface
         bool UpdateRelationshipEntity(RelationshipTypeMaster RelationshipTypeMaster);
         bool UpdateSalutationEntity(SalutationTypeMaster SalutationTypeMaster);
 
+
+        //add
+        bool AddApplicantEntity(ApplicantTypeMaster ApplicantTypeMaster);
+        bool AddAssetsEntity(AssetsTypeMaster AssetsTypeMaster);
+        bool AddEmploymentEntity(EmploymentTypeMaster EmploymentTypeMaster);
+        bool AddExpenseEntity(ExpenseTypeMaster ExpenseTypeMaster);
+        bool AddLiabilityEntity(LiabilityTypeMaster LiabilityTypeMaster);
+        bool AddLoanEntity(LoanTypeMaster LoanTypeMaster);
+        bool AddLoanrateEntity(LoanRateTypeMaster LoanRateTypeMaster);
+        bool AddProffessionEntity(ProfessionTypeMaster ProfessionTypeMaster);
+        bool AddPropertyEntity(PropertyTypeMaster PropertyTypeMaster);
+        bool AddPurposeofloanEntity(PurposeOfLoanMaster PurposeOfLoanMaster);
+        bool AddQualificationEntity(QualificationTypeMaster QualificationTypeMaster);
+        bool AddRelationshipEntity(RelationshipTypeMaster RelationshipTypeMaster);
+        bool AddSalutationEntity(SalutationTypeMaster SalutationTypeMaster);
+
     }
 }

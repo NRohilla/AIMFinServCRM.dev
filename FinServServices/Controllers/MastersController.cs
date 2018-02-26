@@ -11,6 +11,9 @@ namespace FinServServices.Controllers
     {
         IMasters Repository = new UOWMasters();
 
+        
+        #region Get
+       
         [HttpGet]
         [Route("GetApplicantTypes")]
         public List<ApplicantTypeMaster> GetApplicantTypes()
@@ -101,12 +104,10 @@ namespace FinServServices.Controllers
         {
             return Repository.GetSalutationTypes();
         }
+        #endregion
 
 
-
-
-
-
+        #region Switch Status
         [HttpGet]
         [Route("SwitchApplicantEntityStatus")]
         public bool SwitchApplicantEntityStatus(int ID)
@@ -198,11 +199,10 @@ namespace FinServServices.Controllers
         {
             return Repository.SwitchSalutationEntityStatus(Convert.ToInt32(ID));
         }
+        #endregion
 
 
-
-
-
+        #region Update entity
         [HttpPost]
         [Route("UpdateApplicantEntity")]
         public bool UpdateApplicantEntity(ApplicantTypeMaster ApplicantTypeMaster)
@@ -293,5 +293,101 @@ namespace FinServServices.Controllers
         {
             return Repository.UpdateSalutationEntity(SalutationTypeMaster);
         }
+        #endregion
+
+
+        #region Add Entity
+        [HttpPost]
+        [Route("AddApplicantEntity")]
+        public bool AddApplicantEntity(ApplicantTypeMaster ApplicantTypeMaster)
+        {
+            return Repository.AddApplicantEntity(ApplicantTypeMaster);
+        }
+
+        [HttpPost]
+        [Route("AddAssetsEntity")]
+        public bool AddAssetsEntity(AssetsTypeMaster AssetsTypeMaster)
+        {
+            return Repository.AddAssetsEntity(AssetsTypeMaster);
+        }
+
+        [HttpPost]
+        [Route("AddEmploymentEntity")]
+        public bool AddEmploymentEntity(EmploymentTypeMaster EmploymentTypeMaster)
+        {
+            return Repository.AddEmploymentEntity(EmploymentTypeMaster);
+        }
+
+        [HttpPost]
+        [Route("AddExpenseEntity")]
+        public bool AddExpenseEntity(ExpenseTypeMaster ExpenseTypeMaster)
+        {
+            return Repository.AddExpenseEntity(ExpenseTypeMaster);
+        }
+
+        [HttpPost]
+        [Route("AddLiabilityEntity")]
+        public bool AddLiabilityEntity(LiabilityTypeMaster LiabilityTypeMaster)
+        {
+            return Repository.AddLiabilityEntity(LiabilityTypeMaster);
+        }
+
+        [HttpPost]
+        [Route("AddLoanEntity")]
+        public bool AddLoanEntity(LoanTypeMaster LoanTypeMaster)
+        {
+            return Repository.AddLoanEntity(LoanTypeMaster);
+        }
+
+        [HttpPost]
+        [Route("AddLoanrateEntity")]
+        public bool AddLoanrateEntity(LoanRateTypeMaster LoanRateTypeMaster)
+        {
+            return Repository.AddLoanrateEntity(LoanRateTypeMaster);
+        }
+
+        [HttpPost]
+        [Route("AddProffessionEntity")]
+        public bool AddProffessionEntity(ProfessionTypeMaster ProfessionTypeMaster)
+        {
+            return Repository.AddProffessionEntity(ProfessionTypeMaster);
+        }
+
+        [HttpPost]
+        [Route("AddPropertyEntity")]
+        public bool AddPropertyEntity(PropertyTypeMaster PropertyTypeMaster)
+        {
+            return Repository.AddPropertyEntity(PropertyTypeMaster);
+        }
+
+        [HttpPost]
+        [Route("AddPurposeofloanEntity")]
+        public bool AddPurposeofloanEntity(PurposeOfLoanMaster PurposeOfLoanMaster)
+        {
+            return Repository.AddPurposeofloanEntity(PurposeOfLoanMaster);
+        }
+
+        [HttpPost]
+        [Route("AddQualificationEntity")]
+        public bool AddQualificationEntity(QualificationTypeMaster QualificationTypeMaster)
+        {
+            return Repository.AddQualificationEntity(QualificationTypeMaster);
+        }
+
+        [HttpPost]
+        [Route("AddRelationshipEntity")]
+        public bool AddRelationshipEntity(RelationshipTypeMaster RelationshipTypeMaster)
+        {
+            return Repository.AddRelationshipEntity(RelationshipTypeMaster);
+        }
+
+        [HttpPost]
+        [Route("AddSalutationEntity")]
+        public bool AddSalutationEntity(SalutationTypeMaster SalutationTypeMaster)
+        {
+            return Repository.AddSalutationEntity(SalutationTypeMaster);
+        }
+
+        #endregion
     }
 }

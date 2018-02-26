@@ -175,4 +175,57 @@ export class MastersService {
     UpdateSalutationEntity(SalutationTypeMaster) {
         return this._http.post(this.baseurl + "Masters/UpdateSalutationEntity", SalutationTypeMaster, this.options);
     }
+
+    //add types
+    AddApplicantEntity(ApplicantTypeMaster) {
+        return this._http.post(this.baseurl + "Masters/AddApplicantEntity", ApplicantTypeMaster, this.options);
+    }
+
+    AddAssetsEntity(AssetsTypeMaster) {
+        return this._http.post(this.baseurl + "Masters/AddAssetsEntity", AssetsTypeMaster, this.options);
+    }
+
+    AddEmploymentEntity(EmploymentTypeMaster) {
+        return this._http.post(this.baseurl + "Masters/AddEmploymentEntity", EmploymentTypeMaster, this.options);
+    }
+
+    AddExpenseEntity(ExpenseTypeMaster) {
+        return this._http.post(this.baseurl + "Masters/AddExpenseEntity", ExpenseTypeMaster, this.options);
+    }
+
+    AddLiabilityEntity(LiabilityTypeMaster) {
+        return this._http.post(this.baseurl + "Masters/AddLiabilityEntity", LiabilityTypeMaster, this.options);
+    }
+
+    AddLoanEntity(LoanTypeMaster) {
+        return this._http.post(this.baseurl + "Masters/AddLoanEntity", LoanTypeMaster, this.options);
+    }
+
+    AddLoanrateEntity(LoanrateTypeMaster) {
+        return this._http.post(this.baseurl + "Masters/AddLoanrateEntity", LoanrateTypeMaster, this.options);
+    }
+
+    AddProffessionEntity(ProfessionTypeMaster) {
+        return this._http.post(this.baseurl + "Masters/AddProffessionEntity", ProfessionTypeMaster, this.options);
+    }
+
+    AddPropertyEntity(PropertyTypeMaster) {
+        return this._http.post(this.baseurl + "Masters/AddPropertyEntity", PropertyTypeMaster, this.options);
+    }
+
+    AddPurposeofloanEntity(PurposeofloanTypeMaster) {
+        return this._http.post(this.baseurl + "Masters/AddPurposeofloanEntity", PurposeofloanTypeMaster, this.options);
+    }
+
+    AddQualificationEntity(QualificationTypeMaster) {
+        return this._http.post(this.baseurl + "Masters/AddQualificationEntity", QualificationTypeMaster, this.options);
+    }
+
+    AddRelationshipEntity(RelationshipTypeMaster) {
+        return this._http.post(this.baseurl + "Masters/AddRelationshipEntity", RelationshipTypeMaster, this.options);
+    }
+
+    AddSalutationEntity(SalutationTypeMaster) {
+        return this._http.post(this.baseurl + "Masters/AddSalutationEntity", SalutationTypeMaster, this.options);
+    }
 }
