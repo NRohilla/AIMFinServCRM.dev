@@ -9,6 +9,7 @@ namespace FinServBussinessEntities
     public class ApplicantTypeMaster
     {
         public int ApplicantTypeID { get; set; }
-        public string ApplicantTypeDesc { get; set; }
+        public string ApplicantType { get; set; }
+        public bool IsActive { get; set; }
     }
 }

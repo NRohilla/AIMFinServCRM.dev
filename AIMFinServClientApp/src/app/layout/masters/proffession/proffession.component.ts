@@ -33,6 +33,7 @@ export class ProffessionComponent implements OnInit {
         this._MastersService.GetProfessionTypes().subscribe(res => this.GetProfessionSuccess(res), res => this.GetProfessionError(res));
     }
     GetProfessionSuccess(res) {
+        debugger;
         this._ProfessionTypes = JSON.parse(res._body);
     }
     GetProfessionError(res) { }

@@ -35,6 +35,7 @@ export class RelationshipComponent implements OnInit {
         this._MastersService.GetRelationshipTypes().subscribe(res => this.GetRelationshipSuccess(res), res => this.GetRelationshipError(res));
     }
     GetRelationshipSuccess(res) {
+        debugger;
         this._RelationshipTypes = JSON.parse(res._body);
         
     }

@@ -47,7 +47,7 @@ namespace FinServUnitOfWork.Repository
                             ApplicantType = new ApplicantTypeMaster()
                             {
                                 ApplicantTypeID = itemGetAllApplicants.tblMasterApplicantType.ApplicantTypeID,
-                                ApplicantTypeDesc = itemGetAllApplicants.tblMasterApplicantType.ApplicantType
+                                ApplicantType = itemGetAllApplicants.tblMasterApplicantType.ApplicantType
                             },
                         });
                     }
@@ -90,7 +90,7 @@ namespace FinServUnitOfWork.Repository
                         objApplicants.WorkPhoneNo = GetApplicantDetails.tblApplicantCommunicationDetails.ToList()[0].WorkPhoneNo.Trim();
 
                         objApplicants.ApplicantType = new ApplicantTypeMaster();
-                        objApplicants.ApplicantType.ApplicantTypeDesc = GetApplicantDetails.tblMasterApplicantType.ApplicantType;
+                        objApplicants.ApplicantType.ApplicantType = GetApplicantDetails.tblMasterApplicantType.ApplicantType;
 
                         objApplicants.ApplicantEmployementDetails = new List<ApplicantEmployementDetails>();
                         foreach (var itemEmployementDetail in GetApplicantDetails.tblApplicantEmploymentDetails)

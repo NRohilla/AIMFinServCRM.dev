@@ -251,6 +251,14 @@
           <Property Name="Description" Type="nvarchar" MaxLength="100" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="tblMasterLoanRateType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoanRateType" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="tblMasterPropertyType">
           <Key>
             <PropertyRef Name="ID" />
@@ -265,14 +273,6 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PurposeOfLoan" Type="nvarchar" MaxLength="100" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tblMasterRateTypeOfLoan">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LoanRateType" Type="nvarchar" MaxLength="100" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="tblMasterSalutation">
@@ -476,9 +476,9 @@
           <EntitySet Name="tblMasterAssetTypes" EntityType="Self.tblMasterAssetTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMasterExpenseType" EntityType="Self.tblMasterExpenseType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMasterLiabilityTypes" EntityType="Self.tblMasterLiabilityTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMasterLoanRateType" EntityType="Self.tblMasterLoanRateType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMasterPropertyType" EntityType="Self.tblMasterPropertyType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMasterPurposeOfLoan" EntityType="Self.tblMasterPurposeOfLoan" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblMasterRateTypeOfLoan" EntityType="Self.tblMasterRateTypeOfLoan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMasterSalutation" EntityType="Self.tblMasterSalutation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMasterTypeOfEmployment" EntityType="Self.tblMasterTypeOfEmployment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMasterTypeOfLoan" EntityType="Self.tblMasterTypeOfLoan" Schema="dbo" store:Type="Tables" />
@@ -536,9 +536,9 @@
           <EntitySet Name="tblMasterAssetTypes" EntityType="AIMFinServDBModel.tblMasterAssetType" />
           <EntitySet Name="tblMasterExpenseTypes" EntityType="AIMFinServDBModel.tblMasterExpenseType" />
           <EntitySet Name="tblMasterLiabilityTypes" EntityType="AIMFinServDBModel.tblMasterLiabilityType" />
+          <EntitySet Name="tblMasterLoanRateTypes" EntityType="AIMFinServDBModel.tblMasterLoanRateType" />
           <EntitySet Name="tblMasterPropertyTypes" EntityType="AIMFinServDBModel.tblMasterPropertyType" />
           <EntitySet Name="tblMasterPurposeOfLoans" EntityType="AIMFinServDBModel.tblMasterPurposeOfLoan" />
-          <EntitySet Name="tblMasterRateTypeOfLoans" EntityType="AIMFinServDBModel.tblMasterRateTypeOfLoan" />
           <EntitySet Name="tblMasterSalutations" EntityType="AIMFinServDBModel.tblMasterSalutation" />
           <EntitySet Name="tblMasterTypeOfEmployments" EntityType="AIMFinServDBModel.tblMasterTypeOfEmployment" />
           <EntitySet Name="tblMasterTypeOfLoans" EntityType="AIMFinServDBModel.tblMasterTypeOfLoan" />
@@ -837,6 +837,14 @@
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="tblLiabilities" Relationship="AIMFinServDBModel.FK_tblLiabilities_tblLiabilityTypes" FromRole="tblMasterLiabilityType" ToRole="tblLiability" />
         </EntityType>
+        <EntityType Name="tblMasterLoanRateType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoanRateType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
         <EntityType Name="tblMasterPropertyType">
           <Key>
             <PropertyRef Name="ID" />
@@ -851,14 +859,6 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PurposeOfLoan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tblMasterRateTypeOfLoan">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LoanRateType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="tblMasterSalutation">
@@ -1313,6 +1313,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblMasterLoanRateTypes">
+            <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterLoanRateType">
+              <MappingFragment StoreEntitySet="tblMasterLoanRateType">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LoanRateType" ColumnName="LoanRateType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblMasterPropertyTypes">
             <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterPropertyType">
               <MappingFragment StoreEntitySet="tblMasterPropertyType">
@@ -1327,15 +1336,6 @@
               <MappingFragment StoreEntitySet="tblMasterPurposeOfLoan">
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="PurposeOfLoan" ColumnName="PurposeOfLoan" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblMasterRateTypeOfLoans">
-            <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterRateTypeOfLoan">
-              <MappingFragment StoreEntitySet="tblMasterRateTypeOfLoan">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="LoanRateType" ColumnName="LoanRateType" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

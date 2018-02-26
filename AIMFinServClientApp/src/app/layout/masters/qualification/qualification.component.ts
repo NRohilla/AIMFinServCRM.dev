@@ -35,6 +35,7 @@ export class QualificationComponent implements OnInit {
         this._MastersService.GetQualificationTypes().subscribe(res => this.GetQualificationSuccess(res), res => this.GetQualificationError(res));
     }
     GetQualificationSuccess(res) {
+        debugger;
         this._QualificationTypes = JSON.parse(res._body);
     }
     GetQualificationError(res) { }

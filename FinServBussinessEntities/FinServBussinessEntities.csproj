@@ -47,11 +47,19 @@
     <Compile Include="ApplicantTypeMaster.cs" />
     <Compile Include="ApplicantEmployementDetails.cs" />
     <Compile Include="Applicants.cs" />
+    <Compile Include="AssetsTypeMaster.cs" />
     <Compile Include="EmploymentTypeMaster.cs" />
+    <Compile Include="ExpenseTypeMaster.cs" />
+    <Compile Include="LiabilityTypeMaster.cs" />
+    <Compile Include="LoanRateTypeMaster.cs" />
+    <Compile Include="LoanTypeMaster.cs" />
     <Compile Include="ProfessionTypeMaster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyTypeMaster.cs" />
+    <Compile Include="PurposeOfLoanMaster.cs" />
     <Compile Include="QualificationTypeMaster.cs" />
     <Compile Include="RelationshipTypeMaster.cs" />
+    <Compile Include="SalutationTypeMaster.cs" />
     <Compile Include="UserOps.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

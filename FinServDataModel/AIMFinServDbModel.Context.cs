@@ -39,9 +39,9 @@ namespace FinServDataModel
         public virtual DbSet<tblMasterAssetType> tblMasterAssetTypes { get; set; }
         public virtual DbSet<tblMasterExpenseType> tblMasterExpenseTypes { get; set; }
         public virtual DbSet<tblMasterLiabilityType> tblMasterLiabilityTypes { get; set; }
+        public virtual DbSet<tblMasterLoanRateType> tblMasterLoanRateTypes { get; set; }
         public virtual DbSet<tblMasterPropertyType> tblMasterPropertyTypes { get; set; }
         public virtual DbSet<tblMasterPurposeOfLoan> tblMasterPurposeOfLoans { get; set; }
-        public virtual DbSet<tblMasterRateTypeOfLoan> tblMasterRateTypeOfLoans { get; set; }
         public virtual DbSet<tblMasterSalutation> tblMasterSalutations { get; set; }
         public virtual DbSet<tblMasterTypeOfEmployment> tblMasterTypeOfEmployments { get; set; }
         public virtual DbSet<tblMasterTypeOfLoan> tblMasterTypeOfLoans { get; set; }

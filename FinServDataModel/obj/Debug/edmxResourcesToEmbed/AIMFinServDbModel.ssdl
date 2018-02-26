@@ -246,6 +246,14 @@
     <Property Name="Description" Type="nvarchar" MaxLength="100" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="tblMasterLoanRateType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LoanRateType" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
   <EntityType Name="tblMasterPropertyType">
     <Key>
       <PropertyRef Name="ID" />
@@ -260,14 +268,6 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PurposeOfLoan" Type="nvarchar" MaxLength="100" />
-    <Property Name="IsActive" Type="bit" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tblMasterRateTypeOfLoan">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="LoanRateType" Type="nvarchar" MaxLength="100" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="tblMasterSalutation">
@@ -471,9 +471,9 @@
     <EntitySet Name="tblMasterAssetTypes" EntityType="Self.tblMasterAssetTypes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblMasterExpenseType" EntityType="Self.tblMasterExpenseType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblMasterLiabilityTypes" EntityType="Self.tblMasterLiabilityTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMasterLoanRateType" EntityType="Self.tblMasterLoanRateType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblMasterPropertyType" EntityType="Self.tblMasterPropertyType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblMasterPurposeOfLoan" EntityType="Self.tblMasterPurposeOfLoan" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tblMasterRateTypeOfLoan" EntityType="Self.tblMasterRateTypeOfLoan" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblMasterSalutation" EntityType="Self.tblMasterSalutation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblMasterTypeOfEmployment" EntityType="Self.tblMasterTypeOfEmployment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblMasterTypeOfLoan" EntityType="Self.tblMasterTypeOfLoan" Schema="dbo" store:Type="Tables" />

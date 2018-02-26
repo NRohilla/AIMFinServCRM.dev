@@ -10,15 +10,15 @@
                 selectable="true"
                 #AssetsTypes
                 (selectionChange)="GridSelectionChange(AssetsTypes, $event)">
-        <kendo-grid-column field="AssetsType" title="Assets Type">
+        <kendo-grid-column field="Description" title="Assets Type">
         </kendo-grid-column>
         <kendo-grid-column field="IsActive" title="Is Active">
         </kendo-grid-column>
 
         <kendo-grid-command-column>
             <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                <button class="btn btn-lg btn-link" type="button" (click)="SwitchStatus(dataItem.ID)" *ngIf="dataItem.IsActive">Deactivate</button>
-                <button class="btn btn-lg btn-link" type="button" (click)="SwitchStatus(dataItem.ID)" *ngIf="!dataItem.IsActive">Activate</button>
+                <button class="btn btn-lg btn-link" type="button" (click)="SwitchStatus(dataItem.AutoID)" *ngIf="dataItem.IsActive">Deactivate</button>
+                <button class="btn btn-lg btn-link" type="button" (click)="SwitchStatus(dataItem.AutoID)" *ngIf="!dataItem.IsActive">Activate</button>
             </ng-template>
         </kendo-grid-command-column>
     </kendo-grid>
@@ -34,7 +34,7 @@
                                 <div class="field_label">Assets Type</div>
                                 <div class="field_info">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Assets type" value="{{_AssetsObj.AssetsType}}" [(ngModel)]="_AssetsObj.AssetsType" #AssetsType>
+                                        <input matInput placeholder="Assets type" value="{{_AssetsObj.Description}}" [(ngModel)]="_AssetsObj.Description" #Description>
                                     </mat-form-field>
                                 </div>
                             </div>

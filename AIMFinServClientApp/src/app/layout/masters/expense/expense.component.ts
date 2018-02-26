@@ -17,15 +17,19 @@ import {MastersService} from '../../../services/app.masters.service';
 export class ExpenseComponent implements OnInit {
     public _EditExpenseDetails: boolean = false;
     public _ExpenseTypes: {
-        ExpenseType: '',
-        ID: '',
-        IsActive: '',
+        AutoID: "",
+        Description: "",
+        ExpenseTypeID: "",
+        Frequency: "",
+        IsActive: ""
     };
 
     public _ExpenseObj: {
-        ExpenseType: '',
-        ID: '',
-        IsActive: '',
+        AutoID: "",
+        Description: "",
+        ExpenseTypeID: "",
+        Frequency: "",
+        IsActive: ""
     };
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _MastersService: MastersService) { }
@@ -34,6 +38,7 @@ export class ExpenseComponent implements OnInit {
         this._MastersService.GetExpenseTypes().subscribe(res => this.GetExpenseSuccess(res), res => this.GetExpenseError(res));
     }
     GetExpenseSuccess(res) {
+        debugger;
         this._ExpenseTypes = JSON.parse(res._body);
     }
     GetExpenseError(res) { }

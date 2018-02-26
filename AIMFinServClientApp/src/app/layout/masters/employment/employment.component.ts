@@ -34,6 +34,7 @@ export class EmploymentComponent implements OnInit {
         this._MastersService.GetEmploymentTypes().subscribe(res => this.GetEmploymentSuccess(res), res => this.GetEmploymentError(res));
     }
     GetEmploymentSuccess(res) {
+        debugger;
         this._EmploymentTypes = JSON.parse(res._body);
     }
     GetEmploymentError(res) { }

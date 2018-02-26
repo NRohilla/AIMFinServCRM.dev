@@ -109,13 +109,13 @@
     <Compile Include="tblMasterLiabilityType.cs">
       <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="tblMasterLoanRateType.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblMasterPropertyType.cs">
       <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMasterPurposeOfLoan.cs">
-      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblMasterRateTypeOfLoan.cs">
       <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMasterSalutation.cs">

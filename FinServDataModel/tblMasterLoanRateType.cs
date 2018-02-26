@@ -12,7 +12,7 @@ namespace FinServDataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class tblMasterRateTypeOfLoan
+    public partial class tblMasterLoanRateType
     {
         public int ID { get; set; }
         public string LoanRateType { get; set; }

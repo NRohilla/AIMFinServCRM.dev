@@ -17,15 +17,17 @@ import {MastersService} from '../../../services/app.masters.service';
 export class AssetsComponent implements OnInit {
     public _EditAssetsDetails: boolean = false;
     public _AssetsTypes: {
-        AssetsType: '',
-        ID: '',
-        IsActive: '',
+        AssetTypeID: "",
+        AutoID: "",
+        Description: "",
+        IsActive: ""
     };
 
     public _AssetsObj: {
-        AssetsType: '',
-        ID: '',
-        IsActive: '',
+        AssetTypeID: "",
+        AutoID: "",
+        Description: "",
+        IsActive: ""
     };
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _MastersService: MastersService) { }
@@ -34,6 +36,7 @@ export class AssetsComponent implements OnInit {
         this._MastersService.GetAssetsTypes().subscribe(res => this.GetAssetsSuccess(res), res => this.GetAssetsError(res));
     }
     GetAssetsSuccess(res) {
+        debugger;
         this._AssetsTypes = JSON.parse(res._body);
     }
     GetAssetsError(res) { }

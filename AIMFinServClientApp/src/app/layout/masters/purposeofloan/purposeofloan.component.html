@@ -1,0 +1,55 @@
+﻿<div [@routerTransition] class="master-forms">
+    <app-page-header [heading]="'Purposeofloan Types'" [icon]="'fa-bar-chart-o'"></app-page-header>
+    <kendo-grid [kendoGridBinding]="_PurposeofloanTypes"
+                [pageSize]="10"
+                [sortable]="true"
+                [pageable]="true"
+                [scrollable]="true"
+                [filterable]="true"
+                [groupable]="true"
+                selectable="true"
+                 #PurposeofloanTypes
+                 (selectionChange)="GridSelectionChange(PurposeofloanTypes, $event)">
+        <kendo-grid-column field="PurposeofloanWithApplicant" title="Purposeofloan With Applicant">
+        </kendo-grid-column>
+        <kendo-grid-column field="IsActive" title="Is Active">
+            <!--<ng-template>
+                <i class="fa fa-check-square-o text-success"  data-unicode="f046"></i>
+            </ng-template>-->
+
+        </kendo-grid-column>
+
+        <kendo-grid-command-column>
+            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                <button class="btn btn-sm btn-link" type="button" (click)="SwitchStatus(dataItem.ID)" *ngIf="dataItem.IsActive"><i class="fa fa-ban text-danger"></i> Deactivate</button>
+                <button class="btn btn-sm btn-link" type="button" (click)="SwitchStatus(dataItem.ID)" *ngIf="!dataItem.IsActive"><i class="fa fa-check-square-o text-success"></i> Activate</button>
+            </ng-template>
+        </kendo-grid-command-column>
+    </kendo-grid>
+
+    <div id="exTab1" *ngIf="_EditPurposeofloanDetails">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section_box">
+                    <div class="box_title">Edit Purposeofloan Type</div>
+                    <div class="tab-content clearfix">
+                        <div class="tab-pane active">
+                            <div class="field_set">
+                                <div class="field_label">Purposeofloan Type</div>
+                                <div class="field_info">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Purposeofloan type" value="{{_PurposeofloanObj.PurposeofloanWithApplicant}}" [(ngModel)]="_PurposeofloanObj.PurposeofloanWithApplicant" #PurposeofloanWithApplicant>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="float-right">
+                            <input type="button" value="Update" (click)="UpdatePurposeofloanType()" class="btn btn-success" />
+                            <input type="button" value="Cancel" (click)="CancelPurposeofloanType()" class="btn btn-secondary" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

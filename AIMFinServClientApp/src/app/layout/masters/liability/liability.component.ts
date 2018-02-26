@@ -17,15 +17,18 @@ import {MastersService} from '../../../services/app.masters.service';
 export class LiabilityComponent implements OnInit {
     public _EditLiabilityDetails: boolean = false;
     public _LiabilityTypes: {
-        LiabilityType: '',
-        ID: '',
-        IsActive: '',
+        AutoID        :"",
+        Description        :        "",
+        IsActive        :"",
+        LiabilityTypeID:""
+
     };
 
     public _LiabilityObj: {
-        LiabilityType: '',
-        ID: '',
-        IsActive: '',
+        AutoID        :"",
+        Description        :        "",
+        IsActive        :"",
+        LiabilityTypeID:""
     };
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _MastersService: MastersService) { }
@@ -34,6 +37,7 @@ export class LiabilityComponent implements OnInit {
         this._MastersService.GetLiabilityTypes().subscribe(res => this.GetLiabilitySuccess(res), res => this.GetLiabilityError(res));
     }
     GetLiabilitySuccess(res) {
+        debugger;
         this._LiabilityTypes = JSON.parse(res._body);
     }
     GetLiabilityError(res) { }

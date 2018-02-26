@@ -16,6 +16,11 @@
             <li class="nested" [class.expand]="showMenu === 'pages'">
                 <ul class="submenu">
                     <li>
+                        <a [routerLink]="['/master-applicant']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Applicant' | translate }}
+                        </a>
+                    </li>
+                    <li>
                         <a [routerLink]="['/master-assets']" [routerLinkActive]="['router-link-active']" class="list-group-item">
                             <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Assets' | translate }}
                         </a>
@@ -36,8 +41,33 @@
                         </a>
                     </li>
                     <li>
+                        <a [routerLink]="['/master-loan']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Loan' | translate }}
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/master-loanrate']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Loan Rate' | translate }}
+                        </a>
+                    </li>
+                    <li>
                         <a [routerLink]="['/master-proffession']" [routerLinkActive]="['router-link-active']" class="list-group-item">
                             <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Proffession' | translate }}
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/master-property']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Property' | translate }}
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/master-purposeofloan']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Purpose of Loan' | translate }}
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/master-qualification']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Qualification' | translate }}
                         </a>
                     </li>
                     <li>
@@ -46,11 +76,10 @@
                         </a>
                     </li>
                     <li>
-                        <a [routerLink]="['/master-qualification']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                            <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Qualification' | translate }}
+                        <a [routerLink]="['/master-salutation']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Salutation' | translate }}
                         </a>
                     </li>
-                    
                 </ul>
             </li>
         </div>

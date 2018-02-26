@@ -261,6 +261,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tblMasterLoanRateTypes">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterLoanRateType">
+        <MappingFragment StoreEntitySet="tblMasterLoanRateType">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="LoanRateType" ColumnName="LoanRateType" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tblMasterPropertyTypes">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterPropertyType">
         <MappingFragment StoreEntitySet="tblMasterPropertyType">
@@ -275,15 +284,6 @@
         <MappingFragment StoreEntitySet="tblMasterPurposeOfLoan">
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="PurposeOfLoan" ColumnName="PurposeOfLoan" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tblMasterRateTypeOfLoans">
-      <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterRateTypeOfLoan">
-        <MappingFragment StoreEntitySet="tblMasterRateTypeOfLoan">
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="LoanRateType" ColumnName="LoanRateType" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

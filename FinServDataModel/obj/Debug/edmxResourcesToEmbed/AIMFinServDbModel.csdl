@@ -15,9 +15,9 @@
     <EntitySet Name="tblMasterAssetTypes" EntityType="AIMFinServDBModel.tblMasterAssetType" />
     <EntitySet Name="tblMasterExpenseTypes" EntityType="AIMFinServDBModel.tblMasterExpenseType" />
     <EntitySet Name="tblMasterLiabilityTypes" EntityType="AIMFinServDBModel.tblMasterLiabilityType" />
+    <EntitySet Name="tblMasterLoanRateTypes" EntityType="AIMFinServDBModel.tblMasterLoanRateType" />
     <EntitySet Name="tblMasterPropertyTypes" EntityType="AIMFinServDBModel.tblMasterPropertyType" />
     <EntitySet Name="tblMasterPurposeOfLoans" EntityType="AIMFinServDBModel.tblMasterPurposeOfLoan" />
-    <EntitySet Name="tblMasterRateTypeOfLoans" EntityType="AIMFinServDBModel.tblMasterRateTypeOfLoan" />
     <EntitySet Name="tblMasterSalutations" EntityType="AIMFinServDBModel.tblMasterSalutation" />
     <EntitySet Name="tblMasterTypeOfEmployments" EntityType="AIMFinServDBModel.tblMasterTypeOfEmployment" />
     <EntitySet Name="tblMasterTypeOfLoans" EntityType="AIMFinServDBModel.tblMasterTypeOfLoan" />
@@ -316,6 +316,14 @@
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="tblLiabilities" Relationship="AIMFinServDBModel.FK_tblLiabilities_tblLiabilityTypes" FromRole="tblMasterLiabilityType" ToRole="tblLiability" />
   </EntityType>
+  <EntityType Name="tblMasterLoanRateType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoanRateType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+  </EntityType>
   <EntityType Name="tblMasterPropertyType">
     <Key>
       <PropertyRef Name="ID" />
@@ -330,14 +338,6 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="PurposeOfLoan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="IsActive" Type="Boolean" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tblMasterRateTypeOfLoan">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="LoanRateType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="tblMasterSalutation">
