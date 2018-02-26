@@ -1,4 +1,4 @@
-﻿<div [@routerTransition]>
+﻿<div [@routerTransition] class="master-forms">
     <app-page-header [heading]="'Assets Types'" [icon]="'fa-bar-chart-o'"></app-page-header>
     <kendo-grid [kendoGridBinding]="_AssetsTypes"
                 [pageSize]="10"
@@ -21,8 +21,8 @@
 
         <kendo-grid-command-column>
             <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                <button class="btn btn-lg btn-link" type="button" (click)="SwitchStatus(dataItem.AutoID)" *ngIf="dataItem.IsActive">Deactivate</button>
-                <button class="btn btn-lg btn-link" type="button" (click)="SwitchStatus(dataItem.AutoID)" *ngIf="!dataItem.IsActive">Activate</button>
+                <button class="btn btn-lg btn-link" type="button" (click)="SwitchStatus(dataItem.AutoID)" *ngIf="dataItem.IsActive"><i class="fa fa-ban text-danger"></i> Deactivate</button>
+                <button class="btn btn-lg btn-link" type="button" (click)="SwitchStatus(dataItem.AutoID)" *ngIf="!dataItem.IsActive"><i class="fa fa-check-square-o text-success"></i> Activate</button>
             </ng-template>
         </kendo-grid-command-column>
     </kendo-grid>
