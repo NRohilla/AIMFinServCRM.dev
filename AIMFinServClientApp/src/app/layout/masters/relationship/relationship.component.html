@@ -1,4 +1,4 @@
-﻿<div [@routerTransition]>
+﻿<div [@routerTransition] class="master-forms">
     <app-page-header [heading]="'Relationship Types'" [icon]="'fa-bar-chart-o'"></app-page-header>
     <kendo-grid [kendoGridBinding]="_RelationshipTypes"
                 [pageSize]="10"
@@ -13,17 +13,21 @@
         <kendo-grid-column field="RelationshipWithApplicant" title="Relationship With Applicant">
         </kendo-grid-column>
         <kendo-grid-column field="IsActive" title="Is Active">
+            <!--<ng-template>
+                <i class="fa fa-check-square-o text-success"  data-unicode="f046"></i>
+            </ng-template>-->
+
         </kendo-grid-column>
 
         <kendo-grid-command-column>
             <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                <button class="btn btn-lg btn-link" type="button" (click)="SwitchStatus(dataItem.ID)" *ngIf="dataItem.IsActive">Deactivate</button>
-                <button class="btn btn-lg btn-link" type="button" (click)="SwitchStatus(dataItem.ID)" *ngIf="!dataItem.IsActive">Activate</button>
+                <button class="btn btn-sm btn-link" type="button" (click)="SwitchStatus(dataItem.ID)" *ngIf="dataItem.IsActive"><i class="fa fa-ban text-danger"></i> Deactivate</button>
+                <button class="btn btn-sm btn-link" type="button" (click)="SwitchStatus(dataItem.ID)" *ngIf="!dataItem.IsActive"><i class="fa fa-check-square-o text-success"></i> Activate</button>
             </ng-template>
         </kendo-grid-command-column>
     </kendo-grid>
 
-    <div id="exTab1" class="" style="margin-left:0; margin-top:70px; width:99%;" *ngIf="_EditRelationshipDetails">
+    <div id="exTab1" *ngIf="_EditRelationshipDetails">
         <div class="row">
             <div class="col-md-12">
                 <div class="section_box">
@@ -39,8 +43,10 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="button" value="Update" (click)="UpdateRelationShipType()" style="float:right; margin-left: 5px;" class="btn btn-lg btn-primary" />
-                        <input type="button" value="Cancel" (click)="CancelRelationShipType()" style="float:right;" class="btn btn-lg btn-primary" />
+                        <div class="float-right">
+                            <input type="button" value="Update" (click)="UpdateRelationShipType()" class="btn btn-success" />
+                            <input type="button" value="Cancel" (click)="CancelRelationShipType()" class="btn btn-secondary" />
+                        </div>
                     </div>
                 </div>
             </div>
