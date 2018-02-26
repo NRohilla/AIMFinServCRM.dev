@@ -16,15 +16,15 @@ import {MastersService} from '../../../services/app.masters.service';
 })
 export class LoanComponent implements OnInit {
     public _LoanTypes: {
-        LoanWithApplicant: '',
-        ID: '',
-        IsActive: '',
+        ID: "",
+        LoanType: "",
+        IsActive: ""
     };
 
     public _LoanObj: {
-        LoanWithApplicant: '',
-        ID: '',
-        IsActive: '',
+        ID: "",
+        LoanType: "",
+        IsActive: ""
     };
 
     public _EditLoanDetails: boolean = false;
@@ -37,7 +37,7 @@ export class LoanComponent implements OnInit {
     GetLoanSuccess(res) {
         debugger;
         this._LoanTypes = JSON.parse(res._body);
-        
+
     }
     GetLoanError(res) { }
 
@@ -45,7 +45,7 @@ export class LoanComponent implements OnInit {
         debugger;
         this._MastersService.SwitchLoanEntityStatus(ID).subscribe(res => this.SwitchLoanSuccess(res), res => this.SwitchLoanError(res));
     }
-    SwitchLoanSuccess(res) { this._MastersService.GetLoanTypes().subscribe(res => this.GetLoanSuccess(res), res => this.GetLoanError(res));}
+    SwitchLoanSuccess(res) { this._MastersService.GetLoanTypes().subscribe(res => this.GetLoanSuccess(res), res => this.GetLoanError(res)); }
     SwitchLoanError(res) { }
 
     GridSelectionChange(data, selection) {

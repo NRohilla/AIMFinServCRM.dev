@@ -13,10 +13,10 @@
         <kendo-grid-column field="LoanRateType" title="Loan Rate Type">
         </kendo-grid-column>
         <kendo-grid-column field="IsActive" title="Is Active">
-            <!--<ng-template>
-                <i class="fa fa-check-square-o text-success"  data-unicode="f046"></i>
-            </ng-template>-->
-
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <label *ngIf="dataItem.IsActive">Yes</label>
+                <label *ngIf="!dataItem.IsActive">No</label>
+            </ng-template>
         </kendo-grid-column>
 
         <kendo-grid-command-column>

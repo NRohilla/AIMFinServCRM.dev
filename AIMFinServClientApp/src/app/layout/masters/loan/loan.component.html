@@ -10,13 +10,13 @@
                 selectable="true"
                  #LoanTypes
                  (selectionChange)="GridSelectionChange(LoanTypes, $event)">
-        <kendo-grid-column field="LoanWithApplicant" title="Loan With Applicant">
+        <kendo-grid-column field="LoanType" title="Loan Type">
         </kendo-grid-column>
         <kendo-grid-column field="IsActive" title="Is Active">
-            <!--<ng-template>
-                <i class="fa fa-check-square-o text-success"  data-unicode="f046"></i>
-            </ng-template>-->
-
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <label *ngIf="dataItem.IsActive">Yes</label>
+                <label *ngIf="!dataItem.IsActive">No</label>
+            </ng-template>
         </kendo-grid-column>
 
         <kendo-grid-command-column>
@@ -38,7 +38,7 @@
                                 <div class="field_label">Loan Type</div>
                                 <div class="field_info">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Loan type" value="{{_LoanObj.LoanWithApplicant}}" [(ngModel)]="_LoanObj.LoanWithApplicant" #LoanWithApplicant>
+                                        <input matInput placeholder="Loan type" value="{{_LoanObj.LoanType}}" [(ngModel)]="_LoanObj.LoanType" #LoanType>
                                     </mat-form-field>
                                 </div>
                             </div>

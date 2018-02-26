@@ -8,11 +8,16 @@
                 [filterable]="true"
                 [groupable]="true"
                 selectable="true"
-                 #ApplicantTypes
-                 (selectionChange)="GridSelectionChange(ApplicantTypes, $event)">
+                #ApplicantTypes
+                (selectionChange)="GridSelectionChange(ApplicantTypes, $event)">
         <kendo-grid-column field="ApplicantType" title="Applicant type">
         </kendo-grid-column>
+
         <kendo-grid-column field="IsActive" title="Is Active">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <label *ngIf="dataItem.IsActive">Yes</label>
+                <label *ngIf="!dataItem.IsActive">No</label>
+            </ng-template>
         </kendo-grid-column>
 
         <kendo-grid-command-column>

@@ -16,15 +16,15 @@ import {MastersService} from '../../../services/app.masters.service';
 })
 export class PropertyComponent implements OnInit {
     public _PropertyTypes: {
-        PropertyWithApplicant: '',
-        ID: '',
-        IsActive: '',
+        ID :"",
+        PropertyType: "",
+        IsActive: ""
     };
 
     public _PropertyObj: {
-        PropertyWithApplicant: '',
-        ID: '',
-        IsActive: '',
+        ID: "",
+        PropertyType: "",
+        IsActive: ""
     };
 
     public _EditPropertyDetails: boolean = false;

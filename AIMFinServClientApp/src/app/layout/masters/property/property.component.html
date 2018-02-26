@@ -10,13 +10,13 @@
                 selectable="true"
                  #PropertyTypes
                  (selectionChange)="GridSelectionChange(PropertyTypes, $event)">
-        <kendo-grid-column field="PropertyWithApplicant" title="Property With Applicant">
+        <kendo-grid-column field="PropertyType" title="Property Type">
         </kendo-grid-column>
         <kendo-grid-column field="IsActive" title="Is Active">
-            <!--<ng-template>
-                <i class="fa fa-check-square-o text-success"  data-unicode="f046"></i>
-            </ng-template>-->
-
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <label *ngIf="dataItem.IsActive">Yes</label>
+                <label *ngIf="!dataItem.IsActive">No</label>
+            </ng-template>
         </kendo-grid-column>
 
         <kendo-grid-command-column>
@@ -38,7 +38,7 @@
                                 <div class="field_label">Property Type</div>
                                 <div class="field_info">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Property type" value="{{_PropertyObj.PropertyWithApplicant}}" [(ngModel)]="_PropertyObj.PropertyWithApplicant" #PropertyWithApplicant>
+                                        <input matInput placeholder="Property type" value="{{_PropertyObj.PropertyType}}" [(ngModel)]="_PropertyObj.PropertyType" #PropertyType>
                                     </mat-form-field>
                                 </div>
                             </div>

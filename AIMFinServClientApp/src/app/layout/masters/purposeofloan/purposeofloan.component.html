@@ -10,13 +10,13 @@
                 selectable="true"
                  #PurposeofloanTypes
                  (selectionChange)="GridSelectionChange(PurposeofloanTypes, $event)">
-        <kendo-grid-column field="PurposeofloanWithApplicant" title="Purposeofloan With Applicant">
+        <kendo-grid-column field="PurposeOfLoan" title="Purpose of Loan">
         </kendo-grid-column>
         <kendo-grid-column field="IsActive" title="Is Active">
-            <!--<ng-template>
-                <i class="fa fa-check-square-o text-success"  data-unicode="f046"></i>
-            </ng-template>-->
-
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <label *ngIf="dataItem.IsActive">Yes</label>
+                <label *ngIf="!dataItem.IsActive">No</label>
+            </ng-template>
         </kendo-grid-column>
 
         <kendo-grid-command-column>
@@ -38,7 +38,7 @@
                                 <div class="field_label">Purposeofloan Type</div>
                                 <div class="field_info">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Purposeofloan type" value="{{_PurposeofloanObj.PurposeofloanWithApplicant}}" [(ngModel)]="_PurposeofloanObj.PurposeofloanWithApplicant" #PurposeofloanWithApplicant>
+                                        <input matInput placeholder="Purposeofloan type" value="{{_PurposeofloanObj.PurposeOfLoan}}" [(ngModel)]="_PurposeofloanObj.PurposeOfLoan" #PurposeOfLoan>
                                     </mat-form-field>
                                 </div>
                             </div>

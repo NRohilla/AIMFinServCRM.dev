@@ -16,15 +16,15 @@ import {MastersService} from '../../../services/app.masters.service';
 })
 export class PurposeofloanComponent implements OnInit {
     public _PurposeofloanTypes: {
-        PurposeofloanWithApplicant: '',
-        ID: '',
-        IsActive: '',
+        ID: "",
+        PurposeOfLoan: "",
+        IsActive: ""
     };
 
     public _PurposeofloanObj: {
-        PurposeofloanWithApplicant: '',
-        ID: '',
-        IsActive: '',
+        ID: "",
+        PurposeOfLoan: "",
+        IsActive: ""
     };
 
     public _EditPurposeofloanDetails: boolean = false;
@@ -37,7 +37,7 @@ export class PurposeofloanComponent implements OnInit {
     GetPurposeofloanSuccess(res) {
         debugger;
         this._PurposeofloanTypes = JSON.parse(res._body);
-        
+
     }
     GetPurposeofloanError(res) { }
 
@@ -45,7 +45,7 @@ export class PurposeofloanComponent implements OnInit {
         debugger;
         this._MastersService.SwitchPurposeofloanEntityStatus(ID).subscribe(res => this.SwitchPurposeofloanSuccess(res), res => this.SwitchPurposeofloanError(res));
     }
-    SwitchPurposeofloanSuccess(res) { this._MastersService.GetPurposeofloanTypes().subscribe(res => this.GetPurposeofloanSuccess(res), res => this.GetPurposeofloanError(res));}
+    SwitchPurposeofloanSuccess(res) { this._MastersService.GetPurposeofloanTypes().subscribe(res => this.GetPurposeofloanSuccess(res), res => this.GetPurposeofloanError(res)); }
     SwitchPurposeofloanError(res) { }
 
     GridSelectionChange(data, selection) {

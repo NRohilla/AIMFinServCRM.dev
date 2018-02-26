@@ -13,6 +13,10 @@
         <kendo-grid-column field="Description" title="Assets Type">
         </kendo-grid-column>
         <kendo-grid-column field="IsActive" title="Is Active">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <label *ngIf="dataItem.IsActive">Yes</label>
+                <label *ngIf="!dataItem.IsActive">No</label>
+            </ng-template>
         </kendo-grid-column>
 
         <kendo-grid-command-column>
