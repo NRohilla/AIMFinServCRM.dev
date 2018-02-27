@@ -80,13 +80,13 @@ export class QualificationComponent implements OnInit {
     }
 
 
-    AddAddQualificationTypeType() {
+    AddQualificationType() {
         debugger;
-        this._MastersService.AddQualificationEntity(this._QualificationObj).subscribe(res => this.AddAddQualificationTypeSuccess(res), res => this.AddAddQualificationTypeError(res));
+        this._MastersService.AddQualificationEntity(this._QualificationObj).subscribe(res => this.AddQualificationTypeSuccess(res), res => this.AddQualificationTypeError(res));
     }
-    AddAddQualificationTypeSuccess(res) {
+    AddQualificationTypeSuccess(res) {
         this._MastersService.GetQualificationTypes().subscribe(res => this.GetQualificationSuccess(res), res => this.GetQualificationError(res));
         this.CancelQualificationType();
     }
-    AddAddQualificationTypeError(res) { }
+    AddQualificationTypeError(res) { }
 }
