@@ -72,7 +72,7 @@ export class PropertyComponent implements OnInit {
 
     CancelPropertyType() {
         debugger;
-        this._Operationtitle = "Update";
+        this._Operationtitle = "Add";
         this._PropertyObj = {
             ID: "",
             PropertyType: "",
