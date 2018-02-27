@@ -8,8 +8,8 @@
                 [filterable]="true"
                 [groupable]="true"
                 selectable="true"
-                 #LoanTypes
-                 (selectionChange)="GridSelectionChange(LoanTypes, $event)">
+                #LoanTypes
+                (selectionChange)="GridSelectionChange(LoanTypes, $event)">
         <kendo-grid-column field="LoanType" title="Loan Type">
         </kendo-grid-column>
         <kendo-grid-column field="IsActive" title="Status">
@@ -27,11 +27,11 @@
         </kendo-grid-command-column>
     </kendo-grid>
 
-    <div id="exTab1" *ngIf="_EditLoanDetails">
+    <div id="exTab1">
         <div class="row">
             <div class="col-md-12">
                 <div class="section_box">
-                    <div class="box_title">Edit Loan Type</div>
+                    <div class="box_title">{{_Operationtitle}} Loan Type</div>
                     <div class="tab-content clearfix">
                         <div class="tab-pane active">
                             <div class="field_set">
@@ -44,7 +44,8 @@
                             </div>
                         </div>
                         <div class="float-right">
-                            <input type="button" value="Update" (click)="UpdateLoanType()" class="btn btn-success" />
+                            <input type="button" value="Save" (click)="AddLoanType()" class="btn btn-success" *ngIf="_Operationtitle=='Add'" />
+                            <input type="button" value="Update" (click)="UpdateLoanType()" class="btn btn-success" *ngIf="_Operationtitle=='Update'" />
                             <input type="button" value="Cancel" (click)="CancelLoanType()" class="btn btn-secondary" />
                         </div>
                     </div>

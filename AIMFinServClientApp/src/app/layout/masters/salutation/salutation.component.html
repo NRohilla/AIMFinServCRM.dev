@@ -26,12 +26,12 @@
             </ng-template>
         </kendo-grid-command-column>
     </kendo-grid>
-
-    <div id="exTab1" *ngIf="_EditSalutationDetails">
+    asdfasdfdsaf
+    <div id="exTab1">
         <div class="row">
             <div class="col-md-12">
                 <div class="section_box">
-                    <div class="box_title">Edit Salutation Type</div>
+                    <div class="box_title">{{_Operationtitle}} Salutation Type</div>
                     <div class="tab-content clearfix">
                         <div class="tab-pane active">
                             <div class="field_set">
@@ -44,9 +44,11 @@
                             </div>
                         </div>
                         <div class="float-right">
-                            <input type="button" value="Update" (click)="UpdateSalutationType()" class="btn btn-success" />
+                            <input type="button" value="Save" (click)="AddSalutationType()" class="btn btn-success" *ngIf="_Operationtitle=='Add'" />
+                            <input type="button" value="Update" (click)="UpdateSalutationType()" class="btn btn-success" *ngIf="_Operationtitle=='Update'" />
                             <input type="button" value="Cancel" (click)="CancelSalutationType()" class="btn btn-secondary" />
                         </div>
+                       
                     </div>
                 </div>
             </div>

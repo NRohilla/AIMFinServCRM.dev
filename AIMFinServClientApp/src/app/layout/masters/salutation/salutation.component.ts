@@ -14,25 +14,31 @@ import {MastersService} from '../../../services/app.masters.service';
     animations: [routerTransition()],
     providers: [MastersService]
 })
+
 export class SalutationComponent implements OnInit {
     public _SalutationTypes: {
         ID: "",
-        IsActive: ""
+        IsActive: "",
         Salutation: ""
     };
 
     public _SalutationObj: {
         ID: "",
-        IsActive: ""
+        IsActive: "",
         Salutation: ""
     };
 
-    public _EditSalutationDetails: boolean = false;
+    public _Operationtitle: string = "Add";
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _MastersService: MastersService) { }
 
     ngOnInit() {
         this._MastersService.GetSalutationTypes().subscribe(res => this.GetSalutationSuccess(res), res => this.GetSalutationError(res));
+        this._SalutationObj = {
+            ID: "",
+            IsActive: "",
+            Salutation: ""
+        };
     }
     GetSalutationSuccess(res) {
         debugger;
@@ -51,7 +57,7 @@ export class SalutationComponent implements OnInit {
     GridSelectionChange(data, selection) {
         debugger;
         this._SalutationObj = data.data.data[selection.index];
-        this._EditSalutationDetails = true;
+        this._Operationtitle = "Update";
     }
 
     UpdateSalutationType() {
@@ -67,11 +73,22 @@ export class SalutationComponent implements OnInit {
 
     CancelSalutationType() {
         debugger;
-        this._EditSalutationDetails = false;
+        this._Operationtitle = "Add";
         this._SalutationObj = {
-            SalutationWithApplicant: '',
-            ID: '',
-            IsActive: '',
+            ID: "",
+            IsActive: "",
+            Salutation: ""
         };
     }
+
+
+    AddSalutationType() {
+        debugger;
+        this._MastersService.AddSalutationEntity(this._SalutationObj).subscribe(res => this.AddSalutationTypeSuccess(res), res => this.AddSalutationTypeError(res));
+    }
+    AddSalutationTypeSuccess(res) {
+        this._MastersService.GetSalutationTypes().subscribe(res => this.GetSalutationSuccess(res), res => this.GetSalutationError(res));
+        this.CancelSalutationType();
+    }
+    AddSalutationTypeError(res) { }
 }

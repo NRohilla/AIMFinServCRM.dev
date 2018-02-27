@@ -15,7 +15,8 @@ import {MastersService} from '../../../services/app.masters.service';
     providers: [MastersService]
 })
 export class EmploymentComponent implements OnInit {
-    public _EditEmployementDetails: boolean = false;
+    public _Operationtitle: string = "Add";
+
     public _EmploymentTypes: {
         EmployementType: '',
         ID: '',
@@ -32,6 +33,11 @@ export class EmploymentComponent implements OnInit {
 
     ngOnInit() {
         this._MastersService.GetEmploymentTypes().subscribe(res => this.GetEmploymentSuccess(res), res => this.GetEmploymentError(res));
+        this._EmploymentObj = {
+            EmployementType: '',
+            ID: '',
+            IsActive: '',
+        };
     }
     GetEmploymentSuccess(res) {
         debugger;
@@ -47,7 +53,7 @@ export class EmploymentComponent implements OnInit {
     SwitchEmploymentError(res) { }
 
     GridSelectionChange(data, selection) {
-        this._EditEmployementDetails = true;
+        this._Operationtitle = "Update";
         this._EmploymentObj = data.data.data[selection.index]
     }
 
@@ -63,11 +69,21 @@ export class EmploymentComponent implements OnInit {
     UpdateEmploymentError(res) { }
     CancelEmployementType() {
         debugger;
-        this._EditEmployementDetails = false;
+        this._Operationtitle = "Add";
         this._EmploymentObj = {
             EmployementType: '',
             ID: '',
             IsActive: '',
         };
     }
+
+    AddEmployementType() {
+        debugger;
+        this._MastersService.AddEmploymentEntity(this._EmploymentObj).subscribe(res => this.AddEmployementSuccess(res), res => this.AddEmployementError(res));
+    }
+    AddEmployementSuccess(res) {
+        this._MastersService.GetEmploymentTypes().subscribe(res => this.GetEmploymentSuccess(res), res => this.GetEmploymentError(res));
+        this.CancelEmployementType();
+    }
+    AddEmployementError(res) { }
 }

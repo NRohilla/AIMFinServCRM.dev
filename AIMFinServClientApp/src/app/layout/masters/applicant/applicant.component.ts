@@ -34,6 +34,11 @@ export class ApplicantComponent implements OnInit {
 
     ngOnInit() {
         this._MastersService.GetApplicantTypes().subscribe(res => this.GetApplicantSuccess(res), res => this.GetApplicantError(res));
+        this._ApplicantTypes = {
+            ApplicantType: "",
+            ApplicantTypeID: "",
+            IsActive: ""
+        };
     }
     GetApplicantSuccess(res) {
         debugger;

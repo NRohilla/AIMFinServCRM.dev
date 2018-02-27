@@ -27,12 +27,17 @@ export class LoanrateComponent implements OnInit {
         LoanRateType: ""
     };
 
-    public _EditLoanrateDetails: boolean = false;
+    public _Operationtitle: string = "Add";
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _MastersService: MastersService) { }
 
     ngOnInit() {
         this._MastersService.GetLoanrateTypes().subscribe(res => this.GetLoanrateSuccess(res), res => this.GetLoanrateError(res));
+        this._LoanrateObj = {
+            ID: "",
+            IsActive: "",
+            LoanRateType: ""
+        };
     }
     GetLoanrateSuccess(res) {
         debugger;
@@ -51,7 +56,7 @@ export class LoanrateComponent implements OnInit {
     GridSelectionChange(data, selection) {
         debugger;
         this._LoanrateObj = data.data.data[selection.index];
-        this._EditLoanrateDetails = true;
+        this._Operationtitle = "Update";
     }
 
     UpdateLoanrateType() {
@@ -65,13 +70,23 @@ export class LoanrateComponent implements OnInit {
     UpdateLoanrateError(res) { }
 
 
+    AddLoanrateType() {
+        debugger;
+        this._MastersService.AddLoanrateEntity(this._LoanrateObj).subscribe(res => this.AddLoanrateSuccess(res), res => this.AddLoanrateError(res));
+    }
+    AddLoanrateSuccess(res) {
+        this._MastersService.GetLoanrateTypes().subscribe(res => this.GetLoanrateSuccess(res), res => this.GetLoanrateError(res));
+        this.CancelLoanrateType();
+    }
+    AddLoanrateError(res) { }
+
     CancelLoanrateType() {
         debugger;
-        this._EditLoanrateDetails = false;
+        this._Operationtitle = "Add";
         this._LoanrateObj = {
-            LoanrateWithApplicant: '',
-            ID: '',
-            IsActive: '',
+            ID: "",
+            IsActive: "",
+            LoanRateType: ""
         };
     }
 }

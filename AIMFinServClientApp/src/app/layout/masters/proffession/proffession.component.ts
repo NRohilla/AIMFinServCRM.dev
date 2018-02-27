@@ -25,12 +25,17 @@ export class ProffessionComponent implements OnInit {
         ID: '',
         IsActive: '',
     };
-    public _EditProffessionDetails: boolean = false;
+    public _Operationtitle: string = "Add";
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _MastersService: MastersService) { }
 
     ngOnInit() {
         this._MastersService.GetProfessionTypes().subscribe(res => this.GetProfessionSuccess(res), res => this.GetProfessionError(res));
+        this._ProfessionObj = {
+            Profession: '',
+            ID: '',
+            IsActive: '',
+        };
     }
     GetProfessionSuccess(res) {
         debugger;
@@ -48,7 +53,7 @@ export class ProffessionComponent implements OnInit {
     GridSelectionChange(data, selection) {
         debugger;
         this._ProfessionObj = data.data.data[selection.index];
-        this._EditProffessionDetails = true;
+        this._Operationtitle = "Update";
     }
 
     UpdateProfessionType() {
@@ -63,11 +68,21 @@ export class ProffessionComponent implements OnInit {
 
     CancelProfessionType() {
         debugger;
-        this._EditProffessionDetails = false;
+        this._Operationtitle = "Add";
         this._ProfessionObj = {
             Profession: '',
             ID: '',
             IsActive: '',
         };
     }
+
+    AddProfessionType() {
+        debugger;
+        this._MastersService.AddProffessionEntity(this._ProfessionObj).subscribe(res => this.AddProffessionSuccess(res), res => this.AddProffessionError(res));
+    }
+    AddProffessionSuccess(res) {
+        this._MastersService.GetProfessionTypes().subscribe(res => this.GetProfessionSuccess(res), res => this.GetProfessionError(res));
+        this.CancelProfessionType();
+    }
+    AddProffessionError(res) { }
 }

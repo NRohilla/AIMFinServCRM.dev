@@ -26,13 +26,17 @@ export class PurposeofloanComponent implements OnInit {
         PurposeOfLoan: "",
         IsActive: ""
     };
-
-    public _EditPurposeofloanDetails: boolean = false;
+    public _Operationtitle: string = "Add";
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _MastersService: MastersService) { }
 
     ngOnInit() {
         this._MastersService.GetPurposeofloanTypes().subscribe(res => this.GetPurposeofloanSuccess(res), res => this.GetPurposeofloanError(res));
+        this._PurposeofloanObj = {
+            ID: "",
+            PurposeOfLoan: "",
+            IsActive: ""
+        };
     }
     GetPurposeofloanSuccess(res) {
         debugger;
@@ -51,7 +55,7 @@ export class PurposeofloanComponent implements OnInit {
     GridSelectionChange(data, selection) {
         debugger;
         this._PurposeofloanObj = data.data.data[selection.index];
-        this._EditPurposeofloanDetails = true;
+        this._Operationtitle = "Update";
     }
 
     UpdatePurposeofloanType() {
@@ -67,11 +71,21 @@ export class PurposeofloanComponent implements OnInit {
 
     CancelPurposeofloanType() {
         debugger;
-        this._EditPurposeofloanDetails = false;
+        this._Operationtitle = "Add";
         this._PurposeofloanObj = {
-            PurposeofloanWithApplicant: '',
-            ID: '',
-            IsActive: '',
+            ID: "",
+            PurposeOfLoan: "",
+            IsActive: ""
         };
     }
+
+    AddPurposeofloanType() {
+        debugger;
+        this._MastersService.AddPurposeofloanEntity(this._PurposeofloanObj).subscribe(res => this.AddPurposeofloanSuccess(res), res => this.AddPurposeofloanError(res));
+    }
+    AddPurposeofloanSuccess(res) {
+        this._MastersService.GetPurposeofloanTypes().subscribe(res => this.GetPurposeofloanSuccess(res), res => this.GetPurposeofloanError(res));
+        this.CancelPurposeofloanType();
+    }
+    AddPurposeofloanError(res) { }
 }
