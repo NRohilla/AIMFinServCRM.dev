@@ -15,7 +15,7 @@ import {MastersService} from '../../../services/app.masters.service';
     providers: [MastersService]
 })
 export class AssetsComponent implements OnInit {
-    public _EditAssetsDetails: boolean = false;
+    public _Operationtitle: string = "Add";
     public _AssetsTypes: {
         AssetTypeID: "",
         AutoID: "",
@@ -34,6 +34,12 @@ export class AssetsComponent implements OnInit {
 
     ngOnInit() {
         this._MastersService.GetAssetsTypes().subscribe(res => this.GetAssetsSuccess(res), res => this.GetAssetsError(res));
+        this._AssetsObj = {
+            AssetTypeID: "",
+            AutoID: "",
+            Description: "",
+            IsActive: ""
+        };
     }
     GetAssetsSuccess(res) {
         debugger;
@@ -49,7 +55,7 @@ export class AssetsComponent implements OnInit {
     SwitchAssetsError(res) { }
 
     GridSelectionChange(data, selection) {
-        this._EditAssetsDetails = true;
+        this._Operationtitle = "Update";
         this._AssetsObj = data.data.data[selection.index]
     }
 
@@ -65,7 +71,7 @@ export class AssetsComponent implements OnInit {
     UpdateAssetsError(res) { }
     CancelAssetsType() {
         debugger;
-        this._EditAssetsDetails = false;
+        this._Operationtitle = "Add";
         this._AssetsObj = {
             AssetTypeID: "",
             AutoID: "",
@@ -73,4 +79,13 @@ export class AssetsComponent implements OnInit {
             IsActive: ""
         };
     }
+
+    AddAssetsType() { debugger;
+        this._MastersService.AddAssetsEntity(this._AssetsObj).subscribe(res => this.AddAssetsSuccess(res), res => this.AddAssetsError(res));
+    }
+    AddAssetsSuccess(res) {
+        this._MastersService.GetAssetsTypes().subscribe(res => this.GetAssetsSuccess(res), res => this.GetAssetsError(res));
+        this.CancelAssetsType();
+    }
+    AddAssetsError(res) { }
 }
