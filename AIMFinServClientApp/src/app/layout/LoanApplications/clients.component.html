@@ -1,4 +1,4 @@
-﻿<div [@routerTransition]>
+﻿<div [@routerTransition] class="application-details">
     <app-page-header [heading]="'Applications'" [icon]="'fa-bar-chart-o'"></app-page-header>
     <div *ngIf="!_ViewApplicantDetails">
         <kendo-grid [kendoGridBinding]="gridData"
@@ -28,13 +28,20 @@
         </kendo-grid>
     </div>
 
-    <div class="mat-app-background" *ngIf="_ViewApplicantDetails">
-        <button class="btn btn-lg btn-link" type="button" (click)="ViewClientDetails('ViewList')" style="float:right;">Back</button>
-        <div id="exTab1" class="basic-container">
-            <mat-tab-group>
-                <mat-tab label="Personal details"><client-personal-details></client-personal-details></mat-tab>
-                <mat-tab label="Employement details"><client-employement-details></client-employement-details></mat-tab>
-            </mat-tab-group>
+    <div class="" *ngIf="_ViewApplicantDetails">
+        <div class="w-100 float-left header-bg">
+            <div class="float-right">
+                <button class="btn btn-lg btn-link" type="button" (click)="ViewClientDetails('ViewList')">Back</button>
+            </div>
+        </div>
+        <div class="w-100 float-left">
+            <!--<div id="exTab1" class="basic-container">
+            <mat-tab-group>-->
+            <!--<mat-tab label="Personal details">-->
+            <client-personal-details></client-personal-details><!--</mat-tab>-->
+            <!--<mat-tab label="Employement details"><client-employement-details></client-employement-details></mat-tab>-->
+            <!--</mat-tab-group>
+        </div>-->
         </div>
     </div>
 </div>
