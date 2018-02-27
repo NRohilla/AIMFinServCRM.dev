@@ -27,12 +27,17 @@ export class RelationshipComponent implements OnInit {
         IsActive: '',
     };
 
-    public _EditRelationshipDetails: boolean = false;
+    public _Operationtitle: string = "Add";
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _MastersService: MastersService) { }
 
     ngOnInit() {
         this._MastersService.GetRelationshipTypes().subscribe(res => this.GetRelationshipSuccess(res), res => this.GetRelationshipError(res));
+        this._RelationshipObj = {
+            RelationshipWithApplicant: '',
+            ID: '',
+            IsActive: '',
+        };
     }
     GetRelationshipSuccess(res) {
         debugger;
@@ -51,7 +56,7 @@ export class RelationshipComponent implements OnInit {
     GridSelectionChange(data, selection) {
         debugger;
         this._RelationshipObj = data.data.data[selection.index];
-        this._EditRelationshipDetails = true;
+        this._Operationtitle = "Update";
     }
 
     UpdateRelationShipType() {
@@ -67,11 +72,21 @@ export class RelationshipComponent implements OnInit {
 
     CancelRelationShipType() {
         debugger;
-        this._EditRelationshipDetails = false;
+        this._Operationtitle = "Add";
         this._RelationshipObj = {
             RelationshipWithApplicant: '',
             ID: '',
             IsActive: '',
         };
     }
+
+    AddRelationShipType() {
+        debugger;
+        this._MastersService.AddRelationshipEntity(this._RelationshipObj).subscribe(res => this.AddRelationShipTypeSuccess(res), res => this.AddRelationShipTypeError(res));
+    }
+    AddRelationShipTypeSuccess(res) {
+        this._MastersService.GetRelationshipTypes().subscribe(res => this.GetRelationshipSuccess(res), res => this.GetRelationshipError(res));
+        this.CancelRelationShipType();
+    }
+    AddRelationShipTypeError(res) { }
 }

@@ -15,26 +15,32 @@ import {MastersService} from '../../../services/app.masters.service';
     providers: [MastersService]
 })
 export class LiabilityComponent implements OnInit {
-    public _EditLiabilityDetails: boolean = false;
+    public _Operationtitle: string = "Add";
     public _LiabilityTypes: {
-        AutoID        :"",
-        Description        :        "",
-        IsActive        :"",
-        LiabilityTypeID:""
+        AutoID: "",
+        Description: "",
+        IsActive: "",
+        LiabilityTypeID: ""
 
     };
 
     public _LiabilityObj: {
-        AutoID        :"",
-        Description        :        "",
-        IsActive        :"",
-        LiabilityTypeID:""
+        AutoID: "",
+        Description: "",
+        IsActive: "",
+        LiabilityTypeID: ""
     };
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _MastersService: MastersService) { }
 
     ngOnInit() {
         this._MastersService.GetLiabilityTypes().subscribe(res => this.GetLiabilitySuccess(res), res => this.GetLiabilityError(res));
+        this._LiabilityObj = {
+            AutoID: "",
+            Description: "",
+            IsActive: "",
+            LiabilityTypeID: ""
+        };
     }
     GetLiabilitySuccess(res) {
         debugger;
@@ -50,7 +56,7 @@ export class LiabilityComponent implements OnInit {
     SwitchLiabilityError(res) { }
 
     GridSelectionChange(data, selection) {
-        this._EditLiabilityDetails = true;
+        this._Operationtitle = "Update";
         this._LiabilityObj = data.data.data[selection.index]
     }
 
@@ -66,11 +72,22 @@ export class LiabilityComponent implements OnInit {
     UpdateLiabilityError(res) { }
     CancelLiabilityType() {
         debugger;
-        this._EditLiabilityDetails = false;
+        this._Operationtitle = "Add";
         this._LiabilityObj = {
-            LiabilityType: '',
-            ID: '',
-            IsActive: '',
+            AutoID: "",
+            Description: "",
+            IsActive: "",
+            LiabilityTypeID: ""
         };
     }
+
+    AddLiabilityType() {
+        debugger;
+        this._MastersService.AddLiabilityEntity(this._LiabilityObj).subscribe(res => this.AddLiabilitySuccess(res), res => this.AddLiabilityError(res));
+    }
+    AddLiabilitySuccess(res) {
+        this._MastersService.GetLiabilityTypes().subscribe(res => this.GetLiabilitySuccess(res), res => this.GetLiabilityError(res));
+        this.CancelLiabilityType();
+    }
+    AddLiabilityError(res) { }
 }

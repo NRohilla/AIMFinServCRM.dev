@@ -27,12 +27,17 @@ export class PropertyComponent implements OnInit {
         IsActive: ""
     };
 
-    public _EditPropertyDetails: boolean = false;
+    public _Operationtitle: string = "Add";
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _MastersService: MastersService) { }
 
     ngOnInit() {
         this._MastersService.GetPropertyTypes().subscribe(res => this.GetPropertySuccess(res), res => this.GetPropertyError(res));
+        this._PropertyObj = {
+            ID: "",
+            PropertyType: "",
+            IsActive: ""
+        };
     }
     GetPropertySuccess(res) {
         debugger;
@@ -51,7 +56,7 @@ export class PropertyComponent implements OnInit {
     GridSelectionChange(data, selection) {
         debugger;
         this._PropertyObj = data.data.data[selection.index];
-        this._EditPropertyDetails = true;
+        this._Operationtitle = "Update";
     }
 
     UpdatePropertyType() {
@@ -67,11 +72,22 @@ export class PropertyComponent implements OnInit {
 
     CancelPropertyType() {
         debugger;
-        this._EditPropertyDetails = false;
+        this._Operationtitle = "Update";
         this._PropertyObj = {
-            PropertyWithApplicant: '',
-            ID: '',
-            IsActive: '',
+            ID: "",
+            PropertyType: "",
+            IsActive: ""
         };
     }
+
+
+    AddPropertyType() {
+        debugger;
+        this._MastersService.AddPropertyEntity(this._PropertyObj).subscribe(res => this.AddPropertySuccess(res), res => this.AddPropertyError(res));
+    }
+    AddPropertySuccess(res) {
+        this._MastersService.GetPropertyTypes().subscribe(res => this.GetPropertySuccess(res), res => this.GetPropertyError(res));
+        this.CancelPropertyType();
+    }
+    AddPropertyError(res) { }
 }

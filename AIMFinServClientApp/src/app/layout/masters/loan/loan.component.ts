@@ -15,6 +15,7 @@ import {MastersService} from '../../../services/app.masters.service';
     providers: [MastersService]
 })
 export class LoanComponent implements OnInit {
+    public _Operationtitle: string = "Add";
     public _LoanTypes: {
         ID: "",
         LoanType: "",
@@ -27,12 +28,15 @@ export class LoanComponent implements OnInit {
         IsActive: ""
     };
 
-    public _EditLoanDetails: boolean = false;
-
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _MastersService: MastersService) { }
 
     ngOnInit() {
         this._MastersService.GetLoanTypes().subscribe(res => this.GetLoanSuccess(res), res => this.GetLoanError(res));
+        this._LoanObj = {
+            ID: "",
+            LoanType: "",
+            IsActive: ""
+        };
     }
     GetLoanSuccess(res) {
         debugger;
@@ -51,7 +55,7 @@ export class LoanComponent implements OnInit {
     GridSelectionChange(data, selection) {
         debugger;
         this._LoanObj = data.data.data[selection.index];
-        this._EditLoanDetails = true;
+        this._Operationtitle = "Update";
     }
 
     UpdateLoanType() {
@@ -67,11 +71,21 @@ export class LoanComponent implements OnInit {
 
     CancelLoanType() {
         debugger;
-        this._EditLoanDetails = false;
+        this._Operationtitle = "Add";
         this._LoanObj = {
-            LoanWithApplicant: '',
-            ID: '',
-            IsActive: '',
+            ID: "",
+            LoanType: "",
+            IsActive: ""
         };
     }
+
+    AddLoanType() {
+        debugger;
+        this._MastersService.AddLoanEntity(this._LoanObj).subscribe(res => this.AddLoanSuccess(res), res => this.AddLoanError(res));
+    }
+    AddLoanSuccess(res) {
+        this._MastersService.GetLoanTypes().subscribe(res => this.GetLoanSuccess(res), res => this.GetLoanError(res));
+        this.CancelLoanType();
+    }
+    AddLoanError(res) { }
 }

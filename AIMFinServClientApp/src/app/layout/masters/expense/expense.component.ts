@@ -15,7 +15,7 @@ import {MastersService} from '../../../services/app.masters.service';
     providers: [MastersService]
 })
 export class ExpenseComponent implements OnInit {
-    public _EditExpenseDetails: boolean = false;
+    public _Operationtitle: string = "Add";
     public _ExpenseTypes: {
         AutoID: "",
         Description: "",
@@ -36,6 +36,13 @@ export class ExpenseComponent implements OnInit {
 
     ngOnInit() {
         this._MastersService.GetExpenseTypes().subscribe(res => this.GetExpenseSuccess(res), res => this.GetExpenseError(res));
+        this._ExpenseObj = {
+            AutoID: "",
+            Description: "",
+            ExpenseTypeID: "",
+            Frequency: "",
+            IsActive: ""
+        };
     }
     GetExpenseSuccess(res) {
         debugger;
@@ -51,7 +58,7 @@ export class ExpenseComponent implements OnInit {
     SwitchExpenseError(res) { }
 
     GridSelectionChange(data, selection) {
-        this._EditExpenseDetails = true;
+        this._Operationtitle = "Update";
         this._ExpenseObj = data.data.data[selection.index]
     }
 
@@ -67,11 +74,23 @@ export class ExpenseComponent implements OnInit {
     UpdateExpenseError(res) { }
     CancelExpenseType() {
         debugger;
-        this._EditExpenseDetails = false;
+        this._Operationtitle = "Add";
         this._ExpenseObj = {
-            ExpenseType: '',
-            ID: '',
-            IsActive: '',
+            AutoID: "",
+            Description: "",
+            ExpenseTypeID: "",
+            Frequency: "",
+            IsActive: ""
         };
     }
+
+    AddExpenseType() {
+        debugger;
+        this._MastersService.AddExpenseEntity(this._ExpenseObj).subscribe(res => this.AddExpenseSuccess(res), res => this.AddExpenseError(res));
+    }
+    AddExpenseSuccess(res) {
+        this._MastersService.GetExpenseTypes().subscribe(res => this.GetExpenseSuccess(res), res => this.GetExpenseError(res));
+        this.CancelExpenseType();
+    }
+    AddExpenseError(res) { }
 }

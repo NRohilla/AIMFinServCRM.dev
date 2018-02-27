@@ -27,12 +27,17 @@ export class QualificationComponent implements OnInit {
         IsActive: '',
     };
 
-    public _EditQualificationDetails: boolean = false;
+    public _Operationtitle: string = "Add";
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _MastersService: MastersService) { }
 
     ngOnInit() {
         this._MastersService.GetQualificationTypes().subscribe(res => this.GetQualificationSuccess(res), res => this.GetQualificationError(res));
+        this._QualificationObj = {
+            Qualifications: '',
+            ID: '',
+            IsActive: '',
+        };
     }
     GetQualificationSuccess(res) {
         debugger;
@@ -50,7 +55,7 @@ export class QualificationComponent implements OnInit {
     GridSelectionChange(data, selection) {
         debugger;
         this._QualificationObj = data.data.data[selection.index];
-        this._EditQualificationDetails = true;
+        this._Operationtitle = "Update";
     }
 
     UpdateQualificationType() {
@@ -66,11 +71,22 @@ export class QualificationComponent implements OnInit {
 
     CancelQualificationType() {
         debugger;
-        this._EditQualificationDetails = false;
+        this._Operationtitle = "Add";
         this._QualificationObj = {
             Qualifications: '',
             ID: '',
             IsActive: '',
         };
     }
+
+
+    AddAddQualificationTypeType() {
+        debugger;
+        this._MastersService.AddQualificationEntity(this._QualificationObj).subscribe(res => this.AddAddQualificationTypeSuccess(res), res => this.AddAddQualificationTypeError(res));
+    }
+    AddAddQualificationTypeSuccess(res) {
+        this._MastersService.GetQualificationTypes().subscribe(res => this.GetQualificationSuccess(res), res => this.GetQualificationError(res));
+        this.CancelQualificationType();
+    }
+    AddAddQualificationTypeError(res) { }
 }
