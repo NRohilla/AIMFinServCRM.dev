@@ -14,16 +14,22 @@ import { LocalStorageModule, ILocalStorageServiceConfig } from 'angular-2-local-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
+import {DialogOverviewExampleDialog} from './shared/dialogues/loanapplications/Popup';
+import {ApplicantPersonalDetailsComponent} from './layout/LoanApplications/components/app.applicant.personaldetails';
+import {ApplicantEmployementComponent} from './layout/LoanApplications/components/app.applicant.employementdetails';
+import {ApplicantQualificationDetailsComponent} from './layout/LoanApplications/components/app.applicant.qualificationdetails';
 
+import {MaterialModule} from './shared/app.material';
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
     // for development
-     //return new TranslateHttpLoader(http, '/start-angular/SB-Admin-BS4-Angular-5/master/dist/assets/i18n/', '.json');
+    //return new TranslateHttpLoader(http, '/start-angular/SB-Admin-BS4-Angular-5/master/dist/assets/i18n/', '.json');
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
     imports: [
+        MaterialModule,
         FormsModule,
         HttpModule,
         CommonModule,
@@ -44,8 +50,9 @@ export function createTranslateLoader(http: HttpClient) {
             storageType: 'localStorage'
         })
     ],
-    declarations: [AppComponent],
+    declarations: [AppComponent, DialogOverviewExampleDialog,  ApplicantPersonalDetailsComponent, ApplicantEmployementComponent, ApplicantQualificationDetailsComponent],
     providers: [AuthGuard],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    entryComponents: [DialogOverviewExampleDialog]
 })
-export class AppModule {}
+export class AppModule { }
