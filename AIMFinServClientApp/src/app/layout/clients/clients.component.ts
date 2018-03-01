@@ -22,7 +22,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 export class ClientsComponent implements OnInit {
     public animal: string;
     public name: string;
-
+    public _EditPersonalDetails: boolean = false;
     public _ViewApplicantDetails: boolean = false;
     public _FormErrors;
     public _FormErrorsDescription: string = '';
@@ -41,6 +41,7 @@ export class ClientsComponent implements OnInit {
     GetAllClientsError(Res) { }
 
     ViewClientDetails(ApplicantID) {
+
         this._ViewApplicantDetails = !this._ViewApplicantDetails;
         this._LocalStorageService.set("ApplicantID", ApplicantID);
     }
@@ -54,5 +55,13 @@ export class ClientsComponent implements OnInit {
             console.log('The dialog was closed');
             this.animal = result;
         });
+    }
+
+    EditPersonalDetails() {
+        this._EditPersonalDetails = true;
+    }
+
+    CancelEditingPersonalDetails() {
+        this._EditPersonalDetails = false;
     }
 }
