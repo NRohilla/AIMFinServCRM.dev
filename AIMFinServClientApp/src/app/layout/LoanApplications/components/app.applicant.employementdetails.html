@@ -1,1 +1,32 @@
-﻿this is employment tab
+﻿<div class="form">
+    <div class="pt-4">
+        <h2>CLIENT PERSONAL DETAILS</h2>
+        <div class="w-100 float-left">
+            <div class="row m-0">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    <div class="form-group">
+                        <label for="name" class="font-weight-bold">Name:</label>
+                        <p>Nitin Kumar Rohilla</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    <div class="form-group">
+                        <label for="dependent" class="font-weight-bold">No of dependents:</label>
+                        <p>2</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    <div class="form-group">
+                        <label for="material status" class="font-weight-bold">Material Status:</label>
+                        <p>Married</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-100 float-left text-right">
+            <input type="button" value="Save" (click)="UpdatePersonalDetails()" *ngIf="_EditPersonalDetails" class="btn btn-success" />
+            <input type="button" value="Cancel" (click)="EditPersonalDetails()" *ngIf="_EditPersonalDetails" class="btn btn-secondary" />
+            <input type="button" value="Edit" (click)="EditPersonalDetails()" *ngIf="!_EditPersonalDetails" class="btn btn-info" />
+        </div>
+    </div>
+</div>
