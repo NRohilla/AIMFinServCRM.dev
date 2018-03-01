@@ -26,7 +26,7 @@ export function createTranslateLoader(http: HttpClient) {
     //return new TranslateHttpLoader(http, '/start-angular/SB-Admin-BS4-Angular-5/master/dist/assets/i18n/', '.json');
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
-//Test Staging Checking
+
 @NgModule({
     imports: [
         MaterialModule,
