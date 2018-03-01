@@ -14,7 +14,8 @@ import { LocalStorageModule, ILocalStorageServiceConfig } from 'angular-2-local-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
-import {DialogOverviewExampleDialog} from './shared/dialogues/loanapplications/Popup';
+import {LoanApplicationDetailDialog} from './shared/dialogues/loanapplications/LoanApplicationDetailDialog';
+import {ClientDetailsDialog} from './shared/dialogues/clients/ClientDetailsDialog';
 import {ApplicantPersonalDetailsComponent} from './layout/LoanApplications/components/app.applicant.personaldetails';
 import {ApplicantEmployementComponent} from './layout/LoanApplications/components/app.applicant.employementdetails';
 import {ApplicantQualificationDetailsComponent} from './layout/LoanApplications/components/app.applicant.qualificationdetails';
@@ -50,9 +51,9 @@ export function createTranslateLoader(http: HttpClient) {
             storageType: 'localStorage'
         })
     ],
-    declarations: [AppComponent, DialogOverviewExampleDialog,  ApplicantPersonalDetailsComponent, ApplicantEmployementComponent, ApplicantQualificationDetailsComponent],
+    declarations: [AppComponent, LoanApplicationDetailDialog, ApplicantPersonalDetailsComponent, ApplicantEmployementComponent, ApplicantQualificationDetailsComponent, ClientDetailsDialog],
     providers: [AuthGuard],
     bootstrap: [AppComponent],
-    entryComponents: [DialogOverviewExampleDialog]
+    entryComponents: [LoanApplicationDetailDialog, ClientDetailsDialog]
 })
 export class AppModule { }

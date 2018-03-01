@@ -9,7 +9,7 @@ import 'rxjs/Rx';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import {ClientsService} from '../../services/app.clients.service';
-import {DialogOverviewExampleDialog} from '../../shared/dialogues/loanapplications/Popup';
+import {LoanApplicationDetailDialog} from '../../shared/dialogues/loanapplications/LoanApplicationDetailDialog';
 @Component({
     templateUrl: './clients.component.html',
     styleUrls:
@@ -54,7 +54,7 @@ export class ClientsComponent implements OnInit {
     }
 
     openDialog(): void {
-        let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+        let dialogRef = this.dialog.open(LoanApplicationDetailDialog, {
             data: { name: this.name, animal: this.animal }
         });
 

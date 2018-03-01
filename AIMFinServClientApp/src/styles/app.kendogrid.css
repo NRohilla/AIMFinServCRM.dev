@@ -18,7 +18,9 @@
 .master-forms .section_box input[type="button"], .application-details  .section_box input[type="button"] { padding:5px 10px; font-size:14px; font-family: FontAwesome, "Open Sans", Verdana, sans-serif; font-style: normal; font-weight: normal; text-decoration: inherit;}
 .master-forms .btn:focus, .master-forms .btn.focus, .application-details .btn:focus, .application-details .btn.focus  { box-shadow:none;}
 .application-details .mat-tab-label-container { z-index:unset !important;}
-
+.application-details .mat-tab-labels { height:60px;}
+.application-details .mat-tab-body-wrapper .form-group { font-size:15px;}
+.application-details .section_box { margin-bottom:0px;}
 
 
 .application-details .field_set { width:100%;}
