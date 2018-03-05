@@ -8,7 +8,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import {ClientsService} from '../../services/app.clients.service';
-
+import {ClientDetailsDialog} from '../../shared/dialogues/clients/ClientDetailsDialog';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 @Component({
     templateUrl: './clients.component.html',
     styleUrls:
@@ -19,12 +20,15 @@ import {ClientsService} from '../../services/app.clients.service';
     providers: [ClientsService]
 })
 export class ClientsComponent implements OnInit {
+    public animal: string;
+    public name: string;
+    public _EditPersonalDetails: boolean = false;
     public _ViewApplicantDetails: boolean = false;
     public _FormErrors;
     public _FormErrorsDescription: string = '';
     public gridData: any[];
 
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { }
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, public dialog: MatDialog) { }
 
     ngOnInit() {
         this._ClientsService.GetAllClients().subscribe(res => this.GetAllClientsSuccess(res), res => this.GetAllClientsError(res));
@@ -37,8 +41,27 @@ export class ClientsComponent implements OnInit {
     GetAllClientsError(Res) { }
 
     ViewClientDetails(ApplicantID) {
+
         this._ViewApplicantDetails = !this._ViewApplicantDetails;
         this._LocalStorageService.set("ApplicantID", ApplicantID);
     }
 
+    openDialog(): void {
+        let dialogRef = this.dialog.open(ClientDetailsDialog, {
+            data: { name: this.name, animal: this.animal }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+            this.animal = result;
+        });
+    }
+
+    EditPersonalDetails() {
+        this._EditPersonalDetails = true;
+    }
+
+    CancelEditingPersonalDetails() {
+        this._EditPersonalDetails = false;
+    }
 }

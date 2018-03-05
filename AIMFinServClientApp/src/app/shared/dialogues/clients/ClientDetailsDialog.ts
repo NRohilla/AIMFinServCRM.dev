@@ -2,12 +2,12 @@
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
-    templateUrl: './dialog-overview-example-dialog.html',
+    templateUrl: './ClientDetailsDialog.html',
 })
-export class DialogOverviewExampleDialog {
+export class ClientDetailsDialog {
 
     constructor(
-        public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+        public dialogRef: MatDialogRef<ClientDetailsDialog>,
         @Inject(MAT_DIALOG_DATA) public data: any) { }
 
     onNoClick(): void {
