@@ -11,7 +11,7 @@ const routes: Routes = [
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
             { path: 'clients', loadChildren: './clients/clients.module#ClientsModule' },
-            { path: 'loanapplications', loadChildren: './LoanApplications/clients.module#ClientsModule' },
+            { path: 'loanapplications', loadChildren: './LoanApplications/loanapplications.module#LoanapplicationsModule' },
 
             { path: 'master-applicant', loadChildren: './masters/applicant/applicant.module#ApplicantModule' },
             { path: 'master-assets', loadChildren: './masters/assets/assets.module#AssetsModule' },
