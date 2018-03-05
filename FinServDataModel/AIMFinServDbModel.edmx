@@ -21,6 +21,7 @@
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="ModifiedBy" Type="uniqueidentifier" />
           <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="AddressType" Type="int" />
         </EntityType>
         <EntityType Name="tblApplicantEmploymentDetails">
           <Key>
@@ -61,7 +62,6 @@
           <Property Name="AutoID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="QualificationID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ApplicantID" Type="uniqueidentifier" />
-          <Property Name="TypeOfQualification" Type="int" />
           <Property Name="PassingYear" Type="nchar" MaxLength="10" />
           <Property Name="CourseName" Type="nvarchar" MaxLength="50" />
           <Property Name="UniversityName" Type="nvarchar" MaxLength="150" />
@@ -69,6 +69,7 @@
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="ModifiedBy" Type="uniqueidentifier" />
           <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="TypeOfQualification" Type="int" />
         </EntityType>
         <EntityType Name="tblApplicants">
           <Key>
@@ -215,6 +216,18 @@
           <Property Name="ModifiedBy" Type="uniqueidentifier" />
           <Property Name="ModifiedOn" Type="datetime" />
         </EntityType>
+        <EntityType Name="tblMasterAddressTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
         <EntityType Name="tblMasterApplicantType">
           <Key>
             <PropertyRef Name="ApplicantTypeID" />
@@ -222,6 +235,10 @@
           <Property Name="ApplicantTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ApplicantType" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="tblMasterAssetTypes">
           <Key>
@@ -231,6 +248,10 @@
           <Property Name="AssetTypeID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="100" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="Createdon" Type="datetime" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="tblMasterExpenseType">
           <Key>
@@ -241,6 +262,10 @@
           <Property Name="Description" Type="nvarchar" MaxLength="100" />
           <Property Name="Frequency" Type="nvarchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="tblMasterLiabilityTypes">
           <Key>
@@ -250,6 +275,10 @@
           <Property Name="LiabilityTypeID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="100" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="tblMasterLoanRateType">
           <Key>
@@ -258,6 +287,10 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LoanRateType" Type="nvarchar" MaxLength="100" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="tblMasterPropertyType">
           <Key>
@@ -266,6 +299,10 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PropertyType" Type="nvarchar" MaxLength="100" />
           <Property Name="IsAvtive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="tblMasterPurposeOfLoan">
           <Key>
@@ -274,6 +311,10 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PurposeOfLoan" Type="nvarchar" MaxLength="100" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="tblMasterSalutation">
           <Key>
@@ -282,6 +323,10 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Salutation" Type="nvarchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="tblMasterTypeOfEmployment">
           <Key>
@@ -290,6 +335,10 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EmployementType" Type="nvarchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="tblMasterTypeOfLoan">
           <Key>
@@ -298,6 +347,10 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LoanType" Type="nvarchar" MaxLength="100" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="tblMasterTypeOfProfession">
           <Key>
@@ -306,6 +359,10 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Profession" Type="nvarchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="tblMasterTypeOfQualification">
           <Key>
@@ -314,6 +371,10 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Qualifications" Type="nvarchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="tblMasterTypeOfRelationship">
           <Key>
@@ -322,6 +383,10 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RelationshipWithApplicant" Type="nvarchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="tblRole">
           <Key>
@@ -377,6 +442,18 @@
           <Property Name="UserGuid" Type="uniqueidentifier" />
           <Property Name="IsActive" Type="bit" />
         </EntityType>
+        <Association Name="FK__tblApplic__Addre__7C4F7684">
+          <End Role="tblMasterAddressTypes" Type="Self.tblMasterAddressTypes" Multiplicity="0..1" />
+          <End Role="tblApplicantCommunicationDetails" Type="Self.tblApplicantCommunicationDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMasterAddressTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblApplicantCommunicationDetails">
+              <PropertyRef Name="AddressType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__tblApplic__Appli__5070F446">
           <End Role="tblApplicants" Type="Self.tblApplicants" Multiplicity="0..1" />
           <End Role="tblApplicantCommunicationDetails" Type="Self.tblApplicantCommunicationDetails" Multiplicity="*" />
@@ -386,6 +463,18 @@
             </Principal>
             <Dependent Role="tblApplicantCommunicationDetails">
               <PropertyRef Name="ApplicantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblApplic__TypeO__7D439ABD">
+          <End Role="tblMasterTypeOfQualification" Type="Self.tblMasterTypeOfQualification" Multiplicity="0..1" />
+          <End Role="tblApplicantQualificationDetails" Type="Self.tblApplicantQualificationDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMasterTypeOfQualification">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblApplicantQualificationDetails">
+              <PropertyRef Name="TypeOfQualification" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -484,6 +573,7 @@
           <EntitySet Name="tblLoanApplicationForm" EntityType="Self.tblLoanApplicationForm" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblLoanGuarantor" EntityType="Self.tblLoanGuarantor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblLoanMaster" EntityType="Self.tblLoanMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMasterAddressTypes" EntityType="Self.tblMasterAddressTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMasterApplicantType" EntityType="Self.tblMasterApplicantType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMasterAssetTypes" EntityType="Self.tblMasterAssetTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMasterExpenseType" EntityType="Self.tblMasterExpenseType" Schema="dbo" store:Type="Tables" />
@@ -500,9 +590,17 @@
           <EntitySet Name="tblRole" EntityType="Self.tblRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUsers" EntityType="Self.tblUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUsersRole" EntityType="Self.tblUsersRole" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tblApplic__Addre__7C4F7684" Association="Self.FK__tblApplic__Addre__7C4F7684">
+            <End Role="tblMasterAddressTypes" EntitySet="tblMasterAddressTypes" />
+            <End Role="tblApplicantCommunicationDetails" EntitySet="tblApplicantCommunicationDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK__tblApplic__Appli__5070F446" Association="Self.FK__tblApplic__Appli__5070F446">
             <End Role="tblApplicants" EntitySet="tblApplicants" />
             <End Role="tblApplicantCommunicationDetails" EntitySet="tblApplicantCommunicationDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblApplic__TypeO__7D439ABD" Association="Self.FK__tblApplic__TypeO__7D439ABD">
+            <End Role="tblMasterTypeOfQualification" EntitySet="tblMasterTypeOfQualification" />
+            <End Role="tblApplicantQualificationDetails" EntitySet="tblApplicantQualificationDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_tblApplicantEmploymentDetails_tblApplicants" Association="Self.FK_tblApplicantEmploymentDetails_tblApplicants">
             <End Role="tblApplicants" EntitySet="tblApplicants" />
@@ -596,6 +694,15 @@
             <End Role="tblMasterLiabilityType" EntitySet="tblMasterLiabilityTypes" />
             <End Role="tblLiability" EntitySet="tblLiabilities" />
           </AssociationSet>
+          <EntitySet Name="tblMasterAddressTypes" EntityType="AIMFinServDBModel.tblMasterAddressType" />
+          <AssociationSet Name="FK__tblApplic__Addre__7C4F7684" Association="AIMFinServDBModel.FK__tblApplic__Addre__7C4F7684">
+            <End Role="tblMasterAddressType" EntitySet="tblMasterAddressTypes" />
+            <End Role="tblApplicantCommunicationDetail" EntitySet="tblApplicantCommunicationDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblApplic__TypeO__7D439ABD" Association="AIMFinServDBModel.FK__tblApplic__TypeO__7D439ABD">
+            <End Role="tblMasterTypeOfQualification" EntitySet="tblMasterTypeOfQualifications" />
+            <End Role="tblApplicantQualificationDetail" EntitySet="tblApplicantQualificationDetails" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="tblApplicantCommunicationDetail">
           <Key>
@@ -614,6 +721,8 @@
           <Property Name="ModifiedBy" Type="Guid" />
           <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tblApplicant" Relationship="AIMFinServDBModel.FK__tblApplic__Appli__5070F446" FromRole="tblApplicantCommunicationDetail" ToRole="tblApplicant" />
+          <Property Name="AddressType" Type="Int32" />
+          <NavigationProperty Name="tblMasterAddressType" Relationship="AIMFinServDBModel.FK__tblApplic__Addre__7C4F7684" FromRole="tblApplicantCommunicationDetail" ToRole="tblMasterAddressType" />
         </EntityType>
         <EntityType Name="tblApplicantEmploymentDetail">
           <Key>
@@ -665,6 +774,7 @@
           <Property Name="ModifiedBy" Type="Guid" />
           <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tblApplicant" Relationship="AIMFinServDBModel.FK_tblApplicantQualificationDetails_tblApplicants" FromRole="tblApplicantQualificationDetail" ToRole="tblApplicant" />
+          <NavigationProperty Name="tblMasterTypeOfQualification" Relationship="AIMFinServDBModel.FK__tblApplic__TypeO__7D439ABD" FromRole="tblApplicantQualificationDetail" ToRole="tblMasterTypeOfQualification" />
         </EntityType>
         <EntityType Name="tblApplicant">
           <Key>
@@ -828,6 +938,10 @@
           <Property Name="ApplicantType" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="tblApplicants" Relationship="AIMFinServDBModel.FK_tblApplicants_tblApplicantType" FromRole="tblMasterApplicantType" ToRole="tblApplicant" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="tblMasterAssetType">
           <Key>
@@ -838,6 +952,10 @@
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="tblAssets" Relationship="AIMFinServDBModel.FK_tblAssets_tblAssetTypes" FromRole="tblMasterAssetType" ToRole="tblAsset" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="Createdon" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="tblMasterExpenseType">
           <Key>
@@ -848,6 +966,10 @@
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Frequency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="tblMasterLiabilityType">
           <Key>
@@ -858,6 +980,10 @@
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="tblLiabilities" Relationship="AIMFinServDBModel.FK_tblLiabilities_tblLiabilityTypes" FromRole="tblMasterLiabilityType" ToRole="tblLiability" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="tblMasterLoanRateType">
           <Key>
@@ -866,6 +992,10 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LoanRateType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="tblMasterPropertyType">
           <Key>
@@ -874,6 +1004,10 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PropertyType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IsAvtive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="tblMasterPurposeOfLoan">
           <Key>
@@ -882,6 +1016,10 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PurposeOfLoan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="tblMasterSalutation">
           <Key>
@@ -890,6 +1028,10 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Salutation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="tblMasterTypeOfEmployment">
           <Key>
@@ -898,6 +1040,10 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EmployementType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="tblMasterTypeOfLoan">
           <Key>
@@ -906,6 +1052,10 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LoanType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="tblMasterTypeOfProfession">
           <Key>
@@ -914,6 +1064,10 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Profession" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="tblMasterTypeOfQualification">
           <Key>
@@ -922,6 +1076,11 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Qualifications" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblApplicantQualificationDetails" Relationship="AIMFinServDBModel.FK__tblApplic__TypeO__7D439ABD" FromRole="tblMasterTypeOfQualification" ToRole="tblApplicantQualificationDetail" />
         </EntityType>
         <EntityType Name="tblMasterTypeOfRelationship">
           <Key>
@@ -930,6 +1089,10 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RelationshipWithApplicant" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="tblRole">
           <Key>
@@ -1081,6 +1244,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tblMasterAddressType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblApplicantCommunicationDetails" Relationship="AIMFinServDBModel.FK__tblApplic__Addre__7C4F7684" FromRole="tblMasterAddressType" ToRole="tblApplicantCommunicationDetail" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK__tblApplic__Addre__7C4F7684">
+          <End Type="AIMFinServDBModel.tblMasterAddressType" Role="tblMasterAddressType" Multiplicity="0..1" />
+          <End Type="AIMFinServDBModel.tblApplicantCommunicationDetail" Role="tblApplicantCommunicationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMasterAddressType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblApplicantCommunicationDetail">
+              <PropertyRef Name="AddressType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblApplic__TypeO__7D439ABD">
+          <End Type="AIMFinServDBModel.tblMasterTypeOfQualification" Role="tblMasterTypeOfQualification" Multiplicity="0..1" />
+          <End Type="AIMFinServDBModel.tblApplicantQualificationDetail" Role="tblApplicantQualificationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMasterTypeOfQualification">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblApplicantQualificationDetail">
+              <PropertyRef Name="TypeOfQualification" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1090,6 +1290,7 @@
           <EntitySetMapping Name="tblApplicantCommunicationDetails">
             <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicantCommunicationDetail">
               <MappingFragment StoreEntitySet="tblApplicantCommunicationDetails">
+                <ScalarProperty Name="AddressType" ColumnName="AddressType" />
                 <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
@@ -1310,6 +1511,10 @@
           <EntitySetMapping Name="tblMasterApplicantTypes">
             <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterApplicantType">
               <MappingFragment StoreEntitySet="tblMasterApplicantType">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="ApplicantType" ColumnName="ApplicantType" />
                 <ScalarProperty Name="ApplicantTypeID" ColumnName="ApplicantTypeID" />
@@ -1319,6 +1524,10 @@
           <EntitySetMapping Name="tblMasterAssetTypes">
             <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterAssetType">
               <MappingFragment StoreEntitySet="tblMasterAssetTypes">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Createdon" ColumnName="Createdon" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="AssetTypeID" ColumnName="AssetTypeID" />
@@ -1329,6 +1538,10 @@
           <EntitySetMapping Name="tblMasterExpenseTypes">
             <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterExpenseType">
               <MappingFragment StoreEntitySet="tblMasterExpenseType">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Frequency" ColumnName="Frequency" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -1340,6 +1553,10 @@
           <EntitySetMapping Name="tblMasterLiabilityTypes">
             <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterLiabilityType">
               <MappingFragment StoreEntitySet="tblMasterLiabilityTypes">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="LiabilityTypeID" ColumnName="LiabilityTypeID" />
@@ -1350,6 +1567,10 @@
           <EntitySetMapping Name="tblMasterLoanRateTypes">
             <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterLoanRateType">
               <MappingFragment StoreEntitySet="tblMasterLoanRateType">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="LoanRateType" ColumnName="LoanRateType" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -1359,6 +1580,10 @@
           <EntitySetMapping Name="tblMasterPropertyTypes">
             <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterPropertyType">
               <MappingFragment StoreEntitySet="tblMasterPropertyType">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="IsAvtive" ColumnName="IsAvtive" />
                 <ScalarProperty Name="PropertyType" ColumnName="PropertyType" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -1368,6 +1593,10 @@
           <EntitySetMapping Name="tblMasterPurposeOfLoans">
             <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterPurposeOfLoan">
               <MappingFragment StoreEntitySet="tblMasterPurposeOfLoan">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="PurposeOfLoan" ColumnName="PurposeOfLoan" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -1377,6 +1606,10 @@
           <EntitySetMapping Name="tblMasterSalutations">
             <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterSalutation">
               <MappingFragment StoreEntitySet="tblMasterSalutation">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Salutation" ColumnName="Salutation" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -1386,6 +1619,10 @@
           <EntitySetMapping Name="tblMasterTypeOfEmployments">
             <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterTypeOfEmployment">
               <MappingFragment StoreEntitySet="tblMasterTypeOfEmployment">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="EmployementType" ColumnName="EmployementType" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -1395,6 +1632,10 @@
           <EntitySetMapping Name="tblMasterTypeOfLoans">
             <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterTypeOfLoan">
               <MappingFragment StoreEntitySet="tblMasterTypeOfLoan">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="LoanType" ColumnName="LoanType" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -1404,6 +1645,10 @@
           <EntitySetMapping Name="tblMasterTypeOfProfessions">
             <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterTypeOfProfession">
               <MappingFragment StoreEntitySet="tblMasterTypeOfProfession">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Profession" ColumnName="Profession" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -1413,6 +1658,10 @@
           <EntitySetMapping Name="tblMasterTypeOfQualifications">
             <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterTypeOfQualification">
               <MappingFragment StoreEntitySet="tblMasterTypeOfQualification">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Qualifications" ColumnName="Qualifications" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -1422,6 +1671,10 @@
           <EntitySetMapping Name="tblMasterTypeOfRelationships">
             <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterTypeOfRelationship">
               <MappingFragment StoreEntitySet="tblMasterTypeOfRelationship">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="RelationshipWithApplicant" ColumnName="RelationshipWithApplicant" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -1482,6 +1735,19 @@
                 <ScalarProperty Name="RoleGuid" ColumnName="RoleGuid" />
                 <ScalarProperty Name="UsersRoleId" ColumnName="UsersRoleId" />
                 <ScalarProperty Name="UsersRoleGuid" ColumnName="UsersRoleGuid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMasterAddressTypes">
+            <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterAddressType">
+              <MappingFragment StoreEntitySet="tblMasterAddressTypes">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

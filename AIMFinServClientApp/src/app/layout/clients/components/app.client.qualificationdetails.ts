@@ -24,35 +24,32 @@ export class ClientqualificationComponent implements OnInit {
 
     public _ApplicantQualificationDetails: {
         AutoID: '',
-        CommunicationID: '',
-        AddressLine1: '',
-        AddressLine2: '',
-        AddressLine3: '',
-        Duration: '',
-        Status: '',
+        QualificationID: '',
         ApplicantID: '',
-        MobileNo: '',
-        HomePhoneNo: '',
-        WorkPhoneNo: '',
-        EmailID: '',
+        TypeOfQualification: '',
+        PassingYear: '',
+        CourseName: '',
+        UniversityName: '',
+        _QualificationTypeMaster: {}
     }
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { }
 
     ngOnInit() {
         if (this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
-            this._ClientsService.GetClientCommunicationDetails(<string>this._LocalStorageService.get("ApplicantID")).subscribe(res => this.GetClientCommDetailsSuccess(res), res => this.GetClientCommDetailsError(res));
+            this._ClientsService.GetClientQualificationDetails(<string>this._LocalStorageService.get("ApplicantID")).subscribe(res => this.GetClientQualDetailsSuccess(res), res => this.GetClientQualDetailsError(res));
         }
     }
 
     GetClientDetailsError(res) { }
 
-    GetClientCommDetailsSuccess(res) {
+    GetClientQualDetailsSuccess(res) {
+        debugger;
         this._ApplicantQualificationDetails = JSON.parse(res._body);
     }
-    GetClientCommDetailsError(res) { }
+    GetClientQualDetailsError(res) { }
     EditPersonalDetails() {
-        this._EditPersonalDetails = !this._EditPersonalDetails ;
+        this._EditPersonalDetails = !this._EditPersonalDetails;
     }
 
     EditCommunicationDetails() {

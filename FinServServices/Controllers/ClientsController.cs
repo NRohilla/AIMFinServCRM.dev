@@ -40,6 +40,13 @@ namespace FinServServices.Controllers
             return Repository.GetClientEmployementDetails(ClientID);
         }
 
+        [HttpGet]
+        [Route("GetClientQualificationDetails")]
+        public List<ApplicantQualificationDetails> GetClientQualificationDetails(string ClientID)
+        {
+            return Repository.GetClientQualificationDetails(ClientID);
+        }
+
         [HttpPost]
         [Route("UpdateClientEmploymentDetails")]
         public bool UpdateClientEmploymentDetails(List<ApplicantEmployementDetails> ApplicantEmployementDetails)

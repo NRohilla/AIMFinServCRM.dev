@@ -4,6 +4,7 @@
     <EntitySetMapping Name="tblApplicantCommunicationDetails">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicantCommunicationDetail">
         <MappingFragment StoreEntitySet="tblApplicantCommunicationDetails">
+          <ScalarProperty Name="AddressType" ColumnName="AddressType" />
           <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
           <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
           <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
@@ -224,6 +225,10 @@
     <EntitySetMapping Name="tblMasterApplicantTypes">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterApplicantType">
         <MappingFragment StoreEntitySet="tblMasterApplicantType">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="ApplicantType" ColumnName="ApplicantType" />
           <ScalarProperty Name="ApplicantTypeID" ColumnName="ApplicantTypeID" />
@@ -233,6 +238,10 @@
     <EntitySetMapping Name="tblMasterAssetTypes">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterAssetType">
         <MappingFragment StoreEntitySet="tblMasterAssetTypes">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Createdon" ColumnName="Createdon" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="AssetTypeID" ColumnName="AssetTypeID" />
@@ -243,6 +252,10 @@
     <EntitySetMapping Name="tblMasterExpenseTypes">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterExpenseType">
         <MappingFragment StoreEntitySet="tblMasterExpenseType">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="Frequency" ColumnName="Frequency" />
           <ScalarProperty Name="Description" ColumnName="Description" />
@@ -254,6 +267,10 @@
     <EntitySetMapping Name="tblMasterLiabilityTypes">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterLiabilityType">
         <MappingFragment StoreEntitySet="tblMasterLiabilityTypes">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="LiabilityTypeID" ColumnName="LiabilityTypeID" />
@@ -264,6 +281,10 @@
     <EntitySetMapping Name="tblMasterLoanRateTypes">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterLoanRateType">
         <MappingFragment StoreEntitySet="tblMasterLoanRateType">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="LoanRateType" ColumnName="LoanRateType" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -273,6 +294,10 @@
     <EntitySetMapping Name="tblMasterPropertyTypes">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterPropertyType">
         <MappingFragment StoreEntitySet="tblMasterPropertyType">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="IsAvtive" ColumnName="IsAvtive" />
           <ScalarProperty Name="PropertyType" ColumnName="PropertyType" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -282,6 +307,10 @@
     <EntitySetMapping Name="tblMasterPurposeOfLoans">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterPurposeOfLoan">
         <MappingFragment StoreEntitySet="tblMasterPurposeOfLoan">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="PurposeOfLoan" ColumnName="PurposeOfLoan" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -291,6 +320,10 @@
     <EntitySetMapping Name="tblMasterSalutations">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterSalutation">
         <MappingFragment StoreEntitySet="tblMasterSalutation">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="Salutation" ColumnName="Salutation" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -300,6 +333,10 @@
     <EntitySetMapping Name="tblMasterTypeOfEmployments">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterTypeOfEmployment">
         <MappingFragment StoreEntitySet="tblMasterTypeOfEmployment">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="EmployementType" ColumnName="EmployementType" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -309,6 +346,10 @@
     <EntitySetMapping Name="tblMasterTypeOfLoans">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterTypeOfLoan">
         <MappingFragment StoreEntitySet="tblMasterTypeOfLoan">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="LoanType" ColumnName="LoanType" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -318,6 +359,10 @@
     <EntitySetMapping Name="tblMasterTypeOfProfessions">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterTypeOfProfession">
         <MappingFragment StoreEntitySet="tblMasterTypeOfProfession">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="Profession" ColumnName="Profession" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -327,6 +372,10 @@
     <EntitySetMapping Name="tblMasterTypeOfQualifications">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterTypeOfQualification">
         <MappingFragment StoreEntitySet="tblMasterTypeOfQualification">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="Qualifications" ColumnName="Qualifications" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -336,6 +385,10 @@
     <EntitySetMapping Name="tblMasterTypeOfRelationships">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterTypeOfRelationship">
         <MappingFragment StoreEntitySet="tblMasterTypeOfRelationship">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="RelationshipWithApplicant" ColumnName="RelationshipWithApplicant" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -396,6 +449,19 @@
           <ScalarProperty Name="RoleGuid" ColumnName="RoleGuid" />
           <ScalarProperty Name="UsersRoleId" ColumnName="UsersRoleId" />
           <ScalarProperty Name="UsersRoleGuid" ColumnName="UsersRoleGuid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMasterAddressTypes">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterAddressType">
+        <MappingFragment StoreEntitySet="tblMasterAddressTypes">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

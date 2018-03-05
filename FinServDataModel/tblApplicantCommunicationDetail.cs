@@ -26,7 +26,9 @@ namespace FinServDataModel
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
+        public Nullable<int> AddressType { get; set; }
     
         public virtual tblApplicant tblApplicant { get; set; }
+        public virtual tblMasterAddressType tblMasterAddressType { get; set; }
     }
 }

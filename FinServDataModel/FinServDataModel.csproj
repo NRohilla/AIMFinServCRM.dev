@@ -97,6 +97,9 @@
     <Compile Include="tblLoanMaster.cs">
       <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="tblMasterAddressType.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblMasterApplicantType.cs">
       <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
     </Compile>

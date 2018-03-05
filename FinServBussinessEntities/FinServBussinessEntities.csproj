@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddressTypeMaster.cs" />
     <Compile Include="ApplicantCommunicationDetails.cs" />
+    <Compile Include="ApplicantQualificationDetails.cs" />
     <Compile Include="ApplicantTypeMaster.cs" />
     <Compile Include="ApplicantEmployementDetails.cs" />
     <Compile Include="Applicants.cs" />

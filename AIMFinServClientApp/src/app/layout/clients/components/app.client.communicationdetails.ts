@@ -23,18 +23,11 @@ export class ClientscommunicationComponent implements OnInit {
     public _EditCommunicationDetails: boolean = false;
 
     public _ApplicantCommunicationDetails: {
-        AutoID: '',
-        CommunicationID: '',
         AddressLine1: '',
         AddressLine2: '',
         AddressLine3: '',
-        Duration: '',
-        Status: '',
         ApplicantID: '',
-        MobileNo: '',
-        HomePhoneNo: '',
-        WorkPhoneNo: '',
-        EmailID: '',
+        _AddressTypeMaster: {}
     }
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { }
@@ -48,11 +41,12 @@ export class ClientscommunicationComponent implements OnInit {
     GetClientDetailsError(res) { }
 
     GetClientCommDetailsSuccess(res) {
+        debugger;
         this._ApplicantCommunicationDetails = JSON.parse(res._body);
     }
     GetClientCommDetailsError(res) { }
     EditPersonalDetails() {
-        this._EditPersonalDetails = !this._EditPersonalDetails ;
+        this._EditPersonalDetails = !this._EditPersonalDetails;
     }
 
     EditCommunicationDetails() {

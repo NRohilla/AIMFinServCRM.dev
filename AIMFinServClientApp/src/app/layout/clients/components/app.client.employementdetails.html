@@ -22,7 +22,7 @@
                                 <div class="field_info">
                                     <p *ngIf="!_EditEmployementDetails">{{_ApplicantEmployementDetail.SourceOfIncome}}</p>
                                     <mat-form-field class="example-full-width" *ngIf="_EditEmployementDetails">
-                                        <input matInput placeholder="Employer" value="{{_ApplicantEmployementDetail.SourceOfIncome}}" [(ngModel)]="_ApplicantEmployementDetail.SourceOfIncome" #SourceOfIncome>
+                                        <input matInput placeholder="Source Of Income" value="{{_ApplicantEmployementDetail.SourceOfIncome}}" [(ngModel)]="_ApplicantEmployementDetail.SourceOfIncome" #SourceOfIncome>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -33,7 +33,7 @@
                                 <div class="field_info">
                                     <p *ngIf="!_EditEmployementDetails">{{_ApplicantEmployementDetail.Income}}</p>
                                     <mat-form-field class="example-full-width" *ngIf="_EditEmployementDetails">
-                                        <input matInput placeholder="Employer" value="{{_ApplicantEmployementDetail.Income}}" [(ngModel)]="_ApplicantEmployementDetail.Income" #Income>
+                                        <input matInput placeholder="Income" value="{{_ApplicantEmployementDetail.Income}}" [(ngModel)]="_ApplicantEmployementDetail.Income" #Income>
                                     </mat-form-field>
                                 </div>
                             </div>

@@ -112,6 +112,7 @@ namespace FinServUnitOfWork.Repository
                     {
                         foreach (var itemApplicantCommDetails in GetApplicantCommunicationDetails)
                         {
+                            var addresstype = db.tblMasterAddressTypes.Where(p => p.ID == itemApplicantCommDetails.AddressType).FirstOrDefault();
                             objApplicantCommunicationDetails.Add(new ApplicantCommunicationDetails
                             {
                                 AddressLine1 = itemApplicantCommDetails.AddressLine1,
@@ -120,6 +121,10 @@ namespace FinServUnitOfWork.Repository
                                 AutoID = itemApplicantCommDetails.AutoID,
                                 CommunicationID = itemApplicantCommDetails.CommunicationID,
                                 Status = itemApplicantCommDetails.Status,
+                                _AddressTypeMaster = new AddressTypeMaster()
+                                {
+                                    Type = addresstype != null ? addresstype.Type : ""
+                                }
                             });
                         }
                     }
@@ -157,6 +162,43 @@ namespace FinServUnitOfWork.Repository
                         }
                     }
                     return objApplicantEmployementDetails;
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+        public List<ApplicantQualificationDetails> GetClientQualificationDetails(string ClientID)
+        {
+            try
+            {
+                List<ApplicantQualificationDetails> objApplicantQualificationDetails = new List<ApplicantQualificationDetails>();
+                Guid ApplicantID = Guid.Parse(ClientID);
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetApplicantQualificationDetails = db.tblApplicantQualificationDetails.Where(p => p.ApplicantID == ApplicantID).ToList();
+                    if (GetApplicantQualificationDetails != null)
+                    {
+                        foreach (var itemQualificationDetail in GetApplicantQualificationDetails)
+                        {
+                            objApplicantQualificationDetails.Add(new ApplicantQualificationDetails
+                            {
+                                ApplicantID = itemQualificationDetail.ApplicantID,
+                                AutoID = itemQualificationDetail.AutoID,
+                                CourseName = itemQualificationDetail.CourseName,
+                                PassingYear = itemQualificationDetail.PassingYear,
+                                QualificationID = itemQualificationDetail.QualificationID,
+                                TypeOfQualification = itemQualificationDetail.TypeOfQualification,
+                                UniversityName = itemQualificationDetail.UniversityName,
+                                _QualificationTypeMaster = new QualificationTypeMaster()
+                                {
+                                    Qualifications = itemQualificationDetail.tblMasterTypeOfQualification.Qualifications
+                                }
+                            });
+                        }
+                    }
+                    return objApplicantQualificationDetails;
                 }
             }
             catch (Exception e)

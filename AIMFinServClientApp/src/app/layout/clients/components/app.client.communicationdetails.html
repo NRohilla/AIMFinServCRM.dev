@@ -8,51 +8,11 @@
                         <div class="row m-0">
                             <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
                                 <div class="field_set">
-                                    <div class="field_label">Email address</div>
+                                    <div class="field_label">Adress type:</div>
                                     <div class="field_info">
-                                        <p *ngIf="!_EditCommunicationDetails">{{_ApplicantCommunicationDetail.EmailID}}</p>
-                                        <mat-form-field class="example-full-width" *ngIf="_EditCommunicationDetails">
-                                            <input matInput placeholder="Email address" value="{{_ApplicantCommunicationDetail.EmailID}}" [(ngModel)]="_ApplicantCommunicationDetail.EmailID" #EmailID>
-                                        </mat-form-field>
+                                        <p>{{_ApplicantCommunicationDetail._AddressTypeMaster.Type}}</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                <div class="field_set">
-                                    <div class="field_label">Mobile No</div>
-                                    <div class="field_info">
-                                        <p *ngIf="!_EditCommunicationDetails">{{_ApplicantCommunicationDetail.MobileNo}}</p>
-                                        <mat-form-field class="example-full-width" *ngIf="_EditCommunicationDetails">
-                                            <input matInput placeholder="Mobile No" value="{{_ApplicantCommunicationDetail.MobileNo}}" [(ngModel)]="_ApplicantCommunicationDetail.MobileNo" #MobileNo>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                <div class="field_set">
-                                    <div class="field_label">Home Phone No</div>
-                                    <div class="field_info">
-                                        <p *ngIf="!_EditCommunicationDetails">{{_ApplicantCommunicationDetail.HomePhoneNo}}</p>
-                                        <mat-form-field class="example-full-width" *ngIf="_EditCommunicationDetails">
-                                            <input matInput placeholder="Home Phone No" value="{{_ApplicantCommunicationDetail.HomePhoneNo}}" [(ngModel)]="_ApplicantCommunicationDetail.HomePhoneNo" #HomePhoneNo>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row m-0">
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                <div class="field_set">
-                                    <div class="field_label">Work Phone No</div>
-                                    <div class="field_info">
-                                        <p *ngIf="!_EditCommunicationDetails">{{_ApplicantCommunicationDetail.WorkPhoneNo}}</p>
-                                        <mat-form-field class="example-full-width" *ngIf="_EditCommunicationDetails">
-                                            <input matInput placeholder="Work Phone No" value="{{_ApplicantCommunicationDetail.WorkPhoneNo}}" [(ngModel)]="_ApplicantCommunicationDetail.WorkPhoneNo" #WorkPhoneNo>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
                                 <div class="field_set">
                                     <div class="field_label">Address</div>
                                     <div class="field_info">
@@ -75,24 +35,6 @@
                         <input type="button" value="&#xf0c7; Save" (click)="UpdateCommunicationDetails()" *ngIf="_EditCommunicationDetails" class="btn btn-success" />
                         <input type="button" value="&#xf00d; Cancel" (click)="EditCommunicationDetails()" *ngIf="_EditCommunicationDetails" class="btn btn-secondary" />
                         <input type="button" value="&#xf040; Edit" (click)="EditCommunicationDetails()" *ngIf="!_EditCommunicationDetails" class="btn btn-info" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row m-0" style="display:none;">
-        <div class="w-100 float-left">
-            <div class="section_box">
-                <div class="box_title">Qualification Details</div>
-                <div class="tab-content clearfix" style="margin-left:0;">
-                    <div class="tab-pane active">
-                        Content's background color is the same for the tab
-                    </div>
-                    <div class="tab-pane active">
-                        We applied clearfix to the tab-content to rid of the gap between the tab and the content
-                    </div>
-                    <div class="tab-pane active">
-                        We use css to change the background color of the content to be equal to the tab
                     </div>
                 </div>
             </div>
