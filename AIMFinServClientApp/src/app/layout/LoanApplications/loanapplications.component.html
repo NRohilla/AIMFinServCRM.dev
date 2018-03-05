@@ -29,17 +29,16 @@
     </div>
 
     <div class="" *ngIf="_ViewApplicantDetails">
-        <div class="w-100 float-left header-bg">
-            <div class="float-right">
-                <button class="btn btn-lg btn-link" type="button" (click)="ViewClientDetails('ViewList')">Back</button>
-            </div>
+        <div class="back-btn">
+            <button class="btn btn-lg btn-link text-white font-weight-bold" type="button" (click)="ViewClientDetails('ViewList')">Back</button>
         </div>
         <div class="w-100 float-left">
             <div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="section_box">
-                            <div class="box_title">Applicant Details</div>
+                            <div class="box_title">Loan Application Form</div>
+                            <!--<div class="box_title">Applicant Details</div>-->
                             <div class="tab-content clearfix ml-0">
                                 <div class="w-100 float-left text-right">
                                     <input type="button" value="&#xf067; Add Applicant" class="btn btn-secondary" (click)="openDialog()" />
