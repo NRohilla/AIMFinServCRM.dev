@@ -11,15 +11,11 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import {ClientsService} from '../../services/app.clients.service';
 import {DialogOverviewExampleDialog} from '../../shared/dialogues/loanapplications/Popup';
 @Component({
-    templateUrl: './clients.component.html',
-    styleUrls:
-    [
-        './clients.component.scss',
-    ],
+    templateUrl: './loanapplications.component.html',
     animations: [routerTransition()],
     providers: [ClientsService]
 })
-export class ClientsComponent implements OnInit {
+export class LoanapplicationsComponent implements OnInit {
     public animal: string;
     public name: string;
 
