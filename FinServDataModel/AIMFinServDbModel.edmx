@@ -16,15 +16,11 @@
           <Property Name="AddressLine3" Type="nvarchar" MaxLength="100" />
           <Property Name="Duration" Type="nchar" MaxLength="10" />
           <Property Name="Status" Type="nchar" MaxLength="10" />
+          <Property Name="ApplicantID" Type="uniqueidentifier" />
           <Property Name="CreatedBy" Type="uniqueidentifier" />
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="ModifiedBy" Type="uniqueidentifier" />
           <Property Name="ModifiedOn" Type="datetime" />
-          <Property Name="ApplicantID" Type="uniqueidentifier" />
-          <Property Name="MobileNo" Type="nvarchar" MaxLength="15" />
-          <Property Name="HomePhoneNo" Type="nvarchar" MaxLength="15" />
-          <Property Name="WorkPhoneNo" Type="nvarchar" MaxLength="15" />
-          <Property Name="EmailID" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tblApplicantEmploymentDetails">
           <Key>
@@ -90,6 +86,10 @@
           <Property Name="NZResidents" Type="bit" />
           <Property Name="CountryOfBirth" Type="varchar" MaxLength="50" />
           <Property Name="ApplicantTypeID" Type="int" />
+          <Property Name="EmailID" Type="nvarchar" MaxLength="80" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="15" />
+          <Property Name="HomePhoneNo" Type="nvarchar" MaxLength="15" />
+          <Property Name="WorkPhoneNo" Type="nvarchar" MaxLength="15" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="CreatedBy" Type="uniqueidentifier" />
           <Property Name="CreatedOn" Type="datetime" />
@@ -413,6 +413,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblApplicantQualificationDetails_tblApplicants">
+          <End Role="tblApplicants" Type="Self.tblApplicants" Multiplicity="0..1" />
+          <End Role="tblApplicantQualificationDetails" Type="Self.tblApplicantQualificationDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblApplicants">
+              <PropertyRef Name="ApplicantID" />
+            </Principal>
+            <Dependent Role="tblApplicantQualificationDetails">
+              <PropertyRef Name="ApplicantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblApplicants_tblApplicantType">
           <End Role="tblMasterApplicantType" Type="Self.tblMasterApplicantType" Multiplicity="0..1" />
           <End Role="tblApplicants" Type="Self.tblApplicants" Multiplicity="*" />
@@ -500,6 +512,10 @@
             <End Role="tblApplicants" EntitySet="tblApplicants" />
             <End Role="tblApplicantExpenseSheet" EntitySet="tblApplicantExpenseSheet" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblApplicantQualificationDetails_tblApplicants" Association="Self.FK_tblApplicantQualificationDetails_tblApplicants">
+            <End Role="tblApplicants" EntitySet="tblApplicants" />
+            <End Role="tblApplicantQualificationDetails" EntitySet="tblApplicantQualificationDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblApplicants_tblApplicantType" Association="Self.FK_tblApplicants_tblApplicantType">
             <End Role="tblMasterApplicantType" EntitySet="tblMasterApplicantType" />
             <End Role="tblApplicants" EntitySet="tblApplicants" />
@@ -560,6 +576,10 @@
             <End Role="tblApplicant" EntitySet="tblApplicants" />
             <End Role="tblApplicantExpenseSheet" EntitySet="tblApplicantExpenseSheets" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblApplicantQualificationDetails_tblApplicants" Association="AIMFinServDBModel.FK_tblApplicantQualificationDetails_tblApplicants">
+            <End Role="tblApplicant" EntitySet="tblApplicants" />
+            <End Role="tblApplicantQualificationDetail" EntitySet="tblApplicantQualificationDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblApplicants_tblApplicantType" Association="AIMFinServDBModel.FK_tblApplicants_tblApplicantType">
             <End Role="tblMasterApplicantType" EntitySet="tblMasterApplicantTypes" />
             <End Role="tblApplicant" EntitySet="tblApplicants" />
@@ -588,15 +608,11 @@
           <Property Name="AddressLine3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Duration" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ApplicantID" Type="Guid" />
           <Property Name="CreatedBy" Type="Guid" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="ModifiedBy" Type="Guid" />
           <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
-          <Property Name="ApplicantID" Type="Guid" />
-          <Property Name="MobileNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="HomePhoneNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="WorkPhoneNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="EmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tblApplicant" Relationship="AIMFinServDBModel.FK__tblApplic__Appli__5070F446" FromRole="tblApplicantCommunicationDetail" ToRole="tblApplicant" />
         </EntityType>
         <EntityType Name="tblApplicantEmploymentDetail">
@@ -648,6 +664,7 @@
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="ModifiedBy" Type="Guid" />
           <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblApplicant" Relationship="AIMFinServDBModel.FK_tblApplicantQualificationDetails_tblApplicants" FromRole="tblApplicantQualificationDetail" ToRole="tblApplicant" />
         </EntityType>
         <EntityType Name="tblApplicant">
           <Key>
@@ -665,6 +682,10 @@
           <Property Name="NZResidents" Type="Boolean" />
           <Property Name="CountryOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ApplicantTypeID" Type="Int32" />
+          <Property Name="EmailID" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="HomePhoneNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="WorkPhoneNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="CreatedBy" Type="Guid" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
@@ -673,6 +694,7 @@
           <NavigationProperty Name="tblApplicantCommunicationDetails" Relationship="AIMFinServDBModel.FK__tblApplic__Appli__5070F446" FromRole="tblApplicant" ToRole="tblApplicantCommunicationDetail" />
           <NavigationProperty Name="tblApplicantEmploymentDetails" Relationship="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblApplicants" FromRole="tblApplicant" ToRole="tblApplicantEmploymentDetail" />
           <NavigationProperty Name="tblApplicantExpenseSheets" Relationship="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblApplicants" FromRole="tblApplicant" ToRole="tblApplicantExpenseSheet" />
+          <NavigationProperty Name="tblApplicantQualificationDetails" Relationship="AIMFinServDBModel.FK_tblApplicantQualificationDetails_tblApplicants" FromRole="tblApplicant" ToRole="tblApplicantQualificationDetail" />
           <NavigationProperty Name="tblMasterApplicantType" Relationship="AIMFinServDBModel.FK_tblApplicants_tblApplicantType" FromRole="tblApplicant" ToRole="tblMasterApplicantType" />
           <NavigationProperty Name="tblLoanApplicationForms" Relationship="AIMFinServDBModel.FK_tblLoanApplicationForm_tblApplicants" FromRole="tblApplicant" ToRole="tblLoanApplicationForm" />
         </EntityType>
@@ -999,6 +1021,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblApplicantQualificationDetails_tblApplicants">
+          <End Type="AIMFinServDBModel.tblApplicant" Role="tblApplicant" Multiplicity="0..1" />
+          <End Type="AIMFinServDBModel.tblApplicantQualificationDetail" Role="tblApplicantQualificationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblApplicant">
+              <PropertyRef Name="ApplicantID" />
+            </Principal>
+            <Dependent Role="tblApplicantQualificationDetail">
+              <PropertyRef Name="ApplicantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblApplicants_tblApplicantType">
           <End Type="AIMFinServDBModel.tblMasterApplicantType" Role="tblMasterApplicantType" Multiplicity="0..1" />
           <End Type="AIMFinServDBModel.tblApplicant" Role="tblApplicant" Multiplicity="*" />
@@ -1056,15 +1090,11 @@
           <EntitySetMapping Name="tblApplicantCommunicationDetails">
             <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicantCommunicationDetail">
               <MappingFragment StoreEntitySet="tblApplicantCommunicationDetails">
-                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
-                <ScalarProperty Name="WorkPhoneNo" ColumnName="WorkPhoneNo" />
-                <ScalarProperty Name="HomePhoneNo" ColumnName="HomePhoneNo" />
-                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
-                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
                 <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Duration" ColumnName="Duration" />
                 <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
@@ -1134,6 +1164,10 @@
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="WorkPhoneNo" ColumnName="WorkPhoneNo" />
+                <ScalarProperty Name="HomePhoneNo" ColumnName="HomePhoneNo" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
                 <ScalarProperty Name="ApplicantTypeID" ColumnName="ApplicantTypeID" />
                 <ScalarProperty Name="CountryOfBirth" ColumnName="CountryOfBirth" />
                 <ScalarProperty Name="NZResidents" ColumnName="NZResidents" />

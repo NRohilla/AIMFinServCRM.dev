@@ -4,15 +4,11 @@
     <EntitySetMapping Name="tblApplicantCommunicationDetails">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicantCommunicationDetail">
         <MappingFragment StoreEntitySet="tblApplicantCommunicationDetails">
-          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
-          <ScalarProperty Name="WorkPhoneNo" ColumnName="WorkPhoneNo" />
-          <ScalarProperty Name="HomePhoneNo" ColumnName="HomePhoneNo" />
-          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
-          <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
           <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
           <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
           <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
           <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Duration" ColumnName="Duration" />
           <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
@@ -82,6 +78,10 @@
           <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
           <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="WorkPhoneNo" ColumnName="WorkPhoneNo" />
+          <ScalarProperty Name="HomePhoneNo" ColumnName="HomePhoneNo" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
           <ScalarProperty Name="ApplicantTypeID" ColumnName="ApplicantTypeID" />
           <ScalarProperty Name="CountryOfBirth" ColumnName="CountryOfBirth" />
           <ScalarProperty Name="NZResidents" ColumnName="NZResidents" />

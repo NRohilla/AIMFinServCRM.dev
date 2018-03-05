@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web.Http;
 using FinServUnitOfWork.Interface;
 using FinServUnitOfWork.Repository;
+using FinServDataModel;
 
 namespace FinServServices.Controllers
 {

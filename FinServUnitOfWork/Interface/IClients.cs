@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using FinServBussinessEntities;
+using FinServDataModel;
 namespace FinServUnitOfWork.Interface
 {
     public interface IClients
