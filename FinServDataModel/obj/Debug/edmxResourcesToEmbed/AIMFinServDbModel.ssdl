@@ -11,15 +11,12 @@
     <Property Name="AddressLine3" Type="nvarchar" MaxLength="100" />
     <Property Name="Duration" Type="nchar" MaxLength="10" />
     <Property Name="Status" Type="nchar" MaxLength="10" />
+    <Property Name="ApplicantID" Type="uniqueidentifier" />
     <Property Name="CreatedBy" Type="uniqueidentifier" />
     <Property Name="CreatedOn" Type="datetime" />
     <Property Name="ModifiedBy" Type="uniqueidentifier" />
     <Property Name="ModifiedOn" Type="datetime" />
-    <Property Name="ApplicantID" Type="uniqueidentifier" />
-    <Property Name="MobileNo" Type="nvarchar" MaxLength="15" />
-    <Property Name="HomePhoneNo" Type="nvarchar" MaxLength="15" />
-    <Property Name="WorkPhoneNo" Type="nvarchar" MaxLength="15" />
-    <Property Name="EmailID" Type="nvarchar" MaxLength="50" />
+    <Property Name="AddressType" Type="int" />
   </EntityType>
   <EntityType Name="tblApplicantEmploymentDetails">
     <Key>
@@ -60,7 +57,6 @@
     <Property Name="AutoID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="QualificationID" Type="uniqueidentifier" Nullable="false" />
     <Property Name="ApplicantID" Type="uniqueidentifier" />
-    <Property Name="TypeOfQualification" Type="int" />
     <Property Name="PassingYear" Type="nchar" MaxLength="10" />
     <Property Name="CourseName" Type="nvarchar" MaxLength="50" />
     <Property Name="UniversityName" Type="nvarchar" MaxLength="150" />
@@ -68,6 +64,7 @@
     <Property Name="CreatedOn" Type="datetime" />
     <Property Name="ModifiedBy" Type="uniqueidentifier" />
     <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="TypeOfQualification" Type="int" />
   </EntityType>
   <EntityType Name="tblApplicants">
     <Key>
@@ -85,6 +82,10 @@
     <Property Name="NZResidents" Type="bit" />
     <Property Name="CountryOfBirth" Type="varchar" MaxLength="50" />
     <Property Name="ApplicantTypeID" Type="int" />
+    <Property Name="EmailID" Type="nvarchar" MaxLength="80" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="15" />
+    <Property Name="HomePhoneNo" Type="nvarchar" MaxLength="15" />
+    <Property Name="WorkPhoneNo" Type="nvarchar" MaxLength="15" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="CreatedBy" Type="uniqueidentifier" />
     <Property Name="CreatedOn" Type="datetime" />
@@ -210,6 +211,18 @@
     <Property Name="ModifiedBy" Type="uniqueidentifier" />
     <Property Name="ModifiedOn" Type="datetime" />
   </EntityType>
+  <EntityType Name="tblMasterAddressTypes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
+  </EntityType>
   <EntityType Name="tblMasterApplicantType">
     <Key>
       <PropertyRef Name="ApplicantTypeID" />
@@ -217,6 +230,10 @@
     <Property Name="ApplicantTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ApplicantType" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
   </EntityType>
   <EntityType Name="tblMasterAssetTypes">
     <Key>
@@ -226,6 +243,10 @@
     <Property Name="AssetTypeID" Type="uniqueidentifier" Nullable="false" />
     <Property Name="Description" Type="nvarchar" MaxLength="100" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="Createdon" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
   </EntityType>
   <EntityType Name="tblMasterExpenseType">
     <Key>
@@ -236,6 +257,10 @@
     <Property Name="Description" Type="nvarchar" MaxLength="100" />
     <Property Name="Frequency" Type="nvarchar" MaxLength="50" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
   </EntityType>
   <EntityType Name="tblMasterLiabilityTypes">
     <Key>
@@ -245,6 +270,10 @@
     <Property Name="LiabilityTypeID" Type="uniqueidentifier" Nullable="false" />
     <Property Name="Description" Type="nvarchar" MaxLength="100" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
   </EntityType>
   <EntityType Name="tblMasterLoanRateType">
     <Key>
@@ -253,6 +282,10 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="LoanRateType" Type="nvarchar" MaxLength="100" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
   </EntityType>
   <EntityType Name="tblMasterPropertyType">
     <Key>
@@ -261,6 +294,10 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PropertyType" Type="nvarchar" MaxLength="100" />
     <Property Name="IsAvtive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
   </EntityType>
   <EntityType Name="tblMasterPurposeOfLoan">
     <Key>
@@ -269,6 +306,10 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PurposeOfLoan" Type="nvarchar" MaxLength="100" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
   </EntityType>
   <EntityType Name="tblMasterSalutation">
     <Key>
@@ -277,6 +318,10 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Salutation" Type="nvarchar" MaxLength="50" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
   </EntityType>
   <EntityType Name="tblMasterTypeOfEmployment">
     <Key>
@@ -285,6 +330,10 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="EmployementType" Type="nvarchar" MaxLength="50" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
   </EntityType>
   <EntityType Name="tblMasterTypeOfLoan">
     <Key>
@@ -293,6 +342,10 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="LoanType" Type="nvarchar" MaxLength="100" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
   </EntityType>
   <EntityType Name="tblMasterTypeOfProfession">
     <Key>
@@ -301,6 +354,10 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Profession" Type="nvarchar" MaxLength="50" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
   </EntityType>
   <EntityType Name="tblMasterTypeOfQualification">
     <Key>
@@ -309,6 +366,10 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Qualifications" Type="nvarchar" MaxLength="50" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
   </EntityType>
   <EntityType Name="tblMasterTypeOfRelationship">
     <Key>
@@ -317,6 +378,10 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RelationshipWithApplicant" Type="nvarchar" MaxLength="50" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedOn" Type="datetime" />
   </EntityType>
   <EntityType Name="tblRole">
     <Key>
@@ -372,6 +437,18 @@
     <Property Name="UserGuid" Type="uniqueidentifier" />
     <Property Name="IsActive" Type="bit" />
   </EntityType>
+  <Association Name="FK__tblApplic__Addre__7C4F7684">
+    <End Role="tblMasterAddressTypes" Type="Self.tblMasterAddressTypes" Multiplicity="0..1" />
+    <End Role="tblApplicantCommunicationDetails" Type="Self.tblApplicantCommunicationDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMasterAddressTypes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblApplicantCommunicationDetails">
+        <PropertyRef Name="AddressType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__tblApplic__Appli__5070F446">
     <End Role="tblApplicants" Type="Self.tblApplicants" Multiplicity="0..1" />
     <End Role="tblApplicantCommunicationDetails" Type="Self.tblApplicantCommunicationDetails" Multiplicity="*" />
@@ -381,6 +458,18 @@
       </Principal>
       <Dependent Role="tblApplicantCommunicationDetails">
         <PropertyRef Name="ApplicantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblApplic__TypeO__7D439ABD">
+    <End Role="tblMasterTypeOfQualification" Type="Self.tblMasterTypeOfQualification" Multiplicity="0..1" />
+    <End Role="tblApplicantQualificationDetails" Type="Self.tblApplicantQualificationDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMasterTypeOfQualification">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblApplicantQualificationDetails">
+        <PropertyRef Name="TypeOfQualification" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -404,6 +493,18 @@
         <PropertyRef Name="ApplicantID" />
       </Principal>
       <Dependent Role="tblApplicantExpenseSheet">
+        <PropertyRef Name="ApplicantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblApplicantQualificationDetails_tblApplicants">
+    <End Role="tblApplicants" Type="Self.tblApplicants" Multiplicity="0..1" />
+    <End Role="tblApplicantQualificationDetails" Type="Self.tblApplicantQualificationDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblApplicants">
+        <PropertyRef Name="ApplicantID" />
+      </Principal>
+      <Dependent Role="tblApplicantQualificationDetails">
         <PropertyRef Name="ApplicantID" />
       </Dependent>
     </ReferentialConstraint>
@@ -467,6 +568,7 @@
     <EntitySet Name="tblLoanApplicationForm" EntityType="Self.tblLoanApplicationForm" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblLoanGuarantor" EntityType="Self.tblLoanGuarantor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblLoanMaster" EntityType="Self.tblLoanMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMasterAddressTypes" EntityType="Self.tblMasterAddressTypes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblMasterApplicantType" EntityType="Self.tblMasterApplicantType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblMasterAssetTypes" EntityType="Self.tblMasterAssetTypes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblMasterExpenseType" EntityType="Self.tblMasterExpenseType" Schema="dbo" store:Type="Tables" />
@@ -483,9 +585,17 @@
     <EntitySet Name="tblRole" EntityType="Self.tblRole" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblUsers" EntityType="Self.tblUsers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblUsersRole" EntityType="Self.tblUsersRole" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__tblApplic__Addre__7C4F7684" Association="Self.FK__tblApplic__Addre__7C4F7684">
+      <End Role="tblMasterAddressTypes" EntitySet="tblMasterAddressTypes" />
+      <End Role="tblApplicantCommunicationDetails" EntitySet="tblApplicantCommunicationDetails" />
+    </AssociationSet>
     <AssociationSet Name="FK__tblApplic__Appli__5070F446" Association="Self.FK__tblApplic__Appli__5070F446">
       <End Role="tblApplicants" EntitySet="tblApplicants" />
       <End Role="tblApplicantCommunicationDetails" EntitySet="tblApplicantCommunicationDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblApplic__TypeO__7D439ABD" Association="Self.FK__tblApplic__TypeO__7D439ABD">
+      <End Role="tblMasterTypeOfQualification" EntitySet="tblMasterTypeOfQualification" />
+      <End Role="tblApplicantQualificationDetails" EntitySet="tblApplicantQualificationDetails" />
     </AssociationSet>
     <AssociationSet Name="FK_tblApplicantEmploymentDetails_tblApplicants" Association="Self.FK_tblApplicantEmploymentDetails_tblApplicants">
       <End Role="tblApplicants" EntitySet="tblApplicants" />
@@ -494,6 +604,10 @@
     <AssociationSet Name="FK_tblApplicantExpenseSheet_tblApplicants" Association="Self.FK_tblApplicantExpenseSheet_tblApplicants">
       <End Role="tblApplicants" EntitySet="tblApplicants" />
       <End Role="tblApplicantExpenseSheet" EntitySet="tblApplicantExpenseSheet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblApplicantQualificationDetails_tblApplicants" Association="Self.FK_tblApplicantQualificationDetails_tblApplicants">
+      <End Role="tblApplicants" EntitySet="tblApplicants" />
+      <End Role="tblApplicantQualificationDetails" EntitySet="tblApplicantQualificationDetails" />
     </AssociationSet>
     <AssociationSet Name="FK_tblApplicants_tblApplicantType" Association="Self.FK_tblApplicants_tblApplicantType">
       <End Role="tblMasterApplicantType" EntitySet="tblMasterApplicantType" />

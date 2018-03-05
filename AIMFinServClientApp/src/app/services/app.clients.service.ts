@@ -33,6 +33,10 @@ export class ClientsService {
         return this._http.get(this.baseurl + "Clients/GetClientEmployementDetails?ClientID=" + ClientID, this.options);
     }
 
+    GetClientQualificationDetails(ClientID) {
+        return this._http.get(this.baseurl + "Clients/GetClientQualificationDetails?ClientID=" + ClientID, this.options);
+    }
+
     updateclientEmploymentdetails(ApplicantEmployementDetails) {
         return this._http.post(this.baseurl + "Clients/UpdateClientEmploymentDetails", ApplicantEmployementDetails, this.options);
     }

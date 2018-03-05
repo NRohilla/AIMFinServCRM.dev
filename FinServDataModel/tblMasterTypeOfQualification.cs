@@ -14,8 +14,21 @@ namespace FinServDataModel
     
     public partial class tblMasterTypeOfQualification
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblMasterTypeOfQualification()
+        {
+            this.tblApplicantQualificationDetails = new HashSet<tblApplicantQualificationDetail>();
+        }
+    
         public int ID { get; set; }
         public string Qualifications { get; set; }
         public bool IsActive { get; set; }
+        public Nullable<System.Guid> CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
+        public Nullable<System.Guid> ModifiedBy { get; set; }
+        public Nullable<System.DateTime> ModifiedOn { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblApplicantQualificationDetail> tblApplicantQualificationDetails { get; set; }
     }
 }

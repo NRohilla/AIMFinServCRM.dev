@@ -6,20 +6,19 @@ using System.Threading.Tasks;
 
 namespace FinServBussinessEntities
 {
-    public class ApplicantCommunicationDetails
+    public class ApplicantQualificationDetails
     {
         public long AutoID { get; set; }
-        public System.Guid CommunicationID { get; set; }
-        public string AddressLine1 { get; set; }
-        public string AddressLine2 { get; set; }
-        public string AddressLine3 { get; set; }
-        public string Duration { get; set; }
-        public string Status { get; set; }
+        public System.Guid QualificationID { get; set; }
         public Nullable<System.Guid> ApplicantID { get; set; }
+        public Nullable<int> TypeOfQualification { get; set; }
+        public string PassingYear { get; set; }
+        public string CourseName { get; set; }
+        public string UniversityName { get; set; }
         public Nullable<System.Guid> CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public AddressTypeMaster _AddressTypeMaster { get; set; }
+        public QualificationTypeMaster _QualificationTypeMaster { get; set; }
     }
 }

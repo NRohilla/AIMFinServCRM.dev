@@ -12,14 +12,23 @@ namespace FinServDataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class tblMasterTypeOfProfession
+    public partial class tblMasterAddressType
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblMasterAddressType()
+        {
+            this.tblApplicantCommunicationDetails = new HashSet<tblApplicantCommunicationDetail>();
+        }
+    
         public int ID { get; set; }
-        public string Profession { get; set; }
+        public string Type { get; set; }
         public bool IsActive { get; set; }
         public Nullable<System.Guid> CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblApplicantCommunicationDetail> tblApplicantCommunicationDetails { get; set; }
     }
 }

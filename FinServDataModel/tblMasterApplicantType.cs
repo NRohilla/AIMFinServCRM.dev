@@ -23,6 +23,10 @@ namespace FinServDataModel
         public int ApplicantTypeID { get; set; }
         public string ApplicantType { get; set; }
         public bool IsActive { get; set; }
+        public Nullable<System.Guid> CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
+        public Nullable<System.Guid> ModifiedBy { get; set; }
+        public Nullable<System.DateTime> ModifiedOn { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblApplicant> tblApplicants { get; set; }

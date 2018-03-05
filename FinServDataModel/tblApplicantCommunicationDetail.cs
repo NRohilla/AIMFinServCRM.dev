@@ -21,16 +21,14 @@ namespace FinServDataModel
         public string AddressLine3 { get; set; }
         public string Duration { get; set; }
         public string Status { get; set; }
+        public Nullable<System.Guid> ApplicantID { get; set; }
         public Nullable<System.Guid> CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<System.Guid> ApplicantID { get; set; }
-        public string MobileNo { get; set; }
-        public string HomePhoneNo { get; set; }
-        public string WorkPhoneNo { get; set; }
-        public string EmailID { get; set; }
+        public Nullable<int> AddressType { get; set; }
     
         public virtual tblApplicant tblApplicant { get; set; }
+        public virtual tblMasterAddressType tblMasterAddressType { get; set; }
     }
 }

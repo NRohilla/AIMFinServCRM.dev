@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web.Http;
 using FinServUnitOfWork.Interface;
 using FinServUnitOfWork.Repository;
+using FinServDataModel;
 
 namespace FinServServices.Controllers
 {
@@ -37,6 +38,13 @@ namespace FinServServices.Controllers
         public List<ApplicantEmployementDetails> GetClientEmployementDetails(string ClientID)
         {
             return Repository.GetClientEmployementDetails(ClientID);
+        }
+
+        [HttpGet]
+        [Route("GetClientQualificationDetails")]
+        public List<ApplicantQualificationDetails> GetClientQualificationDetails(string ClientID)
+        {
+            return Repository.GetClientQualificationDetails(ClientID);
         }
 
         [HttpPost]

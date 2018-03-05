@@ -20,7 +20,6 @@ namespace FinServUnitOfWork.Repository
 
                     foreach (var itemGetAllApplicants in GetAllApplicants)
                     {
-                        var ApplicantCommDetails = db.tblApplicantCommunicationDetails.Where(p => p.ApplicantID == itemGetAllApplicants.ApplicantID).FirstOrDefault();
                         objApplicants.Add(new Applicants
                         {
                             AutoID = itemGetAllApplicants.AutoID,
@@ -40,10 +39,10 @@ namespace FinServUnitOfWork.Repository
                             CreatedOn = itemGetAllApplicants.CreatedOn,
                             ModifiedBy = itemGetAllApplicants.ModifiedBy,
                             ModifiedOn = itemGetAllApplicants.ModifiedOn,
-                            MobileNo = ApplicantCommDetails != null ? ApplicantCommDetails.MobileNo : "",
-                            WorkPhoneNo = ApplicantCommDetails != null ? ApplicantCommDetails.WorkPhoneNo : "",
-                            EmailID = ApplicantCommDetails != null ? ApplicantCommDetails.EmailID : "",
-                            HomePhoneNo = ApplicantCommDetails != null ? ApplicantCommDetails.HomePhoneNo : "",
+                            MobileNo = itemGetAllApplicants.MobileNo,
+                            WorkPhoneNo = itemGetAllApplicants.WorkPhoneNo,
+                            EmailID = itemGetAllApplicants.EmailID,
+                            HomePhoneNo = itemGetAllApplicants.HomePhoneNo,
                             ApplicantType = new ApplicantTypeMaster()
                             {
                                 ApplicantTypeID = itemGetAllApplicants.tblMasterApplicantType.ApplicantTypeID,
@@ -74,56 +73,23 @@ namespace FinServUnitOfWork.Repository
                         objApplicants.ApplicantID = GetApplicantDetails.ApplicantID;
                         objApplicants.ApplicantTypeID = GetApplicantDetails.ApplicantTypeID;
                         objApplicants.AutoID = GetApplicantDetails.AutoID;
-                        objApplicants.CountryOfBirth = GetApplicantDetails.CountryOfBirth.Trim();
-                        objApplicants.DateOfBirth = GetApplicantDetails.DateOfBirth.Trim();
-                        objApplicants.EmailID = GetApplicantDetails.tblApplicantCommunicationDetails.ToList()[0].EmailID.Trim();
-                        objApplicants.FirstName = GetApplicantDetails.FirstName.Trim();
-                        objApplicants.Gender = GetApplicantDetails.Gender.Trim();
-                        objApplicants.HomePhoneNo = GetApplicantDetails.tblApplicantCommunicationDetails.ToList()[0].HomePhoneNo.Trim();
+                        objApplicants.CountryOfBirth = GetApplicantDetails.CountryOfBirth;
+                        objApplicants.DateOfBirth = GetApplicantDetails.DateOfBirth;
+                        objApplicants.EmailID = GetApplicantDetails.EmailID;
+                        objApplicants.FirstName = GetApplicantDetails.FirstName;
+                        objApplicants.MiddleName = GetApplicantDetails.MiddleName;
+                        objApplicants.LastName = GetApplicantDetails.LastName;
+                        objApplicants.Gender = GetApplicantDetails.Gender;
+                        objApplicants.HomePhoneNo = GetApplicantDetails.HomePhoneNo;
                         objApplicants.IsActive = GetApplicantDetails.IsActive;
-                        objApplicants.LastName = GetApplicantDetails.LastName.Trim();
-                        objApplicants.MaritalStatus = GetApplicantDetails.MaritalStatus.Trim();
-                        objApplicants.MiddleName = GetApplicantDetails.MiddleName.Trim();
-                        objApplicants.MobileNo = GetApplicantDetails.tblApplicantCommunicationDetails.ToList()[0].MobileNo.Trim();
-                        objApplicants.NoOfDependents = GetApplicantDetails.NoOfDependents.Trim();
+                        objApplicants.MaritalStatus = GetApplicantDetails.MaritalStatus;
+                        objApplicants.MobileNo = GetApplicantDetails.MobileNo;
+                        objApplicants.NoOfDependents = GetApplicantDetails.NoOfDependents;
                         objApplicants.NZResidents = GetApplicantDetails.NZResidents;
-                        objApplicants.WorkPhoneNo = GetApplicantDetails.tblApplicantCommunicationDetails.ToList()[0].WorkPhoneNo.Trim();
+                        objApplicants.WorkPhoneNo = GetApplicantDetails.WorkPhoneNo;
 
                         objApplicants.ApplicantType = new ApplicantTypeMaster();
                         objApplicants.ApplicantType.ApplicantType = GetApplicantDetails.tblMasterApplicantType.ApplicantType;
-
-                        objApplicants.ApplicantEmployementDetails = new List<ApplicantEmployementDetails>();
-                        foreach (var itemEmployementDetail in GetApplicantDetails.tblApplicantEmploymentDetails)
-                        {
-                            objApplicants.ApplicantEmployementDetails.Add(new ApplicantEmployementDetails
-                            {
-                                ApplicantID = itemEmployementDetail.ApplicantID,
-                                AutoID = itemEmployementDetail.AutoID,
-                                EmployerName = itemEmployementDetail.EmployerName,
-                                Income = itemEmployementDetail.Income,
-                                SourceOfIncome = itemEmployementDetail.SourceOfIncome,
-                                EmploymentID = itemEmployementDetail.EmploymentID,
-                                Status = itemEmployementDetail.Status,
-                            });
-                        }
-
-                        objApplicants.ApplicantCommunicationDetails = new List<ApplicantCommunicationDetails>();
-                        foreach (var itemApplicantCommDetails in GetApplicantDetails.tblApplicantCommunicationDetails)
-                        {
-                            objApplicants.ApplicantCommunicationDetails.Add(new ApplicantCommunicationDetails
-                            {
-                                AddressLine1 = itemApplicantCommDetails.AddressLine1,
-                                AddressLine2 = itemApplicantCommDetails.AddressLine2,
-                                AddressLine3 = itemApplicantCommDetails.AddressLine3,
-                                AutoID = itemApplicantCommDetails.AutoID,
-                                CommunicationID = itemApplicantCommDetails.CommunicationID,
-                                MobileNo = itemApplicantCommDetails.MobileNo,
-                                WorkPhoneNo = itemApplicantCommDetails.WorkPhoneNo,
-                                EmailID = itemApplicantCommDetails.EmailID,
-                                HomePhoneNo = itemApplicantCommDetails.HomePhoneNo,
-                                Status = itemApplicantCommDetails.Status,
-                            });
-                        }
                     }
                     return objApplicants;
                 }
@@ -146,6 +112,7 @@ namespace FinServUnitOfWork.Repository
                     {
                         foreach (var itemApplicantCommDetails in GetApplicantCommunicationDetails)
                         {
+                            var addresstype = db.tblMasterAddressTypes.Where(p => p.ID == itemApplicantCommDetails.AddressType).FirstOrDefault();
                             objApplicantCommunicationDetails.Add(new ApplicantCommunicationDetails
                             {
                                 AddressLine1 = itemApplicantCommDetails.AddressLine1,
@@ -153,11 +120,11 @@ namespace FinServUnitOfWork.Repository
                                 AddressLine3 = itemApplicantCommDetails.AddressLine3,
                                 AutoID = itemApplicantCommDetails.AutoID,
                                 CommunicationID = itemApplicantCommDetails.CommunicationID,
-                                MobileNo = itemApplicantCommDetails.MobileNo,
-                                WorkPhoneNo = itemApplicantCommDetails.WorkPhoneNo,
-                                EmailID = itemApplicantCommDetails.EmailID,
-                                HomePhoneNo = itemApplicantCommDetails.HomePhoneNo,
                                 Status = itemApplicantCommDetails.Status,
+                                _AddressTypeMaster = new AddressTypeMaster()
+                                {
+                                    Type = addresstype != null ? addresstype.Type : ""
+                                }
                             });
                         }
                     }
@@ -202,6 +169,43 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
+        public List<ApplicantQualificationDetails> GetClientQualificationDetails(string ClientID)
+        {
+            try
+            {
+                List<ApplicantQualificationDetails> objApplicantQualificationDetails = new List<ApplicantQualificationDetails>();
+                Guid ApplicantID = Guid.Parse(ClientID);
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetApplicantQualificationDetails = db.tblApplicantQualificationDetails.Where(p => p.ApplicantID == ApplicantID).ToList();
+                    if (GetApplicantQualificationDetails != null)
+                    {
+                        foreach (var itemQualificationDetail in GetApplicantQualificationDetails)
+                        {
+                            objApplicantQualificationDetails.Add(new ApplicantQualificationDetails
+                            {
+                                ApplicantID = itemQualificationDetail.ApplicantID,
+                                AutoID = itemQualificationDetail.AutoID,
+                                CourseName = itemQualificationDetail.CourseName,
+                                PassingYear = itemQualificationDetail.PassingYear,
+                                QualificationID = itemQualificationDetail.QualificationID,
+                                TypeOfQualification = itemQualificationDetail.TypeOfQualification,
+                                UniversityName = itemQualificationDetail.UniversityName,
+                                _QualificationTypeMaster = new QualificationTypeMaster()
+                                {
+                                    Qualifications = itemQualificationDetail.tblMasterTypeOfQualification.Qualifications
+                                }
+                            });
+                        }
+                    }
+                    return objApplicantQualificationDetails;
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
         public bool UpdateClientEmploymentDetails(List<ApplicantEmployementDetails> _ApplicantEmployementDetails)
         {
             int TotalRecords = _ApplicantEmployementDetails.Count();
@@ -239,10 +243,6 @@ namespace FinServUnitOfWork.Repository
                         FetchDetailsOfEmployement.AddressLine1 = item.AddressLine1;
                         FetchDetailsOfEmployement.AddressLine2 = item.AddressLine2;
                         FetchDetailsOfEmployement.AddressLine3 = item.AddressLine3;
-                        FetchDetailsOfEmployement.EmailID = item.EmailID;
-                        FetchDetailsOfEmployement.HomePhoneNo = item.HomePhoneNo;
-                        FetchDetailsOfEmployement.MobileNo = item.MobileNo;
-                        FetchDetailsOfEmployement.WorkPhoneNo = item.WorkPhoneNo;
                         TotalRecordsUpdated += db.SaveChanges();
                     }
                 }
