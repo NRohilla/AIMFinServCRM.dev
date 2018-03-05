@@ -21,6 +21,10 @@ export class ClientsService {
         return this._http.get(this.baseurl + "Clients/GetAllClients", this.options);
     }
 
+    LoanApplicationForms() {
+        return this._http.get(this.baseurl + "Clients/LoanApplicationForms", this.options);
+    }
+
     GetClientDetails(ClientID) {
         return this._http.get(this.baseurl + "Clients/GetClientDetails?ClientID=" + ClientID, this.options);
     }

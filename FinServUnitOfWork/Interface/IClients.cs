@@ -6,6 +6,7 @@ namespace FinServUnitOfWork.Interface
     public interface IClients
     {
         List<Applicants> GetAllClients();
+        List<LoanApplicationForms> GetAllLoanApplications();
         Applicants GetClientDetails(string ClientID);
         List<ApplicantCommunicationDetails> GetClientCommunicationDetails(string ClientID);
         List<ApplicantEmployementDetails> GetClientEmployementDetails(string ClientID);

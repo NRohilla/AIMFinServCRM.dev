@@ -27,14 +27,15 @@ export class LoanapplicationsComponent implements OnInit {
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, public dialog: MatDialog) { }
 
     ngOnInit() {
-        this._ClientsService.GetAllClients().subscribe(res => this.GetAllClientsSuccess(res), res => this.GetAllClientsError(res));
+        this._ClientsService.LoanApplicationForms().subscribe(res => this.GetAllLoanApplicationSuccess(res), res => this.GetAllLoanApplicationError(res));
     }
 
-    GetAllClientsSuccess(Res) {
+    GetAllLoanApplicationSuccess(Res) {
+        debugger;
         this.gridData = JSON.parse(Res._body);
     }
 
-    GetAllClientsError(Res) { }
+    GetAllLoanApplicationError(Res) { }
 
     ViewClientDetails(ApplicantID) {
         this._ViewApplicantDetails = !this._ViewApplicantDetails;

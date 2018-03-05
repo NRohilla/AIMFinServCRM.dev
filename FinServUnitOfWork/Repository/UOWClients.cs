@@ -59,6 +59,36 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
+        public List<LoanApplicationForms> GetAllLoanApplications()
+        {
+            List<LoanApplicationForms> objLoanApplicationForms = new List<LoanApplicationForms>();
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetAllApplicants = db.tblLoanApplicationForms.ToList();
+
+                    foreach (var itemGetAllApplications in GetAllApplicants)
+                    {
+                        objLoanApplicationForms.Add(new LoanApplicationForms
+                        {
+                            LoanApplicationNo = itemGetAllApplications.LoanApplicationNo,
+                            TypeOfLoan = itemGetAllApplications.TypeOfLoan,
+                            LoanTerm = itemGetAllApplications.LoanTerm,
+                            RateType = itemGetAllApplications.RateType,
+                            PropertyType = itemGetAllApplications.PropertyType,
+                            Status = itemGetAllApplications.Status
+                        });
+                    }
+
+                    return objLoanApplicationForms;
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
         public Applicants GetClientDetails(string ClientID)
         {
             try
