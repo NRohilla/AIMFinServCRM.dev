@@ -16,14 +16,11 @@ import {LoanApplicationDetailDialog} from '../../shared/dialogues/loanapplicatio
     providers: [ClientsService]
 })
 export class LoanapplicationsComponent implements OnInit {
-    public animal: string;
-    public name: string;
-
-    public _ViewApplicantDetails: boolean = false;
-    public _FormErrors;
-    public _FormErrorsDescription: string = '';
+    public _ViewApplicationDetails: boolean = false;
     public gridData: any[];
-    public _EditPersonalDetails: boolean = false;
+    public _EditDetails: boolean = false;
+    public _LoanApplicationDetails: {
+    };
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, public dialog: MatDialog) { }
 
     ngOnInit() {
@@ -37,28 +34,32 @@ export class LoanapplicationsComponent implements OnInit {
 
     GetAllLoanApplicationError(Res) { }
 
-    ViewClientDetails(ApplicantID) {
-        this._ViewApplicantDetails = !this._ViewApplicantDetails;
-        this._LocalStorageService.set("ApplicantID", ApplicantID);
+    ViewDetails(LoanApplicationNo) {
+        this._ViewApplicationDetails = !this._ViewApplicationDetails;
+        this._ClientsService.GetLoanApplicationDetails(LoanApplicationNo).subscribe(res => this.GetAllLoanApplicationDetailSuccess(res), res => this.GetAllLoanApplicationDetailError(res));
     }
 
-    EditPersonalDetails() {
-        this._EditPersonalDetails = true;
+    GetAllLoanApplicationDetailSuccess(res) {
+        debugger;
+        this._LoanApplicationDetails = JSON.parse(res._body);
     }
 
-    CancelEditingPersonalDetails() {
-        this._EditPersonalDetails = false;
-    }
+    GetAllLoanApplicationDetailError(res) { }
 
     openDialog(): void {
         let dialogRef = this.dialog.open(LoanApplicationDetailDialog, {
-            data: { name: this.name, animal: this.animal }
+            //data: { name: this.name, animal: this.animal }
         });
 
         dialogRef.afterClosed().subscribe(result => {
             console.log('The dialog was closed');
-            this.animal = result;
+            //this.animal = result;
         });
     }
 
+    UpdateDetails() { }
+
+    CancelEditingDetails() { this._EditDetails = false; }
+
+    EditDetails() { this._EditDetails = true; }
 }

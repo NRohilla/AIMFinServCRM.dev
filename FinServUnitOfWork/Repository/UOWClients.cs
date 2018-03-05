@@ -129,6 +129,55 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
+        public LoanApplicationForms GetLoanApplicationDetails(string LoanAppNo)
+        {
+            try
+            {
+                LoanApplicationForms objtoReturn = new LoanApplicationForms();
+                Guid LoanApplicationID = Guid.Parse(LoanAppNo);
+
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetLoanAppDetails = db.tblLoanApplicationForms.Where(p => p.LoanApplicationNo == LoanApplicationID).FirstOrDefault();
+                    if (GetLoanAppDetails != null)
+                    {
+                        objtoReturn.AgeOfProperty = GetLoanAppDetails.AgeOfProperty;
+                        objtoReturn.ApplicantID = GetLoanAppDetails.ApplicantID;
+                        objtoReturn.ApprovalExpiryDate = GetLoanAppDetails.ApprovalExpiryDate;
+                        objtoReturn.AutoID = GetLoanAppDetails.AutoID;
+                        objtoReturn.CashInHand = GetLoanAppDetails.CashInHand;
+                        objtoReturn.CostOfProperty= GetLoanAppDetails.CostOfProperty;
+                        objtoReturn.CreatedBy= GetLoanAppDetails.CreatedBy;
+                        objtoReturn.CreatedOn = GetLoanAppDetails.CreatedOn;
+                        objtoReturn.FinanceRequired= GetLoanAppDetails.FinanceRequired;
+                        objtoReturn.Frequency= GetLoanAppDetails.Frequency;
+                        objtoReturn.IsAnyGuarantor= GetLoanAppDetails.IsAnyGuarantor;
+                        objtoReturn.IsApplicationApproved= GetLoanAppDetails.IsApplicationApproved;
+                        objtoReturn.IsPreApproval= GetLoanAppDetails.IsPreApproval;
+                        objtoReturn.IsPropertyDecided = GetLoanAppDetails.IsPropertyDecided;
+                        objtoReturn.IsShifted= GetLoanAppDetails.IsShifted;
+                        objtoReturn.LoanApplicationNo= GetLoanAppDetails.LoanApplicationNo;
+                        objtoReturn.LoanTerm= GetLoanAppDetails.LoanTerm;
+                        objtoReturn.ModifiedBy= GetLoanAppDetails.ModifiedBy;
+                        objtoReturn.ModifiedOn= GetLoanAppDetails.ModifiedOn;
+                        objtoReturn.Priority = GetLoanAppDetails.Priority;
+                        objtoReturn.PropertyType= GetLoanAppDetails.PropertyType;
+                        objtoReturn.PropertyUsedFor = GetLoanAppDetails.PropertyUsedFor;
+                        objtoReturn.RateType= GetLoanAppDetails.RateType;
+                        objtoReturn.ReasonForNotApproval= GetLoanAppDetails.ReasonForNotApproval;
+                        objtoReturn.ShiftedDuration= GetLoanAppDetails.ShiftedDuration;
+                        objtoReturn.Status= GetLoanAppDetails.Status;
+                        objtoReturn.TypeOfLoan= GetLoanAppDetails.TypeOfLoan;
+                        objtoReturn._Applicant = GetClientDetails(Convert.ToString(GetLoanAppDetails.ApplicantID));
+                    }
+                    return objtoReturn;
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
         public List<ApplicantCommunicationDetails> GetClientCommunicationDetails(string ClientID)
         {
             try
