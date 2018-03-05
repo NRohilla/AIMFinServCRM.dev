@@ -18,7 +18,7 @@ import {DialogOverviewExampleDialog} from './shared/dialogues/loanapplications/P
 import {ApplicantPersonalDetailsComponent} from './layout/LoanApplications/components/app.applicant.personaldetails';
 import {ApplicantEmployementComponent} from './layout/LoanApplications/components/app.applicant.employementdetails';
 import {ApplicantQualificationDetailsComponent} from './layout/LoanApplications/components/app.applicant.qualificationdetails';
-//
+//this is test
 import {MaterialModule} from './shared/app.material';
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
