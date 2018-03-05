@@ -20,10 +20,24 @@ namespace FinServServices.Controllers
         }
 
         [HttpGet]
+        [Route("GetAllLoanApplications")]
+        public List<LoanApplicationForms> GetAllLoanApplications()
+        {
+            return Repository.GetAllLoanApplications();
+        }
+
+        [HttpGet]
         [Route("GetClientDetails")]
         public Applicants GetClientDetails(string ClientID)
         {
             return Repository.GetClientDetails(ClientID);
+        }
+
+        [HttpGet]
+        [Route("GetLoanApplicationDetails")]
+        public LoanApplicationForms GetLoanApplicationDetails(string LoanAppNo)
+        {
+            return Repository.GetLoanApplicationDetails(LoanAppNo);
         }
 
         [HttpGet]

@@ -53,6 +53,7 @@
     <Compile Include="EmploymentTypeMaster.cs" />
     <Compile Include="ExpenseTypeMaster.cs" />
     <Compile Include="LiabilityTypeMaster.cs" />
+    <Compile Include="LoanApplicationForms.cs" />
     <Compile Include="LoanRateTypeMaster.cs" />
     <Compile Include="LoanTypeMaster.cs" />
     <Compile Include="ProfessionTypeMaster.cs" />
