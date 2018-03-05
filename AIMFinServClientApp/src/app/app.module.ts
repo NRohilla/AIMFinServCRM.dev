@@ -18,7 +18,7 @@ import {DialogOverviewExampleDialog} from './shared/dialogues/loanapplications/P
 import {ApplicantPersonalDetailsComponent} from './layout/LoanApplications/components/app.applicant.personaldetails';
 import {ApplicantEmployementComponent} from './layout/LoanApplications/components/app.applicant.employementdetails';
 import {ApplicantQualificationDetailsComponent} from './layout/LoanApplications/components/app.applicant.qualificationdetails';
-
+//
 import {MaterialModule} from './shared/app.material';
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -26,7 +26,7 @@ export function createTranslateLoader(http: HttpClient) {
     //return new TranslateHttpLoader(http, '/start-angular/SB-Admin-BS4-Angular-5/master/dist/assets/i18n/', '.json');
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
-
+//test
 @NgModule({
     imports: [
         MaterialModule,
