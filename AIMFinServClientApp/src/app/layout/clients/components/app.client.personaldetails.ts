@@ -15,6 +15,7 @@ import {ClientsService} from '../../../services/app.clients.service';
     animations: [routerTransition()],
     providers: [ClientsService]
 })
+
 export class ClientsPersonalDetailsComponent implements OnInit {
     public _ViewApplicantDetails: boolean = false;
     public _FormErrors;
