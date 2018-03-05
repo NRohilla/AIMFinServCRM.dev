@@ -7,9 +7,11 @@ import { PageHeaderModule } from '../../shared';
 import {MaterialModule} from '../../shared/app.material';
 import {ClientsPersonalDetailsComponent} from './components/app.client.personaldetails'
 import {ClientsEmployementComponent} from './components/app.client.employementdetails'
+import {ClientscommunicationComponent} from './components/app.client.communicationdetails'
+import {ClientqualificationComponent} from './components/app.client.qualificationdetails'
 import { FormsModule } from '@angular/forms';
 @NgModule({
     imports: [CommonModule, ClientsRoutingModule, PageHeaderModule, GridModule, MaterialModule, FormsModule],
-    declarations: [ClientsComponent, ClientsPersonalDetailsComponent, ClientsEmployementComponent]
+    declarations: [ClientsComponent, ClientsPersonalDetailsComponent, ClientsEmployementComponent, ClientscommunicationComponent, ClientqualificationComponent]
 })
 export class ClientsModule { }
