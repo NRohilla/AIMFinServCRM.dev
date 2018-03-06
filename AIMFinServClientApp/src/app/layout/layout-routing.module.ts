@@ -26,6 +26,8 @@ const routes: Routes = [
             { path: 'master-qualification', loadChildren: './masters/qualification/qualification.module#QualificationModule' },
             { path: 'master-relationship', loadChildren: './masters/relationship/relationship.module#RelationshipModule' },
             { path: 'master-salutation', loadChildren: './masters/salutation/salutation.module#SalutationModule' },
+            { path: 'master-loanguarantor', loadChildren: './masters/loanguarantor/loanguarantor.module#LoanGuarantorModule' },
+            { path: 'master-loanmaster', loadChildren: './masters/loanmaster/loanmaster.module#LoanMasterModule' },
 
             { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
             { path: 'forms', loadChildren: './form/form.module#FormModule' },
