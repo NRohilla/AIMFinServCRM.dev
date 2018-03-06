@@ -15,5 +15,6 @@ namespace FinServUnitOfWork.Interface
         bool UpdateClientEmploymentDetails(List<ApplicantEmployementDetails> _ApplicantEmployementDetails);
         bool UpdateClientCommunicationDetails(List<ApplicantCommunicationDetails> ApplicantCommunicationDetails);
         bool UpdateClientPersonalDetails(Applicants ApplicantPersonalDetails);
+        bool UpdateLoanApplicationDetails(LoanApplicationForms LoanApplicationDetails);
     }
 }

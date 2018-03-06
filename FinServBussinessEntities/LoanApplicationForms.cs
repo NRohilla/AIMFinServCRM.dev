@@ -20,6 +20,7 @@ namespace FinServBussinessEntities
         public string RateType { get; set; }
         public string Frequency { get; set; }
         public Nullable<bool> IsApplicationApproved { get; set; }
+        public string _IsApplicationApproved { get; set; }
         public Nullable<System.DateTime> ApprovalExpiryDate { get; set; }
         public string ReasonForNotApproval { get; set; }
         public Nullable<bool> IsAnyGuarantor { get; set; }
@@ -31,6 +32,7 @@ namespace FinServBussinessEntities
         public string PropertyUsedFor { get; set; }
         public Nullable<bool> IsPropertyDecided { get; set; }
         public string Status { get; set; }
+        //public bool Test { get; set; }
         public Nullable<System.Guid> CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }

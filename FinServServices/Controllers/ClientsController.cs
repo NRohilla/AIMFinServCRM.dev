@@ -81,5 +81,12 @@ namespace FinServServices.Controllers
         {
             return Repository.UpdateClientPersonalDetails(ApplicantPersonalDetails);
         }
+
+        [HttpPost]
+        [Route("UpdateLoanApplicationDetails")]
+        public bool UpdateLoanApplicationDetails(LoanApplicationForms LoanApplicationDetails)
+        {
+            return Repository.UpdateLoanApplicationDetails(LoanApplicationDetails);
+        }
     }
 }

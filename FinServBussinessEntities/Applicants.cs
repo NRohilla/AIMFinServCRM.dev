@@ -32,5 +32,6 @@ namespace FinServBussinessEntities
         public ApplicantTypeMaster ApplicantType { get; set; }
         public List<ApplicantEmployementDetails> ApplicantEmployementDetails { get; set; }
         public List<ApplicantCommunicationDetails> ApplicantCommunicationDetails { get; set; }
+        //public List<LoanApplicationForms> LoanApplicationDetails { get; set; }
     }
 }
