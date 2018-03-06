@@ -20,7 +20,7 @@ export class LoanapplicationsComponent implements OnInit {
     public _ViewApplicationDetails: boolean = false;
     public gridData: any[];
     public _EditDetails: boolean = false;
-    public _LoanApplicationDetails: {
+    public _LoanApplicationDetails = {
         AgeOfProperty: "",
         ApplicantID: "",
         ApprovalExpiryDate: "",
@@ -32,10 +32,10 @@ export class LoanapplicationsComponent implements OnInit {
         FinanceRequired: "",
         Frequency: "",
         IsAnyGuarantor: false,
-        IsApplicationApproved: "",
-        IsPreApproval: "",
-        IsPropertyDecided: "",
-        IsShifted: "",
+        IsApplicationApproved: false,
+        IsPreApproval: false,
+        IsPropertyDecided: false,
+        IsShifted: false,
         LoanApplicationNo: "",
         LoanTerm: "",
         ModifiedBy: "",
@@ -53,10 +53,6 @@ export class LoanapplicationsComponent implements OnInit {
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, public dialog: MatDialog) { }
 
-    formatvalues() {
-        //this._LoanApplicationDetails.IsAnyGuarantor = true;
-    }
-
     ngOnInit() {
         this._ClientsService.GetAllLoanApplications().subscribe(res => this.GetAllLoanApplicationSuccess(res), res => this.GetAllLoanApplicationError(res));
         this._LoanApplicationDetails = {
@@ -70,11 +66,11 @@ export class LoanapplicationsComponent implements OnInit {
             CreatedOn: "",
             FinanceRequired: "",
             Frequency: "",
-            IsAnyGuarantor: "",
-            IsApplicationApproved: "",
-            IsPreApproval: "",
-            IsPropertyDecided: "",
-            IsShifted: "",
+            IsAnyGuarantor: false,
+            IsApplicationApproved: false,
+            IsPreApproval: false,
+            IsPropertyDecided: false,
+            IsShifted: false,
             LoanApplicationNo: "",
             LoanTerm: "",
             ModifiedBy: "",
@@ -138,5 +134,41 @@ export class LoanapplicationsComponent implements OnInit {
 
     EditDetails() { this._EditDetails = true; }
 
+    formatvalues() {
 
+        if (this._LoanApplicationDetails.IsAnyGuarantor.toString() == "1") {
+            true;
+        }
+        else {
+            this._LoanApplicationDetails.IsAnyGuarantor = false;
+        }
+
+        if (this._LoanApplicationDetails.IsApplicationApproved.toString() == "1") {
+            this._LoanApplicationDetails.IsApplicationApproved = true;
+        }
+        else {
+            this._LoanApplicationDetails.IsApplicationApproved = false;
+        }
+
+        if (this._LoanApplicationDetails.IsPreApproval.toString() == "1") {
+            this._LoanApplicationDetails.IsPreApproval = true;
+        }
+        else {
+            this._LoanApplicationDetails.IsPreApproval = false;
+        }
+
+        if (this._LoanApplicationDetails.IsPropertyDecided.toString() == "1") {
+            this._LoanApplicationDetails.IsPropertyDecided = true;
+        }
+        else {
+            this._LoanApplicationDetails.IsPropertyDecided = false;
+        }
+
+        if (this._LoanApplicationDetails.IsShifted.toString() == "1") {
+            this._LoanApplicationDetails.IsShifted = true;
+        }
+        else {
+            this._LoanApplicationDetails.IsShifted = false;
+        }
+    }
 }
