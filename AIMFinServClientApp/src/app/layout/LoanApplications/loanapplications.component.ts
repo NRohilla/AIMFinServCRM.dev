@@ -31,7 +31,7 @@ export class LoanapplicationsComponent implements OnInit {
         CreatedOn: "",
         FinanceRequired: "",
         Frequency: "",
-        IsAnyGuarantor: "",
+        IsAnyGuarantor: false,
         IsApplicationApproved: "",
         IsPreApproval: "",
         IsPropertyDecided: "",
@@ -54,7 +54,7 @@ export class LoanapplicationsComponent implements OnInit {
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, public dialog: MatDialog) { }
 
     formatvalues() {
-        //this._LoanApplicationDetails.IsAnyGuarantor = "jk";
+        //this._LoanApplicationDetails.IsAnyGuarantor = true;
     }
 
     ngOnInit() {

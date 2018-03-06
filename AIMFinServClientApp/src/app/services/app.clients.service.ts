@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx'; //get everything from Rx  
@@ -55,5 +55,9 @@ export class ClientsService {
 
     UpdateClientPersonalDetails(ApplicantPersonalDetails) {
         return this._http.post(this.baseurl + "Clients/UpdateClientPersonalDetails", ApplicantPersonalDetails, this.options);
+    }
+
+    UpdateLoanApplicationDetails(LoanApplicationDetails) {
+        return this._http.post(this.baseurl + "Clients/UpdateLoanApplicationDetails", LoanApplicationDetails, this.options);
     }
 }
