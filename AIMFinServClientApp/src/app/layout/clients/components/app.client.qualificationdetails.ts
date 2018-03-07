@@ -44,7 +44,6 @@ export class ClientqualificationComponent implements OnInit {
     GetClientDetailsError(res) { }
 
     GetClientQualDetailsSuccess(res) {
-        debugger;
         this._ApplicantQualificationDetails = JSON.parse(res._body);
     }
     GetClientQualDetailsError(res) { }

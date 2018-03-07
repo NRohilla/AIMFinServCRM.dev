@@ -38,7 +38,6 @@ export class ClientsEmployementComponent implements OnInit {
 
     GetClientDetailsSuccess(res) {
         if (res._body != null && res._body != undefined && res._body.toString().trim().length > 0) {
-            debugger;
             this._ApplicantEmployementDetails = JSON.parse(res._body);
         }
     }

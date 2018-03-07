@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import {ClientsService} from '../../../services/app.clients.service';
-
+import {AppGenericUtilityComponent} from '../../../shared/app.genericUtility';
 @Component({
     selector: `client-personal-details`,
     templateUrl: './app.clients.personaldetails.html',
@@ -16,7 +16,7 @@ import {ClientsService} from '../../../services/app.clients.service';
     providers: [ClientsService]
 })
 
-export class ClientsPersonalDetailsComponent implements OnInit {
+export class ClientsPersonalDetailsComponent extends AppGenericUtilityComponent implements OnInit {
     public _ViewApplicantDetails: boolean = false;
     public _FormErrors;
     public _FormErrorsDescription: string = '';
@@ -63,7 +63,9 @@ export class ClientsPersonalDetailsComponent implements OnInit {
         EmailID: '',
     }
 
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { }
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) {
+        super();
+    }
 
     ngOnInit() {
         if (this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
@@ -75,7 +77,7 @@ export class ClientsPersonalDetailsComponent implements OnInit {
     GetClientDetailsSuccess(res) {
         if (res._body != null && res._body != undefined && res._body.toString().trim().length > 0) {
             debugger;
-            this._ApplicantDetails = JSON.parse(res._body);
+            this._ApplicantDetails = this.trimObj(JSON.parse(res._body));
         }
     }
     GetClientDetailsError(res) { }
@@ -85,7 +87,7 @@ export class ClientsPersonalDetailsComponent implements OnInit {
     }
     GetClientCommDetailsError(res) { }
     EditPersonalDetails() {
-        this._EditPersonalDetails = !this._EditPersonalDetails ;
+        this._EditPersonalDetails = !this._EditPersonalDetails;
     }
 
     EditCommunicationDetails() {
