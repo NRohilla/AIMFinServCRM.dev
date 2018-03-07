@@ -1,69 +1,164 @@
-﻿<div class="form">
+<div class="form">
     <div class="pt-4">
-        <h2>CLIENT PERSONAL DETAILS</h2>
-        <!--<div class="w-100 float-left">
-            <div class="row m-0">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                    <div class="form-group">
-                        <label for="email">Name:</label>
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                    <div class="form-group">
-                        <label for="email">Middle Name:</label>
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                    <div class="form-group">
-                        <label for="email">Last Name:</label>
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-            </div>
-            <div class="row m-0">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                    <div class="form-group">
-                        <label for="email">No of dependents:</label>
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                    <div class="form-group">
-                        <label for="email">Material Status:</label>
-                        <input type="text" class="form-control">
-                    </div>
-                </div>                
-            </div>
-        </div>-->
         <div class="w-100 float-left">
             <div class="row m-0">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                     <div class="form-group">
-                        <label for="name" class="font-weight-bold">Name:</label>
-                        <p>Nitin Kumar Rohilla</p>
+                        <label for="name" class="font-weight-bold">Applicant Type Id</label>
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Application Type Id" value="{{_ApplicantPersonalDetails.ApplicantID}}" [(ngModel)]="_ApplicantPersonalDetails.ApplicantID" #ApplicantID>
+                            </mat-form-field>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                     <div class="form-group">
-                        <label for="dependent" class="font-weight-bold">No of dependents:</label>
-                        <p>2</p>
+                        <label for="name" class="font-weight-bold">First Name</label>
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="First Name" value="{{_ApplicantPersonalDetails.FirstName}}" [(ngModel)]="_ApplicantPersonalDetails.FirstName" #FirstName>
+                            </mat-form-field>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                     <div class="form-group">
-                        <label for="material status" class="font-weight-bold">Material Status:</label>
-                        <p>Married</p>
+                        <label for="name" class="font-weight-bold">Middle Name</label>
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Middle Name" value="{{_ApplicantPersonalDetails.MiddleName}}" [(ngModel)]="_ApplicantPersonalDetails.MiddleName" #MiddleName>
+                            </mat-form-field>
+                        </div>
                     </div>
                 </div>
-            </div>            
-        </div>
-        <div class="w-100 float-left text-right">
-            <input type="button" value="Cancel" (click)="EditPersonalDetails()" class="btn btn-secondary" />
-            <!--<input type="button" value="Save" (click)="UpdatePersonalDetails()" *ngIf="_EditPersonalDetails" class="btn btn-success" />
-            <input type="button" value="Cancel" (click)="EditPersonalDetails()" *ngIf="_EditPersonalDetails" class="btn btn-secondary" />
-            <input type="button" value="Edit" (click)="EditPersonalDetails()" *ngIf="!_EditPersonalDetails" class="btn btn-info" />-->
+            </div>
+
+            <div class="row m-0">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    <div class="form-group">
+                        <label for="name" class="font-weight-bold">Last Name</label>
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Last Name" value="{{_ApplicantPersonalDetails.LastName}}" [(ngModel)]="_ApplicantPersonalDetails.LastName" #LastName>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    <div class="form-group">
+                        <label for="name" class="font-weight-bold">Gender</label>
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Gender" value="{{_ApplicantPersonalDetails.Gender}}" [(ngModel)]="_ApplicantPersonalDetails.Gender" #Gender>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    <div class="form-group">
+                        <label for="name" class="font-weight-bold">Date Of Birth</label>
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Date Of Birth" value="{{_ApplicantPersonalDetails.DateOfBirth}}" [(ngModel)]="_ApplicantPersonalDetails.DateOfBirth" #DateOfBirth>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row m-0">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    <div class="form-group">
+                        <label for="name" class="font-weight-bold">Marital Status</label>
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Marital Status" value="{{_ApplicantPersonalDetails.MaritalStatus}}" [(ngModel)]="_ApplicantPersonalDetails.MaritalStatus" #MaritalStatus>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    <div class="form-group">
+                        <label for="name" class="font-weight-bold">No. Of Dependents</label>
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="No. Of Dependents" value="{{_ApplicantPersonalDetails.NoOfDependents}}" [(ngModel)]="_ApplicantPersonalDetails.NoOfDependents" #NoOfDependents>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    <div class="form-group">
+                        <label for="name" class="font-weight-bold">NZResidents</label>
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="" value="{{_ApplicantPersonalDetails.NZResidents}}" [(ngModel)]="_ApplicantPersonalDetails.NZResidents" #NZResidents>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row m-0">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    <div class="form-group">
+                        <label for="name" class="font-weight-bold">Country Of Birth</label>
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Country Of Birth" value="{{_ApplicantPersonalDetails.CountryOfBirth}}" [(ngModel)]="_ApplicantPersonalDetails.CountryOfBirth" #CountryOfBirth>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    <div class="form-group">
+                        <label for="name" class="font-weight-bold">Email ID</label>
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Email ID" value="{{_ApplicantPersonalDetails.EmailID}}" [(ngModel)]="_ApplicantPersonalDetails.EmailID" #EmailID>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    <div class="form-group">
+                        <label for="name" class="font-weight-bold">Mobile No.</label>
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Mobile No." value="{{_ApplicantPersonalDetails.MobileNo}}" [(ngModel)]="_ApplicantPersonalDetails.MobileNo" #MobileNo>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row m-0">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    <div class="form-group">
+                        <label for="name" class="font-weight-bold">Home Phone No.</label>
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Home Phone No." value="{{_ApplicantPersonalDetails.HomePhoneNo}}" [(ngModel)]="_ApplicantPersonalDetails.HomePhoneNo" #HomePhoneNo>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    <div class="form-group">
+                        <label for="name" class="font-weight-bold">Work Phone No.</label>
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Work Phone No." value="{{_ApplicantPersonalDetails.WorkPhoneNo}}" [(ngModel)]="_ApplicantPersonalDetails.WorkPhoneNo" #WorkPhoneNo>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </div>
+
 </div>

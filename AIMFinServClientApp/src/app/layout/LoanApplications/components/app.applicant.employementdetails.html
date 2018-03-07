@@ -1,33 +1,64 @@
-﻿<div class="form">
+<div class="form">
     <div class="pt-4">
         <h2>CLIENT PERSONAL DETAILS</h2>
         <div class="w-100 float-left">
             <div class="row m-0">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                     <div class="form-group">
-                        <label for="name" class="font-weight-bold">Name:</label>
-                        <p>Nitin Kumar Rohilla</p>
+                        <label for="name" class="font-weight-bold">SourceOfIncome</label>
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Source Of Income" value="{{_ApplicantEmployementDetails.ApplicantID}}" [(ngModel)]="_ApplicantEmployementDetails.ApplicantID" #ApplicantID>
+                            </mat-form-field>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                     <div class="form-group">
-                        <label for="dependent" class="font-weight-bold">No of dependents:</label>
-                        <p>2</p>
+                        <label for="name" class="font-weight-bold">EmployerName</label>
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="EmployerName" value="{{_ApplicantEmployementDetails.ApplicantID}}" [(ngModel)]="_ApplicantEmployementDetails.ApplicantID" #ApplicantID>
+                            </mat-form-field>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                     <div class="form-group">
-                        <label for="material status" class="font-weight-bold">Material Status:</label>
-                        <p>Married</p>
+                        <label for="name" class="font-weight-bold">Duration</label>
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Duration" value="{{_ApplicantEmployementDetails.ApplicantID}}" [(ngModel)]="_ApplicantEmployementDetails.ApplicantID" #ApplicantID>
+                            </mat-form-field>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div class="row m-0">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    <div class="form-group">
+                        <label for="name" class="font-weight-bold">Status</label>
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Status" value="{{_ApplicantEmployementDetails.ApplicantID}}" [(ngModel)]="_ApplicantEmployementDetails.ApplicantID" #ApplicantID>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    <div class="form-group">
+                        <label for="name" class="font-weight-bold">Passing Year</label>
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Passing Year" value="{{_ApplicantEmployementDetails.ApplicantID}}" [(ngModel)]="_ApplicantEmployementDetails.ApplicantID" #ApplicantID>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="w-100 float-left text-right">
-            <input type="button" value="Cancel" (click)="EditPersonalDetails()" class="btn btn-secondary" />
-            <!--<input type="button" value="Save" (click)="UpdatePersonalDetails()" *ngIf="_EditPersonalDetails" class="btn btn-success" />
-            <input type="button" value="Cancel" (click)="EditPersonalDetails()" *ngIf="_EditPersonalDetails" class="btn btn-secondary" />
-            <input type="button" value="Edit" (click)="EditPersonalDetails()" *ngIf="!_EditPersonalDetails" class="btn btn-info" />-->
-        </div>
+        
     </div>
 </div>
