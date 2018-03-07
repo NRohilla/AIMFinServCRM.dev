@@ -8,14 +8,18 @@ import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { AppBaseComponent } from '../../../shared/app.basecomponent';
+import { ClientsService } from '../../../services/app.clients.service';
 @Component({
     selector: `applicant-personal-details`,
     templateUrl: './app.applicant.personaldetails.html',
     animations: [routerTransition()],
-    providers: []
+    providers: [ClientsService]
 })
 export class ApplicantPersonalDetailsComponent extends AppBaseComponent implements OnInit {
 
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { super();}
+    ngOnInit() {
+    }
     public _ApplicantPersonalDetails= {
        ApplicantID : '',
        FirstName: '',
@@ -39,14 +43,16 @@ export class ApplicantPersonalDetailsComponent extends AppBaseComponent implemen
        }
     };
 
-
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService) { super();}
-    ngOnInit() {
-    }
-
-    testpersonal() {
-        debugger;
+    SaveLoanApplicationPersonalDetails() {
+        this._ClientsService.UpdateLoanApplicationDetails(this._ApplicantPersonalDetails).subscribe(res => this.SaveLoanApplicationPersonalDetailsSuccess(res), res => this.SaveLoanApplicationPersonalDetailsError(res));
         return true;
     }
+
+    SaveLoanApplicationPersonalDetailsSuccess(res) {
+        return true;
+    }
+
+   SaveLoanApplicationPersonalDetailsError(res) { }
+
 }
 

@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { ClientsService } from '../../../services/app.clients.service';
 @Component({
     selector: `applicant-qualification-details`,
     templateUrl: './app.applicant.qualificationdetails.html',
@@ -22,12 +23,18 @@ export class ApplicantQualificationDetailsComponent implements OnInit {
         TypeOfQualification: '',
     };
 
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService) { }
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { }
     ngOnInit() {
     }
 
-    testqualification() {
-        debugger;
+    SaveLoanApplicationQualificationDetails() {
+        this._ClientsService.UpdateLoanApplicationDetails(this._ApplicantQualificationDetails).subscribe(res => this.SaveLoanApplicationQualificationDetailsSuccess(res), res => this.SaveLoanApplicationQualificationDetailsError(res));
         return true;
     }
+
+    SaveLoanApplicationQualificationDetailsSuccess(res) {
+        return true;
+    }
+
+    SaveLoanApplicationQualificationDetailsError(res) { }
 }

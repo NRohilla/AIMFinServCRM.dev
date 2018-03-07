@@ -7,11 +7,12 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { ClientsService } from '../../../services/app.clients.service';
 @Component({
-    selector: `applicant-communication-details`,
+    selector: 'applicant-communication-details',
     templateUrl: './app.applicant.communicationdetails.html',
     animations: [routerTransition()],
-    providers: []
+    providers: [ClientsService]
 })
 export class ApplicantCommunicationDetailsComponent implements OnInit {
 
@@ -26,13 +27,19 @@ export class ApplicantCommunicationDetailsComponent implements OnInit {
         }
     };
 
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService) { }
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService,private _ClientsService: ClientsService) { }
 
     ngOnInit() {
     }
 
-    testcommunication() {
-        debugger;
+    SaveLoanApplicationCommunicationDetails() {
+        this._ClientsService.UpdateLoanApplicationDetails(this._ApplicantCommunicationDetails).subscribe(res => this.SaveLoanApplicationCommunicationDetailsSuccess(res), res => this.SaveLoanApplicationPersonalDetailsError(res));
         return true;
     }
+
+    SaveLoanApplicationCommunicationDetailsSuccess(res) {
+        return true;
+    }
+
+    SaveLoanApplicationCommunicationDetailsError(res) { }
 }

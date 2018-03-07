@@ -409,6 +409,212 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
+
+
+        public bool SaveLoanApplicationPersonalDetails(Applicants ApplicantPersonalDetails)
+        {
+            try
+            {
+                int TotalRecordsUpdated = 0;
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var FetchApplicantPersonalDetails = db.tblApplicants.Where(p => p.ApplicantID == ApplicantPersonalDetails.ApplicantID).FirstOrDefault();
+                    if (FetchApplicantPersonalDetails != null)
+                    {
+                        FetchApplicantPersonalDetails.ApplicantID = ApplicantPersonalDetails.ApplicantID;
+                        FetchApplicantPersonalDetails.FirstName = ApplicantPersonalDetails.FirstName;
+                        FetchApplicantPersonalDetails.MiddleName = ApplicantPersonalDetails.MiddleName;
+                        FetchApplicantPersonalDetails.LastName = ApplicantPersonalDetails.LastName;
+                        FetchApplicantPersonalDetails.Gender = ApplicantPersonalDetails.Gender;
+                        FetchApplicantPersonalDetails.DateOfBirth = ApplicantPersonalDetails.DateOfBirth;
+                        FetchApplicantPersonalDetails.MaritalStatus = ApplicantPersonalDetails.MaritalStatus;
+                        FetchApplicantPersonalDetails.NoOfDependents = ApplicantPersonalDetails.NoOfDependents;
+                        FetchApplicantPersonalDetails.NZResidents = ApplicantPersonalDetails.NZResidents;
+                        FetchApplicantPersonalDetails.CountryOfBirth = ApplicantPersonalDetails.CountryOfBirth;
+                        FetchApplicantPersonalDetails.EmailID = ApplicantPersonalDetails.EmailID;
+                        FetchApplicantPersonalDetails.MobileNo = ApplicantPersonalDetails.MobileNo;
+                        FetchApplicantPersonalDetails.EmailID = ApplicantPersonalDetails.EmailID;
+                        FetchApplicantPersonalDetails.HomePhoneNo = ApplicantPersonalDetails.HomePhoneNo;
+                        FetchApplicantPersonalDetails.WorkPhoneNo = ApplicantPersonalDetails.WorkPhoneNo;
+                        TotalRecordsUpdated += db.SaveChanges();
+                        return true;
+                    }
+                }
+
+                if (TotalRecordsUpdated > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+
+
+        public bool SaveLoanApplicationQualificationDetails(ApplicantQualificationDetails ApplicantQualificationDetails)
+        {
+            try
+            {
+                int TotalRecordsUpdated = 0;
+                //using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                //{
+                //    var FetchLoanApplicationDetails = db.tblLoanApplicationForms.Where(p => p.LoanApplicationNo == LoanApplicationDetails.LoanApplicationNo).FirstOrDefault();
+                //    if (FetchLoanApplicationDetails != null)
+                //    {
+                //        //FetchLoanApplicationDetails.AgeOfProperty = LoanApplicationDetails.AgeOfProperty;
+                //        //FetchLoanApplicationDetails.ApplicantID = LoanApplicationDetails.ApplicantID;
+                //        //FetchLoanApplicationDetails.ApprovalExpiryDate = LoanApplicationDetails.ApprovalExpiryDate;
+                //        //FetchLoanApplicationDetails.CashInHand = LoanApplicationDetails.CashInHand;
+                //        //FetchLoanApplicationDetails.CostOfProperty = LoanApplicationDetails.CostOfProperty;
+                //        //FetchLoanApplicationDetails.FinanceRequired = LoanApplicationDetails.FinanceRequired;
+                //        //FetchLoanApplicationDetails.Frequency = LoanApplicationDetails.Frequency;
+                //        //FetchLoanApplicationDetails.IsAnyGuarantor = LoanApplicationDetails.IsAnyGuarantor;
+                //        //FetchLoanApplicationDetails.IsApplicationApproved = LoanApplicationDetails.IsApplicationApproved;
+                //        //FetchLoanApplicationDetails.IsPreApproval = LoanApplicationDetails.IsPreApproval;
+                //        //FetchLoanApplicationDetails.IsPropertyDecided = LoanApplicationDetails.IsPropertyDecided;
+                //        //FetchLoanApplicationDetails.IsShifted = LoanApplicationDetails.IsShifted;
+                //        //FetchLoanApplicationDetails.LoanTerm = LoanApplicationDetails.LoanTerm;
+                //        //FetchLoanApplicationDetails.Priority = LoanApplicationDetails.Priority;
+                //        //FetchLoanApplicationDetails.PropertyType = LoanApplicationDetails.PropertyType;
+                //        //FetchLoanApplicationDetails.PropertyUsedFor = LoanApplicationDetails.PropertyUsedFor;
+                //        //FetchLoanApplicationDetails.RateType = LoanApplicationDetails.RateType.Trim();
+                //        //FetchLoanApplicationDetails.ReasonForNotApproval = LoanApplicationDetails.ReasonForNotApproval;
+                //        //FetchLoanApplicationDetails.ShiftedDuration = LoanApplicationDetails.ShiftedDuration;
+                //        //FetchLoanApplicationDetails.Status = LoanApplicationDetails.Status;
+                //        //FetchLoanApplicationDetails.TypeOfLoan = LoanApplicationDetails.TypeOfLoan;
+                //        //FetchLoanApplicationDetails.CreatedBy = LoanApplicationDetails.CreatedBy;
+                //        //FetchLoanApplicationDetails.CreatedOn = LoanApplicationDetails.CreatedOn;
+                //        //FetchLoanApplicationDetails.ModifiedBy = LoanApplicationDetails.ModifiedBy;
+                //        //FetchLoanApplicationDetails.ModifiedOn = LoanApplicationDetails.ModifiedOn;
+                //        TotalRecordsUpdated += db.SaveChanges();
+                //        return true;
+                //    }
+                //}
+
+                if (TotalRecordsUpdated > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+
+
+        public bool SaveLoanApplicationEmployementDetails(ApplicantEmployementDetails ApplicantEmployementDetails)
+        {
+            try
+            {
+                int TotalRecordsUpdated = 0;
+                //using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                //{
+                //    var FetchLoanApplicationDetails = db.tblLoanApplicationForms.Where(p => p.LoanApplicationNo == LoanApplicationDetails.LoanApplicationNo).FirstOrDefault();
+                //    if (FetchLoanApplicationDetails != null)
+                //    {
+                //        //FetchLoanApplicationDetails.AgeOfProperty = LoanApplicationDetails.AgeOfProperty;
+                //        //FetchLoanApplicationDetails.ApplicantID = LoanApplicationDetails.ApplicantID;
+                //        //FetchLoanApplicationDetails.ApprovalExpiryDate = LoanApplicationDetails.ApprovalExpiryDate;
+                //        //FetchLoanApplicationDetails.CashInHand = LoanApplicationDetails.CashInHand;
+                //        //FetchLoanApplicationDetails.CostOfProperty = LoanApplicationDetails.CostOfProperty;
+                //        //FetchLoanApplicationDetails.FinanceRequired = LoanApplicationDetails.FinanceRequired;
+                //        //FetchLoanApplicationDetails.Frequency = LoanApplicationDetails.Frequency;
+                //        //FetchLoanApplicationDetails.IsAnyGuarantor = LoanApplicationDetails.IsAnyGuarantor;
+                //        //FetchLoanApplicationDetails.IsApplicationApproved = LoanApplicationDetails.IsApplicationApproved;
+                //        //FetchLoanApplicationDetails.IsPreApproval = LoanApplicationDetails.IsPreApproval;
+                //        //FetchLoanApplicationDetails.IsPropertyDecided = LoanApplicationDetails.IsPropertyDecided;
+                //        //FetchLoanApplicationDetails.IsShifted = LoanApplicationDetails.IsShifted;
+                //        //FetchLoanApplicationDetails.LoanTerm = LoanApplicationDetails.LoanTerm;
+                //        //FetchLoanApplicationDetails.Priority = LoanApplicationDetails.Priority;
+                //        //FetchLoanApplicationDetails.PropertyType = LoanApplicationDetails.PropertyType;
+                //        //FetchLoanApplicationDetails.PropertyUsedFor = LoanApplicationDetails.PropertyUsedFor;
+                //        //FetchLoanApplicationDetails.RateType = LoanApplicationDetails.RateType.Trim();
+                //        //FetchLoanApplicationDetails.ReasonForNotApproval = LoanApplicationDetails.ReasonForNotApproval;
+                //        //FetchLoanApplicationDetails.ShiftedDuration = LoanApplicationDetails.ShiftedDuration;
+                //        //FetchLoanApplicationDetails.Status = LoanApplicationDetails.Status;
+                //        //FetchLoanApplicationDetails.TypeOfLoan = LoanApplicationDetails.TypeOfLoan;
+                //        //FetchLoanApplicationDetails.CreatedBy = LoanApplicationDetails.CreatedBy;
+                //        //FetchLoanApplicationDetails.CreatedOn = LoanApplicationDetails.CreatedOn;
+                //        //FetchLoanApplicationDetails.ModifiedBy = LoanApplicationDetails.ModifiedBy;
+                //        //FetchLoanApplicationDetails.ModifiedOn = LoanApplicationDetails.ModifiedOn;
+                //        TotalRecordsUpdated += db.SaveChanges();
+                //        return true;
+                //    }
+                //}
+
+                if (TotalRecordsUpdated > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+
+
+        public bool SaveLoanApplicationCommunicationDetails(ApplicantCommunicationDetails ApplicantCommunicationDetails)
+        {
+            try
+            {
+                int TotalRecordsUpdated = 0;
+                //using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                //{
+                //    var FetchLoanApplicationDetails = db.tblLoanApplicationForms.Where(p => p.LoanApplicationNo == LoanApplicationDetails.LoanApplicationNo).FirstOrDefault();
+                //    if (FetchLoanApplicationDetails != null)
+                //    {
+                //        //FetchLoanApplicationDetails.AgeOfProperty = LoanApplicationDetails.AgeOfProperty;
+                //        //FetchLoanApplicationDetails.ApplicantID = LoanApplicationDetails.ApplicantID;
+                //        //FetchLoanApplicationDetails.ApprovalExpiryDate = LoanApplicationDetails.ApprovalExpiryDate;
+                //        //FetchLoanApplicationDetails.CashInHand = LoanApplicationDetails.CashInHand;
+                //        //FetchLoanApplicationDetails.CostOfProperty = LoanApplicationDetails.CostOfProperty;
+                //        //FetchLoanApplicationDetails.FinanceRequired = LoanApplicationDetails.FinanceRequired;
+                //        //FetchLoanApplicationDetails.Frequency = LoanApplicationDetails.Frequency;
+                //        //FetchLoanApplicationDetails.IsAnyGuarantor = LoanApplicationDetails.IsAnyGuarantor;
+                //        //FetchLoanApplicationDetails.IsApplicationApproved = LoanApplicationDetails.IsApplicationApproved;
+                //        //FetchLoanApplicationDetails.IsPreApproval = LoanApplicationDetails.IsPreApproval;
+                //        //FetchLoanApplicationDetails.IsPropertyDecided = LoanApplicationDetails.IsPropertyDecided;
+                //        //FetchLoanApplicationDetails.IsShifted = LoanApplicationDetails.IsShifted;
+                //        //FetchLoanApplicationDetails.LoanTerm = LoanApplicationDetails.LoanTerm;
+                //        //FetchLoanApplicationDetails.Priority = LoanApplicationDetails.Priority;
+                //        //FetchLoanApplicationDetails.PropertyType = LoanApplicationDetails.PropertyType;
+                //        //FetchLoanApplicationDetails.PropertyUsedFor = LoanApplicationDetails.PropertyUsedFor;
+                //        //FetchLoanApplicationDetails.RateType = LoanApplicationDetails.RateType.Trim();
+                //        //FetchLoanApplicationDetails.ReasonForNotApproval = LoanApplicationDetails.ReasonForNotApproval;
+                //        //FetchLoanApplicationDetails.ShiftedDuration = LoanApplicationDetails.ShiftedDuration;
+                //        //FetchLoanApplicationDetails.Status = LoanApplicationDetails.Status;
+                //        //FetchLoanApplicationDetails.TypeOfLoan = LoanApplicationDetails.TypeOfLoan;
+                //        //FetchLoanApplicationDetails.CreatedBy = LoanApplicationDetails.CreatedBy;
+                //        //FetchLoanApplicationDetails.CreatedOn = LoanApplicationDetails.CreatedOn;
+                //        //FetchLoanApplicationDetails.ModifiedBy = LoanApplicationDetails.ModifiedBy;
+                //        //FetchLoanApplicationDetails.ModifiedOn = LoanApplicationDetails.ModifiedOn;
+                //        TotalRecordsUpdated += db.SaveChanges();
+                //        return true;
+                //    }
+                //}
+
+                if (TotalRecordsUpdated > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+
+
+
+
     }
 
 }

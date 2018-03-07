@@ -60,4 +60,19 @@ export class ClientsService {
     UpdateLoanApplicationDetails(LoanApplicationDetails) {
         return this._http.post(this.baseurl + "Clients/UpdateLoanApplicationDetails", LoanApplicationDetails, this.options);
     }
+
+    SaveLoanApplicationPersonalDetails(ApplicantPersonalDetails) {
+        return this._http.post(this.baseurl + "Clients/SaveLoanApplicationPersonalDetails", ApplicantPersonalDetails, this.options);
+    }
+
+    SaveLoanApplicationQualificationDetails(ApplicantQualificationDetails) {
+        return this._http.post(this.baseurl + "Clients/SaveLoanApplicationQualificationDetails", ApplicantQualificationDetails, this.options);
+    }
+
+    SaveLoanApplicationEmployementDetails(ApplicantEmployementDetails) {
+        return this._http.post(this.baseurl + "Clients/SaveLoanApplicationEmployementDetails", ApplicantEmployementDetails, this.options);
+    }
+    SaveLoanApplicationCommunicationDetails(ApplicantCommunicationDetails) {
+        return this._http.post(this.baseurl + "Clients/SaveLoanApplicationCommunicationDetails", ApplicantCommunicationDetails, this.options);
+    }
 }

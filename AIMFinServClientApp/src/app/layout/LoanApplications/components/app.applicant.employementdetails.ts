@@ -7,11 +7,12 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { ClientsService } from '../../../services/app.clients.service';
 @Component({
     selector: `applicant-employement-details`,
     templateUrl: './app.applicant.employementdetails.html',
     animations: [routerTransition()],
-    providers: []
+    providers: [ClientsService]
 })
 export class ApplicantEmployementComponent implements OnInit {
 
@@ -23,13 +24,19 @@ export class ApplicantEmployementComponent implements OnInit {
        Status: ''
     };
      
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService) { }
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { }
 
     ngOnInit() {
     }
 
-    testemployment() {
-        debugger;
+    SaveLoanApplicationEmployementDetails() {
+        this._ClientsService.UpdateLoanApplicationDetails(this._ApplicantEmployementDetails).subscribe(res => this.SaveLoanApplicationEmployementDetailsSuccess(res), res => this.SaveLoanApplicationEmployementDetailsError(res));
         return true;
     }
+
+    SaveLoanApplicationEmployementDetailsSuccess(res) {
+        return true;
+    }
+
+    SaveLoanApplicationEmployementDetailsError(res) { }
 }
