@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import {ClientsService} from '../../../services/app.clients.service';
+import {AppGenericUtilityComponent} from '../../../shared/app.genericUtility';
 
 @Component({
     selector: `client-communication-details`,
@@ -15,7 +16,7 @@ import {ClientsService} from '../../../services/app.clients.service';
     animations: [routerTransition()],
     providers: [ClientsService]
 })
-export class ClientscommunicationComponent implements OnInit {
+export class ClientscommunicationComponent extends AppGenericUtilityComponent implements OnInit {
     public _ViewApplicantDetails: boolean = false;
     public _FormErrors;
     public _FormErrorsDescription: string = '';
@@ -30,7 +31,7 @@ export class ClientscommunicationComponent implements OnInit {
         _AddressTypeMaster: {}
     }
 
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { }
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { super(); }
 
     ngOnInit() {
         if (this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
@@ -42,7 +43,7 @@ export class ClientscommunicationComponent implements OnInit {
 
     GetClientCommDetailsSuccess(res) {
         debugger;
-        this._ApplicantCommunicationDetails = JSON.parse(res._body);
+        this._ApplicantCommunicationDetails = this.trimObj(JSON.parse(res._body));
     }
     GetClientCommDetailsError(res) { }
     EditPersonalDetails() {
