@@ -4,26 +4,26 @@
 <div id="exTab1" class="w-100 float-left">
     <div class="row m-0">
         <div class="w-100 float-left">
-            <div class="section_box">
+            <div class="section_box pb-0 pl-0 pr-0">
                 <div class="box_title">Personal Details</div>
                 <div class="tab-content clearfix ml-0">
                     <div class="w-100 float-left">
-                        <div class="tab-pane active">
+                        <div class="tab-pane pt-3">
                             <div class="row m-0">
-                                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left" *ngIf="!_EditPersonalDetails">
                                     <div class="field_set">
                                         <div class="field_label">Name</div>
                                         <div class="field_info">
-                                            <p *ngIf="!_EditPersonalDetails">{{_ApplicantDetails.FirstName}} {{_ApplicantDetails.MiddleName}} {{_ApplicantDetails.LastName}}</p>
-                                            <mat-form-field class="example-full-width" *ngIf="_EditPersonalDetails">
-                                                <input matInput placeholder="First" value="{{_ApplicantDetails.FirstName}}" [(ngModel)]="_ApplicantDetails.FirstName" #FirstName>
-                                            </mat-form-field>
-                                            <mat-form-field class="example-full-width" *ngIf="_EditPersonalDetails">
-                                                <input matInput placeholder="Middle" value="{{_ApplicantDetails.MiddleName}}" [(ngModel)]="_ApplicantDetails.MiddleName" #MiddleName>
-                                            </mat-form-field>
-                                            <mat-form-field class="example-full-width" *ngIf="_EditPersonalDetails">
-                                                <input matInput placeholder="Last" value="{{_ApplicantDetails.LastName}}" [(ngModel)]="_ApplicantDetails.LastName" #LastName>
-                                            </mat-form-field>
+                                            <p>{{_ApplicantDetails.FirstName}} {{_ApplicantDetails.MiddleName}} {{_ApplicantDetails.LastName}}</p>
+                                            <!--<mat-form-field class="example-full-width" *ngIf="_EditPersonalDetails">
+                                        <input matInput placeholder="First" value="{{_ApplicantDetails.FirstName}}" [(ngModel)]="_ApplicantDetails.FirstName" #FirstName>
+                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width" *ngIf="_EditPersonalDetails">
+                                        <input matInput placeholder="Middle" value="{{_ApplicantDetails.MiddleName}}" [(ngModel)]="_ApplicantDetails.MiddleName" #MiddleName>
+                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width" *ngIf="_EditPersonalDetails">
+                                        <input matInput placeholder="Last" value="{{_ApplicantDetails.LastName}}" [(ngModel)]="_ApplicantDetails.LastName" #LastName>
+                                    </mat-form-field>-->
                                         </div>
                                     </div>
                                 </div>
@@ -58,6 +58,38 @@
                                                 </mat-select>
                                             </mat-form-field>
                                             <p *ngIf="!_EditPersonalDetails">{{_ApplicantDetails.NoOfDependents}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-0" *ngIf="_EditPersonalDetails">
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                    <div class="field_set">
+                                        <div class="field_label">First Name</div>
+                                        <div class="field_info">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="First" value="{{_ApplicantDetails.FirstName}}" [(ngModel)]="_ApplicantDetails.FirstName" #FirstName>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                    <div class="field_set">
+                                        <div class="field_label">Middle Name</div>
+                                        <div class="field_info">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Middle" value="{{_ApplicantDetails.MiddleName}}" [(ngModel)]="_ApplicantDetails.MiddleName" #MiddleName>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                    <div class="field_set">
+                                        <div class="field_label">Last Name</div>
+                                        <div class="field_info">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Last" value="{{_ApplicantDetails.LastName}}" [(ngModel)]="_ApplicantDetails.LastName" #LastName>
+                                            </mat-form-field>
                                         </div>
                                     </div>
                                 </div>
@@ -129,6 +161,8 @@
 
                         </div>
                     </div>
+                </div>
+                <div class="row m-0 btn-bottom pr-4 pl-4">
                     <div class="w-100 float-left text-right">
                         <input type="button" value="&#xf0c7; Save" (click)="UpdatePersonalDetails()" *ngIf="_EditPersonalDetails" class="btn btn-success" />
                         <input type="button" value="&#xf00d; Cancel" (click)="EditPersonalDetails()" *ngIf="_EditPersonalDetails" class="btn btn-secondary" />
