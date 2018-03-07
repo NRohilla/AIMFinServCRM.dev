@@ -36,273 +36,273 @@
             <button class="btn btn-lg btn-link text-white font-weight-bold" type="button" (click)="ViewDetails('ViewList')">Back</button>
         </div>
         <div class="w-100 float-left">
-            <div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="section_box">
-                            <div class="box_title">Loan Application Form</div>
-                            <div class="tab-content clearfix ml-0">
-                                <div class="w-100 float-left text-right">
-                                    <input type="button" value="&#xf067; Add Applicant" class="btn btn-secondary" (click)="openDialog()" />
-                                </div>
-                                <div class="w-100 float-left">
-                                    <div class="tab-pane active">
-                                        <div class="row m-0">
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Type of Loan</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.TypeOfLoan}}</p>
-                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Type of Loan" value="{{_LoanApplicationDetails.TypeOfLoan}}">
-                                                        </mat-form-field>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section_box pb-0 pl-0 pr-0">
+                        <div class="box_title">Loan Application Form</div>
+                        <div class="tab-content clearfix ml-0">
+                            <div class="w-100 float-left text-right">
+                                <input type="button" value="&#xf067; Add Applicant" class="btn btn-secondary" (click)="openDialog()" />
+                            </div>
+                            <div class="w-100 float-left">
+                                <div class="tab-pane active">
+                                    <div class="row m-0">
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                            <div class="field_set">
+                                                <div class="field_label">Type of Loan</div>
+                                                <div class="field_info">
+                                                    <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.TypeOfLoan}}</p>
+                                                    <mat-form-field class="example-full-width" *ngIf="_EditDetails">
+                                                        <input matInput placeholder="Type of Loan" value="{{_LoanApplicationDetails.TypeOfLoan}}">
+                                                    </mat-form-field>
 
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Purpose of loan</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.TypeOfLoan}}</p>
-                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Type of Loan" value="{{_LoanApplicationDetails.TypeOfLoan}}">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Is Pre-approval</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.IsPreApproval}}</p>
-                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Is Pre-approval" value="{{_LoanApplicationDetails.IsPreApproval}}">
-                                                        </mat-form-field>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row m-0">
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Priority</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.Priority}}</p>
-                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Priority" value="{{_LoanApplicationDetails.Priority}}">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Required Loan Amount</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.TypeOfLoan}}</p>
-                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Type of Loan" value="{{_LoanApplicationDetails.TypeOfLoan}}">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Cash In-hand</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.CashInHand}}</p>
-                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Cash In Hand" value="{{_LoanApplicationDetails.CashInHand}}">
-                                                        </mat-form-field>
-                                                    </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                            <div class="field_set">
+                                                <div class="field_label">Purpose of loan</div>
+                                                <div class="field_info">
+                                                    <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.TypeOfLoan}}</p>
+                                                    <mat-form-field class="example-full-width" *ngIf="_EditDetails">
+                                                        <input matInput placeholder="Type of Loan" value="{{_LoanApplicationDetails.TypeOfLoan}}">
+                                                    </mat-form-field>
                                                 </div>
                                             </div>
                                         </div>
-                                        <hr />
-                                        <div class="row m-0">
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Loan Term</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.LoanTerm}}</p>
-                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Loan Term" value="{{_LoanApplicationDetails.LoanTerm}}">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Rate Type</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.RateType}}</p>
-                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Rate Type" value="{{_LoanApplicationDetails.RateType}}">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Frequency</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.Frequency}}</p>
-                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Frequency" value="{{_LoanApplicationDetails.Frequency}}">
-                                                        </mat-form-field>
-                                                    </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                            <div class="field_set">
+                                                <div class="field_label">Is Pre-approval</div>
+                                                <div class="field_info">
+                                                    <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.IsPreApproval}}</p>
+                                                    <mat-form-field class="example-full-width" *ngIf="_EditDetails">
+                                                        <input matInput placeholder="Is Pre-approval" value="{{_LoanApplicationDetails.IsPreApproval}}">
+                                                    </mat-form-field>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row m-0">
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Application Aprroved</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.IsApplicationApproved}}</p>
-                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Is Application Approved" value="{{_LoanApplicationDetails.IsApplicationApproved}}">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Approval Expiry</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.TypeOfLoan}}</p>
-                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Type of Loan" value="{{_LoanApplicationDetails.TypeOfLoan}}">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Reason for Not Approval</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.ReasonForNotApproval}}</p>
-                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Reason For Not Approval" value="{{_LoanApplicationDetails.ReasonForNotApproval}}">
-                                                        </mat-form-field>
-                                                    </div>
+                                    </div>
+                                    <div class="row m-0">
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                            <div class="field_set">
+                                                <div class="field_label">Priority</div>
+                                                <div class="field_info">
+                                                    <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.Priority}}</p>
+                                                    <mat-form-field class="example-full-width" *ngIf="_EditDetails">
+                                                        <input matInput placeholder="Priority" value="{{_LoanApplicationDetails.Priority}}">
+                                                    </mat-form-field>
                                                 </div>
                                             </div>
                                         </div>
-                                        <hr />
-                                        <div class="row m-0">
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Any Guarantor</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.IsAnyGuarantor}}</p>
-                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Is Any Guarantor" value="{{_LoanApplicationDetails.IsAnyGuarantor}}">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Cost Of Property</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.CostOfProperty}}</p>
-                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Cost Of Property" value="{{_LoanApplicationDetails.CostOfProperty}}">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Type Of Property</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.PropertyType}}</p>
-                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Property Type" value="{{_LoanApplicationDetails.PropertyType}}">
-                                                        </mat-form-field>
-                                                    </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                            <div class="field_set">
+                                                <div class="field_label">Required Loan Amount</div>
+                                                <div class="field_info">
+                                                    <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.TypeOfLoan}}</p>
+                                                    <mat-form-field class="example-full-width" *ngIf="_EditDetails">
+                                                        <input matInput placeholder="Type of Loan" value="{{_LoanApplicationDetails.TypeOfLoan}}">
+                                                    </mat-form-field>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row m-0">
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Age Of Property</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.TypeOfLoan}}</p>
-                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Type of Loan" value="{{_LoanApplicationDetails.TypeOfLoan}}">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Is Shifted</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.TypeOfLoan}}</p>
-                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Type of Loan" value="{{_LoanApplicationDetails.TypeOfLoan}}">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Duration</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.TypeOfLoan}}</p>
-                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Type of Loan" value="{{_LoanApplicationDetails.TypeOfLoan}}">
-                                                        </mat-form-field>
-                                                    </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                            <div class="field_set">
+                                                <div class="field_label">Cash In-hand</div>
+                                                <div class="field_info">
+                                                    <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.CashInHand}}</p>
+                                                    <mat-form-field class="example-full-width" *ngIf="_EditDetails">
+                                                        <input matInput placeholder="Cash In Hand" value="{{_LoanApplicationDetails.CashInHand}}">
+                                                    </mat-form-field>
                                                 </div>
                                             </div>
                                         </div>
-                                        <hr />
-                                        <div class="row m-0">
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Property User For</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.TypeOfLoan}}</p>
-                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Type of Loan" value="{{_LoanApplicationDetails.TypeOfLoan}}">
-                                                        </mat-form-field>
-                                                    </div>
+                                    </div>
+                                    <hr />
+                                    <div class="row m-0">
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                            <div class="field_set">
+                                                <div class="field_label">Loan Term</div>
+                                                <div class="field_info">
+                                                    <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.LoanTerm}}</p>
+                                                    <mat-form-field class="example-full-width" *ngIf="_EditDetails">
+                                                        <input matInput placeholder="Loan Term" value="{{_LoanApplicationDetails.LoanTerm}}">
+                                                    </mat-form-field>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Is Property Decided</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.TypeOfLoan}}</p>
-                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Type of Loan" value="{{_LoanApplicationDetails.TypeOfLoan}}">
-                                                        </mat-form-field>
-                                                    </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                            <div class="field_set">
+                                                <div class="field_label">Rate Type</div>
+                                                <div class="field_info">
+                                                    <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.RateType}}</p>
+                                                    <mat-form-field class="example-full-width" *ngIf="_EditDetails">
+                                                        <input matInput placeholder="Rate Type" value="{{_LoanApplicationDetails.RateType}}">
+                                                    </mat-form-field>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Current Status</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.Status}}</p>
-                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Status" value="{{_LoanApplicationDetails.Status}}">
-                                                        </mat-form-field>
-                                                    </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                            <div class="field_set">
+                                                <div class="field_label">Frequency</div>
+                                                <div class="field_info">
+                                                    <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.Frequency}}</p>
+                                                    <mat-form-field class="example-full-width" *ngIf="_EditDetails">
+                                                        <input matInput placeholder="Frequency" value="{{_LoanApplicationDetails.Frequency}}">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row m-0">
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                            <div class="field_set">
+                                                <div class="field_label">Application Aprroved</div>
+                                                <div class="field_info">
+                                                    <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.IsApplicationApproved}}</p>
+                                                    <mat-form-field class="example-full-width" *ngIf="_EditDetails">
+                                                        <input matInput placeholder="Is Application Approved" value="{{_LoanApplicationDetails.IsApplicationApproved}}">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                            <div class="field_set">
+                                                <div class="field_label">Approval Expiry</div>
+                                                <div class="field_info">
+                                                    <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.TypeOfLoan}}</p>
+                                                    <mat-form-field class="example-full-width" *ngIf="_EditDetails">
+                                                        <input matInput placeholder="Type of Loan" value="{{_LoanApplicationDetails.TypeOfLoan}}">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                            <div class="field_set">
+                                                <div class="field_label">Reason for Not Approval</div>
+                                                <div class="field_info">
+                                                    <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.ReasonForNotApproval}}</p>
+                                                    <mat-form-field class="example-full-width" *ngIf="_EditDetails">
+                                                        <input matInput placeholder="Reason For Not Approval" value="{{_LoanApplicationDetails.ReasonForNotApproval}}">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="row m-0">
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                            <div class="field_set">
+                                                <div class="field_label">Any Guarantor</div>
+                                                <div class="field_info">
+                                                    <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.IsAnyGuarantor}}</p>
+                                                    <mat-form-field class="example-full-width" *ngIf="_EditDetails">
+                                                        <input matInput placeholder="Is Any Guarantor" value="{{_LoanApplicationDetails.IsAnyGuarantor}}">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                            <div class="field_set">
+                                                <div class="field_label">Cost Of Property</div>
+                                                <div class="field_info">
+                                                    <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.CostOfProperty}}</p>
+                                                    <mat-form-field class="example-full-width" *ngIf="_EditDetails">
+                                                        <input matInput placeholder="Cost Of Property" value="{{_LoanApplicationDetails.CostOfProperty}}">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                            <div class="field_set">
+                                                <div class="field_label">Type Of Property</div>
+                                                <div class="field_info">
+                                                    <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.PropertyType}}</p>
+                                                    <mat-form-field class="example-full-width" *ngIf="_EditDetails">
+                                                        <input matInput placeholder="Property Type" value="{{_LoanApplicationDetails.PropertyType}}">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row m-0">
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                            <div class="field_set">
+                                                <div class="field_label">Age Of Property</div>
+                                                <div class="field_info">
+                                                    <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.TypeOfLoan}}</p>
+                                                    <mat-form-field class="example-full-width" *ngIf="_EditDetails">
+                                                        <input matInput placeholder="Type of Loan" value="{{_LoanApplicationDetails.TypeOfLoan}}">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                            <div class="field_set">
+                                                <div class="field_label">Is Shifted</div>
+                                                <div class="field_info">
+                                                    <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.TypeOfLoan}}</p>
+                                                    <mat-form-field class="example-full-width" *ngIf="_EditDetails">
+                                                        <input matInput placeholder="Type of Loan" value="{{_LoanApplicationDetails.TypeOfLoan}}">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                            <div class="field_set">
+                                                <div class="field_label">Duration</div>
+                                                <div class="field_info">
+                                                    <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.TypeOfLoan}}</p>
+                                                    <mat-form-field class="example-full-width" *ngIf="_EditDetails">
+                                                        <input matInput placeholder="Type of Loan" value="{{_LoanApplicationDetails.TypeOfLoan}}">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="row m-0">
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                            <div class="field_set">
+                                                <div class="field_label">Property User For</div>
+                                                <div class="field_info">
+                                                    <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.TypeOfLoan}}</p>
+                                                    <mat-form-field class="example-full-width" *ngIf="_EditDetails">
+                                                        <input matInput placeholder="Type of Loan" value="{{_LoanApplicationDetails.TypeOfLoan}}">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                            <div class="field_set">
+                                                <div class="field_label">Is Property Decided</div>
+                                                <div class="field_info">
+                                                    <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.TypeOfLoan}}</p>
+                                                    <mat-form-field class="example-full-width" *ngIf="_EditDetails">
+                                                        <input matInput placeholder="Type of Loan" value="{{_LoanApplicationDetails.TypeOfLoan}}">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                            <div class="field_set">
+                                                <div class="field_label">Current Status</div>
+                                                <div class="field_info">
+                                                    <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.Status}}</p>
+                                                    <mat-form-field class="example-full-width" *ngIf="_EditDetails">
+                                                        <input matInput placeholder="Status" value="{{_LoanApplicationDetails.Status}}">
+                                                    </mat-form-field>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="float-right">
-                                    <input type="button" value="&#xf0c7; Save" (click)="UpdateDetails()" *ngIf="_EditDetails" class="btn btn-success" />
-                                    <input type="button" value="&#xf00d; Cancel" (click)="CancelEditingDetails()" *ngIf="_EditDetails" class="btn btn-secondary" />
-                                    <input type="button" value="&#xf040; Edit" (click)="EditDetails()" *ngIf="!_EditDetails" class="btn btn-info" />
-                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-0 btn-bottom pr-4 pl-4">
+                            <div class="w-100 float-left text-right">
+                                <input type="button" value="&#xf0c7; Save" (click)="UpdateDetails()" *ngIf="_EditDetails" class="btn btn-success" />
+                                <input type="button" value="&#xf00d; Cancel" (click)="CancelEditingDetails()" *ngIf="_EditDetails" class="btn btn-secondary" />
+                                <input type="button" value="&#xf040; Edit" (click)="EditDetails()" *ngIf="!_EditDetails" class="btn btn-info" />
                             </div>
                         </div>
                     </div>

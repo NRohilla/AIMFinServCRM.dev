@@ -1,10 +1,10 @@
 ﻿<div class="row m-0">
     <div class="w-100 float-left">
-        <div class="section_box">
+        <div class="section_box pb-0 pl-0 pr-0">
             <div class="box_title">Qualification Details</div>
             <div class="tab-content clearfix ml-0">
                 <div class="w-100 float-left">
-                    <div class="tab-pane active" *ngFor="let _ApplicantQualificationDetail of _ApplicantQualificationDetails;">
+                    <div class="tab-pane pt-3" *ngFor="let _ApplicantQualificationDetail of _ApplicantQualificationDetails;">
                         <div class="row m-0">
                             <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
                                 <div class="field_set">
@@ -53,12 +53,14 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="w-100 float-left text-right">
-                        <input type="button" value="&#xf0c7; Save" (click)="UpdateCommunicationDetails()" *ngIf="_EditCommunicationDetails" class="btn btn-success" />
-                        <input type="button" value="&#xf00d; Cancel" (click)="EditCommunicationDetails()" *ngIf="_EditCommunicationDetails" class="btn btn-secondary" />
-                        <input type="button" value="&#xf040; Edit" (click)="EditCommunicationDetails()" *ngIf="!_EditCommunicationDetails" class="btn btn-info" />
-                    </div>
+                    </div>                    
+                </div>
+            </div>
+            <div class="row m-0 btn-bottom pr-4 pl-4">
+                <div class="w-100 float-left text-right">
+                    <input type="button" value="&#xf0c7; Save" (click)="UpdateCommunicationDetails()" *ngIf="_EditCommunicationDetails" class="btn btn-success" />
+                    <input type="button" value="&#xf00d; Cancel" (click)="EditCommunicationDetails()" *ngIf="_EditCommunicationDetails" class="btn btn-secondary" />
+                    <input type="button" value="&#xf040; Edit" (click)="EditCommunicationDetails()" *ngIf="!_EditCommunicationDetails" class="btn btn-info" />
                 </div>
             </div>
         </div>
