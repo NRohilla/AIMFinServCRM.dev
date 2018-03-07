@@ -31,6 +31,11 @@ export class ApplicantPersonalDetailsComponent implements OnInit {
        MobileNo: '',
        HomePhoneNo: '',
        WorkPhoneNo: '',
+
+       ApplicantType: {
+           ApplicantTypeID: '',
+           ApplicantType: ''
+       }
     };
 
 

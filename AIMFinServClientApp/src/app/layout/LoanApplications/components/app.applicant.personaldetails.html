@@ -4,10 +4,17 @@
             <div class="row m-0">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                     <div class="form-group">
-                        <label for="name" class="font-weight-bold">Applicant Type Id</label>
+                        <label for="name" class="font-weight-bold">Applicant Type</label>
                         <div class="field_info">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Application Type Id" value="{{_ApplicantPersonalDetails.ApplicantID}}" [(ngModel)]="_ApplicantPersonalDetails.ApplicantID" #ApplicantID>
+                            <mat-form-field>
+                                <mat-select [(value)]="_ApplicantPersonalDetails.ApplicantType.ApplicantTypeID">
+                                    <mat-option>None</mat-option>
+                                    <mat-option value="0">1st Applicant</mat-option>
+                                    <mat-option value="1">2nd Applicant</mat-option>
+                                    <mat-option value="2">3rd Applicant</mat-option>
+                                    <mat-option value="3">4th Applicant</mat-option>
+                                    <mat-option value="4">5th Applicant</mat-option>
+                                </mat-select>
                             </mat-form-field>
                         </div>
                     </div>
