@@ -1,4 +1,4 @@
-﻿import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
+import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../../../router.animations';
 import { Form, FormControl, FormBuilder, Validators  } from '@angular/forms';
@@ -14,7 +14,20 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
     providers: []
 })
 export class ApplicantQualificationDetailsComponent implements OnInit {
+
+    public _ApplicantQualificationDetails= {
+        PassingYear :'',
+        CourseName: '',
+        UniversityName: '',
+        TypeOfQualification: '',
+    };
+
     constructor(public router: Router, private _LocalStorageService: LocalStorageService) { }
     ngOnInit() {
+    }
+
+    testqualification() {
+        debugger;
+        return true;
     }
 }
