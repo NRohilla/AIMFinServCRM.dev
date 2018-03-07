@@ -7,13 +7,14 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { AppBaseComponent } from '../../../shared/app.basecomponent';
 @Component({
     selector: `applicant-personal-details`,
     templateUrl: './app.applicant.personaldetails.html',
     animations: [routerTransition()],
     providers: []
 })
-export class ApplicantPersonalDetailsComponent implements OnInit {
+export class ApplicantPersonalDetailsComponent extends AppBaseComponent implements OnInit {
 
     public _ApplicantPersonalDetails= {
        ApplicantID : '',
@@ -39,7 +40,7 @@ export class ApplicantPersonalDetailsComponent implements OnInit {
     };
 
 
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService) { }
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService) { super();}
     ngOnInit() {
     }
 

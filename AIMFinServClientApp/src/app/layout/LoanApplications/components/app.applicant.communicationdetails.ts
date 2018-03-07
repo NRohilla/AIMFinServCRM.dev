@@ -20,7 +20,10 @@ export class ApplicantCommunicationDetailsComponent implements OnInit {
         AddressLine2: '',
         AddressLine3: '',
         Duration: '',
-        AddressType: ''
+        AddressType: {
+            ID: '',
+            Type: ''
+        }
     };
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService) { }
