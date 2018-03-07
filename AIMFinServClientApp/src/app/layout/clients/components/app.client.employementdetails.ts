@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import {ClientsService} from '../../../services/app.clients.service';
-import {AppGenericUtilityComponent} from '../../../shared/app.genericUtility';
+import {AppBaseComponent} from '../../../shared/app.basecomponent';
 
 @Component({
     selector: `client-employement-details`,
@@ -16,7 +16,7 @@ import {AppGenericUtilityComponent} from '../../../shared/app.genericUtility';
     animations: [routerTransition()],
     providers: [ClientsService]
 })
-export class ClientsEmployementComponent extends AppGenericUtilityComponent implements OnInit {
+export class ClientsEmployementComponent extends AppBaseComponent implements OnInit {
     public _ViewApplicantDetails: boolean = false;
     public _FormErrors;
     public _FormErrorsDescription: string = '';

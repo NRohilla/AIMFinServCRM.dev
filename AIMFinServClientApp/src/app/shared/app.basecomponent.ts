@@ -5,7 +5,7 @@ import 'rxjs/Rx';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
 @Component({})
-export class AppGenericUtilityComponent {
+export class AppBaseComponent {
     constructor() { }
     //trim all the whitespaces of the JSON object
     trimObj(obj) {
