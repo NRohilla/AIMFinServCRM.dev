@@ -15,3 +15,13 @@ D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServDataModel\bin\Debug
 D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServDataModel\bin\Debug\EntityFramework.SqlServer.xml
 D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServDataModel\obj\Debug\FinServDataModel.dll
 D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServDataModel\obj\Debug\FinServDataModel.pdb
+E:\Clients\Nick\FinServDataModel\bin\Debug\FinServDataModel.dll.config
+E:\Clients\Nick\FinServDataModel\bin\Debug\FinServDataModel.dll
+E:\Clients\Nick\FinServDataModel\bin\Debug\FinServDataModel.pdb
+E:\Clients\Nick\FinServDataModel\bin\Debug\EntityFramework.dll
+E:\Clients\Nick\FinServDataModel\bin\Debug\EntityFramework.SqlServer.dll
+E:\Clients\Nick\FinServDataModel\bin\Debug\EntityFramework.xml
+E:\Clients\Nick\FinServDataModel\bin\Debug\EntityFramework.SqlServer.xml
+E:\Clients\Nick\FinServDataModel\obj\Debug\FinServDataModel.csprojResolveAssemblyReference.cache
+E:\Clients\Nick\FinServDataModel\obj\Debug\FinServDataModel.dll
+E:\Clients\Nick\FinServDataModel\obj\Debug\FinServDataModel.pdb
