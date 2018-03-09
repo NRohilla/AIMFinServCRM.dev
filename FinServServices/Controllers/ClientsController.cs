@@ -90,7 +90,7 @@ namespace FinServServices.Controllers
         }
         [HttpPost]
         [Route("SaveLoanApplicationPersonalDetails")]
-        public bool SaveLoanApplicationPersonalDetails(Applicants ApplicantPersonalDetails)
+        public string SaveLoanApplicationPersonalDetails(Applicants ApplicantPersonalDetails)
         {
             return Repository.SaveLoanApplicationPersonalDetails(ApplicantPersonalDetails);
         }

@@ -33,13 +33,17 @@ export class ApplicantCommunicationDetailsComponent implements OnInit {
     }
 
     SaveLoanApplicationCommunicationDetails() {
-        this._ClientsService.UpdateLoanApplicationDetails(this._ApplicantCommunicationDetails).subscribe(res => this.SaveLoanApplicationCommunicationDetailsSuccess(res), res => this.SaveLoanApplicationPersonalDetailsError(res));
+        debugger;
+        this._ClientsService.SaveLoanApplicationCommunicationDetails(this._ApplicantCommunicationDetails).subscribe(res => this.SaveLoanApplicationCommunicationDetailsSuccess(res), res => this.SaveLoanApplicationCommunicationDetailsError(res));
         return true;
     }
 
     SaveLoanApplicationCommunicationDetailsSuccess(res) {
-        return true;
+        var Data = JSON.parse(res._body);
+        if (Data == true) {
+            return true;
+        }
     }
 
-    SaveLoanApplicationCommunicationDetailsError(res) { }
+        SaveLoanApplicationCommunicationDetailsError(res) { }
 }

@@ -30,13 +30,16 @@ export class ApplicantEmployementComponent implements OnInit {
     }
 
     SaveLoanApplicationEmployementDetails() {
-        this._ClientsService.UpdateLoanApplicationDetails(this._ApplicantEmployementDetails).subscribe(res => this.SaveLoanApplicationEmployementDetailsSuccess(res), res => this.SaveLoanApplicationEmployementDetailsError(res));
-        return true;
+        debugger;
+        this._ClientsService.SaveLoanApplicationEmployementDetails(this._ApplicantEmployementDetails).subscribe(res => this.SaveLoanApplicationEmployementDetailsSuccess(res), res => this.SaveLoanApplicationEmployementDetailsError(res));
     }
 
     SaveLoanApplicationEmployementDetailsSuccess(res) {
-        return true;
+        var Data = JSON.parse(res._body);
+        if (Data == true) {
+            return true;
+        }
     }
 
-    SaveLoanApplicationEmployementDetailsError(res) { }
+        SaveLoanApplicationEmployementDetailsError(res) { }
 }

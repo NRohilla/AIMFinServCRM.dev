@@ -44,14 +44,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddressTypeMaster.cs" />
+    <Compile Include="AdvisorTypeDetails.cs" />
     <Compile Include="ApplicantCommunicationDetails.cs" />
+    <Compile Include="ApplicantExpenseSheet.cs" />
     <Compile Include="ApplicantQualificationDetails.cs" />
     <Compile Include="ApplicantTypeMaster.cs" />
     <Compile Include="ApplicantEmployementDetails.cs" />
     <Compile Include="Applicants.cs" />
+    <Compile Include="Asset.cs" />
     <Compile Include="AssetsTypeMaster.cs" />
     <Compile Include="EmploymentTypeMaster.cs" />
     <Compile Include="ExpenseTypeMaster.cs" />
+    <Compile Include="Liability.cs" />
     <Compile Include="LiabilityTypeMaster.cs" />
     <Compile Include="LoanApplicationForms.cs" />
     <Compile Include="LoanRateTypeMaster.cs" />
@@ -62,8 +66,12 @@
     <Compile Include="PurposeOfLoanMaster.cs" />
     <Compile Include="QualificationTypeMaster.cs" />
     <Compile Include="RelationshipTypeMaster.cs" />
+    <Compile Include="Role.cs" />
     <Compile Include="SalutationTypeMaster.cs" />
+    <Compile Include="StatusTypeMaster.cs" />
+    <Compile Include="TypeOfLoanMaster.cs" />
     <Compile Include="UserOps.cs" />
+    <Compile Include="UserRole.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

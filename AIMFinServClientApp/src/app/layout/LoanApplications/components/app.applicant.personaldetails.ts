@@ -44,15 +44,21 @@ export class ApplicantPersonalDetailsComponent extends AppBaseComponent implemen
     };
 
     SaveLoanApplicationPersonalDetails() {
-        this._ClientsService.UpdateLoanApplicationDetails(this._ApplicantPersonalDetails).subscribe(res => this.SaveLoanApplicationPersonalDetailsSuccess(res), res => this.SaveLoanApplicationPersonalDetailsError(res));
-        return true;
+        debugger;
+        this._ClientsService.SaveLoanApplicationPersonalDetails(this._ApplicantPersonalDetails).subscribe(res => this.SaveLoanApplicationPersonalDetailsSuccess(res), res => this.SaveLoanApplicationPersonalDetailsError(res));
+        //return true;
     }
 
     SaveLoanApplicationPersonalDetailsSuccess(res) {
-        return true;
+        debugger;
+        var Data = JSON.parse(this._ApplicantPersonalDetails.ApplicantID.toString().trim());
+        if (Data == true) {
+            return this._ApplicantPersonalDetails.ApplicantID.toString().trim();
+        }
+        
     }
 
-   SaveLoanApplicationPersonalDetailsError(res) { }
+    SaveLoanApplicationPersonalDetailsError(res) { }
 
 }
 

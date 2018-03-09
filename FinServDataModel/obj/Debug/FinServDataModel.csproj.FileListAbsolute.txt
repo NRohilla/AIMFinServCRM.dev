@@ -15,3 +15,14 @@ D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServDataModel\bin\Debug
 D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServDataModel\bin\Debug\EntityFramework.SqlServer.xml
 D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServDataModel\obj\Debug\FinServDataModel.dll
 D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServDataModel\obj\Debug\FinServDataModel.pdb
+D:\Client Projects\AIM6-3-2018\AIMFinServCRM.dev\FinServDataModel\bin\Debug\FinServDataModel.dll.config
+D:\Client Projects\AIM6-3-2018\AIMFinServCRM.dev\FinServDataModel\bin\Debug\FinServDataModel.dll
+D:\Client Projects\AIM6-3-2018\AIMFinServCRM.dev\FinServDataModel\bin\Debug\FinServDataModel.pdb
+D:\Client Projects\AIM6-3-2018\AIMFinServCRM.dev\FinServDataModel\bin\Debug\EntityFramework.dll
+D:\Client Projects\AIM6-3-2018\AIMFinServCRM.dev\FinServDataModel\bin\Debug\EntityFramework.SqlServer.dll
+D:\Client Projects\AIM6-3-2018\AIMFinServCRM.dev\FinServDataModel\bin\Debug\EntityFramework.xml
+D:\Client Projects\AIM6-3-2018\AIMFinServCRM.dev\FinServDataModel\bin\Debug\EntityFramework.SqlServer.xml
+D:\Client Projects\AIM6-3-2018\AIMFinServCRM.dev\FinServDataModel\obj\Debug\FinServDataModel.csproj.CoreCompileInputs.cache
+D:\Client Projects\AIM6-3-2018\AIMFinServCRM.dev\FinServDataModel\obj\Debug\FinServDataModel.dll
+D:\Client Projects\AIM6-3-2018\AIMFinServCRM.dev\FinServDataModel\obj\Debug\FinServDataModel.pdb
+D:\Client Projects\AIM6-3-2018\AIMFinServCRM.dev\FinServDataModel\obj\Debug\FinServDataModel.csprojResolveAssemblyReference.cache

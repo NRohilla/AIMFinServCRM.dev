@@ -9,10 +9,10 @@ import 'rxjs/Rx';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { ClientsService } from '../../../services/app.clients.service';
 @Component({
-    selector: `applicant-qualification-details`,
+    selector: 'applicant-qualification-details',
     templateUrl: './app.applicant.qualificationdetails.html',
     animations: [routerTransition()],
-    providers: []
+    providers: [ClientsService]
 })
 export class ApplicantQualificationDetailsComponent implements OnInit {
 
@@ -28,12 +28,15 @@ export class ApplicantQualificationDetailsComponent implements OnInit {
     }
 
     SaveLoanApplicationQualificationDetails() {
-        this._ClientsService.UpdateLoanApplicationDetails(this._ApplicantQualificationDetails).subscribe(res => this.SaveLoanApplicationQualificationDetailsSuccess(res), res => this.SaveLoanApplicationQualificationDetailsError(res));
-        return true;
+        debugger;
+        this._ClientsService.SaveLoanApplicationQualificationDetails(this._ApplicantQualificationDetails).subscribe(res => this.SaveLoanApplicationQualificationDetailsSuccess(res), res => this.SaveLoanApplicationQualificationDetailsError(res));
     }
 
     SaveLoanApplicationQualificationDetailsSuccess(res) {
-        return true;
+        var Data = JSON.parse(res._body);
+        if (Data == true) {
+            return true;
+        }
     }
 
     SaveLoanApplicationQualificationDetailsError(res) { }

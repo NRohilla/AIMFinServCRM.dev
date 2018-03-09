@@ -1,6 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="AIMFinServDBModelStoreContainer" CdmEntityContainer="AIMFinServDBEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAdvisorDetails">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblAdvisorDetail">
+        <MappingFragment StoreEntitySet="tblAdvisorDetails">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="FaxNo" ColumnName="FaxNo" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Addressline3" ColumnName="Addressline3" />
+          <ScalarProperty Name="Addressline2" ColumnName="Addressline2" />
+          <ScalarProperty Name="Addressline1" ColumnName="Addressline1" />
+          <ScalarProperty Name="FirmName" ColumnName="FirmName" />
+          <ScalarProperty Name="AdvisorGroup" ColumnName="AdvisorGroup" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AdvisorCode" ColumnName="AdvisorCode" />
+          <ScalarProperty Name="AdvisorID" ColumnName="AdvisorID" />
+          <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tblApplicantCommunicationDetails">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicantCommunicationDetail">
         <MappingFragment StoreEntitySet="tblApplicantCommunicationDetails">
@@ -49,6 +84,7 @@
           <ScalarProperty Name="Frequency" ColumnName="Frequency" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+          <ScalarProperty Name="ExpenseTypeID" ColumnName="ExpenseTypeID" />
           <ScalarProperty Name="ExpenseID" ColumnName="ExpenseID" />
           <ScalarProperty Name="AutoID" ColumnName="AutoID" />
         </MappingFragment>
@@ -57,6 +93,7 @@
     <EntitySetMapping Name="tblApplicantQualificationDetails">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicantQualificationDetail">
         <MappingFragment StoreEntitySet="tblApplicantQualificationDetails">
+          <ScalarProperty Name="TypeOfQualification" ColumnName="TypeOfQualification" />
           <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
           <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
           <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
@@ -64,7 +101,6 @@
           <ScalarProperty Name="UniversityName" ColumnName="UniversityName" />
           <ScalarProperty Name="CourseName" ColumnName="CourseName" />
           <ScalarProperty Name="PassingYear" ColumnName="PassingYear" />
-          <ScalarProperty Name="TypeOfQualification" ColumnName="TypeOfQualification" />
           <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
           <ScalarProperty Name="QualificationID" ColumnName="QualificationID" />
           <ScalarProperty Name="AutoID" ColumnName="AutoID" />
@@ -79,6 +115,8 @@
           <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
           <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ApplicantImage" ColumnName="ApplicantImage" />
+          <ScalarProperty Name="LoanApplicationNo" ColumnName="LoanApplicationNo" />
           <ScalarProperty Name="WorkPhoneNo" ColumnName="WorkPhoneNo" />
           <ScalarProperty Name="HomePhoneNo" ColumnName="HomePhoneNo" />
           <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
@@ -93,6 +131,7 @@
           <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
           <ScalarProperty Name="AutoID" ColumnName="AutoID" />
         </MappingFragment>
@@ -105,6 +144,7 @@
           <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
           <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
           <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
           <ScalarProperty Name="Ownership" ColumnName="Ownership" />
           <ScalarProperty Name="NetValue" ColumnName="NetValue" />
           <ScalarProperty Name="Description" ColumnName="Description" />
@@ -121,6 +161,7 @@
           <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
           <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
           <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
           <ScalarProperty Name="Ownership" ColumnName="Ownership" />
           <ScalarProperty Name="NetValue" ColumnName="NetValue" />
           <ScalarProperty Name="Description" ColumnName="Description" />
@@ -137,27 +178,30 @@
           <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
           <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
           <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="FinanceDate" ColumnName="FinanceDate" />
+          <ScalarProperty Name="AdvisorID" ColumnName="AdvisorID" />
           <ScalarProperty Name="IsPropertyDecided" ColumnName="IsPropertyDecided" />
           <ScalarProperty Name="PropertyUsedFor" ColumnName="PropertyUsedFor" />
           <ScalarProperty Name="ShiftedDuration" ColumnName="ShiftedDuration" />
           <ScalarProperty Name="AgeOfProperty" ColumnName="AgeOfProperty" />
           <ScalarProperty Name="IsShifted" ColumnName="IsShifted" />
-          <ScalarProperty Name="PropertyType" ColumnName="PropertyType" />
+          <ScalarProperty Name="PropertyTypeID" ColumnName="PropertyTypeID" />
           <ScalarProperty Name="CostOfProperty" ColumnName="CostOfProperty" />
           <ScalarProperty Name="IsAnyGuarantor" ColumnName="IsAnyGuarantor" />
           <ScalarProperty Name="ReasonForNotApproval" ColumnName="ReasonForNotApproval" />
           <ScalarProperty Name="ApprovalExpiryDate" ColumnName="ApprovalExpiryDate" />
           <ScalarProperty Name="IsApplicationApproved" ColumnName="IsApplicationApproved" />
           <ScalarProperty Name="Frequency" ColumnName="Frequency" />
-          <ScalarProperty Name="RateType" ColumnName="RateType" />
+          <ScalarProperty Name="RateTypeID" ColumnName="RateTypeID" />
           <ScalarProperty Name="LoanTerm" ColumnName="LoanTerm" />
           <ScalarProperty Name="CashInHand" ColumnName="CashInHand" />
           <ScalarProperty Name="FinanceRequired" ColumnName="FinanceRequired" />
           <ScalarProperty Name="Priority" ColumnName="Priority" />
-          <ScalarProperty Name="TypeOfLoan" ColumnName="TypeOfLoan" />
+          <ScalarProperty Name="PurposeOfLoanID" ColumnName="PurposeOfLoanID" />
+          <ScalarProperty Name="TypeOfLoanID" ColumnName="TypeOfLoanID" />
           <ScalarProperty Name="IsPreApproval" ColumnName="IsPreApproval" />
-          <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+          <ScalarProperty Name="ApplicationFormNumber" ColumnName="ApplicationFormNumber" />
           <ScalarProperty Name="LoanApplicationNo" ColumnName="LoanApplicationNo" />
           <ScalarProperty Name="AutoID" ColumnName="AutoID" />
         </MappingFragment>
@@ -186,6 +230,7 @@
           <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="LoanApplicationNo" ColumnName="LoanApplicationNo" />
           <ScalarProperty Name="GuarantorID" ColumnName="GuarantorID" />
           <ScalarProperty Name="AutoID" ColumnName="AutoID" />
@@ -199,7 +244,9 @@
           <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
           <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
           <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="PropertyType" ColumnName="PropertyType" />
+          <ScalarProperty Name="SettlementDate" ColumnName="SettlementDate" />
+          <ScalarProperty Name="FinanceDate" ColumnName="FinanceDate" />
+          <ScalarProperty Name="PropertyTypeID" ColumnName="PropertyTypeID" />
           <ScalarProperty Name="PropertyCost" ColumnName="PropertyCost" />
           <ScalarProperty Name="Loanprovider" ColumnName="Loanprovider" />
           <ScalarProperty Name="NoOfEMI" ColumnName="NoOfEMI" />
@@ -207,7 +254,7 @@
           <ScalarProperty Name="LoanProcessingFee" ColumnName="LoanProcessingFee" />
           <ScalarProperty Name="EMIStartMonth" ColumnName="EMIStartMonth" />
           <ScalarProperty Name="EMIStartDay" ColumnName="EMIStartDay" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
           <ScalarProperty Name="ClientID" ColumnName="ClientID" />
           <ScalarProperty Name="LoanType" ColumnName="LoanType" />
           <ScalarProperty Name="LoanAmountOffered" ColumnName="LoanAmountOffered" />
@@ -219,6 +266,19 @@
           <ScalarProperty Name="LoanApplicationNo" ColumnName="LoanApplicationNo" />
           <ScalarProperty Name="LANNumber" ColumnName="LANNumber" />
           <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMasterAddressTypes">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterAddressType">
+        <MappingFragment StoreEntitySet="tblMasterAddressTypes">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -298,7 +358,7 @@
           <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
           <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
           <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="IsAvtive" ColumnName="IsAvtive" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="PropertyType" ColumnName="PropertyType" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
@@ -395,6 +455,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tblMasterTypeOfStatus">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterTypeOfStatu">
+        <MappingFragment StoreEntitySet="tblMasterTypeOfStatus">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tblRoles">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblRole">
         <MappingFragment StoreEntitySet="tblRole">
@@ -449,19 +522,6 @@
           <ScalarProperty Name="RoleGuid" ColumnName="RoleGuid" />
           <ScalarProperty Name="UsersRoleId" ColumnName="UsersRoleId" />
           <ScalarProperty Name="UsersRoleGuid" ColumnName="UsersRoleGuid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tblMasterAddressTypes">
-      <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterAddressType">
-        <MappingFragment StoreEntitySet="tblMasterAddressTypes">
-          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

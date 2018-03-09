@@ -12,17 +12,17 @@ namespace FinServDataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class tblMasterPropertyType
+    public partial class tblMasterTypeOfStatu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblMasterPropertyType()
+        public tblMasterTypeOfStatu()
         {
             this.tblLoanApplicationForms = new HashSet<tblLoanApplicationForm>();
             this.tblLoanMasters = new HashSet<tblLoanMaster>();
         }
     
         public int ID { get; set; }
-        public string PropertyType { get; set; }
+        public string Status { get; set; }
         public bool IsActive { get; set; }
         public Nullable<System.Guid> CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
