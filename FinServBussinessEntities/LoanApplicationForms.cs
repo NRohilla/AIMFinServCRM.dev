@@ -45,6 +45,7 @@ namespace FinServBussinessEntities
         public PropertyTypeMaster _PropertyTypeID { get; set; }
         public StatusTypeMaster _StatusID { get; set; }
         public AdvisorTypeDetails _AdvisorID { get; set; }
+        public Applicants _ApplicantID { get; set; }
 
     }
 }

@@ -56,8 +56,12 @@
                     <div class="form-group">
                         <label for="name" class="font-weight-bold">Gender</label>
                         <div class="field_info">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Gender" value="{{_ApplicantPersonalDetails.Gender}}" [(ngModel)]="_ApplicantPersonalDetails.Gender" #Gender>
+                            <mat-form-field>
+                                <mat-select [(value)]="_ApplicantPersonalDetails.Gender">
+                                    <mat-option>None</mat-option>
+                                    <mat-option value="Male">Male</mat-option>
+                                    <mat-option value="Female">Female</mat-option>
+                                </mat-select>
                             </mat-form-field>
                         </div>
                     </div>

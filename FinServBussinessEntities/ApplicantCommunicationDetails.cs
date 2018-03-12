@@ -23,7 +23,8 @@ namespace FinServBussinessEntities
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public int AddressType { get; set; }
 
-        public virtual tblApplicant tblApplicant { get; set; }
-        public virtual tblMasterAddressType tblMasterAddressType { get; set; }
+        public Applicants _ApplicationID { get; set; }
+        public AddressTypeMaster _MasterTypeID { get; set; }
+       
     }
 }

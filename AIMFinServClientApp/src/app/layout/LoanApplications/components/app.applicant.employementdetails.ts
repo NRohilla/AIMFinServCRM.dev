@@ -21,7 +21,10 @@ export class ApplicantEmployementComponent implements OnInit {
         EmployerName:'',
         Duration:'',
        Income:'',
-       Status: ''
+       Status: '',
+       Applicant: {
+           ApplicantID: ''
+       }
     };
      
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { }
@@ -29,17 +32,9 @@ export class ApplicantEmployementComponent implements OnInit {
     ngOnInit() {
     }
 
-    SaveLoanApplicationEmployementDetails() {
-        debugger;
-        this._ClientsService.SaveLoanApplicationEmployementDetails(this._ApplicantEmployementDetails).subscribe(res => this.SaveLoanApplicationEmployementDetailsSuccess(res), res => this.SaveLoanApplicationEmployementDetailsError(res));
+    SaveLoanApplicationEmployementDetails(applicantId) {
+        this._ApplicantEmployementDetails.Applicant.ApplicantID = applicantId;
+      return  this._ClientsService.SaveLoanApplicationEmployementDetails(this._ApplicantEmployementDetails);
     }
 
-    SaveLoanApplicationEmployementDetailsSuccess(res) {
-        var Data = JSON.parse(res._body);
-        if (Data == true) {
-            return true;
-        }
-    }
-
-        SaveLoanApplicationEmployementDetailsError(res) { }
 }

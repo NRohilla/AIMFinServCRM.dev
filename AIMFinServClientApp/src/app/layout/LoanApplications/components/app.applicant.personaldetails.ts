@@ -17,48 +17,44 @@ import { ClientsService } from '../../../services/app.clients.service';
 })
 export class ApplicantPersonalDetailsComponent extends AppBaseComponent implements OnInit {
 
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { super();}
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { super(); }
     ngOnInit() {
     }
-    public _ApplicantPersonalDetails= {
-       ApplicantID : '',
-       FirstName: '',
-       MiddleName: '',
-       LastName: '',
-       Gender: '',
-       DateOfBirth: '',
-       MaritalStatus: '',
-       NoOfDependents: '',
-       NZResidents: '',
-       CountryOfBirth: '',
-       ApplicantTypeID: '',
-       EmailID: '',
-       MobileNo: '',
-       HomePhoneNo: '',
-       WorkPhoneNo: '',
-
-       ApplicantType: {
-           ApplicantTypeID: '',
-           ApplicantType: ''
-       }
+    public _ApplicantPersonalDetails = {
+        ApplicantID: '',
+        FirstName: '',
+        MiddleName: '',
+        LastName: '',
+        Gender: '',
+        DateOfBirth: '',
+        MaritalStatus: '',
+        NoOfDependents: '',
+        NZResidents: '',
+        CountryOfBirth: '',
+        ApplicantTypeID: '',
+        EmailID: '',
+        MobileNo: '',
+        HomePhoneNo: '',
+        WorkPhoneNo: '',
+        LoanApplicationNo:'',
+        ApplicantType: {
+            ApplicantTypeID: '',
+            ApplicantType: ''
+        }
     };
 
+
+    //   this._LocalStorageService.set("LoanApplicationNoViewed"
     SaveLoanApplicationPersonalDetails() {
         debugger;
-        this._ClientsService.SaveLoanApplicationPersonalDetails(this._ApplicantPersonalDetails).subscribe(res => this.SaveLoanApplicationPersonalDetailsSuccess(res), res => this.SaveLoanApplicationPersonalDetailsError(res));
-        //return true;
-    }
 
-    SaveLoanApplicationPersonalDetailsSuccess(res) {
-        debugger;
-        var Data = JSON.parse(this._ApplicantPersonalDetails.ApplicantID.toString().trim());
-        if (Data == true) {
-            return this._ApplicantPersonalDetails.ApplicantID.toString().trim();
+        if (this._LocalStorageService.get("LoanApplicationNoViewed") != undefined) {
+            this._ApplicantPersonalDetails.ApplicantTypeID = this._ApplicantPersonalDetails.ApplicantType.ApplicantTypeID;
+
+            this._ApplicantPersonalDetails.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNoViewed");
+            return this._ClientsService.SaveLoanApplicationPersonalDetails(this._ApplicantPersonalDetails);
         }
         
     }
-
-    SaveLoanApplicationPersonalDetailsError(res) { }
-
 }
 

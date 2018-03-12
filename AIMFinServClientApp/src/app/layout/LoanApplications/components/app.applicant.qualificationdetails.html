@@ -39,14 +39,22 @@
                     <div class="form-group">
                         <label for="name" class="font-weight-bold">Type Of Qualification</label>
                         <div class="field_info">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Type Of Qualification" value="{{_ApplicantQualificationDetails.TypeOfQualification}}" [(ngModel)]="_ApplicantQualificationDetails.TypeOfQualification" #TypeOfQualification>
+                            <mat-form-field>
+                                <mat-select [(value)]="_ApplicantQualificationDetails.TypeOfQualification">
+                                    <mat-option>None</mat-option>
+                                    <mat-option value="1">Under-Graduate</mat-option>
+                                    <mat-option value="2">Graduate</mat-option>
+                                    <mat-option value="3">Post-Graduate</mat-option>
+                                    <mat-option value="4">Professional</mat-option>
+                                    <mat-option value="5">Diploma</mat-option>
+                                </mat-select>
                             </mat-form-field>
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
+
     </div>
 </div>

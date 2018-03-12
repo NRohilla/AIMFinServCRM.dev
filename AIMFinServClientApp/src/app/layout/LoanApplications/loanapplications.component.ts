@@ -25,6 +25,7 @@ export class LoanapplicationsComponent implements OnInit {
         ApplicantID: "",
         ApprovalExpiryDate: "",
         AutoID: "",
+        PurposeOfLoanID:"",
         CashInHand: "",
         CostOfProperty: "",
         CreatedBy: "",
@@ -48,7 +49,13 @@ export class LoanapplicationsComponent implements OnInit {
         ShiftedDuration: "",
         Status: "",
         TypeOfLoan: "",
-        _Applicant: {}
+        _Applicant: {},
+        _StatusID: {},
+        _PropertyTypeID: {},
+        _RateTypeID: {},
+        _PurposeOfLoanID: {},
+        _TypeOfLoanID: {}
+
     };
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, public dialog: MatDialog) { }
@@ -60,6 +67,7 @@ export class LoanapplicationsComponent implements OnInit {
             ApplicantID: "",
             ApprovalExpiryDate: "",
             AutoID: "",
+            PurposeOfLoanID:"",
             CashInHand: "",
             CostOfProperty: "",
             CreatedBy: "",
@@ -83,7 +91,12 @@ export class LoanapplicationsComponent implements OnInit {
             ShiftedDuration: "",
             Status: "",
             TypeOfLoan: "",
-            _Applicant: {}
+            _Applicant: {},
+            _StatusID: {},
+            _PropertyTypeID: {},
+            _RateTypeID: {},
+            _PurposeOfLoanID: {},
+            _TypeOfLoanID: {}
         };
     }
     //location: any;
@@ -94,6 +107,7 @@ export class LoanapplicationsComponent implements OnInit {
     GetAllLoanApplicationError(Res) { }
 
     ViewDetails(LoanApplicationNo) {
+        this._LocalStorageService.set("LoanApplicationNoViewed", LoanApplicationNo);
         this._ViewApplicationDetails = !this._ViewApplicationDetails;
         this._ClientsService.GetLoanApplicationDetails(LoanApplicationNo).subscribe(res => this.GetAllLoanApplicationDetailSuccess(res), res => this.GetAllLoanApplicationDetailError(res));
     }

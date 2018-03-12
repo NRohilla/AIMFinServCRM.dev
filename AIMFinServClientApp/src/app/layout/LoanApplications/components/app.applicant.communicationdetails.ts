@@ -24,7 +24,8 @@ export class ApplicantCommunicationDetailsComponent implements OnInit {
         AddressType: {
             ID: '',
             Type: ''
-        }
+        },
+        ApplicantID: '',
     };
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService,private _ClientsService: ClientsService) { }
@@ -32,18 +33,8 @@ export class ApplicantCommunicationDetailsComponent implements OnInit {
     ngOnInit() {
     }
 
-    SaveLoanApplicationCommunicationDetails() {
-        debugger;
-        this._ClientsService.SaveLoanApplicationCommunicationDetails(this._ApplicantCommunicationDetails).subscribe(res => this.SaveLoanApplicationCommunicationDetailsSuccess(res), res => this.SaveLoanApplicationCommunicationDetailsError(res));
-        return true;
+    SaveLoanApplicationCommunicationDetails(applicantid) {
+        this._ApplicantCommunicationDetails.ApplicantID = applicantid;
+        return this._ClientsService.SaveLoanApplicationCommunicationDetails(this._ApplicantCommunicationDetails);
     }
-
-    SaveLoanApplicationCommunicationDetailsSuccess(res) {
-        var Data = JSON.parse(res._body);
-        if (Data == true) {
-            return true;
-        }
-    }
-
-        SaveLoanApplicationCommunicationDetailsError(res) { }
 }
