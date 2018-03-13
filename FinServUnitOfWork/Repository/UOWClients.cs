@@ -465,7 +465,7 @@ namespace FinServUnitOfWork.Repository
                         _tblApplicant.WorkPhoneNo = ApplicantPersonalDetails.WorkPhoneNo;
                         _tblApplicant.LoanApplicationNo= ApplicantPersonalDetails.LoanApplicationNo;
                         _tblApplicant.ApplicantTypeID = ApplicantPersonalDetails.ApplicantTypeID;
-
+                        _tblApplicant.IsActive = true;
                         db.tblApplicants.Add(_tblApplicant);
                         db.SaveChanges();
                        

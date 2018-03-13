@@ -8,6 +8,6 @@ export const environment = {
     development: true,
     testing: false,
     //for local connection to the API service
-    baseAPIUrl: "http://192.168.6.243:9393/AIMFinServService/API/",
+    baseAPIUrl: "http://localhost:61725/API/",
     baseApplicationURL: "http://localhost:8080/#/",
 };
