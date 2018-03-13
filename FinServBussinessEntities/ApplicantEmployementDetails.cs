@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinServDataModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,7 @@ namespace FinServBussinessEntities
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public virtual Applicants Applicants { get; set; }
+
+        public Applicants _ApplicationID { get; set; }
     }
 }

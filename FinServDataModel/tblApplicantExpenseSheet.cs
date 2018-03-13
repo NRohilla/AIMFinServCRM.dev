@@ -16,7 +16,8 @@ namespace FinServDataModel
     {
         public long AutoID { get; set; }
         public System.Guid ExpenseID { get; set; }
-        public Nullable<System.Guid> ApplicantID { get; set; }
+        public System.Guid ExpenseTypeID { get; set; }
+        public System.Guid ApplicantID { get; set; }
         public string Description { get; set; }
         public string Frequency { get; set; }
         public Nullable<decimal> NetAmount { get; set; }
@@ -26,5 +27,6 @@ namespace FinServDataModel
         public Nullable<System.DateTime> ModifiedOn { get; set; }
     
         public virtual tblApplicant tblApplicant { get; set; }
+        public virtual tblMasterExpenseType tblMasterExpenseType { get; set; }
     }
 }

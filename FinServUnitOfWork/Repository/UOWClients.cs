@@ -43,7 +43,7 @@ namespace FinServUnitOfWork.Repository
                             WorkPhoneNo = itemGetAllApplicants.WorkPhoneNo,
                             EmailID = itemGetAllApplicants.EmailID,
                             HomePhoneNo = itemGetAllApplicants.HomePhoneNo,
-                            ApplicantType = new ApplicantTypeMaster()
+                            _ApplicantTypeMasterID = new ApplicantTypeMaster()
                             {
                                 ApplicantTypeID = itemGetAllApplicants.tblMasterApplicantType.ApplicantTypeID,
                                 ApplicantType = itemGetAllApplicants.tblMasterApplicantType.ApplicantType
@@ -73,11 +73,33 @@ namespace FinServUnitOfWork.Repository
                         objLoanApplicationForms.Add(new LoanApplicationForms
                         {
                             LoanApplicationNo = itemGetAllApplications.LoanApplicationNo,
-                            TypeOfLoan = itemGetAllApplications.TypeOfLoan,
+                            TypeOfLoanID = itemGetAllApplications.TypeOfLoanID,
                             LoanTerm = itemGetAllApplications.LoanTerm,
-                            RateType = itemGetAllApplications.RateType,
-                            PropertyType = itemGetAllApplications.PropertyType,
-                            Status = itemGetAllApplications.Status
+                            RateTypeID = itemGetAllApplications.RateTypeID,
+                            PropertyTypeID = itemGetAllApplications.PropertyTypeID,
+                            PurposeOfLoanID=itemGetAllApplications.PurposeOfLoanID,
+                            StatusID = itemGetAllApplications.StatusID,
+                            _RateTypeID = new LoanRateTypeMaster()
+                            {
+                                LoanRateType = itemGetAllApplications.tblMasterLoanRateType.LoanRateType
+                            },
+                            _PropertyTypeID = new PropertyTypeMaster()
+                            {
+                                PropertyType = itemGetAllApplications.tblMasterPropertyType.PropertyType
+                            },
+                            _TypeOfLoanID = new LoanTypeMaster() {
+
+                                LoanType=itemGetAllApplications.tblMasterTypeOfLoan.LoanType
+                            },
+                            _StatusID =new StatusTypeMaster() {
+
+                                Status=itemGetAllApplications.tblMasterTypeOfStatu.Status
+                            },
+                           _PurposeOfLoanID = new PurposeOfLoanMaster() {
+
+                               PurposeOfLoan=itemGetAllApplications.tblMasterPurposeOfLoan.PurposeOfLoan
+                           }
+
                         });
                     }
 
@@ -118,8 +140,8 @@ namespace FinServUnitOfWork.Repository
                         objApplicants.NZResidents = GetApplicantDetails.NZResidents;
                         objApplicants.WorkPhoneNo = GetApplicantDetails.WorkPhoneNo;
 
-                        objApplicants.ApplicantType = new ApplicantTypeMaster();
-                        objApplicants.ApplicantType.ApplicantType = GetApplicantDetails.tblMasterApplicantType.ApplicantType;
+                        objApplicants._ApplicantTypeMasterID = new ApplicantTypeMaster();
+                        objApplicants._ApplicantTypeMasterID.ApplicantType = GetApplicantDetails.tblMasterApplicantType.ApplicantType;
                     }
                     return objApplicants;
                 }
@@ -134,15 +156,16 @@ namespace FinServUnitOfWork.Repository
             try
             {
                 LoanApplicationForms objtoReturn = new LoanApplicationForms();
-                Guid LoanApplicationID = Guid.Parse(LoanAppNo);
+                Guid LoanApplicationNo = Guid.Parse(LoanAppNo);
 
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var GetLoanAppDetails = db.tblLoanApplicationForms.Where(p => p.LoanApplicationNo == LoanApplicationID).FirstOrDefault();
+                    var GetLoanAppDetails = db.tblLoanApplicationForms.Where(p => p.LoanApplicationNo == LoanApplicationNo).FirstOrDefault();
                     if (GetLoanAppDetails != null)
                     {
                         objtoReturn.AgeOfProperty = GetLoanAppDetails.AgeOfProperty;
-                        objtoReturn.ApplicantID = GetLoanAppDetails.ApplicantID;
+                        objtoReturn.LoanApplicationNo = GetLoanAppDetails.LoanApplicationNo;
+                        objtoReturn.PurposeOfLoanID = GetLoanAppDetails.PurposeOfLoanID;
                         objtoReturn.ApprovalExpiryDate = GetLoanAppDetails.ApprovalExpiryDate;
                         objtoReturn.AutoID = GetLoanAppDetails.AutoID;
                         objtoReturn.CashInHand = GetLoanAppDetails.CashInHand;
@@ -161,14 +184,24 @@ namespace FinServUnitOfWork.Repository
                         objtoReturn.ModifiedBy = GetLoanAppDetails.ModifiedBy;
                         objtoReturn.ModifiedOn = GetLoanAppDetails.ModifiedOn;
                         objtoReturn.Priority = GetLoanAppDetails.Priority;
-                        objtoReturn.PropertyType = GetLoanAppDetails.PropertyType;
+                        objtoReturn.PropertyTypeID = GetLoanAppDetails.PropertyTypeID;
                         objtoReturn.PropertyUsedFor = GetLoanAppDetails.PropertyUsedFor;
-                        objtoReturn.RateType = GetLoanAppDetails.RateType;
+                        objtoReturn.RateTypeID = GetLoanAppDetails.RateTypeID;
                         objtoReturn.ReasonForNotApproval = GetLoanAppDetails.ReasonForNotApproval;
                         objtoReturn.ShiftedDuration = GetLoanAppDetails.ShiftedDuration;
-                        objtoReturn.Status = GetLoanAppDetails.Status;
-                        objtoReturn.TypeOfLoan = GetLoanAppDetails.TypeOfLoan;
-                        objtoReturn._Applicant = GetClientDetails(Convert.ToString(GetLoanAppDetails.ApplicantID));
+                        objtoReturn.StatusID = GetLoanAppDetails.StatusID;
+                        objtoReturn.TypeOfLoanID = GetLoanAppDetails.TypeOfLoanID;
+                        objtoReturn._ApplicantID = GetClientDetails(Convert.ToString(GetLoanAppDetails.ApplicantID));
+                        objtoReturn._PropertyTypeID = new PropertyTypeMaster();
+                        objtoReturn._PropertyTypeID.PropertyType = GetLoanAppDetails.tblMasterPropertyType.PropertyType;
+                        objtoReturn._RateTypeID = new LoanRateTypeMaster();
+                        objtoReturn._RateTypeID.LoanRateType = GetLoanAppDetails.tblMasterLoanRateType.LoanRateType;
+                        objtoReturn._StatusID = new StatusTypeMaster();
+                        objtoReturn._StatusID.Status = GetLoanAppDetails.tblMasterTypeOfStatu.Status;
+                        objtoReturn._TypeOfLoanID = new LoanTypeMaster();
+                        objtoReturn._TypeOfLoanID.LoanType = GetLoanAppDetails.tblMasterTypeOfLoan.LoanType;
+                        objtoReturn._PurposeOfLoanID = new PurposeOfLoanMaster();
+                        objtoReturn._PurposeOfLoanID.PurposeOfLoan = GetLoanAppDetails.tblMasterPurposeOfLoan.PurposeOfLoan;
                     }
                     return objtoReturn;
                 }
@@ -200,9 +233,10 @@ namespace FinServUnitOfWork.Repository
                                 AutoID = itemApplicantCommDetails.AutoID,
                                 CommunicationID = itemApplicantCommDetails.CommunicationID,
                                 Status = itemApplicantCommDetails.Status,
-                                _AddressTypeMaster = new AddressTypeMaster()
+                                AddressType = itemApplicantCommDetails.AddressType,
+                                _MasterTypeID = new AddressTypeMaster()
                                 {
-                                    Type = addresstype != null ? addresstype.Type : ""
+                                    Type = addresstype != null ? itemApplicantCommDetails.tblMasterAddressType.Type : ""
                                 }
                             });
                         }
@@ -270,7 +304,7 @@ namespace FinServUnitOfWork.Repository
                                 QualificationID = itemQualificationDetail.QualificationID,
                                 TypeOfQualification = itemQualificationDetail.TypeOfQualification,
                                 UniversityName = itemQualificationDetail.UniversityName,
-                                _QualificationTypeMaster = new QualificationTypeMaster()
+                                _MasterTypeQualificationID = new QualificationTypeMaster()
                                 {
                                     Qualifications = itemQualificationDetail.tblMasterTypeOfQualification.Qualifications
                                 }
@@ -358,7 +392,6 @@ namespace FinServUnitOfWork.Repository
             { }
             return false;
         }
-
         public bool UpdateLoanApplicationDetails(LoanApplicationForms LoanApplicationDetails)
         {
             try
@@ -370,7 +403,7 @@ namespace FinServUnitOfWork.Repository
                     if (FetchLoanApplicationDetails != null)
                     {
                         FetchLoanApplicationDetails.AgeOfProperty = LoanApplicationDetails.AgeOfProperty;
-                        FetchLoanApplicationDetails.ApplicantID = LoanApplicationDetails.ApplicantID;
+                        FetchLoanApplicationDetails.LoanApplicationNo = LoanApplicationDetails.LoanApplicationNo;
                         FetchLoanApplicationDetails.ApprovalExpiryDate = LoanApplicationDetails.ApprovalExpiryDate;
                         FetchLoanApplicationDetails.CashInHand = LoanApplicationDetails.CashInHand;
                         FetchLoanApplicationDetails.CostOfProperty = LoanApplicationDetails.CostOfProperty;
@@ -383,17 +416,13 @@ namespace FinServUnitOfWork.Repository
                         FetchLoanApplicationDetails.IsShifted = LoanApplicationDetails.IsShifted;
                         FetchLoanApplicationDetails.LoanTerm = LoanApplicationDetails.LoanTerm;
                         FetchLoanApplicationDetails.Priority = LoanApplicationDetails.Priority;
-                        FetchLoanApplicationDetails.PropertyType = LoanApplicationDetails.PropertyType;
+                        FetchLoanApplicationDetails.PropertyTypeID = LoanApplicationDetails.PropertyTypeID;
                         FetchLoanApplicationDetails.PropertyUsedFor = LoanApplicationDetails.PropertyUsedFor;
-                        FetchLoanApplicationDetails.RateType = LoanApplicationDetails.RateType.Trim();
+                        FetchLoanApplicationDetails.RateTypeID = LoanApplicationDetails.RateTypeID;
                         FetchLoanApplicationDetails.ReasonForNotApproval = LoanApplicationDetails.ReasonForNotApproval;
                         FetchLoanApplicationDetails.ShiftedDuration = LoanApplicationDetails.ShiftedDuration;
-                        FetchLoanApplicationDetails.Status = LoanApplicationDetails.Status;
-                        FetchLoanApplicationDetails.TypeOfLoan = LoanApplicationDetails.TypeOfLoan;
-                        //FetchLoanApplicationDetails.CreatedBy = LoanApplicationDetails.CreatedBy;
-                        //FetchLoanApplicationDetails.CreatedOn = LoanApplicationDetails.CreatedOn;
-                        //FetchLoanApplicationDetails.ModifiedBy = LoanApplicationDetails.ModifiedBy;
-                        //FetchLoanApplicationDetails.ModifiedOn = LoanApplicationDetails.ModifiedOn;
+                        FetchLoanApplicationDetails.StatusID = LoanApplicationDetails.StatusID;
+                        FetchLoanApplicationDetails.TypeOfLoanID = LoanApplicationDetails.TypeOfLoanID;
                         TotalRecordsUpdated += db.SaveChanges();
                         return true;
                     }
@@ -409,212 +438,136 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
-
-
-        public bool SaveLoanApplicationPersonalDetails(Applicants ApplicantPersonalDetails)
+        public string SaveLoanApplicationPersonalDetails(Applicants ApplicantPersonalDetails)
         {
             try
             {
-                int TotalRecordsUpdated = 0;
+                tblApplicant _tblApplicant = new tblApplicant();
+             
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var FetchApplicantPersonalDetails = db.tblApplicants.Where(p => p.ApplicantID == ApplicantPersonalDetails.ApplicantID).FirstOrDefault();
-                    if (FetchApplicantPersonalDetails != null)
+                    if (ApplicantPersonalDetails != null)
                     {
-                        FetchApplicantPersonalDetails.ApplicantID = ApplicantPersonalDetails.ApplicantID;
-                        FetchApplicantPersonalDetails.FirstName = ApplicantPersonalDetails.FirstName;
-                        FetchApplicantPersonalDetails.MiddleName = ApplicantPersonalDetails.MiddleName;
-                        FetchApplicantPersonalDetails.LastName = ApplicantPersonalDetails.LastName;
-                        FetchApplicantPersonalDetails.Gender = ApplicantPersonalDetails.Gender;
-                        FetchApplicantPersonalDetails.DateOfBirth = ApplicantPersonalDetails.DateOfBirth;
-                        FetchApplicantPersonalDetails.MaritalStatus = ApplicantPersonalDetails.MaritalStatus;
-                        FetchApplicantPersonalDetails.NoOfDependents = ApplicantPersonalDetails.NoOfDependents;
-                        FetchApplicantPersonalDetails.NZResidents = ApplicantPersonalDetails.NZResidents;
-                        FetchApplicantPersonalDetails.CountryOfBirth = ApplicantPersonalDetails.CountryOfBirth;
-                        FetchApplicantPersonalDetails.EmailID = ApplicantPersonalDetails.EmailID;
-                        FetchApplicantPersonalDetails.MobileNo = ApplicantPersonalDetails.MobileNo;
-                        FetchApplicantPersonalDetails.EmailID = ApplicantPersonalDetails.EmailID;
-                        FetchApplicantPersonalDetails.HomePhoneNo = ApplicantPersonalDetails.HomePhoneNo;
-                        FetchApplicantPersonalDetails.WorkPhoneNo = ApplicantPersonalDetails.WorkPhoneNo;
-                        TotalRecordsUpdated += db.SaveChanges();
-                        return true;
-                    }
-                }
+                        _tblApplicant.ApplicantID = Guid.NewGuid();
+                        _tblApplicant.FirstName = ApplicantPersonalDetails.FirstName;
+                        _tblApplicant.MiddleName = ApplicantPersonalDetails.MiddleName;
+                        _tblApplicant.LastName = ApplicantPersonalDetails.LastName;
+                        _tblApplicant.Gender = ApplicantPersonalDetails.Gender;
+                        _tblApplicant.DateOfBirth = ApplicantPersonalDetails.DateOfBirth;
+                        _tblApplicant.MaritalStatus = ApplicantPersonalDetails.MaritalStatus;
+                        _tblApplicant.NoOfDependents = ApplicantPersonalDetails.NoOfDependents;
+                        _tblApplicant.NZResidents = ApplicantPersonalDetails.NZResidents;
+                        _tblApplicant.CountryOfBirth = ApplicantPersonalDetails.CountryOfBirth;
+                        _tblApplicant.EmailID = ApplicantPersonalDetails.EmailID;
+                        _tblApplicant.MobileNo = ApplicantPersonalDetails.MobileNo;
+                        _tblApplicant.EmailID = ApplicantPersonalDetails.EmailID;
+                        _tblApplicant.HomePhoneNo = ApplicantPersonalDetails.HomePhoneNo;
+                        _tblApplicant.WorkPhoneNo = ApplicantPersonalDetails.WorkPhoneNo;
+                        _tblApplicant.LoanApplicationNo= ApplicantPersonalDetails.LoanApplicationNo;
+                        _tblApplicant.ApplicantTypeID = ApplicantPersonalDetails.ApplicantTypeID;
 
-                if (TotalRecordsUpdated > 0)
-                    return true;
-                else
-                    return false;
+                        db.tblApplicants.Add(_tblApplicant);
+                        db.SaveChanges();
+                       
+                       return _tblApplicant.ApplicantID.ToString();
+                    }
+                    return "";
+                }
             }
             catch (Exception ex)
             {
-                return false;
+                return "";
             }
         }
-
-
-
         public bool SaveLoanApplicationQualificationDetails(ApplicantQualificationDetails ApplicantQualificationDetails)
         {
             try
             {
-                int TotalRecordsUpdated = 0;
-                //using (AIMFinServDBEntities db = new AIMFinServDBEntities())
-                //{
-                //    var FetchLoanApplicationDetails = db.tblLoanApplicationForms.Where(p => p.LoanApplicationNo == LoanApplicationDetails.LoanApplicationNo).FirstOrDefault();
-                //    if (FetchLoanApplicationDetails != null)
-                //    {
-                //        //FetchLoanApplicationDetails.AgeOfProperty = LoanApplicationDetails.AgeOfProperty;
-                //        //FetchLoanApplicationDetails.ApplicantID = LoanApplicationDetails.ApplicantID;
-                //        //FetchLoanApplicationDetails.ApprovalExpiryDate = LoanApplicationDetails.ApprovalExpiryDate;
-                //        //FetchLoanApplicationDetails.CashInHand = LoanApplicationDetails.CashInHand;
-                //        //FetchLoanApplicationDetails.CostOfProperty = LoanApplicationDetails.CostOfProperty;
-                //        //FetchLoanApplicationDetails.FinanceRequired = LoanApplicationDetails.FinanceRequired;
-                //        //FetchLoanApplicationDetails.Frequency = LoanApplicationDetails.Frequency;
-                //        //FetchLoanApplicationDetails.IsAnyGuarantor = LoanApplicationDetails.IsAnyGuarantor;
-                //        //FetchLoanApplicationDetails.IsApplicationApproved = LoanApplicationDetails.IsApplicationApproved;
-                //        //FetchLoanApplicationDetails.IsPreApproval = LoanApplicationDetails.IsPreApproval;
-                //        //FetchLoanApplicationDetails.IsPropertyDecided = LoanApplicationDetails.IsPropertyDecided;
-                //        //FetchLoanApplicationDetails.IsShifted = LoanApplicationDetails.IsShifted;
-                //        //FetchLoanApplicationDetails.LoanTerm = LoanApplicationDetails.LoanTerm;
-                //        //FetchLoanApplicationDetails.Priority = LoanApplicationDetails.Priority;
-                //        //FetchLoanApplicationDetails.PropertyType = LoanApplicationDetails.PropertyType;
-                //        //FetchLoanApplicationDetails.PropertyUsedFor = LoanApplicationDetails.PropertyUsedFor;
-                //        //FetchLoanApplicationDetails.RateType = LoanApplicationDetails.RateType.Trim();
-                //        //FetchLoanApplicationDetails.ReasonForNotApproval = LoanApplicationDetails.ReasonForNotApproval;
-                //        //FetchLoanApplicationDetails.ShiftedDuration = LoanApplicationDetails.ShiftedDuration;
-                //        //FetchLoanApplicationDetails.Status = LoanApplicationDetails.Status;
-                //        //FetchLoanApplicationDetails.TypeOfLoan = LoanApplicationDetails.TypeOfLoan;
-                //        //FetchLoanApplicationDetails.CreatedBy = LoanApplicationDetails.CreatedBy;
-                //        //FetchLoanApplicationDetails.CreatedOn = LoanApplicationDetails.CreatedOn;
-                //        //FetchLoanApplicationDetails.ModifiedBy = LoanApplicationDetails.ModifiedBy;
-                //        //FetchLoanApplicationDetails.ModifiedOn = LoanApplicationDetails.ModifiedOn;
-                //        TotalRecordsUpdated += db.SaveChanges();
-                //        return true;
-                //    }
-                //}
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    if (ApplicantQualificationDetails != null)
+                    {
+                       tblApplicantQualificationDetail _tblApplicantQualificationDetails =new tblApplicantQualificationDetail();
+                        _tblApplicantQualificationDetails.QualificationID = Guid.NewGuid();
+                        _tblApplicantQualificationDetails.ApplicantID = ApplicantQualificationDetails.ApplicantID;
+                        _tblApplicantQualificationDetails.PassingYear = ApplicantQualificationDetails.PassingYear;
+                        _tblApplicantQualificationDetails.CourseName = ApplicantQualificationDetails.CourseName;
+                        _tblApplicantQualificationDetails.UniversityName = ApplicantQualificationDetails.UniversityName;
+                        _tblApplicantQualificationDetails.TypeOfQualification = ApplicantQualificationDetails.TypeOfQualification;
 
-                if (TotalRecordsUpdated > 0)
+                        db.tblApplicantQualificationDetails.Add(_tblApplicantQualificationDetails);
+                        db.SaveChanges();
+                    }
                     return true;
-                else
-                    return false;
+                }
+
             }
             catch (Exception ex)
             {
                 return false;
             }
         }
-
-
-
         public bool SaveLoanApplicationEmployementDetails(ApplicantEmployementDetails ApplicantEmployementDetails)
         {
             try
             {
-                int TotalRecordsUpdated = 0;
-                //using (AIMFinServDBEntities db = new AIMFinServDBEntities())
-                //{
-                //    var FetchLoanApplicationDetails = db.tblLoanApplicationForms.Where(p => p.LoanApplicationNo == LoanApplicationDetails.LoanApplicationNo).FirstOrDefault();
-                //    if (FetchLoanApplicationDetails != null)
-                //    {
-                //        //FetchLoanApplicationDetails.AgeOfProperty = LoanApplicationDetails.AgeOfProperty;
-                //        //FetchLoanApplicationDetails.ApplicantID = LoanApplicationDetails.ApplicantID;
-                //        //FetchLoanApplicationDetails.ApprovalExpiryDate = LoanApplicationDetails.ApprovalExpiryDate;
-                //        //FetchLoanApplicationDetails.CashInHand = LoanApplicationDetails.CashInHand;
-                //        //FetchLoanApplicationDetails.CostOfProperty = LoanApplicationDetails.CostOfProperty;
-                //        //FetchLoanApplicationDetails.FinanceRequired = LoanApplicationDetails.FinanceRequired;
-                //        //FetchLoanApplicationDetails.Frequency = LoanApplicationDetails.Frequency;
-                //        //FetchLoanApplicationDetails.IsAnyGuarantor = LoanApplicationDetails.IsAnyGuarantor;
-                //        //FetchLoanApplicationDetails.IsApplicationApproved = LoanApplicationDetails.IsApplicationApproved;
-                //        //FetchLoanApplicationDetails.IsPreApproval = LoanApplicationDetails.IsPreApproval;
-                //        //FetchLoanApplicationDetails.IsPropertyDecided = LoanApplicationDetails.IsPropertyDecided;
-                //        //FetchLoanApplicationDetails.IsShifted = LoanApplicationDetails.IsShifted;
-                //        //FetchLoanApplicationDetails.LoanTerm = LoanApplicationDetails.LoanTerm;
-                //        //FetchLoanApplicationDetails.Priority = LoanApplicationDetails.Priority;
-                //        //FetchLoanApplicationDetails.PropertyType = LoanApplicationDetails.PropertyType;
-                //        //FetchLoanApplicationDetails.PropertyUsedFor = LoanApplicationDetails.PropertyUsedFor;
-                //        //FetchLoanApplicationDetails.RateType = LoanApplicationDetails.RateType.Trim();
-                //        //FetchLoanApplicationDetails.ReasonForNotApproval = LoanApplicationDetails.ReasonForNotApproval;
-                //        //FetchLoanApplicationDetails.ShiftedDuration = LoanApplicationDetails.ShiftedDuration;
-                //        //FetchLoanApplicationDetails.Status = LoanApplicationDetails.Status;
-                //        //FetchLoanApplicationDetails.TypeOfLoan = LoanApplicationDetails.TypeOfLoan;
-                //        //FetchLoanApplicationDetails.CreatedBy = LoanApplicationDetails.CreatedBy;
-                //        //FetchLoanApplicationDetails.CreatedOn = LoanApplicationDetails.CreatedOn;
-                //        //FetchLoanApplicationDetails.ModifiedBy = LoanApplicationDetails.ModifiedBy;
-                //        //FetchLoanApplicationDetails.ModifiedOn = LoanApplicationDetails.ModifiedOn;
-                //        TotalRecordsUpdated += db.SaveChanges();
-                //        return true;
-                //    }
-                //}
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    if (ApplicantEmployementDetails != null)
+                    {
+                        tblApplicantEmploymentDetail _tblApplicantEmploymentDetail = new tblApplicantEmploymentDetail();
+                        _tblApplicantEmploymentDetail.ApplicantID = ApplicantEmployementDetails.ApplicantID;
+                        _tblApplicantEmploymentDetail.EmploymentID = Guid.NewGuid();
+                        _tblApplicantEmploymentDetail.SourceOfIncome = ApplicantEmployementDetails.SourceOfIncome;
+                        _tblApplicantEmploymentDetail.EmployerName = ApplicantEmployementDetails.EmployerName;
+                        _tblApplicantEmploymentDetail.Duration = ApplicantEmployementDetails.Duration;
+                        _tblApplicantEmploymentDetail.Income = ApplicantEmployementDetails.Income;
+                        _tblApplicantEmploymentDetail.Status = ApplicantEmployementDetails.Status;
 
-                if (TotalRecordsUpdated > 0)
+                        db.tblApplicantEmploymentDetails.Add(_tblApplicantEmploymentDetail);
+                        db.SaveChanges();
+                      
+                    }
                     return true;
-                else
-                    return false;
+                }
+
+                
             }
             catch (Exception ex)
             {
                 return false;
             }
         }
-
-
-
         public bool SaveLoanApplicationCommunicationDetails(ApplicantCommunicationDetails ApplicantCommunicationDetails)
         {
             try
             {
-                int TotalRecordsUpdated = 0;
-                //using (AIMFinServDBEntities db = new AIMFinServDBEntities())
-                //{
-                //    var FetchLoanApplicationDetails = db.tblLoanApplicationForms.Where(p => p.LoanApplicationNo == LoanApplicationDetails.LoanApplicationNo).FirstOrDefault();
-                //    if (FetchLoanApplicationDetails != null)
-                //    {
-                //        //FetchLoanApplicationDetails.AgeOfProperty = LoanApplicationDetails.AgeOfProperty;
-                //        //FetchLoanApplicationDetails.ApplicantID = LoanApplicationDetails.ApplicantID;
-                //        //FetchLoanApplicationDetails.ApprovalExpiryDate = LoanApplicationDetails.ApprovalExpiryDate;
-                //        //FetchLoanApplicationDetails.CashInHand = LoanApplicationDetails.CashInHand;
-                //        //FetchLoanApplicationDetails.CostOfProperty = LoanApplicationDetails.CostOfProperty;
-                //        //FetchLoanApplicationDetails.FinanceRequired = LoanApplicationDetails.FinanceRequired;
-                //        //FetchLoanApplicationDetails.Frequency = LoanApplicationDetails.Frequency;
-                //        //FetchLoanApplicationDetails.IsAnyGuarantor = LoanApplicationDetails.IsAnyGuarantor;
-                //        //FetchLoanApplicationDetails.IsApplicationApproved = LoanApplicationDetails.IsApplicationApproved;
-                //        //FetchLoanApplicationDetails.IsPreApproval = LoanApplicationDetails.IsPreApproval;
-                //        //FetchLoanApplicationDetails.IsPropertyDecided = LoanApplicationDetails.IsPropertyDecided;
-                //        //FetchLoanApplicationDetails.IsShifted = LoanApplicationDetails.IsShifted;
-                //        //FetchLoanApplicationDetails.LoanTerm = LoanApplicationDetails.LoanTerm;
-                //        //FetchLoanApplicationDetails.Priority = LoanApplicationDetails.Priority;
-                //        //FetchLoanApplicationDetails.PropertyType = LoanApplicationDetails.PropertyType;
-                //        //FetchLoanApplicationDetails.PropertyUsedFor = LoanApplicationDetails.PropertyUsedFor;
-                //        //FetchLoanApplicationDetails.RateType = LoanApplicationDetails.RateType.Trim();
-                //        //FetchLoanApplicationDetails.ReasonForNotApproval = LoanApplicationDetails.ReasonForNotApproval;
-                //        //FetchLoanApplicationDetails.ShiftedDuration = LoanApplicationDetails.ShiftedDuration;
-                //        //FetchLoanApplicationDetails.Status = LoanApplicationDetails.Status;
-                //        //FetchLoanApplicationDetails.TypeOfLoan = LoanApplicationDetails.TypeOfLoan;
-                //        //FetchLoanApplicationDetails.CreatedBy = LoanApplicationDetails.CreatedBy;
-                //        //FetchLoanApplicationDetails.CreatedOn = LoanApplicationDetails.CreatedOn;
-                //        //FetchLoanApplicationDetails.ModifiedBy = LoanApplicationDetails.ModifiedBy;
-                //        //FetchLoanApplicationDetails.ModifiedOn = LoanApplicationDetails.ModifiedOn;
-                //        TotalRecordsUpdated += db.SaveChanges();
-                //        return true;
-                //    }
-                //}
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    if (ApplicantCommunicationDetails != null)
+                    {
+                        tblApplicantCommunicationDetail _tblApplicantCommunicationDetail = new tblApplicantCommunicationDetail();
+                        _tblApplicantCommunicationDetail.CommunicationID = Guid.NewGuid();
+                        _tblApplicantCommunicationDetail.AddressLine1 = ApplicantCommunicationDetails.AddressLine1;
+                        _tblApplicantCommunicationDetail.AddressLine2 = ApplicantCommunicationDetails.AddressLine2;
+                        _tblApplicantCommunicationDetail.AddressLine3 = ApplicantCommunicationDetails.AddressLine3;
+                        _tblApplicantCommunicationDetail.Duration = ApplicantCommunicationDetails.Duration;
+                        _tblApplicantCommunicationDetail.ApplicantID = ApplicantCommunicationDetails.ApplicantID;
+                        _tblApplicantCommunicationDetail.AddressType = ApplicantCommunicationDetails.AddressType;
 
-                if (TotalRecordsUpdated > 0)
+                        db.tblApplicantCommunicationDetails.Add(_tblApplicantCommunicationDetail);
+                        db.SaveChanges();
+                   
+                    }
                     return true;
-                else
-                    return false;
+                }
+
             }
             catch (Exception ex)
             {
                 return false;
             }
         }
-
-
-
-
-
     }
 
 }

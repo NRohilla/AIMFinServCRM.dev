@@ -17,14 +17,13 @@ import { ClientsService } from '../../../services/app.clients.service';
 export class ApplicantCommunicationDetailsComponent implements OnInit {
 
     public _ApplicantCommunicationDetails = {
+        CommunicationID:'',
         AddressLine1: '',
         AddressLine2: '',
         AddressLine3: '',
         Duration: '',
-        AddressType: {
-            ID: '',
-            Type: ''
-        }
+        AddressType: '',
+        ApplicantID: ''
     };
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService,private _ClientsService: ClientsService) { }
@@ -32,14 +31,8 @@ export class ApplicantCommunicationDetailsComponent implements OnInit {
     ngOnInit() {
     }
 
-    SaveLoanApplicationCommunicationDetails() {
-        this._ClientsService.UpdateLoanApplicationDetails(this._ApplicantCommunicationDetails).subscribe(res => this.SaveLoanApplicationCommunicationDetailsSuccess(res), res => this.SaveLoanApplicationPersonalDetailsError(res));
-        return true;
+    SaveLoanApplicationCommunicationDetails(applicantid) {
+        this._ApplicantCommunicationDetails.ApplicantID = applicantid;
+        return this._ClientsService.SaveLoanApplicationCommunicationDetails(this._ApplicantCommunicationDetails);
     }
-
-    SaveLoanApplicationCommunicationDetailsSuccess(res) {
-        return true;
-    }
-
-    SaveLoanApplicationCommunicationDetailsError(res) { }
 }

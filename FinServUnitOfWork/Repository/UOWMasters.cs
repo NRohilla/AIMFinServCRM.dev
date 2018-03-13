@@ -166,7 +166,7 @@ namespace FinServUnitOfWork.Repository
                             {
                                 ID = ObjMstr.ID,
                                 PropertyType = ObjMstr.PropertyType,
-                                IsActive = ObjMstr.IsAvtive,
+                                IsActive = ObjMstr.IsActive,
 
                             }).ToList();
                 }
@@ -485,7 +485,7 @@ namespace FinServUnitOfWork.Repository
                     var GetObjEntity = db.tblMasterPropertyTypes.Where(p => p.ID == ID).FirstOrDefault();
                     if (GetObjEntity != null)
                     {
-                        GetObjEntity.IsAvtive = !GetObjEntity.IsAvtive;
+                        GetObjEntity.IsActive = !GetObjEntity.IsActive;
                         operationResult = db.SaveChanges();
                     }
                 }
@@ -1113,7 +1113,7 @@ namespace FinServUnitOfWork.Repository
                 {
                     tblMasterPropertyType Obj = new tblMasterPropertyType();
                     Obj.PropertyType = PropertyTypeMaster.PropertyType;
-                    Obj.IsAvtive = true;
+                    Obj.IsActive = true;
                     db.tblMasterPropertyTypes.Add(Obj);
                     operationResult = db.SaveChanges();
                 }

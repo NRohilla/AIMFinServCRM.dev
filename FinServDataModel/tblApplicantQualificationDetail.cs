@@ -16,8 +16,7 @@ namespace FinServDataModel
     {
         public long AutoID { get; set; }
         public System.Guid QualificationID { get; set; }
-        public Nullable<System.Guid> ApplicantID { get; set; }
-        public Nullable<int> TypeOfQualification { get; set; }
+        public System.Guid ApplicantID { get; set; }
         public string PassingYear { get; set; }
         public string CourseName { get; set; }
         public string UniversityName { get; set; }
@@ -25,6 +24,7 @@ namespace FinServDataModel
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
+        public int TypeOfQualification { get; set; }
     
         public virtual tblApplicant tblApplicant { get; set; }
         public virtual tblMasterTypeOfQualification tblMasterTypeOfQualification { get; set; }

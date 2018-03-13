@@ -25,6 +25,8 @@ namespace FinServDataModel
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<tblAdvisorDetail> tblAdvisorDetails { get; set; }
         public virtual DbSet<tblApplicantCommunicationDetail> tblApplicantCommunicationDetails { get; set; }
         public virtual DbSet<tblApplicantEmploymentDetail> tblApplicantEmploymentDetails { get; set; }
         public virtual DbSet<tblApplicantExpenseSheet> tblApplicantExpenseSheets { get; set; }
@@ -35,6 +37,7 @@ namespace FinServDataModel
         public virtual DbSet<tblLoanApplicationForm> tblLoanApplicationForms { get; set; }
         public virtual DbSet<tblLoanGuarantor> tblLoanGuarantors { get; set; }
         public virtual DbSet<tblLoanMaster> tblLoanMasters { get; set; }
+        public virtual DbSet<tblMasterAddressType> tblMasterAddressTypes { get; set; }
         public virtual DbSet<tblMasterApplicantType> tblMasterApplicantTypes { get; set; }
         public virtual DbSet<tblMasterAssetType> tblMasterAssetTypes { get; set; }
         public virtual DbSet<tblMasterExpenseType> tblMasterExpenseTypes { get; set; }
@@ -48,9 +51,9 @@ namespace FinServDataModel
         public virtual DbSet<tblMasterTypeOfProfession> tblMasterTypeOfProfessions { get; set; }
         public virtual DbSet<tblMasterTypeOfQualification> tblMasterTypeOfQualifications { get; set; }
         public virtual DbSet<tblMasterTypeOfRelationship> tblMasterTypeOfRelationships { get; set; }
+        public virtual DbSet<tblMasterTypeOfStatu> tblMasterTypeOfStatus { get; set; }
         public virtual DbSet<tblRole> tblRoles { get; set; }
         public virtual DbSet<tblUser> tblUsers { get; set; }
         public virtual DbSet<tblUsersRole> tblUsersRoles { get; set; }
-        public virtual DbSet<tblMasterAddressType> tblMasterAddressTypes { get; set; }
     }
 }

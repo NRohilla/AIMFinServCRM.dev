@@ -16,12 +16,14 @@ import { ClientsService } from '../../../services/app.clients.service';
 })
 export class ApplicantEmployementComponent implements OnInit {
 
-    public _ApplicantEmployementDetails= {
+    public _ApplicantEmployementDetails = {
+        EmploymentID :'',
         SourceOfIncome:'',
         EmployerName:'',
         Duration:'',
        Income:'',
-       Status: ''
+       Status: '',
+       ApplicantID: ''
     };
      
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { }
@@ -29,14 +31,9 @@ export class ApplicantEmployementComponent implements OnInit {
     ngOnInit() {
     }
 
-    SaveLoanApplicationEmployementDetails() {
-        this._ClientsService.UpdateLoanApplicationDetails(this._ApplicantEmployementDetails).subscribe(res => this.SaveLoanApplicationEmployementDetailsSuccess(res), res => this.SaveLoanApplicationEmployementDetailsError(res));
-        return true;
+    SaveLoanApplicationEmployementDetails(applicantId) {
+        this._ApplicantEmployementDetails.ApplicantID = applicantId;
+      return  this._ClientsService.SaveLoanApplicationEmployementDetails(this._ApplicantEmployementDetails);
     }
 
-    SaveLoanApplicationEmployementDetailsSuccess(res) {
-        return true;
-    }
-
-    SaveLoanApplicationEmployementDetailsError(res) { }
 }
