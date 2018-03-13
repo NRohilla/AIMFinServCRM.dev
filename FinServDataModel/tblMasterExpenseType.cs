@@ -14,6 +14,12 @@ namespace FinServDataModel
     
     public partial class tblMasterExpenseType
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblMasterExpenseType()
+        {
+            this.tblApplicantExpenseSheets = new HashSet<tblApplicantExpenseSheet>();
+        }
+    
         public int AutoID { get; set; }
         public System.Guid ExpenseTypeID { get; set; }
         public string Description { get; set; }
@@ -23,5 +29,8 @@ namespace FinServDataModel
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblApplicantExpenseSheet> tblApplicantExpenseSheets { get; set; }
     }
 }

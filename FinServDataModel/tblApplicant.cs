@@ -21,11 +21,13 @@ namespace FinServDataModel
             this.tblApplicantEmploymentDetails = new HashSet<tblApplicantEmploymentDetail>();
             this.tblApplicantExpenseSheets = new HashSet<tblApplicantExpenseSheet>();
             this.tblApplicantQualificationDetails = new HashSet<tblApplicantQualificationDetail>();
-            this.tblLoanApplicationForms = new HashSet<tblLoanApplicationForm>();
+            this.tblAssets = new HashSet<tblAsset>();
+            this.tblLiabilities = new HashSet<tblLiability>();
         }
     
         public long AutoID { get; set; }
         public System.Guid ApplicantID { get; set; }
+        public string Title { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
@@ -35,11 +37,13 @@ namespace FinServDataModel
         public string NoOfDependents { get; set; }
         public Nullable<bool> NZResidents { get; set; }
         public string CountryOfBirth { get; set; }
-        public Nullable<int> ApplicantTypeID { get; set; }
+        public int ApplicantTypeID { get; set; }
         public string EmailID { get; set; }
         public string MobileNo { get; set; }
         public string HomePhoneNo { get; set; }
         public string WorkPhoneNo { get; set; }
+        public System.Guid LoanApplicationNo { get; set; }
+        public byte[] ApplicantImage { get; set; }
         public bool IsActive { get; set; }
         public Nullable<System.Guid> CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
@@ -55,7 +59,10 @@ namespace FinServDataModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblApplicantQualificationDetail> tblApplicantQualificationDetails { get; set; }
         public virtual tblMasterApplicantType tblMasterApplicantType { get; set; }
+        public virtual tblLoanApplicationForm tblLoanApplicationForm { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblLoanApplicationForm> tblLoanApplicationForms { get; set; }
+        public virtual ICollection<tblAsset> tblAssets { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblLiability> tblLiabilities { get; set; }
     }
 }

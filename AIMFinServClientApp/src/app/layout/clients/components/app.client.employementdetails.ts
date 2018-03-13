@@ -8,13 +8,15 @@ import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import {ClientsService} from '../../../services/app.clients.service';
+import {AppBaseComponent} from '../../../shared/app.basecomponent';
+
 @Component({
     selector: `client-employement-details`,
     templateUrl: './app.client.employementdetails.html',
     animations: [routerTransition()],
     providers: [ClientsService]
 })
-export class ClientsEmployementComponent implements OnInit {
+export class ClientsEmployementComponent extends AppBaseComponent implements OnInit {
     public _ViewApplicantDetails: boolean = false;
     public _FormErrors;
     public _FormErrorsDescription: string = '';
@@ -29,7 +31,7 @@ export class ClientsEmployementComponent implements OnInit {
         EmploymentID: ''
     };
 
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { }
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { super(); }
 
     ngOnInit() {
         if (this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null)
@@ -38,8 +40,7 @@ export class ClientsEmployementComponent implements OnInit {
 
     GetClientDetailsSuccess(res) {
         if (res._body != null && res._body != undefined && res._body.toString().trim().length > 0) {
-            debugger;
-            this._ApplicantEmployementDetails = JSON.parse(res._body);
+            this._ApplicantEmployementDetails = this.trimObj(JSON.parse(res._body));
         }
     }
 

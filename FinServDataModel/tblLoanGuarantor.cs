@@ -17,6 +17,7 @@ namespace FinServDataModel
         public long AutoID { get; set; }
         public System.Guid GuarantorID { get; set; }
         public System.Guid LoanApplicationNo { get; set; }
+        public string Title { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
@@ -37,5 +38,7 @@ namespace FinServDataModel
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
+    
+        public virtual tblLoanApplicationForm tblLoanApplicationForm { get; set; }
     }
 }

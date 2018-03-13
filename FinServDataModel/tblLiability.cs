@@ -20,11 +20,13 @@ namespace FinServDataModel
         public string Description { get; set; }
         public Nullable<decimal> NetValue { get; set; }
         public string Ownership { get; set; }
+        public System.Guid ApplicantID { get; set; }
         public Nullable<System.Guid> CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
     
+        public virtual tblApplicant tblApplicant { get; set; }
         public virtual tblMasterLiabilityType tblMasterLiabilityType { get; set; }
     }
 }

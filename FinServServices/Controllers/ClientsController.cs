@@ -81,5 +81,37 @@ namespace FinServServices.Controllers
         {
             return Repository.UpdateClientPersonalDetails(ApplicantPersonalDetails);
         }
+
+        [HttpPost]
+        [Route("UpdateLoanApplicationDetails")]
+        public bool UpdateLoanApplicationDetails(LoanApplicationForms LoanApplicationDetails)
+        {
+            return Repository.UpdateLoanApplicationDetails(LoanApplicationDetails);
+        }
+        [HttpPost]
+        [Route("SaveLoanApplicationPersonalDetails")]
+        public string SaveLoanApplicationPersonalDetails(Applicants ApplicantPersonalDetails)
+        {
+            return Repository.SaveLoanApplicationPersonalDetails(ApplicantPersonalDetails);
+        }
+        [HttpPost]
+        [Route("SaveLoanApplicationQualificationDetails")]
+        public bool SaveLoanApplicationQualificationDetails(ApplicantQualificationDetails ApplicantQualificationDetails)
+        {
+            return Repository.SaveLoanApplicationQualificationDetails(ApplicantQualificationDetails);
+        }
+        [HttpPost]
+        [Route("SaveLoanApplicationEmployementDetails")]
+        public bool SaveLoanApplicationEmployementDetails(ApplicantEmployementDetails ApplicantEmployementDetails)
+        {
+            return Repository.SaveLoanApplicationEmployementDetails(ApplicantEmployementDetails);
+        }
+        [HttpPost]
+        [Route("SaveLoanApplicationCommunicationDetails")]
+        public bool SaveLoanApplicationCommunicationDetails(ApplicantCommunicationDetails ApplicantCommunicationDetails)
+        {
+            return Repository.SaveLoanApplicationCommunicationDetails(ApplicantCommunicationDetails);
+        }
+
     }
 }

@@ -16,7 +16,7 @@ namespace FinServDataModel
     {
         public long AutoID { get; set; }
         public System.Guid LANNumber { get; set; }
-        public Nullable<System.Guid> LoanApplicationNo { get; set; }
+        public System.Guid LoanApplicationNo { get; set; }
         public string ROIOffered { get; set; }
         public string LoanTermOffered { get; set; }
         public string RateTypeOffered { get; set; }
@@ -25,7 +25,7 @@ namespace FinServDataModel
         public string LoanAmountOffered { get; set; }
         public string LoanType { get; set; }
         public string ClientID { get; set; }
-        public string Status { get; set; }
+        public int StatusID { get; set; }
         public string EMIStartDay { get; set; }
         public string EMIStartMonth { get; set; }
         public string LoanProcessingFee { get; set; }
@@ -33,10 +33,16 @@ namespace FinServDataModel
         public string NoOfEMI { get; set; }
         public string Loanprovider { get; set; }
         public string PropertyCost { get; set; }
-        public string PropertyType { get; set; }
+        public int PropertyTypeID { get; set; }
+        public Nullable<System.DateTime> FinanceDate { get; set; }
+        public Nullable<System.DateTime> SettlementDate { get; set; }
         public Nullable<System.Guid> CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
+    
+        public virtual tblLoanApplicationForm tblLoanApplicationForm { get; set; }
+        public virtual tblMasterPropertyType tblMasterPropertyType { get; set; }
+        public virtual tblMasterTypeOfStatu tblMasterTypeOfStatu { get; set; }
     }
 }
