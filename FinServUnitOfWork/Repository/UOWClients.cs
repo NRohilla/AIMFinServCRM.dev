@@ -423,6 +423,7 @@ namespace FinServUnitOfWork.Repository
                         FetchLoanApplicationDetails.ShiftedDuration = LoanApplicationDetails.ShiftedDuration;
                         FetchLoanApplicationDetails.StatusID = LoanApplicationDetails.StatusID;
                         FetchLoanApplicationDetails.TypeOfLoanID = LoanApplicationDetails.TypeOfLoanID;
+                        
                         TotalRecordsUpdated += db.SaveChanges();
                         return true;
                     }

@@ -10,13 +10,16 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { ClientsService } from '../../services/app.clients.service';
 import { LoanApplicationDetailDialog } from '../../shared/dialogues/loanapplications/LoanApplicationDetailDialog';
+import { MastersService } from '../../services/app.masters.service';
 
 @Component({
     templateUrl: './loanapplications.component.html',
     animations: [routerTransition()],
-    providers: [ClientsService]
+    providers: [ClientsService, MastersService]
 })
 export class LoanapplicationsComponent implements OnInit {
+   
+    public _Loantypes: any;
     public _ViewApplicationDetails: boolean = false;
     public gridData: any[];
     public _EditDetails: boolean = false;
@@ -54,11 +57,18 @@ export class LoanapplicationsComponent implements OnInit {
         _PropertyTypeID: {},
         _RateTypeID: {},
         _PurposeOfLoanID: {},
-        _TypeOfLoanID: {}
+        TypeOfLoanID: {}
+        
 
     };
 
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, public dialog: MatDialog) { }
+    public _TypeOfLoanID = [];
+    errorMessage:"No Data"
+
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, public dialog: MatDialog,private _MasterService: MastersService) {
+
+        
+    }
 
     ngOnInit() {
         this._ClientsService.GetAllLoanApplications().subscribe(res => this.GetAllLoanApplicationSuccess(res), res => this.GetAllLoanApplicationError(res));
@@ -96,14 +106,24 @@ export class LoanapplicationsComponent implements OnInit {
             _PropertyTypeID: {},
             _RateTypeID: {},
             _PurposeOfLoanID: {},
-            _TypeOfLoanID: {}
+               TypeOfLoanID: {}
         };
+        this.GetLoanType();
     }
     //location: any;
     GetAllLoanApplicationSuccess(Res) {
         this.gridData = JSON.parse(Res._body);
     }
 
+    GetLoanType() {
+        debugger;
+        this._MasterService.GetLoanTypes().subscribe(res => this.GetLoanTypesSuccess(res), error => this.errorMessage = <any>error);
+    }
+
+    GetLoanTypesSuccess(res) {
+        debugger
+        this._TypeOfLoanID = JSON.parse(res._body);
+    }
     GetAllLoanApplicationError(Res) { }
 
     ViewDetails(LoanApplicationNo) {

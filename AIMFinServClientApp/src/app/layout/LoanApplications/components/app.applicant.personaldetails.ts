@@ -9,11 +9,12 @@ import 'rxjs/Rx';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { AppBaseComponent } from '../../../shared/app.basecomponent';
 import { ClientsService } from '../../../services/app.clients.service';
+import { MastersService } from '../../../services//app.masters.service';
 @Component({
     selector: `applicant-personal-details`,
     templateUrl: './app.applicant.personaldetails.html',
     animations: [routerTransition()],
-    providers: [ClientsService]
+    providers: [ClientsService, MastersService]
 })
 export class ApplicantPersonalDetailsComponent extends AppBaseComponent implements OnInit {
 
