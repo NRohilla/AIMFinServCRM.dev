@@ -16,15 +16,14 @@ import { ClientsService } from '../../../services/app.clients.service';
 })
 export class ApplicantEmployementComponent implements OnInit {
 
-    public _ApplicantEmployementDetails= {
+    public _ApplicantEmployementDetails = {
+        EmploymentID :'',
         SourceOfIncome:'',
         EmployerName:'',
         Duration:'',
        Income:'',
        Status: '',
-       Applicant: {
-           ApplicantID: ''
-       }
+       ApplicantID: ''
     };
      
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { }
@@ -33,7 +32,7 @@ export class ApplicantEmployementComponent implements OnInit {
     }
 
     SaveLoanApplicationEmployementDetails(applicantId) {
-        this._ApplicantEmployementDetails.Applicant.ApplicantID = applicantId;
+        this._ApplicantEmployementDetails.ApplicantID = applicantId;
       return  this._ClientsService.SaveLoanApplicationEmployementDetails(this._ApplicantEmployementDetails);
     }
 

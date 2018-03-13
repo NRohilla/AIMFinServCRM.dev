@@ -483,28 +483,24 @@ namespace FinServUnitOfWork.Repository
         {
             try
             {
-                int TotalRecordsUpdated = 0;
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
                     if (ApplicantQualificationDetails != null)
                     {
                        tblApplicantQualificationDetail _tblApplicantQualificationDetails =new tblApplicantQualificationDetail();
                         _tblApplicantQualificationDetails.QualificationID = Guid.NewGuid();
+                        _tblApplicantQualificationDetails.ApplicantID = ApplicantQualificationDetails.ApplicantID;
                         _tblApplicantQualificationDetails.PassingYear = ApplicantQualificationDetails.PassingYear;
                         _tblApplicantQualificationDetails.CourseName = ApplicantQualificationDetails.CourseName;
                         _tblApplicantQualificationDetails.UniversityName = ApplicantQualificationDetails.UniversityName;
-                        _tblApplicantQualificationDetails.ApplicantID = ApplicantQualificationDetails.ApplicantID;
                         _tblApplicantQualificationDetails.TypeOfQualification = ApplicantQualificationDetails.TypeOfQualification;
-                        _tblApplicantQualificationDetails.TypeOfQualification = ApplicantQualificationDetails.TypeOfQualification;
-                       TotalRecordsUpdated += db.SaveChanges();
-                        return true;
+
+                        db.tblApplicantQualificationDetails.Add(_tblApplicantQualificationDetails);
+                        db.SaveChanges();
                     }
+                    return true;
                 }
 
-                if (TotalRecordsUpdated > 0)
-                    return true;
-                else
-                    return false;
             }
             catch (Exception ex)
             {
@@ -515,7 +511,6 @@ namespace FinServUnitOfWork.Repository
         {
             try
             {
-                int TotalRecordsUpdated = 0;
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
                     if (ApplicantEmployementDetails != null)
@@ -530,15 +525,13 @@ namespace FinServUnitOfWork.Repository
                         _tblApplicantEmploymentDetail.Status = ApplicantEmployementDetails.Status;
 
                         db.tblApplicantEmploymentDetails.Add(_tblApplicantEmploymentDetail);
-                        TotalRecordsUpdated += db.SaveChanges();
-                        return true;
+                        db.SaveChanges();
+                      
                     }
+                    return true;
                 }
 
-                if (TotalRecordsUpdated > 0)
-                    return true;
-                else
-                    return false;
+                
             }
             catch (Exception ex)
             {
@@ -549,7 +542,6 @@ namespace FinServUnitOfWork.Repository
         {
             try
             {
-                int TotalRecordsUpdated = 0;
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
                     if (ApplicantCommunicationDetails != null)
@@ -564,15 +556,12 @@ namespace FinServUnitOfWork.Repository
                         _tblApplicantCommunicationDetail.AddressType = ApplicantCommunicationDetails.AddressType;
 
                         db.tblApplicantCommunicationDetails.Add(_tblApplicantCommunicationDetail);
-                        TotalRecordsUpdated += db.SaveChanges();
-                        return true;
+                        db.SaveChanges();
+                   
                     }
+                    return true;
                 }
 
-                if (TotalRecordsUpdated > 0)
-                    return true;
-                else
-                    return false;
             }
             catch (Exception ex)
             {

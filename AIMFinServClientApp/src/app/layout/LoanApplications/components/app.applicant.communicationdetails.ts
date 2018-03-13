@@ -17,15 +17,13 @@ import { ClientsService } from '../../../services/app.clients.service';
 export class ApplicantCommunicationDetailsComponent implements OnInit {
 
     public _ApplicantCommunicationDetails = {
+        CommunicationID:'',
         AddressLine1: '',
         AddressLine2: '',
         AddressLine3: '',
         Duration: '',
-        AddressType: {
-            ID: '',
-            Type: ''
-        },
-        ApplicantID: '',
+        AddressType: '',
+        ApplicantID: ''
     };
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService,private _ClientsService: ClientsService) { }

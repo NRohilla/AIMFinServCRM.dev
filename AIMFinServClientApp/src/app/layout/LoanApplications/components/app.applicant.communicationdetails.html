@@ -42,7 +42,7 @@
                         <label for="name" class="font-weight-bold">Duration</label>
                         <div class="field_info">
                             <mat-form-field class="example-full-width" >
-                                <input matInput placeholder="Address Line 3" value="{{_ApplicantCommunicationDetails.Duration}}" [(ngModel)]="_ApplicantCommunicationDetails.Duration" #Duration>
+                                <input matInput placeholder="Duration" value="{{_ApplicantCommunicationDetails.Duration}}" [(ngModel)]="_ApplicantCommunicationDetails.Duration" #Duration>
                             </mat-form-field>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                         <label for="name" class="font-weight-bold">AddressType</label>
                         <div class="field_info">
                             <mat-form-field>
-                                <mat-select [(value)]="_ApplicantCommunicationDetails.AddressType.ID">
+                                <mat-select [(value)]="_ApplicantCommunicationDetails.AddressType">
                                     <mat-option>None</mat-option>
                                     <mat-option value="1">Work</mat-option>
                                     <mat-option value="2">Residence- Temporary</mat-option>
