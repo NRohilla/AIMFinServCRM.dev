@@ -53,3 +53,4 @@ E:\Clients\Nick\FinServUnitOfWork\bin\Debug\Newtonsoft.Json.xml
 E:\Clients\Nick\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.csprojResolveAssemblyReference.cache
 E:\Clients\Nick\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.dll
 E:\Clients\Nick\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.pdb
+D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.csprojResolveAssemblyReference.cache
