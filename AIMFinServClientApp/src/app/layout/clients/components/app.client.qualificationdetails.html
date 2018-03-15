@@ -1,4 +1,36 @@
-﻿<div class="row m-0">
+﻿<!--<div [@routerTransition] class="application-details">
+    <div *ngIf="!_ViewApplicationDetails">
+        <kendo-grid [kendoGridBinding]="gridData"
+                    [pageSize]="2"
+                    [sortable]="true"
+                    [pageable]="true"
+                    [scrollable]="true"
+                    [filterable]="true"
+                    [groupable]="true"
+                    selectable="true">
+
+            <kendo-grid-column field="LoanApplicationNo" title="Address">
+            </kendo-grid-column>
+            <kendo-grid-column field="_TypeOfLoanID.LoanType" title="Address Type">
+            </kendo-grid-column>
+            <kendo-grid-column field="LoanTerm" title="Term">
+            </kendo-grid-column>
+
+            <kendo-grid-column field="_RateTypeID.LoanRateType" title="Address Type">
+            </kendo-grid-column>
+            <kendo-grid-column field="_PropertyTypeID.PropertyType" title="Address Type">
+            </kendo-grid-column>
+            <kendo-grid-column field="_StatusID.Status" title="Status">
+            </kendo-grid-column>
+            <kendo-grid-command-column>
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <button class="btn btn-lg btn-link" type="button" (click)="ViewDetails(dataItem.LoanApplicationNo)">View details</button>
+                </ng-template>
+            </kendo-grid-command-column>
+        </kendo-grid>
+    </div>
+</div>-->
+<div class="row m-0">
     <div class="w-100 float-left">
         <div class="section_box pb-0 pl-0 pr-0">
             <div class="box_title">Qualification Details</div>

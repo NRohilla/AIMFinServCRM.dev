@@ -128,6 +128,7 @@ namespace FinServUnitOfWork.Repository
                         objApplicants.CountryOfBirth = GetApplicantDetails.CountryOfBirth;
                         objApplicants.DateOfBirth = GetApplicantDetails.DateOfBirth;
                         objApplicants.EmailID = GetApplicantDetails.EmailID;
+                        objApplicants.Title = GetApplicantDetails.Title;
                         objApplicants.FirstName = GetApplicantDetails.FirstName;
                         objApplicants.MiddleName = GetApplicantDetails.MiddleName;
                         objApplicants.LastName = GetApplicantDetails.LastName;
@@ -377,12 +378,22 @@ namespace FinServUnitOfWork.Repository
                     var FetchApplicantPersonalDetails = db.tblApplicants.Where(p => p.ApplicantID == ApplicantID).FirstOrDefault();
                     if (FetchApplicantPersonalDetails != null)
                     {
+                        FetchApplicantPersonalDetails.Title = ApplicantPersonalDetails.Title;
                         FetchApplicantPersonalDetails.FirstName = ApplicantPersonalDetails.FirstName;
                         FetchApplicantPersonalDetails.MiddleName = ApplicantPersonalDetails.MiddleName;
                         FetchApplicantPersonalDetails.LastName = ApplicantPersonalDetails.LastName;
+                        FetchApplicantPersonalDetails.Gender = ApplicantPersonalDetails.Gender;
                         FetchApplicantPersonalDetails.MaritalStatus = ApplicantPersonalDetails.MaritalStatus;
                         FetchApplicantPersonalDetails.DateOfBirth = ApplicantPersonalDetails.DateOfBirth;
-                        FetchApplicantPersonalDetails.NoOfDependents = ApplicantPersonalDetails.NoOfDependents;
+                        FetchApplicantPersonalDetails.NoOfDependents = ApplicantPersonalDetails.NoOfDependents;                        
+                        FetchApplicantPersonalDetails.NZResidents = ApplicantPersonalDetails.NZResidents;
+                        FetchApplicantPersonalDetails.CountryOfBirth = ApplicantPersonalDetails.CountryOfBirth;
+                        FetchApplicantPersonalDetails.HomePhoneNo = ApplicantPersonalDetails.HomePhoneNo;
+                        FetchApplicantPersonalDetails.MobileNo = ApplicantPersonalDetails.MobileNo;
+                        FetchApplicantPersonalDetails.WorkPhoneNo = ApplicantPersonalDetails.WorkPhoneNo;
+                        FetchApplicantPersonalDetails.EmailID = ApplicantPersonalDetails.EmailID;
+                        //FetchApplicantPersonalDetails.Gender = ApplicantPersonalDetails.Gender;
+
                         RecordUpdate = db.SaveChanges();
                         return true;
                     }

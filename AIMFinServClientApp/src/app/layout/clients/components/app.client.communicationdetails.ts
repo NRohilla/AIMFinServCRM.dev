@@ -17,13 +17,16 @@ import {AppBaseComponent} from '../../../shared/app.basecomponent';
     providers: [ClientsService]
 })
 export class ClientscommunicationComponent extends AppBaseComponent implements OnInit {
-    public _ViewApplicantDetails: boolean = false;
-    public _FormErrors;
-    public _FormErrorsDescription: string = '';
-    public _EditPersonalDetails: boolean = false;
+    //public _ViewApplicantDetails: boolean = false;
+    //public _FormErrors;
+    //public _FormErrorsDescription: string = '';
+    //public _EditPersonalDetails: boolean = false;
     public _EditCommunicationDetails: boolean = false;
 
-    public _ApplicantCommunicationDetails: {
+
+    public _Operationtitle: string = "Add";
+    public _ClientCommDetailsObj: {};
+    public _ClientCommunicationDetails: {
         AddressLine1: '',
         AddressLine2: '',
         AddressLine3: '',
@@ -37,37 +40,26 @@ export class ClientscommunicationComponent extends AppBaseComponent implements O
         if (this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
             this._ClientsService.GetClientCommunicationDetails(<string>this._LocalStorageService.get("ApplicantID")).subscribe(res => this.GetClientCommDetailsSuccess(res), res => this.GetClientCommDetailsError(res));
         }
-    }
-
-    GetClientDetailsError(res) { }
+    }   
 
     GetClientCommDetailsSuccess(res) {
         debugger;
-        this._ApplicantCommunicationDetails = this.trimObj(JSON.parse(res._body));
+        this._ClientCommunicationDetails = this.trimObj(JSON.parse(res._body));
     }
     GetClientCommDetailsError(res) { }
-    EditPersonalDetails() {
-        this._EditPersonalDetails = !this._EditPersonalDetails;
-    }
 
-    EditCommunicationDetails() {
-        this._EditCommunicationDetails = !this._EditCommunicationDetails;
-    }
-
-    updateclientPersonalSuccess(res) {
-        debugger;
-    }
-
-    updateclientPersonalError(res) {
-        debugger;
-    }
-
+       
     UpdateCommunicationDetails() {
         debugger;
         this._EditCommunicationDetails = false;
-        this._ClientsService.UpdateClientCommunicationDetails(this._ApplicantCommunicationDetails).subscribe(res => this.updateclientCommunicationSuccess(res), res => this.updateclientCommunicationError(res));
+        this._ClientsService.UpdateClientCommunicationDetails(this._ClientCommunicationDetails).subscribe(res => this.updateclientCommunicationSuccess(res), res => this.updateclientCommunicationError(res));
     }
 
+    GridSelectionChange(data, selection) {
+        debugger;
+        this._Operationtitle = "Update";
+        this._ClientCommDetailsObj = data.data.data[selection.index];
+    }
     updateclientCommunicationSuccess(res) {
         debugger;
     }
@@ -76,7 +68,56 @@ export class ClientscommunicationComponent extends AppBaseComponent implements O
         debugger;
     }
 
-    AddClient() {
+    AddClient() {  }
 
-    }
+
+
+    
+    //GetApplicantSuccess(res) {
+    //    debugger;
+    //    this._ApplicantTypes = JSON.parse(res._body);
+
+    //}
+    //GetApplicantError(res) { }
+
+    //SwitchStatus(ID) {
+    //    debugger;
+    //    this._MastersService.SwitchApplicantEntityStatus(ID).subscribe(res => this.SwitchApplicantSuccess(res), res => this.SwitchApplicantError(res));
+    //}
+    //SwitchApplicantSuccess(res) { this._MastersService.GetApplicantTypes().subscribe(res => this.GetApplicantSuccess(res), res => this.GetApplicantError(res)); }
+    //SwitchApplicantError(res) { }
+
+    //UpdateApplicantType() {
+    //    this._MastersService.UpdateApplicantEntity(this._ApplicantObj).subscribe(res => this.UpdateApplicantSuccess(res), res => this.UpdateApplicantError(res));
+    //}
+    //UpdateApplicantSuccess(res) {
+    //    this._MastersService.GetApplicantTypes().subscribe(res => this.GetApplicantSuccess(res), res => this.GetApplicantError(res));
+    //    this.CancelApplicantType();
+    //}
+    //UpdateApplicantError(res) { }
+
+    //GridSelectionChange(data, selection) {
+    //    debugger;
+    //    this._Operationtitle = "Update";
+    //    this._ApplicantObj = data.data.data[selection.index];
+    //}
+    //CancelApplicantType() {
+    //    debugger;
+    //    this._Operationtitle = "Add";
+    //    this._ApplicantObj = {
+    //        ApplicantType: "",
+    //        ApplicantTypeID: "",
+    //        IsActive: ""
+    //    };
+    //}
+
+    //AddApplicantType() {
+    //    debugger;
+    //    this._MastersService.AddApplicantEntity(this._ApplicantObj).subscribe(res => this.AddApplicantSuccess(res), res => this.AddApplicantError(res));
+    //}
+    //AddApplicantSuccess(res) {
+    //    this._MastersService.GetApplicantTypes().subscribe(res => this.GetApplicantSuccess(res), res => this.GetApplicantError(res));
+    //    this.CancelApplicantType();
+    //}
+    //AddApplicantError(res) { }
 }
