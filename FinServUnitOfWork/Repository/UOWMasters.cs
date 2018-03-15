@@ -279,6 +279,30 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
+
+        //Added by Neha
+
+        public List<StatusTypeMaster> GetStatusTypes()
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    return (from ObjMstr in db.tblMasterTypeOfStatus
+                            select new StatusTypeMaster()
+                            {
+                                ID = ObjMstr.ID,
+                                Status = ObjMstr.Status,
+                                IsActive = ObjMstr.IsActive,
+
+                            }).ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
         #endregion
 
 

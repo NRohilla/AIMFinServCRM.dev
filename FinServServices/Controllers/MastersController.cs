@@ -104,6 +104,14 @@ namespace FinServServices.Controllers
         {
             return Repository.GetSalutationTypes();
         }
+        //Added by Neha
+
+        [HttpGet]
+        [Route("GetStatusTypes")]
+        public List<StatusTypeMaster> GetStatusTypes()
+        {
+            return Repository.GetStatusTypes();
+        }
         #endregion
 
 

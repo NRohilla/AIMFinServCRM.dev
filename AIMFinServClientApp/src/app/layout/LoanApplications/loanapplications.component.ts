@@ -18,17 +18,23 @@ import { MastersService } from '../../services/app.masters.service';
     providers: [ClientsService, MastersService]
 })
 export class LoanapplicationsComponent implements OnInit {
-   
+
     public _Loantypes: any;
     public _ViewApplicationDetails: boolean = false;
     public gridData: any[];
     public _EditDetails: boolean = false;
+    public _ShowApprovalExpiryDate: boolean = false;
+    public _ShowShiftedDuration: boolean = false;
+    public _ShowCostOfProperty: boolean = false;
+    public _ShowReasonForNotApproval: boolean = false;
+    public selectedStatus: string = '';
+
     public _LoanApplicationDetails = {
         AgeOfProperty: "",
         ApplicantID: "",
         ApprovalExpiryDate: "",
         AutoID: "",
-        PurposeOfLoanID:"",
+        PurposeOfLoanID: "",
         CashInHand: "",
         CostOfProperty: "",
         CreatedBy: "",
@@ -47,27 +53,31 @@ export class LoanapplicationsComponent implements OnInit {
         Priority: "",
         PropertyType: "",
         PropertyUsedFor: "",
-        RateType: "",
         ReasonForNotApproval: "",
         ShiftedDuration: "",
-        Status: "",
-        TypeOfLoan: "",
         _Applicant: {},
-        _StatusID: {},
-        _PropertyTypeID: {},
-        _RateTypeID: {},
+        _TypeOfLoanID: {},
         _PurposeOfLoanID: {},
-        TypeOfLoanID: {}
-        
+        _RateTypeID: {},
+        _PropertyTypeID: {},
+        _StatusID: {
+            Status: ''
+        }
+
 
     };
 
     public _TypeOfLoanID = [];
-    errorMessage:"No Data"
+    public _PurposeOfLoanID = [];
+    public _RateTypeID = [];
+    public _PropertyTypeID = [];
+    public _StatusID = [];
 
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, public dialog: MatDialog,private _MasterService: MastersService) {
+    errorMessage: "No Data"
 
-        
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, public dialog: MatDialog, private _MasterService: MastersService) {
+
+
     }
 
     ngOnInit() {
@@ -77,7 +87,7 @@ export class LoanapplicationsComponent implements OnInit {
             ApplicantID: "",
             ApprovalExpiryDate: "",
             AutoID: "",
-            PurposeOfLoanID:"",
+            PurposeOfLoanID: "",
             CashInHand: "",
             CostOfProperty: "",
             CreatedBy: "",
@@ -96,44 +106,52 @@ export class LoanapplicationsComponent implements OnInit {
             Priority: "",
             PropertyType: "",
             PropertyUsedFor: "",
-            RateType: "",
             ReasonForNotApproval: "",
             ShiftedDuration: "",
-            Status: "",
-            TypeOfLoan: "",
             _Applicant: {},
-            _StatusID: {},
-            _PropertyTypeID: {},
-            _RateTypeID: {},
+            _TypeOfLoanID: {},
             _PurposeOfLoanID: {},
-               TypeOfLoanID: {}
+            _RateTypeID: {},
+            _PropertyTypeID: {},
+            _StatusID: {
+                Status:''
+            }
+
         };
         this.GetLoanType();
+        this.GetPurposeofloanType();
+        this.GetLoanrateType();
+        this.GetPropertyType();
+        this.GetStatusType();
     }
     //location: any;
-    GetAllLoanApplicationSuccess(Res) {
-        this.gridData = JSON.parse(Res._body);
-    }
+   
 
-    GetLoanType() {
-        debugger;
-        this._MasterService.GetLoanTypes().subscribe(res => this.GetLoanTypesSuccess(res), error => this.errorMessage = <any>error);
-    }
-
-    GetLoanTypesSuccess(res) {
-        debugger
-        this._TypeOfLoanID = JSON.parse(res._body);
-    }
     GetAllLoanApplicationError(Res) { }
 
     ViewDetails(LoanApplicationNo) {
+
         this._LocalStorageService.set("LoanApplicationNoViewed", LoanApplicationNo);
         this._ViewApplicationDetails = !this._ViewApplicationDetails;
         this._ClientsService.GetLoanApplicationDetails(LoanApplicationNo).subscribe(res => this.GetAllLoanApplicationDetailSuccess(res), res => this.GetAllLoanApplicationDetailError(res));
     }
 
     GetAllLoanApplicationDetailSuccess(res) {
+        debugger;
         this._LoanApplicationDetails = JSON.parse(res._body);
+
+        if (this._LoanApplicationDetails.IsPreApproval == true)
+            this._ShowApprovalExpiryDate = true;
+
+        if (this._LoanApplicationDetails.IsShifted == true) 
+            this._ShowShiftedDuration = true;
+
+        if (this._LoanApplicationDetails.IsPropertyDecided == true)
+            this._ShowCostOfProperty = true;
+
+        if (this._LoanApplicationDetails._StatusID.Status == "Approved")
+            this._ShowReasonForNotApproval = true;
+
     }
 
     GetAllLoanApplicationDetailError(res) { }
@@ -150,7 +168,6 @@ export class LoanapplicationsComponent implements OnInit {
     }
 
     UpdateLoanApplicationDetails() {
-        debugger;
         this._EditDetails = false;
         this.formatvalues();
         this._ClientsService.UpdateLoanApplicationDetails(this._LoanApplicationDetails).subscribe(res => this.updateLoanApplicationSuccess(res), res => this.updateLoanApplicationError(res));
@@ -205,4 +222,88 @@ export class LoanapplicationsComponent implements OnInit {
             this._LoanApplicationDetails.IsShifted = false;
         }
     }
+
+    GetAllLoanApplicationSuccess(Res) {
+        this.gridData = JSON.parse(Res._body);
+    }
+
+    GetLoanType() {
+        debugger;
+        this._MasterService.GetLoanTypes().subscribe(res => this.GetLoanTypesSuccess(res), error => this.errorMessage = <any>error);
+    }
+    GetLoanTypesSuccess(res) {
+        debugger
+        this._TypeOfLoanID = JSON.parse(res._body);
+    }
+
+    GetPurposeofloanType() {
+        this._MasterService.GetPurposeofloanTypes().subscribe(res => this.GetPurposeofloanTypesSuccess(res), error => this.errorMessage = <any>error);
+    }
+    GetPurposeofloanTypesSuccess(res) {
+        this._PurposeOfLoanID = JSON.parse(res._body);
+    }
+
+    GetLoanrateType() {
+        this._MasterService.GetLoanrateTypes().subscribe(res => this.GetLoanrateTypeSuccess(res), error => this.errorMessage = <any>error);
+    }
+    GetLoanrateTypeSuccess(res) {
+        this._RateTypeID = JSON.parse(res._body);
+    }
+
+    GetPropertyType() {
+        this._MasterService.GetPropertyTypes().subscribe(res => this.GetPropertyTypeSuccess(res), error => this.errorMessage = <any>error);
+    }
+    GetPropertyTypeSuccess(res) {
+        this._PropertyTypeID = JSON.parse(res._body);
+    }
+
+    GetStatusType() {
+        this._MasterService.GetStatusTypes().subscribe(res => this.GetStatusTypeSuccess(res), error => this.errorMessage = <any>error);
+    }
+    GetStatusTypeSuccess(res) {
+        this._StatusID = JSON.parse(res._body);
+    }
+
+    SwitchApproval() {
+        debugger;
+        this._ShowApprovalExpiryDate = false;
+        if (this._LoanApplicationDetails.IsPreApproval == false)
+            this._ShowApprovalExpiryDate = true;
+    }
+
+    SwitchShifted() {
+        this._ShowShiftedDuration = false;
+        if (this._LoanApplicationDetails.IsShifted == false)
+            this._ShowShiftedDuration = true;
+    }
+
+    SwitchCostOfProperty() {
+        this._ShowCostOfProperty = false;
+        if (this._LoanApplicationDetails.IsPropertyDecided == false)
+            this._ShowCostOfProperty = true;
+    }
+
+
+    updateDiv(event) {
+        debugger;
+        for (var i = 0; i < this._StatusID.length; i++) {
+            if (this._StatusID[i].ID == event.value) {
+                this.selectedStatus = this._StatusID[i].Status;
+
+                if (this.selectedStatus == "Not Approved") {
+                    this._ShowReasonForNotApproval = true;
+                }
+                else {
+                    this._ShowReasonForNotApproval = false;
+                }
+       
+
+            }
+        }
+ 
+  
+    }
+
+
+    
 }

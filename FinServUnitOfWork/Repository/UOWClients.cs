@@ -193,14 +193,19 @@ namespace FinServUnitOfWork.Repository
                         objtoReturn.TypeOfLoanID = GetLoanAppDetails.TypeOfLoanID;
                         objtoReturn._ApplicantID = GetClientDetails(Convert.ToString(GetLoanAppDetails.ApplicantID));
                         objtoReturn._PropertyTypeID = new PropertyTypeMaster();
+                        objtoReturn._PropertyTypeID.ID = GetLoanAppDetails.tblMasterPropertyType.ID;
                         objtoReturn._PropertyTypeID.PropertyType = GetLoanAppDetails.tblMasterPropertyType.PropertyType;
                         objtoReturn._RateTypeID = new LoanRateTypeMaster();
+                        objtoReturn._RateTypeID.ID = GetLoanAppDetails.tblMasterTypeOfStatu.ID;
                         objtoReturn._RateTypeID.LoanRateType = GetLoanAppDetails.tblMasterLoanRateType.LoanRateType;
                         objtoReturn._StatusID = new StatusTypeMaster();
+                        objtoReturn._StatusID.ID = GetLoanAppDetails.tblMasterTypeOfStatu.ID;
                         objtoReturn._StatusID.Status = GetLoanAppDetails.tblMasterTypeOfStatu.Status;
                         objtoReturn._TypeOfLoanID = new LoanTypeMaster();
                         objtoReturn._TypeOfLoanID.LoanType = GetLoanAppDetails.tblMasterTypeOfLoan.LoanType;
+                        objtoReturn._TypeOfLoanID.ID = GetLoanAppDetails.tblMasterTypeOfLoan.ID;
                         objtoReturn._PurposeOfLoanID = new PurposeOfLoanMaster();
+                        objtoReturn._PurposeOfLoanID.ID = GetLoanAppDetails.tblMasterPurposeOfLoan.ID;
                         objtoReturn._PurposeOfLoanID.PurposeOfLoan = GetLoanAppDetails.tblMasterPurposeOfLoan.PurposeOfLoan;
                     }
                     return objtoReturn;

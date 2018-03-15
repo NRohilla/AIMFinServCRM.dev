@@ -17,9 +17,12 @@ import { MastersService } from '../../../services//app.masters.service';
     providers: [ClientsService, MastersService]
 })
 export class ApplicantPersonalDetailsComponent extends AppBaseComponent implements OnInit {
-
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { super(); }
+    public _ApplicantTypeID: {};
+    public _Gender: {};
+    errorMessage: "No Data"
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, private _MasterService: MastersService) { super(); }
     ngOnInit() {
+        this.GetApplicantTypes();
     }
     public _ApplicantPersonalDetails = {
         ApplicantID: '',
@@ -44,8 +47,14 @@ export class ApplicantPersonalDetailsComponent extends AppBaseComponent implemen
         }
     };
 
+    GetApplicantTypes() {
+        this._MasterService.GetApplicantTypes().subscribe(res => this.GetApplicantTypesSuccess(res), error => this.errorMessage = <any>error);
+    }
+    GetApplicantTypesSuccess(res) {
+        debugger;
+        this._ApplicantTypeID = JSON.parse(res._body);
+    }
 
-    //   this._LocalStorageService.set("LoanApplicationNoViewed"
     SaveLoanApplicationPersonalDetails() {
         debugger;
 
