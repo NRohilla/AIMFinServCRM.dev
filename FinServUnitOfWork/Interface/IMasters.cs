@@ -19,6 +19,8 @@ namespace FinServUnitOfWork.Interface
         List<QualificationTypeMaster> GetQualificationTypes();
         List<RelationshipTypeMaster> GetRelationshipTypes();
         List<SalutationTypeMaster> GetSalutationTypes();
+        //Added by Neha
+        List<StatusTypeMaster> GetStatusTypes();
 
         //switch status
         bool SwitchApplicantEntityStatus(int ID);
