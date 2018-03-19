@@ -14,6 +14,12 @@ namespace FinServDataModel
     
     public partial class tblMasterTypeOfProfession
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblMasterTypeOfProfession()
+        {
+            this.tblApplicantEmploymentDetails = new HashSet<tblApplicantEmploymentDetail>();
+        }
+    
         public int ID { get; set; }
         public string Profession { get; set; }
         public bool IsActive { get; set; }
@@ -21,5 +27,8 @@ namespace FinServDataModel
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblApplicantEmploymentDetail> tblApplicantEmploymentDetails { get; set; }
     }
 }

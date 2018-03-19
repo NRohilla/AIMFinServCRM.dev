@@ -48,13 +48,15 @@
           <Property Name="AddressLine2" Type="nvarchar" MaxLength="100" />
           <Property Name="AddressLine3" Type="nvarchar" MaxLength="100" />
           <Property Name="Duration" Type="nchar" MaxLength="10" />
-          <Property Name="Status" Type="nchar" MaxLength="10" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="100" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="15" />
+          <Property Name="AddressType" Type="int" Nullable="false" />
           <Property Name="ApplicantID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CreatedBy" Type="uniqueidentifier" />
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="ModifiedBy" Type="uniqueidentifier" />
           <Property Name="ModifiedOn" Type="datetime" />
-          <Property Name="AddressType" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tblApplicantEmploymentDetails">
           <Key>
@@ -63,11 +65,12 @@
           <Property Name="AutoID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EmploymentID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ApplicantID" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="SourceOfIncome" Type="nvarchar" MaxLength="100" />
+          <Property Name="SourceOfIncome" Type="int" Nullable="false" />
+          <Property Name="ProfessionTypeID" Type="int" Nullable="false" />
           <Property Name="EmployerName" Type="nvarchar" MaxLength="100" />
           <Property Name="Duration" Type="nvarchar" MaxLength="50" />
           <Property Name="Income" Type="nchar" MaxLength="10" />
-          <Property Name="Status" Type="nchar" MaxLength="10" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
           <Property Name="CreatedBy" Type="uniqueidentifier" />
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="ModifiedBy" Type="uniqueidentifier" />
@@ -225,6 +228,8 @@
           <Property Name="AddressLine1" Type="nvarchar" MaxLength="100" />
           <Property Name="AddressLine2" Type="nvarchar" MaxLength="100" />
           <Property Name="AddressLine3" Type="nvarchar" MaxLength="100" />
+          <Property Name="Country" Type="nvarchar" MaxLength="100" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="15" />
           <Property Name="CreatedBy" Type="uniqueidentifier" />
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="ModifiedBy" Type="uniqueidentifier" />
@@ -535,6 +540,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblApplicantEmploymentDetails_tblMasterTypeOfEmployment">
+          <End Role="tblMasterTypeOfEmployment" Type="Self.tblMasterTypeOfEmployment" Multiplicity="1" />
+          <End Role="tblApplicantEmploymentDetails" Type="Self.tblApplicantEmploymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMasterTypeOfEmployment">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblApplicantEmploymentDetails">
+              <PropertyRef Name="SourceOfIncome" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblApplicantEmploymentDetails_tblMasterTypeOfProfession">
+          <End Role="tblMasterTypeOfProfession" Type="Self.tblMasterTypeOfProfession" Multiplicity="1" />
+          <End Role="tblApplicantEmploymentDetails" Type="Self.tblApplicantEmploymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMasterTypeOfProfession">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblApplicantEmploymentDetails">
+              <PropertyRef Name="ProfessionTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblApplicantExpenseSheet_tblApplicants">
           <End Role="tblApplicants" Type="Self.tblApplicants" Multiplicity="1" />
           <End Role="tblApplicantExpenseSheet" Type="Self.tblApplicantExpenseSheet" Multiplicity="*" />
@@ -818,6 +847,14 @@
             <End Role="tblApplicants" EntitySet="tblApplicants" />
             <End Role="tblApplicantEmploymentDetails" EntitySet="tblApplicantEmploymentDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblApplicantEmploymentDetails_tblMasterTypeOfEmployment" Association="Self.FK_tblApplicantEmploymentDetails_tblMasterTypeOfEmployment">
+            <End Role="tblMasterTypeOfEmployment" EntitySet="tblMasterTypeOfEmployment" />
+            <End Role="tblApplicantEmploymentDetails" EntitySet="tblApplicantEmploymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblApplicantEmploymentDetails_tblMasterTypeOfProfession" Association="Self.FK_tblApplicantEmploymentDetails_tblMasterTypeOfProfession">
+            <End Role="tblMasterTypeOfProfession" EntitySet="tblMasterTypeOfProfession" />
+            <End Role="tblApplicantEmploymentDetails" EntitySet="tblApplicantEmploymentDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblApplicantExpenseSheet_tblApplicants" Association="Self.FK_tblApplicantExpenseSheet_tblApplicants">
             <End Role="tblApplicants" EntitySet="tblApplicants" />
             <End Role="tblApplicantExpenseSheet" EntitySet="tblApplicantExpenseSheet" />
@@ -914,7 +951,6 @@
           <EntitySet Name="tblAssets" EntityType="AIMFinServDBModel.tblAsset" />
           <EntitySet Name="tblLiabilities" EntityType="AIMFinServDBModel.tblLiability" />
           <EntitySet Name="tblLoanApplicationForms" EntityType="AIMFinServDBModel.tblLoanApplicationForm" />
-          <EntitySet Name="tblLoanGuarantors" EntityType="AIMFinServDBModel.tblLoanGuarantor" />
           <EntitySet Name="tblLoanMasters" EntityType="AIMFinServDBModel.tblLoanMaster" />
           <EntitySet Name="tblMasterAddressTypes" EntityType="AIMFinServDBModel.tblMasterAddressType" />
           <EntitySet Name="tblMasterApplicantTypes" EntityType="AIMFinServDBModel.tblMasterApplicantType" />
@@ -948,6 +984,14 @@
           </AssociationSet>
           <AssociationSet Name="FK_tblApplicantEmploymentDetails_tblApplicants" Association="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblApplicants">
             <End Role="tblApplicant" EntitySet="tblApplicants" />
+            <End Role="tblApplicantEmploymentDetail" EntitySet="tblApplicantEmploymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblApplicantEmploymentDetails_tblMasterTypeOfEmployment" Association="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblMasterTypeOfEmployment">
+            <End Role="tblMasterTypeOfEmployment" EntitySet="tblMasterTypeOfEmployments" />
+            <End Role="tblApplicantEmploymentDetail" EntitySet="tblApplicantEmploymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblApplicantEmploymentDetails_tblMasterTypeOfProfession" Association="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblMasterTypeOfProfession">
+            <End Role="tblMasterTypeOfProfession" EntitySet="tblMasterTypeOfProfessions" />
             <End Role="tblApplicantEmploymentDetail" EntitySet="tblApplicantEmploymentDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_tblApplicantExpenseSheet_tblApplicants" Association="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblApplicants">
@@ -1010,10 +1054,6 @@
             <End Role="tblMasterTypeOfStatu" EntitySet="tblMasterTypeOfStatus" />
             <End Role="tblLoanApplicationForm" EntitySet="tblLoanApplicationForms" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblLoanGuarantor_tblLoanApplicationForm" Association="AIMFinServDBModel.FK_tblLoanGuarantor_tblLoanApplicationForm">
-            <End Role="tblLoanApplicationForm" EntitySet="tblLoanApplicationForms" />
-            <End Role="tblLoanGuarantor" EntitySet="tblLoanGuarantors" />
-          </AssociationSet>
           <AssociationSet Name="FK_tblLoanMaster_tblLoanApplicationForm" Association="AIMFinServDBModel.FK_tblLoanMaster_tblLoanApplicationForm">
             <End Role="tblLoanApplicationForm" EntitySet="tblLoanApplicationForms" />
             <End Role="tblLoanMaster" EntitySet="tblLoanMasters" />
@@ -1025,6 +1065,11 @@
           <AssociationSet Name="FK_tblLoanMaster_tblMasterTypeOfStatus" Association="AIMFinServDBModel.FK_tblLoanMaster_tblMasterTypeOfStatus">
             <End Role="tblMasterTypeOfStatu" EntitySet="tblMasterTypeOfStatus" />
             <End Role="tblLoanMaster" EntitySet="tblLoanMasters" />
+          </AssociationSet>
+          <EntitySet Name="tblLoanGuarantors" EntityType="AIMFinServDBModel.tblLoanGuarantor" />
+          <AssociationSet Name="FK_tblLoanGuarantor_tblLoanApplicationForm" Association="AIMFinServDBModel.FK_tblLoanGuarantor_tblLoanApplicationForm">
+            <End Role="tblLoanApplicationForm" EntitySet="tblLoanApplicationForms" />
+            <End Role="tblLoanGuarantor" EntitySet="tblLoanGuarantors" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="sysdiagram">
@@ -1071,13 +1116,15 @@
           <Property Name="AddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="AddressLine3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Duration" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ZipCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="AddressType" Type="Int32" Nullable="false" />
           <Property Name="ApplicantID" Type="Guid" Nullable="false" />
           <Property Name="CreatedBy" Type="Guid" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="ModifiedBy" Type="Guid" />
           <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
-          <Property Name="AddressType" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tblApplicant" Relationship="AIMFinServDBModel.FK_tblApplicantCommunicationDetails_tblApplicants" FromRole="tblApplicantCommunicationDetail" ToRole="tblApplicant" />
           <NavigationProperty Name="tblMasterAddressType" Relationship="AIMFinServDBModel.FK_tblApplicantCommunicationDetails_tblMasterAddressTypes" FromRole="tblApplicantCommunicationDetail" ToRole="tblMasterAddressType" />
         </EntityType>
@@ -1088,16 +1135,19 @@
           <Property Name="AutoID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EmploymentID" Type="Guid" Nullable="false" />
           <Property Name="ApplicantID" Type="Guid" Nullable="false" />
-          <Property Name="SourceOfIncome" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SourceOfIncome" Type="Int32" Nullable="false" />
+          <Property Name="ProfessionTypeID" Type="Int32" Nullable="false" />
           <Property Name="EmployerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Duration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Income" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CreatedBy" Type="Guid" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="ModifiedBy" Type="Guid" />
           <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tblApplicant" Relationship="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblApplicants" FromRole="tblApplicantEmploymentDetail" ToRole="tblApplicant" />
+          <NavigationProperty Name="tblMasterTypeOfEmployment" Relationship="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblMasterTypeOfEmployment" FromRole="tblApplicantEmploymentDetail" ToRole="tblMasterTypeOfEmployment" />
+          <NavigationProperty Name="tblMasterTypeOfProfession" Relationship="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblMasterTypeOfProfession" FromRole="tblApplicantEmploymentDetail" ToRole="tblMasterTypeOfProfession" />
         </EntityType>
         <EntityType Name="tblApplicantExpenseSheet">
           <Key>
@@ -1249,38 +1299,8 @@
           <NavigationProperty Name="tblMasterPurposeOfLoan" Relationship="AIMFinServDBModel.FK_tblLoanApplicationForm_tblMasterPurposeOfLoan" FromRole="tblLoanApplicationForm" ToRole="tblMasterPurposeOfLoan" />
           <NavigationProperty Name="tblMasterTypeOfLoan" Relationship="AIMFinServDBModel.FK_tblLoanApplicationForm_tblMasterTypeOfLoan" FromRole="tblLoanApplicationForm" ToRole="tblMasterTypeOfLoan" />
           <NavigationProperty Name="tblMasterTypeOfStatu" Relationship="AIMFinServDBModel.FK_tblLoanApplicationForm_tblMasterTypeOfStatus" FromRole="tblLoanApplicationForm" ToRole="tblMasterTypeOfStatu" />
-          <NavigationProperty Name="tblLoanGuarantors" Relationship="AIMFinServDBModel.FK_tblLoanGuarantor_tblLoanApplicationForm" FromRole="tblLoanApplicationForm" ToRole="tblLoanGuarantor" />
           <NavigationProperty Name="tblLoanMasters" Relationship="AIMFinServDBModel.FK_tblLoanMaster_tblLoanApplicationForm" FromRole="tblLoanApplicationForm" ToRole="tblLoanMaster" />
-        </EntityType>
-        <EntityType Name="tblLoanGuarantor">
-          <Key>
-            <PropertyRef Name="GuarantorID" />
-          </Key>
-          <Property Name="AutoID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="GuarantorID" Type="Guid" Nullable="false" />
-          <Property Name="LoanApplicationNo" Type="Guid" Nullable="false" />
-          <Property Name="Title" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="DateOfBirth" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="MaritalStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="MobileNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="HomePhoneNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="WorkPhoneNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="EmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NZResidents" Type="Boolean" />
-          <Property Name="Duration" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="CountryOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="AddressLine1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="AddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="AddressLine3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedBy" Type="Guid" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedBy" Type="Guid" />
-          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="tblLoanApplicationForm" Relationship="AIMFinServDBModel.FK_tblLoanGuarantor_tblLoanApplicationForm" FromRole="tblLoanGuarantor" ToRole="tblLoanApplicationForm" />
+          <NavigationProperty Name="tblLoanGuarantors" Relationship="AIMFinServDBModel.FK_tblLoanGuarantor_tblLoanApplicationForm" FromRole="tblLoanApplicationForm" ToRole="tblLoanGuarantor" />
         </EntityType>
         <EntityType Name="tblLoanMaster">
           <Key>
@@ -1448,6 +1468,7 @@
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="ModifiedBy" Type="Guid" />
           <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblApplicantEmploymentDetails" Relationship="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblMasterTypeOfEmployment" FromRole="tblMasterTypeOfEmployment" ToRole="tblApplicantEmploymentDetail" />
         </EntityType>
         <EntityType Name="tblMasterTypeOfLoan">
           <Key>
@@ -1473,6 +1494,7 @@
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="ModifiedBy" Type="Guid" />
           <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblApplicantEmploymentDetails" Relationship="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblMasterTypeOfProfession" FromRole="tblMasterTypeOfProfession" ToRole="tblApplicantEmploymentDetail" />
         </EntityType>
         <EntityType Name="tblMasterTypeOfQualification">
           <Key>
@@ -1612,6 +1634,30 @@
             </Principal>
             <Dependent Role="tblApplicantEmploymentDetail">
               <PropertyRef Name="ApplicantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblApplicantEmploymentDetails_tblMasterTypeOfEmployment">
+          <End Type="AIMFinServDBModel.tblMasterTypeOfEmployment" Role="tblMasterTypeOfEmployment" Multiplicity="1" />
+          <End Type="AIMFinServDBModel.tblApplicantEmploymentDetail" Role="tblApplicantEmploymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMasterTypeOfEmployment">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblApplicantEmploymentDetail">
+              <PropertyRef Name="SourceOfIncome" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblApplicantEmploymentDetails_tblMasterTypeOfProfession">
+          <End Type="AIMFinServDBModel.tblMasterTypeOfProfession" Role="tblMasterTypeOfProfession" Multiplicity="1" />
+          <End Type="AIMFinServDBModel.tblApplicantEmploymentDetail" Role="tblApplicantEmploymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMasterTypeOfProfession">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblApplicantEmploymentDetail">
+              <PropertyRef Name="ProfessionTypeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1795,18 +1841,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tblLoanGuarantor_tblLoanApplicationForm">
-          <End Type="AIMFinServDBModel.tblLoanApplicationForm" Role="tblLoanApplicationForm" Multiplicity="1" />
-          <End Type="AIMFinServDBModel.tblLoanGuarantor" Role="tblLoanGuarantor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblLoanApplicationForm">
-              <PropertyRef Name="LoanApplicationNo" />
-            </Principal>
-            <Dependent Role="tblLoanGuarantor">
-              <PropertyRef Name="LoanApplicationNo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_tblLoanMaster_tblLoanApplicationForm">
           <End Type="AIMFinServDBModel.tblLoanApplicationForm" Role="tblLoanApplicationForm" Multiplicity="1" />
           <End Type="AIMFinServDBModel.tblLoanMaster" Role="tblLoanMaster" Multiplicity="*" />
@@ -1840,6 +1874,50 @@
             </Principal>
             <Dependent Role="tblLoanMaster">
               <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblLoanGuarantor">
+          <Key>
+            <PropertyRef Name="GuarantorID" />
+          </Key>
+          <Property Name="AutoID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GuarantorID" Type="Guid" Nullable="false" />
+          <Property Name="LoanApplicationNo" Type="Guid" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="DateOfBirth" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MaritalStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="HomePhoneNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="WorkPhoneNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="EmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NZResidents" Type="Boolean" />
+          <Property Name="Duration" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CountryOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AddressLine1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ZipCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblLoanApplicationForm" Relationship="AIMFinServDBModel.FK_tblLoanGuarantor_tblLoanApplicationForm" FromRole="tblLoanGuarantor" ToRole="tblLoanApplicationForm" />
+        </EntityType>
+        <Association Name="FK_tblLoanGuarantor_tblLoanApplicationForm">
+          <End Type="AIMFinServDBModel.tblLoanApplicationForm" Role="tblLoanApplicationForm" Multiplicity="1" />
+          <End Type="AIMFinServDBModel.tblLoanGuarantor" Role="tblLoanGuarantor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLoanApplicationForm">
+              <PropertyRef Name="LoanApplicationNo" />
+            </Principal>
+            <Dependent Role="tblLoanGuarantor">
+              <PropertyRef Name="LoanApplicationNo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1887,12 +1965,14 @@
           <EntitySetMapping Name="tblApplicantCommunicationDetails">
             <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicantCommunicationDetail">
               <MappingFragment StoreEntitySet="tblApplicantCommunicationDetails">
-                <ScalarProperty Name="AddressType" ColumnName="AddressType" />
                 <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+                <ScalarProperty Name="AddressType" ColumnName="AddressType" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Duration" ColumnName="Duration" />
                 <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
@@ -1914,6 +1994,7 @@
                 <ScalarProperty Name="Income" ColumnName="Income" />
                 <ScalarProperty Name="Duration" ColumnName="Duration" />
                 <ScalarProperty Name="EmployerName" ColumnName="EmployerName" />
+                <ScalarProperty Name="ProfessionTypeID" ColumnName="ProfessionTypeID" />
                 <ScalarProperty Name="SourceOfIncome" ColumnName="SourceOfIncome" />
                 <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
                 <ScalarProperty Name="EmploymentID" ColumnName="EmploymentID" />
@@ -2051,36 +2132,6 @@
                 <ScalarProperty Name="IsPreApproval" ColumnName="IsPreApproval" />
                 <ScalarProperty Name="ApplicationFormNumber" ColumnName="ApplicationFormNumber" />
                 <ScalarProperty Name="LoanApplicationNo" ColumnName="LoanApplicationNo" />
-                <ScalarProperty Name="AutoID" ColumnName="AutoID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblLoanGuarantors">
-            <EntityTypeMapping TypeName="AIMFinServDBModel.tblLoanGuarantor">
-              <MappingFragment StoreEntitySet="tblLoanGuarantor">
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
-                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
-                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
-                <ScalarProperty Name="CountryOfBirth" ColumnName="CountryOfBirth" />
-                <ScalarProperty Name="Duration" ColumnName="Duration" />
-                <ScalarProperty Name="NZResidents" ColumnName="NZResidents" />
-                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
-                <ScalarProperty Name="WorkPhoneNo" ColumnName="WorkPhoneNo" />
-                <ScalarProperty Name="HomePhoneNo" ColumnName="HomePhoneNo" />
-                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
-                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
-                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="LoanApplicationNo" ColumnName="LoanApplicationNo" />
-                <ScalarProperty Name="GuarantorID" ColumnName="GuarantorID" />
                 <ScalarProperty Name="AutoID" ColumnName="AutoID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2370,6 +2421,38 @@
                 <ScalarProperty Name="RoleGuid" ColumnName="RoleGuid" />
                 <ScalarProperty Name="UsersRoleId" ColumnName="UsersRoleId" />
                 <ScalarProperty Name="UsersRoleGuid" ColumnName="UsersRoleGuid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLoanGuarantors">
+            <EntityTypeMapping TypeName="AIMFinServDBModel.tblLoanGuarantor">
+              <MappingFragment StoreEntitySet="tblLoanGuarantor">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="CountryOfBirth" ColumnName="CountryOfBirth" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="NZResidents" ColumnName="NZResidents" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="WorkPhoneNo" ColumnName="WorkPhoneNo" />
+                <ScalarProperty Name="HomePhoneNo" ColumnName="HomePhoneNo" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="LoanApplicationNo" ColumnName="LoanApplicationNo" />
+                <ScalarProperty Name="GuarantorID" ColumnName="GuarantorID" />
+                <ScalarProperty Name="AutoID" ColumnName="AutoID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

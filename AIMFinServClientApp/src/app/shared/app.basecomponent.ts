@@ -9,7 +9,6 @@ export class AppBaseComponent {
     constructor() { }
     //trim all the whitespaces of the JSON object
     trimObj(obj) {
-        debugger;
         for (var prop in obj) {
             if (obj.hasOwnProperty(prop)) {
                 if (typeof obj[prop] == 'string') {

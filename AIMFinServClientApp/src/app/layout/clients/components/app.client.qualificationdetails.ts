@@ -17,68 +17,88 @@ import {AppBaseComponent} from '../../../shared/app.basecomponent';
     providers: [ClientsService]
 })
 export class ClientqualificationComponent extends AppBaseComponent implements OnInit {
-    public _ViewApplicantDetails: boolean = false;
-    public _FormErrors;
-    public _FormErrorsDescription: string = '';
-    public _EditPersonalDetails: boolean = false;
-    public _EditCommunicationDetails: boolean = false;
+    //public _ViewApplicantDetails: boolean = false;
+    //public _FormErrors;
+    //public _FormErrorsDescription: string = '';
+    //public _EditPersonalDetails: boolean = false;
+    //public _EditCommunicationDetails: boolean = false;
 
-    public _ApplicantQualificationDetails: {
+    public _Operationtitle: string = "Add";
+    public _ClientQualificationDetails = {};
+
+    public _ClientQualificationDetailsObj = {
         AutoID: '',
         QualificationID: '',
         ApplicantID: '',
         TypeOfQualification: '',
         PassingYear: '',
         CourseName: '',
-        UniversityName: '',
-        _QualificationTypeMaster: {}
-    }
+        UniversityName: ''
+        
+    };
+
+
+   
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { super(); }
 
     ngOnInit() {
+
+        this._ClientQualificationDetailsObj = {
+            AutoID: '',
+            QualificationID: '',
+            ApplicantID: '',
+            TypeOfQualification: '',
+            PassingYear: '',
+            CourseName: '',
+            UniversityName: ''
+            
+        };
+
         if (this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
             this._ClientsService.GetClientQualificationDetails(<string>this._LocalStorageService.get("ApplicantID")).subscribe(res => this.GetClientQualDetailsSuccess(res), res => this.GetClientQualDetailsError(res));
         }
-    }
-
-    GetClientDetailsError(res) { }
+    }    
 
     GetClientQualDetailsSuccess(res) {
-        this._ApplicantQualificationDetails = this.trimObj(JSON.parse(res._body));
+        this._ClientQualificationDetails = this.trimObj(JSON.parse(res._body));
     }
     GetClientQualDetailsError(res) { }
-    EditPersonalDetails() {
-        this._EditPersonalDetails = !this._EditPersonalDetails;
-    }
 
-    EditCommunicationDetails() {
-        this._EditCommunicationDetails = !this._EditCommunicationDetails;
-    }
 
-    updateclientPersonalSuccess(res) {
-        debugger;
-    }
 
-    updateclientPersonalError(res) {
-        debugger;
-    }
 
-    UpdateCommunicationDetails() {
-        debugger;
-        this._EditCommunicationDetails = false;
-        this._ClientsService.UpdateClientCommunicationDetails(this._ApplicantQualificationDetails).subscribe(res => this.updateclientCommunicationSuccess(res), res => this.updateclientCommunicationError(res));
-    }
+    //EditPersonalDetails() {
+    //    this._EditPersonalDetails = !this._EditPersonalDetails;
+    //}
 
-    updateclientCommunicationSuccess(res) {
-        debugger;
-    }
+    //EditCommunicationDetails() {
+    //    this._EditCommunicationDetails = !this._EditCommunicationDetails;
+    //}
 
-    updateclientCommunicationError(res) {
-        debugger;
-    }
+    //updateclientPersonalSuccess(res) {
+    //    debugger;
+    //}
 
-    AddClient() {
+    //updateclientPersonalError(res) {
+    //    debugger;
+    //}
 
-    }
+    //UpdateCommunicationDetails() {
+    //    debugger;
+    //    this._EditCommunicationDetails = false;
+    //    this._ClientsService.UpdateClientCommunicationDetails(this._ApplicantQualificationDetails).subscribe(res => this.updateclientCommunicationSuccess(res), res => this.updateclientCommunicationError(res));
+    //}
+
+    //updateclientCommunicationSuccess(res) {
+    //    debugger;
+    //}
+
+    //updateclientCommunicationError(res) {
+    //    debugger;
+    //}
+
+    //AddClient() {
+
+    //}
 }

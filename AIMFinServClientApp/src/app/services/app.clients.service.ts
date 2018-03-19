@@ -33,25 +33,55 @@ export class ClientsService {
         return this._http.get(this.baseurl + "Clients/GetLoanApplicationDetails?LoanAppNo=" + LoanAppNo, this.options);
     }
 
+   
+
+   
+
+
+    //===== Client_Qualification_Detail Methods CODE START HERE==============  //Deepak Saini [16-03-2018]
+    GetClientQualificationDetails(ClientID) {
+        return this._http.get(this.baseurl + "Clients/GetClientQualificationDetails?ClientID=" + ClientID, this.options);
+    }
+    
+    SaveClientQualificationDetails(ClientID) {
+        return this._http.get(this.baseurl + "Clients/SaveClientQualificationDetails?ClientID=" + ClientID, this.options);
+    }
+
+    UpdateClientQualificationDetails(ClientID) {
+        return this._http.get(this.baseurl + "Clients/UpdateClientQualificationDetails?ClientID=" + ClientID, this.options);
+    }
+
+    //================ CODE END HERE ===============//
+
+
+    //===== Client_Employment_Detail Methods CODE START HERE==============  //Deepak Saini [16-03-2018]
+
+    GetClientEmploymentDetails(ClientID) {
+        return this._http.get(this.baseurl + "Clients/GetClientEmploymentDetails?ClientID=" + ClientID, this.options);
+    }
+
+    UpdateclientEmploymentdetails(ApplicantEmploymentDetails) {
+        return this._http.post(this.baseurl + "Clients/UpdateClientEmploymentDetails", ApplicantEmploymentDetails, this.options);
+    }
+
+    SaveClientEmploymentDetails(ClientID) {
+        return this._http.get(this.baseurl + "Clients/SaveClientEmploymentDetails?ClientID=" + ClientID, this.options);
+    }
+    //================ CODE END HERE ===============//
+
+    //===== Client_Communication_Detail Methods CODE START HERE==============  //Deepak Saini [16-03-2018]
     GetClientCommunicationDetails(ClientID) {
         return this._http.get(this.baseurl + "Clients/GetClientCommunicationDetails?ClientID=" + ClientID, this.options);
     }
 
-    GetClientEmployementDetails(ClientID) {
-        return this._http.get(this.baseurl + "Clients/GetClientEmployementDetails?ClientID=" + ClientID, this.options);
+    SaveClientCommunicationDetails(ApplicantCommunicationDetails) {
+        return this._http.post(this.baseurl + "Clients/SaveClientCommunicationDetails", ApplicantCommunicationDetails, this.options);
     }
-
-    GetClientQualificationDetails(ClientID) {
-        return this._http.get(this.baseurl + "Clients/GetClientQualificationDetails?ClientID=" + ClientID, this.options);
-    }
-
-    updateclientEmploymentdetails(ApplicantEmployementDetails) {
-        return this._http.post(this.baseurl + "Clients/UpdateClientEmploymentDetails", ApplicantEmployementDetails, this.options);
-    }
-
     UpdateClientCommunicationDetails(ApplicantCommunicationDetails) {
         return this._http.post(this.baseurl + "Clients/UpdateClientCommunicationDetails", ApplicantCommunicationDetails, this.options);
     }
+    //================ CODE END HERE ===============//
+
 
     UpdateClientPersonalDetails(ApplicantPersonalDetails) {
         return this._http.post(this.baseurl + "Clients/UpdateClientPersonalDetails", ApplicantPersonalDetails, this.options);
@@ -69,8 +99,8 @@ export class ClientsService {
         return this._http.post(this.baseurl + "Clients/SaveLoanApplicationQualificationDetails", ApplicantQualificationDetails, this.options);
     }
 
-    SaveLoanApplicationEmployementDetails(ApplicantEmployementDetails) {
-        return this._http.post(this.baseurl + "Clients/SaveLoanApplicationEmployementDetails", ApplicantEmployementDetails, this.options);
+    SaveLoanApplicationEmploymentDetails(ApplicantEmploymentDetails) {
+        return this._http.post(this.baseurl + "Clients/SaveLoanApplicationEmploymentDetails", ApplicantEmploymentDetails, this.options);
     }
     SaveLoanApplicationCommunicationDetails(ApplicantCommunicationDetails) {
         return this._http.post(this.baseurl + "Clients/SaveLoanApplicationCommunicationDetails", ApplicantCommunicationDetails, this.options);

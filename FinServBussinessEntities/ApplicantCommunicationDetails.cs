@@ -16,15 +16,15 @@ namespace FinServBussinessEntities
         public string AddressLine3 { get; set; }
         public string Duration { get; set; }
         public string Status { get; set; }
-        public System.Guid ApplicantID { get; set; }
+        public string Country { get; set; }
+        public string ZipCode { get; set; }
         public Nullable<System.Guid> CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
+        public System.Guid ApplicantID { get; set; }
+        public Applicants _ApplicantDetail { get; set; }
         public int AddressType { get; set; }
-
-        public Applicants _ApplicationID { get; set; }
-        public AddressTypeMaster _MasterTypeID { get; set; }
-       
+        public AddressTypeMaster _AddressTypeDetail { get; set; }
     }
 }
