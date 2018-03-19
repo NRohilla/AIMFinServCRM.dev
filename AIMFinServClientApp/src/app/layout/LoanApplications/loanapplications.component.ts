@@ -11,6 +11,7 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { ClientsService } from '../../services/app.clients.service';
 import { LoanApplicationDetailDialog } from '../../shared/dialogues/loanapplications/LoanApplicationDetailDialog';
 import { MastersService } from '../../services/app.masters.service';
+import { AddGuarantorDialog } from '../../shared/dialogues/loanapplications/AddGuarantorDialog';
 
 @Component({
     templateUrl: './loanapplications.component.html',
@@ -125,7 +126,17 @@ export class LoanapplicationsComponent implements OnInit {
         this.GetStatusType();
     }
     //location: any;
-   
+
+    ManageGuarantor(): void {
+        let dialogRef = this.dialog.open(AddGuarantorDialog, {
+            //data: { name: this.name, animal: this.animal }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+            //this.animal = result;
+        });
+    }
 
     GetAllLoanApplicationError(Res) { }
 

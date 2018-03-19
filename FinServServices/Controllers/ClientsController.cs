@@ -112,6 +112,32 @@ namespace FinServServices.Controllers
         {
             return Repository.SaveLoanApplicationCommunicationDetails(ApplicantCommunicationDetails);
         }
+        [HttpPost]
+        [Route("AddGuarantorDetails")]
+        public bool AddGuarantor(LoanGuarantorDetails LoanGuarantorDetails)
+        {
+            return Repository.AddGuarantor(LoanGuarantorDetails);
+        }
+        [HttpGet]
+        [Route("GetGuarantor")]
+        public List<LoanGuarantorDetails> GetGuarantor()
+        {
+            return Repository.GetGuarantor();
+        }
+  
+        [HttpGet]
+        [Route("GetGuarantorDetails")]
+        public LoanGuarantorDetails GetGuarantorDetails(string GuarntID)
+        {
+            return Repository.GetGuarantorDetails(GuarntID);
+        }
+
+        [HttpPost]
+        [Route("UpdateGuarantorDetails")]
+        public bool UpdateGuarantorDetails(LoanGuarantorDetails LoanGuarantorDetails)
+        {
+            return Repository.UpdateGuarantorDetails(LoanGuarantorDetails);
+        }
 
     }
 }

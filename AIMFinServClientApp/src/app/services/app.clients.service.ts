@@ -75,4 +75,16 @@ export class ClientsService {
     SaveLoanApplicationCommunicationDetails(ApplicantCommunicationDetails) {
         return this._http.post(this.baseurl + "Clients/SaveLoanApplicationCommunicationDetails", ApplicantCommunicationDetails, this.options);
     }
+    AddGuarantor(LoanGuarantorDetails) {
+        return this._http.post(this.baseurl + "Clients/AddGuarantorDetails", LoanGuarantorDetails, this.options);
+    }
+    GetGuarantor() {
+        return this._http.get(this.baseurl + "Clients/GetGuarantor", this.options);
+    }
+    GetGuarantorDetails(GuarntID) {
+        return this._http.get(this.baseurl + "Clients/GetGuarantorDetails?GuarntID=" + GuarntID, this.options);
+    }
+    UpdateGuarantorDetails(LoanGuarantorDetails) {
+        return this._http.post(this.baseurl + "Clients/UpdateGuarantorDetails", LoanGuarantorDetails, this.options);
+    }
 }

@@ -585,6 +585,162 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
+
+        public bool AddGuarantor(LoanGuarantorDetails LoanGuarantorDetails)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    if (LoanGuarantorDetails != null)
+                    {
+                        tblLoanGuarantor _tblLoanGuarantorDetail = new tblLoanGuarantor();
+                        _tblLoanGuarantorDetail.GuarantorID = Guid.NewGuid();
+                        _tblLoanGuarantorDetail.LoanApplicationNo = LoanGuarantorDetails.LoanApplicationNo;
+                        _tblLoanGuarantorDetail.FirstName = LoanGuarantorDetails.FirstName;
+                        _tblLoanGuarantorDetail.MiddleName = LoanGuarantorDetails.MiddleName;
+                        _tblLoanGuarantorDetail.LastName = LoanGuarantorDetails.LastName;
+                        _tblLoanGuarantorDetail.Gender = LoanGuarantorDetails.Gender;
+                        _tblLoanGuarantorDetail.DateOfBirth = LoanGuarantorDetails.DateOfBirth;
+                        _tblLoanGuarantorDetail.MaritalStatus = LoanGuarantorDetails.MaritalStatus;
+                        _tblLoanGuarantorDetail.MobileNo = LoanGuarantorDetails.MobileNo;
+                        _tblLoanGuarantorDetail.HomePhoneNo = LoanGuarantorDetails.HomePhoneNo;
+                        _tblLoanGuarantorDetail.WorkPhoneNo = LoanGuarantorDetails.WorkPhoneNo;
+                        _tblLoanGuarantorDetail.EmailID = LoanGuarantorDetails.EmailID;
+                        _tblLoanGuarantorDetail.NZResidents = LoanGuarantorDetails.NZResidents;
+                        _tblLoanGuarantorDetail.Duration = LoanGuarantorDetails.Duration;
+                        _tblLoanGuarantorDetail.CountryOfBirth = LoanGuarantorDetails.CountryOfBirth;
+                        _tblLoanGuarantorDetail.AddressLine1 = LoanGuarantorDetails.AddressLine1;
+                        _tblLoanGuarantorDetail.AddressLine2 = LoanGuarantorDetails.AddressLine2;
+                        _tblLoanGuarantorDetail.AddressLine3 = LoanGuarantorDetails.AddressLine3;
+
+                        db.tblLoanGuarantors.Add(_tblLoanGuarantorDetail);
+                        db.SaveChanges();
+
+                    }
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public List<LoanGuarantorDetails> GetGuarantor()
+        {
+            List<LoanGuarantorDetails> objGuarantorDetails = new List<LoanGuarantorDetails>();
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetAllGuarantors = db.tblLoanGuarantors.ToList();
+
+                    foreach (var itemGetAllGuarantors in GetAllGuarantors)
+                    {
+                        objGuarantorDetails.Add(new LoanGuarantorDetails
+                        {
+                            GuarantorID = itemGetAllGuarantors.GuarantorID,
+                            FirstName = itemGetAllGuarantors.FirstName,
+                            MiddleName = itemGetAllGuarantors.MiddleName,
+                            LastName = itemGetAllGuarantors.LastName,
+                            NZResidents = itemGetAllGuarantors.NZResidents,
+                            MobileNo = itemGetAllGuarantors.MobileNo,
+                            HomePhoneNo = itemGetAllGuarantors.HomePhoneNo,
+                            EmailID= itemGetAllGuarantors.EmailID
+                        });
+                    }
+
+                    return objGuarantorDetails;
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public LoanGuarantorDetails GetGuarantorDetails(string GuarntID)
+        {
+            try
+            {
+                LoanGuarantorDetails objtoReturn = new LoanGuarantorDetails();
+                Guid GuarantorID = Guid.Parse(GuarntID);
+
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetGuarantorDetails = db.tblLoanGuarantors.Where(p => p.GuarantorID == GuarantorID).FirstOrDefault();
+                    if (GetGuarantorDetails != null)
+                    {
+                        objtoReturn.GuarantorID = GetGuarantorDetails.GuarantorID;
+                        objtoReturn.FirstName = GetGuarantorDetails.FirstName;
+                        objtoReturn.MiddleName = GetGuarantorDetails.MiddleName;
+                        objtoReturn.LastName = GetGuarantorDetails.LastName;
+                        objtoReturn.Gender = GetGuarantorDetails.Gender;
+                        objtoReturn.DateOfBirth = GetGuarantorDetails.MaritalStatus;
+                        objtoReturn.MaritalStatus = GetGuarantorDetails.MaritalStatus;
+                        objtoReturn.MobileNo = GetGuarantorDetails.MobileNo;
+                        objtoReturn.WorkPhoneNo = GetGuarantorDetails.WorkPhoneNo;
+                        objtoReturn.HomePhoneNo = GetGuarantorDetails.HomePhoneNo;
+                        objtoReturn.EmailID = GetGuarantorDetails.EmailID;
+                        objtoReturn.NZResidents = GetGuarantorDetails.NZResidents;
+                        objtoReturn.Duration = GetGuarantorDetails.Duration;
+                        objtoReturn.CountryOfBirth = GetGuarantorDetails.CountryOfBirth;
+                        objtoReturn.AddressLine1 = GetGuarantorDetails.AddressLine1;
+                        objtoReturn.AddressLine2 = GetGuarantorDetails.AddressLine2;
+                        objtoReturn.AddressLine3 = GetGuarantorDetails.AddressLine3;
+                        objtoReturn._LoanApplicationFormDetails = new LoanApplicationForms();
+                        objtoReturn._LoanApplicationFormDetails.LoanApplicationNo = GetGuarantorDetails.tblLoanApplicationForm.LoanApplicationNo;
+                    }
+                    return objtoReturn;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public bool UpdateGuarantorDetails(LoanGuarantorDetails LoanGuarantorDetails)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var FetchGuarantorDetails = db.tblLoanGuarantors.Where(p => p.GuarantorID == LoanGuarantorDetails.GuarantorID).FirstOrDefault();
+                    if (FetchGuarantorDetails != null)
+                    {
+                        FetchGuarantorDetails.GuarantorID = LoanGuarantorDetails.GuarantorID;
+                        FetchGuarantorDetails.FirstName = LoanGuarantorDetails.FirstName;
+                        FetchGuarantorDetails.MiddleName = LoanGuarantorDetails.MiddleName;
+                        FetchGuarantorDetails.LastName = LoanGuarantorDetails.LastName;
+                        FetchGuarantorDetails.Gender = LoanGuarantorDetails.Gender;
+                        FetchGuarantorDetails.DateOfBirth = LoanGuarantorDetails.DateOfBirth;
+                        FetchGuarantorDetails.MaritalStatus = LoanGuarantorDetails.MaritalStatus;
+                        FetchGuarantorDetails.MobileNo = LoanGuarantorDetails.MobileNo;
+                        FetchGuarantorDetails.HomePhoneNo = LoanGuarantorDetails.HomePhoneNo;
+                        FetchGuarantorDetails.WorkPhoneNo = LoanGuarantorDetails.WorkPhoneNo;
+                        FetchGuarantorDetails.EmailID = LoanGuarantorDetails.EmailID;
+                        FetchGuarantorDetails.NZResidents = LoanGuarantorDetails.NZResidents;
+                        FetchGuarantorDetails.Duration = LoanGuarantorDetails.Duration;
+                        FetchGuarantorDetails.CountryOfBirth = LoanGuarantorDetails.CountryOfBirth;
+                        FetchGuarantorDetails.AddressLine1 = LoanGuarantorDetails.AddressLine1;
+                        FetchGuarantorDetails.AddressLine2 = LoanGuarantorDetails.AddressLine2;
+                        FetchGuarantorDetails.AddressLine3 = LoanGuarantorDetails.AddressLine3;
+
+                        db.SaveChanges();
+                       
+                    }
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 
 }
