@@ -725,7 +725,6 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
-
         public bool AddGuarantor(LoanGuarantorDetails LoanGuarantorDetails)
         {
             try
@@ -788,7 +787,7 @@ namespace FinServUnitOfWork.Repository
                             NZResidents = itemGetAllGuarantors.NZResidents,
                             MobileNo = itemGetAllGuarantors.MobileNo,
                             HomePhoneNo = itemGetAllGuarantors.HomePhoneNo,
-                            EmailID= itemGetAllGuarantors.EmailID
+                            EmailID = itemGetAllGuarantors.EmailID
                         });
                     }
 
@@ -818,7 +817,7 @@ namespace FinServUnitOfWork.Repository
                         objtoReturn.MiddleName = GetGuarantorDetails.MiddleName;
                         objtoReturn.LastName = GetGuarantorDetails.LastName;
                         objtoReturn.Gender = GetGuarantorDetails.Gender;
-                        objtoReturn.DateOfBirth = GetGuarantorDetails.MaritalStatus;
+                        objtoReturn.DateOfBirth = GetGuarantorDetails.DateOfBirth;
                         objtoReturn.MaritalStatus = GetGuarantorDetails.MaritalStatus;
                         objtoReturn.MobileNo = GetGuarantorDetails.MobileNo;
                         objtoReturn.WorkPhoneNo = GetGuarantorDetails.WorkPhoneNo;
@@ -870,7 +869,7 @@ namespace FinServUnitOfWork.Repository
                         FetchGuarantorDetails.AddressLine3 = LoanGuarantorDetails.AddressLine3;
 
                         db.SaveChanges();
-                       
+
                     }
                     return true;
                 }

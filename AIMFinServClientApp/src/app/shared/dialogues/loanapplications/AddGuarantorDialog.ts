@@ -101,12 +101,20 @@ export class AddGuarantorDialog {
     AddGuarantorError(res) { }
 
     GetAddedGuarantorGrid() {
+       
 
         this._ClientsService.GetGuarantor().subscribe(res => this.GetGuarantorSuccess(res), res => this.GetGuarantorError(res));
+        if (this._AddGuarantorDetails.NZResidents.toString() == "1") {
+            this._AddGuarantorDetails.NZResidents = true;
+        }
+        else {
+            this._AddGuarantorDetails.NZResidents = false;
+        }
     }
 
     GetGuarantorSuccess(res) {
         this.gridData = JSON.parse(res._body);
+        
     }
 
     GetGuarantorError(res) { }
@@ -128,12 +136,25 @@ export class AddGuarantorDialog {
 
     UpdateGuarantorDetails() {
         debugger;
-        this.formatvalues();
+        if (this._AddGuarantorDetails.NZResidents.toString() == "1") {
+            this._AddGuarantorDetails.NZResidents = true;
+        }
+        else {
+            this._AddGuarantorDetails.NZResidents = false;
+        }
         this._ClientsService.UpdateGuarantorDetails(this._AddGuarantorDetails).subscribe(res => this.UpdateGuarantorDetailsSuccess(res), res => this.UpdateGuarantorDetailsError(res)); 
     }
 
     UpdateGuarantorDetailsSuccess(res) {
         this._AfterUpdate = true;
+        if (this._AddGuarantorDetails.NZResidents.toString() == "1") {
+            this._AddGuarantorDetails.NZResidents = true;
+        }
+        else {
+            this._AddGuarantorDetails.NZResidents = false;
+        }
+        this._ShowViewDetails = false;
+        this._AddGuarantor = false;
         this._ClientsService.GetGuarantor().subscribe(res => this.GetGuarantorSuccess(res), res => this.GetGuarantorError(res));
     }
 
@@ -143,14 +164,6 @@ export class AddGuarantorDialog {
         this.dialogRef.close();
         debugger;
     }
-    formatvalues() {
-
-        if (this._AddGuarantorDetails.NZResidents.toString() == "1") {
-            true;
-        }
-        else {
-            this._AddGuarantorDetails.NZResidents = false;
-        }
-    }
+   
 
 }
