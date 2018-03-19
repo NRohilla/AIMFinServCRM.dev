@@ -1,5 +1,5 @@
 ﻿<div [@routerTransition] class="application-details">
-    <div *ngIf="!_EditCommunicationDetails">
+    <div >
         <kendo-grid [kendoGridBinding]="_ClientCommunicationDetails"
                     [pageSize]="5"
                     [sortable]="true"
@@ -10,7 +10,7 @@
                     selectable="true"
                     #CommunicationID
                     (selectionChange)="GridSelectionChange(CommunicationID, $event)">
-            <kendo-grid-column field="__AddressTypeMaster.Type" title="Address Type">
+            <kendo-grid-column field="_AddressTypeDetail.Type" title="Address Type">
             </kendo-grid-column>
             <kendo-grid-column field="AddressLine1" title="Address Line 1">
             </kendo-grid-column>
@@ -18,18 +18,16 @@
             </kendo-grid-column>
             <kendo-grid-column field="AddressLine3" title="Address Line 3">
             </kendo-grid-column>
-            
-            <kendo-grid-command-column>
-                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                    <!--<button class="btn btn-lg btn-link" type="button" (click)="ViewDetails(dataItem.LoanApplicationNo)">View details</button>-->
-                </ng-template>
-            </kendo-grid-command-column>
+            <kendo-grid-column field="Country" title="Country">
+            </kendo-grid-column>
+            <kendo-grid-column field="ZipCode" title="Zip Code">
+            </kendo-grid-column>
         </kendo-grid>
     </div>
 </div>
 <div class="w-100 float-left">
     <div class="section_box pb-0 pl-0 pr-0">
-        <div class="box_title">Communication Details</div>
+        <div class="box_title">{{_Operationtitle}} Communication Details</div>
         <div class="tab-content clearfix ml-0">
             <div class="w-100 float-left">
                 <div class="tab-pane pt-3" >
@@ -37,16 +35,14 @@
                     <div class="row m-0">
                         <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
                             <div class="field_set">
-                                <!--<div class="field_label" *ngIf="!_EditCommunicationDetails">Applicant Type</div>
-                                <p *ngIf="!_EditCommunicationDetails" class="datevalue">{{_ClientCommunicationDetail._AddressTypeMaster.Type}}</p>-->
+                               
                                 <div class="field_info w-100">
                                     <mat-form-field>
-                                        <mat-select [(value)]="_ClientCommunicationDetail._AddressTypeMaster.Type" placeholder="Applicant Type">
+                                        <mat-select [(value)]="_ClientCommDetailsObj.AddressType" placeholder="Address Type">
                                             <mat-option>None</mat-option>
-                                            <mat-option value="Mr.">Mr.</mat-option>
-                                            <mat-option value="Ms.">Ms.</mat-option>
-                                            <mat-option value="Mrs.">Mrs.</mat-option>
-                                            <mat-option value="Dr.">Dr.</mat-option>
+                                            <mat-option value="1">Work</mat-option>
+                                            <mat-option value="2">Residence- Temporary</mat-option>
+                                            <mat-option value="3">Residence- Permanent</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
@@ -54,33 +50,50 @@
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
                             <div class="field_set">
-                                <!--<div class="field_label" *ngIf="!_EditCommunicationDetails">Address Line 1</div>
-                                <p *ngIf="!_EditCommunicationDetails" class="datevalue">{{_ClientCommunicationDetail.AddressLine1}}</p>-->
+                                 
                                 <div class="field_info w-100" >
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Address Line 1" value="{{_ClientCommunicationDetail.AddressLine1}}" [(ngModel)]="_ClientCommunicationDetail.AddressLine1" #AddressLine1>
+                                        <input matInput placeholder="Address Line 1" value="{{_ClientCommDetailsObj.AddressLine1}}" [(ngModel)]="_ClientCommDetailsObj.AddressLine1" #AddressLine1>
                                     </mat-form-field>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
                             <div class="field_set">
-                                <!--<div class="field_label" *ngIf="!_EditCommunicationDetails">Address Line 2</div>
-                                <p *ngIf="!_EditCommunicationDetails" class="datevalue">{{_ClientCommunicationDetail.AddressLine2}}</p>-->
+                               
                                 <div class="field_info w-100" >
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Address Line 2" value="{{_ClientCommunicationDetail.AddressLine2}}" [(ngModel)]="_ClientCommunicationDetail.AddressLine2" #AddressLine2>
+                                        <input matInput placeholder="Address Line 2" value="{{_ClientCommDetailsObj.AddressLine2}}" [(ngModel)]="_ClientCommDetailsObj.AddressLine2" #AddressLine2>
                                     </mat-form-field>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
                             <div class="field_set">
-                                <!--<div class="field_label" *ngIf="!_EditCommunicationDetails">Address Line 3</div>-->
-                                <!--<p *ngIf="!_EditCommunicationDetails" class="datevalue">{{_ClientCommunicationDetail.AddressLine3}}</p>-->
+                               
                                 <div class="field_info w-100" >
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Address Line 3" value="{{_ClientCommunicationDetail.AddressLine3}}" [(ngModel)]="_ClientCommunicationDetail.AddressLine3" #AddressLine3>
+                                        <input matInput placeholder="Address Line 3" value="{{_ClientCommDetailsObj.AddressLine3}}" [(ngModel)]="_ClientCommDetailsObj.AddressLine3" #AddressLine3>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                            <div class="field_set">
+
+                                <div class="field_info w-100">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Country" value="{{_ClientCommDetailsObj.Country}}" [(ngModel)]="_ClientCommDetailsObj.Country" #Country>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                            <div class="field_set">
+
+                                <div class="field_info w-100">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Zip Code" value="{{_ClientCommDetailsObj.ZipCode}}" [(ngModel)]="_ClientCommDetailsObj.ZipCode" #ZipCode>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -91,9 +104,9 @@
         </div>
         <div class="row m-0 btn-bottom pr-4 pl-4">
             <div class="w-100 float-left text-right">
-                <input type="button" value="&#xf0c7; Save" (click)="AddCommunicationDetails()" *ngIf="_EditCommunicationDetails" class="btn btn-success" />
-                <input type="button" value="&#xf040; Update" (click)="UpdateCommunicationDetails" *ngIf="!_EditCommunicationDetails" class="btn btn-info" />
-                <input type="button" value="&#xf00d; Cancel" (click)="CancelCommunicationDetails()" *ngIf="_EditCommunicationDetails" class="btn btn-secondary" />
+                <input type="button" value="&#xf0c7; Save" (click)="AddCommunicationDetails()" *ngIf="!_EditCommunicationDetails" class="btn btn-success" />
+                <input type="button" value="&#xf0c7; Update" (click)="UpdateCommunicationDetails()" *ngIf="_EditCommunicationDetails" class="btn btn-success" />
+                <input type="button" value="&#xf00d; Cancel" (click)="CancelAddEditCommunicationDetails()" class="btn btn-secondary" />
                 
             </div>
         </div>

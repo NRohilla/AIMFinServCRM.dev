@@ -27,3 +27,13 @@ D:\Client Projects\AIM6-3-2018\AIMFinServCRM.dev\FinServDataModel\obj\Debug\FinS
 D:\Client Projects\AIM6-3-2018\AIMFinServCRM.dev\FinServDataModel\obj\Debug\FinServDataModel.pdb
 D:\Client Projects\AIM6-3-2018\AIMFinServCRM.dev\FinServDataModel\obj\Debug\FinServDataModel.csprojResolveAssemblyReference.cache
 D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServDataModel\obj\Debug\FinServDataModel.csprojResolveAssemblyReference.cache
+D:\NickAlcock_NewZealand\Deepak\FinServDataModel\bin\Debug\FinServDataModel.dll.config
+D:\NickAlcock_NewZealand\Deepak\FinServDataModel\bin\Debug\FinServDataModel.dll
+D:\NickAlcock_NewZealand\Deepak\FinServDataModel\bin\Debug\FinServDataModel.pdb
+D:\NickAlcock_NewZealand\Deepak\FinServDataModel\bin\Debug\EntityFramework.dll
+D:\NickAlcock_NewZealand\Deepak\FinServDataModel\bin\Debug\EntityFramework.SqlServer.dll
+D:\NickAlcock_NewZealand\Deepak\FinServDataModel\bin\Debug\EntityFramework.xml
+D:\NickAlcock_NewZealand\Deepak\FinServDataModel\bin\Debug\EntityFramework.SqlServer.xml
+D:\NickAlcock_NewZealand\Deepak\FinServDataModel\obj\Debug\FinServDataModel.dll
+D:\NickAlcock_NewZealand\Deepak\FinServDataModel\obj\Debug\FinServDataModel.pdb
+D:\NickAlcock_NewZealand\Deepak\FinServDataModel\obj\Debug\FinServDataModel.csprojResolveAssemblyReference.cache

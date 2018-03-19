@@ -39,6 +39,9 @@ namespace FinServServices.Controllers
         {
             return Repository.GetLoanApplicationDetails(LoanAppNo);
         }
+        
+                
+        #region Client_Communication_Detail Methods         //Deepak Saini [16-03-2018]
 
         [HttpGet]
         [Route("GetClientCommunicationDetails")]
@@ -47,12 +50,48 @@ namespace FinServServices.Controllers
             return Repository.GetClientCommunicationDetails(ClientID);
         }
 
-        [HttpGet]
-        [Route("GetClientEmployementDetails")]
-        public List<ApplicantEmployementDetails> GetClientEmployementDetails(string ClientID)
+        [HttpPost]
+        [Route("SaveClientCommunicationDetails")]
+        public bool SaveClientCommunicationDetails(ApplicantCommunicationDetails _objApplicantCommDetails)
         {
-            return Repository.GetClientEmployementDetails(ClientID);
+            return Repository.SaveClientCommunicationDetails(_objApplicantCommDetails);
         }
+
+        [HttpPost]
+        [Route("UpdateClientCommunicationDetails")]
+        public bool UpdateClientCommunicationDetails(ApplicantCommunicationDetails _objApplicantCommDetails)
+        {
+            return Repository.UpdateClientCommunicationDetails(_objApplicantCommDetails);
+        }
+
+        #endregion
+
+        #region Client_Employment_Detail Methods         //Deepak Saini [16-03-2018]
+
+        [HttpGet]
+        [Route("GetClientemploymentDetails")]
+        public List<ApplicantEmploymentDetails> GetClientemploymentDetails(string ClientID)
+        {
+            return Repository.GetClientEmploymentDetails(ClientID);
+        }
+
+        [HttpPost]
+        [Route("SaveClientEmploymentDetails")]
+        public bool SaveClientEmploymentDetails(ApplicantEmploymentDetails _objEmploymentDetails)
+        {
+            return Repository.SaveClientEmploymentDetails(_objEmploymentDetails);
+        }
+
+        [HttpPost]
+        [Route("UpdateClientEmploymentDetails")]
+        public bool UpdateClientEmploymentDetails(ApplicantEmploymentDetails _objEmploymentDetails)
+        {
+            return Repository.UpdateClientEmploymentDetails(_objEmploymentDetails);
+        }
+
+        #endregion
+
+        #region Client_Qualification_Detail Methods         //Deepak Saini [16-03-2018]
 
         [HttpGet]
         [Route("GetClientQualificationDetails")]
@@ -62,18 +101,22 @@ namespace FinServServices.Controllers
         }
 
         [HttpPost]
-        [Route("UpdateClientEmploymentDetails")]
-        public bool UpdateClientEmploymentDetails(List<ApplicantEmployementDetails> ApplicantEmployementDetails)
+        [Route("UpdateClientQualificationDetails")]
+        public bool UpdateClientQualificationDetails(ApplicantQualificationDetails _objQualificationDetails)
         {
-            return Repository.UpdateClientEmploymentDetails(ApplicantEmployementDetails);
+            return Repository.UpdateClientQualificationDetails(_objQualificationDetails);
+        }
+        
+        [HttpPost]
+        [Route("SaveClientQualificationDetails")]
+        public bool SaveClientQualificationDetails(ApplicantQualificationDetails _objQualificationDetails)
+        {
+            return Repository.SaveClientQualificationDetails(_objQualificationDetails);
         }
 
-        [HttpPost]
-        [Route("UpdateClientCommunicationDetails")]
-        public bool UpdateClientCommunicationDetails(List<ApplicantCommunicationDetails> ApplicantCommunicationDetails)
-        {
-            return Repository.UpdateClientCommunicationDetails(ApplicantCommunicationDetails);
-        }
+        #endregion
+
+        
 
         [HttpPost]
         [Route("UpdateClientPersonalDetails")]
@@ -101,10 +144,10 @@ namespace FinServServices.Controllers
             return Repository.SaveLoanApplicationQualificationDetails(ApplicantQualificationDetails);
         }
         [HttpPost]
-        [Route("SaveLoanApplicationEmployementDetails")]
-        public bool SaveLoanApplicationEmployementDetails(ApplicantEmployementDetails ApplicantEmployementDetails)
+        [Route("SaveLoanApplicationemploymentDetails")]
+        public bool SaveLoanApplicationEmploymentDetails(ApplicantEmploymentDetails ApplicantemploymentDetails)
         {
-            return Repository.SaveLoanApplicationEmployementDetails(ApplicantEmployementDetails);
+            return Repository.SaveLoanApplicationEmploymentDetails(ApplicantemploymentDetails);
         }
         [HttpPost]
         [Route("SaveLoanApplicationCommunicationDetails")]

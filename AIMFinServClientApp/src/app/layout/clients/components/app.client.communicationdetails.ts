@@ -17,30 +17,43 @@ import {AppBaseComponent} from '../../../shared/app.basecomponent';
     providers: [ClientsService]
 })
 export class ClientscommunicationComponent extends AppBaseComponent implements OnInit {
-    //public _ViewApplicantDetails: boolean = false;
-    //public _FormErrors;
-    //public _FormErrorsDescription: string = '';
-    //public _EditPersonalDetails: boolean = false;
     public _EditCommunicationDetails: boolean = false;
-
-
     public _Operationtitle: string = "Add";
-    public _ClientCommDetailsObj: {};
-    public _ClientCommunicationDetails: {
-        AddressLine1: '',
-        AddressLine2: '',
-        AddressLine3: '',
-        ApplicantID: '',
-        _AddressTypeMaster: {}
+    public _ClientCommDetailsObj = {
+        AddressLine1: "",
+        AddressLine2: "",
+        AddressLine3: "",
+        AddressType: "",
+        AutoID: "",
+        ApplicantID: "",
+        Country: "",
+        ZipCode: "",
+        CommunicationID: ""
+    };
+    public _ClientCommunicationDetails = {};
+
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) {
+        super();
     }
 
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { super(); }
-
     ngOnInit() {
+        this._ClientCommDetailsObj = {
+            AddressLine1: "",
+            AddressLine2: "",
+            AddressLine3: "",
+            AddressType: "",
+            AutoID: "",
+            ApplicantID: "",
+            Country: "",
+            ZipCode: "",
+            CommunicationID: ""
+        };
         if (this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
-            this._ClientsService.GetClientCommunicationDetails(<string>this._LocalStorageService.get("ApplicantID")).subscribe(res => this.GetClientCommDetailsSuccess(res), res => this.GetClientCommDetailsError(res));
+            this._ClientsService.GetClientCommunicationDetails(<string>this._LocalStorageService.get("ApplicantID"))
+                .subscribe(res => this.GetClientCommDetailsSuccess(res), res => this.GetClientCommDetailsError(res));
+
         }
-    }   
+    }
 
     GetClientCommDetailsSuccess(res) {
         debugger;
@@ -48,76 +61,75 @@ export class ClientscommunicationComponent extends AppBaseComponent implements O
     }
     GetClientCommDetailsError(res) { }
 
-       
+
     UpdateCommunicationDetails() {
         debugger;
-        this._EditCommunicationDetails = false;
-        this._ClientsService.UpdateClientCommunicationDetails(this._ClientCommunicationDetails).subscribe(res => this.updateclientCommunicationSuccess(res), res => this.updateclientCommunicationError(res));
+
+        this._ClientsService.UpdateClientCommunicationDetails(this._ClientCommDetailsObj).subscribe(res => this.updateclientCommunicationSuccess(res), res => this.updateclientCommunicationError(res));
     }
 
     GridSelectionChange(data, selection) {
-        debugger;
+        this._EditCommunicationDetails = true;
         this._Operationtitle = "Update";
-        this._ClientCommDetailsObj = data.data.data[selection.index];
+        var FetchedValues = data.data.data[selection.index];
+        this._ClientCommDetailsObj.AddressLine1 = FetchedValues.AddressLine1;
+        this._ClientCommDetailsObj.AddressLine2 = FetchedValues.AddressLine2;
+        this._ClientCommDetailsObj.AddressLine3 = FetchedValues.AddressLine3;
+        this._ClientCommDetailsObj.Country = FetchedValues.Country;
+        this._ClientCommDetailsObj.ZipCode = FetchedValues.ZipCode;
+        this._ClientCommDetailsObj.AddressType = FetchedValues.AddressType.toString();
+        this._ClientCommDetailsObj.AutoID = FetchedValues.AutoID;
+        this._ClientCommDetailsObj.CommunicationID = FetchedValues.CommunicationID;
+        debugger;
     }
+
     updateclientCommunicationSuccess(res) {
         debugger;
+        this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
+            this._ClientsService.GetClientCommunicationDetails(<string>this._LocalStorageService.get("ApplicantID"))
+                .subscribe(res => this.GetClientCommDetailsSuccess(res), res => this.GetClientCommDetailsError(res));
+        }
+        this.CancelAddEditCommunicationDetails();
     }
 
     updateclientCommunicationError(res) {
         debugger;
     }
 
-    AddClient() {  }
+    AddCommunicationDetails() {
+        if (this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
+            this._ClientCommDetailsObj.ApplicantID = this._LocalStorageService.get("ApplicantID").toString();
+            this._ClientsService.SaveClientCommunicationDetails(this._ClientCommDetailsObj).subscribe(res => this.AddClientCommunicationSuccess(res), res => this.AddClientCommunicationError(res));
+        }
+    }
 
+    AddClientCommunicationSuccess(res) {
+        debugger;
+        this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
+            this._ClientsService.GetClientCommunicationDetails(<string>this._LocalStorageService.get("ApplicantID"))
+                .subscribe(res => this.GetClientCommDetailsSuccess(res), res => this.GetClientCommDetailsError(res));
+        }
+        this.CancelAddEditCommunicationDetails();
+    }
 
+    AddClientCommunicationError(res) {
+        debugger;
+    }
 
-    
-    //GetApplicantSuccess(res) {
-    //    debugger;
-    //    this._ApplicantTypes = JSON.parse(res._body);
-
-    //}
-    //GetApplicantError(res) { }
-
-    //SwitchStatus(ID) {
-    //    debugger;
-    //    this._MastersService.SwitchApplicantEntityStatus(ID).subscribe(res => this.SwitchApplicantSuccess(res), res => this.SwitchApplicantError(res));
-    //}
-    //SwitchApplicantSuccess(res) { this._MastersService.GetApplicantTypes().subscribe(res => this.GetApplicantSuccess(res), res => this.GetApplicantError(res)); }
-    //SwitchApplicantError(res) { }
-
-    //UpdateApplicantType() {
-    //    this._MastersService.UpdateApplicantEntity(this._ApplicantObj).subscribe(res => this.UpdateApplicantSuccess(res), res => this.UpdateApplicantError(res));
-    //}
-    //UpdateApplicantSuccess(res) {
-    //    this._MastersService.GetApplicantTypes().subscribe(res => this.GetApplicantSuccess(res), res => this.GetApplicantError(res));
-    //    this.CancelApplicantType();
-    //}
-    //UpdateApplicantError(res) { }
-
-    //GridSelectionChange(data, selection) {
-    //    debugger;
-    //    this._Operationtitle = "Update";
-    //    this._ApplicantObj = data.data.data[selection.index];
-    //}
-    //CancelApplicantType() {
-    //    debugger;
-    //    this._Operationtitle = "Add";
-    //    this._ApplicantObj = {
-    //        ApplicantType: "",
-    //        ApplicantTypeID: "",
-    //        IsActive: ""
-    //    };
-    //}
-
-    //AddApplicantType() {
-    //    debugger;
-    //    this._MastersService.AddApplicantEntity(this._ApplicantObj).subscribe(res => this.AddApplicantSuccess(res), res => this.AddApplicantError(res));
-    //}
-    //AddApplicantSuccess(res) {
-    //    this._MastersService.GetApplicantTypes().subscribe(res => this.GetApplicantSuccess(res), res => this.GetApplicantError(res));
-    //    this.CancelApplicantType();
-    //}
-    //AddApplicantError(res) { }
+    CancelAddEditCommunicationDetails() {
+        debugger;
+        this._EditCommunicationDetails = false;
+        this._Operationtitle = "Add";
+        this._ClientCommDetailsObj = {
+            AddressLine1: "",
+            AddressLine2: "",
+            AddressLine3: "",
+            AddressType: "",
+            AutoID: "",
+            ApplicantID: "",
+            Country: "",
+            ZipCode: "",
+            CommunicationID: ""
+        };
+    }
 }
