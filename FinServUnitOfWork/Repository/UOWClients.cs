@@ -736,6 +736,7 @@ namespace FinServUnitOfWork.Repository
                         tblLoanGuarantor _tblLoanGuarantorDetail = new tblLoanGuarantor();
                         _tblLoanGuarantorDetail.GuarantorID = Guid.NewGuid();
                         _tblLoanGuarantorDetail.LoanApplicationNo = _objGuarantorDetails.LoanApplicationNo;
+                        _tblLoanGuarantorDetail.Title = _objGuarantorDetails.Title;
                         _tblLoanGuarantorDetail.FirstName = _objGuarantorDetails.FirstName;
                         _tblLoanGuarantorDetail.MiddleName = _objGuarantorDetails.MiddleName;
                         _tblLoanGuarantorDetail.LastName = _objGuarantorDetails.LastName;
@@ -783,6 +784,7 @@ namespace FinServUnitOfWork.Repository
                         objGuarantorDetails.Add(new LoanGuarantorDetails
                         {
                             GuarantorID = itemGetAllGuarantors.GuarantorID,
+                            Title = itemGetAllGuarantors.Title,
                             FirstName = itemGetAllGuarantors.FirstName,
                             MiddleName = itemGetAllGuarantors.MiddleName,
                             LastName = itemGetAllGuarantors.LastName,
@@ -815,6 +817,7 @@ namespace FinServUnitOfWork.Repository
                     if (GetGuarantorDetails != null)
                     {
                         objtoReturn.GuarantorID = GetGuarantorDetails.GuarantorID;
+                        objtoReturn.Title = GetGuarantorDetails.Title;
                         objtoReturn.FirstName = GetGuarantorDetails.FirstName;
                         objtoReturn.MiddleName = GetGuarantorDetails.MiddleName;
                         objtoReturn.LastName = GetGuarantorDetails.LastName;
@@ -855,6 +858,7 @@ namespace FinServUnitOfWork.Repository
                     if (FetchGuarantorDetails != null)
                     {
                         FetchGuarantorDetails.GuarantorID = _objUpdateGuartDetails.GuarantorID;
+                        FetchGuarantorDetails.Title = _objUpdateGuartDetails.Title;
                         FetchGuarantorDetails.FirstName = _objUpdateGuartDetails.FirstName;
                         FetchGuarantorDetails.MiddleName = _objUpdateGuartDetails.MiddleName;
                         FetchGuarantorDetails.LastName = _objUpdateGuartDetails.LastName;
@@ -874,7 +878,7 @@ namespace FinServUnitOfWork.Repository
                         FetchGuarantorDetails.Country = _objUpdateGuartDetails.Country;
                         FetchGuarantorDetails.ZipCode = _objUpdateGuartDetails.ZipCode;
 
-                        db.SaveChanges();
+                       db.SaveChanges();
 
                     }
                     return true;
