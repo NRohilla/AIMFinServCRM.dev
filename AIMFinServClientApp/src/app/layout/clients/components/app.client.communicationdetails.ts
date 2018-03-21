@@ -85,7 +85,7 @@ export class ClientscommunicationComponent extends AppBaseComponent implements O
 
     updateclientCommunicationSuccess(res) {
         debugger;
-        this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
+        if(this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
             this._ClientsService.GetClientCommunicationDetails(<string>this._LocalStorageService.get("ApplicantID"))
                 .subscribe(res => this.GetClientCommDetailsSuccess(res), res => this.GetClientCommDetailsError(res));
         }
@@ -105,7 +105,7 @@ export class ClientscommunicationComponent extends AppBaseComponent implements O
 
     AddClientCommunicationSuccess(res) {
         debugger;
-        this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
+        if(this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
             this._ClientsService.GetClientCommunicationDetails(<string>this._LocalStorageService.get("ApplicantID"))
                 .subscribe(res => this.GetClientCommDetailsSuccess(res), res => this.GetClientCommDetailsError(res));
         }

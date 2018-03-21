@@ -26,7 +26,7 @@ namespace FinServBussinessEntities
         public Applicants _ApplicationID { get; set; }
         public Applicants _ApplicantDetail { get; set; }
 
-        public virtual EmploymentTypeMaster _EmploymentTypeMasterDetail { get; set; }
-        public virtual ProfessionTypeMaster _ProfessionTypeMasterDetail { get; set; }
+        public  EmploymentTypeMaster _EmploymentTypeDetail { get; set; }
+        public  ProfessionTypeMaster _ProfessionTypeDetail { get; set; }
     }
 }

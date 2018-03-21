@@ -8,23 +8,22 @@ import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import {ClientsService} from '../../../services/app.clients.service';
+import {MastersService } from '../../../services/app.masters.service';
 import {AppBaseComponent} from '../../../shared/app.basecomponent';
 
 @Component({
     selector: `client-qualification-details`,
     templateUrl: './app.client.qualificationdetails.html',
     animations: [routerTransition()],
-    providers: [ClientsService]
+    providers: [ClientsService, MastersService]
 })
-export class ClientqualificationComponent extends AppBaseComponent implements OnInit {
-    //public _ViewApplicantDetails: boolean = false;
-    //public _FormErrors;
-    //public _FormErrorsDescription: string = '';
-    //public _EditPersonalDetails: boolean = false;
-    //public _EditCommunicationDetails: boolean = false;
+
+export class ClientqualificationComponent extends AppBaseComponent implements OnInit {   
+    public _EditQualificationDetails: boolean = false;
 
     public _Operationtitle: string = "Add";
     public _ClientQualificationDetails = {};
+    public _TypeOfQualification = [];
 
     public _ClientQualificationDetailsObj = {
         AutoID: '',
@@ -33,14 +32,13 @@ export class ClientqualificationComponent extends AppBaseComponent implements On
         TypeOfQualification: '',
         PassingYear: '',
         CourseName: '',
-        UniversityName: ''
-        
+        UniversityName: '',
+        _QualificationTypeDetail: {}       
     };
 
+    errorMessage: "No Data"  
 
-   
-
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { super(); }
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, private _MasterService: MastersService) { super(); }
 
     ngOnInit() {
 
@@ -51,9 +49,11 @@ export class ClientqualificationComponent extends AppBaseComponent implements On
             TypeOfQualification: '',
             PassingYear: '',
             CourseName: '',
-            UniversityName: ''
-            
+            UniversityName: '',
+            _QualificationTypeDetail: {}           
         };
+
+        this.GetQualificationTypeDetails();
 
         if (this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
             this._ClientsService.GetClientQualificationDetails(<string>this._LocalStorageService.get("ApplicantID")).subscribe(res => this.GetClientQualDetailsSuccess(res), res => this.GetClientQualDetailsError(res));
@@ -65,40 +65,86 @@ export class ClientqualificationComponent extends AppBaseComponent implements On
     }
     GetClientQualDetailsError(res) { }
 
+    GetQualificationTypeDetails() {
+        debugger;
+        this._MasterService.GetQualificationTypes().subscribe(res => this.GetQualificationTypeDetailsSuccess(res), error => this.errorMessage = <any>error);
+    }
+    GetQualificationTypeDetailsSuccess(res) {
+        debugger
+        this._TypeOfQualification = JSON.parse(res._body);
+    }
+
+    GridSelectionChange(data, selection) {
+        debugger;
+        this._EditQualificationDetails = true;
+        this._Operationtitle = "Update";
+        var FetchedValues = data.data.data[selection.index];
+
+        this._ClientQualificationDetailsObj.AutoID = FetchedValues.AutoID;
+        this._ClientQualificationDetailsObj.ApplicantID = FetchedValues.ApplicantID;
+        this._ClientQualificationDetailsObj.CourseName = FetchedValues.CourseName;        
+        this._ClientQualificationDetailsObj.PassingYear = FetchedValues.PassingYear;
+        this._ClientQualificationDetailsObj.QualificationID = FetchedValues.QualificationID;
+        this._ClientQualificationDetailsObj.TypeOfQualification = FetchedValues.TypeOfQualification;        
+        this._ClientQualificationDetailsObj.UniversityName = FetchedValues.UniversityName;
+        this._ClientQualificationDetailsObj._QualificationTypeDetail = FetchedValues._QualificationTypeDetail;
+    }
+
+    AddQualificationDetails() {
+        debugger;
+        if (this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
+            this._ClientQualificationDetailsObj.ApplicantID = this._LocalStorageService.get("ApplicantID").toString();
+            this._ClientsService.SaveClientQualificationDetails(this._ClientQualificationDetailsObj).subscribe(res => this.AddQualificationDetailsSuccess(res), res => this.AddQualificationDetailsError(res));
+        }
+    }
+
+    AddQualificationDetailsSuccess(res) {
+        debugger;
+        if (this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
+            this._ClientsService.GetClientQualificationDetails(<string>this._LocalStorageService.get("ApplicantID"))
+                .subscribe(res => this.GetClientQualDetailsSuccess(res), res => this.GetClientQualDetailsError(res));
+        }
+        this.CancelAddEditQualificationDetails();
+    }
+
+    AddQualificationDetailsError(res) {
+        debugger;
+    }
+
+    UpdateQualificationDetails() {
+        debugger;
+
+        this._ClientsService.UpdateClientQualificationDetails(this._ClientQualificationDetailsObj).subscribe(res => this.UpdateQualificationDetailsSuccess(res), res => this.UpdateQualificationDetailsError(res));
+    }
+
+    UpdateQualificationDetailsSuccess(res) {
+        debugger;
+        if (this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
+            this._ClientsService.GetClientQualificationDetails(<string>this._LocalStorageService.get("ApplicantID"))
+                .subscribe(res => this.GetClientQualDetailsSuccess(res), res => this.GetClientQualDetailsError(res));
+        }
+        this.CancelAddEditQualificationDetails();
+    }
+
+    UpdateQualificationDetailsError(res) {
+        debugger;
+    }
+
+    CancelAddEditQualificationDetails() {
+        debugger;
+        this._EditQualificationDetails = false;
+        this._Operationtitle = "Add";
+        this._ClientQualificationDetailsObj = {
+            AutoID: '',
+            QualificationID: '',
+            ApplicantID: '',
+            TypeOfQualification: '',
+            PassingYear: '',
+            CourseName: '',
+            UniversityName: '',
+            _QualificationTypeDetail: {}
+        };
+    }
 
 
-
-    //EditPersonalDetails() {
-    //    this._EditPersonalDetails = !this._EditPersonalDetails;
-    //}
-
-    //EditCommunicationDetails() {
-    //    this._EditCommunicationDetails = !this._EditCommunicationDetails;
-    //}
-
-    //updateclientPersonalSuccess(res) {
-    //    debugger;
-    //}
-
-    //updateclientPersonalError(res) {
-    //    debugger;
-    //}
-
-    //UpdateCommunicationDetails() {
-    //    debugger;
-    //    this._EditCommunicationDetails = false;
-    //    this._ClientsService.UpdateClientCommunicationDetails(this._ApplicantQualificationDetails).subscribe(res => this.updateclientCommunicationSuccess(res), res => this.updateclientCommunicationError(res));
-    //}
-
-    //updateclientCommunicationSuccess(res) {
-    //    debugger;
-    //}
-
-    //updateclientCommunicationError(res) {
-    //    debugger;
-    //}
-
-    //AddClient() {
-
-    //}
 }

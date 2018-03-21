@@ -242,10 +242,23 @@ namespace FinServUnitOfWork.Repository
                                 ApplicantID = itemEmploymentDetail.ApplicantID,
                                 AutoID = itemEmploymentDetail.AutoID,
                                 EmploymentID = itemEmploymentDetail.EmploymentID,
-                                EmployerName = itemEmploymentDetail.EmployerName,
-                                Income = itemEmploymentDetail.Income,
-                                SourceOfIncome =Convert.ToInt32(itemEmploymentDetail.SourceOfIncome),
-                                Status = itemEmploymentDetail.Status,
+                                EmployerName = itemEmploymentDetail.EmployerName.Trim(),
+                                Income = itemEmploymentDetail.Income.Trim(),
+                                SourceOfIncome = itemEmploymentDetail.SourceOfIncome,
+                                Duration=itemEmploymentDetail.Duration.Trim(),
+                                Status = itemEmploymentDetail.Status.Trim(),
+                                _EmploymentTypeDetail= new EmploymentTypeMaster {
+                                    ID = itemEmploymentDetail.tblMasterTypeOfEmployment.ID,
+                                    EmployementType = itemEmploymentDetail.tblMasterTypeOfEmployment.EmployementType.Trim(),
+                                    IsActive=itemEmploymentDetail.tblMasterTypeOfEmployment.IsActive
+                                },
+                                _ProfessionTypeDetail = new ProfessionTypeMaster
+                                {
+                                    ID=itemEmploymentDetail.tblMasterTypeOfProfession.ID,
+                                    Profession= itemEmploymentDetail.tblMasterTypeOfProfession.Profession.Trim(),
+                                    IsActive=itemEmploymentDetail.tblMasterTypeOfProfession.IsActive
+                                }                        
+                       
                             });
                         }
                     }
@@ -268,7 +281,8 @@ namespace FinServUnitOfWork.Repository
                         tblApplicantEmploymentDetail _objDetails = new tblApplicantEmploymentDetail();
                         _objDetails.EmploymentID = Guid.NewGuid();
                         _objDetails.ApplicantID = _objEmploymentDetails.ApplicantID;
-                        _objDetails.SourceOfIncome = Convert.ToInt32(_objEmploymentDetails.SourceOfIncome);
+                        _objDetails.SourceOfIncome = _objEmploymentDetails._EmploymentTypeDetail.ID;
+                        _objDetails.ProfessionTypeID = _objEmploymentDetails._ProfessionTypeDetail.ID;
                         _objDetails.EmployerName = _objEmploymentDetails.EmployerName;
                         _objDetails.Duration = _objEmploymentDetails.Duration;
                         _objDetails.Income = _objEmploymentDetails.Income;
@@ -296,7 +310,8 @@ namespace FinServUnitOfWork.Repository
                      p.EmploymentID == _objEmploymentDetails.EmploymentID).FirstOrDefault();
                     if (fetchObj != null)
                     {
-                        fetchObj.SourceOfIncome =Convert.ToInt32(_objEmploymentDetails.SourceOfIncome);
+                        fetchObj.SourceOfIncome =_objEmploymentDetails._EmploymentTypeDetail.ID;
+                        fetchObj.ProfessionTypeID = _objEmploymentDetails._ProfessionTypeDetail.ID;
                         fetchObj.EmployerName = _objEmploymentDetails.EmployerName;
                         fetchObj.Duration = _objEmploymentDetails.Duration;
                         fetchObj.Income = _objEmploymentDetails.Income;
@@ -338,9 +353,11 @@ namespace FinServUnitOfWork.Repository
                                 QualificationID = itemQualificationDetail.QualificationID,
                                 TypeOfQualification = itemQualificationDetail.TypeOfQualification,
                                 UniversityName = itemQualificationDetail.UniversityName,
-                                _MasterTypeQualificationID = new QualificationTypeMaster()
+                                _QualificationTypeDetail = new QualificationTypeMaster()
                                 {
-                                    Qualifications = itemQualificationDetail.tblMasterTypeOfQualification.Qualifications
+                                    ID = itemQualificationDetail.tblMasterTypeOfQualification.ID,
+                                    Qualifications = itemQualificationDetail.tblMasterTypeOfQualification.Qualifications,
+                                    IsActive = itemQualificationDetail.tblMasterTypeOfQualification.IsActive
                                 }
                             });
                         }
@@ -348,7 +365,7 @@ namespace FinServUnitOfWork.Repository
                     return objApplicantQualificationDetails;
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 return null;
             }
@@ -369,7 +386,7 @@ namespace FinServUnitOfWork.Repository
                         _objDetails.CourseName = _objQualificationDetails.CourseName;
                         _objDetails.PassingYear = _objQualificationDetails.PassingYear;
                         _objDetails.UniversityName = _objQualificationDetails.UniversityName;
-                        _objDetails.TypeOfQualification = _objQualificationDetails.TypeOfQualification;
+                        _objDetails.TypeOfQualification = _objQualificationDetails._QualificationTypeDetail.ID;
                         db.tblApplicantQualificationDetails.Add(_objDetails);
                         db.SaveChanges();
                     }
@@ -396,7 +413,7 @@ namespace FinServUnitOfWork.Repository
                         fetchObj.CourseName = _objQualificationDetails.CourseName;
                         fetchObj.PassingYear = _objQualificationDetails.PassingYear;
                         fetchObj.UniversityName = _objQualificationDetails.UniversityName;
-                        fetchObj.TypeOfQualification = _objQualificationDetails.TypeOfQualification;
+                        fetchObj.TypeOfQualification = _objQualificationDetails._QualificationTypeDetail.ID;
                         TotalRecordsUpdated += db.SaveChanges();
                         return true;
                     }

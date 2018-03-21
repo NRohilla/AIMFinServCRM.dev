@@ -43,12 +43,12 @@ export class ClientsService {
         return this._http.get(this.baseurl + "Clients/GetClientQualificationDetails?ClientID=" + ClientID, this.options);
     }
     
-    SaveClientQualificationDetails(ClientID) {
-        return this._http.get(this.baseurl + "Clients/SaveClientQualificationDetails?ClientID=" + ClientID, this.options);
+    SaveClientQualificationDetails(ClientQualificationDetails) {
+        return this._http.post(this.baseurl + "Clients/SaveClientQualificationDetails", ClientQualificationDetails, this.options);
     }
 
-    UpdateClientQualificationDetails(ClientID) {
-        return this._http.get(this.baseurl + "Clients/UpdateClientQualificationDetails?ClientID=" + ClientID, this.options);
+    UpdateClientQualificationDetails(ClientQualificationDetails) {
+        return this._http.post(this.baseurl + "Clients/UpdateClientQualificationDetails", ClientQualificationDetails, this.options);
     }
 
     //================ CODE END HERE ===============//
@@ -60,12 +60,13 @@ export class ClientsService {
         return this._http.get(this.baseurl + "Clients/GetClientEmploymentDetails?ClientID=" + ClientID, this.options);
     }
 
-    UpdateclientEmploymentdetails(ApplicantEmploymentDetails) {
-        return this._http.post(this.baseurl + "Clients/UpdateClientEmploymentDetails", ApplicantEmploymentDetails, this.options);
+    UpdateClientEmploymentdetails(ClientEmployementDetails) {
+        return this._http.post(this.baseurl + "Clients/UpdateClientEmploymentDetails", ClientEmployementDetails, this.options);
     }
 
-    SaveClientEmploymentDetails(ClientID) {
-        return this._http.get(this.baseurl + "Clients/SaveClientEmploymentDetails?ClientID=" + ClientID, this.options);
+    SaveClientEmploymentDetails(ClientEmployementDetails) {
+        debugger;
+        return this._http.post(this.baseurl + "Clients/SaveClientEmploymentDetails", ClientEmployementDetails, this.options);
     }
     //================ CODE END HERE ===============//
 
