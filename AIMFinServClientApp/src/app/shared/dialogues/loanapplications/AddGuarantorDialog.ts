@@ -16,6 +16,7 @@ import { MastersService } from '../../../services//app.masters.service';
     providers: [ClientsService, MastersService]
 })
 export class AddGuarantorDialog {
+    @ViewChild('AddGuarantorform') AddGuarantorform;
    
 
     constructor(
@@ -23,11 +24,9 @@ export class AddGuarantorDialog {
         @Inject(MAT_DIALOG_DATA) public data: any, private _ClientsService: ClientsService, public dialog: MatDialog, private _MasterService: MastersService, private _LocalStorageService: LocalStorageService, ) { }
 
     public gridData: any[];
-    public _ShowUpdateButton: boolean = false;
-    public _ShowAddButton: boolean = true;
     public _ShowViewDetails: boolean = false;
     public _AddGuarantor: boolean = true;
-    public _AfterUpdate: boolean = false;
+    public _ViewDetails: boolean = false;
 
     public _AddGuarantorDetails = {
         GuarantorID: '',
@@ -47,12 +46,23 @@ export class AddGuarantorDialog {
         AddressLine1: '',
         AddressLine2: '',
         AddressLine3: '',
+        Country: '',
+        ZipCode:'',
         LoanApplicationNo:'',
         _LoanApplicationFormDetails: {
             LoanApplicationNo:''
         }
     };
 
+    public FormatNZResidents() {
+        if (this._AddGuarantorDetails.NZResidents.toString() == "1") {
+            this._AddGuarantorDetails.NZResidents = true;
+        }
+        if (this._AddGuarantorDetails.NZResidents.toString() == "0") {
+            this._AddGuarantorDetails.NZResidents = false;
+        }
+    }
+    
     ngOnInit() {
         this._AddGuarantorDetails =
             {
@@ -73,19 +83,18 @@ export class AddGuarantorDialog {
             AddressLine1: '',
             AddressLine2: '',
             AddressLine3: '',
+            Country: '',
+            ZipCode: '',
             LoanApplicationNo: '',
             _LoanApplicationFormDetails: {
                 LoanApplicationNo: ''
             }
             };
-
-
-        this._ClientsService.GetGuarantor().subscribe(res => this.GetGuarantorSuccess(res), res => this.GetGuarantorError(res));
+        this._ClientsService.GetAddedGuarantorGrid().subscribe(res => this.GetAddedGuarantorGridSuccess(res), res => this.GetAddedGuarantorGridError(res));
 
     }
-
+    
     AddGuarantor() {
-     
         if (this._LocalStorageService.get("LoanApplicationNoViewed") != undefined) {
             this._AddGuarantorDetails.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNoViewed");
             debugger;
@@ -93,73 +102,58 @@ export class AddGuarantorDialog {
         }
     }
     AddGuarantorSuccess(res) {
-        debugger;
+        this.FormatNZResidents();
         this._AddGuarantorDetails = JSON.parse(res._body);
         this.GetAddedGuarantorGrid();
     }
-
     AddGuarantorError(res) { }
 
     GetAddedGuarantorGrid() {
+        this._ClientsService.GetAddedGuarantorGrid().subscribe(res => this.GetAddedGuarantorGridSuccess(res), res => this.GetAddedGuarantorGridError(res));
+        this.FormatNZResidents();  
        
-
-        this._ClientsService.GetGuarantor().subscribe(res => this.GetGuarantorSuccess(res), res => this.GetGuarantorError(res));
-        if (this._AddGuarantorDetails.NZResidents.toString() == "1") {
-            this._AddGuarantorDetails.NZResidents = true;
-        }
-        else {
-            this._AddGuarantorDetails.NZResidents = false;
-        }
     }
-
-    GetGuarantorSuccess(res) {
+    GetAddedGuarantorGridSuccess(res) {
+        this.FormatNZResidents();  
         this.gridData = JSON.parse(res._body);
-        
     }
-
-    GetGuarantorError(res) { }
+    GetAddedGuarantorGridError(res) { }
 
     ViewDetails(GuarantorID) {
         debugger;
+        this._ViewDetails = true;
         this._AddGuarantor = false;
+        this._ShowViewDetails = false;
         this._LocalStorageService.set("GuarantorIDNoViewed", GuarantorID);
-        this._ClientsService.GetGuarantorDetails(GuarantorID).subscribe(res => this.GetGuarantorDetailsSuccess(res), res => this.GetGuarantorDetailsError(res));
+        this._ClientsService.GetGuarantorDetails(GuarantorID).subscribe(res => this.ViewDetailsSuccess(res), res => this.ViewDetailsError(res));
+        this.FormatNZResidents(); 
     }
-    GetGuarantorDetailsSuccess(res) {
+    ViewDetailsSuccess(res) {
+        debugger;
         this._AddGuarantorDetails = JSON.parse(res._body);
-        this._ShowViewDetails = true;
-        this._ShowAddButton = false;
-        this._ShowUpdateButton = true;
        
     }
-    GetGuarantorDetailsError(res) { }
+    ViewDetailsError(res) { }
 
     UpdateGuarantorDetails() {
         debugger;
-        if (this._AddGuarantorDetails.NZResidents.toString() == "1") {
-            this._AddGuarantorDetails.NZResidents = true;
-        }
-        else {
-            this._AddGuarantorDetails.NZResidents = false;
-        }
-        this._ClientsService.UpdateGuarantorDetails(this._AddGuarantorDetails).subscribe(res => this.UpdateGuarantorDetailsSuccess(res), res => this.UpdateGuarantorDetailsError(res)); 
+        this._ClientsService.UpdateGuarantorDetails(this._AddGuarantorDetails).subscribe(res => this.UpdateGuarantorDetailsSuccess(res), res => this.UpdateGuarantorDetailsError(res));
     }
-
     UpdateGuarantorDetailsSuccess(res) {
-        this._AfterUpdate = true;
-        if (this._AddGuarantorDetails.NZResidents.toString() == "1") {
-            this._AddGuarantorDetails.NZResidents = true;
-        }
-        else {
-            this._AddGuarantorDetails.NZResidents = false;
-        }
+        this.FormatNZResidents();     
+        this.AddGuarantorform.reset();
+        this._AddGuarantor = true;
         this._ShowViewDetails = false;
-        this._AddGuarantor = false;
-        this._ClientsService.GetGuarantor().subscribe(res => this.GetGuarantorSuccess(res), res => this.GetGuarantorError(res));
+        this._ViewDetails = false;
+        this.GetAddedGuarantorGrid();
     }
-
     UpdateGuarantorDetailsError(res) { }
 
+    EditDetails() {
+        this._ViewDetails = false;
+        this._ShowViewDetails = true;
+    }
+ 
     onNoClick(): void {
         this.dialogRef.close();
         debugger;

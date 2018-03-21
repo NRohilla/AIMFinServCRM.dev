@@ -36,11 +36,11 @@ namespace FinServUnitOfWork.Interface
         bool SaveLoanApplicationEmploymentDetails(ApplicantEmploymentDetails ApplicantEmploymentDetails);
         bool SaveLoanApplicationCommunicationDetails(ApplicantCommunicationDetails ApplicantCommunicationDetails);
 
-        bool AddGuarantor(LoanGuarantorDetails LoanGuarantorDetails);
-        List<LoanGuarantorDetails> GetGuarantor();
+        bool AddGuarantor(LoanGuarantorDetails _objGuarantorDetails);
+        List<LoanGuarantorDetails> GetAddedGuarantorGrid();
         LoanGuarantorDetails GetGuarantorDetails(string GuarntID);
 
-        bool UpdateGuarantorDetails(LoanGuarantorDetails LoanGuarantorDetails);
+        bool UpdateGuarantorDetails(LoanGuarantorDetails _objUpdateGuartDetails);
 
 
     }

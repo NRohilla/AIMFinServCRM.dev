@@ -157,15 +157,15 @@ namespace FinServServices.Controllers
         }
         [HttpPost]
         [Route("AddGuarantorDetails")]
-        public bool AddGuarantor(LoanGuarantorDetails LoanGuarantorDetails)
+        public bool AddGuarantor(LoanGuarantorDetails _objGuarantorDetails)
         {
-            return Repository.AddGuarantor(LoanGuarantorDetails);
+            return Repository.AddGuarantor(_objGuarantorDetails);
         }
         [HttpGet]
-        [Route("GetGuarantor")]
-        public List<LoanGuarantorDetails> GetGuarantor()
+        [Route("GetAddedGuarantorGrid")]
+        public List<LoanGuarantorDetails> GetAddedGuarantorGrid()
         {
-            return Repository.GetGuarantor();
+            return Repository.GetAddedGuarantorGrid();
         }
   
         [HttpGet]
@@ -177,9 +177,9 @@ namespace FinServServices.Controllers
 
         [HttpPost]
         [Route("UpdateGuarantorDetails")]
-        public bool UpdateGuarantorDetails(LoanGuarantorDetails LoanGuarantorDetails)
+        public bool UpdateGuarantorDetails(LoanGuarantorDetails _objUpdateGuartDetails)
         {
-            return Repository.UpdateGuarantorDetails(LoanGuarantorDetails);
+            return Repository.UpdateGuarantorDetails(_objUpdateGuartDetails);
         }
 
     }

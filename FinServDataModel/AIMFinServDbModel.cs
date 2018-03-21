@@ -7,3 +7,678 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+
+public partial class sysdiagram
+{
+    public string name { get; set; }
+    public int principal_id { get; set; }
+    public int diagram_id { get; set; }
+    public Nullable<int> version { get; set; }
+    public byte[] definition { get; set; }
+}
+
+public partial class tblAdvisorDetail
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public tblAdvisorDetail()
+    {
+        this.tblLoanApplicationForms = new HashSet<tblLoanApplicationForm>();
+    }
+
+    public int AutoID { get; set; }
+    public System.Guid AdvisorID { get; set; }
+    public string AdvisorCode { get; set; }
+    public string Name { get; set; }
+    public string AdvisorGroup { get; set; }
+    public string FirmName { get; set; }
+    public string Addressline1 { get; set; }
+    public string Addressline2 { get; set; }
+    public string Addressline3 { get; set; }
+    public string PhoneNo { get; set; }
+    public string MobileNo { get; set; }
+    public string FaxNo { get; set; }
+    public string EmailID { get; set; }
+    public bool IsActive { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblLoanApplicationForm> tblLoanApplicationForms { get; set; }
+}
+
+public partial class tblApplicant
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public tblApplicant()
+    {
+        this.tblApplicantCommunicationDetails = new HashSet<tblApplicantCommunicationDetail>();
+        this.tblApplicantEmploymentDetails = new HashSet<tblApplicantEmploymentDetail>();
+        this.tblApplicantExpenseSheets = new HashSet<tblApplicantExpenseSheet>();
+        this.tblApplicantQualificationDetails = new HashSet<tblApplicantQualificationDetail>();
+        this.tblAssets = new HashSet<tblAsset>();
+        this.tblLiabilities = new HashSet<tblLiability>();
+    }
+
+    public long AutoID { get; set; }
+    public System.Guid ApplicantID { get; set; }
+    public string Title { get; set; }
+    public string FirstName { get; set; }
+    public string MiddleName { get; set; }
+    public string LastName { get; set; }
+    public string Gender { get; set; }
+    public string DateOfBirth { get; set; }
+    public string MaritalStatus { get; set; }
+    public string NoOfDependents { get; set; }
+    public Nullable<bool> NZResidents { get; set; }
+    public string CountryOfBirth { get; set; }
+    public int ApplicantTypeID { get; set; }
+    public string EmailID { get; set; }
+    public string MobileNo { get; set; }
+    public string HomePhoneNo { get; set; }
+    public string WorkPhoneNo { get; set; }
+    public System.Guid LoanApplicationNo { get; set; }
+    public byte[] ApplicantImage { get; set; }
+    public bool IsActive { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblApplicantCommunicationDetail> tblApplicantCommunicationDetails { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblApplicantEmploymentDetail> tblApplicantEmploymentDetails { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblApplicantExpenseSheet> tblApplicantExpenseSheets { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblApplicantQualificationDetail> tblApplicantQualificationDetails { get; set; }
+    public virtual tblMasterApplicantType tblMasterApplicantType { get; set; }
+    public virtual tblLoanApplicationForm tblLoanApplicationForm { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblAsset> tblAssets { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblLiability> tblLiabilities { get; set; }
+}
+
+public partial class tblApplicantCommunicationDetail
+{
+    public long AutoID { get; set; }
+    public System.Guid CommunicationID { get; set; }
+    public string AddressLine1 { get; set; }
+    public string AddressLine2 { get; set; }
+    public string AddressLine3 { get; set; }
+    public string Duration { get; set; }
+    public string Status { get; set; }
+    public string Country { get; set; }
+    public string ZipCode { get; set; }
+    public int AddressType { get; set; }
+    public System.Guid ApplicantID { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+    public virtual tblApplicant tblApplicant { get; set; }
+    public virtual tblMasterAddressType tblMasterAddressType { get; set; }
+}
+
+public partial class tblApplicantEmploymentDetail
+{
+    public long AutoID { get; set; }
+    public System.Guid EmploymentID { get; set; }
+    public System.Guid ApplicantID { get; set; }
+    public int SourceOfIncome { get; set; }
+    public int ProfessionTypeID { get; set; }
+    public string EmployerName { get; set; }
+    public string Duration { get; set; }
+    public string Income { get; set; }
+    public string Status { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+    public virtual tblApplicant tblApplicant { get; set; }
+    public virtual tblMasterTypeOfEmployment tblMasterTypeOfEmployment { get; set; }
+    public virtual tblMasterTypeOfProfession tblMasterTypeOfProfession { get; set; }
+}
+
+public partial class tblApplicantExpenseSheet
+{
+    public long AutoID { get; set; }
+    public System.Guid ExpenseID { get; set; }
+    public System.Guid ExpenseTypeID { get; set; }
+    public System.Guid ApplicantID { get; set; }
+    public string Description { get; set; }
+    public string Frequency { get; set; }
+    public Nullable<decimal> NetAmount { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+    public virtual tblApplicant tblApplicant { get; set; }
+    public virtual tblMasterExpenseType tblMasterExpenseType { get; set; }
+}
+
+public partial class tblApplicantQualificationDetail
+{
+    public long AutoID { get; set; }
+    public System.Guid QualificationID { get; set; }
+    public System.Guid ApplicantID { get; set; }
+    public string PassingYear { get; set; }
+    public string CourseName { get; set; }
+    public string UniversityName { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+    public int TypeOfQualification { get; set; }
+
+    public virtual tblApplicant tblApplicant { get; set; }
+    public virtual tblMasterTypeOfQualification tblMasterTypeOfQualification { get; set; }
+}
+
+public partial class tblAsset
+{
+    public long AutoID { get; set; }
+    public System.Guid AssetID { get; set; }
+    public Nullable<System.Guid> AssetTypeID { get; set; }
+    public string Description { get; set; }
+    public Nullable<decimal> NetValue { get; set; }
+    public string Ownership { get; set; }
+    public System.Guid ApplicantID { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+    public virtual tblApplicant tblApplicant { get; set; }
+    public virtual tblMasterAssetType tblMasterAssetType { get; set; }
+}
+
+public partial class tblLiability
+{
+    public long AutoID { get; set; }
+    public System.Guid LiabilityID { get; set; }
+    public Nullable<System.Guid> LiabilityTypeID { get; set; }
+    public string Description { get; set; }
+    public Nullable<decimal> NetValue { get; set; }
+    public string Ownership { get; set; }
+    public System.Guid ApplicantID { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+    public virtual tblApplicant tblApplicant { get; set; }
+    public virtual tblMasterLiabilityType tblMasterLiabilityType { get; set; }
+}
+
+public partial class tblLoanApplicationForm
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public tblLoanApplicationForm()
+    {
+        this.tblApplicants = new HashSet<tblApplicant>();
+        this.tblLoanMasters = new HashSet<tblLoanMaster>();
+        this.tblLoanGuarantors = new HashSet<tblLoanGuarantor>();
+    }
+
+    public long AutoID { get; set; }
+    public System.Guid LoanApplicationNo { get; set; }
+    public string ApplicationFormNumber { get; set; }
+    public Nullable<bool> IsPreApproval { get; set; }
+    public int TypeOfLoanID { get; set; }
+    public int PurposeOfLoanID { get; set; }
+    public string Priority { get; set; }
+    public string FinanceRequired { get; set; }
+    public string CashInHand { get; set; }
+    public string LoanTerm { get; set; }
+    public int RateTypeID { get; set; }
+    public string Frequency { get; set; }
+    public Nullable<bool> IsApplicationApproved { get; set; }
+    public Nullable<System.DateTime> ApprovalExpiryDate { get; set; }
+    public string ReasonForNotApproval { get; set; }
+    public Nullable<bool> IsAnyGuarantor { get; set; }
+    public string CostOfProperty { get; set; }
+    public int PropertyTypeID { get; set; }
+    public Nullable<bool> IsShifted { get; set; }
+    public string AgeOfProperty { get; set; }
+    public string ShiftedDuration { get; set; }
+    public string PropertyUsedFor { get; set; }
+    public Nullable<bool> IsPropertyDecided { get; set; }
+    public System.Guid AdvisorID { get; set; }
+    public Nullable<System.DateTime> FinanceDate { get; set; }
+    public int StatusID { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+    public virtual tblAdvisorDetail tblAdvisorDetail { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblApplicant> tblApplicants { get; set; }
+    public virtual tblMasterLoanRateType tblMasterLoanRateType { get; set; }
+    public virtual tblMasterPropertyType tblMasterPropertyType { get; set; }
+    public virtual tblMasterPurposeOfLoan tblMasterPurposeOfLoan { get; set; }
+    public virtual tblMasterTypeOfLoan tblMasterTypeOfLoan { get; set; }
+    public virtual tblMasterTypeOfStatu tblMasterTypeOfStatu { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblLoanMaster> tblLoanMasters { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblLoanGuarantor> tblLoanGuarantors { get; set; }
+}
+
+public partial class tblLoanGuarantor
+{
+    public long AutoID { get; set; }
+    public System.Guid GuarantorID { get; set; }
+    public System.Guid LoanApplicationNo { get; set; }
+    public string Title { get; set; }
+    public string FirstName { get; set; }
+    public string MiddleName { get; set; }
+    public string LastName { get; set; }
+    public string Gender { get; set; }
+    public string DateOfBirth { get; set; }
+    public string MaritalStatus { get; set; }
+    public string MobileNo { get; set; }
+    public string HomePhoneNo { get; set; }
+    public string WorkPhoneNo { get; set; }
+    public string EmailID { get; set; }
+    public Nullable<bool> NZResidents { get; set; }
+    public string Duration { get; set; }
+    public string CountryOfBirth { get; set; }
+    public string AddressLine1 { get; set; }
+    public string AddressLine2 { get; set; }
+    public string AddressLine3 { get; set; }
+    public string Country { get; set; }
+    public string ZipCode { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+    public virtual tblLoanApplicationForm tblLoanApplicationForm { get; set; }
+}
+
+public partial class tblLoanMaster
+{
+    public long AutoID { get; set; }
+    public System.Guid LANNumber { get; set; }
+    public System.Guid LoanApplicationNo { get; set; }
+    public string ROIOffered { get; set; }
+    public string LoanTermOffered { get; set; }
+    public string RateTypeOffered { get; set; }
+    public string FrequencyOffered { get; set; }
+    public string LoanValueRatio { get; set; }
+    public string LoanAmountOffered { get; set; }
+    public string LoanType { get; set; }
+    public string ClientID { get; set; }
+    public int StatusID { get; set; }
+    public string EMIStartDay { get; set; }
+    public string EMIStartMonth { get; set; }
+    public string LoanProcessingFee { get; set; }
+    public string AnyLegalCharges { get; set; }
+    public string NoOfEMI { get; set; }
+    public string Loanprovider { get; set; }
+    public string PropertyCost { get; set; }
+    public int PropertyTypeID { get; set; }
+    public Nullable<System.DateTime> FinanceDate { get; set; }
+    public Nullable<System.DateTime> SettlementDate { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+    public virtual tblLoanApplicationForm tblLoanApplicationForm { get; set; }
+    public virtual tblMasterPropertyType tblMasterPropertyType { get; set; }
+    public virtual tblMasterTypeOfStatu tblMasterTypeOfStatu { get; set; }
+}
+
+public partial class tblMasterAddressType
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public tblMasterAddressType()
+    {
+        this.tblApplicantCommunicationDetails = new HashSet<tblApplicantCommunicationDetail>();
+    }
+
+    public int ID { get; set; }
+    public string Type { get; set; }
+    public bool IsActive { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblApplicantCommunicationDetail> tblApplicantCommunicationDetails { get; set; }
+}
+
+public partial class tblMasterApplicantType
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public tblMasterApplicantType()
+    {
+        this.tblApplicants = new HashSet<tblApplicant>();
+    }
+
+    public int ApplicantTypeID { get; set; }
+    public string ApplicantType { get; set; }
+    public bool IsActive { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblApplicant> tblApplicants { get; set; }
+}
+
+public partial class tblMasterAssetType
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public tblMasterAssetType()
+    {
+        this.tblAssets = new HashSet<tblAsset>();
+    }
+
+    public int AutoID { get; set; }
+    public System.Guid AssetTypeID { get; set; }
+    public string Description { get; set; }
+    public bool IsActive { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> Createdon { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblAsset> tblAssets { get; set; }
+}
+
+public partial class tblMasterExpenseType
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public tblMasterExpenseType()
+    {
+        this.tblApplicantExpenseSheets = new HashSet<tblApplicantExpenseSheet>();
+    }
+
+    public int AutoID { get; set; }
+    public System.Guid ExpenseTypeID { get; set; }
+    public string Description { get; set; }
+    public string Frequency { get; set; }
+    public bool IsActive { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblApplicantExpenseSheet> tblApplicantExpenseSheets { get; set; }
+}
+
+public partial class tblMasterLiabilityType
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public tblMasterLiabilityType()
+    {
+        this.tblLiabilities = new HashSet<tblLiability>();
+    }
+
+    public int AutoID { get; set; }
+    public System.Guid LiabilityTypeID { get; set; }
+    public string Description { get; set; }
+    public bool IsActive { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblLiability> tblLiabilities { get; set; }
+}
+
+public partial class tblMasterLoanRateType
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public tblMasterLoanRateType()
+    {
+        this.tblLoanApplicationForms = new HashSet<tblLoanApplicationForm>();
+    }
+
+    public int ID { get; set; }
+    public string LoanRateType { get; set; }
+    public bool IsActive { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblLoanApplicationForm> tblLoanApplicationForms { get; set; }
+}
+
+public partial class tblMasterPropertyType
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public tblMasterPropertyType()
+    {
+        this.tblLoanApplicationForms = new HashSet<tblLoanApplicationForm>();
+        this.tblLoanMasters = new HashSet<tblLoanMaster>();
+    }
+
+    public int ID { get; set; }
+    public string PropertyType { get; set; }
+    public bool IsActive { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblLoanApplicationForm> tblLoanApplicationForms { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblLoanMaster> tblLoanMasters { get; set; }
+}
+
+public partial class tblMasterPurposeOfLoan
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public tblMasterPurposeOfLoan()
+    {
+        this.tblLoanApplicationForms = new HashSet<tblLoanApplicationForm>();
+    }
+
+    public int ID { get; set; }
+    public string PurposeOfLoan { get; set; }
+    public bool IsActive { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblLoanApplicationForm> tblLoanApplicationForms { get; set; }
+}
+
+public partial class tblMasterSalutation
+{
+    public int ID { get; set; }
+    public string Salutation { get; set; }
+    public bool IsActive { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+}
+
+public partial class tblMasterTypeOfEmployment
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public tblMasterTypeOfEmployment()
+    {
+        this.tblApplicantEmploymentDetails = new HashSet<tblApplicantEmploymentDetail>();
+    }
+
+    public int ID { get; set; }
+    public string EmployementType { get; set; }
+    public bool IsActive { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblApplicantEmploymentDetail> tblApplicantEmploymentDetails { get; set; }
+}
+
+public partial class tblMasterTypeOfLoan
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public tblMasterTypeOfLoan()
+    {
+        this.tblLoanApplicationForms = new HashSet<tblLoanApplicationForm>();
+    }
+
+    public int ID { get; set; }
+    public string LoanType { get; set; }
+    public bool IsActive { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblLoanApplicationForm> tblLoanApplicationForms { get; set; }
+}
+
+public partial class tblMasterTypeOfProfession
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public tblMasterTypeOfProfession()
+    {
+        this.tblApplicantEmploymentDetails = new HashSet<tblApplicantEmploymentDetail>();
+    }
+
+    public int ID { get; set; }
+    public string Profession { get; set; }
+    public bool IsActive { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblApplicantEmploymentDetail> tblApplicantEmploymentDetails { get; set; }
+}
+
+public partial class tblMasterTypeOfQualification
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public tblMasterTypeOfQualification()
+    {
+        this.tblApplicantQualificationDetails = new HashSet<tblApplicantQualificationDetail>();
+    }
+
+    public int ID { get; set; }
+    public string Qualifications { get; set; }
+    public bool IsActive { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblApplicantQualificationDetail> tblApplicantQualificationDetails { get; set; }
+}
+
+public partial class tblMasterTypeOfRelationship
+{
+    public int ID { get; set; }
+    public string RelationshipWithApplicant { get; set; }
+    public bool IsActive { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+}
+
+public partial class tblMasterTypeOfStatu
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public tblMasterTypeOfStatu()
+    {
+        this.tblLoanApplicationForms = new HashSet<tblLoanApplicationForm>();
+        this.tblLoanMasters = new HashSet<tblLoanMaster>();
+    }
+
+    public int ID { get; set; }
+    public string Status { get; set; }
+    public bool IsActive { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblLoanApplicationForm> tblLoanApplicationForms { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblLoanMaster> tblLoanMasters { get; set; }
+}
+
+public partial class tblRole
+{
+    public long RoleId { get; set; }
+    public System.Guid RoleGuid { get; set; }
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public string CreatedBy { get; set; }
+    public string CreatedOn { get; set; }
+    public string ModifiedBy { get; set; }
+    public string ModifiedOn { get; set; }
+    public bool IsActive { get; set; }
+}
+
+public partial class tblUser
+{
+    public long UserId { get; set; }
+    public System.Guid UserGuid { get; set; }
+    public string LoginID { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string DisplayName { get; set; }
+    public string Mobile { get; set; }
+    public string Email { get; set; }
+    public string Password { get; set; }
+    public Nullable<bool> PasswordExpired { get; set; }
+    public string LastPasswordChangedOn { get; set; }
+    public string PasswordResetToken { get; set; }
+    public string Role { get; set; }
+    public Nullable<int> FailedPasswordAttempts { get; set; }
+    public Nullable<System.Guid> CreatedBy { get; set; }
+    public string CreatedOn { get; set; }
+    public Nullable<System.DateTime> LastLoggedOn { get; set; }
+    public Nullable<System.Guid> ModifiedBy { get; set; }
+    public string ModifiedOn { get; set; }
+    public Nullable<bool> AccountExpired { get; set; }
+    public Nullable<bool> AccountLocked { get; set; }
+    public string ActivaitonCode { get; set; }
+    public Nullable<bool> IsActive { get; set; }
+    public string Description { get; set; }
+    public Nullable<int> LocationId { get; set; }
+}
+
+public partial class tblUsersRole
+{
+    public System.Guid UsersRoleGuid { get; set; }
+    public long UsersRoleId { get; set; }
+    public Nullable<System.Guid> RoleGuid { get; set; }
+    public Nullable<System.Guid> UserGuid { get; set; }
+    public Nullable<bool> IsActive { get; set; }
+}
