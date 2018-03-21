@@ -21,22 +21,9 @@ export class ClientsService {
         return this._http.get(this.baseurl + "Clients/GetAllClients", this.options);
     }
 
-    GetAllLoanApplications() {
-        return this._http.get(this.baseurl + "Clients/GetAllLoanApplications", this.options);
-    }
-
     GetClientDetails(ClientID) {
         return this._http.get(this.baseurl + "Clients/GetClientDetails?ClientID=" + ClientID, this.options);
     }
-
-    GetLoanApplicationDetails(LoanAppNo) {
-        return this._http.get(this.baseurl + "Clients/GetLoanApplicationDetails?LoanAppNo=" + LoanAppNo, this.options);
-    }
-
-   
-
-   
-
 
     //===== Client_Qualification_Detail Methods CODE START HERE==============  //Deepak Saini [16-03-2018]
     GetClientQualificationDetails(ClientID) {
@@ -83,15 +70,23 @@ export class ClientsService {
     }
     //================ CODE END HERE ===============//
 
-
     UpdateClientPersonalDetails(ApplicantPersonalDetails) {
         return this._http.post(this.baseurl + "Clients/UpdateClientPersonalDetails", ApplicantPersonalDetails, this.options);
     }
 
+    //=======Loan Application Methods START HERE =======// Neha Bambah
+    GetAllLoanApplications() {
+        return this._http.get(this.baseurl + "Clients/GetAllLoanApplications", this.options);
+    }
+    GetLoanApplicationDetails(LoanAppNo) {
+        return this._http.get(this.baseurl + "Clients/GetLoanApplicationDetails?LoanAppNo=" + LoanAppNo, this.options);
+    }
     UpdateLoanApplicationDetails(LoanApplicationDetails) {
         return this._http.post(this.baseurl + "Clients/UpdateLoanApplicationDetails", LoanApplicationDetails, this.options);
     }
-
+    //Loan Application Methods END HERE =======//
+   
+    //===Adding Applicant Details in Loan Application START HERE ====// Neha Bambah
     SaveLoanApplicationPersonalDetails(ApplicantPersonalDetails) {
         return this._http.post(this.baseurl + "Clients/SaveLoanApplicationPersonalDetails", ApplicantPersonalDetails, this.options);
     }
@@ -106,11 +101,14 @@ export class ClientsService {
     SaveLoanApplicationCommunicationDetails(ApplicantCommunicationDetails) {
         return this._http.post(this.baseurl + "Clients/SaveLoanApplicationCommunicationDetails", ApplicantCommunicationDetails, this.options);
     }
+    //=====Adding Applicant Details in Loan Application END HERE=====//
+
+   //===Manage Guarantor in Loan Application START HERE =====// Neha Bambah
     AddGuarantor(LoanGuarantorDetails) {
         return this._http.post(this.baseurl + "Clients/AddGuarantorDetails", LoanGuarantorDetails, this.options);
     }
-    GetGuarantor() {
-        return this._http.get(this.baseurl + "Clients/GetGuarantor", this.options);
+    GetAddedGuarantorGrid() {
+        return this._http.get(this.baseurl + "Clients/GetAddedGuarantorGrid", this.options);
     }
     GetGuarantorDetails(GuarntID) {
         return this._http.get(this.baseurl + "Clients/GetGuarantorDetails?GuarntID=" + GuarntID, this.options);
@@ -118,4 +116,5 @@ export class ClientsService {
     UpdateGuarantorDetails(LoanGuarantorDetails) {
         return this._http.post(this.baseurl + "Clients/UpdateGuarantorDetails", LoanGuarantorDetails, this.options);
     }
+    //===Manage Guarantor in Loan Application END HERE =====//
 }

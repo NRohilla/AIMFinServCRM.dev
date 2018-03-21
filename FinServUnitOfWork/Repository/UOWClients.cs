@@ -742,33 +742,36 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
-        public bool AddGuarantor(LoanGuarantorDetails LoanGuarantorDetails)
+        public bool AddGuarantor(LoanGuarantorDetails _objGuarantorDetails)
         {
             try
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    if (LoanGuarantorDetails != null)
+                    if (_objGuarantorDetails != null)
                     {
                         tblLoanGuarantor _tblLoanGuarantorDetail = new tblLoanGuarantor();
                         _tblLoanGuarantorDetail.GuarantorID = Guid.NewGuid();
-                        _tblLoanGuarantorDetail.LoanApplicationNo = LoanGuarantorDetails.LoanApplicationNo;
-                        _tblLoanGuarantorDetail.FirstName = LoanGuarantorDetails.FirstName;
-                        _tblLoanGuarantorDetail.MiddleName = LoanGuarantorDetails.MiddleName;
-                        _tblLoanGuarantorDetail.LastName = LoanGuarantorDetails.LastName;
-                        _tblLoanGuarantorDetail.Gender = LoanGuarantorDetails.Gender;
-                        _tblLoanGuarantorDetail.DateOfBirth = LoanGuarantorDetails.DateOfBirth;
-                        _tblLoanGuarantorDetail.MaritalStatus = LoanGuarantorDetails.MaritalStatus;
-                        _tblLoanGuarantorDetail.MobileNo = LoanGuarantorDetails.MobileNo;
-                        _tblLoanGuarantorDetail.HomePhoneNo = LoanGuarantorDetails.HomePhoneNo;
-                        _tblLoanGuarantorDetail.WorkPhoneNo = LoanGuarantorDetails.WorkPhoneNo;
-                        _tblLoanGuarantorDetail.EmailID = LoanGuarantorDetails.EmailID;
-                        _tblLoanGuarantorDetail.NZResidents = LoanGuarantorDetails.NZResidents;
-                        _tblLoanGuarantorDetail.Duration = LoanGuarantorDetails.Duration;
-                        _tblLoanGuarantorDetail.CountryOfBirth = LoanGuarantorDetails.CountryOfBirth;
-                        _tblLoanGuarantorDetail.AddressLine1 = LoanGuarantorDetails.AddressLine1;
-                        _tblLoanGuarantorDetail.AddressLine2 = LoanGuarantorDetails.AddressLine2;
-                        _tblLoanGuarantorDetail.AddressLine3 = LoanGuarantorDetails.AddressLine3;
+                        _tblLoanGuarantorDetail.LoanApplicationNo = _objGuarantorDetails.LoanApplicationNo;
+                        _tblLoanGuarantorDetail.Title = _objGuarantorDetails.Title;
+                        _tblLoanGuarantorDetail.FirstName = _objGuarantorDetails.FirstName;
+                        _tblLoanGuarantorDetail.MiddleName = _objGuarantorDetails.MiddleName;
+                        _tblLoanGuarantorDetail.LastName = _objGuarantorDetails.LastName;
+                        _tblLoanGuarantorDetail.Gender = _objGuarantorDetails.Gender;
+                        _tblLoanGuarantorDetail.DateOfBirth = _objGuarantorDetails.DateOfBirth;
+                        _tblLoanGuarantorDetail.MaritalStatus = _objGuarantorDetails.MaritalStatus;
+                        _tblLoanGuarantorDetail.MobileNo = _objGuarantorDetails.MobileNo;
+                        _tblLoanGuarantorDetail.HomePhoneNo = _objGuarantorDetails.HomePhoneNo;
+                        _tblLoanGuarantorDetail.WorkPhoneNo = _objGuarantorDetails.WorkPhoneNo;
+                        _tblLoanGuarantorDetail.EmailID = _objGuarantorDetails.EmailID;
+                        _tblLoanGuarantorDetail.NZResidents = _objGuarantorDetails.NZResidents;
+                        _tblLoanGuarantorDetail.Duration = _objGuarantorDetails.Duration;
+                        _tblLoanGuarantorDetail.CountryOfBirth = _objGuarantorDetails.CountryOfBirth;
+                        _tblLoanGuarantorDetail.AddressLine1 = _objGuarantorDetails.AddressLine1;
+                        _tblLoanGuarantorDetail.AddressLine2 = _objGuarantorDetails.AddressLine2;
+                        _tblLoanGuarantorDetail.AddressLine3 = _objGuarantorDetails.AddressLine3;
+                        _tblLoanGuarantorDetail.Country = _objGuarantorDetails.Country;
+                        _tblLoanGuarantorDetail.ZipCode = _objGuarantorDetails.ZipCode;
 
                         db.tblLoanGuarantors.Add(_tblLoanGuarantorDetail);
                         db.SaveChanges();
@@ -784,7 +787,7 @@ namespace FinServUnitOfWork.Repository
             }
         }
 
-        public List<LoanGuarantorDetails> GetGuarantor()
+        public List<LoanGuarantorDetails> GetAddedGuarantorGrid()
         {
             List<LoanGuarantorDetails> objGuarantorDetails = new List<LoanGuarantorDetails>();
             try
@@ -798,6 +801,7 @@ namespace FinServUnitOfWork.Repository
                         objGuarantorDetails.Add(new LoanGuarantorDetails
                         {
                             GuarantorID = itemGetAllGuarantors.GuarantorID,
+                            Title = itemGetAllGuarantors.Title,
                             FirstName = itemGetAllGuarantors.FirstName,
                             MiddleName = itemGetAllGuarantors.MiddleName,
                             LastName = itemGetAllGuarantors.LastName,
@@ -830,10 +834,11 @@ namespace FinServUnitOfWork.Repository
                     if (GetGuarantorDetails != null)
                     {
                         objtoReturn.GuarantorID = GetGuarantorDetails.GuarantorID;
+                        objtoReturn.Title = GetGuarantorDetails.Title;
                         objtoReturn.FirstName = GetGuarantorDetails.FirstName;
                         objtoReturn.MiddleName = GetGuarantorDetails.MiddleName;
                         objtoReturn.LastName = GetGuarantorDetails.LastName;
-                        objtoReturn.Gender = GetGuarantorDetails.Gender;
+                        objtoReturn.Gender = GetGuarantorDetails.Gender.Trim();
                         objtoReturn.DateOfBirth = GetGuarantorDetails.DateOfBirth;
                         objtoReturn.MaritalStatus = GetGuarantorDetails.MaritalStatus;
                         objtoReturn.MobileNo = GetGuarantorDetails.MobileNo;
@@ -846,6 +851,8 @@ namespace FinServUnitOfWork.Repository
                         objtoReturn.AddressLine1 = GetGuarantorDetails.AddressLine1;
                         objtoReturn.AddressLine2 = GetGuarantorDetails.AddressLine2;
                         objtoReturn.AddressLine3 = GetGuarantorDetails.AddressLine3;
+                        objtoReturn.Country = GetGuarantorDetails.Country;
+                        objtoReturn.ZipCode = GetGuarantorDetails.ZipCode;
                         objtoReturn._LoanApplicationFormDetails = new LoanApplicationForms();
                         objtoReturn._LoanApplicationFormDetails.LoanApplicationNo = GetGuarantorDetails.tblLoanApplicationForm.LoanApplicationNo;
                     }
@@ -858,34 +865,37 @@ namespace FinServUnitOfWork.Repository
             }
         }
 
-        public bool UpdateGuarantorDetails(LoanGuarantorDetails LoanGuarantorDetails)
+        public bool UpdateGuarantorDetails(LoanGuarantorDetails _objUpdateGuartDetails)
         {
             try
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var FetchGuarantorDetails = db.tblLoanGuarantors.Where(p => p.GuarantorID == LoanGuarantorDetails.GuarantorID).FirstOrDefault();
+                    var FetchGuarantorDetails = db.tblLoanGuarantors.Where(p => p.GuarantorID == _objUpdateGuartDetails.GuarantorID).FirstOrDefault();
                     if (FetchGuarantorDetails != null)
                     {
-                        FetchGuarantorDetails.GuarantorID = LoanGuarantorDetails.GuarantorID;
-                        FetchGuarantorDetails.FirstName = LoanGuarantorDetails.FirstName;
-                        FetchGuarantorDetails.MiddleName = LoanGuarantorDetails.MiddleName;
-                        FetchGuarantorDetails.LastName = LoanGuarantorDetails.LastName;
-                        FetchGuarantorDetails.Gender = LoanGuarantorDetails.Gender;
-                        FetchGuarantorDetails.DateOfBirth = LoanGuarantorDetails.DateOfBirth;
-                        FetchGuarantorDetails.MaritalStatus = LoanGuarantorDetails.MaritalStatus;
-                        FetchGuarantorDetails.MobileNo = LoanGuarantorDetails.MobileNo;
-                        FetchGuarantorDetails.HomePhoneNo = LoanGuarantorDetails.HomePhoneNo;
-                        FetchGuarantorDetails.WorkPhoneNo = LoanGuarantorDetails.WorkPhoneNo;
-                        FetchGuarantorDetails.EmailID = LoanGuarantorDetails.EmailID;
-                        FetchGuarantorDetails.NZResidents = LoanGuarantorDetails.NZResidents;
-                        FetchGuarantorDetails.Duration = LoanGuarantorDetails.Duration;
-                        FetchGuarantorDetails.CountryOfBirth = LoanGuarantorDetails.CountryOfBirth;
-                        FetchGuarantorDetails.AddressLine1 = LoanGuarantorDetails.AddressLine1;
-                        FetchGuarantorDetails.AddressLine2 = LoanGuarantorDetails.AddressLine2;
-                        FetchGuarantorDetails.AddressLine3 = LoanGuarantorDetails.AddressLine3;
+                        FetchGuarantorDetails.GuarantorID = _objUpdateGuartDetails.GuarantorID;
+                        FetchGuarantorDetails.Title = _objUpdateGuartDetails.Title;
+                        FetchGuarantorDetails.FirstName = _objUpdateGuartDetails.FirstName;
+                        FetchGuarantorDetails.MiddleName = _objUpdateGuartDetails.MiddleName;
+                        FetchGuarantorDetails.LastName = _objUpdateGuartDetails.LastName;
+                        FetchGuarantorDetails.Gender = _objUpdateGuartDetails.Gender;
+                        FetchGuarantorDetails.DateOfBirth = _objUpdateGuartDetails.DateOfBirth;
+                        FetchGuarantorDetails.MaritalStatus = _objUpdateGuartDetails.MaritalStatus;
+                        FetchGuarantorDetails.MobileNo = _objUpdateGuartDetails.MobileNo;
+                        FetchGuarantorDetails.HomePhoneNo = _objUpdateGuartDetails.HomePhoneNo;
+                        FetchGuarantorDetails.WorkPhoneNo = _objUpdateGuartDetails.WorkPhoneNo;
+                        FetchGuarantorDetails.EmailID = _objUpdateGuartDetails.EmailID;
+                        FetchGuarantorDetails.NZResidents = _objUpdateGuartDetails.NZResidents;
+                        FetchGuarantorDetails.Duration = _objUpdateGuartDetails.Duration;
+                        FetchGuarantorDetails.CountryOfBirth = _objUpdateGuartDetails.CountryOfBirth;
+                        FetchGuarantorDetails.AddressLine1 = _objUpdateGuartDetails.AddressLine1;
+                        FetchGuarantorDetails.AddressLine2 = _objUpdateGuartDetails.AddressLine2;
+                        FetchGuarantorDetails.AddressLine3 = _objUpdateGuartDetails.AddressLine3;
+                        FetchGuarantorDetails.Country = _objUpdateGuartDetails.Country;
+                        FetchGuarantorDetails.ZipCode = _objUpdateGuartDetails.ZipCode;
 
-                        db.SaveChanges();
+                       db.SaveChanges();
 
                     }
                     return true;
