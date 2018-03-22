@@ -1,10 +1,11 @@
 <div class="application-details mt-0">
     <div>
-        <div class="section_box pl-0 pb-0 pr-0 mb-4 clearfix">
+        <h3 class="text-uppercase sub-head">Manage Guarantor</h3>
+        <div class="section_box pl-0 pb-0 pr-0 mb-4 mt-3 clearfix">
             <form name="form" #AddGuarantorform="ngForm" novalidate>
                 <div class="p-4">
                     <div class="row m-0">
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left pl-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Title</label>
                                 <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.Title}}</p>
@@ -20,7 +21,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left pl-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">First Name</label>
                                 <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.FirstName}}</p>
@@ -36,7 +37,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left pl-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Middle Name</label>
                                 <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.MiddleName}}</p>
@@ -52,7 +53,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left pl-0">
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Last Name</label>
                                 <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.LastName}}</p>
@@ -68,10 +71,7 @@
                                 </div>
                             </div>
                         </div>
-                        
-                    </div>
-                    <div class="row m-0">
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left pl-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label for="name" class="field_label font-weight-bold" *ngIf="_ViewDetails">Gender</label>
                                 <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.Gender}}</p>
@@ -91,7 +91,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left pl-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Date Of Birth</label>
                                 <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.DateOfBirth}}</p>
@@ -107,7 +107,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left pl-0">
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Marital Status</label>
                                 <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.MaritalStatus}}</p>
@@ -123,11 +125,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left pl-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
-                                <label for="name" class="field_label font-weight-bold">NZResidents</label>
+                                <label for="name" class="field_label font-weight-bold" *ngIf="_ViewDetails">NZResidents</label>
                                 <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.DNZResidents}}</p>
                                 <div class="field_info w-100" *ngIf="_EditViewDetails || _AddGuarantor">
+                                    <label class="custom-radio-label">NZ Residents</label>
                                     <mat-radio-group class="w-100" [(ngModel)]="_AddGuarantorDetails.NZResidents" name="NZResidents" #NZResidents="ngModel" required>
                                         <mat-radio-button class="example-radio-button" value="1">Yes</mat-radio-button>
                                         <mat-radio-button class="example-radio-button" value="0">No</mat-radio-button>
@@ -140,11 +143,7 @@
                                 </div>
                             </div>
                         </div>
-                        
-
-                    </div>
-                    <div class="row m-0">
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left pl-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Country Of Birth</label>
                                 <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.CountryOfBirth}}</p>
@@ -160,7 +159,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left pl-0">
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Email ID</label>
                                 <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.EmailID}}</p>
@@ -176,7 +177,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left pl-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Mobile No</label>
                                 <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.MobileNo}}</p>
@@ -192,7 +193,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left pl-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Home Phone No</label>
                                 <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.HomePhoneNo}}</p>
@@ -208,10 +209,9 @@
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
                     <div class="row m-0">
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left pl-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Work Phone No</label>
                                 <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.WorkPhoneNo}}</p>
@@ -227,7 +227,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left pl-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Duration</label>
                                 <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.Duration}}</p>
@@ -243,7 +243,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left pl-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Address Line 1</label>
                                 <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.AddressLine1}}</p>
@@ -258,8 +258,10 @@
                                     </mat-form-field>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left pl-0">
+                        </div>                        
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Address Line 2</label>
                                 <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.AddressLine2}}</p>
@@ -275,10 +277,7 @@
                                 </div>
                             </div>
                         </div>
-                        
-                    </div>
-                    <div class="row m-0">
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left pl-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Address Line 3</label>
                                 <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.AddressLine3}}</p>
@@ -294,7 +293,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left pl-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Country</label>
                                 <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.Country}}</p>
@@ -309,8 +308,10 @@
                                     </mat-form-field>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left pl-0">
+                        </div>                        
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Zip Code</label>
                                 <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.ZipCode}}</p>
@@ -330,10 +331,10 @@
                 </div>
                 <div class="w-100 float-left text-right">
                     <div class="btn-bottom pr-4 pl-4">
-                        <input type="submit" *ngIf="_AddGuarantor" (click)="AddGuarantor()" value="Add" [disabled]="!AddGuarantorform.form.valid" class="btn btn-success" />
-                        <input type="button" *ngIf="_ViewDetails" value="Edit" (click)="EditDetails()" class="btn btn-success" />
-                        <input type="button" *ngIf="_EditViewDetails" (click)="UpdateGuarantorDetails()" value="Save" [disabled]="!AddGuarantorform.form.valid" class="btn btn-success" />
-                        <input type="button" value="Cancel" (click)="onNoClick()" class="btn btn-secondary" />
+                        <input type="submit" *ngIf="_AddGuarantor" (click)="AddGuarantor()" value="&#xf055; Add" [disabled]="!AddGuarantorform.form.valid" class="btn btn-success" />
+                        <input type="button" *ngIf="_ViewDetails" value="&#xf040; Edit" (click)="EditDetails()" class="btn btn-success" />
+                        <input type="button" *ngIf="_EditViewDetails" (click)="UpdateGuarantorDetails()" value="&#xf0c7; Save" class="btn btn-success" />
+                        <input type="button" value="&#xf00d; Cancel" (click)="onNoClick()" class="btn btn-secondary" />
                     </div>
                 </div>
             </form>
@@ -371,7 +372,7 @@
                 </kendo-grid-column>
                 <kendo-grid-command-column>
                     <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                        <button class="btn btn-lg btn-link" type="button" (click)="ViewDetails(dataItem.GuarantorID)">View Details</button>
+                        <button class="btn btn-lg btn-link p-0" type="button" (click)="ViewDetails(dataItem.GuarantorID)">View Details</button>
                     </ng-template>
                 </kendo-grid-command-column>
             </kendo-grid>

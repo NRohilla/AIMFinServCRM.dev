@@ -16,6 +16,9 @@ import { NgForm } from '@angular/forms';
     providers: [ClientsService, MastersService]
 })
 export class AddGuarantorDialog {
+    @ViewChild("AddGuarantorform")
+    AddGuarantorform: NgForm;
+
     constructor(
         public dialogRef: MatDialogRef<AddGuarantorDialog>,
         @Inject(MAT_DIALOG_DATA) public data: any, private _ClientsService: ClientsService, public dialog: MatDialog, private _MasterService: MastersService, private _LocalStorageService: LocalStorageService, ) { }
@@ -122,6 +125,7 @@ export class AddGuarantorDialog {
         debugger;
         this.FormatNZResidents();
         this._AddGuarantor = true;
+        this.AddGuarantorform.reset();
         this._EditViewDetails = false;
         this._ViewDetails = false;
         this.GetAddedGuarantorGrid();

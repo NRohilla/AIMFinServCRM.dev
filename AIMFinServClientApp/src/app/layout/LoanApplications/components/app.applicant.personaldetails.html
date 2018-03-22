@@ -3,27 +3,25 @@
         <div class="w-100 float-left">
             <div class="row m-0">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
-                        <label for="name" class="font-weight-bold">Applicant Type</label>
+                    <div class="form-group">                        
                         <div class="field_info">
                             <mat-form-field >
-                                <mat-select placeholder="Applicant Type" [(ngModel)]="_ApplicantPersonalDetails._ApplicantTypeID" name="ApplicantTypeID" #ApplicantTypeID="ngModel" required>
+                                <mat-select placeholder="Applicant Type" [(ngModel)]="_ApplicantPersonalDetails.ApplicantTypeID" name="ApplicantTypeID" #ApplicantTypeID="ngModel" required>
                                     <mat-option *ngFor="let ApplicantType of _ApplicantTypeID" [value]="ApplicantType.ApplicantTypeID">{{ApplicantType.ApplicantType}}</mat-option>
                                 </mat-select>
-                                <div *ngIf="TypeOfloan.invalid && (TypeOfloan.dirty || TypeOfloan.touched)" class="alert alert-danger">
+                                <!--<div *ngIf="TypeOfloan.invalid && (TypeOfloan.dirty || TypeOfloan.touched)" class="alert alert-danger">
                                     <div *ngIf="TypeOfloan.errors.required ">
                                         Please select loan Type.
                                     </div>
-                                </div>
+                                </div>-->
                             </mat-form-field>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
-                        <label for="name" class="font-weight-bold">First Name</label>
+                    <div class="form-group">                        
                         <div class="field_info">
-                            <mat-form-field class="example-full-width">
+                            <mat-form-field>
                                 <input matInput placeholder="First Name" value="{{_ApplicantPersonalDetails.FirstName}}" [(ngModel)]="_ApplicantPersonalDetails.FirstName" #FirstName>
                             </mat-form-field>
                         </div>
@@ -31,9 +29,8 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                     <div class="form-group">
-                        <label for="name" class="font-weight-bold">Middle Name</label>
                         <div class="field_info">
-                            <mat-form-field class="example-full-width">
+                            <mat-form-field>
                                 <input matInput placeholder="Middle Name" value="{{_ApplicantPersonalDetails.MiddleName}}" [(ngModel)]="_ApplicantPersonalDetails.MiddleName" #MiddleName>
                             </mat-form-field>
                         </div>
@@ -44,9 +41,8 @@
             <div class="row m-0">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                     <div class="form-group">
-                        <label for="name" class="font-weight-bold">Last Name</label>
                         <div class="field_info">
-                            <mat-form-field class="example-full-width">
+                            <mat-form-field>
                                 <input matInput placeholder="Last Name" value="{{_ApplicantPersonalDetails.LastName}}" [(ngModel)]="_ApplicantPersonalDetails.LastName" #LastName>
                             </mat-form-field>
                         </div>
@@ -54,10 +50,9 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                     <div class="form-group">
-                        <label for="name" class="font-weight-bold">Gender</label>
                         <div class="field_info">
                             <mat-form-field>
-                                <mat-select [(value)]="_ApplicantPersonalDetails.Gender">
+                                <mat-select placeholder="Gender" [(value)]="_ApplicantPersonalDetails.Gender">
                                     <mat-option>None</mat-option>
                                     <mat-option value="Male">Male</mat-option>
                                     <mat-option value="Female">Female</mat-option>
@@ -68,9 +63,8 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                     <div class="form-group">
-                        <label for="name" class="font-weight-bold">Date Of Birth</label>
                         <div class="field_info">
-                            <mat-form-field class="example-full-width">
+                            <mat-form-field>
                                 <input matInput placeholder="Date Of Birth" value="{{_ApplicantPersonalDetails.DateOfBirth}}" [(ngModel)]="_ApplicantPersonalDetails.DateOfBirth" #DateOfBirth>
                             </mat-form-field>
                         </div>
@@ -81,9 +75,8 @@
             <div class="row m-0">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                     <div class="form-group">
-                        <label for="name" class="font-weight-bold">Marital Status</label>
                         <div class="field_info">
-                            <mat-form-field class="example-full-width">
+                            <mat-form-field>
                                 <input matInput placeholder="Marital Status" value="{{_ApplicantPersonalDetails.MaritalStatus}}" [(ngModel)]="_ApplicantPersonalDetails.MaritalStatus" #MaritalStatus>
                             </mat-form-field>
                         </div>
@@ -91,9 +84,8 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                     <div class="form-group">
-                        <label for="name" class="font-weight-bold">No. Of Dependents</label>
                         <div class="field_info">
-                            <mat-form-field class="example-full-width">
+                            <mat-form-field>
                                 <input matInput placeholder="No. Of Dependents" value="{{_ApplicantPersonalDetails.NoOfDependents}}" [(ngModel)]="_ApplicantPersonalDetails.NoOfDependents" #NoOfDependents>
                             </mat-form-field>
                         </div>
@@ -101,10 +93,9 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                     <div class="form-group">
-                        <label for="name" class="font-weight-bold">NZResidents</label>
                         <div class="field_info">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="" value="{{_ApplicantPersonalDetails.NZResidents}}" [(ngModel)]="_ApplicantPersonalDetails.NZResidents" #NZResidents>
+                            <mat-form-field>
+                                <input matInput placeholder="NZ Residents" value="{{_ApplicantPersonalDetails.NZResidents}}" [(ngModel)]="_ApplicantPersonalDetails.NZResidents" #NZResidents>
                             </mat-form-field>
                         </div>
                     </div>
@@ -114,9 +105,8 @@
             <div class="row m-0">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                     <div class="form-group">
-                        <label for="name" class="font-weight-bold">Country Of Birth</label>
                         <div class="field_info">
-                            <mat-form-field class="example-full-width">
+                            <mat-form-field>
                                 <input matInput placeholder="Country Of Birth" value="{{_ApplicantPersonalDetails.CountryOfBirth}}" [(ngModel)]="_ApplicantPersonalDetails.CountryOfBirth" #CountryOfBirth>
                             </mat-form-field>
                         </div>
@@ -124,9 +114,8 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                     <div class="form-group">
-                        <label for="name" class="font-weight-bold">Email ID</label>
                         <div class="field_info">
-                            <mat-form-field class="example-full-width">
+                            <mat-form-field>
                                 <input matInput placeholder="Email ID" value="{{_ApplicantPersonalDetails.EmailID}}" [(ngModel)]="_ApplicantPersonalDetails.EmailID" #EmailID>
                             </mat-form-field>
                         </div>
@@ -134,9 +123,8 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                     <div class="form-group">
-                        <label for="name" class="font-weight-bold">Mobile No.</label>
                         <div class="field_info">
-                            <mat-form-field class="example-full-width">
+                            <mat-form-field>
                                 <input matInput placeholder="Mobile No." value="{{_ApplicantPersonalDetails.MobileNo}}" [(ngModel)]="_ApplicantPersonalDetails.MobileNo" #MobileNo>
                             </mat-form-field>
                         </div>
@@ -148,9 +136,8 @@
             <div class="row m-0">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                     <div class="form-group">
-                        <label for="name" class="font-weight-bold">Home Phone No.</label>
                         <div class="field_info">
-                            <mat-form-field class="example-full-width">
+                            <mat-form-field>
                                 <input matInput placeholder="Home Phone No." value="{{_ApplicantPersonalDetails.HomePhoneNo}}" [(ngModel)]="_ApplicantPersonalDetails.HomePhoneNo" #HomePhoneNo>
                             </mat-form-field>
                         </div>
@@ -158,18 +145,14 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                     <div class="form-group">
-                        <label for="name" class="font-weight-bold">Work Phone No.</label>
                         <div class="field_info">
-                            <mat-form-field class="example-full-width">
+                            <mat-form-field>
                                 <input matInput placeholder="Work Phone No." value="{{_ApplicantPersonalDetails.WorkPhoneNo}}" [(ngModel)]="_ApplicantPersonalDetails.WorkPhoneNo" #WorkPhoneNo>
                             </mat-form-field>
                         </div>
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
-
 </div>
