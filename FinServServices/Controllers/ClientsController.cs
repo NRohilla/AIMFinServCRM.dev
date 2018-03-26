@@ -181,6 +181,58 @@ namespace FinServServices.Controllers
         {
             return Repository.UpdateGuarantorDetails(_objUpdateGuartDetails);
         }
+        [HttpPost]
+        [Route("AddAsset")]
+        public bool AddAsset(Asset _objAssetDetails)
+        {
+            return Repository.AddAsset(_objAssetDetails);
+        }
+        [HttpGet]
+        [Route("GetAddedAssetGrid")]
+        public List<Asset> GetAddedAssetGrid()
+        {
+            return Repository.GetAddedAssetGrid();
+        }
 
+        [HttpGet]
+        [Route("GetAssetDetails")]
+        public Asset GetAssetDetails(string AstID)
+        {
+            return Repository.GetAssetDetails(AstID);
+        }
+
+        [HttpPost]
+        [Route("UpdateAssetDetails")]
+        public bool UpdateAssetDetails(Asset _objAssetDetails)
+        {
+            return Repository.UpdateAssetDetails(_objAssetDetails);
+        }
+
+        [HttpPost]
+        [Route("AddLiability")]
+        public bool AddLiability(Liability _objLiabilityDetails)
+        {
+            return Repository.AddLiability(_objLiabilityDetails);
+        }
+        [HttpGet]
+        [Route("GetAddedLiabilityGrid")]
+        public List<Liability> GetAddedLiabilityGrid()
+        {
+            return Repository.GetAddedLiabilityGrid();
+        }
+
+        [HttpGet]
+        [Route("GetLiabilityDetails")]
+        public Liability GetLiabilityDetails(string LbltyID)
+        {
+            return Repository.GetLiabilityDetails(LbltyID);
+        }
+
+        [HttpPost]
+        [Route("UpdateLiabilityDetails")]
+        public bool UpdateLiabilityDetails(Liability _objLiabilityDetails)
+        {
+            return Repository.UpdateLiabilityDetails(_objLiabilityDetails);
+        }
     }
 }

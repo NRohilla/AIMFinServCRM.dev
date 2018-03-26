@@ -11,7 +11,7 @@ namespace FinServBussinessEntities
     {
         public long AutoID { get; set; }
         public System.Guid LiabilityID { get; set; }
-        public Nullable<System.Guid> LiabilityTypeID { get; set; }
+        public System.Guid LiabilityTypeID { get; set; }
         public string Description { get; set; }
         public Nullable<decimal> NetValue { get; set; }
         public string Ownership { get; set; }

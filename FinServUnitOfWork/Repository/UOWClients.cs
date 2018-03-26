@@ -907,6 +907,260 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
+
+        public bool AddAsset(Asset _objAssetDetails)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    if (_objAssetDetails != null)
+                    {
+                        tblAsset _tblAssetDetail = new tblAsset();
+                        _tblAssetDetail.AssetID = Guid.NewGuid();
+                        _tblAssetDetail.AssetTypeID = _objAssetDetails.AssetTypeID;
+                        _tblAssetDetail.ApplicantID = _objAssetDetails.ApplicantID;
+                        _tblAssetDetail.Description = _objAssetDetails.Description;
+                        _tblAssetDetail.NetValue = _objAssetDetails.NetValue;
+                        _tblAssetDetail.Ownership = _objAssetDetails.Ownership;
+
+                        db.tblAssets.Add(_tblAssetDetail);
+                        db.SaveChanges();
+
+                    }
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public List<Asset> GetAddedAssetGrid()
+        {
+            List<Asset> objAssetDetails = new List<Asset>();
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetAllAssets = db.tblAssets.ToList();
+
+                    foreach (var itemGetAllAssets in GetAllAssets)
+                    {
+                        objAssetDetails.Add(new Asset
+                        {
+                            AssetID = itemGetAllAssets.AssetID,
+                            AssetTypeID = itemGetAllAssets.AssetTypeID,
+                            Description = itemGetAllAssets.Description,
+                            NetValue = itemGetAllAssets.NetValue,
+                            Ownership = itemGetAllAssets.Ownership,
+                            _AssetTypeID = new AssetsTypeMaster {
+                                AssetTypeID = itemGetAllAssets.tblMasterAssetType.AssetTypeID,
+                                AssetType = itemGetAllAssets.tblMasterAssetType.AssetType
+                            }
+                        });
+                    }
+
+                    return objAssetDetails;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public Asset GetAssetDetails(string AstID)
+        {
+            try
+            {
+                Asset objtoReturn = new Asset();
+                Guid AssetID = Guid.Parse(AstID);
+
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetAssetDetails = db.tblAssets.Where(p => p.AssetID == AssetID).FirstOrDefault();
+                    if (GetAssetDetails != null)
+                    {
+                        objtoReturn.AssetID = GetAssetDetails.AssetID;
+                        objtoReturn.Description = GetAssetDetails.Description;
+                        objtoReturn.NetValue = GetAssetDetails.NetValue;
+                        objtoReturn.Ownership = GetAssetDetails.Ownership;
+                        objtoReturn.ApplicantID = GetAssetDetails.ApplicantID;
+                        objtoReturn._ApplicationID = new Applicants();
+                        objtoReturn._ApplicationID.ApplicantID = GetAssetDetails.tblApplicant.ApplicantID;
+                        objtoReturn._ApplicationID.ApplicantTypeID = GetAssetDetails.tblApplicant.ApplicantTypeID;
+                        objtoReturn._ApplicationID._ApplicantTypeMasterID = new ApplicantTypeMaster();
+                        objtoReturn._ApplicationID._ApplicantTypeMasterID.ApplicantType = GetAssetDetails.tblApplicant.tblMasterApplicantType.ApplicantType;
+                        objtoReturn.AssetTypeID = GetAssetDetails.AssetTypeID;
+                        objtoReturn._AssetTypeID = new AssetsTypeMaster();
+                        objtoReturn._AssetTypeID.AssetTypeID = GetAssetDetails.tblMasterAssetType.AssetTypeID;
+                        objtoReturn._AssetTypeID.AssetType = GetAssetDetails.tblMasterAssetType.AssetType;
+                    }
+                    return objtoReturn;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public bool UpdateAssetDetails(Asset _objAssetDetails)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var FetchAssetDetails = db.tblAssets.Where(p => p.AssetID == _objAssetDetails.AssetID).FirstOrDefault();
+                    if (FetchAssetDetails != null)
+                    {
+                        FetchAssetDetails.AssetID = _objAssetDetails.AssetID;
+                        FetchAssetDetails.AssetTypeID = _objAssetDetails._AssetTypeID.AssetTypeID;
+                        FetchAssetDetails.Description = _objAssetDetails.Description;
+                        FetchAssetDetails.NetValue = _objAssetDetails.NetValue;
+                        FetchAssetDetails.Ownership = _objAssetDetails.Ownership;
+                        
+                        db.SaveChanges();
+                    }
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool AddLiability(Liability _objLiabilityDetails)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    if (_objLiabilityDetails != null)
+                    {
+                        tblLiability _tblLiabilityDetail = new tblLiability();
+                        _tblLiabilityDetail.LiabilityID = Guid.NewGuid();
+                        _tblLiabilityDetail.LiabilityTypeID = _objLiabilityDetails._LiabilityID.LiabilityTypeID;
+                        _tblLiabilityDetail.ApplicantID = _objLiabilityDetails.ApplicantID;
+                        _tblLiabilityDetail.Description = _objLiabilityDetails.Description;
+                        _tblLiabilityDetail.NetValue = _objLiabilityDetails.NetValue;
+                        _tblLiabilityDetail.Ownership = _objLiabilityDetails.Ownership;
+
+                        db.tblLiabilities.Add(_tblLiabilityDetail);
+                        db.SaveChanges();
+
+                    }
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public List<Liability> GetAddedLiabilityGrid()
+        {
+            List<Liability> objLiabilityDetails = new List<Liability>();
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetAllLiability = db.tblLiabilities.ToList();
+
+                    foreach (var itemGetAllLiability in GetAllLiability)
+                    {
+                        objLiabilityDetails.Add(new Liability
+                        {
+                            LiabilityID = itemGetAllLiability.LiabilityID,
+                            LiabilityTypeID = itemGetAllLiability.LiabilityTypeID,
+                            Description = itemGetAllLiability.Description,
+                            NetValue = itemGetAllLiability.NetValue,
+                            Ownership = itemGetAllLiability.Ownership,
+                            _LiabilityID = new LiabilityTypeMaster
+                            {
+                                LiabilityTypeID = itemGetAllLiability.tblMasterLiabilityType.LiabilityTypeID,
+                                LiabilityType = itemGetAllLiability.tblMasterLiabilityType.LiabilityType,
+                            } 
+
+                        });
+                    }
+
+                        return objLiabilityDetails;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public Liability GetLiabilityDetails(string LbltyID)
+        {
+            try
+            {
+                Liability objtoReturn = new Liability();
+                Guid LiabilityID = Guid.Parse(LbltyID);
+
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetLiabilityDetails = db.tblLiabilities.Where(p => p.LiabilityID == LiabilityID).FirstOrDefault();
+                    if (GetLiabilityDetails != null)
+                    {
+                        objtoReturn.LiabilityID = GetLiabilityDetails.LiabilityID;
+                        objtoReturn.Description = GetLiabilityDetails.Description;
+                        objtoReturn.NetValue = GetLiabilityDetails.NetValue;
+                        objtoReturn.Ownership = GetLiabilityDetails.Ownership;
+                        objtoReturn.ApplicantID = GetLiabilityDetails.ApplicantID;
+                        objtoReturn._ApplicationID = new Applicants();
+                        objtoReturn._ApplicationID.ApplicantID = GetLiabilityDetails.tblApplicant.ApplicantID;
+                        objtoReturn._ApplicationID.ApplicantTypeID = GetLiabilityDetails.tblApplicant.ApplicantTypeID;
+                        objtoReturn._ApplicationID._ApplicantTypeMasterID = new ApplicantTypeMaster();
+                        objtoReturn._ApplicationID._ApplicantTypeMasterID.ApplicantType = GetLiabilityDetails.tblApplicant.tblMasterApplicantType.ApplicantType;
+                        objtoReturn.LiabilityTypeID = GetLiabilityDetails.LiabilityTypeID;
+                        objtoReturn._LiabilityID = new LiabilityTypeMaster();
+                        objtoReturn._LiabilityID.LiabilityTypeID = GetLiabilityDetails.tblMasterLiabilityType.LiabilityTypeID;
+                        objtoReturn._LiabilityID.LiabilityType = GetLiabilityDetails.tblMasterLiabilityType.LiabilityType;
+                    }
+                    return objtoReturn;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public bool UpdateLiabilityDetails(Liability _objLiabilityDetails)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var FetchLiabilityDetails = db.tblLiabilities.Where(p => p.LiabilityID == _objLiabilityDetails.LiabilityID).FirstOrDefault();
+                    if (FetchLiabilityDetails != null)
+                    {
+                        FetchLiabilityDetails.LiabilityID = _objLiabilityDetails.LiabilityID;
+                        FetchLiabilityDetails.LiabilityTypeID = _objLiabilityDetails._LiabilityID.LiabilityTypeID;
+                        FetchLiabilityDetails.Description = _objLiabilityDetails.Description;
+                        FetchLiabilityDetails.NetValue = _objLiabilityDetails.NetValue;
+                        FetchLiabilityDetails.Ownership = _objLiabilityDetails.Ownership;
+
+                        db.SaveChanges();
+                    }
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 
 }

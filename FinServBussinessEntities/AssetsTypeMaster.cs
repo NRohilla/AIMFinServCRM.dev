@@ -10,12 +10,15 @@ namespace FinServBussinessEntities
     {
         public int AutoID { get; set; }
         public System.Guid AssetTypeID { get; set; }
-        public string Description { get; set; }
+        public string AssetType { get; set; }
         public bool IsActive { get; set; }
         public Nullable<System.Guid> CreatedBy { get; set; }
         public Nullable<System.DateTime> Createdon { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+
+        public Asset _AssetDetails { get; set; }
 
     }
 }

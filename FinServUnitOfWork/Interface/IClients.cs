@@ -39,9 +39,16 @@ namespace FinServUnitOfWork.Interface
         bool AddGuarantor(LoanGuarantorDetails _objGuarantorDetails);
         List<LoanGuarantorDetails> GetAddedGuarantorGrid();
         LoanGuarantorDetails GetGuarantorDetails(string GuarntID);
-
         bool UpdateGuarantorDetails(LoanGuarantorDetails _objUpdateGuartDetails);
 
+        bool AddAsset(Asset _objAssetDetails);
+        List<Asset> GetAddedAssetGrid();
+        Asset GetAssetDetails(string AstID);
+        bool UpdateAssetDetails(Asset _objAssetDetails);
 
+        bool AddLiability(Liability _objLiabilityDetails);
+        List<Liability> GetAddedLiabilityGrid();
+        Liability GetLiabilityDetails(string LbltyID);
+        bool UpdateLiabilityDetails(Liability _objLiabilityDetails);
     }
 }

@@ -1,0 +1,141 @@
+<div class="application-details mt-0">
+    <div>
+        <div class="section_box pl-0 pb-0 pr-0 mb-4 mt-3 clearfix">
+            <form name="form" #AddLiabilityform="ngForm" novalidate>
+                <div class="p-4">
+                    <div class="row m-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                            <div class="field_set">
+                                <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Applicant Type</label>
+                                <p *ngIf="_ViewDetails">{{_LiabilityDetailsObj._ApplicationID._ApplicantTypeMasterID.ApplicantType}}</p>
+                                <div class="field_info w-100">
+                                    <mat-form-field *ngIf="_EditViewDetails || _AddLiability">
+                                        <mat-select placeholder="Applicant Type" [(ngModel)]="_LiabilityDetailsObj._ApplicationID.ApplicantTypeID" name="applicanttype" #applicanttype="ngModel" required>
+                                            <mat-option *ngFor="let ApplcntType of _ObjApplicationID" [value]="ApplcntType.ApplicantTypeID">{{ApplcntType.ApplicantType}}</mat-option>
+                                        </mat-select>
+                                        <div *ngIf="applicanttype.invalid && (applicanttype.dirty || applicanttype.touched)" class="alert alert-danger">
+                                            <div *ngIf="applicanttype.errors.required ">
+                                                Please select Applicant Type.
+                                            </div>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                            <div class="field_set">
+                                <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Liability Type</label>
+                                <p *ngIf="_ViewDetails">{{_LiabilityDetailsObj._LiabilityID.LiabilityType}}</p>
+                                <div class="field_info w-100">
+                                    <mat-form-field *ngIf="_EditViewDetails || _AddLiability">
+                                        <mat-select placeholder="Liability Type" [(ngModel)]="_LiabilityDetailsObj._LiabilityID.LiabilityTypeID" name="LiabilityType" #LiabilityType="ngModel" required>
+                                            <mat-option *ngFor="let liabltype of _objLiabilityTypeID" [value]="liabltype.LiabilityTypeID">{{liabltype.LiabilityType}}</mat-option>
+                                        </mat-select>
+                                        <div *ngIf="LiabilityType.invalid && (LiabilityType.dirty || LiabilityType.touched)" class="alert alert-danger">
+                                            <div *ngIf="LiabilityType.errors.required ">
+                                                Please select Liability Type.
+                                            </div>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                            <div class="field_set">
+                                <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Details</label>
+                                <p *ngIf="_ViewDetails">{{_LiabilityDetailsObj.Description}}</p>
+                                <div class="field_info w-100">
+                                    <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddLiability">
+                                        <input matInput placeholder="Details" name="Details" [(ngModel)]="_LiabilityDetailsObj.Description" class="w-100" #Details required>
+                                        <div *ngIf="Details.invalid && (Details.dirty || Details.touched)" class="alert alert-danger">
+                                            <div *ngIf="Details.errors.required ">
+                                                Please enter Details.
+                                            </div>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                            <div class="field_set">
+                                <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Net Value</label>
+                                <p *ngIf="_ViewDetails">{{_LiabilityDetailsObj.NetValue}}</p>
+                                <div class="field_info w-100">
+                                    <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddLiability">
+                                        <input matInput placeholder="Net Value" name="NetValue" [(ngModel)]="_LiabilityDetailsObj.NetValue" class="w-100" #NetValue required>
+                                        <div *ngIf="NetValue.invalid && (NetValue.dirty || NetValue.touched)" class="alert alert-danger">
+                                            <div *ngIf="NetValue.errors.required ">
+                                                Please enter Net Value.
+                                            </div>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                            <div class="field_set">
+                                <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Ownership</label>
+                                <p *ngIf="_ViewDetails">{{_LiabilityDetailsObj.Ownership}}</p>
+                                <div class="field_info w-100">
+                                    <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddLiability">
+                                        <input matInput placeholder="Ownership" name="Ownership" [(ngModel)]="_LiabilityDetailsObj.Ownership" class="w-100" #Ownership required>
+                                        <div *ngIf="Ownership.invalid && (Ownership.dirty || Ownership.touched)" class="alert alert-danger">
+                                            <div *ngIf="Ownership.errors.required ">
+                                                Please enter Ownership.
+                                            </div>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-100 float-left text-right">
+                    <div class="btn-bottom pr-4 pl-4">
+                        <input type="submit" *ngIf="_AddLiability" (click)="AddLiability()" value="&#xf055; Add" [disabled]="!AddLiabilityform.form.valid" class="btn btn-success" />
+                        <input type="button" *ngIf="_ViewDetails" value="&#xf040; Edit" (click)="EditDetails()" class="btn btn-success" />
+                        <input type="button" *ngIf="_EditViewDetails" (click)="UpdateLiabilityDetails()" value="&#xf0c7; Save" class="btn btn-success" />
+                        <input type="button" value="&#xf00d; Cancel" (click)="onNoClick()" class="btn btn-secondary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div>
+            <kendo-grid [kendoGridBinding]="gridData"
+                        [pageSize]="10"
+                        [sortable]="true"
+                        [pageable]="true"
+                        [scrollable]="true"
+                        [filterable]="true"
+                        [groupable]="true"
+                        selectable="true">
+
+                <kendo-grid-column title="Liability Type" >
+                    <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                        <label>{{dataItem._LiabilityID.LiabilityType}}</label>
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column field="Description" title="Details">
+                </kendo-grid-column>
+                <kendo-grid-column field="NetValue" title="Net Value">
+                </kendo-grid-column>
+                <kendo-grid-column field="Ownership" title="Ownership">
+                </kendo-grid-column>
+                <kendo-grid-command-column>
+                    <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                        <button class="btn btn-lg btn-link p-0" type="button" (click)="ViewDetails(dataItem.LiabilityID)">View Details</button>
+                    </ng-template>
+                </kendo-grid-command-column>
+            </kendo-grid>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+

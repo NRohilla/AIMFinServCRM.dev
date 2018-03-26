@@ -12,6 +12,7 @@ import { ClientsService } from '../../services/app.clients.service';
 import { LoanApplicationDetailDialog } from '../../shared/dialogues/loanapplications/LoanApplicationDetailDialog';
 import { MastersService } from '../../services/app.masters.service';
 import { AddGuarantorDialog } from '../../shared/dialogues/loanapplications/AddGuarantorDialog';
+import { ManageAssetAndLiabilityDialog } from '../../shared/dialogues/loanapplications/ManageAssetandLiabilityDialog';
 
 @Component({
     templateUrl: './loanapplications.component.html',
@@ -135,6 +136,14 @@ export class LoanapplicationsComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             console.log('The dialog was closed');
             //this.animal = result;
+        });
+    }
+    ManageAssetandLiability(): void {
+        let dialogRef = this.dialog.open(ManageAssetAndLiabilityDialog, {
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
         });
     }
 

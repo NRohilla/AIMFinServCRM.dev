@@ -403,6 +403,7 @@
                                     <input type="button" value="&#xf0c7; Save" [disabled]="!LoanApplicantform.form.valid" *ngIf="_EditDetails" class="btn btn-success" />
                                     <input type="button" value="&#xf00d; Cancel" (click)="CancelEditingDetails()" *ngIf="_EditDetails" class="btn btn-secondary" />
                                     <input type="button" value="&#xf040; Manage Guarantor" (click)="ManageGuarantor()" *ngIf="!_EditDetails" class="btn btn-primary" />
+                                    <input type="button" value="&#xf040; Manage Asset/Liability" (click)="ManageAssetandLiability()" *ngIf="!_EditDetails" class="btn btn-primary" />
                                     <input type="button" value="&#xf040; Edit" (click)="EditDetails()" *ngIf="!_EditDetails" class="btn btn-info" />
                                 </div>
                             </div>
