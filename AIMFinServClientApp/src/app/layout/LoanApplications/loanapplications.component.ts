@@ -49,6 +49,7 @@ export class LoanapplicationsComponent implements OnInit {
         IsPropertyDecided: false,
         IsShifted: false,
         LoanApplicationNo: "",
+        ApplicationFormNumber: "",
         LoanTerm: "",
         ModifiedBy: "",
         ModifiedOn: "",
@@ -102,6 +103,7 @@ export class LoanapplicationsComponent implements OnInit {
             IsPropertyDecided: false,
             IsShifted: false,
             LoanApplicationNo: "",
+            ApplicationFormNumber:"",
             LoanTerm: "",
             ModifiedBy: "",
             ModifiedOn: "",
@@ -157,7 +159,6 @@ export class LoanapplicationsComponent implements OnInit {
     }
 
     GetAllLoanApplicationDetailSuccess(res) {
-        debugger;
         this._LoanApplicationDetails = JSON.parse(res._body);
 
         if (this._LoanApplicationDetails.IsPreApproval == true)
@@ -178,12 +179,10 @@ export class LoanapplicationsComponent implements OnInit {
 
     openDialog(): void {
         let dialogRef = this.dialog.open(LoanApplicationDetailDialog, {
-            //data: { name: this.name, animal: this.animal }
         });
 
         dialogRef.afterClosed().subscribe(result => {
             console.log('The dialog was closed');
-            //this.animal = result;
         });
     }
 
@@ -248,11 +247,9 @@ export class LoanapplicationsComponent implements OnInit {
     }
 
     GetLoanType() {
-        debugger;
         this._MasterService.GetLoanTypes().subscribe(res => this.GetLoanTypesSuccess(res), error => this.errorMessage = <any>error);
     }
     GetLoanTypesSuccess(res) {
-        debugger
         this._TypeOfLoanID = JSON.parse(res._body);
     }
 

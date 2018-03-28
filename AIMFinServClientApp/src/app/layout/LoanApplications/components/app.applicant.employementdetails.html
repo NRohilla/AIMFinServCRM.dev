@@ -1,58 +1,71 @@
-<div class="form">
     <div class="pt-4">
         <div class="w-100 float-left">
             <div class="row m-0">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
                         <div class="field_info">
                             <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Source Of Income" value="{{_ApplicantEmployementDetails.SourceOfIncome}}" [(ngModel)]="_ApplicantEmployementDetails.SourceOfIncome" #SourceOfIncome>
+                                <input matInput placeholder="Source Of Income" value="{{_ApplicantEmployementDetails.SourceOfIncome}}" [(ngModel)]="_ApplicantEmployementDetails.SourceOfIncome" name="SourceOfIncome" #SourceOfIncome="ngModel" required>
+                                <div *ngIf="SourceOfIncome.invalid && (SourceOfIncome.dirty || SourceOfIncome.touched)" class="alert alert-danger">
+                                    <div *ngIf="SourceOfIncome.errors.required ">
+                                        Please enter Source Of Income.
+                                    </div>
+                                </div>
                             </mat-form-field>
                         </div>
-                    </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
                         <div class="field_info">
                             <mat-form-field class="example-full-width">
-                                <input matInput placeholder="EmployerName" value="{{_ApplicantEmployementDetails.EmployerName}}" [(ngModel)]="_ApplicantEmployementDetails.EmployerName" #EmployerName>
+                                <input matInput placeholder="EmployerName" value="{{_ApplicantEmployementDetails.EmployerName}}" [(ngModel)]="_ApplicantEmployementDetails.EmployerName" name="EmployerName" #EmployerName="ngModel" required>
+                                <div *ngIf="EmployerName.invalid && (EmployerName.dirty || EmployerName.touched)" class="alert alert-danger">
+                                    <div *ngIf="EmployerName.errors.required ">
+                                        Please enter Employer Name.
+                                    </div>
+                                </div>
                             </mat-form-field>
                         </div>
-                    </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
                         <div class="field_info">
                             <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Duration" value="{{_ApplicantEmployementDetails.Duration}}" [(ngModel)]="_ApplicantEmployementDetails.Duration" #Duration>
+                                <input matInput placeholder="Duration" value="{{_ApplicantEmployementDetails.Duration}}" [(ngModel)]="_ApplicantEmployementDetails.Duration" name="Duration" #Duration="ngModel" required>
+                                <div *ngIf="Duration.invalid && (Duration.dirty || Duration.touched)" class="alert alert-danger">
+                                    <div *ngIf="Duration.errors.required ">
+                                        Please select Duration.
+                                    </div>
+                                </div>
                             </mat-form-field>
                         </div>
-                    </div>
                 </div>
             </div>
 
             <div class="row m-0">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
                         <div class="field_info">
                             <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Income" value="{{_ApplicantEmployementDetails.Income}}" [(ngModel)]="_ApplicantEmployementDetails.Income" #Income>
+                                <input matInput placeholder="Income" value="{{_ApplicantEmployementDetails.Income}}" [(ngModel)]="_ApplicantEmployementDetails.Income" name="Income" #Income="ngModel" required>
+                                <div *ngIf="Income.invalid && (Income.dirty || Income.touched)" class="alert alert-danger">
+                                    <div *ngIf="Income.errors.required ">
+                                        Please enter Income.
+                                    </div>
+                                </div>
                             </mat-form-field>
                         </div>
-                    </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
                         <div class="field_info">
                             <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Status" value="{{_ApplicantEmployementDetails.Status}}" [(ngModel)]="_ApplicantEmployementDetails.Status" #Status>
+                                <input matInput placeholder="Status" value="{{_ApplicantEmployementDetails.Status}}" [(ngModel)]="_ApplicantEmployementDetails.Status" name="Status" #Status="ngModel" required>
+                                <div *ngIf="Status.invalid && (Status.dirty || Status.touched)" class="alert alert-danger">
+                                    <div *ngIf="Status.errors.required ">
+                                        Please enter Status.
+                                    </div>
+                                </div>
                             </mat-form-field>
                         </div>
-                    </div>
                 </div>
             </div>
 
         </div>
         
     </div>
-</div>

@@ -76,6 +76,5 @@ export class LoanApplicationDetailDialog {
 
     onNoClick(): void {
         this.dialogRef.close();
-        debugger;
     }
 }

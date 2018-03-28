@@ -73,6 +73,7 @@ namespace FinServUnitOfWork.Repository
                         objLoanApplicationForms.Add(new LoanApplicationForms
                         {
                             LoanApplicationNo = itemGetAllApplications.LoanApplicationNo,
+                            ApplicationFormNumber=itemGetAllApplications.ApplicationFormNumber,
                             TypeOfLoanID = itemGetAllApplications.TypeOfLoanID,
                             LoanTerm = itemGetAllApplications.LoanTerm,
                             RateTypeID = itemGetAllApplications.RateTypeID,
@@ -907,7 +908,6 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
-
         public bool AddAsset(Asset _objAssetDetails)
         {
             try
@@ -923,6 +923,8 @@ namespace FinServUnitOfWork.Repository
                         _tblAssetDetail.Description = _objAssetDetails.Description;
                         _tblAssetDetail.NetValue = _objAssetDetails.NetValue;
                         _tblAssetDetail.Ownership = _objAssetDetails.Ownership;
+                        tblApplicant _tblApplicant = new tblApplicant();
+                        _tblApplicant.FirstName = _objAssetDetails._ApplicationID.FirstName;
 
                         db.tblAssets.Add(_tblAssetDetail);
                         db.SaveChanges();
@@ -937,33 +939,39 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
-
-        public List<Asset> GetAddedAssetGrid()
-        {
-            List<Asset> objAssetDetails = new List<Asset>();
+        public List<Asset> GetAddedAssetGrid(Guid LoanApplicationNo)
+        {          
             try
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var GetAllAssets = db.tblAssets.ToList();
-
-                    foreach (var itemGetAllAssets in GetAllAssets)
-                    {
-                        objAssetDetails.Add(new Asset
-                        {
-                            AssetID = itemGetAllAssets.AssetID,
-                            AssetTypeID = itemGetAllAssets.AssetTypeID,
-                            Description = itemGetAllAssets.Description,
-                            NetValue = itemGetAllAssets.NetValue,
-                            Ownership = itemGetAllAssets.Ownership,
-                            _AssetTypeID = new AssetsTypeMaster {
-                                AssetTypeID = itemGetAllAssets.tblMasterAssetType.AssetTypeID,
-                                AssetType = itemGetAllAssets.tblMasterAssetType.AssetType
-                            }
-                        });
-                    }
-
-                    return objAssetDetails;
+                    var Assetdata = (from tla in db.tblLoanApplicationForms
+                                     join ta in db.tblApplicants on tla.LoanApplicationNo equals ta.LoanApplicationNo
+                                     join tas in db.tblAssets on ta.ApplicantID equals tas.ApplicantID
+                                     join tma in db.tblMasterAssetTypes on tas.AssetTypeID equals tma.AssetTypeID
+                                     where tla.LoanApplicationNo == LoanApplicationNo
+                                     select new
+                                     {
+                                         _Description = tas.Description,
+                                         _AssetID = tas.AssetID,
+                                         _NetValue = tas.NetValue,
+                                         _Ownership = tas.Ownership,
+                                         _AssetType = tma.AssetType,
+                                         _AssetTypeID = tma.AssetTypeID,
+                                         _firstName=ta.FirstName,
+                                         _applicantID=ta.ApplicantID
+                                     }).ToList().Select(x => new Asset()
+                                     {
+                                         Description = x._Description,
+                                         AssetID = x._AssetID,
+                                         NetValue = x._NetValue,
+                                         Ownership = x._Ownership,
+                                         AssetTypeID = x._AssetTypeID,
+                                         AssetType = x._AssetType,
+                                         FirstName = x._firstName,
+                                         ApplicantID= x._applicantID
+                                     }).ToList();
+                    return Assetdata;
                 }
             }
             catch (Exception ex)
@@ -971,16 +979,16 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
-        public Asset GetAssetDetails(string AstID)
+        public Asset GetAssetDetails(string ClientID)
         {
             try
             {
                 Asset objtoReturn = new Asset();
-                Guid AssetID = Guid.Parse(AstID);
+                Guid ApplicantID = Guid.Parse(ClientID);
 
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var GetAssetDetails = db.tblAssets.Where(p => p.AssetID == AssetID).FirstOrDefault();
+                    var GetAssetDetails = db.tblAssets.Where(p => p.ApplicantID == ApplicantID).FirstOrDefault();
                     if (GetAssetDetails != null)
                     {
                         objtoReturn.AssetID = GetAssetDetails.AssetID;
@@ -988,15 +996,10 @@ namespace FinServUnitOfWork.Repository
                         objtoReturn.NetValue = GetAssetDetails.NetValue;
                         objtoReturn.Ownership = GetAssetDetails.Ownership;
                         objtoReturn.ApplicantID = GetAssetDetails.ApplicantID;
-                        objtoReturn._ApplicationID = new Applicants();
-                        objtoReturn._ApplicationID.ApplicantID = GetAssetDetails.tblApplicant.ApplicantID;
-                        objtoReturn._ApplicationID.ApplicantTypeID = GetAssetDetails.tblApplicant.ApplicantTypeID;
-                        objtoReturn._ApplicationID._ApplicantTypeMasterID = new ApplicantTypeMaster();
-                        objtoReturn._ApplicationID._ApplicantTypeMasterID.ApplicantType = GetAssetDetails.tblApplicant.tblMasterApplicantType.ApplicantType;
-                        objtoReturn.AssetTypeID = GetAssetDetails.AssetTypeID;
-                        objtoReturn._AssetTypeID = new AssetsTypeMaster();
-                        objtoReturn._AssetTypeID.AssetTypeID = GetAssetDetails.tblMasterAssetType.AssetTypeID;
-                        objtoReturn._AssetTypeID.AssetType = GetAssetDetails.tblMasterAssetType.AssetType;
+                        objtoReturn.FirstName = GetAssetDetails.tblApplicant.FirstName;
+                        objtoReturn.AssetType = GetAssetDetails.tblMasterAssetType.AssetType;
+                        objtoReturn.AssetTypeID = GetAssetDetails.tblMasterAssetType.AssetTypeID;
+                       
                     }
                     return objtoReturn;
                 }
@@ -1006,7 +1009,6 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
-
         public bool UpdateAssetDetails(Asset _objAssetDetails)
         {
             try
@@ -1017,11 +1019,11 @@ namespace FinServUnitOfWork.Repository
                     if (FetchAssetDetails != null)
                     {
                         FetchAssetDetails.AssetID = _objAssetDetails.AssetID;
-                        FetchAssetDetails.AssetTypeID = _objAssetDetails._AssetTypeID.AssetTypeID;
+                        FetchAssetDetails.ApplicantID = _objAssetDetails.ApplicantID;
+                        FetchAssetDetails.AssetTypeID = _objAssetDetails.AssetTypeID;
                         FetchAssetDetails.Description = _objAssetDetails.Description;
                         FetchAssetDetails.NetValue = _objAssetDetails.NetValue;
                         FetchAssetDetails.Ownership = _objAssetDetails.Ownership;
-                        
                         db.SaveChanges();
                     }
                     return true;
@@ -1033,7 +1035,6 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
-
         public bool AddLiability(Liability _objLiabilityDetails)
         {
             try
@@ -1044,11 +1045,13 @@ namespace FinServUnitOfWork.Repository
                     {
                         tblLiability _tblLiabilityDetail = new tblLiability();
                         _tblLiabilityDetail.LiabilityID = Guid.NewGuid();
-                        _tblLiabilityDetail.LiabilityTypeID = _objLiabilityDetails._LiabilityID.LiabilityTypeID;
+                        _tblLiabilityDetail.LiabilityTypeID = _objLiabilityDetails.LiabilityTypeID;
                         _tblLiabilityDetail.ApplicantID = _objLiabilityDetails.ApplicantID;
                         _tblLiabilityDetail.Description = _objLiabilityDetails.Description;
                         _tblLiabilityDetail.NetValue = _objLiabilityDetails.NetValue;
                         _tblLiabilityDetail.Ownership = _objLiabilityDetails.Ownership;
+                        tblApplicant _tblApplicant = new tblApplicant();
+                        _tblApplicant.FirstName = _objLiabilityDetails.FirstName;
 
                         db.tblLiabilities.Add(_tblLiabilityDetail);
                         db.SaveChanges();
@@ -1063,37 +1066,42 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
-
-        public List<Liability> GetAddedLiabilityGrid()
+        public List<Liability> GetAddedLiabilityGrid(Guid LoanApplicationNo)
         {
-            List<Liability> objLiabilityDetails = new List<Liability>();
             try
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var GetAllLiability = db.tblLiabilities.ToList();
-
-                    foreach (var itemGetAllLiability in GetAllLiability)
-                    {
-                        objLiabilityDetails.Add(new Liability
-                        {
-                            LiabilityID = itemGetAllLiability.LiabilityID,
-                            LiabilityTypeID = itemGetAllLiability.LiabilityTypeID,
-                            Description = itemGetAllLiability.Description,
-                            NetValue = itemGetAllLiability.NetValue,
-                            Ownership = itemGetAllLiability.Ownership,
-                            _LiabilityID = new LiabilityTypeMaster
-                            {
-                                LiabilityTypeID = itemGetAllLiability.tblMasterLiabilityType.LiabilityTypeID,
-                                LiabilityType = itemGetAllLiability.tblMasterLiabilityType.LiabilityType,
-                            } 
-
-                        });
-                    }
-
-                        return objLiabilityDetails;
+                    var liabilitydata = (from tla in db.tblLoanApplicationForms
+                                     join ta in db.tblApplicants on tla.LoanApplicationNo equals ta.LoanApplicationNo
+                                     join tl in db.tblLiabilities on ta.ApplicantID equals tl.ApplicantID
+                                     join tml in db.tblMasterLiabilityTypes on tl.LiabilityTypeID equals tml.LiabilityTypeID
+                                     where tla.LoanApplicationNo == LoanApplicationNo
+                                     select new
+                                     {
+                                         _Description = tl.Description,
+                                         _LiabilityID = tl.LiabilityID,
+                                         _NetValue = tl.NetValue,
+                                         _Ownership = tl.Ownership,
+                                         _LiabilityTypeID = tml.LiabilityTypeID,
+                                         _LiabilityType = tml.LiabilityType,
+                                         _firstName = ta.FirstName,
+                                         _applicantID = ta.ApplicantID
+                                     }).ToList().Select(x => new Liability()
+                                     {
+                                         Description = x._Description,
+                                         LiabilityID = x._LiabilityID,
+                                         NetValue = x._NetValue,
+                                         Ownership = x._Ownership,
+                                         LiabilityTypeID = x._LiabilityTypeID,
+                                         LiabilityType = x._LiabilityType,
+                                         FirstName = x._firstName,
+                                         ApplicantID=x._applicantID
+                                     }).ToList();
+                    return liabilitydata;
                 }
             }
+            
             catch (Exception ex)
             {
                 return null;
@@ -1116,15 +1124,10 @@ namespace FinServUnitOfWork.Repository
                         objtoReturn.NetValue = GetLiabilityDetails.NetValue;
                         objtoReturn.Ownership = GetLiabilityDetails.Ownership;
                         objtoReturn.ApplicantID = GetLiabilityDetails.ApplicantID;
-                        objtoReturn._ApplicationID = new Applicants();
-                        objtoReturn._ApplicationID.ApplicantID = GetLiabilityDetails.tblApplicant.ApplicantID;
-                        objtoReturn._ApplicationID.ApplicantTypeID = GetLiabilityDetails.tblApplicant.ApplicantTypeID;
-                        objtoReturn._ApplicationID._ApplicantTypeMasterID = new ApplicantTypeMaster();
-                        objtoReturn._ApplicationID._ApplicantTypeMasterID.ApplicantType = GetLiabilityDetails.tblApplicant.tblMasterApplicantType.ApplicantType;
-                        objtoReturn.LiabilityTypeID = GetLiabilityDetails.LiabilityTypeID;
-                        objtoReturn._LiabilityID = new LiabilityTypeMaster();
-                        objtoReturn._LiabilityID.LiabilityTypeID = GetLiabilityDetails.tblMasterLiabilityType.LiabilityTypeID;
-                        objtoReturn._LiabilityID.LiabilityType = GetLiabilityDetails.tblMasterLiabilityType.LiabilityType;
+                        objtoReturn.FirstName = GetLiabilityDetails.tblApplicant.FirstName;
+                        objtoReturn.LiabilityType = GetLiabilityDetails.tblMasterLiabilityType.LiabilityType;
+                        objtoReturn.LiabilityTypeID = GetLiabilityDetails.tblMasterLiabilityType.LiabilityTypeID;
+          
                     }
                     return objtoReturn;
                 }
@@ -1145,7 +1148,8 @@ namespace FinServUnitOfWork.Repository
                     if (FetchLiabilityDetails != null)
                     {
                         FetchLiabilityDetails.LiabilityID = _objLiabilityDetails.LiabilityID;
-                        FetchLiabilityDetails.LiabilityTypeID = _objLiabilityDetails._LiabilityID.LiabilityTypeID;
+                        FetchLiabilityDetails.ApplicantID = _objLiabilityDetails.ApplicantID;
+                        FetchLiabilityDetails.LiabilityTypeID = _objLiabilityDetails.LiabilityTypeID;
                         FetchLiabilityDetails.Description = _objLiabilityDetails.Description;
                         FetchLiabilityDetails.NetValue = _objLiabilityDetails.NetValue;
                         FetchLiabilityDetails.Ownership = _objLiabilityDetails.Ownership;

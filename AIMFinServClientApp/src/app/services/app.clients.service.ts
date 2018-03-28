@@ -122,11 +122,11 @@ export class ClientsService {
     AddAsset(Asset) {
         return this._http.post(this.baseurl + "Clients/AddAsset", Asset, this.options);
     }
-    GetAddedAssetGrid() {
-        return this._http.get(this.baseurl + "Clients/GetAddedAssetGrid", this.options);
+    GetAddedAssetGrid(LoanAppNo) {
+        return this._http.get(this.baseurl + "Clients/GetAddedAssetGrid?LoanAppNo=" + LoanAppNo, this.options);
     }
-    GetAssetDetails(AstID) {
-        return this._http.get(this.baseurl + "Clients/GetAssetDetails?AstID=" + AstID, this.options);
+    GetAssetDetails(ClientID) {
+        return this._http.get(this.baseurl + "Clients/GetAssetDetails?ClientID=" + ClientID, this.options);
     }
     UpdateAssetDetails(Asset) {
         return this._http.post(this.baseurl + "Clients/UpdateAssetDetails", Asset, this.options);
@@ -135,8 +135,8 @@ export class ClientsService {
     AddLiability(Liability) {
         return this._http.post(this.baseurl + "Clients/AddLiability", Liability, this.options);
     }
-    GetAddedLiabilityGrid() {
-        return this._http.get(this.baseurl + "Clients/GetAddedLiabilityGrid", this.options);
+    GetAddedLiabilityGrid(LoanAppNo) {
+        return this._http.get(this.baseurl + "Clients/GetAddedLiabilityGrid?LoanAppNo=" + LoanAppNo, this.options);
     }
     GetLiabilityDetails(LbltyID) {
         return this._http.get(this.baseurl + "Clients/GetLiabilityDetails?LbltyID=" + LbltyID, this.options);

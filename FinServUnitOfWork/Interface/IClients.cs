@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using FinServBussinessEntities;
 using FinServDataModel;
 namespace FinServUnitOfWork.Interface
@@ -42,12 +43,12 @@ namespace FinServUnitOfWork.Interface
         bool UpdateGuarantorDetails(LoanGuarantorDetails _objUpdateGuartDetails);
 
         bool AddAsset(Asset _objAssetDetails);
-        List<Asset> GetAddedAssetGrid();
-        Asset GetAssetDetails(string AstID);
+        List<Asset> GetAddedAssetGrid(Guid LoanAppNo);
+        Asset GetAssetDetails(string ClientID);
         bool UpdateAssetDetails(Asset _objAssetDetails);
 
         bool AddLiability(Liability _objLiabilityDetails);
-        List<Liability> GetAddedLiabilityGrid();
+        List<Liability> GetAddedLiabilityGrid(Guid LoanAppNo);
         Liability GetLiabilityDetails(string LbltyID);
         bool UpdateLiabilityDetails(Liability _objLiabilityDetails);
     }

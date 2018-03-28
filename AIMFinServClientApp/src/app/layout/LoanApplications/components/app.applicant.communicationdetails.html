@@ -1,50 +1,59 @@
-<div class="form">
     <div class="pt-4">
         <div class="w-100 float-left">
             <div class="row m-0">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
-                        <div class="field_info">
-                            <mat-form-field class="example-full-width" >
-                                <input matInput placeholder="Address Line 1" value="{{_ApplicantCommunicationDetails.AddressLine1}}" [(ngModel)]="_ApplicantCommunicationDetails.AddressLine1" #AddressLine1>
-                            </mat-form-field>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
-                        <div class="field_info">
-                            <mat-form-field class="example-full-width" >
-                                <input matInput placeholder="Address Line 2" value="{{_ApplicantCommunicationDetails.AddressLine2}}" [(ngModel)]="_ApplicantCommunicationDetails.AddressLine2" #AddressLine2>
-                            </mat-form-field>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
                         <div class="field_info">
                             <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Address Line 3" value="{{_ApplicantCommunicationDetails.AddressLine3}}" [(ngModel)]="_ApplicantCommunicationDetails.AddressLine3" #AddressLine3>
+                                <input matInput placeholder="Address Line 1" value="{{_ApplicantCommunicationDetails.AddressLine1}}" [(ngModel)]="_ApplicantCommunicationDetails.AddressLine1" name="AddressLine1" #AddressLine1="ngModel" required>
+                                <div *ngIf="AddressLine1.invalid && (AddressLine1.dirty || AddressLine1.touched)" class="alert alert-danger">
+                                    <div *ngIf="AddressLine1.errors.required ">
+                                        Please enter Address Line 1.
+                                    </div>
+                                </div>
+                            </mat-form-field>
+                            
+                        </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Address Line 2" value="{{_ApplicantCommunicationDetails.AddressLine2}}" [(ngModel)]="_ApplicantCommunicationDetails.AddressLine2" name="AddressLine2" #AddressLine2="ngModel" required>
+                                <div *ngIf="AddressLine2.invalid && (AddressLine2.dirty || AddressLine2.touched)" class="alert alert-danger">
+                                    <div *ngIf="AddressLine2.errors.required ">
+                                        Please enter Address Line 2.
+                                    </div>
+                                </div>
                             </mat-form-field>
                         </div>
-                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Address Line 3" value="{{_ApplicantCommunicationDetails.AddressLine3}}" [(ngModel)]="_ApplicantCommunicationDetails.AddressLine3" name="AddressLine3" #AddressLine3="ngModel" required>
+                                <div *ngIf="AddressLine3.invalid && (AddressLine3.dirty || AddressLine3.touched)" class="alert alert-danger">
+                                    <div *ngIf="AddressLine3.errors.required ">
+                                        Please enter Address Line 3.
+                                    </div>
+                                </div>
+                            </mat-form-field>
+                        </div>
                 </div>
             </div>
 
             <div class="row m-0">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
                         <div class="field_info">
-                            <mat-form-field class="example-full-width" >
-                                <input matInput placeholder="Duration" value="{{_ApplicantCommunicationDetails.Duration}}" [(ngModel)]="_ApplicantCommunicationDetails.Duration" #Duration>
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Duration" value="{{_ApplicantCommunicationDetails.Duration}}" [(ngModel)]="_ApplicantCommunicationDetails.Duration" name="Duration" #Duration="ngModel" required>
+                                <div *ngIf="Duration.invalid && (Duration.dirty || Duration.touched)" class="alert alert-danger">
+                                    <div *ngIf="Duration.errors.required ">
+                                        Please enter Duration.
+                                    </div>
+                                </div>
                             </mat-form-field>
                         </div>
-                    </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
                         <div class="field_info">
                             <mat-form-field>
                                 <mat-select placeholder="Address Type" [(value)]="_ApplicantCommunicationDetails.AddressType">
@@ -55,13 +64,11 @@
                                 </mat-select>
                             </mat-form-field>
                         </div>
-                    </div>
                 </div>
             </div>
 
         </div>
     </div>
 
-</div>
 
 

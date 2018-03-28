@@ -305,6 +305,29 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
+        public List<Applicants> GetApplicantNames(string loanappno)
+        {
+            try
+            {
+                Guid appGuid = Guid.Parse(loanappno);
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    return (from ObjAplcnts in db.tblApplicants
+                            .Where(p => p.LoanApplicationNo == appGuid)
+                            select new Applicants()
+                            {
+                                ApplicantID = ObjAplcnts.ApplicantID,
+                                FirstName = ObjAplcnts.FirstName
+                            })
+                            .ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        
         #endregion
 
 

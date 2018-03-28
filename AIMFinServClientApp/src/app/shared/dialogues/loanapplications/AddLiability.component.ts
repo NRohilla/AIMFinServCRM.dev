@@ -28,29 +28,25 @@ export class AddLiabilityComponent implements OnInit {
     errorMessage: "No Data"
     public _ViewDetails: boolean = false;
     public gridData=[];
-    public _ObjApplicationID = [];
+    public _ObjApplicantNames = [];
     public _objLiabilityTypeID = [];
     public _AddLiability: boolean = true;
     public _EditViewDetails: boolean = false;
+    public LoanApplicationNo: string = '';
 
     public _LiabilityDetailsObj = {
         AutoID: '',
         LiabilityID: '',
         LiabilityTypeID: '',
+        LoanApplicationNo:'',
         ApplicantID: '',
         Description: '',
+        FirstName: '',
         NetValue: '',
         Ownership: '',
-        _ApplicationID: {
-            ApplicantID: '',
-            _ApplicantTypeMasterID: {
-                ApplicantType: ''
-            }
-        },
-        _LiabilityID: {
-            LiabilityTypeID	: '',
-            LiabilityType: ''
-        }
+        LiabilityType: '',
+        _ApplicationID: {},
+        _LiabilityID: {}
     }
 
     constructor(
@@ -59,9 +55,13 @@ export class AddLiabilityComponent implements OnInit {
         {  }
 
     ngOnInit() {
-        this.GetApplicantTypes();
+
+        if (this._LocalStorageService.get("LoanApplicationNoViewed") != undefined) {
+            this.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNoViewed");
+            this.GetApplicantNames(this.LoanApplicationNo);
+            this._ClientsService.GetAddedLiabilityGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedLiabilityGridSuccess(res), res => this.GetAddedLiabilityGridError(res));
+        }
         this.GetLiabilityTypes();
-        this._ClientsService.GetAddedLiabilityGrid().subscribe(res => this.GetAddedLiabilityGridSuccess(res), res => this.GetAddedLiabilityGridError(res));
     }
 
     AddLiability() {
@@ -77,26 +77,21 @@ export class AddLiabilityComponent implements OnInit {
             AutoID: '',
             LiabilityID: '',
             LiabilityTypeID: '',
+            LoanApplicationNo:'',
             ApplicantID: '',
             Description: '',
+            FirstName: '',
             NetValue: '',
             Ownership: '',
-            _ApplicationID: {
-                ApplicantID: '',
-                _ApplicantTypeMasterID: {
-                    ApplicantType: ''
-                }
-            },
-            _LiabilityID: {
-                LiabilityTypeID: '',
-                LiabilityType: ''
-            }
+            LiabilityType: '',
+            _ApplicationID: {},
+            _LiabilityID: {}
         }
     }
     AddLiabilityError(res) { }
 
     GetAddedLiabilityGrid() {
-        this._ClientsService.GetAddedLiabilityGrid().subscribe(res => this.GetAddedLiabilityGridSuccess(res), res => this.GetAddedLiabilityGridError(res));
+            this._ClientsService.GetAddedLiabilityGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedLiabilityGridSuccess(res), res => this.GetAddedLiabilityGridError(res));
     }
     GetAddedLiabilityGridSuccess(res) {
         this.gridData = JSON.parse(res._body);
@@ -104,11 +99,11 @@ export class AddLiabilityComponent implements OnInit {
     }
     GetAddedLiabilityGridError(res) { }
 
-    GetApplicantTypes() {
-        this._MasterService.GetApplicantTypes().subscribe(res => this.GetApplicantTypesSuccess(res), error => this.errorMessage = <any>error);
+    GetApplicantNames(LoanApplicationNo) {
+        this._MasterService.GetApplicantNames(this.LoanApplicationNo).subscribe(res => this.GetApplicantNamesSuccess(res), error => this.errorMessage = <any>error);
     }
-    GetApplicantTypesSuccess(res) {
-        this._ObjApplicationID = JSON.parse(res._body);
+    GetApplicantNamesSuccess(res) {
+        this._ObjApplicantNames = JSON.parse(res._body);
     }
 
     GetLiabilityTypes() {

@@ -6,16 +6,16 @@
                     <div class="row m-0">
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
-                                <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Applicant Type</label>
-                                <p *ngIf="_ViewDetails">{{_LiabilityDetailsObj._ApplicationID._ApplicantTypeMasterID.ApplicantType}}</p>
+                                <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Applicant Name</label>
+                                <p *ngIf="_ViewDetails">{{_LiabilityDetailsObj.FirstName}}</p>
                                 <div class="field_info w-100">
                                     <mat-form-field *ngIf="_EditViewDetails || _AddLiability">
-                                        <mat-select placeholder="Applicant Type" [(ngModel)]="_LiabilityDetailsObj._ApplicationID.ApplicantTypeID" name="applicanttype" #applicanttype="ngModel" required>
-                                            <mat-option *ngFor="let ApplcntType of _ObjApplicationID" [value]="ApplcntType.ApplicantTypeID">{{ApplcntType.ApplicantType}}</mat-option>
+                                        <mat-select placeholder="Applicant Name" [(ngModel)]="_LiabilityDetailsObj.ApplicantID" name="applicantname" #applicantname="ngModel" required>
+                                            <mat-option *ngFor="let ApplcntType of _ObjApplicantNames" [value]="ApplcntType.ApplicantID">{{ApplcntType.FirstName}}</mat-option>
                                         </mat-select>
-                                        <div *ngIf="applicanttype.invalid && (applicanttype.dirty || applicanttype.touched)" class="alert alert-danger">
-                                            <div *ngIf="applicanttype.errors.required ">
-                                                Please select Applicant Type.
+                                        <div *ngIf="applicantname.invalid && (applicantname.dirty || applicantname.touched)" class="alert alert-danger">
+                                            <div *ngIf="applicantname.errors.required ">
+                                                Please select Applicant Name.
                                             </div>
                                         </div>
                                     </mat-form-field>
@@ -25,10 +25,10 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Liability Type</label>
-                                <p *ngIf="_ViewDetails">{{_LiabilityDetailsObj._LiabilityID.LiabilityType}}</p>
+                                <p *ngIf="_ViewDetails">{{_LiabilityDetailsObj.LiabilityType}}</p>
                                 <div class="field_info w-100">
                                     <mat-form-field *ngIf="_EditViewDetails || _AddLiability">
-                                        <mat-select placeholder="Liability Type" [(ngModel)]="_LiabilityDetailsObj._LiabilityID.LiabilityTypeID" name="LiabilityType" #LiabilityType="ngModel" required>
+                                        <mat-select placeholder="Liability Type" [(ngModel)]="_LiabilityDetailsObj.LiabilityTypeID" name="LiabilityType" #LiabilityType="ngModel" required>
                                             <mat-option *ngFor="let liabltype of _objLiabilityTypeID" [value]="liabltype.LiabilityTypeID">{{liabltype.LiabilityType}}</mat-option>
                                         </mat-select>
                                         <div *ngIf="LiabilityType.invalid && (LiabilityType.dirty || LiabilityType.touched)" class="alert alert-danger">
@@ -112,10 +112,14 @@
                         [filterable]="true"
                         [groupable]="true"
                         selectable="true">
-
-                <kendo-grid-column title="Liability Type" >
+                <kendo-grid-column title="Applicant Name">
                     <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                        <label>{{dataItem._LiabilityID.LiabilityType}}</label>
+                        <label>{{dataItem.FirstName}}</label>
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column title="Liability Type">
+                    <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                        <label>{{dataItem.LiabilityType}}</label>
                     </ng-template>
                 </kendo-grid-column>
                 <kendo-grid-column field="Description" title="Details">

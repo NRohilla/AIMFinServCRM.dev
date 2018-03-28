@@ -72,7 +72,9 @@ export class MastersService {
     GetStatusTypes() {
         return this._http.get(this.baseurl + "Masters/GetStatusTypes", this.options);
     }
-
+    GetApplicantNames(loanappno) {
+        return this._http.get(this.baseurl + "Masters/GetApplicantNames?loanappno=" + loanappno, this.options);
+    }
     //switch status
 
     SwitchApplicantEntityStatus(ID) {

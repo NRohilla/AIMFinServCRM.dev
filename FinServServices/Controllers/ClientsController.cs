@@ -4,6 +4,7 @@ using System.Web.Http;
 using FinServUnitOfWork.Interface;
 using FinServUnitOfWork.Repository;
 using FinServDataModel;
+using System;
 
 namespace FinServServices.Controllers
 {
@@ -189,16 +190,16 @@ namespace FinServServices.Controllers
         }
         [HttpGet]
         [Route("GetAddedAssetGrid")]
-        public List<Asset> GetAddedAssetGrid()
+        public List<Asset> GetAddedAssetGrid(Guid LoanAppNo)
         {
-            return Repository.GetAddedAssetGrid();
+            return Repository.GetAddedAssetGrid(LoanAppNo);
         }
 
         [HttpGet]
         [Route("GetAssetDetails")]
-        public Asset GetAssetDetails(string AstID)
+        public Asset GetAssetDetails(string ClientID)
         {
-            return Repository.GetAssetDetails(AstID);
+            return Repository.GetAssetDetails(ClientID);
         }
 
         [HttpPost]
@@ -216,9 +217,9 @@ namespace FinServServices.Controllers
         }
         [HttpGet]
         [Route("GetAddedLiabilityGrid")]
-        public List<Liability> GetAddedLiabilityGrid()
+        public List<Liability> GetAddedLiabilityGrid(Guid LoanAppNo)
         {
-            return Repository.GetAddedLiabilityGrid();
+            return Repository.GetAddedLiabilityGrid(LoanAppNo);
         }
 
         [HttpGet]

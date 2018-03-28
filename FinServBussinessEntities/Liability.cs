@@ -20,6 +20,8 @@ namespace FinServBussinessEntities
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
+        public string FirstName { get; set; }
+        public string LiabilityType { get; set; }
 
         public Applicants _ApplicationID { get; set; }
         public LiabilityTypeMaster _LiabilityID { get; set; }

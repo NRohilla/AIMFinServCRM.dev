@@ -112,6 +112,14 @@ namespace FinServServices.Controllers
         {
             return Repository.GetStatusTypes();
         }
+
+        [HttpGet]
+        [Route("GetApplicantNames")]
+        public List<Applicants> GetApplicantNames(string loanappno)
+        {
+            return Repository.GetApplicantNames(loanappno);
+        }
+
         #endregion
 
 

@@ -51,7 +51,6 @@ export class ApplicantPersonalDetailsComponent extends AppBaseComponent implemen
         this._MasterService.GetApplicantTypes().subscribe(res => this.GetApplicantTypesSuccess(res), error => this.errorMessage = <any>error);
     }
     GetApplicantTypesSuccess(res) {
-        debugger;
         this._ApplicantTypeID = JSON.parse(res._body);
     }
 
