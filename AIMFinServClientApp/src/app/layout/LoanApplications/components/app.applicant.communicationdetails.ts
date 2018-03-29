@@ -15,7 +15,8 @@ import { ClientsService } from '../../../services/app.clients.service';
     providers: [ClientsService]
 })
 export class ApplicantCommunicationDetailsComponent implements OnInit {
-
+    _isformvalid: boolean = false;
+    @ViewChild('AddCommunicationForm') form;
     public _ApplicantCommunicationDetails = {
         CommunicationID:'',
         AddressLine1: '',
@@ -29,6 +30,10 @@ export class ApplicantCommunicationDetailsComponent implements OnInit {
     constructor(public router: Router, private _LocalStorageService: LocalStorageService,private _ClientsService: ClientsService) { }
 
     ngOnInit() {
+    }
+
+    ngDoCheck() {
+        this._isformvalid = this.form.valid;
     }
 
     SaveLoanApplicationCommunicationDetails(applicantid) {

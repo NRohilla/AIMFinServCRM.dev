@@ -22,7 +22,7 @@ export class ClientsEmployementComponent extends AppBaseComponent implements OnI
 
     public _EditEmployementDetails: boolean = false;
     public _Operationtitle: string = "Add";    
-    public _ClientEmploymentDetails = {};
+    public _ClientEmploymentDetails = [];
     public _TypeOfProfession = [];
     public _TypeOfEmployment= [];
 

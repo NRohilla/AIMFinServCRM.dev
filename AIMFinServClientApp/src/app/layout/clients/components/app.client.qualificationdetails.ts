@@ -1,4 +1,4 @@
-﻿import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
+import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../../../router.animations';
 import { Form, FormControl, FormBuilder, Validators  } from '@angular/forms';
@@ -22,7 +22,7 @@ export class ClientqualificationComponent extends AppBaseComponent implements On
     public _EditQualificationDetails: boolean = false;
 
     public _Operationtitle: string = "Add";
-    public _ClientQualificationDetails = {};
+    public _ClientQualificationDetails = [];
     public _TypeOfQualification = [];
 
     public _ClientQualificationDetailsObj = {

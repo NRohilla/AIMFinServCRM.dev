@@ -96,7 +96,7 @@
                     <div class="btn-bottom pr-4 pl-4">
                         <input type="submit" *ngIf="_AddLiability" (click)="AddLiability()" value="&#xf055; Add" [disabled]="!AddLiabilityform.form.valid" class="btn btn-success" />
                         <input type="button" *ngIf="_ViewDetails" value="&#xf040; Edit" (click)="EditDetails()" class="btn btn-success" />
-                        <input type="button" *ngIf="_EditViewDetails" (click)="UpdateLiabilityDetails()" value="&#xf0c7; Save" class="btn btn-success" />
+                        <input type="button" *ngIf="_EditViewDetails" (click)="UpdateLiabilityDetails()"  [disabled]="!AddLiabilityform.form.valid" value="&#xf0c7; Save" class="btn btn-success" />
                         <input type="button" value="&#xf00d; Cancel" (click)="onNoClick()" class="btn btn-secondary" />
                     </div>
                 </div>

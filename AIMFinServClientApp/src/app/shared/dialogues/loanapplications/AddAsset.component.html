@@ -96,7 +96,7 @@
                     <div class="btn-bottom pr-4 pl-4">
                         <input type="submit" *ngIf="_AddAsset"  (click)="AddAsset()" value="&#xf055; Add" [disabled]="!AddAssetform.form.valid" class="btn btn-success" />
                         <input type="button" *ngIf="_ViewDetails" value="&#xf040; Edit" (click)="EditDetails()" class="btn btn-success" />
-                        <input type="button" *ngIf="_EditViewDetails" (click)="UpdateAssetDetails()" value="&#xf0c7; Save" class="btn btn-success" />
+                        <input type="button" *ngIf="_EditViewDetails" (click)="UpdateAssetDetails()"  [disabled]="!AddAssetform.form.valid"  value="&#xf0c7; Save" class="btn btn-success" />
                         <input type="button" value="&#xf00d; Cancel" (click)="onNoClick()" class="btn btn-secondary" />
                     </div>
                 </div>

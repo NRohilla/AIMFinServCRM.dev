@@ -30,7 +30,7 @@ export class ClientscommunicationComponent extends AppBaseComponent implements O
         ZipCode: "",
         CommunicationID: ""
     };
-    public _ClientCommunicationDetails = {};
+    public _ClientCommunicationDetails = [];
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) {
         super();

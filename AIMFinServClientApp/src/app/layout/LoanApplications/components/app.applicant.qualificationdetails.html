@@ -1,7 +1,9 @@
+ 
     <div class="pt-4">
         <div class="w-100 float-left">
-            <div class="row m-0">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+            <form name="form" #AddQualificationform="ngForm" novalidate>
+                <div class="row m-0">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
                         <div class="field_info">
                             <mat-form-field>
                                 <mat-select placeholder="Type Of Qualification" [(value)]="_ApplicantQualificationDetails.TypeOfQualification" name="TypeOfQualification" required>
@@ -15,9 +17,9 @@
                             </mat-form-field>
 
                         </div>
-                </div>
+                    </div>
 
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
                         <div class="field_info">
                             <mat-form-field class="example-full-width">
                                 <input matInput placeholder="Course Name" value="{{_ApplicantQualificationDetails.CourseName}}" [(ngModel)]="_ApplicantQualificationDetails.CourseName" name="CourseName" #CourseName="ngModel" required>
@@ -28,8 +30,8 @@
                                 </div>
                             </mat-form-field>
                         </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
                         <div class="field_info">
                             <mat-form-field class="example-full-width">
                                 <input matInput placeholder="University Name" value="{{_ApplicantQualificationDetails.UniversityName}}" [(ngModel)]="_ApplicantQualificationDetails.UniversityName" name="UniversityName" #UniversityName="ngModel" required>
@@ -40,8 +42,8 @@
                                 </div>
                             </mat-form-field>
                         </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
                         <div class="field_info">
                             <mat-form-field class="example-full-width">
                                 <input matInput placeholder="Passing Year" value="{{_ApplicantQualificationDetails.PassingYear}}" [(ngModel)]="_ApplicantQualificationDetails.PassingYear" name="PassingYear" #PassingYear="ngModel" required>
@@ -52,12 +54,13 @@
                                 </div>
                             </mat-form-field>
                         </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row m-0">
-                
-            </div>
+                <div class="row m-0">
+
+                </div>
+            </form>
         </div>
 
     </div>

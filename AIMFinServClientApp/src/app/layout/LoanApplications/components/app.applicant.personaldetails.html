@@ -1,10 +1,12 @@
-
+ 
     <div class="pt-4">
+
         <div class="w-100 float-left">
-            <div class="row m-0">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+            <form name="form" #AddPersonalDetails="ngForm" novalidate>
+                <div class="row m-0">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
-                            <mat-form-field >
+                            <mat-form-field>
                                 <mat-select placeholder="Applicant Type" [(ngModel)]="_ApplicantPersonalDetails.ApplicantTypeID" name="ApplicantTypeID" #ApplicantTypeID="ngModel" required>
                                     <mat-option *ngFor="let ApplicantType of _ApplicantTypeID" [value]="ApplicantType.ApplicantTypeID">{{ApplicantType.ApplicantType}}</mat-option>
                                 </mat-select>
@@ -15,8 +17,8 @@
                                 </div>
                             </mat-form-field>
                         </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field>
                                 <input matInput placeholder="First Name" value="{{_ApplicantPersonalDetails.FirstName}}" [(ngModel)]="_ApplicantPersonalDetails.FirstName" name="FirstName" #FirstName="ngModel" required>
@@ -27,8 +29,8 @@
                                 </div>
                             </mat-form-field>
                         </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field>
                                 <input matInput placeholder="Middle Name" value="{{_ApplicantPersonalDetails.MiddleName}}" [(ngModel)]="_ApplicantPersonalDetails.MiddleName" name="MiddleName" #MiddleName="ngModel" required>
@@ -39,11 +41,11 @@
                                 </div>
                             </mat-form-field>
                         </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row m-0">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                <div class="row m-0">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field>
                                 <input matInput placeholder="Last Name" value="{{_ApplicantPersonalDetails.LastName}}" [(ngModel)]="_ApplicantPersonalDetails.LastName" name="LastName" #LastName="ngModel" required>
@@ -54,8 +56,8 @@
                                 </div>
                             </mat-form-field>
                         </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field>
                                 <mat-select [(ngModel)]="_ApplicantPersonalDetails.Gender" name="Gender" placeholder="Gender" #Gender required>
@@ -70,23 +72,23 @@
                                 </div>
                             </mat-form-field>
                         </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
-                        <mat-form-field>
-                            <input matInput placeholder="Date Of Birth" value="{{_ApplicantPersonalDetails.DateOfBirth}}" [(ngModel)]="_ApplicantPersonalDetails.DateOfBirth" name="DateOfBirth" #DateOfBirth="ngModel" required>
-                            <div *ngIf="DateOfBirth.invalid && (DateOfBirth.dirty || DateOfBirth.touched)" class="alert alert-danger">
-                                <div *ngIf="ApplicantTypeID.errors.required ">
-                                    Please select Date Of Birth.
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                        <div class="form-group">
+                            <mat-form-field>
+                                <input matInput placeholder="Date Of Birth" value="{{_ApplicantPersonalDetails.DateOfBirth}}" [(ngModel)]="_ApplicantPersonalDetails.DateOfBirth" name="DateOfBirth" #DateOfBirth="ngModel" required>
+                                <div *ngIf="DateOfBirth.invalid && (DateOfBirth.dirty || DateOfBirth.touched)" class="alert alert-danger">
+                                    <div *ngIf="ApplicantTypeID.errors.required ">
+                                        Please select Date Of Birth.
+                                    </div>
                                 </div>
-                            </div>
-                        </mat-form-field>
+                            </mat-form-field>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row m-0">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                <div class="row m-0">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field>
                                 <input matInput placeholder="Marital Status" value="{{_ApplicantPersonalDetails.MaritalStatus}}" [(ngModel)]="_ApplicantPersonalDetails.MaritalStatus" name="MaritalStatus" #MaritalStatus="ngModel" required>
@@ -97,8 +99,8 @@
                                 </div>
                             </mat-form-field>
                         </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field>
                                 <input matInput placeholder="No. Of Dependents" value="{{_ApplicantPersonalDetails.NoOfDependents}}" [(ngModel)]="_ApplicantPersonalDetails.NoOfDependents" name="NoOfDependents" #NoOfDependents="ngModel" required>
@@ -109,8 +111,8 @@
                                 </div>
                             </mat-form-field>
                         </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field>
                                 <input matInput placeholder="NZ Residents" value="{{_ApplicantPersonalDetails.NZResidents}}" [(ngModel)]="_ApplicantPersonalDetails.NZResidents" name="NZResidents" #NZResidents="ngModel" required>
@@ -121,11 +123,11 @@
                                 </div>
                             </mat-form-field>
                         </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row m-0">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                <div class="row m-0">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field>
                                 <input matInput placeholder="Country Of Birth" value="{{_ApplicantPersonalDetails.CountryOfBirth}}" [(ngModel)]="_ApplicantPersonalDetails.CountryOfBirth" name="CountryOfBirth" #CountryOfBirth="ngModel" required>
@@ -136,8 +138,8 @@
                                 </div>
                             </mat-form-field>
                         </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field>
                                 <input matInput placeholder="Email ID" value="{{_ApplicantPersonalDetails.EmailID}}" [(ngModel)]="_ApplicantPersonalDetails.EmailID" name="EmailID" #EmailID="ngModel" required>
@@ -148,8 +150,8 @@
                                 </div>
                             </mat-form-field>
                         </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field>
                                 <input matInput placeholder="Mobile No." value="{{_ApplicantPersonalDetails.MobileNo}}" [(ngModel)]="_ApplicantPersonalDetails.MobileNo" name="MobileNo" #MobileNo="ngModel" required>
@@ -160,12 +162,12 @@
                                 </div>
                             </mat-form-field>
                         </div>
+                    </div>
+
                 </div>
 
-            </div>
-
-            <div class="row m-0">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                <div class="row m-0">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field>
                                 <input matInput placeholder="Home Phone No." value="{{_ApplicantPersonalDetails.HomePhoneNo}}" [(ngModel)]="_ApplicantPersonalDetails.HomePhoneNo" name="HomePhoneNo" #HomePhoneNo="ngModel" required>
@@ -176,8 +178,8 @@
                                 </div>
                             </mat-form-field>
                         </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field>
                                 <input matInput placeholder="Work Phone No." value="{{_ApplicantPersonalDetails.WorkPhoneNo}}" [(ngModel)]="_ApplicantPersonalDetails.WorkPhoneNo" name="WorkPhoneNo" #WorkPhoneNo="ngModel" required>
@@ -188,8 +190,9 @@
                                 </div>
                             </mat-form-field>
                         </div>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 
