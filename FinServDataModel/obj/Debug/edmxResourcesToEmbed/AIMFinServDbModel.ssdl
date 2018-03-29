@@ -43,13 +43,15 @@
     <Property Name="AddressLine2" Type="nvarchar" MaxLength="100" />
     <Property Name="AddressLine3" Type="nvarchar" MaxLength="100" />
     <Property Name="Duration" Type="nchar" MaxLength="10" />
-    <Property Name="Status" Type="nchar" MaxLength="10" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="Country" Type="nvarchar" MaxLength="100" />
+    <Property Name="ZipCode" Type="nvarchar" MaxLength="15" />
+    <Property Name="AddressType" Type="int" Nullable="false" />
     <Property Name="ApplicantID" Type="uniqueidentifier" Nullable="false" />
     <Property Name="CreatedBy" Type="uniqueidentifier" />
     <Property Name="CreatedOn" Type="datetime" />
     <Property Name="ModifiedBy" Type="uniqueidentifier" />
     <Property Name="ModifiedOn" Type="datetime" />
-    <Property Name="AddressType" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="tblApplicantEmploymentDetails">
     <Key>
@@ -58,11 +60,12 @@
     <Property Name="AutoID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="EmploymentID" Type="uniqueidentifier" Nullable="false" />
     <Property Name="ApplicantID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="SourceOfIncome" Type="nvarchar" MaxLength="100" />
+    <Property Name="SourceOfIncome" Type="int" Nullable="false" />
+    <Property Name="ProfessionTypeID" Type="int" Nullable="false" />
     <Property Name="EmployerName" Type="nvarchar" MaxLength="100" />
     <Property Name="Duration" Type="nvarchar" MaxLength="50" />
     <Property Name="Income" Type="nchar" MaxLength="10" />
-    <Property Name="Status" Type="nchar" MaxLength="10" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
     <Property Name="CreatedBy" Type="uniqueidentifier" />
     <Property Name="CreatedOn" Type="datetime" />
     <Property Name="ModifiedBy" Type="uniqueidentifier" />
@@ -220,6 +223,8 @@
     <Property Name="AddressLine1" Type="nvarchar" MaxLength="100" />
     <Property Name="AddressLine2" Type="nvarchar" MaxLength="100" />
     <Property Name="AddressLine3" Type="nvarchar" MaxLength="100" />
+    <Property Name="Country" Type="nvarchar" MaxLength="100" />
+    <Property Name="ZipCode" Type="nvarchar" MaxLength="15" />
     <Property Name="CreatedBy" Type="uniqueidentifier" />
     <Property Name="CreatedOn" Type="datetime" />
     <Property Name="ModifiedBy" Type="uniqueidentifier" />
@@ -530,6 +535,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tblApplicantEmploymentDetails_tblMasterTypeOfEmployment">
+    <End Role="tblMasterTypeOfEmployment" Type="Self.tblMasterTypeOfEmployment" Multiplicity="1" />
+    <End Role="tblApplicantEmploymentDetails" Type="Self.tblApplicantEmploymentDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMasterTypeOfEmployment">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblApplicantEmploymentDetails">
+        <PropertyRef Name="SourceOfIncome" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblApplicantEmploymentDetails_tblMasterTypeOfProfession">
+    <End Role="tblMasterTypeOfProfession" Type="Self.tblMasterTypeOfProfession" Multiplicity="1" />
+    <End Role="tblApplicantEmploymentDetails" Type="Self.tblApplicantEmploymentDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMasterTypeOfProfession">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblApplicantEmploymentDetails">
+        <PropertyRef Name="ProfessionTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tblApplicantExpenseSheet_tblApplicants">
     <End Role="tblApplicants" Type="Self.tblApplicants" Multiplicity="1" />
     <End Role="tblApplicantExpenseSheet" Type="Self.tblApplicantExpenseSheet" Multiplicity="*" />
@@ -811,6 +840,14 @@
     </AssociationSet>
     <AssociationSet Name="FK_tblApplicantEmploymentDetails_tblApplicants" Association="Self.FK_tblApplicantEmploymentDetails_tblApplicants">
       <End Role="tblApplicants" EntitySet="tblApplicants" />
+      <End Role="tblApplicantEmploymentDetails" EntitySet="tblApplicantEmploymentDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblApplicantEmploymentDetails_tblMasterTypeOfEmployment" Association="Self.FK_tblApplicantEmploymentDetails_tblMasterTypeOfEmployment">
+      <End Role="tblMasterTypeOfEmployment" EntitySet="tblMasterTypeOfEmployment" />
+      <End Role="tblApplicantEmploymentDetails" EntitySet="tblApplicantEmploymentDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblApplicantEmploymentDetails_tblMasterTypeOfProfession" Association="Self.FK_tblApplicantEmploymentDetails_tblMasterTypeOfProfession">
+      <End Role="tblMasterTypeOfProfession" EntitySet="tblMasterTypeOfProfession" />
       <End Role="tblApplicantEmploymentDetails" EntitySet="tblApplicantEmploymentDetails" />
     </AssociationSet>
     <AssociationSet Name="FK_tblApplicantExpenseSheet_tblApplicants" Association="Self.FK_tblApplicantExpenseSheet_tblApplicants">

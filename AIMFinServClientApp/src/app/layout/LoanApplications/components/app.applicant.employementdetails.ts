@@ -33,7 +33,7 @@ export class ApplicantEmployementComponent implements OnInit {
 
     SaveLoanApplicationEmployementDetails(applicantId) {
         this._ApplicantEmployementDetails.ApplicantID = applicantId;
-      return  this._ClientsService.SaveLoanApplicationEmployementDetails(this._ApplicantEmployementDetails);
+      return  this._ClientsService.SaveLoanApplicationEmploymentDetails(this._ApplicantEmployementDetails);
     }
 
 }

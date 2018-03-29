@@ -22,6 +22,6 @@ namespace FinServBussinessEntities
         public int TypeOfQualification { get; set; }
 
         public Applicants _ApplicantID { get; set; }
-        public QualificationTypeMaster _MasterTypeQualificationID { get; set; }
+        public QualificationTypeMaster _QualificationTypeDetail { get; set; }
     }
 }

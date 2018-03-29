@@ -16,7 +16,7 @@ namespace FinServDataModel
     {
         public long AutoID { get; set; }
         public System.Guid AssetID { get; set; }
-        public Nullable<System.Guid> AssetTypeID { get; set; }
+        public System.Guid AssetTypeID { get; set; }
         public string Description { get; set; }
         public Nullable<decimal> NetValue { get; set; }
         public string Ownership { get; set; }

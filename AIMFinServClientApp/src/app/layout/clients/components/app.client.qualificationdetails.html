@@ -1,66 +1,86 @@
-﻿<div class="row m-0">
+﻿<div  class="application-details">
+    <div >
+        <kendo-grid [kendoGridBinding]="_ClientQualificationDetails"
+                    [pageSize]="2"
+                    [sortable]="true"
+                    [pageable]="true"
+                    [scrollable]="true"
+                    [filterable]="true"
+                    [groupable]="true"
+                    selectable="true"                    
+                    #QualificationID
+                    (selectionChange)="GridSelectionChange(QualificationID, $event)">
+
+            <kendo-grid-column field="_QualificationTypeDetail.Qualifications" title="Type Of Qualification">
+            </kendo-grid-column>
+            <kendo-grid-column field="CourseName" title="Course Name">
+            </kendo-grid-column>
+            <kendo-grid-column field="UniversityName" title="University Name">
+            </kendo-grid-column>
+            <kendo-grid-column field="PassingYear" title="Passing Year">
+            </kendo-grid-column>        
+            
+        </kendo-grid>
+    </div>
+</div>
+
+<div class="row m-0">
     <div class="w-100 float-left">
         <div class="section_box pb-0 pl-0 pr-0">
             <div class="box_title">Qualification Details</div>
             <div class="tab-content clearfix ml-0">
                 <div class="w-100 float-left">
-                    <div class="tab-pane pt-3" *ngFor="let _ApplicantQualificationDetail of _ApplicantQualificationDetails;">
-                        <div class="row m-0">
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                <div class="field_set">
-                                    <div class="field_label">Course</div>
-                                    <div class="field_info">
-                                        <p *ngIf="!_EditCommunicationDetails">{{_ApplicantQualificationDetail.CourseName}}</p>
-                                        <mat-form-field class="example-full-width" *ngIf="_EditCommunicationDetails">
-                                            <input matInput placeholder="Course name" value="{{_ApplicantQualificationDetail.CourseName}}" [(ngModel)]="_ApplicantQualificationDetail.CourseName" #CourseName>
+                    <div class="tab-pane pt-3" >
+                        <div class="row m-0">                           
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                    <div class="field_set">                                        
+                                        <div class="field_info w-100">
+                                            <mat-form-field class="example-full-width">
+                                                <!--<input matInput placeholder="Qualification" value="{{_ClientQualificationDetailsObj._QualificationTypeDetail.Qualifications}}" [(ngModel)]="_ClientQualificationDetailsObj._QualificationTypeMaster.Qualifications" #_QualificationTypeMaster.Qualifications>-->
+                                                <mat-select placeholder="Qualification Type" [(ngModel)]="_ClientQualificationDetailsObj._QualificationTypeDetail.ID" name="Qualifications" #Qualifications="ngModel">
+                                                    <mat-option *ngFor="let qualificationType of _TypeOfQualification" [value]="qualificationType.ID">{{qualificationType.Qualifications}}</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>  
+                                        </div>
+                                    </div>
+                                </div>                            
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                <div class="field_set">                                    
+                                    <div class="field_info w-100">                                        
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="Course name" value="{{_ClientQualificationDetailsObj.CourseName}}" [(ngModel)]="_ClientQualificationDetailsObj.CourseName" #CourseName>
                                         </mat-form-field>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                <div class="field_set">
-                                    <div class="field_label">Passing Year</div>
-                                    <div class="field_info">
-                                        <p *ngIf="!_EditCommunicationDetails">{{_ApplicantQualificationDetail.PassingYear}}</p>
-                                        <mat-form-field class="example-full-width" *ngIf="_EditCommunicationDetails">
-                                            <input matInput placeholder="Passing year" value="{{_ApplicantQualificationDetail.PassingYear}}" [(ngModel)]="_ApplicantQualificationDetail.PassingYear" #PassingYear>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                <div class="field_set">                                    
+                                    <div class="field_info w-100">                                        
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="Passing year" value="{{_ClientQualificationDetailsObj.PassingYear}}" [(ngModel)]="_ClientQualificationDetailsObj.PassingYear" #PassingYear>
                                         </mat-form-field>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                <div class="field_set">
-                                    <div class="field_label">University Name</div>
-                                    <div class="field_info">
-                                        <p *ngIf="!_EditCommunicationDetails">{{_ApplicantQualificationDetail.UniversityName}}</p>
-                                        <mat-form-field class="example-full-width" *ngIf="_EditCommunicationDetails">
-                                            <input matInput placeholder="University" value="{{_ApplicantQualificationDetail.UniversityName}}" [(ngModel)]="_ApplicantQualificationDetail.UniversityName" #UniversityName>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row m-0">
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                <div class="field_set">
-                                    <div class="field_label">Qualifications</div>
-                                    <div class="field_info">
-                                        <p *ngIf="!_EditCommunicationDetails">{{_ApplicantQualificationDetail._QualificationTypeMaster.Qualifications}}</p>
-                                        <mat-form-field class="example-full-width" *ngIf="_EditCommunicationDetails">
-                                            <input matInput placeholder="Qualification" value="{{_ApplicantQualificationDetail._QualificationTypeMaster.Qualifications}}" [(ngModel)]="_ApplicantQualificationDetail._QualificationTypeMaster.Qualifications" #_QualificationTypeMaster.Qualifications>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                <div class="field_set">                                    
+                                    <div class="field_info w-100">                                        
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="University" value="{{_ClientQualificationDetailsObj.UniversityName}}" [(ngModel)]="_ClientQualificationDetailsObj.UniversityName" #UniversityName>
                                         </mat-form-field>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
                     </div>                    
                 </div>
             </div>
-            <div class="row m-0 btn-bottom pr-4 pl-4">
+            <div class="row m-0 btn-bottom pr-4 pl-4">                
                 <div class="w-100 float-left text-right">
-                    <input type="button" value="&#xf0c7; Save" (click)="UpdateCommunicationDetails()" *ngIf="_EditCommunicationDetails" class="btn btn-success" />
-                    <input type="button" value="&#xf00d; Cancel" (click)="EditCommunicationDetails()" *ngIf="_EditCommunicationDetails" class="btn btn-secondary" />
-                    <input type="button" value="&#xf040; Edit" (click)="EditCommunicationDetails()" *ngIf="!_EditCommunicationDetails" class="btn btn-info" />
+                    <input type="button" value="&#xf0c7; Save" (click)="AddQualificationDetails()" *ngIf="!_EditQualificationDetails" class="btn btn-lg btn-success" />
+                    <input type="button" value="&#xf0c7; Update" (click)="UpdateQualificationDetails()" *ngIf="_EditQualificationDetails" class="btn btn-lg btn-success" />
+                    <input type="button" value="&#xf00d; Cancel" (click)="CancelAddEditQualificationDetails()" class="btn btn-lg btn-secondary" />
                 </div>
             </div>
         </div>

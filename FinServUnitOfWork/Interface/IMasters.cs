@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using FinServBussinessEntities;
 
 namespace FinServUnitOfWork.Interface
@@ -19,6 +20,10 @@ namespace FinServUnitOfWork.Interface
         List<QualificationTypeMaster> GetQualificationTypes();
         List<RelationshipTypeMaster> GetRelationshipTypes();
         List<SalutationTypeMaster> GetSalutationTypes();
+        //Added by Neha
+        List<StatusTypeMaster> GetStatusTypes();
+
+        List<Applicants> GetApplicantNames(string loanappno);
 
         //switch status
         bool SwitchApplicantEntityStatus(int ID);

@@ -23,7 +23,7 @@ namespace FinServDataModel
         public string FrequencyOffered { get; set; }
         public string LoanValueRatio { get; set; }
         public string LoanAmountOffered { get; set; }
-        public string LoanType { get; set; }
+        public Nullable<int> LoanTypeID { get; set; }
         public string ClientID { get; set; }
         public int StatusID { get; set; }
         public string EMIStartDay { get; set; }
@@ -43,6 +43,7 @@ namespace FinServDataModel
     
         public virtual tblLoanApplicationForm tblLoanApplicationForm { get; set; }
         public virtual tblMasterPropertyType tblMasterPropertyType { get; set; }
+        public virtual tblMasterTypeOfLoan tblMasterTypeOfLoan { get; set; }
         public virtual tblMasterTypeOfStatu tblMasterTypeOfStatu { get; set; }
     }
 }

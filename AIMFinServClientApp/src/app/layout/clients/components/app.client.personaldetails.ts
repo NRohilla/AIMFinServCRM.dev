@@ -11,7 +11,7 @@ import {ClientsService} from '../../../services/app.clients.service';
 import {AppBaseComponent} from '../../../shared/app.basecomponent';
 @Component({
     selector: `client-personal-details`,
-    templateUrl: './app.clients.personaldetails.html',
+    templateUrl: './app.client.personaldetails.html',
     animations: [routerTransition()],
     providers: [ClientsService]
 })
@@ -26,6 +26,7 @@ export class ClientsPersonalDetailsComponent extends AppBaseComponent implements
     public _ApplicantDetails = {
         AutoID: '',
         ApplicantID: '',
+        Title: '',
         FirstName: '',
         MiddleName: '',
         LastName: '',
@@ -33,7 +34,8 @@ export class ClientsPersonalDetailsComponent extends AppBaseComponent implements
         DateOfBirth: '',
         MaritalStatus: '',
         NoOfDependents: '',
-        NZResidents: '',
+        NZResidents: true,
+        DNZResidents:'',
         CountryOfBirth: '',
         MobileNo: '',
         HomePhoneNo: '',
@@ -78,6 +80,13 @@ export class ClientsPersonalDetailsComponent extends AppBaseComponent implements
         if (res._body != null && res._body != undefined && res._body.toString().trim().length > 0) {
             debugger;
             this._ApplicantDetails = this.trimObj(JSON.parse(res._body));
+            if (this._ApplicantDetails.NZResidents == true) {
+                this._ApplicantDetails.DNZResidents = "Yes";
+            }
+            else {
+                this._ApplicantDetails.DNZResidents = "No";
+            }
+
         }
     }
     GetClientDetailsError(res) { }
@@ -97,6 +106,12 @@ export class ClientsPersonalDetailsComponent extends AppBaseComponent implements
     UpdatePersonalDetails() {
         debugger;
         this._EditPersonalDetails = false;
+        if (this._ApplicantDetails.NZResidents.toString() == "1") {
+            this._ApplicantDetails.NZResidents = true;
+        }
+        else {
+            this._ApplicantDetails.NZResidents = false;
+        }
         this._ClientsService.UpdateClientPersonalDetails(this._ApplicantDetails).subscribe(res => this.updateclientPersonalSuccess(res), res => this.updateclientPersonalError(res));
     }
     updateclientPersonalSuccess(res) {

@@ -17,7 +17,8 @@ namespace FinServDataModel
         public long AutoID { get; set; }
         public System.Guid EmploymentID { get; set; }
         public System.Guid ApplicantID { get; set; }
-        public string SourceOfIncome { get; set; }
+        public int SourceOfIncome { get; set; }
+        public int ProfessionTypeID { get; set; }
         public string EmployerName { get; set; }
         public string Duration { get; set; }
         public string Income { get; set; }
@@ -28,5 +29,7 @@ namespace FinServDataModel
         public Nullable<System.DateTime> ModifiedOn { get; set; }
     
         public virtual tblApplicant tblApplicant { get; set; }
+        public virtual tblMasterTypeOfEmployment tblMasterTypeOfEmployment { get; set; }
+        public virtual tblMasterTypeOfProfession tblMasterTypeOfProfession { get; set; }
     }
 }

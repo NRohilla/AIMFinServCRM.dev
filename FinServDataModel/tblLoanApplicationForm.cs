@@ -14,8 +14,6 @@ namespace FinServDataModel
     
     public partial class tblLoanApplicationForm
     {
-        public Guid ApplicantID;
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblLoanApplicationForm()
         {

@@ -49,7 +49,7 @@
     <Compile Include="ApplicantExpenseSheet.cs" />
     <Compile Include="ApplicantQualificationDetails.cs" />
     <Compile Include="ApplicantTypeMaster.cs" />
-    <Compile Include="ApplicantEmployementDetails.cs" />
+    <Compile Include="ApplicantEmploymentDetails.cs" />
     <Compile Include="Applicants.cs" />
     <Compile Include="Asset.cs" />
     <Compile Include="AssetsTypeMaster.cs" />
@@ -58,6 +58,7 @@
     <Compile Include="Liability.cs" />
     <Compile Include="LiabilityTypeMaster.cs" />
     <Compile Include="LoanApplicationForms.cs" />
+    <Compile Include="LoanGuarantorDetails.cs" />
     <Compile Include="LoanRateTypeMaster.cs" />
     <Compile Include="LoanTypeMaster.cs" />
     <Compile Include="ProfessionTypeMaster.cs" />

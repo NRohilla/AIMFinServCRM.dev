@@ -4,6 +4,7 @@ using System.Web.Http;
 using FinServUnitOfWork.Interface;
 using FinServUnitOfWork.Repository;
 using FinServDataModel;
+using System;
 
 namespace FinServServices.Controllers
 {
@@ -39,6 +40,9 @@ namespace FinServServices.Controllers
         {
             return Repository.GetLoanApplicationDetails(LoanAppNo);
         }
+        
+                
+        #region Client_Communication_Detail Methods         //Deepak Saini [16-03-2018]
 
         [HttpGet]
         [Route("GetClientCommunicationDetails")]
@@ -47,12 +51,48 @@ namespace FinServServices.Controllers
             return Repository.GetClientCommunicationDetails(ClientID);
         }
 
-        [HttpGet]
-        [Route("GetClientEmployementDetails")]
-        public List<ApplicantEmployementDetails> GetClientEmployementDetails(string ClientID)
+        [HttpPost]
+        [Route("SaveClientCommunicationDetails")]
+        public bool SaveClientCommunicationDetails(ApplicantCommunicationDetails _objApplicantCommDetails)
         {
-            return Repository.GetClientEmployementDetails(ClientID);
+            return Repository.SaveClientCommunicationDetails(_objApplicantCommDetails);
         }
+
+        [HttpPost]
+        [Route("UpdateClientCommunicationDetails")]
+        public bool UpdateClientCommunicationDetails(ApplicantCommunicationDetails _objApplicantCommDetails)
+        {
+            return Repository.UpdateClientCommunicationDetails(_objApplicantCommDetails);
+        }
+
+        #endregion
+
+        #region Client_Employment_Detail Methods         //Deepak Saini [16-03-2018]
+
+        [HttpGet]
+        [Route("GetClientemploymentDetails")]
+        public List<ApplicantEmploymentDetails> GetClientemploymentDetails(string ClientID)
+        {
+            return Repository.GetClientEmploymentDetails(ClientID);
+        }
+
+        [HttpPost]
+        [Route("SaveClientEmploymentDetails")]
+        public bool SaveClientEmploymentDetails(ApplicantEmploymentDetails _objEmploymentDetails)
+        {
+            return Repository.SaveClientEmploymentDetails(_objEmploymentDetails);
+        }
+
+        [HttpPost]
+        [Route("UpdateClientEmploymentDetails")]
+        public bool UpdateClientEmploymentDetails(ApplicantEmploymentDetails _objEmploymentDetails)
+        {
+            return Repository.UpdateClientEmploymentDetails(_objEmploymentDetails);
+        }
+
+        #endregion
+
+        #region Client_Qualification_Detail Methods         //Deepak Saini [16-03-2018]
 
         [HttpGet]
         [Route("GetClientQualificationDetails")]
@@ -62,18 +102,22 @@ namespace FinServServices.Controllers
         }
 
         [HttpPost]
-        [Route("UpdateClientEmploymentDetails")]
-        public bool UpdateClientEmploymentDetails(List<ApplicantEmployementDetails> ApplicantEmployementDetails)
+        [Route("UpdateClientQualificationDetails")]
+        public bool UpdateClientQualificationDetails(ApplicantQualificationDetails _objQualificationDetails)
         {
-            return Repository.UpdateClientEmploymentDetails(ApplicantEmployementDetails);
+            return Repository.UpdateClientQualificationDetails(_objQualificationDetails);
+        }
+        
+        [HttpPost]
+        [Route("SaveClientQualificationDetails")]
+        public bool SaveClientQualificationDetails(ApplicantQualificationDetails _objQualificationDetails)
+        {
+            return Repository.SaveClientQualificationDetails(_objQualificationDetails);
         }
 
-        [HttpPost]
-        [Route("UpdateClientCommunicationDetails")]
-        public bool UpdateClientCommunicationDetails(List<ApplicantCommunicationDetails> ApplicantCommunicationDetails)
-        {
-            return Repository.UpdateClientCommunicationDetails(ApplicantCommunicationDetails);
-        }
+        #endregion
+
+        
 
         [HttpPost]
         [Route("UpdateClientPersonalDetails")]
@@ -101,10 +145,10 @@ namespace FinServServices.Controllers
             return Repository.SaveLoanApplicationQualificationDetails(ApplicantQualificationDetails);
         }
         [HttpPost]
-        [Route("SaveLoanApplicationEmployementDetails")]
-        public bool SaveLoanApplicationEmployementDetails(ApplicantEmployementDetails ApplicantEmployementDetails)
+        [Route("SaveLoanApplicationemploymentDetails")]
+        public bool SaveLoanApplicationEmploymentDetails(ApplicantEmploymentDetails ApplicantemploymentDetails)
         {
-            return Repository.SaveLoanApplicationEmployementDetails(ApplicantEmployementDetails);
+            return Repository.SaveLoanApplicationEmploymentDetails(ApplicantemploymentDetails);
         }
         [HttpPost]
         [Route("SaveLoanApplicationCommunicationDetails")]
@@ -112,6 +156,84 @@ namespace FinServServices.Controllers
         {
             return Repository.SaveLoanApplicationCommunicationDetails(ApplicantCommunicationDetails);
         }
+        [HttpPost]
+        [Route("AddGuarantorDetails")]
+        public bool AddGuarantor(LoanGuarantorDetails _objGuarantorDetails)
+        {
+            return Repository.AddGuarantor(_objGuarantorDetails);
+        }
+        [HttpGet]
+        [Route("GetAddedGuarantorGrid")]
+        public List<LoanGuarantorDetails> GetAddedGuarantorGrid()
+        {
+            return Repository.GetAddedGuarantorGrid();
+        }
+  
+        [HttpGet]
+        [Route("GetGuarantorDetails")]
+        public LoanGuarantorDetails GetGuarantorDetails(string GuarntID)
+        {
+            return Repository.GetGuarantorDetails(GuarntID);
+        }
 
+        [HttpPost]
+        [Route("UpdateGuarantorDetails")]
+        public bool UpdateGuarantorDetails(LoanGuarantorDetails _objUpdateGuartDetails)
+        {
+            return Repository.UpdateGuarantorDetails(_objUpdateGuartDetails);
+        }
+        [HttpPost]
+        [Route("AddAsset")]
+        public bool AddAsset(Asset _objAssetDetails)
+        {
+            return Repository.AddAsset(_objAssetDetails);
+        }
+        [HttpGet]
+        [Route("GetAddedAssetGrid")]
+        public List<Asset> GetAddedAssetGrid(Guid LoanAppNo)
+        {
+            return Repository.GetAddedAssetGrid(LoanAppNo);
+        }
+
+        [HttpGet]
+        [Route("GetAssetDetails")]
+        public Asset GetAssetDetails(string ClientID)
+        {
+            return Repository.GetAssetDetails(ClientID);
+        }
+
+        [HttpPost]
+        [Route("UpdateAssetDetails")]
+        public bool UpdateAssetDetails(Asset _objAssetDetails)
+        {
+            return Repository.UpdateAssetDetails(_objAssetDetails);
+        }
+
+        [HttpPost]
+        [Route("AddLiability")]
+        public bool AddLiability(Liability _objLiabilityDetails)
+        {
+            return Repository.AddLiability(_objLiabilityDetails);
+        }
+        [HttpGet]
+        [Route("GetAddedLiabilityGrid")]
+        public List<Liability> GetAddedLiabilityGrid(Guid LoanAppNo)
+        {
+            return Repository.GetAddedLiabilityGrid(LoanAppNo);
+        }
+
+        [HttpGet]
+        [Route("GetLiabilityDetails")]
+        public Liability GetLiabilityDetails(string LbltyID)
+        {
+            return Repository.GetLiabilityDetails(LbltyID);
+        }
+
+        [HttpPost]
+        [Route("UpdateLiabilityDetails")]
+        public bool UpdateLiabilityDetails(Liability _objLiabilityDetails)
+        {
+            return Repository.UpdateLiabilityDetails(_objLiabilityDetails);
+        }
     }
 }

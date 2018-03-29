@@ -9,17 +9,23 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { GridModule } from '@progress/kendo-angular-grid';
 import 'hammerjs';
 import { LocalStorageModule, ILocalStorageServiceConfig } from 'angular-2-local-storage';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
-import {LoanApplicationDetailDialog} from './shared/dialogues/loanapplications/LoanApplicationDetailDialog';
+import { LoanApplicationDetailDialog } from './shared/dialogues/loanapplications/LoanApplicationDetailDialog';
+import { AddGuarantorDialog } from './shared/dialogues/loanapplications/AddGuarantorDialog';
 import {ClientDetailsDialog} from './shared/dialogues/clients/ClientDetailsDialog';
 import {ApplicantPersonalDetailsComponent} from './layout/LoanApplications/components/app.applicant.personaldetails';
 import {ApplicantEmployementComponent} from './layout/LoanApplications/components/app.applicant.employementdetails';
 import { ApplicantQualificationDetailsComponent } from './layout/LoanApplications/components/app.applicant.qualificationdetails';
 import { ApplicantCommunicationDetailsComponent } from './layout/LoanApplications/components/app.applicant.communicationdetails';
+import { ManageAssetAndLiabilityDialog } from './shared/dialogues/loanapplications/ManageAssetandLiabilityDialog';
+import { AddAssetComponent } from './shared/dialogues/loanapplications/AddAsset.component';
+import { AddLiabilityComponent } from './shared/dialogues/loanapplications/AddLiability.component';
+
 //this is test
 import {MaterialModule} from './shared/app.material';
 // AoT requires an exported function for factories
@@ -31,6 +37,7 @@ export function createTranslateLoader(http: HttpClient) {
 //test
 @NgModule({
     imports: [
+        GridModule,
         MaterialModule,
         FormsModule,
         HttpModule,
@@ -58,9 +65,13 @@ export function createTranslateLoader(http: HttpClient) {
         ApplicantEmployementComponent,
         ApplicantQualificationDetailsComponent,
         ApplicantCommunicationDetailsComponent,
-        ClientDetailsDialog],
+        ClientDetailsDialog,
+        AddGuarantorDialog,
+        ManageAssetAndLiabilityDialog,
+        AddAssetComponent,
+        AddLiabilityComponent],
     providers: [AuthGuard],
     bootstrap: [AppComponent],
-    entryComponents: [LoanApplicationDetailDialog, ClientDetailsDialog]
+    entryComponents: [LoanApplicationDetailDialog, ClientDetailsDialog, AddGuarantorDialog, ManageAssetAndLiabilityDialog]
 })
 export class AppModule { }

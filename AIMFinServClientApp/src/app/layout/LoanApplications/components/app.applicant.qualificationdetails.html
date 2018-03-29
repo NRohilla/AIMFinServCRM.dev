@@ -1,46 +1,10 @@
-<div class="form">
     <div class="pt-4">
         <div class="w-100 float-left">
             <div class="row m-0">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                    <div class="form-group">
-                        <label for="name" class="font-weight-bold">Passing Year</label>
-                        <div class="field_info">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Passing Year" value="{{_ApplicantQualificationDetails.PassingYear}}" [(ngModel)]="_ApplicantQualificationDetails.PassingYear" #PassingYear>
-                            </mat-form-field>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                    <div class="form-group">
-                        <label for="name" class="font-weight-bold">Course Name</label>
-                        <div class="field_info">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Course Name" value="{{_ApplicantQualificationDetails.CourseName}}" [(ngModel)]="_ApplicantQualificationDetails.CourseName" #CourseName>
-                            </mat-form-field>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                    <div class="form-group">
-                        <label for="name" class="font-weight-bold">University Name</label>
-                        <div class="field_info">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="University Name" value="{{_ApplicantQualificationDetails.UniversityName}}" [(ngModel)]="_ApplicantQualificationDetails.UniversityName" #UniversityName>
-                            </mat-form-field>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row m-0">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                    <div class="form-group">
-                        <label for="name" class="font-weight-bold">Type Of Qualification</label>
                         <div class="field_info">
                             <mat-form-field>
-                                <mat-select [(value)]="_ApplicantQualificationDetails.TypeOfQualification">
+                                <mat-select placeholder="Type Of Qualification" [(value)]="_ApplicantQualificationDetails.TypeOfQualification" name="TypeOfQualification" required>
                                     <mat-option>None</mat-option>
                                     <mat-option value="1">Under-Graduate</mat-option>
                                     <mat-option value="2">Graduate</mat-option>
@@ -49,12 +13,52 @@
                                     <mat-option value="5">Diploma</mat-option>
                                 </mat-select>
                             </mat-form-field>
-                            
+
                         </div>
-                    </div>
                 </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Course Name" value="{{_ApplicantQualificationDetails.CourseName}}" [(ngModel)]="_ApplicantQualificationDetails.CourseName" name="CourseName" #CourseName="ngModel" required>
+                                <div *ngIf="CourseName.invalid && (CourseName.dirty || CourseName.touched)" class="alert alert-danger">
+                                    <div *ngIf="CourseName.errors.required ">
+                                        Please select Course Name.
+                                    </div>
+                                </div>
+                            </mat-form-field>
+                        </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="University Name" value="{{_ApplicantQualificationDetails.UniversityName}}" [(ngModel)]="_ApplicantQualificationDetails.UniversityName" name="UniversityName" #UniversityName="ngModel" required>
+                                <div *ngIf="UniversityName.invalid && (UniversityName.dirty || UniversityName.touched)" class="alert alert-danger">
+                                    <div *ngIf="UniversityName.errors.required ">
+                                        Please enter University Name.
+                                    </div>
+                                </div>
+                            </mat-form-field>
+                        </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Passing Year" value="{{_ApplicantQualificationDetails.PassingYear}}" [(ngModel)]="_ApplicantQualificationDetails.PassingYear" name="PassingYear" #PassingYear="ngModel" required>
+                                <div *ngIf="PassingYear.invalid && (PassingYear.dirty || PassingYear.touched)" class="alert alert-danger">
+                                    <div *ngIf="PassingYear.errors.required ">
+                                        Please enter Passing Year.
+                                    </div>
+                                </div>
+                            </mat-form-field>
+                        </div>
+                </div>
+            </div>
+
+            <div class="row m-0">
+                
             </div>
         </div>
 
     </div>
-</div>
+

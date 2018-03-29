@@ -1,0 +1,383 @@
+<div class="application-details mt-0">
+    <div>
+        <h3 class="text-uppercase sub-head">Manage Guarantor</h3>
+        <div class="section_box pl-0 pb-0 pr-0 mb-4 mt-3 clearfix">
+            <form name="form" #AddGuarantorform="ngForm" novalidate>
+                <div class="p-4">
+                    <div class="row m-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                            <div class="field_set">
+                                <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Title</label>
+                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.Title}}</p>
+                                <div class="field_info w-100">
+                                    <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
+                                        <input matInput placeholder="Title" name="Title" [(ngModel)]="_AddGuarantorDetails.Title" class="w-100" #Title required>
+                                        <div *ngIf="Title.invalid && (Title.dirty || Title.touched)" class="alert alert-danger">
+                                            <div *ngIf="Title.errors.required ">
+                                                Please enter Title.
+                                            </div>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                            <div class="field_set">
+                                <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">First Name</label>
+                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.FirstName}}</p>
+                                <div class="field_info w-100">
+                                    <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
+                                        <input matInput placeholder="First Name" name="FirstName" [(ngModel)]="_AddGuarantorDetails.FirstName" class="w-100" #FirstName required>
+                                        <div *ngIf="FirstName.invalid && (FirstName.dirty || FirstName.touched)" class="alert alert-danger">
+                                            <div *ngIf="FirstName.errors.required ">
+                                                Please enter First Name.
+                                            </div>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                            <div class="field_set">
+                                <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Middle Name</label>
+                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.MiddleName}}</p>
+                                <div class="field_info w-100">
+                                    <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
+                                        <input matInput placeholder="Middle Name" name="MiddleName" [(ngModel)]="_AddGuarantorDetails.MiddleName" class="w-100" #MiddleName required>
+                                        <div *ngIf="MiddleName.invalid && (MiddleName.dirty || MiddleName.touched)" class="alert alert-danger">
+                                            <div *ngIf="MiddleName.errors.required ">
+                                                Please enter Middle Name.
+                                            </div>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                            <div class="field_set">
+                                <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Last Name</label>
+                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.LastName}}</p>
+                                <div class="field_info w-100">
+                                    <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
+                                        <input matInput placeholder="Last Name" name="LastName" [(ngModel)]="_AddGuarantorDetails.LastName" class="w-100" #LastName required>
+                                        <div *ngIf="LastName.invalid && (LastName.dirty || LastName.touched)" class="alert alert-danger">
+                                            <div *ngIf="LastName.errors.required ">
+                                                Please enter Last Name.
+                                            </div>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                            <div class="field_set">
+                                <label for="name" class="field_label font-weight-bold" *ngIf="_ViewDetails">Gender</label>
+                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.Gender}}</p>
+                                <div class="field_info w-100">
+                                    <mat-form-field *ngIf="_EditViewDetails || _AddGuarantor" class="w-100">
+                                        <mat-select [(ngModel)]="_AddGuarantorDetails.Gender" name="Gender" placeholder="Gender" #Gender required>
+                                            <mat-option>None</mat-option>
+                                            <mat-option value="Male">Male</mat-option>
+                                            <mat-option value="Female">Female</mat-option>
+                                        </mat-select>
+                                        <div *ngIf="Gender.invalid && (Gender.dirty || Gender.touched)" class="alert alert-danger">
+                                            <div *ngIf="Gender.errors.required ">
+                                                Please select Gender.
+                                            </div>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                            <div class="field_set">
+                                <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Date Of Birth</label>
+                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.DateOfBirth}}</p>
+                                <div class="field_info w-100">
+                                    <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
+                                        <input matInput placeholder="Date Of Birth" [(ngModel)]="_AddGuarantorDetails.DateOfBirth" name="DateOfBirth" class="w-100" #DateOfBirth required>
+                                        <div *ngIf="DateOfBirth.invalid && (DateOfBirth.dirty || DateOfBirth.touched)" class="alert alert-danger">
+                                            <div *ngIf="DateOfBirth.errors.required ">
+                                                Please enter Date of Birth.
+                                            </div>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                            <div class="field_set">
+                                <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Marital Status</label>
+                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.MaritalStatus}}</p>
+                                <div class="field_info w-100">
+                                    <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
+                                        <input matInput placeholder="Marital Status" [(ngModel)]="_AddGuarantorDetails.MaritalStatus" name="MaritalStatus" class="w-100" #MaritalStatus required>
+                                        <div *ngIf="MaritalStatus.invalid && (MaritalStatus.dirty || MaritalStatus.touched)" class="alert alert-danger">
+                                            <div *ngIf="MaritalStatus.errors.required ">
+                                                Please enter Marital Status.
+                                            </div>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                            <div class="field_set">
+                                <label for="name" class="field_label font-weight-bold" *ngIf="_ViewDetails">NZResidents</label>
+                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.DNZResidents}}</p>
+                                <div class="field_info w-100" *ngIf="_EditViewDetails || _AddGuarantor">
+                                    <label class="custom-radio-label">NZ Residents</label>
+                                    <mat-radio-group class="w-100" [(ngModel)]="_AddGuarantorDetails.NZResidents" name="NZResidents" #NZResidents="ngModel" required>
+                                        <mat-radio-button class="example-radio-button" value="1">Yes</mat-radio-button>
+                                        <mat-radio-button class="example-radio-button" value="0">No</mat-radio-button>
+                                        <div *ngIf="NZResidents.invalid && (NZResidents.dirty || NZResidents.touched)" class="alert alert-danger">
+                                            <div *ngIf="NZResidents.errors.required ">
+                                                Please select NZResidents.
+                                            </div>
+                                        </div>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                            <div class="field_set">
+                                <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Country Of Birth</label>
+                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.CountryOfBirth}}</p>
+                                <div class="field_info w-100">
+                                    <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
+                                        <input matInput placeholder="Country Of Birth" [(ngModel)]="_AddGuarantorDetails.CountryOfBirth" name="CountryOfBirth" class="w-100" #CountryOfBirth required>
+                                        <div *ngIf="CountryOfBirth.invalid && (CountryOfBirth.dirty || CountryOfBirth.touched)" class="alert alert-danger">
+                                            <div *ngIf="CountryOfBirth.errors.required ">
+                                                Please enter Country Of Birth.
+                                            </div>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                            <div class="field_set">
+                                <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Email ID</label>
+                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.EmailID}}</p>
+                                <div class="field_info w-100">
+                                    <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
+                                        <input matInput placeholder="Email ID" [(ngModel)]="_AddGuarantorDetails.EmailID" name="EmailID" class="w-100" #EmailID required>
+                                        <div *ngIf="EmailID.invalid && (EmailID.dirty || EmailID.touched)" class="alert alert-danger">
+                                            <div *ngIf="EmailID.errors.required ">
+                                                Please enter EmailID.
+                                            </div>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                            <div class="field_set">
+                                <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Mobile No</label>
+                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.MobileNo}}</p>
+                                <div class="field_info w-100">
+                                    <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
+                                        <input matInput placeholder="Mobile No." [(ngModel)]="_AddGuarantorDetails.MobileNo" name="MobileNo" class="w-100" #MobileNo required>
+                                        <div *ngIf="MobileNo.invalid && (MobileNo.dirty || MobileNo.touched)" class="alert alert-danger">
+                                            <div *ngIf="MobileNo.errors.required ">
+                                                Please enter Mobile No.
+                                            </div>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                            <div class="field_set">
+                                <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Home Phone No</label>
+                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.HomePhoneNo}}</p>
+                                <div class="field_info w-100">
+                                    <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
+                                        <input matInput placeholder="Home Phone No." [(ngModel)]="_AddGuarantorDetails.HomePhoneNo" name="HomePhoneNo" class="w-100" #HomePhoneNo required>
+                                        <div *ngIf="HomePhoneNo.invalid && (HomePhoneNo.dirty || HomePhoneNo.touched)" class="alert alert-danger">
+                                            <div *ngIf="HomePhoneNo.errors.required ">
+                                                Please enter Home Phone No.
+                                            </div>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                            <div class="field_set">
+                                <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Work Phone No</label>
+                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.WorkPhoneNo}}</p>
+                                <div class="field_info">
+                                    <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
+                                        <input matInput placeholder="Work Phone No." [(ngModel)]="_AddGuarantorDetails.WorkPhoneNo" name="WorkPhoneNo" class="w-100" #WorkPhoneNo required>
+                                        <div *ngIf="WorkPhoneNo.invalid && (WorkPhoneNo.dirty || WorkPhoneNo.touched)" class="alert alert-danger">
+                                            <div *ngIf="WorkPhoneNo.errors.required ">
+                                                Please enter Work Phone No.
+                                            </div>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                            <div class="field_set">
+                                <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Duration</label>
+                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.Duration}}</p>
+                                <div class="field_info w-100">
+                                    <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
+                                        <input matInput placeholder="Duration" [(ngModel)]="_AddGuarantorDetails.Duration" name="Duration" class="w-100" #Duration required>
+                                        <div *ngIf="Duration.invalid && (Duration.dirty || Duration.touched)" class="alert alert-danger">
+                                            <div *ngIf="Duration.errors.required ">
+                                                Please enter Duration.
+                                            </div>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                            <div class="field_set">
+                                <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Address Line 1</label>
+                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.AddressLine1}}</p>
+                                <div class="field_info w-100">
+                                    <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
+                                        <input matInput placeholder="Address Line 1" [(ngModel)]="_AddGuarantorDetails.AddressLine1" name="AddressLine1" class="w-100" #AddressLine1 required>
+                                        <div *ngIf="AddressLine1.invalid && (AddressLine1.dirty || AddressLine1.touched)" class="alert alert-danger">
+                                            <div *ngIf="AddressLine1.errors.required ">
+                                                Please enter Address Line 1.
+                                            </div>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                            <div class="field_set">
+                                <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Address Line 2</label>
+                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.AddressLine2}}</p>
+                                <div class="field_info w-100">
+                                    <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
+                                        <input matInput placeholder="Address Line 2" [(ngModel)]="_AddGuarantorDetails.AddressLine2" name="AddressLine2" class="w-100" #AddressLine2 required>
+                                        <div *ngIf="AddressLine2.invalid && (AddressLine2.dirty || AddressLine2.touched)" class="alert alert-danger">
+                                            <div *ngIf="AddressLine2.errors.required ">
+                                                Please enter Address Line 2.
+                                            </div>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                            <div class="field_set">
+                                <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Address Line 3</label>
+                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.AddressLine3}}</p>
+                                <div class="field_info w-100">
+                                    <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
+                                        <input matInput placeholder="Address Line 3" [(ngModel)]="_AddGuarantorDetails.AddressLine3" name="AddressLine3" class="w-100" #AddressLine3 required>
+                                        <div *ngIf="AddressLine3.invalid && (AddressLine3.dirty || AddressLine3.touched)" class="alert alert-danger">
+                                            <div *ngIf="AddressLine3.errors.required ">
+                                                Please enter Address Line 3.
+                                            </div>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                            <div class="field_set">
+                                <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Country</label>
+                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.Country}}</p>
+                                <div class="field_info w-100">
+                                    <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
+                                        <input matInput placeholder="Country" [(ngModel)]="_AddGuarantorDetails.Country" name="Country" class="w-100" #Country required>
+                                        <div *ngIf="Country.invalid && (Country.dirty || Country.touched)" class="alert alert-danger">
+                                            <div *ngIf="Country.errors.required ">
+                                                Please enter Country.
+                                            </div>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                            <div class="field_set">
+                                <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Zip Code</label>
+                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.ZipCode}}</p>
+                                <div class="field_info w-100">
+                                    <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
+                                        <input matInput placeholder="Zip Code" [(ngModel)]="_AddGuarantorDetails.ZipCode" name="ZipCode" class="w-100" #ZipCode required>
+                                        <div *ngIf="ZipCode.invalid && (ZipCode.dirty || ZipCode.touched)" class="alert alert-danger">
+                                            <div *ngIf="ZipCode.errors.required ">
+                                                Please enter Zip Code.
+                                            </div>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-100 float-left text-right">
+                    <div class="btn-bottom pr-4 pl-4">
+                        <input type="submit" *ngIf="_AddGuarantor" (click)="AddGuarantor()" value="&#xf055; Add" [disabled]="!AddGuarantorform.form.valid" class="btn btn-success" />
+                        <input type="button" *ngIf="_ViewDetails" value="&#xf040; Edit" (click)="EditDetails()" class="btn btn-success" />
+                        <input type="button" *ngIf="_EditViewDetails" (click)="UpdateGuarantorDetails()" value="&#xf0c7; Save" class="btn btn-success" />
+                        <input type="button" value="&#xf00d; Cancel" (click)="onNoClick()" class="btn btn-secondary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div>
+            <kendo-grid [kendoGridBinding]="gridData"
+                        [pageSize]="2"
+                        [sortable]="true"
+                        [pageable]="true"
+                        [scrollable]="true"
+                        [filterable]="true"
+                        [groupable]="true"
+                        selectable="true">
+                <kendo-grid-column title="Guarantor Name" [filter]="'text'">
+                    <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                        <label>{{dataItem.Title}}{{dataItem.FirstName}} {{dataItem.MiddleName}} {{dataItem.LastName}}</label>
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column title="NZ Resident">
+                 <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                        <label *ngIf="(dataItem.NZResidents == true )">Yes</label>
+                        <label *ngIf="(dataItem.NZResidents == false )">No</label>
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column field="MobileNo" title="Mobile No.">
+                </kendo-grid-column>
+                <kendo-grid-column field="HomePhoneNo" title="Home No.">
+                </kendo-grid-column>
+                <kendo-grid-column field="EmailID" title="Email ID">
+                </kendo-grid-column>
+                <kendo-grid-command-column>
+                    <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                        <button class="btn btn-lg btn-link p-0" type="button" (click)="ViewDetails(dataItem.GuarantorID)">View Details</button>
+                    </ng-template>
+                </kendo-grid-command-column>
+            </kendo-grid>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+

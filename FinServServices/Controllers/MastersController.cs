@@ -104,6 +104,22 @@ namespace FinServServices.Controllers
         {
             return Repository.GetSalutationTypes();
         }
+        //Added by Neha
+
+        [HttpGet]
+        [Route("GetStatusTypes")]
+        public List<StatusTypeMaster> GetStatusTypes()
+        {
+            return Repository.GetStatusTypes();
+        }
+
+        [HttpGet]
+        [Route("GetApplicantNames")]
+        public List<Applicants> GetApplicantNames(string loanappno)
+        {
+            return Repository.GetApplicantNames(loanappno);
+        }
+
         #endregion
 
 

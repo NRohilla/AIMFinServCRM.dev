@@ -1,175 +1,195 @@
-<div class="form">
+
     <div class="pt-4">
         <div class="w-100 float-left">
             <div class="row m-0">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
-                        <label for="name" class="font-weight-bold">Applicant Type</label>
+                        <div class="field_info">
+                            <mat-form-field >
+                                <mat-select placeholder="Applicant Type" [(ngModel)]="_ApplicantPersonalDetails.ApplicantTypeID" name="ApplicantTypeID" #ApplicantTypeID="ngModel" required>
+                                    <mat-option *ngFor="let ApplicantType of _ApplicantTypeID" [value]="ApplicantType.ApplicantTypeID">{{ApplicantType.ApplicantType}}</mat-option>
+                                </mat-select>
+                                <div *ngIf="ApplicantTypeID.invalid && (ApplicantTypeID.dirty || ApplicantTypeID.touched)" class="alert alert-danger">
+                                    <div *ngIf="ApplicantTypeID.errors.required ">
+                                        Please select Applicant Type.
+                                    </div>
+                                </div>
+                            </mat-form-field>
+                        </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field>
-                                <mat-select [(value)]="_ApplicantPersonalDetails.ApplicantType.ApplicantTypeID">
-                                    <mat-option>None</mat-option>
-                                    <mat-option value="1">1st Applicant</mat-option>
-                                    <mat-option value="2">2nd Applicant</mat-option>
-                                    <mat-option value="3">3rd Applicant</mat-option>
-                                    <mat-option value="4">4th Applicant</mat-option>
-                                    <mat-option value="5">5th Applicant</mat-option>
-                                </mat-select>
+                                <input matInput placeholder="First Name" value="{{_ApplicantPersonalDetails.FirstName}}" [(ngModel)]="_ApplicantPersonalDetails.FirstName" name="FirstName" #FirstName="ngModel" required>
+                                <div *ngIf="FirstName.invalid && (FirstName.dirty || FirstName.touched)" class="alert alert-danger">
+                                    <div *ngIf="FirstName.errors.required ">
+                                        Please enter First Name.
+                                    </div>
+                                </div>
                             </mat-form-field>
                         </div>
-                    </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
-                        <label for="name" class="font-weight-bold">First Name</label>
                         <div class="field_info">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="First Name" value="{{_ApplicantPersonalDetails.FirstName}}" [(ngModel)]="_ApplicantPersonalDetails.FirstName" #FirstName>
+                            <mat-form-field>
+                                <input matInput placeholder="Middle Name" value="{{_ApplicantPersonalDetails.MiddleName}}" [(ngModel)]="_ApplicantPersonalDetails.MiddleName" name="MiddleName" #MiddleName="ngModel" required>
+                                <div *ngIf="MiddleName.invalid && (MiddleName.dirty || MiddleName.touched)" class="alert alert-danger">
+                                    <div *ngIf="MiddleName.errors.required ">
+                                        Please enter Middle Name.
+                                    </div>
+                                </div>
                             </mat-form-field>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
-                        <label for="name" class="font-weight-bold">Middle Name</label>
-                        <div class="field_info">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Middle Name" value="{{_ApplicantPersonalDetails.MiddleName}}" [(ngModel)]="_ApplicantPersonalDetails.MiddleName" #MiddleName>
-                            </mat-form-field>
-                        </div>
-                    </div>
                 </div>
             </div>
 
             <div class="row m-0">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
-                        <label for="name" class="font-weight-bold">Last Name</label>
-                        <div class="field_info">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Last Name" value="{{_ApplicantPersonalDetails.LastName}}" [(ngModel)]="_ApplicantPersonalDetails.LastName" #LastName>
-                            </mat-form-field>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
-                        <label for="name" class="font-weight-bold">Gender</label>
                         <div class="field_info">
                             <mat-form-field>
-                                <mat-select [(value)]="_ApplicantPersonalDetails.Gender">
+                                <input matInput placeholder="Last Name" value="{{_ApplicantPersonalDetails.LastName}}" [(ngModel)]="_ApplicantPersonalDetails.LastName" name="LastName" #LastName="ngModel" required>
+                                <div *ngIf="LastName.invalid && (LastName.dirty || LastName.touched)" class="alert alert-danger">
+                                    <div *ngIf="LastName.errors.required ">
+                                        Please enter Last Name.
+                                    </div>
+                                </div>
+                            </mat-form-field>
+                        </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                        <div class="field_info">
+                            <mat-form-field>
+                                <mat-select [(ngModel)]="_ApplicantPersonalDetails.Gender" name="Gender" placeholder="Gender" #Gender required>
                                     <mat-option>None</mat-option>
                                     <mat-option value="Male">Male</mat-option>
                                     <mat-option value="Female">Female</mat-option>
                                 </mat-select>
+                                <div *ngIf="Gender.invalid && (Gender.dirty || Gender.touched)" class="alert alert-danger">
+                                    <div *ngIf="Gender.errors.required ">
+                                        Please select Gender.
+                                    </div>
+                                </div>
                             </mat-form-field>
                         </div>
-                    </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                     <div class="form-group">
-                        <label for="name" class="font-weight-bold">Date Of Birth</label>
-                        <div class="field_info">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Date Of Birth" value="{{_ApplicantPersonalDetails.DateOfBirth}}" [(ngModel)]="_ApplicantPersonalDetails.DateOfBirth" #DateOfBirth>
-                            </mat-form-field>
-                        </div>
+                        <mat-form-field>
+                            <input matInput placeholder="Date Of Birth" value="{{_ApplicantPersonalDetails.DateOfBirth}}" [(ngModel)]="_ApplicantPersonalDetails.DateOfBirth" name="DateOfBirth" #DateOfBirth="ngModel" required>
+                            <div *ngIf="DateOfBirth.invalid && (DateOfBirth.dirty || DateOfBirth.touched)" class="alert alert-danger">
+                                <div *ngIf="ApplicantTypeID.errors.required ">
+                                    Please select Date Of Birth.
+                                </div>
+                            </div>
+                        </mat-form-field>
                     </div>
                 </div>
             </div>
 
             <div class="row m-0">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
-                        <label for="name" class="font-weight-bold">Marital Status</label>
                         <div class="field_info">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Marital Status" value="{{_ApplicantPersonalDetails.MaritalStatus}}" [(ngModel)]="_ApplicantPersonalDetails.MaritalStatus" #MaritalStatus>
+                            <mat-form-field>
+                                <input matInput placeholder="Marital Status" value="{{_ApplicantPersonalDetails.MaritalStatus}}" [(ngModel)]="_ApplicantPersonalDetails.MaritalStatus" name="MaritalStatus" #MaritalStatus="ngModel" required>
+                                <div *ngIf="MaritalStatus.invalid && (MaritalStatus.dirty || MaritalStatus.touched)" class="alert alert-danger">
+                                    <div *ngIf="MaritalStatus.errors.required ">
+                                        Please enter Marital Status.
+                                    </div>
+                                </div>
                             </mat-form-field>
                         </div>
-                    </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
-                        <label for="name" class="font-weight-bold">No. Of Dependents</label>
                         <div class="field_info">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="No. Of Dependents" value="{{_ApplicantPersonalDetails.NoOfDependents}}" [(ngModel)]="_ApplicantPersonalDetails.NoOfDependents" #NoOfDependents>
+                            <mat-form-field>
+                                <input matInput placeholder="No. Of Dependents" value="{{_ApplicantPersonalDetails.NoOfDependents}}" [(ngModel)]="_ApplicantPersonalDetails.NoOfDependents" name="NoOfDependents" #NoOfDependents="ngModel" required>
+                                <div *ngIf="NoOfDependents.invalid && (NoOfDependents.dirty || NoOfDependents.touched)" class="alert alert-danger">
+                                    <div *ngIf="NoOfDependents.errors.required ">
+                                        Please enter No. Of Dependents.
+                                    </div>
+                                </div>
                             </mat-form-field>
                         </div>
-                    </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
-                        <label for="name" class="font-weight-bold">NZResidents</label>
                         <div class="field_info">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="" value="{{_ApplicantPersonalDetails.NZResidents}}" [(ngModel)]="_ApplicantPersonalDetails.NZResidents" #NZResidents>
+                            <mat-form-field>
+                                <input matInput placeholder="NZ Residents" value="{{_ApplicantPersonalDetails.NZResidents}}" [(ngModel)]="_ApplicantPersonalDetails.NZResidents" name="NZResidents" #NZResidents="ngModel" required>
+                                <div *ngIf="NZResidents.invalid && (NZResidents.dirty || NZResidents.touched)" class="alert alert-danger">
+                                    <div *ngIf="NZResidents.errors.required ">
+                                        Please enter NZ Residency.
+                                    </div>
+                                </div>
                             </mat-form-field>
                         </div>
-                    </div>
                 </div>
             </div>
 
             <div class="row m-0">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
-                        <label for="name" class="font-weight-bold">Country Of Birth</label>
                         <div class="field_info">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Country Of Birth" value="{{_ApplicantPersonalDetails.CountryOfBirth}}" [(ngModel)]="_ApplicantPersonalDetails.CountryOfBirth" #CountryOfBirth>
+                            <mat-form-field>
+                                <input matInput placeholder="Country Of Birth" value="{{_ApplicantPersonalDetails.CountryOfBirth}}" [(ngModel)]="_ApplicantPersonalDetails.CountryOfBirth" name="CountryOfBirth" #CountryOfBirth="ngModel" required>
+                                <div *ngIf="CountryOfBirth.invalid && (CountryOfBirth.dirty || CountryOfBirth.touched)" class="alert alert-danger">
+                                    <div *ngIf="CountryOfBirth.errors.required ">
+                                        Please enter Country Of Birth.
+                                    </div>
+                                </div>
                             </mat-form-field>
                         </div>
-                    </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
-                        <label for="name" class="font-weight-bold">Email ID</label>
                         <div class="field_info">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Email ID" value="{{_ApplicantPersonalDetails.EmailID}}" [(ngModel)]="_ApplicantPersonalDetails.EmailID" #EmailID>
+                            <mat-form-field>
+                                <input matInput placeholder="Email ID" value="{{_ApplicantPersonalDetails.EmailID}}" [(ngModel)]="_ApplicantPersonalDetails.EmailID" name="EmailID" #EmailID="ngModel" required>
+                                <div *ngIf="EmailID.invalid && (EmailID.dirty || EmailID.touched)" class="alert alert-danger">
+                                    <div *ngIf="EmailID.errors.required ">
+                                        Please enter Email ID.
+                                    </div>
+                                </div>
                             </mat-form-field>
                         </div>
-                    </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
-                        <label for="name" class="font-weight-bold">Mobile No.</label>
                         <div class="field_info">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Mobile No." value="{{_ApplicantPersonalDetails.MobileNo}}" [(ngModel)]="_ApplicantPersonalDetails.MobileNo" #MobileNo>
+                            <mat-form-field>
+                                <input matInput placeholder="Mobile No." value="{{_ApplicantPersonalDetails.MobileNo}}" [(ngModel)]="_ApplicantPersonalDetails.MobileNo" name="MobileNo" #MobileNo="ngModel" required>
+                                <div *ngIf="MobileNo.invalid && (MobileNo.dirty || MobileNo.touched)" class="alert alert-danger">
+                                    <div *ngIf="MobileNo.errors.required ">
+                                        Please enter MobileNo.
+                                    </div>
+                                </div>
                             </mat-form-field>
                         </div>
-                    </div>
                 </div>
 
             </div>
 
             <div class="row m-0">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
-                        <label for="name" class="font-weight-bold">Home Phone No.</label>
                         <div class="field_info">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Home Phone No." value="{{_ApplicantPersonalDetails.HomePhoneNo}}" [(ngModel)]="_ApplicantPersonalDetails.HomePhoneNo" #HomePhoneNo>
+                            <mat-form-field>
+                                <input matInput placeholder="Home Phone No." value="{{_ApplicantPersonalDetails.HomePhoneNo}}" [(ngModel)]="_ApplicantPersonalDetails.HomePhoneNo" name="HomePhoneNo" #HomePhoneNo="ngModel" required>
+                                <div *ngIf="HomePhoneNo.invalid && (HomePhoneNo.dirty || HomePhoneNo.touched)" class="alert alert-danger">
+                                    <div *ngIf="HomePhoneNo.errors.required ">
+                                        Please enter Home Phone No.
+                                    </div>
+                                </div>
                             </mat-form-field>
                         </div>
-                    </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                    <div class="form-group">
-                        <label for="name" class="font-weight-bold">Work Phone No.</label>
                         <div class="field_info">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Work Phone No." value="{{_ApplicantPersonalDetails.WorkPhoneNo}}" [(ngModel)]="_ApplicantPersonalDetails.WorkPhoneNo" #WorkPhoneNo>
+                            <mat-form-field>
+                                <input matInput placeholder="Work Phone No." value="{{_ApplicantPersonalDetails.WorkPhoneNo}}" [(ngModel)]="_ApplicantPersonalDetails.WorkPhoneNo" name="WorkPhoneNo" #WorkPhoneNo="ngModel" required>
+                                <div *ngIf="WorkPhoneNo.invalid && (WorkPhoneNo.dirty || WorkPhoneNo.touched)" class="alert alert-danger">
+                                    <div *ngIf="WorkPhoneNo.errors.required ">
+                                        Please enter Work Phone No.
+                                    </div>
+                                </div>
                             </mat-form-field>
                         </div>
-                    </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 
-</div>
