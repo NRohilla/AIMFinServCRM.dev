@@ -22,6 +22,10 @@ import {ApplicantPersonalDetailsComponent} from './layout/LoanApplications/compo
 import {ApplicantEmployementComponent} from './layout/LoanApplications/components/app.applicant.employementdetails';
 import { ApplicantQualificationDetailsComponent } from './layout/LoanApplications/components/app.applicant.qualificationdetails';
 import { ApplicantCommunicationDetailsComponent } from './layout/LoanApplications/components/app.applicant.communicationdetails';
+import { ManageAssetAndLiabilityDialog } from './shared/dialogues/loanapplications/ManageAssetandLiabilityDialog';
+import { AddAssetComponent } from './shared/dialogues/loanapplications/AddAsset.component';
+import { AddLiabilityComponent } from './shared/dialogues/loanapplications/AddLiability.component';
+
 //this is test
 import {MaterialModule} from './shared/app.material';
 // AoT requires an exported function for factories
@@ -62,9 +66,12 @@ export function createTranslateLoader(http: HttpClient) {
         ApplicantQualificationDetailsComponent,
         ApplicantCommunicationDetailsComponent,
         ClientDetailsDialog,
-        AddGuarantorDialog],
+        AddGuarantorDialog,
+        ManageAssetAndLiabilityDialog,
+        AddAssetComponent,
+        AddLiabilityComponent],
     providers: [AuthGuard],
     bootstrap: [AppComponent],
-    entryComponents: [LoanApplicationDetailDialog, ClientDetailsDialog, AddGuarantorDialog]
+    entryComponents: [LoanApplicationDetailDialog, ClientDetailsDialog, AddGuarantorDialog, ManageAssetAndLiabilityDialog]
 })
 export class AppModule { }

@@ -67,12 +67,11 @@ export class AddGuarantorDialog {
     }
     
     ngOnInit() {
-      
         this._ClientsService.GetAddedGuarantorGrid().subscribe(res => this.GetAddedGuarantorGridSuccess(res), res => this.GetAddedGuarantorGridError(res));
     }
     
     AddGuarantor() {
-      
+        debugger;
         if (this._LocalStorageService.get("LoanApplicationNoViewed") != undefined) {
             this._AddGuarantorDetails.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNoViewed");
             this._ClientsService.AddGuarantor(this._AddGuarantorDetails).subscribe(res => this.AddGuarantorSuccess(res), res => this.AddGuarantorError(res));

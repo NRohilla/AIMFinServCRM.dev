@@ -1,19 +1,24 @@
+
 <div class="application-details">
     <h3 class="text-uppercase sub-head">Add Applicant</h3>
     <div class="section_box pl-0 pr-0 pb-0 mt-3 clearfix">
-        <div class="pl-4 pr-4 pt-0 pb-4">
-            <mat-tab-group>
-                <mat-tab label="Personal Details"><applicant-personal-details></applicant-personal-details></mat-tab>
-                <mat-tab label="Qualification Details"><applicant-qualification-details></applicant-qualification-details></mat-tab>
-                <mat-tab label="Employment Details"><applicant-employement-details></applicant-employement-details></mat-tab>
-                <mat-tab label="Communication Details"><applicant-communication-details></applicant-communication-details></mat-tab>
-            </mat-tab-group>
-        </div>
-        <div class="w-100 text-right">
-            <div class="btn-bottom pr-4 pl-4">
-                <input type="button" value="&#xf0c7; Save" (click)="SaveNewApplicant()" class="btn btn-success" />
-                <input type="button" value="&#xf00d; Cancel" (click)="onNoClick()" class="btn btn-secondary" />
+        <form name="form" #AddApplicantform="ngForm" novalidate>
+            <div class="pl-4 pr-4 pt-0 pb-4">
+                <mat-tab-group>
+                    <mat-tab label="Personal Details"><applicant-personal-details #applicantPersonalDetails></applicant-personal-details></mat-tab>
+                    <mat-tab label="Qualification Details"><applicant-qualification-details #applicantQualificationDetails></applicant-qualification-details></mat-tab>
+                    <mat-tab label="Employment Details"><applicant-employement-details #applicantEmployementDetails></applicant-employement-details></mat-tab>
+                    <mat-tab label="Communication Details"><applicant-communication-details #applicantCommunicationDetails></applicant-communication-details></mat-tab>
+                </mat-tab-group>
             </div>
-        </div>
+            <div class="w-100 text-right">
+                <div class="btn-bottom pr-4 pl-4">
+                    <input type="button" value="&#xf0c7; Save"
+                           [disabled]="applicantQualificationDetails._isformvalid==false || applicantCommunicationDetails._isformvalid==false || applicantPersonalDetails._isformvalid==false || applicantEmployementDetails._isformvalid==false"
+                           (click)="SaveNewApplicant()" class="btn btn-success" />
+                    <input type="button" value="&#xf00d; Cancel" (click)="onNoClick()" class="btn btn-secondary" />
+                </div>
+            </div>
+        </form>
     </div>
 </div>

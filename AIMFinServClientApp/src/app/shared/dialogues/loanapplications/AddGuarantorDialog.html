@@ -333,7 +333,7 @@
                     <div class="btn-bottom pr-4 pl-4">
                         <input type="submit" *ngIf="_AddGuarantor" (click)="AddGuarantor()" value="&#xf055; Add" [disabled]="!AddGuarantorform.form.valid" class="btn btn-success" />
                         <input type="button" *ngIf="_ViewDetails" value="&#xf040; Edit" (click)="EditDetails()" class="btn btn-success" />
-                        <input type="button" *ngIf="_EditViewDetails" (click)="UpdateGuarantorDetails()" value="&#xf0c7; Save" class="btn btn-success" />
+                        <input type="button" *ngIf="_EditViewDetails" (click)="UpdateGuarantorDetails()" [disabled]="!AddGuarantorform.form.valid" value="&#xf0c7; Save" class="btn btn-success" />
                         <input type="button" value="&#xf00d; Cancel" (click)="onNoClick()" class="btn btn-secondary" />
                     </div>
                 </div>
@@ -349,23 +349,19 @@
                         [filterable]="true"
                         [groupable]="true"
                         selectable="true">
-
                 <kendo-grid-column title="Guarantor Name" [filter]="'text'">
                     <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
                         <label>{{dataItem.Title}}{{dataItem.FirstName}} {{dataItem.MiddleName}} {{dataItem.LastName}}</label>
                     </ng-template>
                 </kendo-grid-column>
-
                 <kendo-grid-column title="NZ Resident">
-                    <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                 <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
                         <label *ngIf="(dataItem.NZResidents == true )">Yes</label>
                         <label *ngIf="(dataItem.NZResidents == false )">No</label>
                     </ng-template>
                 </kendo-grid-column>
-                
                 <kendo-grid-column field="MobileNo" title="Mobile No.">
                 </kendo-grid-column>
-
                 <kendo-grid-column field="HomePhoneNo" title="Home No.">
                 </kendo-grid-column>
                 <kendo-grid-column field="EmailID" title="Email ID">

@@ -40,11 +40,13 @@ namespace FinServUnitOfWork.Repository
                     return (from AssetstMstr in db.tblMasterAssetTypes
                             select new AssetsTypeMaster()
                             {
-                                Description = AssetstMstr.AssetType,
+                                AssetType = AssetstMstr.AssetType,
                                 AssetTypeID = AssetstMstr.AssetTypeID,
                                 AutoID = AssetstMstr.AutoID,
                                 IsActive = AssetstMstr.IsActive,
                             }).ToList();
+                    
+                    
                 }
             }
             catch (Exception e)
@@ -103,7 +105,7 @@ namespace FinServUnitOfWork.Repository
                     return (from LbltyMstr in db.tblMasterLiabilityTypes
                             select new LiabilityTypeMaster()
                             {
-                                Description = LbltyMstr.LiabilityType,
+                                LiabilityType = LbltyMstr.LiabilityType,
                                 AutoID = LbltyMstr.AutoID,
                                 LiabilityTypeID = LbltyMstr.LiabilityTypeID,
                                 IsActive = LbltyMstr.IsActive
@@ -303,6 +305,29 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
+        public List<Applicants> GetApplicantNames(string loanappno)
+        {
+            try
+            {
+                Guid appGuid = Guid.Parse(loanappno);
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    return (from ObjAplcnts in db.tblApplicants
+                            .Where(p => p.LoanApplicationNo == appGuid)
+                            select new Applicants()
+                            {
+                                ApplicantID = ObjAplcnts.ApplicantID,
+                                FirstName = ObjAplcnts.FirstName
+                            })
+                            .ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        
         #endregion
 
 
@@ -656,7 +681,7 @@ namespace FinServUnitOfWork.Repository
                     var GetObjEntity = db.tblMasterAssetTypes.Where(p => p.AutoID == AssetsTypeMaster.AutoID).FirstOrDefault();
                     if (GetObjEntity != null)
                     {
-                        GetObjEntity.AssetType = AssetsTypeMaster.Description;
+                        GetObjEntity.AssetType = AssetsTypeMaster.AssetType;
                         operationResult = db.SaveChanges();
                     }
                 }
@@ -729,7 +754,7 @@ namespace FinServUnitOfWork.Repository
                     var GetObjEntity = db.tblMasterLiabilityTypes.Where(p => p.AutoID == LiabilityTypeMaster.AutoID).FirstOrDefault();
                     if (GetObjEntity != null)
                     {
-                        GetObjEntity.LiabilityType = LiabilityTypeMaster.Description;
+                        GetObjEntity.LiabilityType = LiabilityTypeMaster.LiabilityType;
                         operationResult = db.SaveChanges();
                     }
                 }
@@ -972,7 +997,7 @@ namespace FinServUnitOfWork.Repository
                 {
                     tblMasterAssetType Obj = new tblMasterAssetType();
                     Obj.AssetTypeID = Guid.NewGuid();
-                    Obj.AssetType = AssetsTypeMaster.Description;
+                    Obj.AssetType = AssetsTypeMaster.AssetType;
                     Obj.IsActive = true;
                     db.tblMasterAssetTypes.Add(Obj);
                     operationResult = db.SaveChanges();
@@ -1044,7 +1069,7 @@ namespace FinServUnitOfWork.Repository
                 {
                     tblMasterLiabilityType Obj = new tblMasterLiabilityType();
                     Obj.LiabilityTypeID = Guid.NewGuid();
-                    Obj.LiabilityType = LiabilityTypeMaster.Description;
+                    Obj.LiabilityType = LiabilityTypeMaster.LiabilityType;
                     Obj.IsActive = true;
                     db.tblMasterLiabilityTypes.Add(Obj);
                     operationResult = db.SaveChanges();

@@ -17,12 +17,18 @@ import { MastersService } from '../../../services//app.masters.service';
     providers: [ClientsService, MastersService]
 })
 export class ApplicantPersonalDetailsComponent extends AppBaseComponent implements OnInit {
+    _isformvalid: boolean = false;
+    @ViewChild('AddPersonalDetails') form;
+
     public _ApplicantTypeID: {};
     public _Gender: {};
     errorMessage: "No Data"
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, private _MasterService: MastersService) { super(); }
     ngOnInit() {
         this.GetApplicantTypes();
+    }
+    ngDoCheck() {
+        this._isformvalid = this.form.valid;
     }
     public _ApplicantPersonalDetails = {
         ApplicantID: '',
@@ -51,7 +57,6 @@ export class ApplicantPersonalDetailsComponent extends AppBaseComponent implemen
         this._MasterService.GetApplicantTypes().subscribe(res => this.GetApplicantTypesSuccess(res), error => this.errorMessage = <any>error);
     }
     GetApplicantTypesSuccess(res) {
-        debugger;
         this._ApplicantTypeID = JSON.parse(res._body);
     }
 

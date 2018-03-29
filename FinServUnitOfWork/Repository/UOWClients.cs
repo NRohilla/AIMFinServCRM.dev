@@ -73,6 +73,7 @@ namespace FinServUnitOfWork.Repository
                         objLoanApplicationForms.Add(new LoanApplicationForms
                         {
                             LoanApplicationNo = itemGetAllApplications.LoanApplicationNo,
+                            ApplicationFormNumber=itemGetAllApplications.ApplicationFormNumber,
                             TypeOfLoanID = itemGetAllApplications.TypeOfLoanID,
                             LoanTerm = itemGetAllApplications.LoanTerm,
                             RateTypeID = itemGetAllApplications.RateTypeID,
@@ -897,6 +898,263 @@ namespace FinServUnitOfWork.Repository
 
                        db.SaveChanges();
 
+                    }
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public bool AddAsset(Asset _objAssetDetails)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    if (_objAssetDetails != null)
+                    {
+                        tblAsset _tblAssetDetail = new tblAsset();
+                        _tblAssetDetail.AssetID = Guid.NewGuid();
+                        _tblAssetDetail.AssetTypeID = _objAssetDetails.AssetTypeID;
+                        _tblAssetDetail.ApplicantID = _objAssetDetails.ApplicantID;
+                        _tblAssetDetail.Description = _objAssetDetails.Description;
+                        _tblAssetDetail.NetValue = _objAssetDetails.NetValue;
+                        _tblAssetDetail.Ownership = _objAssetDetails.Ownership;
+                        tblApplicant _tblApplicant = new tblApplicant();
+                        _tblApplicant.FirstName = _objAssetDetails._ApplicationID.FirstName;
+
+                        db.tblAssets.Add(_tblAssetDetail);
+                        db.SaveChanges();
+
+                    }
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public List<Asset> GetAddedAssetGrid(Guid LoanApplicationNo)
+        {          
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var Assetdata = (from tla in db.tblLoanApplicationForms
+                                     join ta in db.tblApplicants on tla.LoanApplicationNo equals ta.LoanApplicationNo
+                                     join tas in db.tblAssets on ta.ApplicantID equals tas.ApplicantID
+                                     join tma in db.tblMasterAssetTypes on tas.AssetTypeID equals tma.AssetTypeID
+                                     where tla.LoanApplicationNo == LoanApplicationNo
+                                     select new
+                                     {
+                                         _Description = tas.Description,
+                                         _AssetID = tas.AssetID,
+                                         _NetValue = tas.NetValue,
+                                         _Ownership = tas.Ownership,
+                                         _AssetType = tma.AssetType,
+                                         _AssetTypeID = tma.AssetTypeID,
+                                         _firstName=ta.FirstName,
+                                         _applicantID=ta.ApplicantID
+                                     }).ToList().Select(x => new Asset()
+                                     {
+                                         Description = x._Description,
+                                         AssetID = x._AssetID,
+                                         NetValue = x._NetValue,
+                                         Ownership = x._Ownership,
+                                         AssetTypeID = x._AssetTypeID,
+                                         AssetType = x._AssetType,
+                                         FirstName = x._firstName,
+                                         ApplicantID= x._applicantID
+                                     }).ToList();
+                    return Assetdata;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public Asset GetAssetDetails(string ClientID)
+        {
+            try
+            {
+                Asset objtoReturn = new Asset();
+                Guid ApplicantID = Guid.Parse(ClientID);
+
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetAssetDetails = db.tblAssets.Where(p => p.ApplicantID == ApplicantID).FirstOrDefault();
+                    if (GetAssetDetails != null)
+                    {
+                        objtoReturn.AssetID = GetAssetDetails.AssetID;
+                        objtoReturn.Description = GetAssetDetails.Description;
+                        objtoReturn.NetValue = GetAssetDetails.NetValue;
+                        objtoReturn.Ownership = GetAssetDetails.Ownership;
+                        objtoReturn.ApplicantID = GetAssetDetails.ApplicantID;
+                        objtoReturn.FirstName = GetAssetDetails.tblApplicant.FirstName;
+                        objtoReturn.AssetType = GetAssetDetails.tblMasterAssetType.AssetType;
+                        objtoReturn.AssetTypeID = GetAssetDetails.tblMasterAssetType.AssetTypeID;
+                       
+                    }
+                    return objtoReturn;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public bool UpdateAssetDetails(Asset _objAssetDetails)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var FetchAssetDetails = db.tblAssets.Where(p => p.AssetID == _objAssetDetails.AssetID).FirstOrDefault();
+                    if (FetchAssetDetails != null)
+                    {
+                        FetchAssetDetails.AssetID = _objAssetDetails.AssetID;
+                        FetchAssetDetails.ApplicantID = _objAssetDetails.ApplicantID;
+                        FetchAssetDetails.AssetTypeID = _objAssetDetails.AssetTypeID;
+                        FetchAssetDetails.Description = _objAssetDetails.Description;
+                        FetchAssetDetails.NetValue = _objAssetDetails.NetValue;
+                        FetchAssetDetails.Ownership = _objAssetDetails.Ownership;
+                        db.SaveChanges();
+                    }
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public bool AddLiability(Liability _objLiabilityDetails)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    if (_objLiabilityDetails != null)
+                    {
+                        tblLiability _tblLiabilityDetail = new tblLiability();
+                        _tblLiabilityDetail.LiabilityID = Guid.NewGuid();
+                        _tblLiabilityDetail.LiabilityTypeID = _objLiabilityDetails.LiabilityTypeID;
+                        _tblLiabilityDetail.ApplicantID = _objLiabilityDetails.ApplicantID;
+                        _tblLiabilityDetail.Description = _objLiabilityDetails.Description;
+                        _tblLiabilityDetail.NetValue = _objLiabilityDetails.NetValue;
+                        _tblLiabilityDetail.Ownership = _objLiabilityDetails.Ownership;
+                        tblApplicant _tblApplicant = new tblApplicant();
+                        _tblApplicant.FirstName = _objLiabilityDetails.FirstName;
+
+                        db.tblLiabilities.Add(_tblLiabilityDetail);
+                        db.SaveChanges();
+
+                    }
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public List<Liability> GetAddedLiabilityGrid(Guid LoanApplicationNo)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var liabilitydata = (from tla in db.tblLoanApplicationForms
+                                     join ta in db.tblApplicants on tla.LoanApplicationNo equals ta.LoanApplicationNo
+                                     join tl in db.tblLiabilities on ta.ApplicantID equals tl.ApplicantID
+                                     join tml in db.tblMasterLiabilityTypes on tl.LiabilityTypeID equals tml.LiabilityTypeID
+                                     where tla.LoanApplicationNo == LoanApplicationNo
+                                     select new
+                                     {
+                                         _Description = tl.Description,
+                                         _LiabilityID = tl.LiabilityID,
+                                         _NetValue = tl.NetValue,
+                                         _Ownership = tl.Ownership,
+                                         _LiabilityTypeID = tml.LiabilityTypeID,
+                                         _LiabilityType = tml.LiabilityType,
+                                         _firstName = ta.FirstName,
+                                         _applicantID = ta.ApplicantID
+                                     }).ToList().Select(x => new Liability()
+                                     {
+                                         Description = x._Description,
+                                         LiabilityID = x._LiabilityID,
+                                         NetValue = x._NetValue,
+                                         Ownership = x._Ownership,
+                                         LiabilityTypeID = x._LiabilityTypeID,
+                                         LiabilityType = x._LiabilityType,
+                                         FirstName = x._firstName,
+                                         ApplicantID=x._applicantID
+                                     }).ToList();
+                    return liabilitydata;
+                }
+            }
+            
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public Liability GetLiabilityDetails(string LbltyID)
+        {
+            try
+            {
+                Liability objtoReturn = new Liability();
+                Guid LiabilityID = Guid.Parse(LbltyID);
+
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetLiabilityDetails = db.tblLiabilities.Where(p => p.LiabilityID == LiabilityID).FirstOrDefault();
+                    if (GetLiabilityDetails != null)
+                    {
+                        objtoReturn.LiabilityID = GetLiabilityDetails.LiabilityID;
+                        objtoReturn.Description = GetLiabilityDetails.Description;
+                        objtoReturn.NetValue = GetLiabilityDetails.NetValue;
+                        objtoReturn.Ownership = GetLiabilityDetails.Ownership;
+                        objtoReturn.ApplicantID = GetLiabilityDetails.ApplicantID;
+                        objtoReturn.FirstName = GetLiabilityDetails.tblApplicant.FirstName;
+                        objtoReturn.LiabilityType = GetLiabilityDetails.tblMasterLiabilityType.LiabilityType;
+                        objtoReturn.LiabilityTypeID = GetLiabilityDetails.tblMasterLiabilityType.LiabilityTypeID;
+          
+                    }
+                    return objtoReturn;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public bool UpdateLiabilityDetails(Liability _objLiabilityDetails)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var FetchLiabilityDetails = db.tblLiabilities.Where(p => p.LiabilityID == _objLiabilityDetails.LiabilityID).FirstOrDefault();
+                    if (FetchLiabilityDetails != null)
+                    {
+                        FetchLiabilityDetails.LiabilityID = _objLiabilityDetails.LiabilityID;
+                        FetchLiabilityDetails.ApplicantID = _objLiabilityDetails.ApplicantID;
+                        FetchLiabilityDetails.LiabilityTypeID = _objLiabilityDetails.LiabilityTypeID;
+                        FetchLiabilityDetails.Description = _objLiabilityDetails.Description;
+                        FetchLiabilityDetails.NetValue = _objLiabilityDetails.NetValue;
+                        FetchLiabilityDetails.Ownership = _objLiabilityDetails.Ownership;
+
+                        db.SaveChanges();
                     }
                     return true;
                 }

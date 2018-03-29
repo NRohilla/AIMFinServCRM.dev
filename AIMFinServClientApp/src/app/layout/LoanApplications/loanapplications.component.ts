@@ -12,6 +12,7 @@ import { ClientsService } from '../../services/app.clients.service';
 import { LoanApplicationDetailDialog } from '../../shared/dialogues/loanapplications/LoanApplicationDetailDialog';
 import { MastersService } from '../../services/app.masters.service';
 import { AddGuarantorDialog } from '../../shared/dialogues/loanapplications/AddGuarantorDialog';
+import { ManageAssetAndLiabilityDialog } from '../../shared/dialogues/loanapplications/ManageAssetandLiabilityDialog';
 
 @Component({
     templateUrl: './loanapplications.component.html',
@@ -48,6 +49,7 @@ export class LoanapplicationsComponent implements OnInit {
         IsPropertyDecided: false,
         IsShifted: false,
         LoanApplicationNo: "",
+        ApplicationFormNumber: "",
         LoanTerm: "",
         ModifiedBy: "",
         ModifiedOn: "",
@@ -101,6 +103,7 @@ export class LoanapplicationsComponent implements OnInit {
             IsPropertyDecided: false,
             IsShifted: false,
             LoanApplicationNo: "",
+            ApplicationFormNumber:"",
             LoanTerm: "",
             ModifiedBy: "",
             ModifiedOn: "",
@@ -137,6 +140,14 @@ export class LoanapplicationsComponent implements OnInit {
             //this.animal = result;
         });
     }
+    ManageAssetandLiability(): void {
+        let dialogRef = this.dialog.open(ManageAssetAndLiabilityDialog, {
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+        });
+    }
 
     GetAllLoanApplicationError(Res) { }
 
@@ -148,7 +159,6 @@ export class LoanapplicationsComponent implements OnInit {
     }
 
     GetAllLoanApplicationDetailSuccess(res) {
-        debugger;
         this._LoanApplicationDetails = JSON.parse(res._body);
 
         if (this._LoanApplicationDetails.IsPreApproval == true)
@@ -169,12 +179,10 @@ export class LoanapplicationsComponent implements OnInit {
 
     openDialog(): void {
         let dialogRef = this.dialog.open(LoanApplicationDetailDialog, {
-            //data: { name: this.name, animal: this.animal }
         });
 
         dialogRef.afterClosed().subscribe(result => {
             console.log('The dialog was closed');
-            //this.animal = result;
         });
     }
 
@@ -239,11 +247,9 @@ export class LoanapplicationsComponent implements OnInit {
     }
 
     GetLoanType() {
-        debugger;
         this._MasterService.GetLoanTypes().subscribe(res => this.GetLoanTypesSuccess(res), error => this.errorMessage = <any>error);
     }
     GetLoanTypesSuccess(res) {
-        debugger
         this._TypeOfLoanID = JSON.parse(res._body);
     }
 

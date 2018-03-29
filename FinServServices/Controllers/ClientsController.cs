@@ -4,6 +4,7 @@ using System.Web.Http;
 using FinServUnitOfWork.Interface;
 using FinServUnitOfWork.Repository;
 using FinServDataModel;
+using System;
 
 namespace FinServServices.Controllers
 {
@@ -181,6 +182,58 @@ namespace FinServServices.Controllers
         {
             return Repository.UpdateGuarantorDetails(_objUpdateGuartDetails);
         }
+        [HttpPost]
+        [Route("AddAsset")]
+        public bool AddAsset(Asset _objAssetDetails)
+        {
+            return Repository.AddAsset(_objAssetDetails);
+        }
+        [HttpGet]
+        [Route("GetAddedAssetGrid")]
+        public List<Asset> GetAddedAssetGrid(Guid LoanAppNo)
+        {
+            return Repository.GetAddedAssetGrid(LoanAppNo);
+        }
 
+        [HttpGet]
+        [Route("GetAssetDetails")]
+        public Asset GetAssetDetails(string ClientID)
+        {
+            return Repository.GetAssetDetails(ClientID);
+        }
+
+        [HttpPost]
+        [Route("UpdateAssetDetails")]
+        public bool UpdateAssetDetails(Asset _objAssetDetails)
+        {
+            return Repository.UpdateAssetDetails(_objAssetDetails);
+        }
+
+        [HttpPost]
+        [Route("AddLiability")]
+        public bool AddLiability(Liability _objLiabilityDetails)
+        {
+            return Repository.AddLiability(_objLiabilityDetails);
+        }
+        [HttpGet]
+        [Route("GetAddedLiabilityGrid")]
+        public List<Liability> GetAddedLiabilityGrid(Guid LoanAppNo)
+        {
+            return Repository.GetAddedLiabilityGrid(LoanAppNo);
+        }
+
+        [HttpGet]
+        [Route("GetLiabilityDetails")]
+        public Liability GetLiabilityDetails(string LbltyID)
+        {
+            return Repository.GetLiabilityDetails(LbltyID);
+        }
+
+        [HttpPost]
+        [Route("UpdateLiabilityDetails")]
+        public bool UpdateLiabilityDetails(Liability _objLiabilityDetails)
+        {
+            return Repository.UpdateLiabilityDetails(_objLiabilityDetails);
+        }
     }
 }

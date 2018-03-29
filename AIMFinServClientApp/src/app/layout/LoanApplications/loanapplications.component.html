@@ -6,15 +6,16 @@
     </div>-->
     <div *ngIf="!_ViewApplicationDetails">
         <kendo-grid [kendoGridBinding]="gridData"
-                    [pageSize]="2"
+                    [pageSize]="10"
                     [sortable]="true"
                     [pageable]="true"
                     [scrollable]="true"
                     [filterable]="true"
                     [groupable]="true"
                     selectable="true">
-
-            <kendo-grid-column field="LoanApplicationNo" title="LoanApplication No">
+            <kendo-grid-column field="ApplicationFormNumber" title="Application Form No" >
+            </kendo-grid-column>
+            <kendo-grid-column field="LoanApplicationNo" title="LoanApplication No" hidden="hidden">
             </kendo-grid-column>
             <kendo-grid-column field="_TypeOfLoanID.LoanType" title="Loan Type">
             </kendo-grid-column>
@@ -50,21 +51,21 @@
                                     <input type="button" value="&#xf067; Add Applicant" class="btn btn-secondary" (click)="openDialog()" />
                                 </div>
                                 <div class="w-100 float-left">
-                                    <form name="form" (ngSubmit)="UpdateLoanApplicationDetails()" #LoanApplicantform="ngForm" novalidate>
+                                    <form name="form"  #LoanApplicantform="ngForm" novalidate>
                                         <div class="tab-pane active">
                                             <div class="row m-0">
                                                 <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Type of Loan</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails._TypeOfLoanID.LoanType}}</p>
-                                                        <div class="field_info w-100" *ngIf="_EditDetails">
-                                                            <mat-form-field>
-                                                                <mat-select placeholder="Type of loan" [(ngModel)]="_LoanApplicationDetails._TypeOfLoanID.ID" name="TypeOfloan" #TypeOfloan="ngModel" required>
+                                                        <div class="field_info w-100" >
+                                                            <mat-form-field *ngIf="_EditDetails">
+                                                                <mat-select placeholder="Type of loan" [(ngModel)]="_LoanApplicationDetails._TypeOfLoanID.ID" name="LoanType" #LoanType="ngModel" required>
                                                                     <mat-option *ngFor="let TypeOfLoanID of _TypeOfLoanID" [value]="TypeOfLoanID.ID">{{TypeOfLoanID.LoanType}}</mat-option>
                                                                 </mat-select>
-                                                                <div *ngIf="TypeOfloan.invalid && (TypeOfloan.dirty || TypeOfloan.touched)" class="alert alert-danger">
-                                                                    <div *ngIf="TypeOfloan.errors.required ">
-                                                                        Please select loan Type.
+                                                                <div *ngIf="LoanType.invalid && (LoanType.dirty || LoanType.touched)" class="alert alert-danger">
+                                                                    <div *ngIf="LoanType.errors.required ">
+                                                                        Please enter Loan Type.
                                                                     </div>
                                                                 </div>
                                                             </mat-form-field>
@@ -75,14 +76,14 @@
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Purpose of loan</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails._PurposeOfLoanID.PurposeOfLoan}}</p>
-                                                        <div class="field_info w-100" *ngIf="_EditDetails">
-                                                            <mat-form-field>
-                                                                <mat-select placeholder="Purpose Of Loan" [(ngModel)]="_LoanApplicationDetails._PurposeOfLoanID.ID" name="Purpose" #Purpose="ngModel" required>
+                                                        <div class="field_info w-100" >
+                                                            <mat-form-field *ngIf="_EditDetails">
+                                                                <mat-select placeholder="Purpose Of Loan" [(ngModel)]="_LoanApplicationDetails._PurposeOfLoanID.ID" name="PurposeOfLoan" #PurposeOfLoan="ngModel" required>
                                                                     <mat-option *ngFor="let PurposeOfLoanValues of _PurposeOfLoanID" [value]="PurposeOfLoanValues.ID">{{PurposeOfLoanValues.PurposeOfLoan}}</mat-option>
                                                                 </mat-select>
-                                                                <div *ngIf="Purpose.invalid && (Purpose.dirty || Purpose.touched)" class="alert alert-danger">
-                                                                    <div *ngIf="Purpose.errors.required ">
-                                                                        Please select Purpose.
+                                                                <div *ngIf="PurposeOfLoan.invalid && (PurposeOfLoan.dirty || PurposeOfLoan.touched)" class="alert alert-danger">
+                                                                    <div *ngIf="PurposeOfLoan.errors.required ">
+                                                                        Please select Purpose Of Loan.
                                                                     </div>
                                                                 </div>
                                                             </mat-form-field>
@@ -93,8 +94,8 @@
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Priority</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.Priority}}</p>
-                                                        <div class="field_info w-100" *ngIf="_EditDetails">
-                                                            <mat-form-field>
+                                                        <div class="field_info w-100" >
+                                                            <mat-form-field *ngIf="_EditDetails">
                                                                 <input matInput placeholder="Priority" [(ngModel)]="_LoanApplicationDetails.Priority" name="Priority" #Priority="ngModel" required>
                                                                 <div *ngIf="Priority.invalid && (Priority.dirty || Priority.touched)" class="alert alert-danger">
                                                                     <div *ngIf="Priority.errors.required ">
@@ -110,7 +111,7 @@
                                                         <div class="field_label" *ngIf="!_EditDetails">Finance Required</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.FinanceRequired}}</p>
                                                         <div class="field_info w-100" *ngIf="_EditDetails">
-                                                            <mat-form-field>
+                                                            <mat-form-field *ngIf="_EditDetails">
                                                                 <input matInput placeholder="Finance Required" [(ngModel)]="_LoanApplicationDetails.FinanceRequired" name="Finance" #Finance="ngModel" required>
                                                                 <div *ngIf="Finance.invalid && (Finance.dirty || Finance.touched)" class="alert alert-danger">
                                                                     <div *ngIf="Finance.errors.required ">
@@ -127,8 +128,8 @@
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Cash In-hand</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.CashInHand}}</p>
-                                                        <div class="field_info w-100" *ngIf="_EditDetails">
-                                                            <mat-form-field required>
+                                                        <div class="field_info w-100">
+                                                            <mat-form-field *ngIf="_EditDetails">
                                                                 <input matInput placeholder="Cash In Hand" [(ngModel)]="_LoanApplicationDetails.CashInHand" name="CashInHand" #CashInHand="ngModel" required>
                                                                 <div *ngIf="CashInHand.invalid && (CashInHand.dirty || CashInHand.touched)" class="alert alert-danger">
                                                                     <div *ngIf="CashInHand.errors.required ">
@@ -143,12 +144,12 @@
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Loan Term</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.LoanTerm}}</p>
-                                                        <div class="field_info w-100" *ngIf="_EditDetails">
-                                                            <mat-form-field required>
+                                                        <div class="field_info w-100">
+                                                            <mat-form-field *ngIf="_EditDetails">
                                                                 <input matInput placeholder="Loan Term" [(ngModel)]="_LoanApplicationDetails.LoanTerm" name="LoanTerm" #LoanTerm="ngModel" required>
                                                                 <div *ngIf="LoanTerm.invalid && (LoanTerm.dirty || LoanTerm.touched)" class="alert alert-danger">
                                                                     <div *ngIf="LoanTerm.errors.required ">
-                                                                        Please select LoanTerm.
+                                                                        Please select Loan Term.
                                                                     </div>
                                                                 </div>
                                                             </mat-form-field>
@@ -159,8 +160,8 @@
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Rate Type</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails._RateTypeID.LoanRateType}}</p>
-                                                        <div class="field_info w-100" *ngIf="_EditDetails">
-                                                            <mat-form-field required>
+                                                        <div class="field_info w-100" >
+                                                            <mat-form-field *ngIf="_EditDetails">
                                                                 <mat-select placeholder="Rate Type" [(ngModel)]="_LoanApplicationDetails._RateTypeID.ID" name="RateType" #RateType="ngModel" required>
                                                                     <mat-option *ngFor="let LoanrateTypeValues of _RateTypeID" [value]="LoanrateTypeValues.ID">{{LoanrateTypeValues.LoanRateType}}</mat-option>
                                                                 </mat-select>
@@ -177,8 +178,8 @@
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Frequency</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.Frequency}}</p>
-                                                        <div class="field_info w-100" *ngIf="_EditDetails">
-                                                            <mat-form-field required>
+                                                        <div class="field_info w-100">
+                                                            <mat-form-field *ngIf="_EditDetails">
                                                                 <input matInput placeholder="Frequency" [(ngModel)]="_LoanApplicationDetails.Frequency" name="Frequency" #Frequency="ngModel" required>
                                                                 <div *ngIf="Frequency.invalid && (Frequency.dirty || Frequency.touched)" class="alert alert-danger">
                                                                     <div *ngIf="TypeOfloan.errors.required ">
@@ -197,9 +198,15 @@
                                                         <div class="field_label" *ngIf="!_EditDetails">Any Guarantor</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.IsAnyGuarantor}}</p>
                                                         <div class="field_info w-100" *ngIf="_EditDetails">
+                                                            <label class="custom-radio-label">Is Any Guarantor</label>
                                                             <mat-radio-group [(ngModel)]="_LoanApplicationDetails.IsAnyGuarantor" name="IsAnyGuarantor" #IsAnyGuarantor="ngModel">
                                                                 <mat-radio-button class="example-radio-button" value="1">Yes</mat-radio-button>
                                                                 <mat-radio-button class="example-radio-button" value="0">No</mat-radio-button>
+                                                                <div *ngIf="IsAnyGuarantor.invalid && (IsAnyGuarantor.dirty || IsAnyGuarantor.touched)" class="alert alert-danger">
+                                                                    <div *ngIf="IsAnyGuarantor.errors.required ">
+                                                                        Please select Is Any Guarantor.
+                                                                    </div>
+                                                                </div>
                                                             </mat-radio-group>
                                                         </div>
                                                     </div>
@@ -209,6 +216,7 @@
                                                         <div class="field_label" *ngIf="!_EditDetails">Is Pre-approval</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.IsPreApproval}}</p>
                                                         <div class="field_info w-100" *ngIf="_EditDetails">
+                                                            <label class="custom-radio-label">Is Pre-approval</label>
                                                             <mat-radio-group [(ngModel)]="_LoanApplicationDetails.IsPreApproval" (click)="SwitchApproval()" name="IsPreApproval" #IsPreApproval="ngModel" required>
                                                                 <mat-radio-button class="example-radio-button" value="1">Yes</mat-radio-button>
                                                                 <mat-radio-button class="example-radio-button" value="0">No</mat-radio-button>
@@ -225,11 +233,16 @@
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Approval Expiry</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.ApprovalExpiryDate}}</p>
-                                                        <div class="field_info w-100" *ngIf="_EditDetails">
-                                                            <mat-form-field>
+                                                        <div class="field_info w-100" >
+                                                            <mat-form-field *ngIf="_EditDetails">
                                                                 <input matInput [matDatepicker]="DateArriveFrom" placeholder="MM/DD/YYYY" [(ngModel)]="_LoanApplicationDetails.ApprovalExpiryDate" name="DateArriveFrom" #DateArriveFrom="ngModel">
                                                                 <mat-datepicker-toggle matSuffix [for]="DateArriveFrom"></mat-datepicker-toggle>
                                                                 <mat-datepicker #DateArriveFrom></mat-datepicker>
+                                                                <div *ngIf="DateArriveFrom.invalid && (DateArriveFrom.dirty || DateArriveFrom.touched)" class="alert alert-danger">
+                                                                    <div *ngIf="DateArriveFrom.errors.required ">
+                                                                        Please select Date Arrive From.
+                                                                    </div>
+                                                                </div>
                                                             </mat-form-field>
                                                         </div>
                                                     </div>
@@ -238,8 +251,8 @@
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Age Of Property</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.AgeOfProperty}}</p>
-                                                        <div class="field_info w-100" *ngIf="_EditDetails">
-                                                            <mat-form-field>
+                                                        <div class="field_info w-100" >
+                                                            <mat-form-field *ngIf="_EditDetails">
                                                                 <input matInput placeholder="Age Of Property" [(ngModel)]="_LoanApplicationDetails.AgeOfProperty" name="AgeOfProperty" #AgeOfProperty="ngModel" required>
                                                                 <div *ngIf="AgeOfProperty.invalid && (AgeOfProperty.dirty || AgeOfProperty.touched)" class="alert alert-danger">
                                                                     <div *ngIf="AgeOfProperty.errors.required ">
@@ -258,6 +271,7 @@
                                                         <div class="field_label" *ngIf="!_EditDetails">Is Shifted</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.IsShifted}}</p>
                                                         <div class="field_info w-100" *ngIf="_EditDetails">
+                                                            <label class="custom-radio-label">Is Shifted</label>
                                                             <mat-radio-group [(ngModel)]="_LoanApplicationDetails.IsShifted" (click)="SwitchShifted()" name="IsShifted" #IsShifted="ngModel" required>
                                                                 <mat-radio-button class="example-radio-button" value="1">Yes</mat-radio-button>
                                                                 <mat-radio-button class="example-radio-button" value="0">No</mat-radio-button>
@@ -274,9 +288,14 @@
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Shifted Duration</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.ShiftedDuration}}</p>
-                                                        <div class="field_info w-100" *ngIf="_EditDetails">
-                                                            <mat-form-field>
+                                                        <div class="field_info w-100">
+                                                            <mat-form-field *ngIf="_EditDetails">
                                                                 <input matInput placeholder="Shifted Duration" [(ngModel)]="_LoanApplicationDetails.ShiftedDuration">
+                                                                <div *ngIf="ShiftedDuration.invalid && (ShiftedDuration.dirty || ShiftedDuration.touched)" class="alert alert-danger">
+                                                                    <div *ngIf="ShiftedDuration.errors.required ">
+                                                                        Please select Is Shifted Duration.
+                                                                    </div>
+                                                                </div>
                                                             </mat-form-field>
                                                         </div>
                                                     </div>
@@ -286,9 +305,15 @@
                                                         <div class="field_label" *ngIf="!_EditDetails">Is Property Decided</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.IsPropertyDecided}}</p>
                                                         <div class="field_info w-100" *ngIf="_EditDetails">
+                                                            <label class="custom-radio-label">Is Property Decided</label>
                                                             <mat-radio-group [(ngModel)]="_LoanApplicationDetails.IsPropertyDecided" name="IsPropertyDecided" #IsPropertyDecided="ngModel" (click)="SwitchCostOfProperty()">
                                                                 <mat-radio-button class="example-radio-button" value="1">Yes</mat-radio-button>
                                                                 <mat-radio-button class="example-radio-button" value="0">No</mat-radio-button>
+                                                                <div *ngIf="IsPropertyDecided.invalid && (IsPropertyDecided.dirty || IsPropertyDecided.touched)" class="alert alert-danger">
+                                                                    <div *ngIf="IsPropertyDecided.errors.required ">
+                                                                        Please select Is Property Decided.
+                                                                    </div>
+                                                                </div>
                                                             </mat-radio-group>
                                                         </div>
                                                     </div>
@@ -297,8 +322,8 @@
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Cost Of Property</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.CostOfProperty}}</p>
-                                                        <div class="field_info" *ngIf="_EditDetails">
-                                                            <mat-form-field>
+                                                        <div class="field_info">
+                                                            <mat-form-field *ngIf="_EditDetails">
                                                                 <input matInput placeholder="Cost Of Property" [(ngModel)]="_LoanApplicationDetails.CostOfProperty" name="CostOfProperty" #CostOfProperty="ngModel" required>
                                                                 <div *ngIf="CostOfProperty.invalid && (CostOfProperty.dirty || CostOfProperty.touched)" class="alert alert-danger">
                                                                     <div *ngIf="CostOfProperty.errors.required ">
@@ -315,8 +340,8 @@
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Type Of Property</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails._PropertyTypeID.PropertyType}}</p>
-                                                        <div class="field_info w-100" *ngIf="_EditDetails">
-                                                            <mat-form-field>
+                                                        <div class="field_info w-100">
+                                                            <mat-form-field *ngIf="_EditDetails">
                                                                 <mat-select placeholder="Type of Property" [(ngModel)]="_LoanApplicationDetails._PropertyTypeID.ID" name="PropertyType" #PropertyType="ngModel" required>
                                                                     <mat-option *ngFor="let PropertyTypeValues of _PropertyTypeID" [value]="PropertyTypeValues.ID">{{PropertyTypeValues.PropertyType}}</mat-option>
                                                                 </mat-select>
@@ -333,12 +358,12 @@
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Property Used For</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.PropertyUsedFor}}</p>
-                                                        <div class="field_info w-100" *ngIf="_EditDetails">
-                                                            <mat-form-field>
+                                                        <div class="field_info w-100">
+                                                            <mat-form-field *ngIf="_EditDetails">
                                                                 <input matInput placeholder="Property Used For" [(ngModel)]="_LoanApplicationDetails.PropertyUsedFor" name="PropertyUsedFor" #PropertyUsedFor="ngModel" required>
                                                                 <div *ngIf="PropertyUsedFor.invalid && (PropertyUsedFor.dirty || PropertyUsedFor.touched)" class="alert alert-danger">
                                                                     <div *ngIf="PropertyUsedFor.errors.required ">
-                                                                        Please select PropertyUsedFor.
+                                                                        Please select Property Used For.
                                                                     </div>
                                                                 </div>
                                                             </mat-form-field>
@@ -350,9 +375,15 @@
                                                         <div class="field_label" *ngIf="!_EditDetails">Is Application Aprroved</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.IsApplicationApproved}}</p>
                                                         <div class="field_info w-100" *ngIf="_EditDetails">
+                                                            <label class="custom-radio-label">Is Application Aprroved</label>
                                                             <mat-radio-group [(ngModel)]="_LoanApplicationDetails.IsApplicationApproved" name="IsApplicationApproved" #IsApplicationApproved="ngModel" required>
                                                                 <mat-radio-button class="example-radio-button" value="1">Yes</mat-radio-button>
                                                                 <mat-radio-button class="example-radio-button" value="0">No</mat-radio-button>
+                                                                <div *ngIf="IsApplicationApproved.invalid && (IsApplicationApproved.dirty || IsApplicationApproved.touched)" class="alert alert-danger">
+                                                                    <div *ngIf="IsApplicationApproved.errors.required ">
+                                                                        Please select Is Application Approved.
+                                                                    </div>
+                                                                </div>
                                                             </mat-radio-group>
                                                         </div>
                                                     </div>
@@ -361,8 +392,8 @@
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Current Status</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails._StatusID.Status}}</p>
-                                                        <div class="field_info w-100" *ngIf="_EditDetails">
-                                                            <mat-form-field>
+                                                        <div class="field_info w-100">
+                                                            <mat-form-field *ngIf="_EditDetails">
                                                                 <mat-select placeholder="Current Status" [(ngModel)]="_LoanApplicationDetails._StatusID.ID" name="StatusID" (change)="updateDiv($event)" #StatusID="ngModel" required>
                                                                     <mat-option *ngFor="let StatusTypeValues of _StatusID" [value]="StatusTypeValues.ID">{{StatusTypeValues.Status}}</mat-option>
                                                                 </mat-select>
@@ -381,8 +412,8 @@
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Reason for Not Approval</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.ReasonForNotApproval}}</p>
-                                                        <div class="field_info" *ngIf="_EditDetails">
-                                                            <mat-form-field>
+                                                        <div class="field_info">
+                                                            <mat-form-field *ngIf="_EditDetails">
                                                                 <input matInput placeholder="Reason For Not Approval" [(ngModel)]="_LoanApplicationDetails.ReasonForNotApproval" name="ReasonForNotApproval" #ReasonForNotApproval="ngModel" required>
                                                                 <div *ngIf="ReasonForNotApproval.invalid && (ReasonForNotApproval.dirty || ReasonForNotApproval.touched)" class="alert alert-danger">
                                                                     <div *ngIf="ReasonForNotApproval.errors.required ">
@@ -400,9 +431,10 @@
                             </div>
                             <div class="w-100 float-left">
                                 <div class="btn-bottom pr-4 pl-4 text-right">
-                                    <input type="button" value="&#xf0c7; Save" [disabled]="!LoanApplicantform.form.valid" *ngIf="_EditDetails" class="btn btn-success" />
+                                    <input type="button" value="&#xf0c7; Save" (click)="UpdateLoanApplicationDetails()" [disabled]="!LoanApplicantform.form.valid" *ngIf="_EditDetails" class="btn btn-success" />
                                     <input type="button" value="&#xf00d; Cancel" (click)="CancelEditingDetails()" *ngIf="_EditDetails" class="btn btn-secondary" />
                                     <input type="button" value="&#xf040; Manage Guarantor" (click)="ManageGuarantor()" *ngIf="!_EditDetails" class="btn btn-primary" />
+                                    <input type="button" value="&#xf040; Manage Asset/Liability" (click)="ManageAssetandLiability()" *ngIf="!_EditDetails" class="btn btn-primary" />
                                     <input type="button" value="&#xf040; Edit" (click)="EditDetails()" *ngIf="!_EditDetails" class="btn btn-info" />
                                 </div>
                             </div>
