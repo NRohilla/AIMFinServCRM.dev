@@ -40,7 +40,7 @@ namespace FinServUnitOfWork.Repository
                     return (from AssetstMstr in db.tblMasterAssetTypes
                             select new AssetsTypeMaster()
                             {
-                                Description = AssetstMstr.Description,
+                                Description = AssetstMstr.AssetType,
                                 AssetTypeID = AssetstMstr.AssetTypeID,
                                 AutoID = AssetstMstr.AutoID,
                                 IsActive = AssetstMstr.IsActive,
@@ -103,7 +103,7 @@ namespace FinServUnitOfWork.Repository
                     return (from LbltyMstr in db.tblMasterLiabilityTypes
                             select new LiabilityTypeMaster()
                             {
-                                Description = LbltyMstr.Description,
+                                Description = LbltyMstr.LiabilityType,
                                 AutoID = LbltyMstr.AutoID,
                                 LiabilityTypeID = LbltyMstr.LiabilityTypeID,
                                 IsActive = LbltyMstr.IsActive
@@ -656,7 +656,7 @@ namespace FinServUnitOfWork.Repository
                     var GetObjEntity = db.tblMasterAssetTypes.Where(p => p.AutoID == AssetsTypeMaster.AutoID).FirstOrDefault();
                     if (GetObjEntity != null)
                     {
-                        GetObjEntity.Description = AssetsTypeMaster.Description;
+                        GetObjEntity.AssetType = AssetsTypeMaster.Description;
                         operationResult = db.SaveChanges();
                     }
                 }
@@ -729,7 +729,7 @@ namespace FinServUnitOfWork.Repository
                     var GetObjEntity = db.tblMasterLiabilityTypes.Where(p => p.AutoID == LiabilityTypeMaster.AutoID).FirstOrDefault();
                     if (GetObjEntity != null)
                     {
-                        GetObjEntity.Description = LiabilityTypeMaster.Description;
+                        GetObjEntity.LiabilityType = LiabilityTypeMaster.Description;
                         operationResult = db.SaveChanges();
                     }
                 }
@@ -972,7 +972,7 @@ namespace FinServUnitOfWork.Repository
                 {
                     tblMasterAssetType Obj = new tblMasterAssetType();
                     Obj.AssetTypeID = Guid.NewGuid();
-                    Obj.Description = AssetsTypeMaster.Description;
+                    Obj.AssetType = AssetsTypeMaster.Description;
                     Obj.IsActive = true;
                     db.tblMasterAssetTypes.Add(Obj);
                     operationResult = db.SaveChanges();
@@ -1044,7 +1044,7 @@ namespace FinServUnitOfWork.Repository
                 {
                     tblMasterLiabilityType Obj = new tblMasterLiabilityType();
                     Obj.LiabilityTypeID = Guid.NewGuid();
-                    Obj.Description = LiabilityTypeMaster.Description;
+                    Obj.LiabilityType = LiabilityTypeMaster.Description;
                     Obj.IsActive = true;
                     db.tblMasterLiabilityTypes.Add(Obj);
                     operationResult = db.SaveChanges();

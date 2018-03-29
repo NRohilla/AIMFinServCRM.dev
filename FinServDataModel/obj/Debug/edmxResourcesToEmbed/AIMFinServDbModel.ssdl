@@ -243,7 +243,7 @@
     <Property Name="FrequencyOffered" Type="nchar" MaxLength="10" />
     <Property Name="LoanValueRatio" Type="nchar" MaxLength="10" />
     <Property Name="LoanAmountOffered" Type="nchar" MaxLength="10" />
-    <Property Name="LoanType" Type="nchar" MaxLength="10" />
+    <Property Name="LoanTypeID" Type="int" />
     <Property Name="ClientID" Type="nvarchar" MaxLength="50" />
     <Property Name="StatusID" Type="int" Nullable="false" />
     <Property Name="EMIStartDay" Type="nchar" MaxLength="10" />
@@ -251,7 +251,7 @@
     <Property Name="LoanProcessingFee" Type="nchar" MaxLength="10" />
     <Property Name="AnyLegalCharges" Type="nchar" MaxLength="10" />
     <Property Name="NoOfEMI" Type="nchar" MaxLength="10" />
-    <Property Name="Loanprovider" Type="nvarchar" MaxLength="50" />
+    <Property Name="Loanprovider" Type="nvarchar" MaxLength="100" />
     <Property Name="PropertyCost" Type="nchar" MaxLength="10" />
     <Property Name="PropertyTypeID" Type="int" Nullable="false" />
     <Property Name="FinanceDate" Type="datetime" />
@@ -291,7 +291,7 @@
     </Key>
     <Property Name="AutoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="AssetTypeID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="Description" Type="nvarchar" MaxLength="100" />
+    <Property Name="AssetType" Type="nvarchar" MaxLength="100" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="CreatedBy" Type="uniqueidentifier" />
     <Property Name="Createdon" Type="datetime" />
@@ -318,7 +318,7 @@
     </Key>
     <Property Name="AutoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="LiabilityTypeID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="Description" Type="nvarchar" MaxLength="100" />
+    <Property Name="LiabilityType" Type="nvarchar" MaxLength="100" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="CreatedBy" Type="uniqueidentifier" />
     <Property Name="CreatedOn" Type="datetime" />
@@ -787,6 +787,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tblLoanMaster_tblMasterTypeOfLoan">
+    <End Role="tblMasterTypeOfLoan" Type="Self.tblMasterTypeOfLoan" Multiplicity="0..1" />
+    <End Role="tblLoanMaster" Type="Self.tblLoanMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMasterTypeOfLoan">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblLoanMaster">
+        <PropertyRef Name="LoanTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tblLoanMaster_tblMasterTypeOfStatus">
     <End Role="tblMasterTypeOfStatus" Type="Self.tblMasterTypeOfStatus" Multiplicity="1" />
     <End Role="tblLoanMaster" Type="Self.tblLoanMaster" Multiplicity="*" />
@@ -924,6 +936,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_tblLoanMaster_tblMasterPropertyType" Association="Self.FK_tblLoanMaster_tblMasterPropertyType">
       <End Role="tblMasterPropertyType" EntitySet="tblMasterPropertyType" />
+      <End Role="tblLoanMaster" EntitySet="tblLoanMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblLoanMaster_tblMasterTypeOfLoan" Association="Self.FK_tblLoanMaster_tblMasterTypeOfLoan">
+      <End Role="tblMasterTypeOfLoan" EntitySet="tblMasterTypeOfLoan" />
       <End Role="tblLoanMaster" EntitySet="tblLoanMaster" />
     </AssociationSet>
     <AssociationSet Name="FK_tblLoanMaster_tblMasterTypeOfStatus" Association="Self.FK_tblLoanMaster_tblMasterTypeOfStatus">

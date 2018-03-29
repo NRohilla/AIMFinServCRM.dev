@@ -18,6 +18,7 @@ namespace FinServDataModel
         public tblMasterTypeOfLoan()
         {
             this.tblLoanApplicationForms = new HashSet<tblLoanApplicationForm>();
+            this.tblLoanMasters = new HashSet<tblLoanMaster>();
         }
     
         public int ID { get; set; }
@@ -30,5 +31,7 @@ namespace FinServDataModel
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblLoanApplicationForm> tblLoanApplicationForms { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblLoanMaster> tblLoanMasters { get; set; }
     }
 }

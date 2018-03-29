@@ -70,7 +70,7 @@
     <Compile Include="Role.cs" />
     <Compile Include="SalutationTypeMaster.cs" />
     <Compile Include="StatusTypeMaster.cs" />
-    <Compile Include="TypeOfLoanMaster.cs" />
+    <Compile Include="LoanMasterDetails.cs" />
     <Compile Include="UserOps.cs" />
     <Compile Include="UserRole.cs" />
   </ItemGroup>

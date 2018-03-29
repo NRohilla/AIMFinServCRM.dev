@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServDataModel\AIMFinServDbModel.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\NickAlcock_NewZealand\Deepak\FinServDataModel\AIMFinServDbModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

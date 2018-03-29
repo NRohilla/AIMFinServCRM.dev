@@ -210,6 +210,38 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tblLoanGuarantors">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblLoanGuarantor">
+        <MappingFragment StoreEntitySet="tblLoanGuarantor">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="CountryOfBirth" ColumnName="CountryOfBirth" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="NZResidents" ColumnName="NZResidents" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="WorkPhoneNo" ColumnName="WorkPhoneNo" />
+          <ScalarProperty Name="HomePhoneNo" ColumnName="HomePhoneNo" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="LoanApplicationNo" ColumnName="LoanApplicationNo" />
+          <ScalarProperty Name="GuarantorID" ColumnName="GuarantorID" />
+          <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tblLoanMasters">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblLoanMaster">
         <MappingFragment StoreEntitySet="tblLoanMaster">
@@ -229,7 +261,7 @@
           <ScalarProperty Name="EMIStartDay" ColumnName="EMIStartDay" />
           <ScalarProperty Name="StatusID" ColumnName="StatusID" />
           <ScalarProperty Name="ClientID" ColumnName="ClientID" />
-          <ScalarProperty Name="LoanType" ColumnName="LoanType" />
+          <ScalarProperty Name="LoanTypeID" ColumnName="LoanTypeID" />
           <ScalarProperty Name="LoanAmountOffered" ColumnName="LoanAmountOffered" />
           <ScalarProperty Name="LoanValueRatio" ColumnName="LoanValueRatio" />
           <ScalarProperty Name="FrequencyOffered" ColumnName="FrequencyOffered" />
@@ -276,7 +308,7 @@
           <ScalarProperty Name="Createdon" ColumnName="Createdon" />
           <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AssetType" ColumnName="AssetType" />
           <ScalarProperty Name="AssetTypeID" ColumnName="AssetTypeID" />
           <ScalarProperty Name="AutoID" ColumnName="AutoID" />
         </MappingFragment>
@@ -305,7 +337,7 @@
           <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
           <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="LiabilityType" ColumnName="LiabilityType" />
           <ScalarProperty Name="LiabilityTypeID" ColumnName="LiabilityTypeID" />
           <ScalarProperty Name="AutoID" ColumnName="AutoID" />
         </MappingFragment>
@@ -495,38 +527,6 @@
           <ScalarProperty Name="RoleGuid" ColumnName="RoleGuid" />
           <ScalarProperty Name="UsersRoleId" ColumnName="UsersRoleId" />
           <ScalarProperty Name="UsersRoleGuid" ColumnName="UsersRoleGuid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tblLoanGuarantors">
-      <EntityTypeMapping TypeName="AIMFinServDBModel.tblLoanGuarantor">
-        <MappingFragment StoreEntitySet="tblLoanGuarantor">
-          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
-          <ScalarProperty Name="Country" ColumnName="Country" />
-          <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
-          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
-          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
-          <ScalarProperty Name="CountryOfBirth" ColumnName="CountryOfBirth" />
-          <ScalarProperty Name="Duration" ColumnName="Duration" />
-          <ScalarProperty Name="NZResidents" ColumnName="NZResidents" />
-          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
-          <ScalarProperty Name="WorkPhoneNo" ColumnName="WorkPhoneNo" />
-          <ScalarProperty Name="HomePhoneNo" ColumnName="HomePhoneNo" />
-          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
-          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
-          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-          <ScalarProperty Name="Gender" ColumnName="Gender" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="LoanApplicationNo" ColumnName="LoanApplicationNo" />
-          <ScalarProperty Name="GuarantorID" ColumnName="GuarantorID" />
-          <ScalarProperty Name="AutoID" ColumnName="AutoID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
