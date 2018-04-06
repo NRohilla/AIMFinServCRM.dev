@@ -95,7 +95,6 @@ namespace FinServUnitOfWork.Repository
                             },
                             _StatusID = new StatusTypeMaster()
                             {
-
                                 Status = itemGetAllApplications.tblMasterTypeOfStatu.Status
                             },
                             _PurposeOfLoanID = new PurposeOfLoanMaster()
@@ -1165,6 +1164,61 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
+
+        public bool AddLoanApplicationDetails(LoanApplicationForms LoanApplicationDetails)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    if (LoanApplicationDetails != null)
+                    {
+                        Guid advisorGuid  = db.tblAdvisorDetails.Single(x => x.AutoID == LoanApplicationDetails._AdvisorID.AutoID).AdvisorID;
+                        tblLoanApplicationForm _tblLoanApplicationFormDetails = new tblLoanApplicationForm();
+                        _tblLoanApplicationFormDetails.LoanApplicationNo = Guid.NewGuid();
+
+                        _tblLoanApplicationFormDetails.StatusID = LoanApplicationDetails._StatusID.ID;
+                        _tblLoanApplicationFormDetails.PropertyTypeID = LoanApplicationDetails._PropertyTypeID.ID;
+                        _tblLoanApplicationFormDetails.PurposeOfLoanID = LoanApplicationDetails._PurposeOfLoanID.ID;
+                        _tblLoanApplicationFormDetails.RateTypeID = LoanApplicationDetails._RateTypeID.ID;
+                        _tblLoanApplicationFormDetails.AdvisorID = advisorGuid;
+
+                        _tblLoanApplicationFormDetails.ApplicationFormNumber = LoanApplicationDetails.ApplicationFormNumber;
+                        _tblLoanApplicationFormDetails.TypeOfLoanID = LoanApplicationDetails._TypeOfLoanID.ID;
+                        _tblLoanApplicationFormDetails.ApplicationFormNumber = LoanApplicationDetails.ApplicationFormNumber;
+                        _tblLoanApplicationFormDetails.AgeOfProperty = LoanApplicationDetails.AgeOfProperty;
+                        _tblLoanApplicationFormDetails.ApprovalExpiryDate = LoanApplicationDetails.ApprovalExpiryDate;
+                        _tblLoanApplicationFormDetails.CashInHand = LoanApplicationDetails.CashInHand;
+                        _tblLoanApplicationFormDetails.CostOfProperty = LoanApplicationDetails.CostOfProperty;
+                        _tblLoanApplicationFormDetails.FinanceRequired = LoanApplicationDetails.FinanceRequired;
+                        _tblLoanApplicationFormDetails.Frequency = LoanApplicationDetails.Frequency;
+                        _tblLoanApplicationFormDetails.IsAnyGuarantor = LoanApplicationDetails.IsAnyGuarantor;
+                        _tblLoanApplicationFormDetails.IsApplicationApproved = LoanApplicationDetails.IsApplicationApproved;
+                        _tblLoanApplicationFormDetails.IsPreApproval = LoanApplicationDetails.IsPreApproval;
+                        _tblLoanApplicationFormDetails.IsPropertyDecided = LoanApplicationDetails.IsPropertyDecided;
+                        _tblLoanApplicationFormDetails.IsShifted = LoanApplicationDetails.IsShifted;
+                        _tblLoanApplicationFormDetails.LoanTerm = LoanApplicationDetails.LoanTerm;
+                        _tblLoanApplicationFormDetails.Priority = LoanApplicationDetails.Priority;
+                        _tblLoanApplicationFormDetails.PropertyUsedFor = LoanApplicationDetails.PropertyUsedFor;
+                        _tblLoanApplicationFormDetails.IsPreApproval = LoanApplicationDetails.IsPreApproval;
+                        _tblLoanApplicationFormDetails.ReasonForNotApproval = LoanApplicationDetails.ReasonForNotApproval;
+                        _tblLoanApplicationFormDetails.ShiftedDuration = LoanApplicationDetails.ShiftedDuration;
+
+                        db.tblLoanApplicationForms.Add(_tblLoanApplicationFormDetails);
+                        db.SaveChanges();
+
+                    }
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+
     }
 
 }

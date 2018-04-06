@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Web.Http;
 using FinServUnitOfWork.Interface;
 using FinServUnitOfWork.Repository;
-using FinServDataModel;
+using System;
 
 namespace FinServServices.Controllers
 {
@@ -25,5 +25,25 @@ namespace FinServServices.Controllers
         {
             return Repository.GetLoanMasterDetails(ClientID);
         }
+
+        [HttpPost]
+        [Route("UpdateLoanMasterDetails")]
+        public bool UpdateLoanMasterDetails(LoanMasterDetails _objLoanMasterDetails)
+        {
+            return Repository.UpdateLoanMasterDetails(_objLoanMasterDetails);
+        }
+        [HttpPost]
+        [Route("AddLoanMasterDetails")]
+        public bool AddLoanMasterDetails(LoanMasterDetails _objLoanMasterDetails)
+        {
+            return Repository.AddLoanMasterDetails(_objLoanMasterDetails);
+        }
+        [HttpGet]
+        [Route("GetDataFromLoanApp")]
+        public List<LoanMasterDetails> GetDataFromLoanApp(int AutoId)
+        {
+            return Repository.GetDataFromLoanApp(AutoId);
+        }
+
     }
 }

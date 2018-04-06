@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using FinServBussinessEntities;
-using FinServDataModel;
-
 
     namespace FinServUnitOfWork.Interface
 {
@@ -9,5 +8,9 @@ using FinServDataModel;
     {        
         List<LoanMasterDetails> GetAllLoanMasterDetails();
         LoanMasterDetails GetLoanMasterDetails(string LoanAppNo);
+        bool UpdateLoanMasterDetails(LoanMasterDetails _objLoanMasterDetails);
+
+        bool AddLoanMasterDetails(LoanMasterDetails _objLoanMasterDetails);
+        List<LoanMasterDetails> GetDataFromLoanApp(int AutoId);
     }
 }

@@ -54,6 +54,30 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
+
+        public List<AdvisorTypeDetails> GetAdvisorGroups()
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    return (from advsrdtls in db.tblAdvisorDetails
+                            select new AdvisorTypeDetails()
+                            {
+                                AdvisorID = advsrdtls.AdvisorID,
+                                AutoID=advsrdtls.AutoID,
+                                AdvisorCode = advsrdtls.AdvisorCode,
+                                AdvisorGroup = advsrdtls.AdvisorGroup,
+                            }).ToList();
+
+
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
         public List<EmploymentTypeMaster> GetEmploymentTypes()
         {
             try
@@ -327,7 +351,30 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
-        
+
+        public List<LoanApplicationForms> GetApplicationFormNo()
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    return (from ObjAplctnFormNo in db.tblLoanApplicationForms
+                            .Where(p => p.IsApplicationApproved == true)
+                            select new LoanApplicationForms()
+                            {
+                                AutoID = ObjAplctnFormNo.AutoID,
+                                ApplicationFormNumber = ObjAplctnFormNo.ApplicationFormNumber
+                            })
+                            .ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+
         #endregion
 
 

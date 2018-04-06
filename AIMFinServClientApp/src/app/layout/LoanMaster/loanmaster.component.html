@@ -1,5 +1,5 @@
-﻿<div [@routerTransition] class="application-details">
-    <app-page-header [heading]="'Loan Master'" [icon]="'fa-bar-chart-o'"></app-page-header>
+<div [@routerTransition] class="application-details">
+    <app-page-header [heading]="'Loan Master Details'" [icon]="'fa-bar-chart-o'"></app-page-header>
     <div *ngIf="!_ViewApplicationDetails">
         <kendo-grid [kendoGridBinding]="_LoanMasterDetails"
                     [pageSize]="2"
@@ -9,8 +9,7 @@
                     [filterable]="true"
                     [groupable]="true"
                     selectable="true"
-                    #LANNumber
-                    >
+                    #LANNumber>
             <kendo-grid-column field="LANNumber" title="LANNumber" hidden="hidden">
             </kendo-grid-column>
             <kendo-grid-column field="_loanApplicationDetails.ApplicationFormNumber" title="Application Form No">
@@ -35,7 +34,9 @@
         </kendo-grid>
     </div>
 
-    <!--,    
+    <input type="button" value="&#xf040; Add Loan Master Details" (click)="AddLoanMasterForm()" *ngIf="!_ViewApplicationDetails" class="btn btn-success" />
+
+    <!--,
     ,[SettlementDate]-->
 
     <div class="" *ngIf="_ViewApplicationDetails">
@@ -43,16 +44,17 @@
             <button class="btn btn-lg btn-link text-white font-weight-bold" type="button" (click)="ViewDetails('ViewList')">Back</button>
         </div>
         <div class="w-100 float-left">
-            <div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="section_box pb-0 pl-0 pr-0">
-                            <div class="box_title">Loan master Form</div>
-                            <div class="tab-content clearfix ml-0">                               
-                                <div class="w-100 float-left">
-                                    <div class="tab-pane pt-3">
-                                   
-                                       <div class="row m-0">
+            <form name="form" #EditLoanMaster="ngForm" novalidate>
+                <div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="section_box pb-0 pl-0 pr-0">
+                                <div class="box_title">Loan master Form</div>
+                                <div class="tab-content clearfix ml-0">
+                                    <div class="w-100 float-left">
+                                        <div class="tab-pane pt-3">
+
+                                            <div class="row m-0">
                                                 <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Application Form No</div>
@@ -118,501 +120,325 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                   
-                                        <div class="row m-0">
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label" *ngIf="!_EditDetails">Rate Type Offered</div>
-                                                    <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.RateTypeOffered}}</p>
-                                                    <div class="field_info w-100" *ngIf="_EditDetails">
-                                                        <mat-form-field>
-                                                            <input matInput placeholder="Rate Type Offered" [(ngModel)]="_LoanMasterDetailsObj.RateTypeOffered" name="RateTypeOffered" #RateTypeOffered="ngModel" required>
-                                                            <div *ngIf="RateTypeOffered.invalid && (RateTypeOffered.dirty || RateTypeOffered.touched)" class="alert alert-danger">
-                                                                <div *ngIf="RateTypeOffered.errors.required ">
-                                                                    Please enter Rate Type Offered.
+
+                                            <div class="row m-0">
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                                    <div class="field_set">
+                                                        <div class="field_label" *ngIf="!_EditDetails">Rate Type Offered</div>
+                                                        <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.RateTypeOffered}}</p>
+                                                        <div class="field_info w-100" *ngIf="_EditDetails">
+                                                            <mat-form-field>
+                                                                <input matInput placeholder="Rate Type Offered" [(ngModel)]="_LoanMasterDetailsObj.RateTypeOffered" name="RateTypeOffered" #RateTypeOffered="ngModel" required>
+                                                                <div *ngIf="RateTypeOffered.invalid && (RateTypeOffered.dirty || RateTypeOffered.touched)" class="alert alert-danger">
+                                                                    <div *ngIf="RateTypeOffered.errors.required ">
+                                                                        Please enter Rate Type Offered.
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        </mat-form-field>
+                                                            </mat-form-field>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                                    <div class="field_set">
+                                                        <div class="field_label" *ngIf="!_EditDetails">Frequency Offered</div>
+                                                        <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.FrequencyOffered}}</p>
+                                                        <div class="field_info w-100" *ngIf="_EditDetails">
+                                                            <mat-form-field>
+                                                                <input matInput placeholder="Frequency Offered" [(ngModel)]="_LoanMasterDetailsObj.FrequencyOffered" name="FrequencyOffered" #FrequencyOffered="ngModel" required>
+                                                                <div *ngIf="FrequencyOffered.invalid && (FrequencyOffered.dirty || FrequencyOffered.touched)" class="alert alert-danger">
+                                                                    <div *ngIf="FrequencyOffered.errors.required ">
+                                                                        Please enter Frequency Offered.
+                                                                    </div>
+                                                                </div>
+                                                            </mat-form-field>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                                    <div class="field_set">
+                                                        <div class="field_label" *ngIf="!_EditDetails">Loan Value Ratio</div>
+                                                        <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.LoanValueRatio}}</p>
+                                                        <div class="field_info w-100" *ngIf="_EditDetails">
+                                                            <mat-form-field>
+                                                                <input matInput placeholder="Loan Value Ratio" [(ngModel)]="_LoanMasterDetailsObj.LoanValueRatio" name="LoanValueRatio" #LoanValueRatio="ngModel" required>
+                                                                <div *ngIf="LoanValueRatio.invalid && (LoanValueRatio.dirty || LoanValueRatio.touched)" class="alert alert-danger">
+                                                                    <div *ngIf="LoanValueRatio.errors.required ">
+                                                                        Please enter Loan Value Ratio.
+                                                                    </div>
+                                                                </div>
+                                                            </mat-form-field>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                                    <div class="field_set">
+                                                        <div class="field_label" *ngIf="!_EditDetails">Loan Amount Offered</div>
+                                                        <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.LoanAmountOffered}}</p>
+                                                        <div class="field_info w-100" *ngIf="_EditDetails">
+                                                            <mat-form-field>
+                                                                <input matInput placeholder="Loan Amount Offered" [(ngModel)]="_LoanMasterDetailsObj.LoanAmountOffered" name="LoanAmountOffered" #LoanAmountOffered="ngModel" required>
+                                                                <div *ngIf="LoanAmountOffered.invalid && (LoanAmountOffered.dirty || LoanAmountOffered.touched)" class="alert alert-danger">
+                                                                    <div *ngIf="LoanAmountOffered.errors.required ">
+                                                                        Please enter Loan Amount Offered.
+                                                                    </div>
+                                                                </div>
+                                                            </mat-form-field>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label" *ngIf="!_EditDetails">Frequency Offered</div>
-                                                    <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.FrequencyOffered}}</p>
-                                                    <div class="field_info w-100" *ngIf="_EditDetails">
-                                                        <mat-form-field>
-                                                            <input matInput placeholder="Frequency Offered" [(ngModel)]="_LoanMasterDetailsObj.FrequencyOffered" name="FrequencyOffered" #FrequencyOffered="ngModel" required>
-                                                            <div *ngIf="FrequencyOffered.invalid && (FrequencyOffered.dirty || FrequencyOffered.touched)" class="alert alert-danger">
-                                                                <div *ngIf="FrequencyOffered.errors.required ">
-                                                                    Please enter Frequency Offered.
+                                            <div class="row m-0">
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                                    <div class="field_set">
+                                                        <div class="field_label" *ngIf="!_EditDetails">EMI Start Day</div>
+                                                        <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.EMIStartDay}}</p>
+                                                        <div class="field_info w-100" *ngIf="_EditDetails">
+                                                            <mat-form-field>
+                                                                <input matInput placeholder="EMI Start Day" [(ngModel)]="_LoanMasterDetailsObj.EMIStartDay" name="EMIStartDay" #EMIStartDay="ngModel" required>
+                                                                <div *ngIf="EMIStartDay.invalid && (EMIStartDay.dirty || EMIStartDay.touched)" class="alert alert-danger">
+                                                                    <div *ngIf="EMIStartDay.errors.required ">
+                                                                        Please enter EMI Start Day.
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        </mat-form-field>
+                                                            </mat-form-field>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                                    <div class="field_set">
+                                                        <div class="field_label" *ngIf="!_EditDetails">EMI Start Month</div>
+                                                        <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.EMIStartMonth}}</p>
+                                                        <div class="field_info w-100" *ngIf="_EditDetails">
+                                                            <mat-form-field>
+                                                                <input matInput placeholder="EMI Start Month" [(ngModel)]="_LoanMasterDetailsObj.EMIStartMonth" name="EMIStartMonth" #EMIStartMonth="ngModel" required>
+                                                                <div *ngIf="EMIStartMonth.invalid && (EMIStartMonth.dirty || EMIStartMonth.touched)" class="alert alert-danger">
+                                                                    <div *ngIf="EMIStartMonth.errors.required ">
+                                                                        Please select EMI Start Month.
+                                                                    </div>
+                                                                </div>
+                                                            </mat-form-field>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                                    <div class="field_set">
+                                                        <div class="field_label" *ngIf="!_EditDetails">Loan Processing Fee</div>
+                                                        <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.LoanProcessingFee}}</p>
+                                                        <div class="field_info w-100" *ngIf="_EditDetails">
+                                                            <mat-form-field>
+                                                                <input matInput placeholder="Loan Processing Fee" [(ngModel)]="_LoanMasterDetailsObj.LoanProcessingFee" name="LoanProcessingFee" #LoanProcessingFee="ngModel" required>
+                                                                <div *ngIf="LoanProcessingFee.invalid && (LoanProcessingFee.dirty || LoanProcessingFee.touched)" class="alert alert-danger">
+                                                                    <div *ngIf="LoanProcessingFee.errors.required ">
+                                                                        Please enter Loan Processing Fee.
+                                                                    </div>
+                                                                </div>
+                                                            </mat-form-field>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                                    <div class="field_set">
+                                                        <div class="field_label" *ngIf="!_EditDetails">Any Legal Charges</div>
+                                                        <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.AnyLegalCharges}}</p>
+                                                        <div class="field_info w-100" *ngIf="_EditDetails">
+                                                            <mat-form-field>
+                                                                <input matInput placeholder="Any Legal Charges" [(ngModel)]="_LoanMasterDetailsObj.AnyLegalCharges" name="AnyLegalCharges" #AnyLegalCharges="ngModel" required>
+                                                                <div *ngIf="AnyLegalCharges.invalid && (AnyLegalCharges.dirty || AnyLegalCharges.touched)" class="alert alert-danger">
+                                                                    <div *ngIf="LoanTermOffered.errors.required ">
+                                                                        Please enter Any Legal Charges.
+                                                                    </div>
+                                                                </div>
+                                                            </mat-form-field>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label" *ngIf="!_EditDetails">Loan Value Ratio</div>
-                                                    <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.LoanValueRatio}}</p>
-                                                    <div class="field_info w-100" *ngIf="_EditDetails">
-                                                        <mat-form-field>
-                                                            <input matInput placeholder="Loan Value Ratio" [(ngModel)]="_LoanMasterDetailsObj.LoanValueRatio" name="LoanValueRatio" #LoanValueRatio="ngModel" required>
-                                                            <div *ngIf="LoanValueRatio.invalid && (LoanValueRatio.dirty || LoanValueRatio.touched)" class="alert alert-danger">
-                                                                <div *ngIf="LoanValueRatio.errors.required ">
-                                                                    Please enter Loan Value Ratio.
+
+                                            <div class="row m-0">
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                                    <div class="field_set">
+                                                        <div class="field_label" *ngIf="!_EditDetails">NoOfEMI</div>
+                                                        <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.NoOfEMI}}</p>
+                                                        <div class="field_info w-100" *ngIf="_EditDetails">
+                                                            <mat-form-field>
+                                                                <input matInput placeholder="No of EMI" [(ngModel)]="_LoanMasterDetailsObj.NoOfEMI" name="NoOfEMI" #NoOfEMI="ngModel" required>
+                                                                <div *ngIf="NoOfEMI.invalid && (NoOfEMI.dirty || NoOfEMI.touched)" class="alert alert-danger">
+                                                                    <div *ngIf="NoOfEMI.errors.required ">
+                                                                        Please enter No of EMI.
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        </mat-form-field>
+                                                            </mat-form-field>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                                    <div class="field_set">
+                                                        <div class="field_label" *ngIf="!_EditDetails">Loan provider</div>
+                                                        <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.Loanprovider}}</p>
+                                                        <div class="field_info w-100" *ngIf="_EditDetails">
+                                                            <mat-form-field>
+                                                                <input matInput placeholder="Loan provider" [(ngModel)]="_LoanMasterDetailsObj.Loanprovider" name="Loanprovider" #Loanprovider="ngModel" required>
+                                                                <div *ngIf="Loanprovider.invalid && (Loanprovider.dirty || Loanprovider.touched)" class="alert alert-danger">
+                                                                    <div *ngIf="Loanprovider.errors.required ">
+                                                                        Please select Loanprovider.
+                                                                    </div>
+                                                                </div>
+                                                            </mat-form-field>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                                    <div class="field_set">
+                                                        <div class="field_label" *ngIf="!_EditDetails">Property Cost</div>
+                                                        <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj._propertyTypeDetails.LoanTermOffered}}</p>
+                                                        <div class="field_info w-100" *ngIf="_EditDetails">
+                                                            <mat-form-field>
+                                                                <input matInput placeholder="Property Cost" [(ngModel)]="_LoanMasterDetailsObj._propertyTypeDetails.PropertyCost" name="PropertyCost" #PropertyCost="ngModel" required>
+                                                                <div *ngIf="PropertyCost.invalid && (PropertyCost.dirty || PropertyCost.touched)" class="alert alert-danger">
+                                                                    <div *ngIf="PropertyCost.errors.required ">
+                                                                        Please select PropertyCost.
+                                                                    </div>
+                                                                </div>
+                                                            </mat-form-field>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                                    <div class="field_set">
+                                                        <div class="field_label" *ngIf="!_EditDetails">Finance Date</div>
+                                                        <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.FinanceDate}}</p>
+                                                        <div class="field_info w-100" *ngIf="_EditDetails">
+                                                            <mat-form-field>
+                                                                <input matInput placeholder="Finance Date" [(ngModel)]="_LoanMasterDetailsObj.FinanceDate" name="FinanceDate" #FinanceDate="ngModel" required>
+                                                                <div *ngIf="FinanceDate.invalid && (FinanceDate.dirty || FinanceDate.touched)" class="alert alert-danger">
+                                                                    <div *ngIf="FinanceDate.errors.required ">
+                                                                        Please select Finance Date.
+                                                                    </div>
+                                                                </div>
+                                                            </mat-form-field>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label" *ngIf="!_EditDetails">Loan Amount Offered</div>
-                                                    <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.LoanAmountOffered}}</p>
-                                                    <div class="field_info w-100" *ngIf="_EditDetails">
-                                                        <mat-form-field>
-                                                            <input matInput placeholder="Loan Amount Offered" [(ngModel)]="_LoanMasterDetailsObj.LoanAmountOffered" name="LoanAmountOffered" #LoanAmountOffered="ngModel" required>
-                                                            <div *ngIf="LoanAmountOffered.invalid && (LoanAmountOffered.dirty || LoanAmountOffered.touched)" class="alert alert-danger">
-                                                                <div *ngIf="LoanAmountOffered.errors.required ">
-                                                                    Please enter Loan Amount Offered.
+
+                                            <div class="row m-0">
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                                    <div class="field_set">
+                                                        <div class="field_label" *ngIf="!_EditDetails">Type of Loan</div>
+                                                        <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj._typeOfLoanDetails.LoanType}}</p>
+                                                        <div class="field_info w-100" *ngIf="_EditDetails">
+                                                            <mat-form-field>
+                                                                <mat-select placeholder="Type of loan" [(ngModel)]="_LoanMasterDetailsObj._typeOfLoanDetails.ID" name="TypeOfloan" #TypeOfloan="ngModel" required>
+                                                                    <mat-option *ngFor="let TypeOfLoanID of _TypeOfLoanID" [value]="TypeOfLoanID.ID">{{TypeOfLoanID.LoanType}}</mat-option>
+                                                                </mat-select>
+                                                                <div *ngIf="TypeOfloan.invalid && (TypeOfloan.dirty || TypeOfloan.touched)" class="alert alert-danger">
+                                                                    <div *ngIf="TypeOfloan.errors.required ">
+                                                                        Please select loan Type.
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        </mat-form-field>
+                                                            </mat-form-field>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                                    <div class="field_set">
+                                                        <div class="field_label" *ngIf="!_EditDetails">Type Of Property</div>
+                                                        <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.PropertyType}}</p>
+                                                        <div class="field_info w-100" *ngIf="_EditDetails">
+                                                            <mat-form-field>
+                                                                <mat-select placeholder="Type of Property" [(ngModel)]="_LoanMasterDetailsObj._propertyTypeDetails.ID" name="PropertyType" #PropertyType="ngModel" required>
+                                                                    <mat-option *ngFor="let PropertyTypeValues of _PropertyTypeID" [value]="PropertyTypeValues.ID">{{PropertyTypeValues.PropertyType}}</mat-option>
+                                                                </mat-select>
+                                                                <div *ngIf="PropertyType.invalid && (PropertyType.dirty || PropertyType.touched)" class="alert alert-danger">
+                                                                    <div *ngIf="PropertyType.errors.required ">
+                                                                        Please select Type of Property.
+                                                                    </div>
+                                                                </div>
+                                                            </mat-form-field>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                                    <div class="field_set">
+                                                        <div class="field_label" *ngIf="!_EditDetails">Current Status</div>
+                                                        <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj._typeOfStatusDetails.Status}}</p>
+                                                        <div class="field_info w-100" *ngIf="_EditDetails">
+                                                            <mat-form-field>
+                                                                <mat-select placeholder="Current Status" [(ngModel)]="_LoanMasterDetailsObj._typeOfStatusDetails.ID" name="StatusID" #StatusID="ngModel" required>
+                                                                    <mat-option *ngFor="let StatusTypeValues of _StatusID" [value]="StatusTypeValues.ID">{{StatusTypeValues.Status}}</mat-option>
+                                                                </mat-select>
+                                                                <div *ngIf="StatusID.invalid && (StatusID.dirty || StatusID.touched)" class="alert alert-danger">
+                                                                    <div *ngIf="StatusID.errors.required ">
+                                                                        Please select Current Status.
+                                                                    </div>
+                                                                </div>
+                                                            </mat-form-field>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="row m-0">
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label" *ngIf="!_EditDetails">EMI Start Day</div>
-                                                    <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.EMIStartDay}}</p>
-                                                    <div class="field_info w-100" *ngIf="_EditDetails">
-                                                        <mat-form-field>
-                                                            <input matInput placeholder="EMI Start Day" [(ngModel)]="_LoanMasterDetailsObj.EMIStartDay" name="EMIStartDay" #EMIStartDay="ngModel" required>
-                                                            <div *ngIf="EMIStartDay.invalid && (EMIStartDay.dirty || EMIStartDay.touched)" class="alert alert-danger">
-                                                                <div *ngIf="EMIStartDay.errors.required ">
-                                                                    Please enter EMI Start Day.
-                                                                </div>
-                                                            </div>
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label" *ngIf="!_EditDetails">EMI Start Month</div>
-                                                    <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.EMIStartMonth}}</p>
-                                                    <div class="field_info w-100" *ngIf="_EditDetails">
-                                                        <mat-form-field>
-                                                            <input matInput placeholder="EMI Start Month" [(ngModel)]="_LoanMasterDetailsObj.EMIStartMonth" name="EMIStartMonth" #EMIStartMonth="ngModel" required>
-                                                            <div *ngIf="EMIStartMonth.invalid && (EMIStartMonth.dirty || EMIStartMonth.touched)" class="alert alert-danger">
-                                                                <div *ngIf="EMIStartMonth.errors.required ">
-                                                                    Please select EMI Start Month.
-                                                                </div>
-                                                            </div>
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label" *ngIf="!_EditDetails">Loan Processing Fee</div>
-                                                    <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.LoanProcessingFee}}</p>
-                                                    <div class="field_info w-100" *ngIf="_EditDetails">
-                                                        <mat-form-field>
-                                                            <input matInput placeholder="Loan Processing Fee" [(ngModel)]="_LoanMasterDetailsObj.LoanProcessingFee" name="LoanProcessingFee" #LoanProcessingFee="ngModel" required>
-                                                            <div *ngIf="LoanProcessingFee.invalid && (LoanProcessingFee.dirty || LoanProcessingFee.touched)" class="alert alert-danger">
-                                                                <div *ngIf="LoanProcessingFee.errors.required ">
-                                                                    Please enter Loan Processing Fee.
-                                                                </div>
-                                                            </div>
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label" *ngIf="!_EditDetails">Any Legal Charges</div>
-                                                    <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.AnyLegalCharges}}</p>
-                                                    <div class="field_info w-100" *ngIf="_EditDetails">
-                                                        <mat-form-field>
-                                                            <input matInput placeholder="Any Legal Charges" [(ngModel)]="_LoanMasterDetailsObj.AnyLegalCharges" name="AnyLegalCharges" #AnyLegalCharges="ngModel" required>
-                                                            <div *ngIf="AnyLegalCharges.invalid && (AnyLegalCharges.dirty || AnyLegalCharges.touched)" class="alert alert-danger">
-                                                                <div *ngIf="LoanTermOffered.errors.required ">
-                                                                    Please enter Any Legal Charges.
-                                                                </div>
-                                                            </div>
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="row m-0">
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label" *ngIf="!_EditDetails">NoOfEMI</div>
-                                                    <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.NoOfEMI}}</p>
-                                                    <div class="field_info w-100" *ngIf="_EditDetails">
-                                                        <mat-form-field>
-                                                            <input matInput placeholder="No of EMI" [(ngModel)]="_LoanMasterDetailsObj.NoOfEMI" name="NoOfEMI" #NoOfEMI="ngModel" required>
-                                                            <div *ngIf="NoOfEMI.invalid && (NoOfEMI.dirty || NoOfEMI.touched)" class="alert alert-danger">
-                                                                <div *ngIf="NoOfEMI.errors.required ">
-                                                                    Please enter No of EMI.
-                                                                </div>
-                                                            </div>
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label" *ngIf="!_EditDetails">Loan provider</div>
-                                                    <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.Loanprovider}}</p>
-                                                    <div class="field_info w-100" *ngIf="_EditDetails">
-                                                        <mat-form-field>
-                                                            <input matInput placeholder="Loan provider" [(ngModel)]="_LoanMasterDetailsObj.Loanprovider" name="Loanprovider" #Loanprovider="ngModel" required>
-                                                            <div *ngIf="Loanprovider.invalid && (Loanprovider.dirty || Loanprovider.touched)" class="alert alert-danger">
-                                                                <div *ngIf="Loanprovider.errors.required ">
-                                                                    Please select Loanprovider.
-                                                                </div>
-                                                            </div>
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label" *ngIf="!_EditDetails">Property Cost</div>
-                                                    <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.LoanTermOffered}}</p>
-                                                    <div class="field_info w-100" *ngIf="_EditDetails">
-                                                        <mat-form-field>
-                                                            <input matInput placeholder="Property Cost" [(ngModel)]="_LoanMasterDetailsObj.PropertyCost" name="PropertyCost" #PropertyCost="ngModel" required>
-                                                            <div *ngIf="PropertyCost.invalid && (PropertyCost.dirty || PropertyCost.touched)" class="alert alert-danger">
-                                                                <div *ngIf="PropertyCost.errors.required ">
-                                                                    Please select PropertyCost.
-                                                                </div>
-                                                            </div>
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label" *ngIf="!_EditDetails">Finance Date</div>
-                                                    <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.FinanceDate}}</p>
-                                                    <div class="field_info w-100" *ngIf="_EditDetails">
-                                                        <mat-form-field>
-                                                            <input matInput placeholder="Finance Date" [(ngModel)]="_LoanMasterDetailsObj.FinanceDate" name="FinanceDate" #FinanceDate="ngModel" required>
-                                                            <div *ngIf="FinanceDate.invalid && (FinanceDate.dirty || FinanceDate.touched)" class="alert alert-danger">
-                                                                <div *ngIf="FinanceDate.errors.required ">
-                                                                    Please select Finance Date.
-                                                                </div>
-                                                            </div>
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="row m-0">
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label" *ngIf="!_EditDetails">Type of Loan</div>
-                                                    <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj._typeOfLoanDetails.LoanType}}</p>
-                                                    <div class="field_info w-100" *ngIf="_EditDetails">
-                                                        <mat-form-field>
-                                                            <mat-select placeholder="Type of loan" [(ngModel)]="_LoanMasterDetailsObj._typeOfLoanDetails.ID" name="TypeOfloan" #TypeOfloan="ngModel" required>
-                                                                <mat-option *ngFor="let TypeOfLoanID of _TypeOfLoanID" [value]="TypeOfLoanID.ID">{{TypeOfLoanID.LoanType}}</mat-option>
-                                                            </mat-select>
-                                                            <div *ngIf="TypeOfloan.invalid && (TypeOfloan.dirty || TypeOfloan.touched)" class="alert alert-danger">
-                                                                <div *ngIf="TypeOfloan.errors.required ">
-                                                                    Please select loan Type.
-                                                                </div>
-                                                            </div>
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label" *ngIf="!_EditDetails">Type Of Property</div>
-                                                    <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj._propertyTypeDetails.PropertyType}}</p>
-                                                    <div class="field_info w-100" *ngIf="_EditDetails">
-                                                        <mat-form-field>
-                                                            <mat-select placeholder="Type of Property" [(ngModel)]="_LoanMasterDetailsObj._propertyTypeDetails.ID" name="PropertyType" #PropertyType="ngModel" required>
-                                                                <mat-option *ngFor="let PropertyTypeValues of _PropertyTypeID" [value]="PropertyTypeValues.ID">{{PropertyTypeValues.PropertyType}}</mat-option>
-                                                            </mat-select>
-                                                            <div *ngIf="PropertyType.invalid && (PropertyType.dirty || PropertyType.touched)" class="alert alert-danger">
-                                                                <div *ngIf="PropertyType.errors.required ">
-                                                                    Please select Type of Property.
-                                                                </div>
-                                                            </div>
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label" *ngIf="!_EditDetails">Current Status</div>
-                                                    <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj._typeOfStatusDetails.Status}}</p>
-                                                    <div class="field_info w-100" *ngIf="_EditDetails">
-                                                        <mat-form-field>
-                                                            <mat-select placeholder="Current Status" [(ngModel)]="_LoanMasterDetailsObj._typeOfStatusDetails.ID" name="StatusID" #StatusID="ngModel" required>
-                                                                <mat-option *ngFor="let StatusTypeValues of _StatusID" [value]="StatusTypeValues.ID">{{StatusTypeValues.Status}}</mat-option>
-                                                            </mat-select>
-                                                            <div *ngIf="StatusID.invalid && (StatusID.dirty || StatusID.touched)" class="alert alert-danger">
-                                                                <div *ngIf="StatusID.errors.required ">
-                                                                    Please select Current Status.
-                                                                </div>
-                                                            </div>
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                <!--<div class="field_set">
-                                                    <div class="field_label" *ngIf="!_EditDetails">Loan Term Offered</div>
-                                                    <p *ngIf="!_EditDetails">{{_LoanMasterDetailsObj.LoanTermOffered}}</p>
-                                                    <div class="field_info w-100" *ngIf="_EditDetails">
-                                                        <mat-form-field>
-                                                            <input matInput placeholder="Finance Required" [(ngModel)]="_LoanMasterDetailsObj.LoanTermOffered" name="LoanTermOffered" #LoanTermOffered="ngModel" required>
-                                                            <div *ngIf="LoanTermOffered.invalid && (LoanTermOffered.dirty || LoanTermOffered.touched)" class="alert alert-danger">
-                                                                <div *ngIf="LoanTermOffered.errors.required ">
-                                                                    Please select LoanTermOffered.
-                                                                </div>
-                                                            </div>
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>-->
-                                            </div>
-                                        </div>
-
-
-                                        
-
-
-
-
-
-
-
-
-
-
-
-
-                                        <!--<div class="row m-0" *ngIf="_EditDetails">
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">First Name</div>
-                                                    <div class="field_info">
-                                                        <mat-form-field>
-                                                            <input matInput placeholder="First Name">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label float-left font-weight-bold">Middle Name</div>
-                                                    <div class="field_info float-left">
-                                                        <mat-form-field>
-                                                            <input matInput placeholder="Middle Name">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label float-left font-weight-bold">Last Name</div>
-                                                    <div class="field_info float-left">
-                                                        <mat-form-field>
-                                                            <input matInput placeholder="Last Name">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row m-0">
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Date Of Birth</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">15/02/1992</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Date Of Birth">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Country Of Birth</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">NZ</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Country Of Birth">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Marital Status</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">Married</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <mat-select placeholder="Marital Status">
-                                                                <mat-option value="option">Single</mat-option>
-                                                                <mat-option value="option">Married</mat-option>
-                                                            </mat-select>
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row m-0">
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Mobile No</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">+919716694546</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Mobile No">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Home Phone No</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">+919716694546</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Home Phone No">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Work Phone No</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">+919716694546</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Work Phone No">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row m-0">
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Email ID</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">sant.yadav@virtualemployee.com</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Email ID">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">NZ Residents</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">New Zealand</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <input matInput placeholder="NZ Residents">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Duration</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">20 Years</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Duration">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row m-0">
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Address Line1</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">New Zealand1</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Address Line1">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Address Line2</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">New Zealand2</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Address Line2">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Address Line3</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">New Zealand3</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Address Line3">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>-->
                                     </div>
-                                </div>                                
-                            </div>
-                            <div class="row m-0 btn-bottom pr-4 pl-4">
-                                <div class="w-100 float-left text-right">
-                                    <input type="button" value="&#xf0c7; Save" (click)="UpdateDetails()" *ngIf="_EditDetails" class="btn btn-success" />
-                                    <input type="button" value="&#xf00d; Cancel" (click)="CancelEditingDetails()" *ngIf="_EditDetails" class="btn btn-secondary" />
-                                    <input type="button" value="&#xf040; Edit" (click)="EditDetails()" *ngIf="!_EditDetails" class="btn btn-info" />
+                                </div>
+                                <div class="row m-0 btn-bottom pr-4 pl-4">
+                                    <div class="w-100 float-left text-right">
+                                        <input type="button" value="&#xf0c7; Save" (click)="UpdateLoanMasterDetails()" [disabled]="!EditLoanMaster.form.valid" *ngIf="_EditDetails" class="btn btn-success" />
+                                        <input type="button" value="&#xf00d; Cancel" (click)="CancelEditingDetails()" *ngIf="_EditDetails" class="btn btn-secondary" />
+                                        <input type="button" value="&#xf040; Edit" (click)="EditDetails()" *ngIf="!_EditDetails" class="btn btn-info" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
+
+    <!--<div *ngIf="_ViewApplicationDetails">
+        <kendo-grid [kendoGridBinding]="LoanMasterApplicantDetails"
+                    [pageSize]="2"
+                    [sortable]="true"
+                    [pageable]="true"
+                    [scrollable]="true"
+                    [filterable]="true"
+                    [groupable]="true"
+                    selectable="true">
+            <kendo-grid-column title="Client name" [filter]="'text'">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label>{{dataItem.FirstName}} {{dataItem.MiddleName}} {{dataItem.LastName}}</label>
+                </ng-template>
+            </kendo-grid-column>
+            <kendo-grid-column field="MobileNo" title="Contact">
+            </kendo-grid-column>
+            <kendo-grid-column field="EmailID" title="Email">
+            </kendo-grid-column>
+            <kendo-grid-column title="Applicant Type" [filter]="'text'">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label>{{dataItem._ApplicantTypeMasterID.ApplicantType}}</label>
+                </ng-template>
+            </kendo-grid-column>
+            <kendo-grid-command-column>
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <button class="btn btn-lg btn-link" type="button" (click)="ViewClientDetails(dataItem.ApplicantID)">View details</button>
+                </ng-template>
+            </kendo-grid-command-column>
+        </kendo-grid>
+    </div>-->
 </div>
 
 

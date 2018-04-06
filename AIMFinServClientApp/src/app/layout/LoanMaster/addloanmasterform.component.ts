@@ -1,30 +1,34 @@
-import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
+import { Component, Injectable, ViewChild, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../../router.animations';
-import { Form, FormControl, FormBuilder, Validators  } from '@angular/forms';
+import { Form, FormControl, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
-//import {ClientsService} from '../../services/app.clients.service';
 import { MastersService } from '../../services/app.masters.service';
-import {LoanMasterService} from '../../services/app.loanmaster.service';
-import {LoanApplicationDetailDialog} from '../../shared/dialogues/loanapplications/LoanApplicationDetailDialog';
+import { LoanMasterService } from '../../services/app.loanmaster.service';
 @Component({
-    templateUrl: './loanmaster.component.html',
+    templateUrl: './addloanmaster.component.html',
     animations: [routerTransition()],
     providers: [LoanMasterService, MastersService]
 })
-export class LoanmasterComponent implements OnInit {
-    public _ViewApplicationDetails: boolean = false;    
-    public _EditDetails: boolean = false;
+export class AddLoanmasterComponent implements OnInit {
     public _TypeOfLoanID = [];
     public _PropertyTypeID = [];
     public _StatusID = [];
+    public _GetLoanMasterData = [];
+    errorMessage: "No Data"
+    public _LoanMasterDetails = [];
+    public _LoanApplicationDetails = [];
+    public _RateTypeOffered = [];
 
-    public _LoanMasterDetailsObj =
+    @ViewChild("AddLoanMaster")
+    AddLoanMaster: NgForm;
+
+    public _AddLoanMasterDetailsObj =
     {
         LANNumber: '',
         LoanApplicationNo: '',
@@ -51,8 +55,11 @@ export class LoanmasterComponent implements OnInit {
         LoanType: '',
         PropertyType: '',
         Status: '',
+        AutoID: '',
+        RateTypeID: '',
         _loanApplicationDetails: {
-            ApplicationFormNumber: '',
+            AutoID: '',
+            ApplicationFormNumber:''
         },
         _propertyTypeDetails: {
             PropertyType: '',
@@ -65,17 +72,14 @@ export class LoanmasterComponent implements OnInit {
         }
 
     };
-    
 
-    errorMessage: "No Data"
 
-    public _LoanMasterDetails = [];
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _LoanService: LoanMasterService, private _MasterService: MastersService, public dialog: MatDialog) { }
 
-    ngOnInit() {        
+    ngOnInit() {
 
-        this._LoanMasterDetailsObj =
+        this._AddLoanMasterDetailsObj =
             {
                 LANNumber: '',
                 LoanApplicationNo: '',
@@ -102,8 +106,11 @@ export class LoanmasterComponent implements OnInit {
                 LoanType: '',
                 PropertyType: '',
                 Status: '',
+                AutoID: '',
+                RateTypeID: '',
                 _loanApplicationDetails: {
-                    ApplicationFormNumber: '',
+                    AutoID: '',
+                    ApplicationFormNumber: ''
                 },
                 _propertyTypeDetails: {
                     PropertyType: '',
@@ -116,39 +123,32 @@ export class LoanmasterComponent implements OnInit {
                 }
 
             };
-        
+        this.GetApplicationFormNo();
         this.GetLoanType();
         this.GetPropertyType();
         this.GetStatusType();
+        this.GetLoanrateTypes();
         this._LoanService.GetAllLoanMasterDetails().subscribe(res => this.GetAllLoanDetailSuccess(res), res => this.GetAllLoanDetailError(res));
     }
 
     GetAllLoanDetailSuccess(Res) {
-        debugger;
         this._LoanMasterDetails = JSON.parse(Res._body);
     }
 
     GetAllLoanDetailError(Res) { }
 
-    ViewDetails(LANNumber) {
-        debugger;
-        this._ViewApplicationDetails = !this._ViewApplicationDetails;
-        this._LoanService.GetLoanMasterDetails(LANNumber).subscribe(res => this.GetLoanMasterDetailsSuccess(res), res => this.GetLoanMasterDetailsError(res));
+    GetApplicationFormNo() {
+        this._MasterService.GetApplicationFormNo().subscribe(res => this.GetApplicationFormNoSuccess(res), error => this.errorMessage = <any>error);
     }
 
-    GetLoanMasterDetailsSuccess(res) {
-        debugger;
-        this._LoanMasterDetailsObj = JSON.parse(res._body);
+    GetApplicationFormNoSuccess(res) {
+        this._LoanApplicationDetails = JSON.parse(res._body);
     }
-
-    GetLoanMasterDetailsError(res) { }
-
+    
     GetLoanType() {
-        debugger;
         this._MasterService.GetLoanTypes().subscribe(res => this.GetLoanTypesSuccess(res), error => this.errorMessage = <any>error);
     }
     GetLoanTypesSuccess(res) {
-        debugger
         this._TypeOfLoanID = JSON.parse(res._body);
     }
 
@@ -165,27 +165,36 @@ export class LoanmasterComponent implements OnInit {
     GetStatusTypeSuccess(res) {
         this._StatusID = JSON.parse(res._body);
     }
-
-    UpdateLoanMasterDetails() {
-        debugger;
-        this._LoanService.UpdateLoanMasterDetails(this._LoanMasterDetailsObj).subscribe(res => this.UpdateLoanMasterDetailsSuccess(res), res => this.UpdateLoanMasterDetailsError(res));
+    GetLoanrateTypes() {
+        this._MasterService.GetLoanrateTypes().subscribe(res => this.GetLoanrateTypesSuccess(res), error => this.errorMessage = <any>error);
+    }
+    GetLoanrateTypesSuccess(res) {
+        this._RateTypeOffered = JSON.parse(res._body);
     }
 
-    UpdateLoanMasterDetailsSuccess(res) {
-        debugger;
-        this._LoanService.GetAllLoanMasterDetails().subscribe(res => this.GetAllLoanDetailSuccess(res), res => this.GetAllLoanDetailError(res));
-        this._EditDetails = true;
+
+    AddLoanMasterDetails() {
+        this._LoanService.AddLoanMasterDetails(this._AddLoanMasterDetailsObj).subscribe(res => this.AddLoanMasterDetailsSuccess(res), res => this.AddLoanMasterDetailsError(res));
     }
 
-    UpdateLoanMasterDetailsError(res) {
+    AddLoanMasterDetailsSuccess(res) {
+        this._AddLoanMasterDetailsObj = JSON.parse(res._body);
+        this.AddLoanMaster.reset();
     }
 
-    CancelEditingDetails() { this._EditDetails = false; }
-
-    EditDetails() {
-        this._EditDetails = true;       
+    AddLoanMasterDetailsError(res) {
     }
-    AddLoanMasterForm() {
-        this.router.navigateByUrl('loanmaster/addLoanMasterForm');
+    GetDataFromLoanAppError(res) { }
+
+    updateData(event) {
+        var AutoId = event.value;
+        this._LoanService.GetDataFromLoanApp(AutoId).subscribe(res => this.GetDataFromLoanAppSuccess(res), res => this.GetDataFromLoanAppError(res));
+    }
+    GetDataFromLoanAppSuccess(res) {
+        this._AddLoanMasterDetailsObj = JSON.parse(res._body)[0];
+    }
+
+    CancelEditingDetails() {
+        this.router.navigateByUrl('loanmaster');
     }
 }

@@ -321,6 +321,9 @@ export class LoanapplicationsComponent implements OnInit {
   
     }
 
-
-    
+    AddLoanAplicationForm() {
+        debugger;
+        this.router.navigateByUrl('loanapplications/addloanaaplication');
+    }
+        
 }

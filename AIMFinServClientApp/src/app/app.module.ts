@@ -69,7 +69,9 @@ export function createTranslateLoader(http: HttpClient) {
         AddGuarantorDialog,
         ManageAssetAndLiabilityDialog,
         AddAssetComponent,
-        AddLiabilityComponent],
+        AddLiabilityComponent
+        
+    ],
     providers: [AuthGuard],
     bootstrap: [AppComponent],
     entryComponents: [LoanApplicationDetailDialog, ClientDetailsDialog, AddGuarantorDialog, ManageAssetAndLiabilityDialog]

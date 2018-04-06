@@ -25,6 +25,10 @@ export class MastersService {
         return this._http.get(this.baseurl + "Masters/GetAssetsTypes", this.options);
     }
 
+    GetAdvisorGroups() {
+        return this._http.get(this.baseurl + "Masters/GetAdvisorGroups", this.options);
+    }
+
     GetEmploymentTypes() {
         return this._http.get(this.baseurl + "Masters/GetEmploymentTypes", this.options);
     }
@@ -75,6 +79,10 @@ export class MastersService {
     GetApplicantNames(loanappno) {
         return this._http.get(this.baseurl + "Masters/GetApplicantNames?loanappno=" + loanappno, this.options);
     }
+    GetApplicationFormNo() {
+        return this._http.get(this.baseurl + "Masters/GetApplicationFormNo", this.options);
+    }
+
     //switch status
 
     SwitchApplicantEntityStatus(ID) {

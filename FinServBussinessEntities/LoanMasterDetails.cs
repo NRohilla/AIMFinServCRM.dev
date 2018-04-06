@@ -17,7 +17,7 @@ namespace FinServBussinessEntities
         public string FrequencyOffered { get; set; }
         public string LoanValueRatio { get; set; }
         public string LoanAmountOffered { get; set; }
-        public Nullable<int> LoanTypeID { get; set; }
+        public int LoanTypeID { get; set; }
         public string ClientID { get; set; }
         public int StatusID { get; set; }
         public string EMIStartDay { get; set; }
@@ -34,6 +34,9 @@ namespace FinServBussinessEntities
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
+
+        public string ApplicationFormNumber { get; set; }
+        public string LoanRateType { get; set; }
 
         public LoanApplicationForms _loanApplicationDetails { get; set; }
         public PropertyTypeMaster _propertyTypeDetails { get; set; }

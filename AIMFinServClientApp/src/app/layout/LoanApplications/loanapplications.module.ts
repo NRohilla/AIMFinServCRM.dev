@@ -5,10 +5,11 @@ import { LoanapplicationsRoutingModule } from './loanapplications-routing.module
 import { LoanapplicationsComponent } from './loanapplications.component';
 import { PageHeaderModule } from '../../shared';
 import { MaterialModule } from '../../shared/app.material';
+import { AddLoanApplicationComponent } from './addloanapplication.component';
 
 import { FormsModule } from '@angular/forms';
 @NgModule({
     imports: [CommonModule, LoanapplicationsRoutingModule, PageHeaderModule, GridModule, MaterialModule, FormsModule],
-    declarations: [LoanapplicationsComponent]
+    declarations: [LoanapplicationsComponent, AddLoanApplicationComponent]
 })
 export class LoanapplicationsModule { }

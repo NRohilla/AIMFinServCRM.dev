@@ -146,8 +146,11 @@ export class ClientsService {
     }
     //===Manage Assets/Liabilities in Loan Application ENDS HERE===//
 
-
-
+    //=====Add New Loan Application Form  START HERE  ====// Neha Bambah
+    AddLoanApplicationDetails(LoanApplicationDetails) {
+        return this._http.post(this.baseurl + "Clients/AddLoanApplicationDetails", LoanApplicationDetails, this.options);
+    }
+    //====Add Loan Application form   ENDS HERE===// 
 }
 
 

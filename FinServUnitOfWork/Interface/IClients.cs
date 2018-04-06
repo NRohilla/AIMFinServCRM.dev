@@ -51,5 +51,9 @@ namespace FinServUnitOfWork.Interface
         List<Liability> GetAddedLiabilityGrid(Guid LoanAppNo);
         Liability GetLiabilityDetails(string LbltyID);
         bool UpdateLiabilityDetails(Liability _objLiabilityDetails);
+
+        bool AddLoanApplicationDetails(LoanApplicationForms LoanApplicationDetails);
+
+
     }
 }
