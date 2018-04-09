@@ -8,6 +8,8 @@ using FinServBussinessEntities;
     {        
         List<LoanMasterDetails> GetAllLoanMasterDetails();
         LoanMasterDetails GetLoanMasterDetails(string LoanAppNo);
+
+        IEnumerable<LoanMasterDetails> GetLoanMasterGrid();
         bool UpdateLoanMasterDetails(LoanMasterDetails _objLoanMasterDetails);
 
         bool AddLoanMasterDetails(LoanMasterDetails _objLoanMasterDetails);

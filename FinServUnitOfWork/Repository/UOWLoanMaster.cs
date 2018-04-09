@@ -159,6 +159,48 @@ namespace FinServUnitOfWork.Repository
             }
         }
 
+        public IEnumerable<LoanMasterDetails> GetLoanMasterGrid() {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var datafromApplicants = (from tba in db.tblApplicants
+                                              join tlm in db.tblLoanMasters on tba.LoanApplicationNo equals tlm.LoanApplicationNo into joined
+                                              join tmat in db.tblMasterApplicantTypes on tba.ApplicantTypeID equals tmat.ApplicantTypeID
+                                              from j in joined.DefaultIfEmpty()
+                                              select new
+                                              {
+                                                  tblApplicant = tba,
+                                                  tblLoanMaster= j ,
+                                               _FirstName = tba.FirstName,
+                                               _MiddleName = tba.MiddleName,
+                                               _LastName = tba.LastName,
+                                               _MobileNo = tba.MobileNo,
+                                               _EmailId = tba.EmailID,
+                                               _ApplicantType = tmat.ApplicantType
+                                           }).Distinct().ToList().Select(x => new LoanMasterDetails()
+                                           {
+                                               
+                                               FirstName = x._FirstName,
+                                               MiddleName = x._MiddleName,
+                                               LastName = x._LastName,
+                                               MobileNo = x._MobileNo,
+                                               EmailID = x._EmailId,
+                                               ApplicantType = x._ApplicantType
+                                           }).ToList();
+
+                    return datafromApplicants;
+
+                }
+            }
+
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+  
+
         public bool UpdateLoanMasterDetails(LoanMasterDetails _objLoanMasterDetails) {
             try
             {

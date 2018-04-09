@@ -1,4 +1,4 @@
-﻿import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { ClientsRoutingModule } from './clients-routing.module';
@@ -13,6 +13,6 @@ import {ClientqualificationComponent} from './components/app.client.qualificatio
 import { FormsModule } from '@angular/forms';
 @NgModule({
     imports: [CommonModule, ClientsRoutingModule, PageHeaderModule, GridModule, MaterialModule, FormsModule],
-    declarations: [ClientsComponent, ClientSummaryComponent, ClientsPersonalDetailsComponent, ClientscommunicationComponent, ClientsEmployementComponent, ClientqualificationComponent]
+    declarations: [ClientsComponent, ClientSummaryComponent,ClientsPersonalDetailsComponent,ClientscommunicationComponent, ClientsEmployementComponent, ClientqualificationComponent]
 })
 export class ClientsModule { }

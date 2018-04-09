@@ -11,7 +11,8 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 //import {ClientsService} from '../../services/app.clients.service';
 import { MastersService } from '../../services/app.masters.service';
 import {LoanMasterService} from '../../services/app.loanmaster.service';
-import {LoanApplicationDetailDialog} from '../../shared/dialogues/loanapplications/LoanApplicationDetailDialog';
+import { LoanApplicationDetailDialog } from '../../shared/dialogues/loanapplications/LoanApplicationDetailDialog';
+import { ClientDetailsDialog } from '../../shared/dialogues/clients/ClientDetailsDialog';
 @Component({
     templateUrl: './loanmaster.component.html',
     animations: [routerTransition()],
@@ -51,6 +52,12 @@ export class LoanmasterComponent implements OnInit {
         LoanType: '',
         PropertyType: '',
         Status: '',
+        FirstName: '',
+        MiddleName: '',
+        LastName: '',
+        MobileNo: '',
+        EmailID: '',
+        ApplicantType: '',
         _loanApplicationDetails: {
             ApplicationFormNumber: '',
         },
@@ -70,6 +77,7 @@ export class LoanmasterComponent implements OnInit {
     errorMessage: "No Data"
 
     public _LoanMasterDetails = [];
+    public LoanMasterApplicantDetails = [];
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _LoanService: LoanMasterService, private _MasterService: MastersService, public dialog: MatDialog) { }
 
@@ -102,6 +110,12 @@ export class LoanmasterComponent implements OnInit {
                 LoanType: '',
                 PropertyType: '',
                 Status: '',
+                FirstName: '',
+                MiddleName: '',
+                LastName: '',
+                MobileNo: '',
+                EmailID: '',
+                ApplicantType: '',
                 _loanApplicationDetails: {
                     ApplicationFormNumber: '',
                 },
@@ -121,13 +135,24 @@ export class LoanmasterComponent implements OnInit {
         this.GetPropertyType();
         this.GetStatusType();
         this._LoanService.GetAllLoanMasterDetails().subscribe(res => this.GetAllLoanDetailSuccess(res), res => this.GetAllLoanDetailError(res));
+        this._LoanService.GetLoanMasterGrid().subscribe(res => this.GetLoanMasterGridSuccess(res), res => this.GetLoanMasterGridError(res));
     }
 
     GetAllLoanDetailSuccess(Res) {
         debugger;
         this._LoanMasterDetails = JSON.parse(Res._body);
     }
+    GetLoanMasterGridSuccess(res) {
+        debugger;
+        this.LoanMasterApplicantDetails = JSON.parse(res._body);
+    }
 
+    ViewApplicantDetails() {
+        debugger;
+        this.router.navigateByUrl('loanmaster/clients');
+    }
+
+    GetLoanMasterGridError(res) { }
     GetAllLoanDetailError(Res) { }
 
     ViewDetails(LANNumber) {

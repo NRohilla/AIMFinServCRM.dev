@@ -20,6 +20,9 @@ export class LoanMasterService {
     GetAllLoanMasterDetails() {
         return this._http.get(this.baseurl + "LoanMaster/GetAllLoanMasterDetails", this.options);
     }
+    GetLoanMasterGrid() {
+        return this._http.get(this.baseurl + "LoanMaster/GetLoanMasterGrid", this.options);
+    }
 
     GetLoanMasterDetails(lanno) {
         debugger;

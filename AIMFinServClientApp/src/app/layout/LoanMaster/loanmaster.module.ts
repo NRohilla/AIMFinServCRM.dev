@@ -6,10 +6,15 @@ import { LoanmasterComponent } from './loanmaster.component';
 import { PageHeaderModule } from '../../shared';
 import { MaterialModule } from '../../shared/app.material';
 import { AddLoanmasterComponent } from './addloanmasterform.component';
+//import { ClientsPersonalDetailsComponent } from '../../layout/clients/components/app.client.personaldetails';
+//import { ClientqualificationComponent } from '../../layout/clients/components/app.client.qualificationdetails';
+//import { ClientsEmployementComponent } from '../../layout/clients/components/app.client.employementdetails';
+//import { ClientscommunicationComponent } from '../../layout/clients/components/app.client.communicationdetails';
+
 
 import { FormsModule } from '@angular/forms';
 @NgModule({
     imports: [CommonModule, LoanmasterRoutingModule, PageHeaderModule, GridModule, MaterialModule, FormsModule],
-    declarations: [LoanmasterComponent, AddLoanmasterComponent]
+    declarations: [LoanmasterComponent, AddLoanmasterComponent,  /*ClientsPersonalDetailsComponentClientqualificationComponent, ClientsEmployementComponent, ClientscommunicationComponent*/]
 })
 export class LoanmasterModule { }

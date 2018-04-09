@@ -409,7 +409,7 @@
         </div>
     </div>
 
-    <!--<div *ngIf="_ViewApplicationDetails">
+    <div *ngIf="_ViewApplicationDetails">
         <kendo-grid [kendoGridBinding]="LoanMasterApplicantDetails"
                     [pageSize]="2"
                     [sortable]="true"
@@ -427,18 +427,26 @@
             </kendo-grid-column>
             <kendo-grid-column field="EmailID" title="Email">
             </kendo-grid-column>
-            <kendo-grid-column title="Applicant Type" [filter]="'text'">
-                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                    <label>{{dataItem._ApplicantTypeMasterID.ApplicantType}}</label>
-                </ng-template>
+            <kendo-grid-column field="ApplicantType" title="Applicant Type">
             </kendo-grid-column>
             <kendo-grid-command-column>
                 <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                    <button class="btn btn-lg btn-link" type="button" (click)="ViewClientDetails(dataItem.ApplicantID)">View details</button>
+                    <button class="btn btn-lg btn-link" type="button" (click)="ViewApplicantDetails()">View details</button>
                 </ng-template>
             </kendo-grid-command-column>
         </kendo-grid>
-    </div>-->
+        <div class="w-100 float-left">
+            <div id="exTab1" class="basic-container">
+                <mat-tab-group>
+                    <!--<mat-tab label="Personal details"><client-personal-details></client-personal-details></mat-tab>
+
+     <mat-tab label="Summary"><client-summary></client-summary></mat-tab><mat-tab label="Communication Details"><client-communication-details></client-communication-details></mat-tab>
+    <mat-tab label="Employement details"><client-employement-details></client-employement-details></mat-tab>
+    <mat-tab label="Qualification details"><client-qualification-details></client-qualification-details></mat-tab>-->
+                </mat-tab-group>
+            </div>
+        </div>
+    </div>
 </div>
 
 

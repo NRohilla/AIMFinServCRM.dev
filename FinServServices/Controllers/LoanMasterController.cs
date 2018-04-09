@@ -25,6 +25,13 @@ namespace FinServServices.Controllers
         {
             return Repository.GetLoanMasterDetails(ClientID);
         }
+        
+        [HttpGet]
+        [Route("GetLoanMasterGrid")]
+        public IEnumerable<LoanMasterDetails> GetLoanMasterGrid()
+        {
+            return Repository.GetLoanMasterGrid();
+        }
 
         [HttpPost]
         [Route("UpdateLoanMasterDetails")]
