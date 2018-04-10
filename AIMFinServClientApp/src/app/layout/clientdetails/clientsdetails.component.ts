@@ -9,17 +9,18 @@ import 'rxjs/Rx';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import {ClientsService} from '../../services/app.clients.service';
 import {ClientDetailsDialog} from '../../shared/dialogues/clients/ClientDetailsDialog';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Location } from '@angular/common';
 @Component({
-    templateUrl: './clients.component.html',
+    templateUrl: './clientsdetails.component.html',
     styleUrls:
     [
-        './clients.component.scss',
+        './clientsdetails.component.scss',
     ],
     animations: [routerTransition()],
     providers: [ClientsService]
 })
-export class ClientsComponent implements OnInit {
+export class ClientsDetailsComponent implements OnInit {
     public animal: string;
     public name: string;
     public _EditPersonalDetails: boolean = false;
@@ -28,10 +29,10 @@ export class ClientsComponent implements OnInit {
     public _FormErrorsDescription: string = '';
     public gridData: any[];
 
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, public dialog: MatDialog) { }
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, public dialog: MatDialog, private _location: Location) { }
 
     ngOnInit() {
-        //debugger;
+       // debugger;
         this._ClientsService.GetAllClients().subscribe(res => this.GetAllClientsSuccess(res), res => this.GetAllClientsError(res));
     }
 
@@ -42,11 +43,12 @@ export class ClientsComponent implements OnInit {
 
     GetAllClientsError(Res) { }
 
-    ViewClientDetails(ApplicantID) {
-
+    ViewClientDetails(ApplicantID, value) {
+        //debugger;
         //this._ViewApplicantDetails = !this._ViewApplicantDetails;
         this._LocalStorageService.set("ApplicantID", ApplicantID);
-        this.router.navigateByUrl('clientdetails');
+        this._location.back();
+        //this.router.navigateByUrl('clients');
     }
 
     openDialog(): void {

@@ -104,7 +104,7 @@ export class ClientsPersonalDetailsComponent extends AppBaseComponent implements
     }
 
     UpdatePersonalDetails() {
-        ///debugger;
+        //debugger;
         this._EditPersonalDetails = false;
         if (this._ApplicantDetails.NZResidents.toString() == "1") {
             this._ApplicantDetails.NZResidents = true;
@@ -115,7 +115,7 @@ export class ClientsPersonalDetailsComponent extends AppBaseComponent implements
         this._ClientsService.UpdateClientPersonalDetails(this._ApplicantDetails).subscribe(res => this.updateclientPersonalSuccess(res), res => this.updateclientPersonalError(res));
     }
     updateclientPersonalSuccess(res) {
-        debugger;
+        //debugger;
     }
 
     updateclientPersonalError(res) {
@@ -133,7 +133,7 @@ export class ClientsPersonalDetailsComponent extends AppBaseComponent implements
     }
 
     updateclientCommunicationError(res) {
-        //debugger;
+        debugger;
     }
 
     AddClient() {

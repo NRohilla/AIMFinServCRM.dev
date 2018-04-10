@@ -91,7 +91,7 @@ export class ClientsEmployementComponent extends AppBaseComponent implements OnI
 
 
     GridSelectionChange(data, selection) {
-        ///debugger;
+        //debugger;
         this._EditEmployementDetails = true;
         this._Operationtitle = "Update";
         var FetchedValues = data.data.data[selection.index];        
@@ -143,11 +143,11 @@ export class ClientsEmployementComponent extends AppBaseComponent implements OnI
     }
 
     UpdateEmploymentDetailsError(res) {
-        //debugger;
+        ////debugger;
     }
 
     CancelAddEditEmploymentDetails() {
-        //debugger;
+        ////debugger;
         this._EditEmployementDetails = false;
         this._Operationtitle = "Add";
         this._ClientEmploymentDetailsObj = {

@@ -1,0 +1,112 @@
+<div  class="application-details">
+    <div >
+        <kendo-grid [kendoGridBinding]="_ClientQualificationDetails"
+                    [pageSize]="2"
+                    [sortable]="true"
+                    [pageable]="true"
+                    [scrollable]="true"
+                    [filterable]="true"
+                    [groupable]="true"
+                    selectable="true"                    
+                    #QualificationID
+                    (selectionChange)="GridSelectionChange(QualificationID, $event)">
+
+            <kendo-grid-column field="_QualificationTypeDetail.Qualifications" title="Type Of Qualification">
+            </kendo-grid-column>
+            <kendo-grid-column field="CourseName" title="Course Name">
+            </kendo-grid-column>
+            <kendo-grid-column field="UniversityName" title="University Name">
+            </kendo-grid-column>
+            <kendo-grid-column field="PassingYear" title="Passing Year">
+            </kendo-grid-column>        
+            
+        </kendo-grid>
+    </div>
+</div>
+
+<div class="row m-0">
+    <div class="w-100 float-left">
+        <form name="form" #AddClientQualificationform="ngForm" novalidate>
+            <div class="section_box pb-0 pl-0 pr-0">
+                <div class="box_title">Qualification Details</div>
+                <div class="tab-content clearfix ml-0">
+
+                    <div class="w-100 float-left">
+                        <div class="tab-pane pt-3">
+                            <div class="row m-0">
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                    <div class="field_set">
+                                        <div class="field_info w-100">
+                                            <mat-form-field class="example-full-width">
+                                                <!--<input matInput placeholder="Qualification" value="{{_ClientQualificationDetailsObj._QualificationTypeDetail.Qualifications}}" [(ngModel)]="_ClientQualificationDetailsObj._QualificationTypeMaster.Qualifications" #_QualificationTypeMaster.Qualifications>-->
+                                                <mat-select placeholder="Qualification Type" [(ngModel)]="_ClientQualificationDetailsObj._QualificationTypeDetail.ID" name="qlfctns" #qlfctns="ngModel" required>
+                                                    <mat-option *ngFor="let qualificationType of _TypeOfQualification" [value]="qualificationType.ID">{{qualificationType.Qualifications}}</mat-option>
+                                                </mat-select>
+                                                <div *ngIf="qlfctns.invalid && (qlfctns.dirty || qlfctns.touched)" class="alert alert-danger">
+                                                    <div *ngIf="qlfctns.errors.required">
+                                                        Please select Qualifications.
+                                                    </div>
+                                                </div>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                    <div class="field_set">
+                                        <div class="field_info w-100">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Course name" value="{{_ClientQualificationDetailsObj.CourseName}}" [(ngModel)]="_ClientQualificationDetailsObj.CourseName" name="CourseName" #CourseName="ngModel" required>
+                                                <div *ngIf="CourseName.invalid && (CourseName.dirty || CourseName.touched)" class="alert alert-danger">
+                                                    <div *ngIf="CourseName.errors.required">
+                                                        Please enter Course Name.
+                                                    </div>
+                                                </div>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                    <div class="field_set">
+                                        <div class="field_info w-100">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Passing year" value="{{_ClientQualificationDetailsObj.PassingYear}}" [(ngModel)]="_ClientQualificationDetailsObj.PassingYear" name="PassingYear" #PassingYear="ngModel" required>
+                                                <div *ngIf="PassingYear.invalid && (PassingYear.dirty || PassingYear.touched)" class="alert alert-danger">
+                                                    <div *ngIf="PassingYear.errors.required">
+                                                        Please enter Passing Year.
+                                                    </div>
+                                                </div>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                    <div class="field_set">
+                                        <div class="field_info w-100">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="University" value="{{_ClientQualificationDetailsObj.UniversityName}}" [(ngModel)]="_ClientQualificationDetailsObj.UniversityName" name="UniversityName" #UniversityName="ngModel" required>
+                                                <div *ngIf="UniversityName.invalid && (UniversityName.dirty || UniversityName.touched)" class="alert alert-danger">
+                                                    <div *ngIf="UniversityName.errors.required">
+                                                        Please enter University Name.
+                                                    </div>
+                                                </div>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row m-0 btn-bottom pr-4 pl-4">
+                    <div class="w-100 float-left text-right">
+                        <input type="button" value="&#xf0c7; Save" (click)="AddQualificationDetails()"  [disabled]="!AddClientQualificationform.form.valid" *ngIf="!_EditQualificationDetails" class="btn btn-lg btn-success" />
+                        <input type="button" value="&#xf0c7; Update" (click)="UpdateQualificationDetails()"  [disabled]="!AddClientQualificationform.form.valid" *ngIf="_EditQualificationDetails" class="btn btn-lg btn-success" />
+                        <input type="button" value="&#xf00d; Cancel" (click)="CancelAddEditQualificationDetails()" class="btn btn-lg btn-secondary" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

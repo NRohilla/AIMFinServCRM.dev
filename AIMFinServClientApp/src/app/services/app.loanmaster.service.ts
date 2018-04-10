@@ -20,17 +20,18 @@ export class LoanMasterService {
     GetAllLoanMasterDetails() {
         return this._http.get(this.baseurl + "LoanMaster/GetAllLoanMasterDetails", this.options);
     }
-    GetLoanMasterGrid() {
-        return this._http.get(this.baseurl + "LoanMaster/GetLoanMasterGrid", this.options);
+    GetLoanMasterGrid(LoanApplicationNo) {
+        //debugger;
+        return this._http.get(this.baseurl + "LoanMaster/GetLoanMasterGrid?LoanApplicationNo=" + LoanApplicationNo, this.options);
     }
 
     GetLoanMasterDetails(lanno) {
-        debugger;
+        //debugger;
         return this._http.get(this.baseurl + "LoanMaster/GetLoanMasterDetails?ClientID=" + lanno, this.options);
     }
 
     UpdateLoanMasterDetails(LoanMasterDetails) {
-        debugger;
+        //debugger;
         return this._http.post(this.baseurl + "LoanMaster/UpdateLoanMasterDetails", LoanMasterDetails ,this.options);
     }
 

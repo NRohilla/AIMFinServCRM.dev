@@ -28,9 +28,9 @@ namespace FinServServices.Controllers
         
         [HttpGet]
         [Route("GetLoanMasterGrid")]
-        public IEnumerable<LoanMasterDetails> GetLoanMasterGrid()
+        public IEnumerable<LoanMasterDetails> GetLoanMasterGrid(Guid LoanApplicationNo)
         {
-            return Repository.GetLoanMasterGrid();
+            return Repository.GetLoanMasterGrid(LoanApplicationNo);
         }
 
         [HttpPost]

@@ -128,14 +128,10 @@ export class AddLoanmasterComponent implements OnInit {
         this.GetPropertyType();
         this.GetStatusType();
         this.GetLoanrateTypes();
-        this._LoanService.GetAllLoanMasterDetails().subscribe(res => this.GetAllLoanDetailSuccess(res), res => this.GetAllLoanDetailError(res));
+        
     }
 
-    GetAllLoanDetailSuccess(Res) {
-        this._LoanMasterDetails = JSON.parse(Res._body);
-    }
-
-    GetAllLoanDetailError(Res) { }
+    
 
     GetApplicationFormNo() {
         this._MasterService.GetApplicationFormNo().subscribe(res => this.GetApplicationFormNoSuccess(res), error => this.errorMessage = <any>error);

@@ -159,28 +159,25 @@ namespace FinServUnitOfWork.Repository
             }
         }
 
-        public IEnumerable<LoanMasterDetails> GetLoanMasterGrid() {
+        public IEnumerable<LoanMasterDetails> GetLoanMasterGrid(Guid LoanApplicationNo) {
             try
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var datafromApplicants = (from tba in db.tblApplicants
-                                              join tlm in db.tblLoanMasters on tba.LoanApplicationNo equals tlm.LoanApplicationNo into joined
-                                              join tmat in db.tblMasterApplicantTypes on tba.ApplicantTypeID equals tmat.ApplicantTypeID
-                                              from j in joined.DefaultIfEmpty()
+                    var datafromApplicants = (from tlm in db.tblLoanMasters
+                                              join tba in db.tblApplicants on tlm.LoanApplicationNo equals tba.LoanApplicationNo
+                                              join tmat in db.tblMasterApplicantTypes on tba.ApplicantTypeID equals tmat.ApplicantTypeID                                              
+                                              where tlm.LoanApplicationNo == LoanApplicationNo
                                               select new
-                                              {
-                                                  tblApplicant = tba,
-                                                  tblLoanMaster= j ,
+                                              {                                                 
                                                _FirstName = tba.FirstName,
                                                _MiddleName = tba.MiddleName,
                                                _LastName = tba.LastName,
                                                _MobileNo = tba.MobileNo,
                                                _EmailId = tba.EmailID,
                                                _ApplicantType = tmat.ApplicantType
-                                           }).Distinct().ToList().Select(x => new LoanMasterDetails()
+                                           }).ToList().Select(x => new LoanMasterDetails()
                                            {
-                                               
                                                FirstName = x._FirstName,
                                                MiddleName = x._MiddleName,
                                                LastName = x._LastName,
@@ -298,7 +295,6 @@ namespace FinServUnitOfWork.Repository
                 {
                     Guid LoanAppNo = db.tblLoanApplicationForms.Where(x => x.AutoID == AutoId).Select(x=> x.LoanApplicationNo).FirstOrDefault();
                     var datafromloanapp = (from tla in db.tblLoanApplicationForms
-                                           join tlm in db.tblLoanMasters on tla.LoanApplicationNo equals tlm.LoanApplicationNo
                                            join tlr in db.tblMasterLoanRateTypes on tla.RateTypeID equals tlr.ID
                                                where tla.LoanApplicationNo == LoanAppNo
                                                select new

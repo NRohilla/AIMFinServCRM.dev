@@ -1,0 +1,21 @@
+
+<div [@routerTransition] class="application-details">
+    <app-page-header [heading]="'Client Details'" [icon]="'fa-bar-chart-o'"></app-page-header>
+ 
+    <div >
+        <div class="back-btn">
+            <button class="btn btn-lg btn-link text-white font-weight-bold" type="button" (click)="ViewClientDetails('ViewList','C')">Back</button>
+        </div>
+        <div class="w-100 float-left">
+            <div id="exTab1" class="basic-container">
+                <mat-tab-group>
+                    <mat-tab label="Summary"><client-summary></client-summary></mat-tab>
+                    <mat-tab label="Personal details"><client-personal-details></client-personal-details></mat-tab>
+                    <mat-tab label="Communication Details"><client-communication-details></client-communication-details></mat-tab>
+                    <mat-tab label="Employement details"><client-employement-details></client-employement-details></mat-tab>                    
+                    <mat-tab label="Qualification details"><client-qualification-details></client-qualification-details></mat-tab>
+                </mat-tab-group>
+            </div>
+        </div>
+    </div>
+</div>

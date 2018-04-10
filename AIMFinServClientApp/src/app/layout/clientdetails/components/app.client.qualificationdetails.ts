@@ -66,7 +66,7 @@ export class ClientqualificationComponent extends AppBaseComponent implements On
     GetClientQualDetailsError(res) { }
 
     GetQualificationTypeDetails() {
-        //debugger;
+        ////debugger;
         this._MasterService.GetQualificationTypes().subscribe(res => this.GetQualificationTypeDetailsSuccess(res), error => this.errorMessage = <any>error);
     }
     GetQualificationTypeDetailsSuccess(res) {
@@ -75,7 +75,7 @@ export class ClientqualificationComponent extends AppBaseComponent implements On
     }
 
     GridSelectionChange(data, selection) {
-        debugger;
+        //debugger;
         this._EditQualificationDetails = true;
         this._Operationtitle = "Update";
         var FetchedValues = data.data.data[selection.index];
@@ -91,7 +91,7 @@ export class ClientqualificationComponent extends AppBaseComponent implements On
     }
 
     AddQualificationDetails() {
-        debugger;
+        //debugger;
         if (this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
             this._ClientQualificationDetailsObj.ApplicantID = this._LocalStorageService.get("ApplicantID").toString();
             this._ClientsService.SaveClientQualificationDetails(this._ClientQualificationDetailsObj).subscribe(res => this.AddQualificationDetailsSuccess(res), res => this.AddQualificationDetailsError(res));
@@ -99,7 +99,7 @@ export class ClientqualificationComponent extends AppBaseComponent implements On
     }
 
     AddQualificationDetailsSuccess(res) {
-        debugger;
+        //debugger;
         if (this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
             this._ClientsService.GetClientQualificationDetails(<string>this._LocalStorageService.get("ApplicantID"))
                 .subscribe(res => this.GetClientQualDetailsSuccess(res), res => this.GetClientQualDetailsError(res));
@@ -108,17 +108,17 @@ export class ClientqualificationComponent extends AppBaseComponent implements On
     }
 
     AddQualificationDetailsError(res) {
-        debugger;
+        //debugger;
     }
 
     UpdateQualificationDetails() {
-        debugger;
+        //debugger;
 
         this._ClientsService.UpdateClientQualificationDetails(this._ClientQualificationDetailsObj).subscribe(res => this.UpdateQualificationDetailsSuccess(res), res => this.UpdateQualificationDetailsError(res));
     }
 
     UpdateQualificationDetailsSuccess(res) {
-        debugger;
+        //debugger;
         if (this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
             this._ClientsService.GetClientQualificationDetails(<string>this._LocalStorageService.get("ApplicantID"))
                 .subscribe(res => this.GetClientQualDetailsSuccess(res), res => this.GetClientQualDetailsError(res));
@@ -127,11 +127,11 @@ export class ClientqualificationComponent extends AppBaseComponent implements On
     }
 
     UpdateQualificationDetailsError(res) {
-        debugger;
+        //debugger;
     }
 
     CancelAddEditQualificationDetails() {
-        debugger;
+        //debugger;
         this._EditQualificationDetails = false;
         this._Operationtitle = "Add";
         this._ClientQualificationDetailsObj = {

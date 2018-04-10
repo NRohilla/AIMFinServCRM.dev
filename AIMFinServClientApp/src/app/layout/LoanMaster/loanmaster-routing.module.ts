@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoanmasterComponent } from './loanmaster.component';
 import { AddLoanmasterComponent } from './addloanmasterform.component';
-import { ClientsComponent } from '../clients/clients.component';
-
+import { LoanDetails } from './loandetails.component';
 const routes: Routes = [
     {
         path: '',
@@ -14,8 +13,8 @@ const routes: Routes = [
         component: AddLoanmasterComponent
     },
     {
-        path: 'clients',
-        loadChildren: './clients/clients.module#ClientsModule'
+        path: 'loanDetails',
+        component: LoanDetails
     }
 ];
 
