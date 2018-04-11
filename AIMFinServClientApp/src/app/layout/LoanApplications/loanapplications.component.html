@@ -35,10 +35,9 @@
             </kendo-grid-command-column>
         </kendo-grid>
     </div>
-
-
-    <input type="button" value="&#xf040; Add Loan Application" (click)="AddLoanAplicationForm()"  *ngIf="!_ViewApplicationDetails" class="btn btn-success" />
-
+    <div class="w-100 mt-3 float-left text-right">
+        <input type="button" value="&#xf067; Add Loan Application" (click)="AddLoanAplicationForm()" *ngIf="!_ViewApplicationDetails" class="btn btn-sm btn-secondary" />
+    </div>
     <div class="" *ngIf="_ViewApplicationDetails">
         <div class="back-btn">
             <button class="btn btn-lg btn-link text-white font-weight-bold" type="button" (click)="ViewDetails('ViewList')">Back</button>
@@ -200,8 +199,8 @@
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Any Guarantor</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.IsAnyGuarantor}}</p>
-                                                        <div class="field_info w-100" *ngIf="_EditDetails">
-                                                            <label class="custom-radio-label">Is Any Guarantor</label>
+                                                        <div class="field_info w-100 custom-radio-block" *ngIf="_EditDetails">
+                                                            <label class="custom-radio-label marggn-bottom">Is Any Guarantor</label>
                                                             <mat-radio-group [(ngModel)]="_LoanApplicationDetails.IsAnyGuarantor" name="IsAnyGuarantor" #IsAnyGuarantor="ngModel">
                                                                 <mat-radio-button class="example-radio-button" value="1">Yes</mat-radio-button>
                                                                 <mat-radio-button class="example-radio-button" value="0">No</mat-radio-button>
@@ -218,8 +217,8 @@
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Is Pre-approval</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.IsPreApproval}}</p>
-                                                        <div class="field_info w-100" *ngIf="_EditDetails">
-                                                            <label class="custom-radio-label">Is Pre-approval</label>
+                                                        <div class="field_info w-100 custom-radio-block" *ngIf="_EditDetails">
+                                                            <label class="custom-radio-label marggn-bottom">Is Pre-approval</label>
                                                             <mat-radio-group [(ngModel)]="_LoanApplicationDetails.IsPreApproval" (click)="SwitchApproval()" name="IsPreApproval" #IsPreApproval="ngModel" required>
                                                                 <mat-radio-button class="example-radio-button" value="1">Yes</mat-radio-button>
                                                                 <mat-radio-button class="example-radio-button" value="0">No</mat-radio-button>
@@ -273,8 +272,8 @@
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Is Shifted</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.IsShifted}}</p>
-                                                        <div class="field_info w-100" *ngIf="_EditDetails">
-                                                            <label class="custom-radio-label">Is Shifted</label>
+                                                        <div class="field_info w-100 custom-radio-block" *ngIf="_EditDetails">
+                                                            <label class="custom-radio-label marggn-bottom">Is Shifted</label>
                                                             <mat-radio-group [(ngModel)]="_LoanApplicationDetails.IsShifted" (click)="SwitchShifted()" name="IsShifted" #IsShifted="ngModel" required>
                                                                 <mat-radio-button class="example-radio-button" value="1">Yes</mat-radio-button>
                                                                 <mat-radio-button class="example-radio-button" value="0">No</mat-radio-button>
@@ -307,8 +306,8 @@
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Is Property Decided</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.IsPropertyDecided}}</p>
-                                                        <div class="field_info w-100" *ngIf="_EditDetails">
-                                                            <label class="custom-radio-label">Is Property Decided</label>
+                                                        <div class="field_info w-100 custom-radio-block marggn-bottom" *ngIf="_EditDetails">
+                                                            <label class="custom-radio-label marggn-bottom">Is Property Decided</label>
                                                             <mat-radio-group [(ngModel)]="_LoanApplicationDetails.IsPropertyDecided" name="IsPropertyDecided" #IsPropertyDecided="ngModel" (click)="SwitchCostOfProperty()">
                                                                 <mat-radio-button class="example-radio-button" value="1">Yes</mat-radio-button>
                                                                 <mat-radio-button class="example-radio-button" value="0">No</mat-radio-button>
@@ -325,8 +324,8 @@
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Cost Of Property</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.CostOfProperty}}</p>
-                                                        <div class="field_info">
-                                                            <mat-form-field *ngIf="_EditDetails">
+                                                        <div class="field_info w-100" *ngIf="_EditDetails">
+                                                            <mat-form-field>
                                                                 <input matInput placeholder="Cost Of Property" [(ngModel)]="_LoanApplicationDetails.CostOfProperty" name="CostOfProperty" #CostOfProperty="ngModel" required>
                                                                 <div *ngIf="CostOfProperty.invalid && (CostOfProperty.dirty || CostOfProperty.touched)" class="alert alert-danger">
                                                                     <div *ngIf="CostOfProperty.errors.required ">
@@ -377,8 +376,8 @@
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Is Application Aprroved</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.IsApplicationApproved}}</p>
-                                                        <div class="field_info w-100" *ngIf="_EditDetails">
-                                                            <label class="custom-radio-label">Is Application Aprroved</label>
+                                                        <div class="field_info w-100 custom-radio-block" *ngIf="_EditDetails">
+                                                            <label class="custom-radio-label marggn-bottom">Is Application Aprroved</label>
                                                             <mat-radio-group [(ngModel)]="_LoanApplicationDetails.IsApplicationApproved" name="IsApplicationApproved" #IsApplicationApproved="ngModel" required>
                                                                 <mat-radio-button class="example-radio-button" value="1">Yes</mat-radio-button>
                                                                 <mat-radio-button class="example-radio-button" value="0">No</mat-radio-button>
@@ -436,8 +435,8 @@
                                 <div class="btn-bottom pr-4 pl-4 text-right">
                                     <input type="button" value="&#xf0c7; Save" (click)="UpdateLoanApplicationDetails()" [disabled]="!LoanApplicantform.form.valid" *ngIf="_EditDetails" class="btn btn-success" />
                                     <input type="button" value="&#xf00d; Cancel" (click)="CancelEditingDetails()" *ngIf="_EditDetails" class="btn btn-secondary" />
-                                    <input type="button" value="&#xf040; Manage Guarantor" (click)="ManageGuarantor()" *ngIf="!_EditDetails" class="btn btn-primary" />
-                                    <input type="button" value="&#xf040; Manage Asset/Liability" (click)="ManageAssetandLiability()" *ngIf="!_EditDetails" class="btn btn-primary" />
+                                    <input type="button" value="&#xf0ad; Manage Guarantor" (click)="ManageGuarantor()" *ngIf="!_EditDetails" class="btn btn-primary" />
+                                    <input type="button" value="&#xf0ad; Manage Asset/Liability" (click)="ManageAssetandLiability()" *ngIf="!_EditDetails" class="btn btn-primary" />
                                     <input type="button" value="&#xf040; Edit" (click)="EditDetails()" *ngIf="!_EditDetails" class="btn btn-info" />
                                 </div>
                             </div>
