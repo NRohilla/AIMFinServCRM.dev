@@ -25,6 +25,8 @@ import { ApplicantCommunicationDetailsComponent } from './layout/LoanApplication
 import { ManageAssetAndLiabilityDialog } from './shared/dialogues/loanapplications/ManageAssetandLiabilityDialog';
 import { AddAssetComponent } from './shared/dialogues/loanapplications/AddAsset.component';
 import { AddLiabilityComponent } from './shared/dialogues/loanapplications/AddLiability.component';
+import { ManageApplicantDialog } from './shared/dialogues/loanapplications/ManageApplicantDialog';
+
 
 //this is test
 import {MaterialModule} from './shared/app.material';
@@ -69,11 +71,11 @@ export function createTranslateLoader(http: HttpClient) {
         AddGuarantorDialog,
         ManageAssetAndLiabilityDialog,
         AddAssetComponent,
-        AddLiabilityComponent
-        
+        AddLiabilityComponent,
+        ManageApplicantDialog
     ],
     providers: [AuthGuard],
     bootstrap: [AppComponent],
-    entryComponents: [LoanApplicationDetailDialog, ClientDetailsDialog, AddGuarantorDialog, ManageAssetAndLiabilityDialog]
+    entryComponents: [LoanApplicationDetailDialog, ClientDetailsDialog, AddGuarantorDialog, ManageAssetAndLiabilityDialog, ManageApplicantDialog]
 })
 export class AppModule { }

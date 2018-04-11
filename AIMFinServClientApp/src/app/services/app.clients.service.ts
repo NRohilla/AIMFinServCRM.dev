@@ -150,7 +150,10 @@ export class ClientsService {
     AddLoanApplicationDetails(LoanApplicationDetails) {
         return this._http.post(this.baseurl + "Clients/AddLoanApplicationDetails", LoanApplicationDetails, this.options);
     }
-    //====Add Loan Application form   ENDS HERE===// 
+    //====Add Loan Application form   ENDS HERE===//
+    GetApplicantDetails(AutoId) {
+        return this._http.get(this.baseurl + "Clients/GetApplicantDetails?AutoId=" + AutoId, this.options);
+    }
 }
 
 

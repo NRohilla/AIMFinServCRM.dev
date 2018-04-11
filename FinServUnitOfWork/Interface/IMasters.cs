@@ -10,6 +10,7 @@ namespace FinServUnitOfWork.Interface
         List<ApplicantTypeMaster> GetApplicantTypes();
         List<AssetsTypeMaster> GetAssetsTypes();
 
+
         List<AdvisorTypeDetails> GetAdvisorGroups();
 
         List<EmploymentTypeMaster> GetEmploymentTypes();
@@ -28,6 +29,7 @@ namespace FinServUnitOfWork.Interface
         List<StatusTypeMaster> GetStatusTypes();
 
         List<Applicants> GetApplicantNames(string loanappno);
+        List<Applicants> GetApplicants();
 
         //switch status
         bool SwitchApplicantEntityStatus(int ID);

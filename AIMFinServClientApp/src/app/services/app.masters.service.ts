@@ -82,6 +82,9 @@ export class MastersService {
     GetApplicationFormNo() {
         return this._http.get(this.baseurl + "Masters/GetApplicationFormNo", this.options);
     }
+    GetApplicants() {
+        return this._http.get(this.baseurl + "Masters/GetApplicants" , this.options)
+    }
 
     //switch status
 

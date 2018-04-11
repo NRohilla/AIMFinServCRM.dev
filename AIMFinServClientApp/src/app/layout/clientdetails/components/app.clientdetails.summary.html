@@ -1,0 +1,149 @@
+<!--<div class="w-100 float-left text-right pt-4">
+    <input type="button" value="&#xf067; Add Client" (click)="AddClient()" *ngIf="!_EditPersonalDetails" class="btn btn-secondary" />
+</div>-->
+<div id="exTab1" class="w-100 float-left">
+    <div class="row m-0">
+        <div class="w-100 float-left">
+            <div class="section_box pb-0 pl-0 pr-0">
+                <div class="box_title">Summary</div>
+                <div class="tab-content clearfix ml-0">
+                    <div class="w-100 float-left">
+                        <div class="tab-pane pt-3 clearfix">
+                            <div class="col-lg-9 col-md-9 col-sm-12 col-12 float-left">
+                                <div class="row m-0">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left" *ngIf="!_EditPersonalDetails">
+                                        <div class="field_set">
+                                            <div class="field_label">Name</div>
+                                            <div class="field_info">
+                                                <p>{{_ApplicantSummaryDetails.Title}} {{_ApplicantSummaryDetails.FirstName}} {{_ApplicantSummaryDetails.MiddleName}} {{_ApplicantSummaryDetails.LastName}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                        <div class="field_set">
+                                            <div class="field_label">Date of Birth</div>
+                                            <div class="field_info">
+                                                <p *ngIf="!_EditPersonalDetails">{{_ApplicantSummaryDetails.DateOfBirth}}</p>
+                                                <mat-form-field class="example-full-width" *ngIf="_EditPersonalDetails">
+                                                    <input matInput placeholder="Last" value="{{_ApplicantSummaryDetails.DateOfBirth}}" [(ngModel)]="_ApplicantSummaryDetails.DateOfBirth" #DateOfBirth>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left" *ngIf="!_EditPersonalDetails">
+                                        <div class="field_set">
+                                            <div class="field_label">Gender</div>
+                                            <div class="field_info">
+                                                <p *ngIf="!_EditPersonalDetails">{{_ApplicantSummaryDetails.Gender}}</p>
+                                                <mat-form-field class="example-full-width" *ngIf="_EditPersonalDetails">
+                                                    <input matInput placeholder="Last" value="{{_ApplicantSummaryDetails.Gender}}" [(ngModel)]="_ApplicantSummaryDetails.DateOfBirth" #Gender>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row m-0">                                    
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                        <div class="field_set">
+                                            <div class="field_label">Marital status</div>
+                                            <div class="field_info">
+                                                <p *ngIf="!_EditPersonalDetails">{{_ApplicantSummaryDetails.MaritalStatus}}</p>
+                                                <mat-form-field *ngIf="_EditPersonalDetails">
+                                                    <mat-select [(value)]="_ApplicantSummaryDetails.MaritalStatus">
+                                                        <mat-option>None</mat-option>
+                                                        <mat-option value="Married">Married</mat-option>
+                                                        <mat-option value="Unmarried">Unmarried</mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                        <div class="field_set">
+                                            <div class="field_label">Home Phone No</div>
+                                            <div class="field_info">
+                                                <p *ngIf="!_EditPersonalDetails">{{_ApplicantSummaryDetails.HomePhoneNo}}</p>
+                                                <mat-form-field class="example-full-width" *ngIf="_EditPersonalDetails">
+                                                    <input matInput placeholder="Home Phone No" value="{{_ApplicantSummaryDetails.HomePhoneNo}}" [(ngModel)]="_ApplicantSummaryDetails.HomePhoneNo" #HomePhoneNo>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                        <div class="field_set">
+                                            <div class="field_label">Mobile No</div>
+                                            <div class="field_info">
+                                                <p *ngIf="!_EditPersonalDetails">{{_ApplicantSummaryDetails.MobileNo}}</p>
+                                                <mat-form-field class="example-full-width" *ngIf="_EditPersonalDetails">
+                                                    <input matInput placeholder="Mobile No" value="{{_ApplicantSummaryDetails.MobileNo}}" [(ngModel)]="_ApplicantSummaryDetails.MobileNo" #MobileNo>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row m-0">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left" *ngIf="!_EditPersonalDetails">
+                                        <div class="field_set">
+                                            <div class="field_label">Work Phone No</div>
+                                            <div class="field_info">
+                                                <p *ngIf="!_EditPersonalDetails">{{_ApplicantSummaryDetails.WorkPhoneNo}}</p>
+                                                <mat-form-field class="example-full-width" *ngIf="_EditPersonalDetails">
+                                                    <input matInput placeholder="Work Phone No" value="{{_ApplicantSummaryDetails.WorkPhoneNo}}" [(ngModel)]="_ApplicantSummaryDetails.WorkPhoneNo" #WorkPhoneNo>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                        <div class="field_set">
+                                            <div class="field_label">Email address</div>
+                                            <div class="field_info">
+                                                <p *ngIf="!_EditPersonalDetails">{{_ApplicantSummaryDetails.EmailID}}</p>
+                                                <mat-form-field class="example-full-width" *ngIf="_EditPersonalDetails">
+                                                    <input matInput placeholder="Email address" value="{{_ApplicantSummaryDetails.EmailID}}" [(ngModel)]="_ApplicantSummaryDetails.EmailID" #EmailID>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                        <div class="field_set">
+                                            <div class="field_label">NZ Resident</div>
+                                            <div class="field_info">
+                                                <p *ngIf="!_EditPersonalDetails">{{_ApplicantSummaryDetails.DNZResidents}}</p>
+                                                <mat-radio-group class="example-radio-group" [(ngModel)]="_ApplicantSummaryDetails.NZResidents" *ngIf="_EditPersonalDetails">
+                                                    <mat-radio-button class="example-radio-button" value="1">Yes</mat-radio-button>
+                                                    <mat-radio-button class="example-radio-button" value="0">No</mat-radio-button>
+                                                </mat-radio-group>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-12 float-left">
+                                <div class="text-center">
+                                    <div class="profile-pic clearfix">
+                                        <img src="../../../../assets/images/profile/nouser.jpg" class="img-thumbnail" />
+                                        <h5>Loren Lipsum</h5>
+                                        <label class="btn btn-sm btn-secondary">
+                                            Update Image<input type="file" hidden />
+                                        </label>
+                                    </div>
+                                    <div class="login-date">
+                                        <span><strong>Last Login:</strong> <small>13/03/2018</small> <span><small>7:00 PM</small></span></span>                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="row m-0 btn-bottom pr-4 pl-4">
+                    <div class="w-100 float-left text-right">
+                        <input type="button" value="&#xf0c7; Save" (click)="UpdatePersonalDetails()" *ngIf="_EditPersonalDetails" class="btn btn-success" />
+                        <input type="button" value="&#xf00d; Cancel" (click)="EditPersonalDetails()" *ngIf="_EditPersonalDetails" class="btn btn-secondary" />
+                        <input type="button" value="&#xf040; Edit" (click)="EditPersonalDetails()" *ngIf="!_EditPersonalDetails" class="btn btn-info" />
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>

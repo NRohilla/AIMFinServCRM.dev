@@ -11,9 +11,9 @@ namespace FinServServices.Controllers
     {
         IMasters Repository = new UOWMasters();
 
-        
+
         #region Get
-       
+
         [HttpGet]
         [Route("GetApplicantTypes")]
         public List<ApplicantTypeMaster> GetApplicantTypes()
@@ -134,6 +134,12 @@ namespace FinServServices.Controllers
             return Repository.GetApplicationFormNo();
         }
 
+        [HttpGet]
+        [Route("GetApplicants")]
+        public List<Applicants> GetApplicants()
+        {
+            return Repository.GetApplicants();
+        }
 
         #endregion
 

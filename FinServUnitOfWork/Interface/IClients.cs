@@ -8,6 +8,8 @@ namespace FinServUnitOfWork.Interface
     {
         List<Applicants> GetAllClients();
         List<LoanApplicationForms> GetAllLoanApplications();
+
+        Applicants GetApplicantDetails(int AutoId);
         Applicants GetClientDetails(string ClientID);
         LoanApplicationForms GetLoanApplicationDetails(string LoanAppNo);
 

@@ -1,0 +1,145 @@
+<div class="application-details">
+    <div>
+        <kendo-grid [kendoGridBinding]="_ClientEmploymentDetails"
+                    [pageSize]="2"
+                    [sortable]="true"
+                    [pageable]="true"
+                    [scrollable]="true"
+                    [filterable]="true"
+                    [groupable]="true"
+                    selectable="true"
+                    #EmploymentID
+                    (selectionChange)="GridSelectionChange(EmploymentID, $event)">
+
+            <kendo-grid-column field="_EmploymentTypeDetail.EmployementType" title="Source Of Income">
+            </kendo-grid-column>
+            <kendo-grid-column field="_ProfessionTypeDetail.Profession" title="Profession">
+            </kendo-grid-column>
+            <kendo-grid-column field="EmployerName" title="Employer Name">
+            </kendo-grid-column>
+            <kendo-grid-column field="Duration" title="Duration">
+            </kendo-grid-column>
+            <kendo-grid-column field="Income" title="Income">
+            </kendo-grid-column>
+            <kendo-grid-column field="Status" title="Status">
+            </kendo-grid-column>
+        </kendo-grid>
+    </div>
+</div> 
+
+<div class="w-100 float-left">
+    <form name="form" #AddClientEmployementDetails="ngForm" novalidate>
+        <div class="section_box pb-0 pl-0 pr-0">
+            <div class="box_title">Employment Details</div>
+            <div class="tab-content clearfix ml-0">
+
+                <div class="w-100 float-left">
+                    <div class="tab-pane pt-3">
+                        <div class="row m-0">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                <div class="field_set">
+                                    <div class="field_info w-100">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-select placeholder="Source Of Income" [(ngModel)]="_ClientEmploymentDetailsObj._EmploymentTypeDetail.ID" name="sourceofincome" #sourceofincome="ngModel" required>
+                                                <mat-option *ngFor="let employmentType of _TypeOfEmployment" [value]="employmentType.ID">{{employmentType.EmployementType}}</mat-option>
+                                            </mat-select>
+                                            <div *ngIf="sourceofincome.invalid && (sourceofincome.dirty || sourceofincome.touched)" class="alert alert-danger">
+                                                <div *ngIf="sourceofincome.errors.required ">
+                                                    Please select Source of Income.
+                                                </div>
+                                            </div>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                <div class="field_set">
+                                    <div class="field_info w-100">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-select placeholder="Type of Profession" [(ngModel)]="_ClientEmploymentDetailsObj._ProfessionTypeDetail.ID" name="profession" #profession="ngModel" required>
+                                                <mat-option *ngFor="let professionType of _TypeOfProfession" [value]="professionType.ID">{{professionType.Profession}}</mat-option>
+                                            </mat-select>
+                                            <div *ngIf="profession.invalid && (profession.dirty || profession.touched)" class="alert alert-danger">
+                                                <div *ngIf="profession.errors.required ">
+                                                    Please select Profession Type.
+                                                </div>
+                                            </div>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                <div class="field_set">
+                                    <div class="field_info w-100">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="Employer Name" value="{{_ClientEmploymentDetailsObj.EmployerName}}" [(ngModel)]="_ClientEmploymentDetailsObj.EmployerName" name="EmployerName" #EmployerName="ngModel" required>
+                                            <div *ngIf="EmployerName.invalid && (EmployerName.dirty || EmployerName.touched)" class="alert alert-danger">
+                                                <div *ngIf="EmployerName.errors.required ">
+                                                    Please enter Employer Name.
+                                                </div>
+                                            </div>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                <div class="field_set">
+                                    <div class="field_info w-100">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="Income" value="{{_ClientEmploymentDetailsObj.Income}}" [(ngModel)]="_ClientEmploymentDetailsObj.Income" name="Income" #Income="ngModel" required>
+                                            <div *ngIf="Income.invalid && (Income.dirty || Income.touched)" class="alert alert-danger">
+                                                <div *ngIf="Income.errors.required ">
+                                                    Please enter Income.
+                                                </div>
+                                            </div>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                <div class="field_set">
+                                    <div class="field_info w-100">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="Duration" value="{{_ClientEmploymentDetailsObj.Duration}}" [(ngModel)]="_ClientEmploymentDetailsObj.Duration" name="Duration" #Duration="ngModel" required>
+                                            <div *ngIf="Duration.invalid && (Duration.dirty || Duration.touched)" class="alert alert-danger">
+                                                <div *ngIf="Duration.errors.required ">
+                                                    Please enter Duration.
+                                                </div>
+                                            </div>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                <div class="field_set">
+                                    <div class="field_info w-100">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-select [(value)]="_ClientEmploymentDetailsObj.Status" placeholder="Status">
+                                                <mat-option>None</mat-option>
+                                                <mat-option value="Current">Current Employer</mat-option>
+                                                <mat-option value="Previous">Previous Employer</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row m-0 btn-bottom pr-4 pl-4">
+                <div class="w-100 float-left text-right">
+                    <input type="submit" value="&#xf0c7; Save" (click)="AddEmploymentDetails()" [disabled]="!AddClientEmployementDetails.form.valid" *ngIf="!_EditEmployementDetails" class="btn btn-lg btn-success" />
+                    <input type="submit" value="&#xf0c7; Update" (click)="UpdateEmploymentDetails()" [disabled]="!AddClientEmployementDetails.form.valid" *ngIf="_EditEmployementDetails" class="btn btn-lg btn-success" />
+                    <input type="button" value="&#xf00d; Cancel" (click)="CancelAddEditEmploymentDetails()" class="btn btn-lg btn-secondary" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+

@@ -59,6 +59,80 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
+        public Applicants GetApplicantDetails(int AutoId)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    //Guid LoanAppNo = db.tblApplicants.Where(x => x.AutoID == AutoId).Select(x => x.ApplicantID).FirstOrDefault();
+                    Applicants objapp = new Applicants();
+                    var dataofapplicants = db.tblApplicants.Where(x => x.AutoID == AutoId).FirstOrDefault();
+                    if(dataofapplicants!=null)
+                    {
+                        objapp.AutoID = dataofapplicants.AutoID;
+                        objapp.ApplicantID = dataofapplicants.ApplicantID;
+                        objapp.Title = dataofapplicants.Title;
+                        objapp.FirstName = dataofapplicants.FirstName;
+                        objapp.MiddleName = dataofapplicants.MiddleName;
+                        objapp.LastName = dataofapplicants.LastName;
+                        objapp.NZResidents = dataofapplicants.NZResidents;
+                        objapp.CountryOfBirth = dataofapplicants.CountryOfBirth;
+                        objapp.EmailID = dataofapplicants.EmailID;
+                        objapp.MobileNo = dataofapplicants.MobileNo;
+                        objapp.HomePhoneNo = dataofapplicants.HomePhoneNo;
+                        objapp.WorkPhoneNo = dataofapplicants.WorkPhoneNo;
+                        objapp.LoanApplicationNo = dataofapplicants.LoanApplicationNo;
+
+                    }
+                   
+                    return objapp;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+
+        //public List<Applicants> GetAllApplicants(int AutoId)
+        //{
+        //    List<Applicants> objApplicants = new List<Applicants>();
+        //    try
+        //    {
+        //        using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+        //        {
+        //            var GetAllApplicants = db.tblApplicants.Where(p => p.AutoId == AutoId).ToList();
+        //            foreach (var itemGetAllApplicants in GetAllApplicants)
+        //            {
+        //                objApplicants.Add(new Applicants
+        //                {
+        //                    AutoID = itemGetAllApplicants.AutoID,
+        //                    ApplicantID = itemGetAllApplicants.ApplicantID,
+        //                    FirstName = itemGetAllApplicants.FirstName,
+        //                    MiddleName = itemGetAllApplicants.MiddleName,
+        //                    LastName = itemGetAllApplicants.LastName,
+        //                    Gender = itemGetAllApplicants.Gender,
+        //                    DateOfBirth = itemGetAllApplicants.DateOfBirth,
+        //                    NZResidents = itemGetAllApplicants.NZResidents,
+        //                    CountryOfBirth = itemGetAllApplicants.CountryOfBirth,
+        //                    MobileNo = itemGetAllApplicants.MobileNo,
+        //                    WorkPhoneNo = itemGetAllApplicants.WorkPhoneNo,
+        //                    EmailID = itemGetAllApplicants.EmailID,
+        //                    HomePhoneNo = itemGetAllApplicants.HomePhoneNo,
+        //                });
+        //            }
+        //            return objApplicants;
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return null;
+        //    }
+        //}
+
         public List<LoanApplicationForms> GetAllLoanApplications()
         {
             List<LoanApplicationForms> objLoanApplicationForms = new List<LoanApplicationForms>();

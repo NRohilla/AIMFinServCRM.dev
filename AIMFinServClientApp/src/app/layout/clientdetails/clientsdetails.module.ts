@@ -5,15 +5,14 @@ import { ClientsRoutingModule } from './clientsdetails-routing.module';
 import { ClientsDetailsComponent } from './clientsdetails.component';
 import { PageHeaderModule } from '../../shared';
 import {MaterialModule} from '../../shared/app.material';
-import {ClientSummaryComponent} from './components/app.client.summary'
-import {ClientsPersonalDetailsComponent} from './components/app.client.personaldetails'
-import {ClientscommunicationComponent} from './components/app.client.communicationdetails'
-import {ClientsEmployementComponent} from './components/app.client.employementdetails'
-import {ClientqualificationComponent} from './components/app.client.qualificationdetails'
+import {ClientSummaryComponent} from './components/app.clientdetails.summary'
+import {ClientsPersonalDetailsComponent} from './components/app.clientdetails.personaldetails'
+import {ClientscommunicationComponent} from './components/app.clientdetails.communicationdetails'
+import {ClientsEmployementComponent} from './components/app.clientdetails.employementdetails'
+import {ClientqualificationComponent} from './components/app.clientdetails.qualificationdetails'
 import { FormsModule } from '@angular/forms';
 @NgModule({
     imports: [CommonModule, ClientsRoutingModule, PageHeaderModule, GridModule, MaterialModule, FormsModule],
     declarations: [ClientsDetailsComponent, ClientSummaryComponent,ClientsPersonalDetailsComponent,ClientscommunicationComponent, ClientsEmployementComponent, ClientqualificationComponent]
-    //declarations: [ClientsComponent]
 })
 export class ClientsDetailsModule { }
