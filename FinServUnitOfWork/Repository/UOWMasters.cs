@@ -107,7 +107,7 @@ namespace FinServUnitOfWork.Repository
                     return (from ExpnsMstr in db.tblMasterExpenseTypes
                             select new ExpenseTypeMaster()
                             {
-                                Description = ExpnsMstr.Description,
+                                ExpenseType = ExpnsMstr.ExpenseType,
                                 AutoID = ExpnsMstr.AutoID,
                                 ExpenseTypeID = ExpnsMstr.ExpenseTypeID,
                                 Frequency = ExpnsMstr.Frequency,
@@ -801,7 +801,7 @@ namespace FinServUnitOfWork.Repository
                     var GetObjEntity = db.tblMasterExpenseTypes.Where(p => p.AutoID == ExpenseTypeMaster.AutoID).FirstOrDefault();
                     if (GetObjEntity != null)
                     {
-                        GetObjEntity.Description = ExpenseTypeMaster.Description;
+                        GetObjEntity.ExpenseType = ExpenseTypeMaster.ExpenseType;
                         GetObjEntity.Frequency = ExpenseTypeMaster.Frequency;
                         operationResult = db.SaveChanges();
                     }
@@ -1115,7 +1115,7 @@ namespace FinServUnitOfWork.Repository
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
                    tblMasterExpenseType Obj = new tblMasterExpenseType();
-                    Obj.Description = ExpenseTypeMaster.Description;
+                    Obj.ExpenseType = ExpenseTypeMaster.ExpenseType;
                     Obj.ExpenseTypeID = Guid.NewGuid();
                     Obj.IsActive = true;
                     db.tblMasterExpenseTypes.Add(Obj);

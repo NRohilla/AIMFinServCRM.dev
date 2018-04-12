@@ -1,0 +1,228 @@
+﻿<div class="content-section">
+    <div class="col-lg-12 col-md-12">
+        <h3 class="text-uppercase border-bottom pb-2 mb-2">Lending</h3>
+        <div class="qualification-section">
+                <div class="content-setion">                    
+                    <mat-table #table [dataSource]="dataSource">
+                        <ng-container matColumnDef="applicationFormNo">
+                        <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Application Form No </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.applicationFormNo}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="clientId">
+                        <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Client Id </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.clientId}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="term">
+                        <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Term </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.term}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="rate">
+                            <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Rate Type </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.rate}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="frequency">
+                            <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Frequency </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.frequency}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="propertyType">
+                            <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Property Type </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.propertyType}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="status">
+                            <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Status </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="viewDetails">
+                            <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> </mat-header-cell>
+                            <mat-cell *matCellDef="let element">  <button type="submit" class="btn btn-sm btn-secondary float-right"><i class="fa fa-eye"></i> View Details</button></mat-cell>
+                        </ng-container>             
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    </mat-table>
+                </div>
+        </div>
+        <div class="qualification-details mt-4">            
+            <mat-card class="border">
+                <h4 class="sub-heading text-uppercase text-center pb-2 mb-4">Lending Form details  <button type="submit" class="btn btn-sm btn-info float-right"><i class="fa fa-pencil"></i> Edit</button></h4>
+                <div class="">
+                    <div class="row mb-2">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                        <div class="border bg-light pt-3 pb-3 clearfix">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <span><i class="fa fa-file-text-o text-info"></i> Application Form No </span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <span class="text-secondary">NZ-001</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                        <div class="border bg-light pt-3 pb-3 clearfix">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <span><i class="fa fa-id-card text-info"></i> Client Id </span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <span class="text-secondary"> C12345 </span>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                            <div class="border bg-light pt-3 pb-3 clearfix">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <span><i class="fa fa-life-ring text-info"></i> Term </span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <span class="text-secondary"> 6 years </span>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                            <div class="border bg-light pt-3 pb-3 clearfix">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                    <span><i class="fa fa-percent text-info"></i> Rate Type </span>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                    <span class="text-secondary"> 10% </span>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                            <div class="border bg-light pt-3 pb-3 clearfix">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <span><i class="fa fa-spinner text-info"></i> Frequency </span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <span class="text-secondary"> Monthly </span>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                            <div class="border bg-light pt-3 pb-3 clearfix">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                    <span><i class="fa fa-building text-info"></i> Property Type </span>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary"> Self Owned </span>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <div class="border bg-light pt-3 pb-3 clearfix">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-clock-o text-info"></i> Status </span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary"> Current </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <div class="border bg-light pt-3 pb-3 clearfix">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-calendar text-info"></i> EMI Start Date </span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary"> 15 March 2018 </span>
+                                    </div>
+                                </div>
+                            </div>                                     
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <div class="border bg-light pt-3 pb-3 clearfix">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-money text-info"></i> Loan Processing Fee </span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary"> 1000 </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <div class="border bg-light pt-3 pb-3 clearfix">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-bank text-info"></i> Loan Provider </span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary"> HDFC Bank </span>
+                                    </div>
+                                </div>
+                            </div>                                     
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <div class="border bg-light pt-3 pb-3 clearfix">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-sitemap text-info"></i> ROI Offered </span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary"> Principal and Interest </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <div class="border bg-light pt-3 pb-3 clearfix">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-dollar text-info"></i> Type of Loan </span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary"> Personal </span>
+                                    </div>
+                                </div>
+                            </div>                                     
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <div class="border bg-light pt-3 pb-3 clearfix">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-money text-info"></i> Loan Amounf Offered </span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary"> 500000 </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <div class="border bg-light pt-3 pb-3 clearfix">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-list-alt text-info"></i> No. of EMI </span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary"> 72 </span>
+                                    </div>
+                                </div>
+                            </div>                                     
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <div class="border bg-light pt-3 pb-3 clearfix">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-percent text-info"></i> Loan Value Ratio </span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary"> 3% </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <div class="border bg-light pt-3 pb-3 clearfix">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-money text-info"></i> Any Legal Charges </span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary"> 0 </span>
+                                    </div>
+                                </div>
+                            </div>                                     
+                        </div>                                                        
+                    </div>                          
+            </mat-card>
+        </div>
+    </div>
+</div>

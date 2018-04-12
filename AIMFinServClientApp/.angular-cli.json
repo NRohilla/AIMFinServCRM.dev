@@ -15,11 +15,12 @@
             "tsconfig": "tsconfig.app.json",
             "testTsconfig": "tsconfig.spec.json",
             "prefix": "app",
-          "styles": [
-            "../node_modules/font-awesome/css/font-awesome.css",
-            "styles/app.scss",
-            "styles/app.kendogrid.css"
-          ],
+            "styles": [
+                "../node_modules/font-awesome/css/font-awesome.css",
+                "styles/app.scss",
+                "styles/app.kendogrid.css",
+                "styles/style.css"
+            ],
             "scripts": ["../node_modules/chart.js/dist/Chart.js"],
             "environmentSource": "environments/environment.ts",
             "environments": {

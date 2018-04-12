@@ -55,7 +55,8 @@ namespace FinServUnitOfWork.Interface
         bool UpdateLiabilityDetails(Liability _objLiabilityDetails);
 
         bool AddLoanApplicationDetails(LoanApplicationForms LoanApplicationDetails);
-
-
+        bool AddExpenseSheet(ApplicantExpenseSheet _objApplicantExpenseSheet);
+        List<ApplicantExpenseSheet> GetAddedExpenseSheetGrid(Guid ApplicantID);
+        ApplicantExpenseSheet GetExpenseSheetDetails(Guid ApplicantID);
     }
 }

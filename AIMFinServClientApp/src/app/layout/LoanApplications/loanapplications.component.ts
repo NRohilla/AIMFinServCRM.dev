@@ -13,6 +13,7 @@ import { LoanApplicationDetailDialog } from '../../shared/dialogues/loanapplicat
 import { MastersService } from '../../services/app.masters.service';
 import { AddGuarantorDialog } from '../../shared/dialogues/loanapplications/AddGuarantorDialog';
 import { ManageAssetAndLiabilityDialog } from '../../shared/dialogues/loanapplications/ManageAssetandLiabilityDialog';
+import { ManageExpenseSheetDialog } from '../../shared/dialogues/loanapplications/ManageExpenseSheetDialog.component';
 
 @Component({
     templateUrl: './loanapplications.component.html',

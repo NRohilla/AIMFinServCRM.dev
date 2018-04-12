@@ -58,6 +58,7 @@ export class AddAssetComponent extends AppBaseComponent implements OnInit{
             this._ClientsService.GetAddedAssetGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedAssetGridSuccess(res), res => this.GetAddedAssetGridError(res));
         }
         this.GetAssetTypes();
+        this.GetApplicants();
     }
 
     AddAsset() {
@@ -112,6 +113,12 @@ export class AddAssetComponent extends AppBaseComponent implements OnInit{
     }
     GetAssetsTypeSuccess(res) {
         this._objAssetTypeID = JSON.parse(res._body);
+    }
+    GetApplicants() {
+        this._MasterService.GetApplicants().subscribe(res => this.GetApplicantsNameSuccess(res), error => this.errorMessage = <any>error);
+    }
+    GetApplicantsNameSuccess(res) {
+        this._ObjApplicantNames = JSON.parse(res._body);
     }
 
     ViewDetails(ApplicantID) {

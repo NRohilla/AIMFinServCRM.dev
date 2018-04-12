@@ -1,0 +1,189 @@
+﻿<div class="content-section">
+    <div class="col-lg-12 col-md-12">
+        <h3 class="text-uppercase border-bottom pb-2 mb-2">Qualifications</h3>
+        <div class="qualification-section">
+                <!--<div class="profile-pic mt-2 mb-2">
+                        <img class="mt-0" src="assets/images/profile/nouser.jpg" />
+                        <h6 class="text-center font-weight-bold text-uppercase pt-1 mb-0">Nicholas Alcock </h6>
+                        <span class="d-block text-center text-secondary"><em>Alcock</em></span>
+                    </div>-->
+                <div class="content-setion">                    
+                    <mat-table #table [dataSource]="dataSource">
+                        <ng-container matColumnDef="position">
+                        <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> No. </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="name">
+                        <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold">Course Name </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="regular">
+                        <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Course Type </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.regular}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="passing">
+                        <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Passing </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.passing}} <button type="submit" class="btn btn-sm btn-secondary float-right"><i class="fa fa-eye"></i> View Details</button> </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    </mat-table>
+                </div>
+        </div>
+        <div class="qualification-details mt-4">            
+            <mat-card class="border">
+                    <h4 class="sub-heading text-uppercase text-center pb-2 mb-4">Course details  <button type="submit" class="btn btn-sm btn-info float-right"><i class="fa fa-pencil"></i> Edit</button></h4>
+                    <div class="">
+                        <div class="row mb-2">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                            <div class="border bg-light pt-3 pb-3 clearfix">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-user text-info"></i> Name</span>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary">Nicholas Alcock</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                            <div class="border bg-light pt-3 pb-3 clearfix">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-mortar-board text-info"></i> Course Name</span>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary">B. Tech</span>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                    <div class="border bg-light pt-3 pb-3 clearfix">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                            <span><i class="fa fa-book text-info"></i> Course Type</span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                            <span class="text-secondary">Regular</span>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                    <div class="border bg-light pt-3 pb-3 clearfix">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                                <span><i class="fa fa-calendar text-info"></i> Passing Year</span>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                                <span class="text-secondary">2010</span>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>                                
+                    </div>                          
+            </mat-card>
+        </div>
+    </div>
+</div>
+<!--<div class="content-section">
+        <div class="col-lg-12 col-md-12">
+            <h3 class="text-uppercase border-bottom pb-2">Qualifications</h3>
+            <div class="qualification-section mt-4 pl-2 pr-2 pt-4 pb-4 clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 float-left">
+                    <div [@routerTransition] class="application-details content-setion">
+                        <div *ngIf="!_ViewApplicationDetails">
+                        <div>
+                            <kendo-grid [kendoGridBinding]="gridData"
+                                        [pageSize]="2"
+                                        [sortable]="true"
+                                        [pageable]="true"
+                                        [scrollable]="true"
+                                        [filterable]="true"
+                                        [groupable]="true"
+                                        selectable="true">
+
+                                <kendo-grid-column field="LoanApplicationNo" title="Course Name">
+                                </kendo-grid-column>
+                                <kendo-grid-column field="TypeOfLoan" title="Course Type">
+                                </kendo-grid-column>
+                                <kendo-grid-column field="LoanTerm" title="Passing Year">
+                                </kendo-grid-column>
+
+                                <kendo-grid-column field="RateType" title="Percentage">
+                                </kendo-grid-column>
+                                <kendo-grid-column field="PropertyType" title="Durations">
+                                </kendo-grid-column>
+                                <kendo-grid-column field="Status" title="Status">
+                                </kendo-grid-column>
+                                <kendo-grid-command-column>
+                                    <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                                        <button class="btn btn-lg btn-link" type="button" (click)="ViewDetails(dataItem.LoanApplicationNo)">View details</button>
+                                    </ng-template>
+                                </kendo-grid-command-column>
+                            </kendo-grid>
+                        </div>
+                    </div>                      
+                </div>                
+            </div>
+<div class="mt-4" *ngIf="_ViewApplicationDetails">
+        <div class="w-100 float-left">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="qualification_section_box">
+                            <h4 class="text-white text-uppercase p-2 mb-0">Qualifications</h4>
+                        <div class="p-3 clearfix border">
+                            <div class="clearfix ml-0">
+                                <div class="w-100 float-left">
+                                    <div class="">
+                                        <div class="row m-0">
+                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                                <div class="field_set">
+                                                    <div class="field_label">Course Name</div>
+                                                    <div class="field_info">
+                                                        <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.TypeOfLoan}}</p>
+                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
+                                                            <input matInput placeholder="Type of Loan" value="{{_LoanApplicationDetails.TypeOfLoan}}">
+                                                        </mat-form-field>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                                <div class="field_set">
+                                                    <div class="field_label">Course Type</div>
+                                                    <div class="field_info">
+                                                        <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.TypeOfLoan}}</p>
+                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
+                                                            <input matInput placeholder="Type of Loan" value="{{_LoanApplicationDetails.TypeOfLoan}}">
+                                                        </mat-form-field>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                                <div class="field_set">
+                                                    <div class="field_label">Passing Year</div>
+                                                    <div class="field_info">
+                                                        <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.IsPreApproval}}</p>
+                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
+                                                            <input matInput placeholder="Is Pre-approval" value="{{_LoanApplicationDetails.IsPreApproval}}">
+                                                        </mat-form-field>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>                              
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-0 btn-bottom pr-4 pl-4 border">
+                            <div class="w-100 float-left text-right">
+                                <input type="button" value="&#xf0c7; Save" (click)="UpdateDetails()" *ngIf="_EditDetails" class="btn btn-success" />
+                                <input type="button" value="&#xf00d; Cancel" (click)="CancelEditingDetails()" *ngIf="_EditDetails" class="btn btn-secondary" />
+                                <input type="button" value="&#xf040; Edit" (click)="EditDetails()" *ngIf="!_EditDetails" class="btn btn-info" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>-->

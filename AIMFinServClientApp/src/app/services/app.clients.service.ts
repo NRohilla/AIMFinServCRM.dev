@@ -154,6 +154,16 @@ export class ClientsService {
     GetApplicantDetails(AutoId) {
         return this._http.get(this.baseurl + "Clients/GetApplicantDetails?AutoId=" + AutoId, this.options);
     }
+    AddExpenseSheet(ApplicantExpenseSheet) {
+        return this._http.post(this.baseurl + "Clients/AddExpenseSheet", ApplicantExpenseSheet, this.options);
+    }
+    GetAddedExpenseSheetGrid(ApplicantID) {
+        return this._http.get(this.baseurl + "Clients/GetAddedExpenseSheetGrid?ApplicantID=" + ApplicantID, this.options);
+    }
+    GetExpenseSheetDetails(ApplicantID) {
+        return this._http.get(this.baseurl + "Clients/GetExpenseSheetDetails?ApplicantID=" + ApplicantID, this.options);
+    }
+
 }
 
 

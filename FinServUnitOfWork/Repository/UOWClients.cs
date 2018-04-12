@@ -65,7 +65,6 @@ namespace FinServUnitOfWork.Repository
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    //Guid LoanAppNo = db.tblApplicants.Where(x => x.AutoID == AutoId).Select(x => x.ApplicantID).FirstOrDefault();
                     Applicants objapp = new Applicants();
                     var dataofapplicants = db.tblApplicants.Where(x => x.AutoID == AutoId).FirstOrDefault();
                     if(dataofapplicants!=null)
@@ -1291,6 +1290,108 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
+
+        public bool AddExpenseSheet(ApplicantExpenseSheet _objApplicantExpenseSheet)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    if (_objApplicantExpenseSheet != null)
+                    {
+                        tblApplicantExpenseSheet _tblExpenseDetails = new tblApplicantExpenseSheet();
+                        _tblExpenseDetails.ExpenseID = Guid.NewGuid();
+                        _tblExpenseDetails.ExpenseTypeID = _objApplicantExpenseSheet.ExpenseTypeID;
+                        _tblExpenseDetails.ApplicantID = _objApplicantExpenseSheet.ApplicantID;
+                        _tblExpenseDetails.Description = _objApplicantExpenseSheet.Description;
+                        _tblExpenseDetails.Frequency = _objApplicantExpenseSheet.Frequency;
+                        _tblExpenseDetails.NetAmount = _objApplicantExpenseSheet.NetAmount;
+                        tblApplicant _tblApplicant = new tblApplicant();
+                        _tblApplicant.FirstName = _objApplicantExpenseSheet._ApplicationID.FirstName;
+
+                        db.tblApplicantExpenseSheets.Add(_tblExpenseDetails);
+                        db.SaveChanges();
+
+                    }
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public List<ApplicantExpenseSheet> GetAddedExpenseSheetGrid(Guid ApplicantID)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var Expensedata = (from tla in db.tblApplicantExpenseSheets
+                                     join ta in db.tblApplicants on tla.ApplicantID equals ta.ApplicantID
+                                     join tme in db.tblMasterExpenseTypes on tla.ExpenseTypeID equals tme.ExpenseTypeID
+                                     where tla.ApplicantID == ApplicantID
+                                     select new
+                                     {
+                                         _Description = tla.Description,
+                                         _ExpenseID = tla.ExpenseID,
+                                         _NetAmount = tla.NetAmount,
+                                         _Frequency = tla.Frequency,
+                                         _ExpenseTypeID = tla.ExpenseTypeID,
+                                         _ExpenseType = tme.ExpenseType,
+                                         _firstName = ta.FirstName,
+                                         _applicantID = ta.ApplicantID
+                                     }).ToList().Select(x => new ApplicantExpenseSheet()
+                                     {
+                                         Description = x._Description,
+                                         ExpenseID = x._ExpenseID,
+                                         NetAmount = x._NetAmount,
+                                         Frequency = x._Frequency,
+                                         ExpenseTypeID = x._ExpenseTypeID,
+                                         ExpenseType = x._ExpenseType,
+                                         FirstName = x._firstName,
+                                         ApplicantID = x._applicantID
+                                     }).ToList();
+                    return Expensedata;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public ApplicantExpenseSheet GetExpenseSheetDetails(Guid ApplicantID)
+        {
+            try
+            {
+                ApplicantExpenseSheet objtoReturn = new ApplicantExpenseSheet();
+
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetExpenseDetails = db.tblApplicantExpenseSheets.Where(p => p.ApplicantID == ApplicantID).FirstOrDefault();
+                    if (GetExpenseDetails != null)
+                    {
+                        objtoReturn.ExpenseID = GetExpenseDetails.ExpenseID;
+                        objtoReturn.Description = GetExpenseDetails.Description;
+                        objtoReturn.NetAmount = GetExpenseDetails.NetAmount;
+                        objtoReturn.Frequency = GetExpenseDetails.Frequency;
+                        objtoReturn.ApplicantID = GetExpenseDetails.ApplicantID;
+                        objtoReturn.ExpenseType = GetExpenseDetails.tblMasterExpenseType.ExpenseType;
+                        objtoReturn.ExpenseTypeID = GetExpenseDetails.tblMasterExpenseType.ExpenseTypeID;
+
+                    }
+                    return objtoReturn;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
 
 
     }

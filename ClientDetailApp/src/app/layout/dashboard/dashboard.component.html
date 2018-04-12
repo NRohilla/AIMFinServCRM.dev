@@ -1,0 +1,133 @@
+<div [@routerTransition] class="content-section w-100 float-left">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="dashboard-header">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+              <div class="bg-primary text-white mb-1 clearfix">
+                <div class="p-4 clearfix">
+                  <div class="float-left box1">
+                    <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                  </div>
+                  <div class="float-right box2">
+                    <h5>Tasks</h5>
+                  </div>                
+                </div>
+              <div class="box-bottom pl-4 pr-4 pt-1 pb-1 clearfix">
+                <span class="float-left">information </span><span class="float-right"><em><small>read more</small></em> <i class="fa fa-long-arrow-right"></i></span>
+              </div>
+            </div>              
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+              <div class="bg-success text-white mb-1 clearfix">
+                <div class="p-4 clearfix">
+                  <div class="float-left box1">
+                    <i class="fa fa-comments" aria-hidden="true"></i>
+                  </div>
+                  <div class="float-right box2">
+                    <h5>Activities</h5>
+                  </div>                
+                </div>
+                <div class="box-bottom pl-4 pr-4 pt-1 pb-1 clearfix">
+                  <span class="float-left">information</span><span class="float-right"><em><small>read more</small></em> <i class="fa fa-long-arrow-right"></i></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+              <div class="bg-warning text-white mb-1 clearfix">
+                <div class="p-4 clearfix">
+                  <div class="float-left box1">
+                    <i class="fa fa-life-bouy" aria-hidden="true"></i>
+                  </div>
+                  <div class="float-right box2">
+                    <h5>Importants</h5>
+                  </div>                
+                </div>
+                <div class="box-bottom pl-4 pr-4 pt-1 pb-1 clearfix">
+                  <span class="float-left">information</span><span class="float-right"><em><small>read more</small></em> <i class="fa fa-long-arrow-right"></i></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left clearfix">
+              <div class="bg-danger text-white mb-1 clearfix">
+                <div class="p-4 clearfix">
+                  <div class="float-left box1">
+                      <i class="fa fa-list" aria-hidden="true"></i>
+                  </div>
+                  <div class="float-right box2">
+                    <h5>Lists</h5>
+                  </div>                
+                </div>
+                <div class="box-bottom pl-4 pr-4 pt-1 pb-1 clearfix">
+                  <span class="float-left">information</span><span class="float-right"><em><small>read more</small></em> <i class="fa fa-long-arrow-right"></i></span>
+                </div>
+              </div>
+            </div>            
+          </div>          
+      </div>
+    </div>
+    <div class="row m-0">
+      <div class="col-lg-9 col-md-9 col-sm-12 col-12 float-left">
+          <div class="row">
+            <div class="loan-section w-100 float-left p-3">
+              <h3 class="text-uppercase">Summary</h3>
+              <div class="loan-content w-100 float-left p-3">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  <div class="alert alert-success">
+                    <strong>Success!</strong> You should <a href="#" class="alert-link">read this message</a>.
+                  </div>
+                  <div class="alert alert-info">
+                    <strong>Info!</strong> You should <a href="#" class="alert-link">read this message</a>.
+                  </div>
+                  <div class="alert alert-warning">
+                    <strong>Warning!</strong> You should <a href="#" class="alert-link">read this message</a>.
+                  </div>
+                  <div class="alert alert-danger">
+                    <strong>Danger!</strong> You should <a href="#" class="alert-link">read this message</a>.
+                  </div>                  
+              </div>              
+          </div>
+          </div>
+          <div>
+              <kendo-grid [kendoGridBinding]="gridData"
+                          [pageSize]="2"
+                          [sortable]="true"
+                          [pageable]="true"
+                          [scrollable]="true"
+                          [filterable]="true"
+                          [groupable]="true"
+                          selectable="true">
+      
+                  <kendo-grid-column field="LoanApplicationNo" title="LoanApplication No">
+                  </kendo-grid-column>
+                  <kendo-grid-column field="TypeOfLoan" title="Loan Type">
+                  </kendo-grid-column>
+                  <kendo-grid-column field="LoanTerm" title="Loan Provider">
+                  </kendo-grid-column>
+      
+                  <kendo-grid-column field="RateType" title="Current Status">
+                  </kendo-grid-column>
+                  <kendo-grid-column field="Status" title="Advisor Id">
+                  </kendo-grid-column>
+                  <kendo-grid-column field="Status" title="ROI">
+                    </kendo-grid-column>
+                  <kendo-grid-command-column>
+                      <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                          <button class="btn btn-lg btn-link" type="button" (click)="ViewDetails(dataItem.LoanApplicationNo)">View details</button>
+                      </ng-template>
+                  </kendo-grid-command-column>
+              </kendo-grid>
+          </div>          
+      </div> 
+    <div class="col-lg-3 col-md-3 col-sm-12 col-12 float-left pt-3">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="text-uppercase">Summary</h3>
+        </div>
+        <div class="card-body">
+            <canvas baseChart height="180px" [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+            </canvas>
+        </div>
+      </div>
+    </div>
+    </div>    
+  </div>  

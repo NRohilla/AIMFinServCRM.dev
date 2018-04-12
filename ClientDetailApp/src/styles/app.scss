@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/bootstrap";
+@import "spinner";
+@import "utils";
+@import "rtl";
+@import "responsive";
+
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+
+
+//style for tabs
+.basic-container {
+  padding: 5px;
+  margin-left:0;
+}
+.section_box{border:1px solid #cccccc; padding:10px; margin-bottom:35px; position:relative; font-size:14px;}
+.section_box .box_title{font-size:18px; color:#585858; text-transform:uppercase; position:absolute; left:10px;background-color: #ffffff;
+    z-index: 9999;
+    padding: 5px 20px;
+    margin-top: -28px; border:1px solid #cccccc;}
+.tab-content{padding:20px 10px;}
+.tab-content .field_set{width:50%; float:left; margin-bottom:15px;}
+.tab-content .field_set:after{clear:both; content:""; display:block;}
+.tab-content .field_set .field_label{width:30%; font-weight:bold; float:left; line-height:35px;}
+.tab-content .field_set .field_va{width:70%; font-weight:bold; float:left; }
+.tab-content .field_set .field_va input[type=text]{border:1px solid #cccccc; height:40px; width:100%; max-width:400px; padding-left:10px;}
+
+.tab-content .field_set .field_info{width:70%; font-weight:normal; float:left; color:#585858; line-height:32px; }
+.btn-lg, .btn-group-lg > .btn{font-size:14px !important;}
+
+.form-control .txtbox_90 {width:90% !important;}

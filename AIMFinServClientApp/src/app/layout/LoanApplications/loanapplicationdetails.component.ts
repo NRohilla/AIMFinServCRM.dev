@@ -14,6 +14,7 @@ import { MastersService } from '../../services/app.masters.service';
 import { AddGuarantorDialog } from '../../shared/dialogues/loanapplications/AddGuarantorDialog';
 import { ManageAssetAndLiabilityDialog } from '../../shared/dialogues/loanapplications/ManageAssetandLiabilityDialog';
 import { ManageApplicantDialog } from '../../shared/dialogues/loanapplications/ManageApplicantDialog';
+import { ManageExpenseSheetDialog } from '../../shared/dialogues/loanapplications/ManageExpenseSheetDialog.component';
 @Component({
     templateUrl: './loanapplicationdetails.component.html',
     animations: [routerTransition()],
@@ -158,6 +159,16 @@ export class LoanapplicationdetailsComponent implements OnInit {
         this.LoanApplicantGrid = JSON.parse(res._body);
     }
     GetAllClientsGridError(res) { }
+
+    ManageExpenseSheet() {
+        let dialogRef = this.dialog.open(ManageExpenseSheetDialog, {
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+        });
+    }
+
 
     AssignApplicant() {
         let dialogRef = this.dialog.open(ManageApplicantDialog, {

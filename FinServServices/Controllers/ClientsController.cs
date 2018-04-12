@@ -248,6 +248,26 @@ namespace FinServServices.Controllers
         {
             return Repository.AddLoanApplicationDetails(LoanApplicationDetails);
         }
+        [HttpPost]
+        [Route("AddExpenseSheet")]
+        public bool AddExpenseSheet(ApplicantExpenseSheet _objApplicantExpenseSheet)
+        {
+            return Repository.AddExpenseSheet(_objApplicantExpenseSheet);
+        }
+
+        [HttpGet]
+        [Route("GetAddedExpenseSheetGrid")]
+        public List<ApplicantExpenseSheet> GetAddedExpenseSheetGrid(Guid ApplicantID)
+        {
+            return Repository.GetAddedExpenseSheetGrid(ApplicantID);
+        }
+
+        [HttpGet]
+        [Route("GetExpenseSheetDetails")]
+        public ApplicantExpenseSheet GetExpenseSheetDetails(Guid ApplicantID)
+        {
+            return Repository.GetExpenseSheetDetails(ApplicantID);
+        }
 
     }
 }

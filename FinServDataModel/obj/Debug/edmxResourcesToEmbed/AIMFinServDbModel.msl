@@ -314,21 +314,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tblMasterExpenseTypes">
-      <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterExpenseType">
-        <MappingFragment StoreEntitySet="tblMasterExpenseType">
-          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="ExpenseTypeID" ColumnName="ExpenseTypeID" />
-          <ScalarProperty Name="AutoID" ColumnName="AutoID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tblMasterLiabilityTypes">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterLiabilityType">
         <MappingFragment StoreEntitySet="tblMasterLiabilityTypes">
@@ -527,6 +512,21 @@
           <ScalarProperty Name="RoleGuid" ColumnName="RoleGuid" />
           <ScalarProperty Name="UsersRoleId" ColumnName="UsersRoleId" />
           <ScalarProperty Name="UsersRoleGuid" ColumnName="UsersRoleGuid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMasterExpenseTypes">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterExpenseType">
+        <MappingFragment StoreEntitySet="tblMasterExpenseType">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+          <ScalarProperty Name="ExpenseType" ColumnName="ExpenseType" />
+          <ScalarProperty Name="ExpenseTypeID" ColumnName="ExpenseTypeID" />
+          <ScalarProperty Name="AutoID" ColumnName="AutoID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

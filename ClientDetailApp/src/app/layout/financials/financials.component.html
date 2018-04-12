@@ -1,0 +1,240 @@
+﻿<div class="content-section">
+    <div class="col-lg-12 col-md-12">
+        <h3 class="text-uppercase border-bottom pb-2 mb-2">Financials</h3>
+        <div class="qualification-section">
+                <div class="content-setion">                    
+                    <mat-table #table [dataSource]="dataSource">
+                        <ng-container matColumnDef="applicaontName">
+                        <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Applicaont Name </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.applicaontName}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="assetType">
+                        <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Asset Type </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.assetType}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="details">
+                        <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Details </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.details}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="netValue">
+                            <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Net Value </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.netValue}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="ownership">
+                            <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Ownership </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.ownership}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="viewDetails">
+                            <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> </mat-header-cell>
+                            <mat-cell *matCellDef="let element">  <button type="submit" class="btn btn-sm btn-secondary float-right"><i class="fa fa-eye"></i> View Details</button></mat-cell>
+                        </ng-container>             
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    </mat-table>
+                </div>
+        </div>
+        <div class="qualification-details mt-4">            
+            <mat-card class="border">
+                <h4 class="sub-heading text-uppercase text-center pb-2 mb-4">Financials details  <button type="submit" class="btn btn-sm btn-info float-right"><i class="fa fa-pencil"></i> Edit</button></h4>
+                <div class="">
+                    <div class="row mb-2">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                        <div class="border bg-light pt-3 pb-3 clearfix">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <span><i class="fa fa-user text-info"></i> Application Form No </span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <span class="text-secondary">Deepak Saini</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                        <div class="border bg-light pt-3 pb-3 clearfix">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <span><i class="fa fa-building text-info"></i> Asset Type </span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <span class="text-secondary">Residential Property </span>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                            <div class="border bg-light pt-3 pb-3 clearfix">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <span><i class="fa fa-life-ring text-info"></i> Details </span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <span class="text-secondary"> Credit Details </span>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                            <div class="border bg-light pt-3 pb-3 clearfix">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                    <span><i class="fa fa-money text-info"></i> Net Value </span>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                    <span class="text-secondary"> 458587 </span>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                            <div class="border bg-light pt-3 pb-3 clearfix">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <span><i class="fa fa-user text-info"></i> Ownership </span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <span class="text-secondary"> Monthly </span>
+                            </div>
+                        </div>
+                        </div>                        
+                        </div>                                                  
+                    </div>                          
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+<!--<div class="content-section">
+        <div class="col-lg-12 col-md-12">
+            <h3 class="text-uppercase border-bottom pb-2 mb-2">Financials</h3>
+            <div class="clearfix">                
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                        <div class="emp-block text-center">
+                            <div class="fnc-hover">
+                                <div class="emp-icon text-white mb-2">
+                                    <i class="fa fa-desktop"></i>
+                                </div>
+                                <h5 class="sub-heading text-uppercase">Most Competitive Finance Rates</h5>
+                                <div class="mt-2">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                </div>
+                                <div class="w-100 text-center mt-3">
+                                    <button type="submit" class="btn btn-sm btn-secondary"><i class="fa fa-eye" aria-hidden="true"></i> View Detail</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                        <div class="emp-block text-center">
+                            <div class="fnc-hover">
+                                <div class="emp-icon text-white mb-2">
+                                    <i class="fa fa-file-text-o"></i>
+                                </div>
+                                <h5 class="sub-heading text-uppercase">Buying Power</h5>
+                                <div class="mt-2">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                </div>
+                                <div class="w-100 text-center mt-3">
+                                    <button type="submit" class="btn btn-sm btn-secondary"><i class="fa fa-eye" aria-hidden="true"></i> View Detail</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                        <div class="emp-block text-center">
+                            <div class="fnc-hover">
+                                <div class="emp-icon text-white mb-2">
+                                    <i class="fa fa-money"></i>
+                                </div>
+                                <h5 class="sub-heading text-uppercase">Lightning Speed</h5>
+                                <div class="mt-2">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                </div>
+                                <div class="w-100 text-center mt-3">
+                                    <button type="submit" class="btn btn-sm btn-secondary"><i class="fa fa-eye" aria-hidden="true"></i> View Detail</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                        <div class="emp-block text-center">
+                            <div class="fnc-hover">
+                                <div class="emp-icon text-white mb-2">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <h5 class="sub-heading text-uppercase">Lorem Ipsum</h5>
+                                <div class="mt-2">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                </div>
+                                <div class="w-100 text-center mt-3">
+                                    <button type="submit" class="btn btn-sm btn-secondary"><i class="fa fa-eye" aria-hidden="true"></i> View Detail</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                        <div class="emp-block text-center">
+                            <div class="fnc-hover">
+                                <div class="emp-icon text-white mb-2">
+                                    <i class="fa fa-bullhorn"></i>
+                                </div>
+                                <h5 class="sub-heading text-uppercase">Lorem Ipsum</h5>
+                                <div class="mt-2">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                </div>
+                                <div class="w-100 text-center mt-3">
+                                    <button type="submit" class="btn btn-sm btn-secondary"><i class="fa fa-eye" aria-hidden="true"></i> View Detail</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                        <div class="emp-block text-center">
+                            <div class="fnc-hover">
+                                <div class="emp-icon text-white mb-2">
+                                    <i class="fa fa-hourglass-1"></i>
+                                </div>
+                                <h5 class="sub-heading text-uppercase">Lorem Ipsum</h5>
+                                <div class="mt-2">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                </div>
+                                <div class="w-100 text-center mt-3">
+                                    <button type="submit" class="btn btn-sm btn-secondary"><i class="fa fa-eye" aria-hidden="true"></i> View Detail</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                        <div class="emp-block text-center">
+                            <div class="fnc-hover">
+                                <div class="emp-icon text-white mb-2">
+                                    <i class="fa fa-life-buoy"></i>
+                                </div>
+                                <h5 class="sub-heading text-uppercase">Lorem Ipsum</h5>
+                                <div class="mt-2">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                </div>
+                                <div class="w-100 text-center mt-3">
+                                    <button type="submit" class="btn btn-sm btn-secondary"><i class="fa fa-eye" aria-hidden="true"></i> View Detail</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                        <div class="emp-block text-center">
+                            <div class="fnc-hover">
+                                <div class="emp-icon text-white mb-2">
+                                    <i class="fa fa-globe"></i>
+                                </div>
+                                <h5 class="sub-heading text-uppercase">Lorem Ipsum</h5>
+                                <div class="mt-2">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                </div>
+                                <div class="w-100 text-center mt-3">
+                                    <button type="submit" class="btn btn-sm btn-secondary"><i class="fa fa-eye" aria-hidden="true"></i> View Detail</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>            
+            </div>
+        </div>
+    </div>-->

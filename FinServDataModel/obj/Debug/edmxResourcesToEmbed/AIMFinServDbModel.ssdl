@@ -138,7 +138,7 @@
     </Key>
     <Property Name="AutoID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="AssetID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="AssetTypeID" Type="uniqueidentifier" />
+    <Property Name="AssetTypeID" Type="uniqueidentifier" Nullable="false" />
     <Property Name="Description" Type="nvarchar" MaxLength="100" />
     <Property Name="NetValue" Type="numeric" Precision="18" Scale="2" />
     <Property Name="Ownership" Type="nvarchar" MaxLength="100" />
@@ -154,7 +154,7 @@
     </Key>
     <Property Name="AutoID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="LiabilityID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="LiabilityTypeID" Type="uniqueidentifier" />
+    <Property Name="LiabilityTypeID" Type="uniqueidentifier" Nullable="false" />
     <Property Name="Description" Type="nvarchar" MaxLength="100" />
     <Property Name="NetValue" Type="numeric" Precision="18" Scale="2" />
     <Property Name="Ownership" Type="nvarchar" MaxLength="100" />
@@ -237,22 +237,22 @@
     <Property Name="AutoID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="LANNumber" Type="uniqueidentifier" Nullable="false" />
     <Property Name="LoanApplicationNo" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="ROIOffered" Type="nchar" MaxLength="10" />
-    <Property Name="LoanTermOffered" Type="nchar" MaxLength="10" />
-    <Property Name="RateTypeOffered" Type="nchar" MaxLength="10" />
-    <Property Name="FrequencyOffered" Type="nchar" MaxLength="10" />
-    <Property Name="LoanValueRatio" Type="nchar" MaxLength="10" />
-    <Property Name="LoanAmountOffered" Type="nchar" MaxLength="10" />
-    <Property Name="LoanTypeID" Type="int" />
+    <Property Name="ROIOffered" Type="nvarchar" MaxLength="50" />
+    <Property Name="LoanTermOffered" Type="nvarchar" MaxLength="50" />
+    <Property Name="RateTypeOffered" Type="nvarchar" MaxLength="50" />
+    <Property Name="FrequencyOffered" Type="nvarchar" MaxLength="50" />
+    <Property Name="LoanValueRatio" Type="nvarchar" MaxLength="50" />
+    <Property Name="LoanAmountOffered" Type="nvarchar" MaxLength="50" />
+    <Property Name="LoanTypeID" Type="int" Nullable="false" />
     <Property Name="ClientID" Type="nvarchar" MaxLength="50" />
     <Property Name="StatusID" Type="int" Nullable="false" />
-    <Property Name="EMIStartDay" Type="nchar" MaxLength="10" />
-    <Property Name="EMIStartMonth" Type="nchar" MaxLength="10" />
-    <Property Name="LoanProcessingFee" Type="nchar" MaxLength="10" />
-    <Property Name="AnyLegalCharges" Type="nchar" MaxLength="10" />
-    <Property Name="NoOfEMI" Type="nchar" MaxLength="10" />
+    <Property Name="EMIStartDay" Type="nvarchar" MaxLength="50" />
+    <Property Name="EMIStartMonth" Type="nvarchar" MaxLength="50" />
+    <Property Name="LoanProcessingFee" Type="nvarchar" MaxLength="50" />
+    <Property Name="AnyLegalCharges" Type="nvarchar" MaxLength="50" />
+    <Property Name="NoOfEMI" Type="nvarchar" MaxLength="50" />
     <Property Name="Loanprovider" Type="nvarchar" MaxLength="100" />
-    <Property Name="PropertyCost" Type="nchar" MaxLength="10" />
+    <Property Name="PropertyCost" Type="nvarchar" MaxLength="50" />
     <Property Name="PropertyTypeID" Type="int" Nullable="false" />
     <Property Name="FinanceDate" Type="datetime" />
     <Property Name="SettlementDate" Type="datetime" />
@@ -304,7 +304,7 @@
     </Key>
     <Property Name="AutoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ExpenseTypeID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="Description" Type="nvarchar" MaxLength="100" />
+    <Property Name="ExpenseType" Type="nvarchar" MaxLength="100" />
     <Property Name="Frequency" Type="nvarchar" MaxLength="50" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="CreatedBy" Type="uniqueidentifier" />
@@ -644,7 +644,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_tblAssets_tblAssetTypes">
-    <End Role="tblMasterAssetTypes" Type="Self.tblMasterAssetTypes" Multiplicity="0..1" />
+    <End Role="tblMasterAssetTypes" Type="Self.tblMasterAssetTypes" Multiplicity="1" />
     <End Role="tblAssets" Type="Self.tblAssets" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tblMasterAssetTypes">
@@ -668,7 +668,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_tblLiabilities_tblLiabilityTypes">
-    <End Role="tblMasterLiabilityTypes" Type="Self.tblMasterLiabilityTypes" Multiplicity="0..1" />
+    <End Role="tblMasterLiabilityTypes" Type="Self.tblMasterLiabilityTypes" Multiplicity="1" />
     <End Role="tblLiabilities" Type="Self.tblLiabilities" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tblMasterLiabilityTypes">
@@ -788,7 +788,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_tblLoanMaster_tblMasterTypeOfLoan">
-    <End Role="tblMasterTypeOfLoan" Type="Self.tblMasterTypeOfLoan" Multiplicity="0..1" />
+    <End Role="tblMasterTypeOfLoan" Type="Self.tblMasterTypeOfLoan" Multiplicity="1" />
     <End Role="tblLoanMaster" Type="Self.tblLoanMaster" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tblMasterTypeOfLoan">

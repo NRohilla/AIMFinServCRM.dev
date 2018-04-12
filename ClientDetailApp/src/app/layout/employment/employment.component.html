@@ -1,0 +1,112 @@
+﻿<div class="content-section">
+        <div class="col-lg-12 col-md-12">
+            <h3 class="text-uppercase border-bottom pb-2 mb-2">Employment</h3>
+            <div class="qualification-section">
+                    <div class="content-setion">                    
+                        <mat-table #table [dataSource]="dataSource">
+                            <ng-container matColumnDef="source">
+                            <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold">Source of Income </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.source}} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="profession">
+                            <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold">Profession </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.profession}} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="employer">
+                            <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Employer Name </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.employer}} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="duration">
+                                <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Duration </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.duration}} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="income">
+                                <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Income </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.income}} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="status">
+                                <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Status </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.status}} <button type="submit" class="btn btn-sm btn-secondary float-right"><i class="fa fa-eye"></i> View Details</button></mat-cell>
+                            </ng-container>             
+                            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                        </mat-table>
+                    </div>
+            </div>
+            <div class="qualification-details mt-4">            
+                <mat-card class="border">
+                        <h4 class="sub-heading text-uppercase text-center pb-2 mb-4">Employment details  <button type="submit" class="btn btn-sm btn-info float-right"><i class="fa fa-pencil"></i> Edit</button></h4>
+                        <div class="">
+                            <div class="row mb-2">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <div class="border bg-light pt-3 pb-3 clearfix">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                            <span><i class="fa fa-usb text-info"></i> Source of Income</span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                            <span class="text-secondary">Salaried</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <div class="border bg-light pt-3 pb-3 clearfix">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                            <span><i class="fa fa-black-tie text-info"></i> Profession</span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                            <span class="text-secondary">Teacher</span>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <div class="border bg-light pt-3 pb-3 clearfix">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                                <span><i class="fa fa-user text-info"></i> Employer Name</span>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                                <span class="text-secondary">ABC Consultant</span>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <div class="border bg-light pt-3 pb-3 clearfix">
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                                    <span><i class="fa fa-calendar text-info"></i> Duration</span>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                                    <span class="text-secondary">5 Months</span>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <div class="border bg-light pt-3 pb-3 clearfix">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                                <span><i class="fa fa-money text-info"></i> Income</span>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                                <span class="text-secondary">50000</span>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <div class="border bg-light pt-3 pb-3 clearfix">
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                                    <span><i class="fa fa-clock-o text-info"></i> Status </span>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                                    <span class="text-secondary">Current</span>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    
+                        </div>                          
+                </mat-card>
+            </div>
+        </div>
+    </div>
+    
