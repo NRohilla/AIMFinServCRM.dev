@@ -86,7 +86,7 @@ export class ManageExpenseSheetDialog {
 
     UpdateExpenseSheetDetails() {
         debugger;
-        this._ClientsService.UpdateExpenseSheetDetails(this._ManageExpenseSheetDetails).subscribe(res => this.UpdateExpenseSheetDetailsSuccess(res), res => this.UpdateExpenseSheetDetailsError(res));
+        //this._ClientsService.UpdateExpenseSheetDetails(this._ManageExpenseSheetDetails).subscribe(res => this.UpdateExpenseSheetDetailsSuccess(res), res => this.UpdateExpenseSheetDetailsError(res));
     }
     UpdateExpenseSheetDetailsSuccess(res) {
         debugger;
