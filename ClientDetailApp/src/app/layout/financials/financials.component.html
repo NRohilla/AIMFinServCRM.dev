@@ -35,11 +35,17 @@
         </div>
         <div class="qualification-details mt-4">            
             <mat-card class="border">
-                <h4 class="sub-heading text-uppercase text-center pb-2 mb-4">Financials details  <button type="submit" class="btn btn-sm btn-info float-right"><i class="fa fa-pencil"></i> Edit</button></h4>
+                <h4 class="sub-heading text-uppercase text-center position-relative pb-2 mb-4">Financials details
+                    <span class="top-btn">
+                        <input type="button" value="&#xf040; Edit" class="btn btn-sm btn-info" (click)="EditDetails()" *ngIf="!_EditDetails" />
+                        <input type="button" value="&#xf0c7; Save" (click)="UpdateDetails()" *ngIf="_EditDetails" class="btn btn-sm btn-success" />
+                        <input type="button" value="&#xf00d; Cancel" (click)="CancelEditingDetails()" *ngIf="_EditDetails" class="btn btn-sm btn-secondary" />
+                    </span>
+                </h4>
                 <div class="">
                     <div class="row mb-2">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                        <div class="border bg-light pt-3 pb-3 clearfix">
+                        <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                 <span><i class="fa fa-user text-info"></i> Application Form No </span>
                             </div>
@@ -47,9 +53,12 @@
                                 <span class="text-secondary">Deepak Saini</span>
                             </div>
                         </div>
+                        <mat-form-field class="w-100" *ngIf="_EditDetails">
+                            <input matInput placeholder="Application Form No" value="Deepak Saini">
+                        </mat-form-field>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                        <div class="border bg-light pt-3 pb-3 clearfix">
+                        <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                 <span><i class="fa fa-building text-info"></i> Asset Type </span>
                             </div>
@@ -57,11 +66,14 @@
                                 <span class="text-secondary">Residential Property </span>
                             </div>
                         </div>
+                        <mat-form-field class="w-100" *ngIf="_EditDetails">
+                            <input matInput placeholder="Asset Type" value="Residential Property">
+                        </mat-form-field>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                            <div class="border bg-light pt-3 pb-3 clearfix">
+                            <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                 <span><i class="fa fa-life-ring text-info"></i> Details </span>
                             </div>
@@ -69,9 +81,12 @@
                                 <span class="text-secondary"> Credit Details </span>
                             </div>
                         </div>
+                        <mat-form-field class="w-100" *ngIf="_EditDetails">
+                            <input matInput placeholder="Details" value="Credit Details">
+                        </mat-form-field>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                            <div class="border bg-light pt-3 pb-3 clearfix">
+                            <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                     <span><i class="fa fa-money text-info"></i> Net Value </span>
                                 </div>
@@ -79,11 +94,14 @@
                                     <span class="text-secondary"> 458587 </span>
                                 </div>
                             </div>
+                            <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                <input matInput placeholder="Net Value" value="458587">
+                            </mat-form-field>
                             </div>
                         </div>
                         <div class="row mb-2">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                            <div class="border bg-light pt-3 pb-3 clearfix">
+                            <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                 <span><i class="fa fa-user text-info"></i> Ownership </span>
                             </div>
@@ -91,6 +109,9 @@
                                 <span class="text-secondary"> Monthly </span>
                             </div>
                         </div>
+                        <mat-form-field class="w-100" *ngIf="_EditDetails">
+                            <input matInput placeholder="Ownership" value="Monthly">
+                        </mat-form-field>
                         </div>                        
                         </div>                                                  
                     </div>                          

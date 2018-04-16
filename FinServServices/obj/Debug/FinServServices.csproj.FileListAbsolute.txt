@@ -268,8 +268,6 @@ E:\Clients\Nick\FinServServices\bin\Antlr3.Runtime.pdb
 E:\Clients\Nick\FinServServices\obj\Debug\FinServServices.csprojResolveAssemblyReference.cache
 E:\Clients\Nick\FinServServices\obj\Debug\FinServServices.dll
 E:\Clients\Nick\FinServServices\obj\Debug\FinServServices.pdb
-D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServServices\obj\Debug\FinServServices.csprojResolveAssemblyReference.cache
-D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServServices\obj\Debug\FinServServices.csproj.CoreCompileInputs.cache
 D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServServices\bin\roslyn\csc.exe
 D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServServices\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServServices\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -349,5 +347,7 @@ D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServServices\bin\System.W
 D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServServices\bin\System.Web.WebPages.Deployment.xml
 D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServServices\bin\System.Web.WebPages.Razor.xml
 D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServServices\bin\Antlr3.Runtime.pdb
+D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServServices\obj\Debug\FinServServices.csprojResolveAssemblyReference.cache
+D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServServices\obj\Debug\FinServServices.csproj.CoreCompileInputs.cache
 D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServServices\obj\Debug\FinServServices.dll
 D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServServices\obj\Debug\FinServServices.pdb

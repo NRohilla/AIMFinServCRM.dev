@@ -35,11 +35,17 @@
             </div>
             <div class="qualification-details mt-4">            
                 <mat-card class="border">
-                        <h4 class="sub-heading text-uppercase text-center pb-2 mb-4">Employment details  <button type="submit" class="btn btn-sm btn-info float-right"><i class="fa fa-pencil"></i> Edit</button></h4>
+                        <h4 class="sub-heading text-uppercase text-center position-relative pb-2 mb-4">Employment details
+                            <span class="top-btn">
+                                <input type="button" value="&#xf040; Edit" class="btn btn-sm btn-info" (click)="EditDetails()" *ngIf="!_EditDetails" />
+                                <input type="button" value="&#xf0c7; Save" (click)="SaveDetails()" *ngIf="_EditDetails" class="btn btn-sm btn-success" />
+                                <input type="button" value="&#xf00d; Cancel" (click)="CancelEditingDetails()" *ngIf="_EditDetails" class="btn btn-sm btn-secondary" />
+                            </span>
+                        </h4>
                         <div class="">
                             <div class="row mb-2">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                <div class="border bg-light pt-3 pb-3 clearfix">
+                                <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                             <span><i class="fa fa-usb text-info"></i> Source of Income</span>
                                     </div>
@@ -47,31 +53,40 @@
                                             <span class="text-secondary">Salaried</span>
                                     </div>
                                 </div>
+                                <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                    <input matInput placeholder="Source of Income" value="Salaried">
+                                </mat-form-field>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                <div class="border bg-light pt-3 pb-3 clearfix">
+                                <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                            <span><i class="fa fa-black-tie text-info"></i> Profession</span>
+                                        <span><i class="fa fa-black-tie text-info"></i> Profession</span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                            <span class="text-secondary">Teacher</span>
+                                        <span class="text-secondary">Teacher</span>
                                     </div>
                                 </div>
+                                <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                    <input matInput placeholder="Profession" value="Teacher">
+                                </mat-form-field>
                                 </div>
                             </div>
                             <div class="row mb-2">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <div class="border bg-light pt-3 pb-3 clearfix">
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                                <span><i class="fa fa-user text-info"></i> Employer Name</span>
+                                        <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                                    <span><i class="fa fa-user text-info"></i> Employer Name</span>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                                    <span class="text-secondary">ABC Consultant</span>
+                                            </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                                <span class="text-secondary">ABC Consultant</span>
-                                        </div>
-                                    </div>
+                                        <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                            <input matInput placeholder="Employer Name" value="ABC Consultant">
+                                        </mat-form-field>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <div class="border bg-light pt-3 pb-3 clearfix">
+                                        <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                                     <span><i class="fa fa-calendar text-info"></i> Duration</span>
                                             </div>
@@ -79,11 +94,14 @@
                                                     <span class="text-secondary">5 Months</span>
                                             </div>
                                         </div>
-                                        </div>
+                                        <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                            <input matInput placeholder="Duration" value="5 Months">
+                                        </mat-form-field>
+                                    </div>
                                     </div>
                                     <div class="row mb-2">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <div class="border bg-light pt-3 pb-3 clearfix">
+                                        <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                                         <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                                 <span><i class="fa fa-money text-info"></i> Income</span>
                                         </div>
@@ -91,9 +109,12 @@
                                                 <span class="text-secondary">50000</span>
                                         </div>
                                     </div>
+                                    <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                            <input matInput placeholder="Income" value="50000">
+                                        </mat-form-field>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <div class="border bg-light pt-3 pb-3 clearfix">
+                                        <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                                     <span><i class="fa fa-clock-o text-info"></i> Status </span>
                                             </div>
@@ -101,11 +122,14 @@
                                                     <span class="text-secondary">Current</span>
                                             </div>
                                         </div>
+                                        <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                                <input matInput placeholder="Status" value="Current">
+                                            </mat-form-field>
                                         </div>
-                                    </div>
-                                    
+                                    </div>                                    
                         </div>                          
                 </mat-card>
+                   
             </div>
         </div>
     </div>

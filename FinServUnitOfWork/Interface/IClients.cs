@@ -8,6 +8,7 @@ namespace FinServUnitOfWork.Interface
     {
         List<Applicants> GetAllClients();
         List<LoanApplicationForms> GetAllLoanApplications();
+        List<Applicants> GetAllApplicantsByLoanID(Guid loanID);
 
         Applicants GetApplicantDetails(int AutoId);
         Applicants GetClientDetails(string ClientID);
@@ -40,7 +41,7 @@ namespace FinServUnitOfWork.Interface
         bool SaveLoanApplicationCommunicationDetails(ApplicantCommunicationDetails ApplicantCommunicationDetails);
 
         bool AddGuarantor(LoanGuarantorDetails _objGuarantorDetails);
-        List<LoanGuarantorDetails> GetAddedGuarantorGrid();
+        List<LoanGuarantorDetails> GetAddedGuarantorGrid(Guid loanAppID);
         LoanGuarantorDetails GetGuarantorDetails(string GuarntID);
         bool UpdateGuarantorDetails(LoanGuarantorDetails _objUpdateGuartDetails);
 
@@ -56,7 +57,10 @@ namespace FinServUnitOfWork.Interface
 
         bool AddLoanApplicationDetails(LoanApplicationForms LoanApplicationDetails);
         bool AddExpenseSheet(ApplicantExpenseSheet _objApplicantExpenseSheet);
-        List<ApplicantExpenseSheet> GetAddedExpenseSheetGrid(Guid ApplicantID);
+        List<ApplicantExpenseSheet> GetAddedExpenseSheetGrid(Guid LoanAppNo);
         ApplicantExpenseSheet GetExpenseSheetDetails(Guid ApplicantID);
+        bool UpdateExpenseSheetDetails(ApplicantExpenseSheet _objApplicantExpenseSheet);
+        ApplicantQualificationDetails GetQualificationDetailsByAppID(Guid ApplicantID);
+        bool UpdateQualificationDetailsByAppID(ApplicantQualificationDetails _objApplicantQualificationDetails);
     }
 }

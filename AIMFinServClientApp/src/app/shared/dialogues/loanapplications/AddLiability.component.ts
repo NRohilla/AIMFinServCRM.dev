@@ -56,8 +56,8 @@ export class AddLiabilityComponent implements OnInit {
 
     ngOnInit() {
 
-        if (this._LocalStorageService.get("LoanApplicationNoViewed") != undefined) {
-            this.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNoViewed");
+        if (this._LocalStorageService.get("LoanApplicationNo") != undefined) {
+            this.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNo");
             this.GetApplicantNames(this.LoanApplicationNo);
             this._ClientsService.GetAddedLiabilityGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedLiabilityGridSuccess(res), res => this.GetAddedLiabilityGridError(res));
         }

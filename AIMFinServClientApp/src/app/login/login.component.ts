@@ -1,11 +1,11 @@
-import { Component, Injectable, ViewChild, OnInit  } from '@angular/core';
+import { Component, Injectable, ViewChild, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../router.animations';
-import { Form, FormControl, Validators  } from '@angular/forms';
+import { Form, FormControl, Validators } from '@angular/forms';
 import 'rxjs/Rx';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { environment } from '../../environments/environment';
-import {AuthenticateService} from '../services/app.auth.service';
+import { AuthenticateService } from '../services/app.auth.service';
 
 @Component({
     selector: 'app-login',
@@ -41,13 +41,24 @@ export class LoginComponent implements OnInit {
 
     RequestSuccess(result) {
         debugger;
-        if (result._body == "false") {
+        var resultReturned = JSON.parse(result._body);
+
+        if (resultReturned._IsAuthenticated == false) {
             this._FormErrors = true;
             this._FormErrorsDescription = "Invalid Credentials!"
         } else {
             this._LocalStorageService.set('LoggedInEmailId', this._Username.trim());
             localStorage.setItem('isLoggedin', 'true');
-            this.router.navigateByUrl('dashboard');
+            this._LocalStorageService.set('LoggedInUserId', resultReturned._UserID.trim());
+
+            if (resultReturned._RoleDesc == "Client") {
+                this._LocalStorageService.set('LoggedInApplicantId', resultReturned._ApplicantID.trim());
+                window.location.href = "http://localhost:8081/dashboard?LoggedInEmailId=" + this._Username.trim();
+            }
+
+            if (resultReturned._RoleDesc == "Admin" || resultReturned._RoleDesc == "Employee") {
+                this.router.navigateByUrl('dashboard');
+            }
         }
     }
 

@@ -17,7 +17,7 @@ import { NgForm } from '@angular/forms';
 })
 export class ManageExpenseSheetDialog {
     @ViewChild("AddExpenseform")
-    AddGuarantorform: NgForm;
+    AddExpenseform: NgForm;
 
     constructor(
         public dialogRef: MatDialogRef<ManageExpenseSheetDialog>,
@@ -30,6 +30,7 @@ export class ManageExpenseSheetDialog {
     public _objExpenseTypeID = [];
     public _ObjApplicantNames = [];
     errorMessage: "No Data"
+    public LoanApplicationNo: string = '';
 
     public _ManageExpenseSheetDetails = {
         ExpenseID:'',
@@ -38,14 +39,23 @@ export class ManageExpenseSheetDialog {
       ApplicantID:'',
      Description:'',
      Frequency:'',
-      NetAmount:'',
+     NetAmount: '',
+     FirstName:'',
+     _ApplicationID: {
+         FirstName:''
+     }
     };
 
 
     ngOnInit() {
         this.GetExpenseTypes();
         this.GetApplicants();
-        this._ClientsService.GetAddedExpenseSheetGrid(this._ManageExpenseSheetDetails).subscribe(res => this.AddExpenseSheetSuccess(res), res => this.AddExpenseSheetError(res));
+        debugger;
+        if (this._LocalStorageService.get("LoanApplicationNo") != undefined) {
+            this.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNo");
+            this._ClientsService.GetAddedExpenseSheetGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedExpenseSheetGridSuccess(res), res => this.GetAddedExpenseSheetGridError(res));
+        }
+        
     }
 
     AddExpenseSheet() {
@@ -54,25 +64,18 @@ export class ManageExpenseSheetDialog {
         
     }
     AddExpenseSheetSuccess(res) {
+        debugger;
         this._ManageExpenseSheetDetails = JSON.parse(res._body);
-        this.GetAddedExpenseSheetGrid();
+        this._ClientsService.GetAddedExpenseSheetGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedExpenseSheetGridSuccess(res), res => this.GetAddedExpenseSheetGridError(res));
     }
     AddExpenseSheetError(res) { }
 
-    GetAddedExpenseSheetGrid() {
-        debugger;
-        if (this._LocalStorageService.get("ApplicantID") != undefined) {
-            this._ManageExpenseSheetDetails.ApplicantID = this._LocalStorageService.get("ApplicantID");
-            this._ClientsService.GetAddedExpenseSheetGrid(this._ManageExpenseSheetDetails.ApplicantID).subscribe(res => this.GetAddedExpenseSheetGridSuccess(res), res => this.GetAddedExpenseSheetGridError(res));
-        }
-    }
     GetAddedExpenseSheetGridSuccess(res) {
         this.gridData = JSON.parse(res._body);
     }
     GetAddedExpenseSheetGridError(res) { }
 
     ViewDetails(ApplicantID) {
-
         this._ViewDetails = true;
         this._AddExpense = false;
         this._EditViewDetails = false;
@@ -85,25 +88,22 @@ export class ManageExpenseSheetDialog {
     ViewDetailsError(res) { }
 
     UpdateExpenseSheetDetails() {
-        debugger;
-        //this._ClientsService.UpdateExpenseSheetDetails(this._ManageExpenseSheetDetails).subscribe(res => this.UpdateExpenseSheetDetailsSuccess(res), res => this.UpdateExpenseSheetDetailsError(res));
+        this._ClientsService.UpdateExpenseSheetDetails(this._ManageExpenseSheetDetails).subscribe(res => this.UpdateExpenseSheetDetailsSuccess(res), res => this.UpdateExpenseSheetDetailsError(res));
     }
     UpdateExpenseSheetDetailsSuccess(res) {
         debugger;
         this._AddExpense = true;
-        this.AddGuarantorform.reset();
+        this.AddExpenseform.reset();
         this._EditViewDetails = false;
         this._ViewDetails = false;
-        this.GetAddedExpenseSheetGrid();
+        this._ClientsService.GetAddedExpenseSheetGrid(this.LoanApplicationNo).subscribe(res => this.AddExpenseSheetSuccess(res), res => this.AddExpenseSheetError(res));
     }
     UpdateExpenseSheetDetailsError(res) { }
 
     GetExpenseTypes() {
-        debugger;
         this._MasterService.GetExpenseTypes().subscribe(res => this.GetExpenseTypesSuccess(res), error => this.errorMessage = <any>error);
     }
     GetExpenseTypesSuccess(res) {
-        debugger;
         this._objExpenseTypeID = JSON.parse(res._body);
     }
 
@@ -111,7 +111,6 @@ export class ManageExpenseSheetDialog {
         this._MasterService.GetApplicants().subscribe(res => this.GetApplicantsNameSuccess(res), error => this.errorMessage = <any>error);
     }
     GetApplicantsNameSuccess(res) {
-        debugger;
         this._ObjApplicantNames = JSON.parse(res._body);
     }
     EditDetails() {
@@ -121,7 +120,6 @@ export class ManageExpenseSheetDialog {
 
     onNoClick(): void {
         this.dialogRef.close();
-        debugger;
     }
 
 

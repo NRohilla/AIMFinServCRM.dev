@@ -47,8 +47,15 @@ namespace FinServServices.Controllers
         {
             return Repository.GetLoanApplicationDetails(LoanAppNo);
         }
-        
-                
+
+        [HttpGet]
+        [Route("GetAllApplicantsByLoanID")]
+        public List<Applicants> GetAllApplicantsByLoanID(Guid loanID)
+        {
+            return Repository.GetAllApplicantsByLoanID(loanID);
+        }
+
+
         #region Client_Communication_Detail Methods         //Deepak Saini [16-03-2018]
 
         [HttpGet]
@@ -171,9 +178,9 @@ namespace FinServServices.Controllers
         }
         [HttpGet]
         [Route("GetAddedGuarantorGrid")]
-        public List<LoanGuarantorDetails> GetAddedGuarantorGrid()
+        public List<LoanGuarantorDetails> GetAddedGuarantorGrid(Guid loanAppID)
         {
-            return Repository.GetAddedGuarantorGrid();
+            return Repository.GetAddedGuarantorGrid(loanAppID);
         }
   
         [HttpGet]
@@ -257,9 +264,9 @@ namespace FinServServices.Controllers
 
         [HttpGet]
         [Route("GetAddedExpenseSheetGrid")]
-        public List<ApplicantExpenseSheet> GetAddedExpenseSheetGrid(Guid ApplicantID)
+        public List<ApplicantExpenseSheet> GetAddedExpenseSheetGrid(Guid LoanAppNo)
         {
-            return Repository.GetAddedExpenseSheetGrid(ApplicantID);
+            return Repository.GetAddedExpenseSheetGrid(LoanAppNo);
         }
 
         [HttpGet]
@@ -268,6 +275,26 @@ namespace FinServServices.Controllers
         {
             return Repository.GetExpenseSheetDetails(ApplicantID);
         }
+        [HttpPost]
+        [Route("UpdateExpenseSheetDetails")]
+        public bool UpdateExpenseSheetDetails(ApplicantExpenseSheet _objApplicantExpenseSheet)
+        {
+            return Repository.UpdateExpenseSheetDetails(_objApplicantExpenseSheet);
+        }
+
+        [HttpGet]
+        [Route("GetQualificationDetailsByAppID")]
+        public ApplicantQualificationDetails GetQualificationDetailsByAppID(Guid ApplicantID)
+        {
+            return Repository.GetQualificationDetailsByAppID(ApplicantID);
+        }
+        [HttpPost]
+        [Route("UpdateQualificationDetailsByAppID")]
+        public bool UpdateQualificationDetailsByAppID(ApplicantQualificationDetails _objApplicantQualificationDetails)
+        {
+            return Repository.UpdateQualificationDetailsByAppID(_objApplicantQualificationDetails);
+        }
+
 
     }
 }

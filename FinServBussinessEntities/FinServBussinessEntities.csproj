@@ -73,6 +73,7 @@
     <Compile Include="StatusTypeMaster.cs" />
     <Compile Include="UserOps.cs" />
     <Compile Include="UserRole.cs" />
+    <Compile Include="Utility_Classes\AuthenticationDetails.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

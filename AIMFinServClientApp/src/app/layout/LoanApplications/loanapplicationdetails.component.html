@@ -433,7 +433,7 @@
             </kendo-grid-column>
             <kendo-grid-column title="Applicant Type" [filter]="'text'">
                 <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                    <label>{{dataItem._ApplicantTypeMasterID.ApplicantType}}</label>
+                    <label>{{dataItem.ApplicantType}}</label>
                 </ng-template>
             </kendo-grid-column>
             <kendo-grid-command-column>

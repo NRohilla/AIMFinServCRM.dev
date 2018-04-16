@@ -51,9 +51,8 @@ export class AddAssetComponent extends AppBaseComponent implements OnInit{
         @Inject(MAT_DIALOG_DATA) public data: any, private _ClientsService: ClientsService, public dialog: MatDialog, private _MasterService: MastersService, private _LocalStorageService: LocalStorageService, ) { super();}
 
     ngOnInit() {
-        debugger;
-        if (this._LocalStorageService.get("LoanApplicationNoViewed") != undefined) {
-            this.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNoViewed");
+        if (this._LocalStorageService.get("LoanApplicationNo") != undefined) {
+            this.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNo");
             this.GetApplicantNames(this.LoanApplicationNo);
             this._ClientsService.GetAddedAssetGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedAssetGridSuccess(res), res => this.GetAddedAssetGridError(res));
         }
@@ -88,8 +87,8 @@ export class AddAssetComponent extends AppBaseComponent implements OnInit{
     AddAssetError(res) { }
 
     GetAddedAssetGrid() {
-        if (this._LocalStorageService.get("LoanApplicationNoViewed") != undefined) {
-            this._AssetDetailsObj.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNoViewed");
+        if (this._LocalStorageService.get("LoanApplicationNo") != undefined) {
+            this._AssetDetailsObj.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNo");
             this._ClientsService.GetAddedAssetGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedAssetGridSuccess(res), res => this.GetAddedAssetGridError(res));
         }
     }
@@ -100,7 +99,6 @@ export class AddAssetComponent extends AppBaseComponent implements OnInit{
     GetAddedAssetGridError(res) { }
 
     GetApplicantNames(LoanApplicationNo) {
-        debugger;
         this._MasterService.GetApplicantNames(this.LoanApplicationNo).subscribe(res => this.GetApplicantNamesSuccess(res), error => this.errorMessage = <any>error);
         
     }
@@ -134,7 +132,6 @@ export class AddAssetComponent extends AppBaseComponent implements OnInit{
     ViewDetailsError(res) { }
 
     UpdateAssetDetails() {
-        debugger;
         this._ClientsService.UpdateAssetDetails(this._AssetDetailsObj).subscribe(res => this.UpdateAssetDetailsSuccess(res), res => this.UpdateAssetDetailsError(res));
     }
     UpdateAssetDetailsSuccess(res) {

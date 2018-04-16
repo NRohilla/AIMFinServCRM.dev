@@ -24,7 +24,9 @@ export class ClientsService {
     GetClientDetails(ClientID) {
         return this._http.get(this.baseurl + "Clients/GetClientDetails?ClientID=" + ClientID, this.options);
     }
-
+    GetAllApplicantsByLoanID(loanID) {
+        return this._http.get(this.baseurl + "Clients/GetAllApplicantsByLoanID?loanID=" + loanID, this.options);
+    }
     //===== Client_Qualification_Detail Methods CODE START HERE==============  //Deepak Saini [16-03-2018]
     GetClientQualificationDetails(ClientID) {
         return this._http.get(this.baseurl + "Clients/GetClientQualificationDetails?ClientID=" + ClientID, this.options);
@@ -107,11 +109,11 @@ export class ClientsService {
     AddGuarantor(LoanGuarantorDetails) {
         return this._http.post(this.baseurl + "Clients/AddGuarantorDetails", LoanGuarantorDetails, this.options);
     }
-    GetAddedGuarantorGrid() {
-        return this._http.get(this.baseurl + "Clients/GetAddedGuarantorGrid", this.options);
-    }
     GetGuarantorDetails(GuarntID) {
         return this._http.get(this.baseurl + "Clients/GetGuarantorDetails?GuarntID=" + GuarntID, this.options);
+    }
+    GetAddedGuarantorGrid(loanAppID) {
+        return this._http.get(this.baseurl + "Clients/GetAddedGuarantorGrid?loanAppID=" + loanAppID, this.options);
     }
     UpdateGuarantorDetails(LoanGuarantorDetails) {
         return this._http.post(this.baseurl + "Clients/UpdateGuarantorDetails", LoanGuarantorDetails, this.options);
@@ -157,13 +159,18 @@ export class ClientsService {
     AddExpenseSheet(ApplicantExpenseSheet) {
         return this._http.post(this.baseurl + "Clients/AddExpenseSheet", ApplicantExpenseSheet, this.options);
     }
-    GetAddedExpenseSheetGrid(ApplicantID) {
-        return this._http.get(this.baseurl + "Clients/GetAddedExpenseSheetGrid?ApplicantID=" + ApplicantID, this.options);
+    GetAddedExpenseSheetGrid(LoanAppNo) {
+        return this._http.get(this.baseurl + "Clients/GetAddedExpenseSheetGrid?LoanAppNo=" + LoanAppNo, this.options);
     }
     GetExpenseSheetDetails(ApplicantID) {
         return this._http.get(this.baseurl + "Clients/GetExpenseSheetDetails?ApplicantID=" + ApplicantID, this.options);
     }
-
+    UpdateExpenseSheetDetails(ApplicantExpenseSheet) {
+        return this._http.post(this.baseurl + "Clients/UpdateExpenseSheetDetails", ApplicantExpenseSheet, this.options);
+    }
+    GetQualificationDetails(ApplicantID) {
+        return this._http.post(this.baseurl + "Clients/GetQualificationDetails?=ApplicantID" + ApplicantID, this.options);
+    }
 }
 
 

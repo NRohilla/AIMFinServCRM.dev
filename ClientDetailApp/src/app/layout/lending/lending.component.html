@@ -43,11 +43,17 @@
         </div>
         <div class="qualification-details mt-4">            
             <mat-card class="border">
-                <h4 class="sub-heading text-uppercase text-center pb-2 mb-4">Lending Form details  <button type="submit" class="btn btn-sm btn-info float-right"><i class="fa fa-pencil"></i> Edit</button></h4>
+                <h4 class="sub-heading text-uppercase text-center position-relative pb-2 mb-4">Lending Form details
+                    <span class="top-btn">
+                        <input type="button" value="&#xf040; Edit" class="btn btn-sm btn-info" (click)="EditDetails()" *ngIf="!_EditDetails" />
+                        <input type="button" value="&#xf0c7; Save" (click)="UpdateDetails()" *ngIf="_EditDetails" class="btn btn-sm btn-success" />
+                        <input type="button" value="&#xf00d; Cancel" (click)="CancelEditingDetails()" *ngIf="_EditDetails" class="btn btn-sm btn-secondary" />
+                    </span>
+                </h4>
                 <div class="">
                     <div class="row mb-2">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                        <div class="border bg-light pt-3 pb-3 clearfix">
+                        <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                 <span><i class="fa fa-file-text-o text-info"></i> Application Form No </span>
                             </div>
@@ -55,9 +61,12 @@
                                 <span class="text-secondary">NZ-001</span>
                             </div>
                         </div>
+                        <mat-form-field class="w-100" *ngIf="_EditDetails">
+                            <input matInput placeholder="Application Form No" value="NZ-001">
+                        </mat-form-field>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                        <div class="border bg-light pt-3 pb-3 clearfix">
+                        <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                 <span><i class="fa fa-id-card text-info"></i> Client Id </span>
                             </div>
@@ -65,11 +74,14 @@
                                 <span class="text-secondary"> C12345 </span>
                             </div>
                         </div>
+                        <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                <input matInput placeholder="Client Id" value="C12345">
+                            </mat-form-field>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                            <div class="border bg-light pt-3 pb-3 clearfix">
+                            <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                 <span><i class="fa fa-life-ring text-info"></i> Term </span>
                             </div>
@@ -77,9 +89,12 @@
                                 <span class="text-secondary"> 6 years </span>
                             </div>
                         </div>
+                        <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                <input matInput placeholder="Term" value="6 years">
+                            </mat-form-field>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                            <div class="border bg-light pt-3 pb-3 clearfix">
+                            <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                     <span><i class="fa fa-percent text-info"></i> Rate Type </span>
                                 </div>
@@ -87,11 +102,14 @@
                                     <span class="text-secondary"> 10% </span>
                                 </div>
                             </div>
+                            <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                    <input matInput placeholder="Rate Type" value="10%">
+                                </mat-form-field>
                             </div>
                         </div>
                         <div class="row mb-2">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                            <div class="border bg-light pt-3 pb-3 clearfix">
+                            <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                 <span><i class="fa fa-spinner text-info"></i> Frequency </span>
                             </div>
@@ -99,9 +117,12 @@
                                 <span class="text-secondary"> Monthly </span>
                             </div>
                         </div>
+                        <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                <input matInput placeholder="Frequency" value="Monthly">
+                            </mat-form-field>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                            <div class="border bg-light pt-3 pb-3 clearfix">
+                            <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                     <span><i class="fa fa-building text-info"></i> Property Type </span>
                                 </div>
@@ -109,11 +130,14 @@
                                         <span class="text-secondary"> Self Owned </span>
                                 </div>
                             </div>
+                            <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                    <input matInput placeholder="Property Type" value="Self Owned">
+                                </mat-form-field>
                             </div>
                         </div>
                         <div class="row mb-2">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                <div class="border bg-light pt-3 pb-3 clearfix">
+                                <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                         <span><i class="fa fa-clock-o text-info"></i> Status </span>
                                     </div>
@@ -121,9 +145,12 @@
                                         <span class="text-secondary"> Current </span>
                                     </div>
                                 </div>
+                                <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                        <input matInput placeholder="Status" value="Current">
+                                    </mat-form-field>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                <div class="border bg-light pt-3 pb-3 clearfix">
+                                <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                         <span><i class="fa fa-calendar text-info"></i> EMI Start Date </span>
                                     </div>
@@ -131,11 +158,14 @@
                                         <span class="text-secondary"> 15 March 2018 </span>
                                     </div>
                                 </div>
+                                <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                        <input matInput placeholder="EMI Start Date" value="15 March 2018">
+                                    </mat-form-field>
                             </div>                                     
                         </div>
                         <div class="row mb-2">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                <div class="border bg-light pt-3 pb-3 clearfix">
+                                <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                         <span><i class="fa fa-money text-info"></i> Loan Processing Fee </span>
                                     </div>
@@ -143,9 +173,12 @@
                                         <span class="text-secondary"> 1000 </span>
                                     </div>
                                 </div>
+                                <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                        <input matInput placeholder="Loan Processing Fee" value="1000">
+                                    </mat-form-field>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                <div class="border bg-light pt-3 pb-3 clearfix">
+                                <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                         <span><i class="fa fa-bank text-info"></i> Loan Provider </span>
                                     </div>
@@ -153,11 +186,14 @@
                                         <span class="text-secondary"> HDFC Bank </span>
                                     </div>
                                 </div>
+                                <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                        <input matInput placeholder="Loan Provider" value="HDFC Bank">
+                                    </mat-form-field>
                             </div>                                     
                         </div>
                         <div class="row mb-2">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                <div class="border bg-light pt-3 pb-3 clearfix">
+                                <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                         <span><i class="fa fa-sitemap text-info"></i> ROI Offered </span>
                                     </div>
@@ -165,9 +201,12 @@
                                         <span class="text-secondary"> Principal and Interest </span>
                                     </div>
                                 </div>
+                                <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                        <input matInput placeholder="ROI Offered" value="Principal and Interest">
+                                    </mat-form-field>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                <div class="border bg-light pt-3 pb-3 clearfix">
+                                <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                         <span><i class="fa fa-dollar text-info"></i> Type of Loan </span>
                                     </div>
@@ -175,11 +214,14 @@
                                         <span class="text-secondary"> Personal </span>
                                     </div>
                                 </div>
+                                <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                        <input matInput placeholder="Type of Loan" value="Personal">
+                                    </mat-form-field>
                             </div>                                     
                         </div>
                         <div class="row mb-2">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                <div class="border bg-light pt-3 pb-3 clearfix">
+                                <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                         <span><i class="fa fa-money text-info"></i> Loan Amounf Offered </span>
                                     </div>
@@ -187,9 +229,12 @@
                                         <span class="text-secondary"> 500000 </span>
                                     </div>
                                 </div>
+                                <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                        <input matInput placeholder=" Loan Amounf Offered" value="500000">
+                                    </mat-form-field>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                <div class="border bg-light pt-3 pb-3 clearfix">
+                                <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                         <span><i class="fa fa-list-alt text-info"></i> No. of EMI </span>
                                     </div>
@@ -197,11 +242,14 @@
                                         <span class="text-secondary"> 72 </span>
                                     </div>
                                 </div>
+                                <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                        <input matInput placeholder="No. of EMI" value="72">
+                                    </mat-form-field>
                             </div>                                     
                         </div>
                         <div class="row mb-2">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                <div class="border bg-light pt-3 pb-3 clearfix">
+                                <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                         <span><i class="fa fa-percent text-info"></i> Loan Value Ratio </span>
                                     </div>
@@ -209,9 +257,12 @@
                                         <span class="text-secondary"> 3% </span>
                                     </div>
                                 </div>
+                                <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                        <input matInput placeholder="Loan Value Ratio" value="3%">
+                                    </mat-form-field>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                <div class="border bg-light pt-3 pb-3 clearfix">
+                                <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                         <span><i class="fa fa-money text-info"></i> Any Legal Charges </span>
                                     </div>
@@ -219,6 +270,9 @@
                                         <span class="text-secondary"> 0 </span>
                                     </div>
                                 </div>
+                                <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                        <input matInput placeholder="Any Legal Charges" value="0">
+                                    </mat-form-field>
                             </div>                                     
                         </div>                                                        
                     </div>                          

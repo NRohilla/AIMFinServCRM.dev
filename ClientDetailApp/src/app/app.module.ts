@@ -18,7 +18,7 @@ import {LoanApplicationDetailDialog} from './shared/dialogues/loanapplications/L
 import {ClientDetailsDialog} from './shared/dialogues/clients/ClientDetailsDialog';
 import {PersonalDetailsComponent} from './layout/communication/components/app.personaldetails';
 import {EmployementComponent} from './layout/communication/components/app.employementdetails';
-import {QualificationDetailsComponent} from './layout/communication/components/app.qualificationdetails';
+import { QualificationDetailsComponent } from './layout/communication/components/app.qualificationdetails';
 
 import {MaterialModule} from './shared/app.material';
 import { CommunicationDialog } from './layout/communication/communicationDialog/communicationDialog';
@@ -52,9 +52,16 @@ export function createTranslateLoader(http: HttpClient) {
             storageType: 'localStorage'
         })
     ],
-    declarations: [AppComponent, LoanApplicationDetailDialog, PersonalDetailsComponent, EmployementComponent, QualificationDetailsComponent, ClientDetailsDialog,CommunicationDialog],
+    declarations: [AppComponent,
+        LoanApplicationDetailDialog,
+        PersonalDetailsComponent,
+        EmployementComponent,
+        QualificationDetailsComponent,
+        ClientDetailsDialog,
+        CommunicationDialog],
+
     providers: [AuthGuard],
     bootstrap: [AppComponent],
-    entryComponents: [LoanApplicationDetailDialog, ClientDetailsDialog,CommunicationDialog]
+    entryComponents: [LoanApplicationDetailDialog, ClientDetailsDialog, CommunicationDialog]
 })
 export class AppModule { }

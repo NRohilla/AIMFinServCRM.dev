@@ -81,7 +81,7 @@
                                 <p *ngIf="_ViewDetails">{{_ManageExpenseSheetDetails.NetAmount}}</p>
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddExpense">
-                                        <input matInput placeholder="Net Amount" name="Ownership" [(ngModel)]="_ManageExpenseSheetDetails.NetAmount" class="w-100" #NetAmount required>
+                                        <input matInput placeholder="Net Amount" name="NetAmount" [(ngModel)]="_ManageExpenseSheetDetails.NetAmount" class="w-100" #NetAmount required>
                                         <div *ngIf="NetAmount.invalid && (NetAmount.dirty || NetAmount.touched)" class="alert alert-danger">
                                             <div *ngIf="NetAmount.errors.required ">
                                                 Please enter Net Amount.

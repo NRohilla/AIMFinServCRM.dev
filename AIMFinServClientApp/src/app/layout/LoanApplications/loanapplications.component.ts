@@ -114,14 +114,12 @@ export class LoanapplicationsComponent implements OnInit {
         this.gridData = JSON.parse(Res._body);
     }
     ViewDetails(LoanApplicationNo) {
-        debugger;
         this._LocalStorageService.set("LoanApplicationNo", LoanApplicationNo);
         this.router.navigateByUrl('loanapplications/loanapplicationdetails');
 
     }
     
     AddLoanAplicationForm() {
-        debugger;
         this.router.navigateByUrl('loanapplications/addloanaaplication');
     }
         
