@@ -1,11 +1,46 @@
-.profile-section {float: left; width: 235px; box-sizing: border-box;}
-.profile { background: #57777b; max-height: 68px;}
-.profile h3 {font-size: 18px; padding-top: 18px; padding-left: 5px; }
-.client-pic { max-width: 60px; }
- .client-pic img { max-width: 60px; border-radius: 50%; }
-.headsection { margin-bottom: 20px; margin-left: 0px; margin-right: 0px; margin-top: 0px; padding: 0px; background: #f2f2f2; padding: 9px 15px; }
-.headsection ul li { display: block; padding: 5px 10px; float: left; }
-.headsection ul li button {
+.profile-section {
+    float: left;
+    width: 235px;
+    box-sizing: border-box;
+}
+
+.profile {
+    background: #57777b;
+    max-height: 68px;
+}
+
+    .profile h3 {
+        font-size: 18px;
+        padding-top: 18px;
+        padding-left: 5px;
+    }
+
+.client-pic {
+    max-width: 60px;
+}
+
+    .client-pic img {
+        max-width: 60px;
+        border-radius: 50%;
+    }
+
+.headsection {
+    margin-bottom: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    padding: 0px;
+    background: #f2f2f2;
+    padding: 9px 15px;
+}
+
+    .headsection ul li {
+        display: block;
+        padding: 5px 10px;
+        float: left;
+    }
+
+        .headsection ul li button {
             line-height: 20px;
             text-transform: uppercase;
             font-size: 11px;
@@ -196,8 +231,6 @@
 }
 
 
-
-
 /* new design */
 
 .profile-pic {
@@ -217,3 +250,45 @@
 input[type="button"], input[type="submit"] {
     font-family: FontAwesome;
 }
+/*.edit-hover { position: absolute; z-index: 10; background: #ffffff url(assets/images/edit.png) no-repeat right 80px; display: none; top:0px; width: 150px; height: 150px; border-radius: 50%; top: -70px; cursor: pointer;}
+.profile-pic:hover .edit-hover { display: block; opacity: .7;}
+.info-field.position-relative:hover .edit-info { display: block; }
+.info-field.position-relative:hover { opacity: .8;}*/
+.personal-innersection {
+    background: #ececec;
+    border-radius: 5px;
+}
+
+.edit-info {
+    position: absolute;
+    z-index: 10;
+    top: 20px;
+    right: 10px;
+    cursor: pointer;
+    padding: 8px 10px;
+    ;
+    width: 45px;
+    height: 45px;
+}
+
+    .edit-info i {
+        color: #09802d;
+        font-size: 27px;
+    }
+
+    .edit-info:hover {
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+    }
+
+        .edit-info:hover i {
+            color: #660909;
+        }
+
+.personal-innersection .top-btn {
+    z-index: 10;
+    top: 20px;
+    right: 10px;
+}
+
+.personal-details { max-height:50vh; overflow-y:auto;}

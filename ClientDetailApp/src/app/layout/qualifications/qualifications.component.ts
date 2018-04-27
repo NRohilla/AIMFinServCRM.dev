@@ -6,21 +6,37 @@ import { LocalStorageService } from 'angular-2-local-storage';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatTableDataSource } from '@angular/material';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { ClientsService } from '../../services/app.clients.service';
+import 'rxjs/add/observable/of';
+import { MatTableModule, MatPaginator, MatSort } from '@angular/material';
+import { DataSource } from '@angular/cdk/table';
+declare var jquery: any;
+declare var $: any;
+
+export interface Element {
+    UniversityName: string,
+    CourseName: string,
+    TypeOfQualification: string,
+    PassingYear: string,
+}
 
 @Component({
     templateUrl: './qualifications.component.html',
     animations: [routerTransition()],
     providers: [ClientsService]
 })
+
 export class QualificationsComponent implements OnInit {
-    public _ViewApplicationDetails: boolean = false;
-    public gridData: any[];
     public _EditDetails: boolean = false;
     public ApplicantID: string = '';
 
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatSort) sort: MatSort;
+
+    public displayedColumns = ['University Name', 'Course Name', 'TypeOfQualification', 'PassingYear'];
+    public dataSource: any;
     public QualificationDetails = {
         QualificationID: '',
         ApplicantID: '',
@@ -28,54 +44,87 @@ export class QualificationsComponent implements OnInit {
         PassingYear: '',
         CourseName: '',
         UniversityName: '',
-        TypeOfQualification: ''
+        TypeOfQualification: '',
+        Qualifications: ''
     };
 
-
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, public dialog: MatDialog) { }
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, public dialog: MatDialog) {
+        this._ClientsService.GetMatQualificationDataByAppID(this._LocalStorageService.get("LoggedInApplicantId")).subscribe(res => this.GetMatQualificationDataByAppIDSuccess(res), res => this.GetMatQualificationDataByAppIDError(res))
+    }
 
     ngOnInit() {
+        this.QualificationDetails = {
+            QualificationID: '',
+            ApplicantID: '',
+            FirstName: '',
+            PassingYear: '',
+            CourseName: '',
+            UniversityName: '',
+            TypeOfQualification: '',
+            Qualifications: ''
+        };
 
-        if (this._LocalStorageService.get("ApplicantID") != undefined) {
-            this.ApplicantID = this._LocalStorageService.get("ApplicantID");
-            this._ClientsService.GetQualificationDetailsByAppID(this.ApplicantID).subscribe(res => this.GetQualificationDetailsSuccess(res), res => this.GetQualificationDetailsError(res));
+        this.ApplicantID = this._LocalStorageService.get("LoggedInApplicantId");
+        this._ClientsService.GetQualificationDetailsByAppID(this.ApplicantID).subscribe(res => this.GetQualificationDetailsSuccess(res), res => this.GetQualificationDetailsError(res));
 
-        }
+        $(document).ready(function () {
+            $(".content-section").parent().parent().parent().parent().parent().css("background", "#ffffff");
+        });
     }
+
+    GetMatQualificationDataByAppIDSuccess(res) {
+        debugger;
+        this.dataSource = new MatTableDataSource<Element>(JSON.parse(res._body));
+        this.dataSource.paginator = this.paginator;
+    }
+
+    GetMatQualificationDataByAppIDError(res) { }
+
     GetQualificationDetailsSuccess(res) {
         this.QualificationDetails = JSON.parse(res._body);
     }
+
     GetQualificationDetailsError(res) {
     }
 
-    UpdateDetails() {
-        this._EditDetails = false;
+    GetQualificationDetailsGridSuccess(res) {
+        this.dataSource = JSON.parse(res._body);
+    }
+
+    GetQualificationDetailsGridError(res) {
+    }
+
+   UpdateDetails() {
         this._ClientsService.UpdateQualificationDetailsByAppID(this.QualificationDetails).subscribe(res => this.UpdateQualificationDetailsByAppIDSuccess(res), res => this.UpdateQualificationDetailsByAppIDError(res));
     }
-    UpdateQualificationDetailsByAppIDSuccess(res) {
+
+   UpdateQualificationDetailsByAppIDSuccess(res)
+   {
+        this._EditDetails = false;
+        this._ClientsService.GetQualificationDetailsByAppID(this.ApplicantID).subscribe(res => this.GetQualificationDetailsSuccess(res), res => this.GetQualificationDetailsError(res));
+    }
+
+    UpdateQualificationDetailsByAppIDError(res) {
+    }
+
+    CancelEditingDetails() {
+        this._EditDetails = false;
+    }
+
+    ViewDetails(QualificationID)
+    {
+        this._ClientsService.ViewQualificationDetailsByAppID(QualificationID).subscribe(res => this.ViewQualificationDetailsByAppIDSuccess(res), res => this.ViewQualificationDetailsByAppIDError(res));
+    }
+
+    ViewQualificationDetailsByAppIDSuccess(res)
+    {
+        this._EditDetails = false;
         this.QualificationDetails = JSON.parse(res._body);
     }
-    UpdateQualificationDetailsByAppIDError(res) { }
 
-    CancelEditingDetails() { this._EditDetails = false; }
+    ViewQualificationDetailsByAppIDError(res) { }
 
     EditDetails() {
         this._EditDetails = true;
     }
-    displayedColumns = ['position', 'name', 'regular', 'passing'];
-    dataSource = ELEMENT_DATA;
-
-
-}
-
-export interface Element {
-    name: string;
-    position: number;
-    regular: string;
-    passing: number;
-}
-const ELEMENT_DATA: Element[] = [
-    { position: 1, name: 'B. Tech.', regular: 'Regular', passing: 2010 },
-    { position: 1, name: '10 +2 .', regular: 'Regular', passing: 2006 },
-    { position: 1, name: '10th', regular: 'Regular', passing: 2004 }
-];
+} 

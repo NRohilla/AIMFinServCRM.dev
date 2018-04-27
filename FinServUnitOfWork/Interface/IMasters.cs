@@ -30,6 +30,7 @@ namespace FinServUnitOfWork.Interface
 
         List<Applicants> GetApplicantNames(string loanappno);
         List<Applicants> GetApplicants();
+        List<AddressTypeMaster> GetAddressTypes();
 
         //switch status
         bool SwitchApplicantEntityStatus(int ID);

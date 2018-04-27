@@ -1,4 +1,4 @@
-﻿import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
+import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../../router.animations';
 import { Form, FormControl, FormBuilder, Validators  } from '@angular/forms';
@@ -8,6 +8,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
+declare var jquery: any;
+declare var $: any;
 
 
 @Component({
@@ -22,6 +24,9 @@ export class FinancialsComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
+        $(document).ready(function () {
+            $(".content-section").parent().parent().parent().parent().parent().css("background", "#ffffff");
+        });
         
     }
 

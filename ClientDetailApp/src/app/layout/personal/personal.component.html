@@ -1,229 +1,181 @@
-﻿<!--<div class="content-section"><h3 class="text-uppercase pb-2 text-center">Personal</h3></div>-->
-<div class="content-section pt-5" style="background: #56767b; margin-left:-15px; margin-right:-15px; margin-top:-5px !important; height: 88vh; padding-left:15px; padding-right:15px;">
+<!--<div class="content-section"><h3 class="text-uppercase pb-2 text-center">Personal</h3></div>-->
+<div class="content-section pt-5 personal-content">
     <div class="col-lg-12 col-md-12 col-sm-12 col-12 mt-5">
-        <div class="table-active p-4" style="background: #ececec; border-radius: 5px;">
-            <div class="profile-pic mb-5">
-                <img src="assets/images/profile/nouser.jpg" />
-                <h6 class="text-center font-weight-bold text-uppercase pt-1 mb-0">Nicholas Alcock </h6>
-                <span class="d-block text-center text-secondary"><em>Alcock</em></span>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left pb-4 pt-1" style="border-right: 2px solid #ccc;">
-                    <h5 class="sub-heading text-uppercase font-weight-bold">Basic Information</h5>
-                    <div class="border bg-white pt-3 pb-3 clearfix">
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                <span><i class="fa fa-user text-info"></i> Name</span>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                <span class="text-secondary">Nicholas Alcock</span>
-                        </div>
-                    </div>
-                    <div class="border bg-white pt-3 pb-3 clearfix">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                    <span><i class="fa fa-calendar text-info"></i> Date of Birth</span>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                    <span class="text-secondary">12/03/1992</span>
-                            </div>
-                            
-                    </div>
-                    <div class="border bg-white pt-3 pb-3 clearfix">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                    <span><i class="fa fa-user text-info"></i> Gender</span>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                    <span class="text-secondary">Male</span>
-                            </div>
-                            
-                    </div>
-                    <div class="border bg-white pt-3 pb-3 clearfix">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                    <span><i class="fa fa-user text-info"></i> Marital Status</span>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                    <span class="text-secondary">Married</span>
-                            </div>
-                            
-                    </div>
-                    <div class="border bg-white pt-3 pb-3 clearfix">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                    <span><i class="fa fa-mobile text-info"></i> Mobile No.</span>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                    <span class="text-secondary">972568458</span>
-                            </div>
-
-                    </div>
-                    <div class="border bg-white pt-3 pb-3 clearfix">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                    <span><i class="fa fa-phone text-info"></i> Home Phone No.</span>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                    <span class="text-secondary">972568458</span>
-                            </div>
-
-                    </div>                    
+        <form name="form" #Personalform="ngForm" novalidate>
+            <div class="table-active p-4 position-relative personal-innersection">
+                <div class="profile-pic mb-5">
+                    <img src="assets/images/profile/nouser.jpg" />
+                    <h6 class="text-center font-weight-bold text-uppercase pt-1 mb-0">{{PersonalDetails.FirstName}}{{PersonalDetails.MiddleName}}{{PersonalDetails.LastName}} </h6>
+                    <span class="d-block text-center text-secondary"><em>{{PersonalDetails.MobileNo}}</em></span>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                    <h5 class="sub-heading text-uppercase font-weight-bold">Main Information</h5>
-                    <div class="border bg-white pt-3 pb-3 clearfix">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                    <span><i class="fa fa-map-marker text-info"></i> Home Address</span>
+                <div class="edit-info text-center" (click)="EditPersonalDetails()" *ngIf="!_EditPersonalDetails">
+                    <i class="fa fa-pencil"></i>
+                </div>
+                <div class="top-btn position-absolute" *ngIf="_EditPersonalDetails">
+                    <input type="button" value="&#xf0c7; Save" (click)="UpdateDetails()" [disabled]="!Personalform.form.valid" class="btn btn-sm btn-success" />
+                    <input type="button" value="&#xf00d; Cancel" (click)="CancelEditingPersonalDetails()" *ngIf="_EditPersonalDetails" class="btn btn-sm btn-secondary" />
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left pb-4 pt-1" style="border-right: 2px solid #ccc;">
+                        <h5 class="sub-heading text-uppercase font-weight-bold">Basic Information</h5>
+                        <div class="personal-details">
+                            <div [ngClass]="{'bg-white p-3':_EditPersonalDetails}">
+                                <div class="border bg-white pt-3 pb-3 clearfix" *ngIf="!_EditPersonalDetails">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-user text-info"></i> Name</span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary">{{_PersonInfo}}</span>
+                                    </div>
+                                </div>
+                                <mat-form-field class="w-100" *ngIf="_EditPersonalDetails">
+                                    <input matInput placeholder="Title" [(ngModel)]="PersonalDetails.Title" name="title" #title="ngModel" required>
+                                    <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+                                        <div *ngIf="title.errors.required"></div>
+                                        Please enter Title.
+                                    </div>
+                                </mat-form-field>
+                                <mat-form-field class="w-100" *ngIf="_EditPersonalDetails">
+                                    <input matInput placeholder="First Name" [(ngModel)]="PersonalDetails.FirstName" name="FirstName" #FirstName="ngModel" required>
+                                    <div *ngIf="FirstName.invalid && (FirstName.dirty || FirstName.touched)" class="alert alert-danger">
+                                        <div *ngIf="FirstName.errors.required"></div>
+                                        Please enter First Name.
+                                    </div>
+                                </mat-form-field>
+                                <mat-form-field class="w-100" *ngIf="_EditPersonalDetails">
+                                    <input matInput placeholder="Middle Name" [(ngModel)]="PersonalDetails.MiddleName" name="MiddleName" >
+                                </mat-form-field>
+                                <mat-form-field class="w-100" *ngIf="_EditPersonalDetails">
+                                    <input matInput placeholder="Last Name" [(ngModel)]="PersonalDetails.LastName" name="LastName" >
+                                </mat-form-field>
+                                <div class="border bg-white pt-3 pb-3 clearfix" *ngIf="!_EditPersonalDetails">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-calendar text-info"></i> Date of Birth</span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary">{{PersonalDetails.DateOfBirth}}</span>
+                                    </div>
+                                </div>
+                                <mat-form-field class="w-100" *ngIf="_EditPersonalDetails">
+                                    <input matInput placeholder="Date of Birth" [(ngModel)]="PersonalDetails.LastName" name="LastName" #LastName="ngModel" required>
+                                    <div *ngIf="LastName.invalid && (LastName.dirty || LastName.touched)" class="alert alert-danger">
+                                        <div *ngIf="LastName.errors.required"></div>
+                                        Please enter Last Name.
+                                    </div>
+                                </mat-form-field>
+                                <div class="border bg-white pt-3 pb-3 clearfix" *ngIf="!_EditPersonalDetails">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-user text-info"></i> Gender</span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary">{{PersonalDetails.Gender}}</span>
+                                    </div>
+
+                                </div>
+                                <mat-form-field class="w-100" *ngIf="_EditPersonalDetails">
+                                    <input matInput placeholder="Gender" [(ngModel)]="PersonalDetails.Gender" name="Gender" #Gender="ngModel" required>
+                                    <div *ngIf="Gender.invalid && (Gender.dirty || Gender.touched)" class="alert alert-danger">
+                                        <div *ngIf="Gender.errors.required"></div>
+                                        Please enter Gender.
+                                    </div>
+                                </mat-form-field>
+                                <div class="border bg-white pt-3 pb-3 clearfix" *ngIf="!_EditPersonalDetails">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-user text-info"></i> Marital Status</span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary">{{PersonalDetails.MaritalStatus}}</span>
+                                    </div>
+                                </div>
+                                <mat-form-field class="w-100" *ngIf="_EditPersonalDetails">
+                                    <input matInput placeholder="Marital Status" [(ngModel)]="PersonalDetails.MaritalStatus" name="MaritalStatus" #MaritalStatus="ngModel" required>
+                                    <div *ngIf="MaritalStatus.invalid && (MaritalStatus.dirty || MaritalStatus.touched)" class="alert alert-danger">
+                                        <div *ngIf="MaritalStatus.errors.required"></div>
+                                        Please enter Marital Status.
+                                    </div>
+                                </mat-form-field>
+                                <div class="border bg-white pt-3 pb-3 clearfix" *ngIf="!_EditPersonalDetails">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-mobile text-info"></i> Mobile No.</span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary">{{PersonalDetails.MobileNo}}</span>
+                                    </div>
+                                </div>
+                                <mat-form-field class="w-100" *ngIf="_EditPersonalDetails">
+                                    <input matInput placeholder="Mobile No." [(ngModel)]="PersonalDetails.MobileNo" name="MobileNo" #MobileNo="ngModel" required>
+                                    <div *ngIf="MobileNo.invalid && (MobileNo.dirty || MobileNo.touched)" class="alert alert-danger">
+                                        <div *ngIf="MobileNo.errors.required"></div>
+                                        Please enter Mobile No.
+                                    </div>
+                                </mat-form-field>
+                                <div class="border bg-white pt-3 pb-3 clearfix" *ngIf="!_EditPersonalDetails">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-phone text-info"></i> Home Phone No.</span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary">{{PersonalDetails.HomePhoneNo}}</span>
+                                    </div>
+                                </div>
+                                <mat-form-field class="w-100" *ngIf="_EditPersonalDetails">
+                                    <input matInput placeholder="Mobile No." [(ngModel)]="PersonalDetails.HomePhoneNo" name="HomePhoneNo" #HomePhoneNo="ngModel" required>
+                                    <div *ngIf="HomePhoneNo.invalid && (HomePhoneNo.dirty || HomePhoneNo.touched)" class="alert alert-danger">
+                                        <div *ngIf="HomePhoneNo.errors.required"></div>
+                                        Please enter Home Phone No.
+                                    </div>
+                                </mat-form-field>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                    <span class="text-secondary"> 405, Street no. 1 Wellington <br />New Zealand - 5010 </span>
-                            </div>
-                        
+                        </div>
                     </div>
-                    <div class="border bg-white pt-3 pb-3 clearfix">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                    <span><i class="fa fa-map-marker text-info"></i> Work Address</span>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                        <h5 class="sub-heading text-uppercase font-weight-bold">Contact Information</h5>
+                        <div class="personal-details">
+                            <div *ngFor="let _Address of CommunicationDetails">
+                                <div class="border bg-white pt-3 pb-3 clearfix" *ngIf="_Address.AddressType==1 || _Address.AddressType==2">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-map-marker text-info"></i> {{_Address.Type}} : Address</span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary">{{_Address.AddressLine1}} {{_Address.AddressLine2}}{{_Address.AddressLine3}}{{_Address.ZipCode}}{{_Address.Country}} </span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                    <span class="text-secondary"> 405, Street no. 1 Wellington <br />New Zealand - 5010 </span>
+                            <div [ngClass]="{'bg-white p-3 mt-1':_EditPersonalDetails}">
+                                <div class="border bg-white pt-3 pb-3 clearfix" *ngIf="!_EditPersonalDetails">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-envelope text-info"></i> Email Id</span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-primary">{{PersonalDetails.EmailID}}</span>
+                                    </div>
+                                </div>
+                                <mat-form-field class="w-100" *ngIf="_EditPersonalDetails">
+                                    <input matInput placeholder="Email Id" [(ngModel)]="PersonalDetails.EmailID" name="EmailID" #EmailID="ngModel" required>
+                                    <div *ngIf="EmailID.invalid && (EmailID.dirty || EmailID.touched)" class="alert alert-danger">
+                                        <div *ngIf="EmailID.errors.required"></div>
+                                        Please enter Email ID.
+                                    </div>
+                                </mat-form-field>
+                                <div class="border bg-white pt-3 pb-3 clearfix" *ngIf="!_EditPersonalDetails">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-phone text-info"></i> Work Phone No.</span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary">{{PersonalDetails.WorkPhoneNo}}</span>
+                                    </div>
+                                </div>
+                                <mat-form-field class="w-100" *ngIf="_EditPersonalDetails">
+                                    <input matInput placeholder=" Work Phone No." [(ngModel)]="PersonalDetails.WorkPhoneNo" name="WorkPhoneNo" #WorkPhoneNo="ngModel" required>
+                                    <div *ngIf="WorkPhoneNo.invalid && (WorkPhoneNo.dirty || WorkPhoneNo.touched)" class="alert alert-danger">
+                                        <div *ngIf="WorkPhoneNo.errors.required"></div>
+                                        Please enter Work Phone No.
+                                    </div>
+                                </mat-form-field>
                             </div>
+                        </div>
                     </div>
-                    <div class="border bg-white pt-3 pb-3 clearfix">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                    <span><i class="fa fa-envelope text-info"></i> Email Id</span>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                    <span class="text-primary">abc@gmail.com</span>
-                            </div>
-                    </div>
-                    <div class="border bg-white pt-3 pb-3 clearfix">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                    <span><i class="fa fa-phone text-info"></i> Work Phone No.</span>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                    <span class="text-secondary">972568458</span>
-                            </div>
-                    </div>              
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
-<!--<div class="content-section">
-    <div class="col-lg-12 col-md-12">
-        <h3 class="text-uppercase border-bottom pb-2">Personal</h3>
-        <div class="content-area mt-4 position-relative clearfix">
-            <div class="col-lg-12 col-md-12">
-                <div class="bg-white border pl-2 pr-2 pt-4 pb-4 m-2">
-                    <div class="row pb-3 mb-3 ml-0 mr-0">
-                        <div class="profile-top w-100 pb-4">                   
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-12 float-left">
-                                <div class="user-pic">
-                                    <img src="assets/images/profile/nouser.jpg" />
-                                </div>                
-                            </div>
-                            <div class="col-lg-9 col-md-9 col-sm-9 col-12 float-left">
-                                <h5 class="text-uppercase">Nicholas Alcock <br /> </h5>
-                                <span>
-                                    <em><a href="#">Product Designere</a></em>
-                                </span>
-                                <div class="w-100 pt-2 pb-2 float-left">
-                                    <button type="submit" class="btn btn-sm btn-dark"><i class="fa fa-envelope"></i> Send Messages </button>
-                                    <button type="submit" class="btn btn-sm btn-info"><i class="fa fa-edit text-white"></i> Edit Info</button>
-                                    <button type="submit" class="btn btn-sm btn-secondary"><i class="fa fa-upload text-white"></i> Upload Pic</button>
-                                </div>
-                            </div>
-                        </div>                
-                    </div>
-                    <div class="row m-0">
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-12 float-left">
-                            <div class="row m-0">
-                                <div class="">
-                                    <div class="w-100 float-left">
-                                        <label class="font-weight-bold"><i class="fa fa-map-marker text-info"></i> Home Address</label>
-                                    </div>
-                                    <div class="w-100 pl-2 pr-2 float-left">
-                                        <span class="text-secondary"> 405, Street no. 1 Wellington <br />New Zealand - 5010 </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row ml-0 mr-0 mt-3">
-                                <div class="">
-                                    <div class="w-100 float-left">
-                                        <label class="font-weight-bold"><i class="fa fa-map-marker text-info"></i> Work Address</label>
-                                    </div>
-                                    <div class="w-100 pl-2 pr-2 float-left">
-                                        <span class="text-secondary"> 405, Street no. 1 Wellington <br />New Zealand - 5010 </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row ml-0 mr-0 mt-3">
-                                <div class="">
-                                    <div class="w-100 float-left">
-                                        <label class="font-weight-bold"><i class="fa fa-envelope text-info"></i> Email Address</label>
-                                    </div>
-                                    <div class="w-100 pl-2 pr-2 float-left">
-                                        <a href="mailto:abc@gmail.com">abc@gmail.com</a>
-                                    </div>
-                                </div>
-                            </div>                                        
-                        </div>
-                        <div class="col-lg-9 col-md-9 col-sm-9 col-12 float-left">                            
-                            <div class="row pb-2">
-                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                    <label class="font-weight-bold"><i class="fa fa-calendar text-info"></i> Date of Birth</label>
-                                </div>
-                                <div class="col-lg-9 col-md-9 col-sm-6 col-12 float-left">
-                                    <span class="text-secondary">12/03/1992</span>
-                                </div>
-                            </div>
-                            <div class="row pb-2">
-                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                    <label class="font-weight-bold"><i class="fa fa-user text-info"></i> Gender</label>
-                                </div>
-                                <div class="col-lg-9 col-md-9 col-sm-6 col-12 float-left">
-                                    <span class="text-secondary">Male</span>
-                                </div>
-                            </div>
-                            <div class="row pb-2">
-                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                    <label class="font-weight-bold"><i class="fa fa-user text-info"></i> Marital Status</label>
-                                </div>
-                                <div class="col-lg-9 col-md-9 col-sm-6 col-12 float-left">
-                                    <span class="text-secondary">Married</span>
-                                </div>
-                            </div>
-                            <div class="row pb-2">
-                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                    <label class="font-weight-bold"><i class="fa fa-phone text-info"></i> Home Phone No.</label>
-                                </div>
-                                <div class="col-lg-9 col-md-9 col-sm-6 col-12 float-left">
-                                    <span><a href="tel:12347589">12347589</a></span>
-                                </div>
-                            </div>
-                            <div class="row pb-2">
-                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                    <label class="font-weight-bold"><i class="fa fa-mobile text-info"></i> Mobile No.</label>
-                                </div>
-                                <div class="col-lg-9 col-md-9 col-sm-6 col-12 float-left">
-                                    <span><a href="tel:12347589">12347589</a></span>
-                                </div>
-                            </div>
-                            <div class="row pb-2">
-                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                    <label class="font-weight-bold"><i class="fa fa-phone text-info"></i> Work Phone No.</label>
-                                </div>
-                                <div class="col-lg-9 col-md-9 col-sm-6 col-12 float-left">
-                                    <span><a href="tel:12347589">12347589</a></span>
-                                </div>
-                            </div>
-                            <div class="row pb-2">
-                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                    <label class="font-weight-bold"><i class="fa map-marker text-info"></i> NZ Residents</label>
-                                </div>
-                                <div class="col-lg-9 col-md-9 col-sm-6 col-12 float-left">
-                                    <span class="text-secondary">Wellington</span>
-                                </div>
-                            </div>                        
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </div>
-    </div>
-</div>-->

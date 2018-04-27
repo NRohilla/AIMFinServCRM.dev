@@ -46,13 +46,14 @@ export class LoginComponent implements OnInit {
         if (resultReturned._IsAuthenticated == false) {
             this._FormErrors = true;
             this._FormErrorsDescription = "Invalid Credentials!"
-        } else {
+        }
+        else {
             this._LocalStorageService.set('LoggedInEmailId', this._Username.trim());
             localStorage.setItem('isLoggedin', 'true');
             this._LocalStorageService.set('LoggedInUserId', resultReturned._UserID.trim());
 
             if (resultReturned._RoleDesc == "Client") {
-                this._LocalStorageService.set('LoggedInApplicantId', resultReturned.ApplicantID.trim());
+                this._LocalStorageService.set('LoggedInApplicantId', resultReturned._ApplicantID);
                 window.location.href = "http://localhost:8081/#/";
             }
 
@@ -60,6 +61,7 @@ export class LoginComponent implements OnInit {
                 this.router.navigateByUrl('dashboard');
             }
         }
+        this._LocalStorageService.set('LoggedInApplicantId', resultReturned._ApplicantID);
     }
 
     RequestError(err) {

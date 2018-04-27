@@ -171,6 +171,9 @@ export class ClientsService {
     GetQualificationDetails(ApplicantID) {
         return this._http.post(this.baseurl + "Clients/GetQualificationDetails?=ApplicantID" + ApplicantID, this.options);
     }
+    ViewEmploymentDetailsByAppID(ApplicantID) {
+        return this._http.get(this.baseurl + "Clients/ViewEmploymentDetailsByAppID?ApplicantID=" + ApplicantID, this.options);
+    }
 }
 
 

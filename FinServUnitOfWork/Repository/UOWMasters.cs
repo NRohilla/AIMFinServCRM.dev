@@ -399,6 +399,26 @@ namespace FinServUnitOfWork.Repository
             }
         }
 
+        public List<AddressTypeMaster> GetAddressTypes()
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    return (from ObjAddressTyp in db.tblMasterAddressTypes
+                            select new AddressTypeMaster()
+                            {
+                                ID = ObjAddressTyp.ID,
+                                Type = ObjAddressTyp.Type
+                            })
+                            .ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
 
         #endregion
 

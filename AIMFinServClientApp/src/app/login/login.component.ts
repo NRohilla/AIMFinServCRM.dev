@@ -52,7 +52,8 @@ export class LoginComponent implements OnInit {
             this._LocalStorageService.set('LoggedInUserId', resultReturned._UserID.trim());
 
             if (resultReturned._RoleDesc == "Client") {
-                this._LocalStorageService.set('LoggedInApplicantId', resultReturned._ApplicantID.trim());
+                debugger;
+                this._LocalStorageService.set('LoggedInApplicantId', resultReturned._ApplicantID);
                 window.location.href = "http://localhost:8081/dashboard?LoggedInEmailId=" + this._Username.trim();
             }
 

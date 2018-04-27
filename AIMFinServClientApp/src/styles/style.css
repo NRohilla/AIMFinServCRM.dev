@@ -60,6 +60,15 @@ a{ outline:none;}
 .k-grid .k-filter-row td { padding:4px 12px;}
 .k-grid th { color: #1782a2; text-transform:uppercase; font-weight:600; }
 .k-grid th, .k-grid td { text-align:center;}
+.asign-select-box .field_info { margin-right: 100px;}
+.asign-select-box input[type="button"] { position: absolute; right: 0; top: 0px; z-index: 10;}
+.dropdown-menu .media {
+    color: #ffffff;
+}
+
+.dropdown-menu .media .text-muted {
+    color: #aeb3b9 !important;
+}
 
     /* Media Query*/
     @media (max-width: 1700px) {

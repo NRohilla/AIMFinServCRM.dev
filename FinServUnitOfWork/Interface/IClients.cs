@@ -62,5 +62,26 @@ namespace FinServUnitOfWork.Interface
         bool UpdateExpenseSheetDetails(ApplicantExpenseSheet _objApplicantExpenseSheet);
         ApplicantQualificationDetails GetQualificationDetailsByAppID(Guid ApplicantID);
         bool UpdateQualificationDetailsByAppID(ApplicantQualificationDetails _objApplicantQualificationDetails);
+
+        ApplicantEmploymentDetails GetEmploymentDetailsByAppID(Guid ApplicantID);
+        bool UpdateEmploymentDetailsByAppID(ApplicantEmploymentDetails _objApplicantEmploymentDetails);
+        LoanMasterDetails GetLendingDetailsByAppID(Guid ApplicantID);
+        bool UpdateLendingDetailsByAppID(LoanMasterDetails _objloanMasterDetails);
+        Applicants GetPersonalDetailsByAppID(Guid ApplicantID);
+        //ApplicantCommunicationDetails GetCommunicationDetailsByAppID(Guid ApplicantID);
+        //bool UpdateCommunicationDetailsByAppID(ApplicantCommunicationDetails _objApplicantCommunicationDetails);
+        List<ApplicantCommunicationDetails> GetAddresses(Guid ApplicantID);
+        ApplicantCommunicationDetails GetCommunicationDetailsByAppID(Guid ApplicantID);
+        bool UpdatePersonalDetailsByAppID(Applicants _objApplicantsDetails);
+        bool UpdateAddressesByAppID(ApplicantCommunicationDetails _objApplicantComDetails);
+        bool AddNewAddressByAppID(ApplicantCommunicationDetails _objApplicantComDetails);
+        ApplicantCommunicationDetails GetCommEditdata(Guid CommunicationID);
+        List<ApplicantQualificationDetails> GetMatQualificationDataByAppID(Guid ApplicantID);
+        List<LoanMasterDetails> GetMatLendingDetailsByAppID(Guid ApplicantID);
+        List<ApplicantEmploymentDetails> GetMatEmploymentDetailsByAppID(Guid ApplicantID);
+        ApplicantEmploymentDetails ViewEmploymentDetailsByAppID(Guid EmploymentID);
+        ApplicantQualificationDetails ViewQualificationDetailsByAppID(Guid QualificationID);
+        LoanMasterDetails ViewLendingDetailsByAppID(Guid LANNumber);
+        bool DeleteCommAddress(Guid CommunicationID);
     }
 }

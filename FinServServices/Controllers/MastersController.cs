@@ -140,6 +140,12 @@ namespace FinServServices.Controllers
         {
             return Repository.GetApplicants();
         }
+        [HttpGet]
+        [Route("GetAddressTypes")]
+        public List<AddressTypeMaster> GetAddressTypes()
+        {
+            return Repository.GetAddressTypes();
+        }
 
         #endregion
 

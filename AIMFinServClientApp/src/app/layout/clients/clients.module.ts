@@ -13,7 +13,7 @@ import {MaterialModule} from '../../shared/app.material';
 import { FormsModule } from '@angular/forms';
 @NgModule({
     imports: [CommonModule, ClientsRoutingModule, PageHeaderModule, GridModule, MaterialModule, FormsModule],
-    //declarations: [ClientsComponent, ClientSummaryComponent,ClientsPersonalDetailsComponent,ClientscommunicationComponent, ClientsEmployementComponent, ClientqualificationComponent]
-    declarations: [ClientsComponent]
+   declarations: [ClientsComponent, /*ClientSummaryComponent,ClientsPersonalDetailsComponent,ClientscommunicationComponent, ClientsEmployementComponent, ClientqualificationComponent*/]
+    //declarations: [ClientsComponent]
 })
 export class ClientsModule { }

@@ -46,6 +46,10 @@ namespace FinServBussinessEntities
         public string EmailID { get; set; }
         public int ApplicantTypeID { get; set; }
         public string ApplicantType { get; set; }
+        public string PropertyType { get; set; }
+        public string Status { get; set; }
+        public string LoanType { get; set; }
+
         public LoanApplicationForms _loanApplicationDetails { get; set; }
         public PropertyTypeMaster _propertyTypeDetails { get; set; }
         public LoanTypeMaster _typeOfLoanDetails { get; set; }

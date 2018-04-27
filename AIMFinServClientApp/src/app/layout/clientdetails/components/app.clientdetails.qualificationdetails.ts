@@ -33,7 +33,9 @@ export class ClientqualificationComponent extends AppBaseComponent implements On
         PassingYear: '',
         CourseName: '',
         UniversityName: '',
-        _QualificationTypeDetail: {}       
+        _QualificationTypeDetail: {
+            ID:''
+        }       
     };
 
     errorMessage: "No Data"  
@@ -50,7 +52,9 @@ export class ClientqualificationComponent extends AppBaseComponent implements On
             PassingYear: '',
             CourseName: '',
             UniversityName: '',
-            _QualificationTypeDetail: {}           
+            _QualificationTypeDetail: {
+                ID: ''
+            }           
         };
 
         this.GetQualificationTypeDetails();
@@ -142,7 +146,7 @@ export class ClientqualificationComponent extends AppBaseComponent implements On
             PassingYear: '',
             CourseName: '',
             UniversityName: '',
-            _QualificationTypeDetail: {}
+            _QualificationTypeDetail: { ID: ''}
         };
     }
 

@@ -1,137 +1,176 @@
-﻿<div class="content-section">
+<div class="content-section">
     <div class="col-lg-12 col-md-12">
         <h3 class="text-uppercase border-bottom pb-2 mb-2">Lending</h3>
         <div class="qualification-section">
-                <div class="content-setion">                    
-                    <mat-table #table [dataSource]="dataSource">
-                        <ng-container matColumnDef="applicationFormNo">
-                        <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Application Form No </mat-header-cell>
-                        <mat-cell *matCellDef="let element"> {{element.applicationFormNo}} </mat-cell>
-                        </ng-container>
-                        <ng-container matColumnDef="clientId">
-                        <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Client Id </mat-header-cell>
-                        <mat-cell *matCellDef="let element"> {{element.clientId}} </mat-cell>
-                        </ng-container>
-                        <ng-container matColumnDef="term">
-                        <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Term </mat-header-cell>
-                        <mat-cell *matCellDef="let element"> {{element.term}} </mat-cell>
-                        </ng-container>
-                        <ng-container matColumnDef="rate">
-                            <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Rate Type </mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.rate}} </mat-cell>
-                        </ng-container>
-                        <ng-container matColumnDef="frequency">
-                            <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Frequency </mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.frequency}} </mat-cell>
-                        </ng-container>
-                        <ng-container matColumnDef="propertyType">
-                            <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Property Type </mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.propertyType}} </mat-cell>
-                        </ng-container>
-                        <ng-container matColumnDef="status">
-                            <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Status </mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
-                        </ng-container>
-                        <ng-container matColumnDef="viewDetails">
-                            <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> </mat-header-cell>
-                            <mat-cell *matCellDef="let element">  <button type="submit" class="btn btn-sm btn-secondary float-right"><i class="fa fa-eye"></i> View Details</button></mat-cell>
-                        </ng-container>             
-                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-                    </mat-table>
+            <div class="example-container mat-elevation-z8">
+                <div class="example-container mat-elevation-z8">
                 </div>
+                <mat-table #table [dataSource]="dataSource">
+
+                    <ng-container matColumnDef="ApplicationFormNumber">
+                        <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold">ApplicationFormNumber</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.ApplicationFormNumber}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Client Id">
+                        <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold">Client Id</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.ClientID}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Term">
+                        <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold">Term</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.LoanTermOffered}} </mat-cell>
+                    </ng-container>
+
+                        <ng-container matColumnDef="Rate">
+                            <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold">Rate</mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.RateTypeOffered}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Frequency">
+                            <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold">Frequency</mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.FrequencyOffered}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Status">
+                            <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold">Status</mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.Status}}  <button type="submit" (click)="ViewDetails(element.LANNumber)" class="btn btn-sm btn-secondary float-right"><i class="fa fa-eye"></i> View Details</button>  </mat-cell>
+                        </ng-container>
+                   
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+                <mat-paginator #paginator
+                               [pageSize]="1"
+                               [pageSizeOptions]="[1, 2, 3]"
+                               [showFirstLastButtons]="true">
+                </mat-paginator>
+
+            </div>
         </div>
-        <div class="qualification-details mt-4">            
-            <mat-card class="border">
-                <h4 class="sub-heading text-uppercase text-center position-relative pb-2 mb-4">Lending Form details
-                    <span class="top-btn">
-                        <input type="button" value="&#xf040; Edit" class="btn btn-sm btn-info" (click)="EditDetails()" *ngIf="!_EditDetails" />
-                        <input type="button" value="&#xf0c7; Save" (click)="UpdateDetails()" *ngIf="_EditDetails" class="btn btn-sm btn-success" />
-                        <input type="button" value="&#xf00d; Cancel" (click)="CancelEditingDetails()" *ngIf="_EditDetails" class="btn btn-sm btn-secondary" />
-                    </span>
-                </h4>
-                <div class="">
-                    <div class="row mb-2">
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                        <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
+        <div class="qualification-details mt-4">
+            <form name="form" #Lendingform="ngForm" novalidate>
+                <mat-card class="border">
+                    <h4 class="sub-heading text-uppercase text-center position-relative pb-2 mb-4">
+                        Lending Form details
+                        <span class="top-btn">
+                            <input type="button" value="&#xf040; Edit" class="btn btn-sm btn-info" (click)="EditDetails()" *ngIf="!_EditDetails" />
+                            <input type="button" value="&#xf0c7; Save" (click)="UpdateDetails()" [disabled]="!Lendingform.form.valid" *ngIf="_EditDetails" class="btn btn-sm btn-success" />
+                            <input type="button" value="&#xf00d; Cancel" (click)="CancelEditingDetails()" *ngIf="_EditDetails" class="btn btn-sm btn-secondary" />
+                        </span>
+                    </h4>
+                    <div class="">
+                        <div class="row mb-2">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                <span><i class="fa fa-file-text-o text-info"></i> Application Form No </span>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                <span class="text-secondary">NZ-001</span>
-                            </div>
-                        </div>
-                        <mat-form-field class="w-100" *ngIf="_EditDetails">
-                            <input matInput placeholder="Application Form No" value="NZ-001">
-                        </mat-form-field>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                        <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                <span><i class="fa fa-id-card text-info"></i> Client Id </span>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                <span class="text-secondary"> C12345 </span>
-                            </div>
-                        </div>
-                        <mat-form-field class="w-100" *ngIf="_EditDetails">
-                                <input matInput placeholder="Client Id" value="C12345">
-                            </mat-form-field>
-                        </div>
-                    </div>
-                    <div class="row mb-2">
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                            <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                <span><i class="fa fa-life-ring text-info"></i> Term </span>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                <span class="text-secondary"> 6 years </span>
-                            </div>
-                        </div>
-                        <mat-form-field class="w-100" *ngIf="_EditDetails">
-                                <input matInput placeholder="Term" value="6 years">
-                            </mat-form-field>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                            <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                    <span><i class="fa fa-percent text-info"></i> Rate Type </span>
+                                <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-file-text-o text-info"></i> Application Form No </span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary">{{LendingDetails.ApplicationFormNumber}}</span>
+                                    </div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                    <span class="text-secondary"> 10% </span>
-                                </div>
+                                <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                    <input matInput placeholder="Application Form No" [(ngModel)]="LendingDetails.ApplicationFormNumber" name="ApplicationFormNumber" #ApplicationFormNumber="ngModel" required>
+                                    <div *ngIf="ApplicationFormNumber.invalid && (ApplicationFormNumber.dirty || ApplicationFormNumber.toouched)" class="alert alert-danger">
+                                        <div *ngIf="ApplicationFormNumber.errors.required">
+                                            Please enter Application Form Number.
+                                        </div>
+                                    </div>
+                                </mat-form-field>
                             </div>
-                            <mat-form-field class="w-100" *ngIf="_EditDetails">
-                                    <input matInput placeholder="Rate Type" value="10%">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-id-card text-info"></i> Client Id </span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary">{{LendingDetails.ClientID}}</span>
+                                    </div>
+                                </div>
+                                <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                    <input matInput placeholder="Client Id" [(ngModel)]="LendingDetails.ClientID" name="clientid" #clientid="ngModel" required>
+                                    <div *ngIf="clientid.invalid && (clientid.dirty || clientid.touched)" class="alert alert-danger">
+                                        <div *ngIf="clientid.errors.required">
+                                            Please enter Client ID.
+                                        </div>
+                                    </div>
                                 </mat-form-field>
                             </div>
                         </div>
                         <div class="row mb-2">
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                            <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                <span><i class="fa fa-spinner text-info"></i> Frequency </span>
+                                <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-life-ring text-info"></i> Term </span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary">{{LendingDetails.LoanTermOffered}}</span>
+                                    </div>
+                                </div>
+                                <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                    <input matInput placeholder="Term" [(ngModel)]="LendingDetails.LoanTermOffered" name="Term" #Term="ngModel" required>
+                                    <div *ngIf="Term.invalid && (Term.dirty || Term.touched)" class="alert alert-danger">
+                                        <div *ngIf="Term.errors.required">
+                                            Please enter Term.
+                                        </div>
+                                    </div>
+                                </mat-form-field>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                <span class="text-secondary"> Monthly </span>
+                                <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-percent text-info"></i> Rate Type </span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary">{{LendingDetails.RateTypeOffered}}</span>
+                                    </div>
+                                </div>
+                                <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                    <input matInput placeholder="Rate Type" [(ngModel)]="LendingDetails.RateTypeOffered" name="ratetypeoffered" #ratetypeoffered="ngModel" required>
+                                    <div *ngIf="ratetypeoffered.invalid && (ratetypeoffered.dirty || ratetypeoffered.touched)" class="alert alert-danger">
+                                        <div *ngIf="ratetypeoffered.errors.required">
+                                            Please enter Rate type Offered.
+                                        </div>
+                                    </div>
+                                </mat-form-field>
                             </div>
                         </div>
-                        <mat-form-field class="w-100" *ngIf="_EditDetails">
-                                <input matInput placeholder="Frequency" value="Monthly">
-                            </mat-form-field>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                            <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                    <span><i class="fa fa-building text-info"></i> Property Type </span>
+                        <div class="row mb-2">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-spinner text-info"></i> Frequency </span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary"> {{LendingDetails.FrequencyOffered}} </span>
+                                    </div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <span class="text-secondary"> Self Owned </span>
-                                </div>
+                                <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                    <input matInput placeholder="Frequency" [(ngModel)]="LendingDetails.FrequencyOffered" name="FrequencyOffered" #FrequencyOffered="ngModel" required>
+                                    <div *ngIf="FrequencyOffered.invalid && (FrequencyOffered.dirty || FrequencyOffered.touched)" class="alert alert-danger">
+                                        <div *ngIf="FrequencyOffered.errors.required">
+                                            Please enter Frequency Offered.
+                                        </div>
+                                    </div>
+                                </mat-form-field>
                             </div>
-                            <mat-form-field class="w-100" *ngIf="_EditDetails">
-                                    <input matInput placeholder="Property Type" value="Self Owned">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-building text-info"></i> Property Type </span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary">{{LendingDetails.PropertyType}}</span>
+                                    </div>
+                                </div>
+                                <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                    <input matInput placeholder="Property Type" [(ngModel)]="LendingDetails.PropertyType" name="PropertyType" #PropertyType="ngModel" required>
+                                    <div *ngIf="PropertyType.invalid && (PropertyType.dirty || PropertyType.touched)" class="alert alert-danger">
+                                        <div *ngIf="PropertyType.errors.required">
+                                            Please enter Property Type.
+                                        </div>
+                                    </div>
                                 </mat-form-field>
                             </div>
                         </div>
@@ -142,26 +181,36 @@
                                         <span><i class="fa fa-clock-o text-info"></i> Status </span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <span class="text-secondary"> Current </span>
+                                        <span class="text-secondary"> {{LendingDetails.Status}} </span>
                                     </div>
                                 </div>
                                 <mat-form-field class="w-100" *ngIf="_EditDetails">
-                                        <input matInput placeholder="Status" value="Current">
-                                    </mat-form-field>
+                                    <input matInput placeholder="Status" [(ngModel)]="LendingDetails.Status" name="Status" #Status="ngModel" required>
+                                    <div *ngIf="Status.invalid && (Status.dirty || Status.touched)" class="alert alert-danger">
+                                        <div *ngIf="Status.errors.required">
+                                            Please enter Status.
+                                        </div>
+                                    </div>
+                                </mat-form-field>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                 <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <span><i class="fa fa-calendar text-info"></i> EMI Start Date </span>
+                                        <span><i class="fa fa-calendar text-info"></i> EMI Start Day </span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <span class="text-secondary"> 15 March 2018 </span>
+                                        <span class="text-secondary"> {{LendingDetails.EMIStartDay}}</span>
                                     </div>
                                 </div>
                                 <mat-form-field class="w-100" *ngIf="_EditDetails">
-                                        <input matInput placeholder="EMI Start Date" value="15 March 2018">
-                                    </mat-form-field>
-                            </div>                                     
+                                    <input matInput placeholder="EMI Start Date" [(ngModel)]="LendingDetails.EMIStartDay" name="EMIStartDay" #EMIStartDay="ngModel" required>
+                                    <div *ngIf="EMIStartDay.invalid && (EMIStartDay.dirty || EMIStartDay.touched)" class="alert alert-danger">
+                                        <div *ngIf="EMIStartDay.errors.required">
+                                            Please enter EMI Start Day.
+                                        </div>
+                                    </div>
+                                </mat-form-field>
+                            </div>
                         </div>
                         <div class="row mb-2">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
@@ -170,12 +219,17 @@
                                         <span><i class="fa fa-money text-info"></i> Loan Processing Fee </span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <span class="text-secondary"> 1000 </span>
+                                        <span class="text-secondary"> {{LendingDetails.LoanProcessingFee}} </span>
                                     </div>
                                 </div>
                                 <mat-form-field class="w-100" *ngIf="_EditDetails">
-                                        <input matInput placeholder="Loan Processing Fee" value="1000">
-                                    </mat-form-field>
+                                    <input matInput placeholder="Loan Processing Fee" [(ngModel)]="LendingDetails.LoanProcessingFee" name="LoanProcessingFee" #LoanProcessingFee="ngModel" required>
+                                    <div *ngIf="LoanProcessingFee.invalid && (LoanProcessingFee.dirty || LoanProcessingFee.touched)" class="alert alert-danger">
+                                        <div *ngIf="LoanProcessingFee.errors.required">
+                                            Please enter Loan Processing Fee.
+                                        </div>
+                                    </div>
+                                </mat-form-field>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                 <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
@@ -183,13 +237,18 @@
                                         <span><i class="fa fa-bank text-info"></i> Loan Provider </span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <span class="text-secondary"> HDFC Bank </span>
+                                        <span class="text-secondary"> {{LendingDetails.Loanprovider}} </span>
                                     </div>
                                 </div>
                                 <mat-form-field class="w-100" *ngIf="_EditDetails">
-                                        <input matInput placeholder="Loan Provider" value="HDFC Bank">
-                                    </mat-form-field>
-                            </div>                                     
+                                    <input matInput placeholder="Loan Provider" [(ngModel)]="LendingDetails.Loanprovider" name="Loanprovider" #Loanprovider="ngModel" required>
+                                    <div *ngIf="Loanprovider.invalid && (Loanprovider.dirty || Loanprovider.touched)" class="alert alert-danger">
+                                        <div *ngIf="Loanprovider.errors.required">
+                                            Please enter Loan Provider.
+                                        </div>
+                                    </div>
+                                </mat-form-field>
+                            </div>
                         </div>
                         <div class="row mb-2">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
@@ -198,12 +257,17 @@
                                         <span><i class="fa fa-sitemap text-info"></i> ROI Offered </span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <span class="text-secondary"> Principal and Interest </span>
+                                        <span class="text-secondary">{{LendingDetails.ROIOffered}} </span>
                                     </div>
                                 </div>
                                 <mat-form-field class="w-100" *ngIf="_EditDetails">
-                                        <input matInput placeholder="ROI Offered" value="Principal and Interest">
-                                    </mat-form-field>
+                                    <input matInput placeholder="ROI Offered" [(ngModel)]="LendingDetails.ROIOffered" name="ROIOffered" #ROIOffered="ngModel" required>
+                                    <div *ngIf="ROIOffered.invalid && (ROIOffered.dirty || ROIOffered.touched)" class="alert alert-danger">
+                                        <div *ngIf="ROIOffered.errors.required">
+                                            Please enter ROI Offered.
+                                        </div>
+                                    </div>
+                                </mat-form-field>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                 <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
@@ -211,13 +275,18 @@
                                         <span><i class="fa fa-dollar text-info"></i> Type of Loan </span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <span class="text-secondary"> Personal </span>
+                                        <span class="text-secondary"> {{LendingDetails.LoanType}} </span>
                                     </div>
                                 </div>
                                 <mat-form-field class="w-100" *ngIf="_EditDetails">
-                                        <input matInput placeholder="Type of Loan" value="Personal">
-                                    </mat-form-field>
-                            </div>                                     
+                                    <input matInput placeholder="Type of Loan" [(ngModel)]="LendingDetails.LoanType" name="LoanType" #LoanType="ngModel" required>
+                                    <div *ngIf="LoanType.invalid && (LoanType.dirty || LoanType.touched)" class="alert alert-danger">
+                                        <div *ngIf="LoanType.errors.required">
+                                            Please enter Loan Type.
+                                        </div>
+                                    </div>
+                                </mat-form-field>
+                            </div>
                         </div>
                         <div class="row mb-2">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
@@ -226,12 +295,17 @@
                                         <span><i class="fa fa-money text-info"></i> Loan Amounf Offered </span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <span class="text-secondary"> 500000 </span>
+                                        <span class="text-secondary"> {{LendingDetails.LoanAmountOffered}} </span>
                                     </div>
                                 </div>
                                 <mat-form-field class="w-100" *ngIf="_EditDetails">
-                                        <input matInput placeholder=" Loan Amounf Offered" value="500000">
-                                    </mat-form-field>
+                                    <input matInput placeholder=" Loan Amounf Offered" [(ngModel)]="LendingDetails.LoanAmountOffered" name="LoanAmountOffered" #LoanAmountOffered="ngModel" required>
+                                    <div *ngIf="LoanAmountOffered.invalid && (LoanAmountOffered.dirty || LoanAmountOffered.touched)" class="alert alert-danger">
+                                        <div *ngIf="LoanAmountOffered.errors.required">
+                                            Please enter Loan Amount Offered.
+                                        </div>
+                                    </div>
+                                </mat-form-field>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                 <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
@@ -239,13 +313,18 @@
                                         <span><i class="fa fa-list-alt text-info"></i> No. of EMI </span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <span class="text-secondary"> 72 </span>
+                                        <span class="text-secondary"> {{LendingDetails.NoOfEMI}} </span>
                                     </div>
                                 </div>
                                 <mat-form-field class="w-100" *ngIf="_EditDetails">
-                                        <input matInput placeholder="No. of EMI" value="72">
-                                    </mat-form-field>
-                            </div>                                     
+                                    <input matInput placeholder="No. of EMI" [(ngModel)]="LendingDetails.NoOfEMI" name="NoOfEMI" #NoOfEMI="ngModel" required>
+                                    <div *ngIf="NoOfEMI.invalid && (NoOfEMI.dirty || FrequencyOffered.touched)" class="alert alert-danger">
+                                        <div *ngIf="NoOfEMI.errors.required">
+                                            Please enter No Of EMI.
+                                        </div>
+                                    </div>
+                                </mat-form-field>
+                            </div>
                         </div>
                         <div class="row mb-2">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
@@ -254,12 +333,17 @@
                                         <span><i class="fa fa-percent text-info"></i> Loan Value Ratio </span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <span class="text-secondary"> 3% </span>
+                                        <span class="text-secondary"> {{LendingDetails.LoanValueRatio}} </span>
                                     </div>
                                 </div>
                                 <mat-form-field class="w-100" *ngIf="_EditDetails">
-                                        <input matInput placeholder="Loan Value Ratio" value="3%">
-                                    </mat-form-field>
+                                    <input matInput placeholder="Loan Value Ratio" [(ngModel)]="LendingDetails.LoanValueRatio" name="LoanValueRatio" #LoanValueRatio="ngModel" required>
+                                    <div *ngIf="LoanValueRatio.invalid && (LoanValueRatio.dirty || LoanValueRatio.touched)" class="alert alert-danger">
+                                        <div *ngIf="LoanValueRatio.errors.required">
+                                            Please enter Loan Value Ratio.
+                                        </div>
+                                    </div>
+                                </mat-form-field>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                 <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
@@ -267,16 +351,22 @@
                                         <span><i class="fa fa-money text-info"></i> Any Legal Charges </span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <span class="text-secondary"> 0 </span>
+                                        <span class="text-secondary"> {{LendingDetails.AnyLegalCharges}} </span>
                                     </div>
                                 </div>
                                 <mat-form-field class="w-100" *ngIf="_EditDetails">
-                                        <input matInput placeholder="Any Legal Charges" value="0">
-                                    </mat-form-field>
-                            </div>                                     
-                        </div>                                                        
-                    </div>                          
-            </mat-card>
+                                    <input matInput placeholder="Any Legal Charges" [(ngModel)]="LendingDetails.AnyLegalCharges" name="AnyLegalCharges" #AnyLegalCharges="ngModel" required>
+                                    <div *ngIf="AnyLegalCharges.invalid && (AnyLegalCharges.dirty || AnyLegalCharges.touched)" class="alert alert-danger">
+                                        <div *ngIf="AnyLegalCharges.errors.required">
+                                            Please enter Any Legal Charges.
+                                        </div>
+                                    </div>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card>
+            </form>
         </div>
     </div>
 </div>

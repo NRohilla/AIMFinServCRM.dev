@@ -66,12 +66,23 @@ export class AddLoanApplicationComponent implements OnInit {
         ReasonForNotApproval: "",
         ShiftedDuration: "",
         _Applicant: {},
-        _TypeOfLoanID: {},
-        _PurposeOfLoanID: {},
-        _RateTypeID: {},
-        _PropertyTypeID: {},
-        _AdvisorID: {},
+        _TypeOfLoanID: {
+            ID: ''
+        },
+        _PurposeOfLoanID: {
+            ID: ''
+        },
+        _RateTypeID: {
+            ID: ''
+        },
+        _PropertyTypeID: {
+            ID: ''
+        },
+        _AdvisorID: {
+            AutoID: ''
+        },
         _StatusID: {
+            ID:'',
             Status: ''
         }
     };
@@ -90,6 +101,8 @@ export class AddLoanApplicationComponent implements OnInit {
         this.Conditions();
        
     }
+    ViewDetails(obj){}
+
     AddLoanApplicationDetails() {
         this.formatvalues();
         if (this._LocalStorageService.get("LoanApplicationNoViewed") != undefined) {

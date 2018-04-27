@@ -34,8 +34,10 @@ export class ClientsEmployementComponent extends AppBaseComponent implements OnI
         AutoID: '',        
         EmploymentID: '',
         Status: '',
-        _ProfessionTypeDetail: {},
-        _EmploymentTypeDetail: {}
+        _ProfessionTypeDetail: {ID:''},
+        _EmploymentTypeDetail: {
+            ID:''
+        }
     };
     errorMessage: "No Data"
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, private _MasterService: MastersService) { super(); }
@@ -50,8 +52,10 @@ export class ClientsEmployementComponent extends AppBaseComponent implements OnI
             AutoID: '',            
             EmploymentID: '',
             Status: '',
-            _ProfessionTypeDetail: {},
-            _EmploymentTypeDetail: {}
+            _ProfessionTypeDetail: { ID: ''},
+            _EmploymentTypeDetail: {
+                ID: ''
+            }
         };
 
         this.GetEmploymentTypeDetails();
@@ -158,8 +162,8 @@ export class ClientsEmployementComponent extends AppBaseComponent implements OnI
             AutoID: '',            
             EmploymentID: '',
             Status: '',
-            _ProfessionTypeDetail: {},
-            _EmploymentTypeDetail: {}
+            _ProfessionTypeDetail: { ID: ''},
+            _EmploymentTypeDetail: { ID: ''}
         };            
     }
     
