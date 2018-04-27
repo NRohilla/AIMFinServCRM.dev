@@ -1,0 +1,148 @@
+<nav class="navbar-expand-lg fixed-top">
+    <div class="profile-section">
+        <a href="/">
+        <div class="profile w-100 pl-2 pr-2 pt-1 pb-1 float-left">
+          <div class="client-pic float-left">
+            <img src="../assets/images/profile/nouser.jpg" title="no user" />
+          </div>
+          <h3 class="float-left text-white">Nicholas Alcock</h3>      
+        </div>
+        </a>
+        <div class="w-100 float-left">
+          <ul class="p-0 m-0">
+            <li *ngFor="let navData of mainNav"><a routerLink="/{{navData.url}}" [innerHTML]='navData.name'> </a></li>
+          </ul>
+        </div>
+      </div>
+    <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+        <!-- <span class="navbar-toggler-icon"></span> -->
+        <i class="fa fa-bars text-muted" aria-hidden="true"></i>
+    </button>
+    <div class="collapse navbar-collapse headsection">
+        <ul class="p-0 m-0">
+            <li><button type="submit" class="btn btn-sm btn-info">send email</button></li>
+            <li><button type="submit" class="btn btn-sm btn-primary">send email</button></li>
+            <li><button type="submit" class="btn btn-sm btn-success">send email</button></li>
+            <li><button type="submit" class="btn btn-sm btn-secondary">send email</button></li>
+            <li><button type="submit" class="btn btn-sm btn-warning">send email</button></li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link mt-1"
+                    style="padding: 0.375rem 1rem !important; border-color: #999;"
+                    (click)="rltAndLtr()">
+                    Toggle menu
+                </a>
+            </li> &nbsp;
+            <li class="nav-item dropdown" ngbDropdown>
+                <a class="nav-link" href="javascript:void(0)" ngbDropdownToggle>
+                    <i class="fa fa-envelope"></i> <b class="caret"></b><span class="sr-only">(current)</span>
+                </a>
+                <ul class="dropdown-menu-right messages" ngbDropdownMenu>
+                    <li class="media">
+                        <img class="d-flex align-self-center mr-3"
+                            src="http://i.huffpost.com/gadgets/slideshows/461162/slide_461162_6224974_sq50.jpg" alt="Generic placeholder image"
+                        >
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1">John Smith</h5>
+                            <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                            <p class="last"> Lorem ipsum dolor sit amet, consectetur...</p>
+                        </div>
+                    </li>
+                    <li class="media">
+                        <img class="d-flex align-self-center mr-3"
+                            src="http://i.huffpost.com/gadgets/slideshows/461162/slide_461162_6224974_sq50.jpg"
+                            alt="Generic placeholder image"
+                        >
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1">John Smith</h5>
+                            <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                            <p class="last"> Lorem ipsum dolor sit amet, consectetur...</p>
+                        </div>
+                    </li>
+                    <li class="media">
+                        <img class="d-flex align-self-center mr-3"
+                            src="http://i.huffpost.com/gadgets/slideshows/461162/slide_461162_6224974_sq50.jpg"
+                            alt="Generic placeholder image"
+                        />
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1">John Smith</h5>
+                            <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                            <p class="last"> Lorem ipsum dolor sit amet, consectetur...</p>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown" ngbDropdown>
+                <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
+                    <i class="fa fa-bell"></i> <b class="caret"></b><span class="sr-only">(current)</span>
+                </a>
+                <div class="dropdown-menu-right" ngbDropdownMenu>
+                    <a href="javascript:void(0)" class="dropdown-item">
+                        {{ 'Pending Task' | translate }} <span class="badge badge-info">6</span>
+                    </a>
+                    <a href="javascript:void(0)" class="dropdown-item">
+                        {{ 'In queue' | translate }} <span class="badge badge-info"> 13</span>
+                    </a>
+                    <a href="javascript:void(0)" class="dropdown-item">
+                        {{ 'Mail' | translate }} <span class="badge badge-info"> 45</span>
+                    </a>
+                    <li class="dropdown-divider"></li>
+                    <a href="javascript:void(0)" class="dropdown-item">
+                        {{ 'View All' | translate }}
+                    </a>
+                </div>
+            </li>
+            <li class="nav-item dropdown" ngbDropdown style="display:none;">
+                <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
+                    <i class="fa fa-language"></i> {{ 'Language' | translate }} <b class="caret"></b>
+                </a>
+                <div class="dropdown-menu-right" ngbDropdownMenu>
+                    <a class="dropdown-item" href="javascript:void(0)" (click)="changeLang('en')">
+                        {{ 'English' | translate }}
+                    </a>
+                    <a class="dropdown-item" href="javascript:void(0)" (click)="changeLang('fr')">
+                        {{ 'French' | translate }}
+                    </a>
+                    <a class="dropdown-item" href="javascript:void(0)" (click)="changeLang('ur')">
+                        {{ 'Urdu' | translate }}
+                    </a>
+                    <a class="dropdown-item" href="javascript:void(0)" (click)="changeLang('es')">
+                        {{ 'Spanish' | translate }}
+                    </a>
+                    <a class="dropdown-item" href="javascript:void(0)" (click)="changeLang('it')">
+                        {{ 'Italian' | translate }}
+                    </a>
+                    <a class="dropdown-item" href="javascript:void(0)" (click)="changeLang('fa')">
+                        {{ 'Farsi' | translate }}
+                    </a>
+                    <a class="dropdown-item" href="javascript:void(0)" (click)="changeLang('de')">
+                        {{ 'German' | translate }}
+                    </a>
+                    <a class="dropdown-item" href="javascript:void(0)" (click)="changeLang('zh-CHS')">
+                        {{ 'Simplified Chinese' | translate }}
+                    </a>
+                </div>
+            </li>
+            <li class="nav-item dropdown" ngbDropdown>
+                <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
+                    <i class="fa fa-user"></i> {{_UserDetails.DisplayName}} <b class="caret"></b>
+                </a>
+                <div class="dropdown-menu-right" ngbDropdownMenu>
+                    <a class="dropdown-item" href="javascript:void(0)">
+                        <i class="fa fa-fw fa-user"></i> {{ 'Profile' | translate }}
+                    </a>
+                    <a class="dropdown-item" href="javascript:void(0)">
+                        <i class="fa fa-fw fa-envelope"></i> {{ 'Inbox' | translate }}
+                    </a>
+                    <a class="dropdown-item" href="javascript:void(0)">
+                        <i class="fa fa-fw fa-gear"></i> {{ 'Settings' | translate }}
+                    </a>
+                    <a class="dropdown-item" [routerLink]="['/login']" (click)="onLoggedout()">
+                        <i class="fa fa-fw fa-power-off"></i> {{ 'Log Out' | translate }}
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

@@ -1,7 +1,8 @@
     <div class="pt-4">
         <div class="w-100 float-left">
-            <div class="row m-0">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+            <form name="form" #AddEmployementDetails="ngForm" novalidate>
+                <div class="row m-0">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field class="example-full-width">
                                 <input matInput placeholder="Source Of Income" value="{{_ApplicantEmployementDetails.SourceOfIncome}}" [(ngModel)]="_ApplicantEmployementDetails.SourceOfIncome" name="SourceOfIncome" #SourceOfIncome="ngModel" required>
@@ -12,8 +13,8 @@
                                 </div>
                             </mat-form-field>
                         </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field class="example-full-width">
                                 <input matInput placeholder="EmployerName" value="{{_ApplicantEmployementDetails.EmployerName}}" [(ngModel)]="_ApplicantEmployementDetails.EmployerName" name="EmployerName" #EmployerName="ngModel" required>
@@ -24,8 +25,8 @@
                                 </div>
                             </mat-form-field>
                         </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field class="example-full-width">
                                 <input matInput placeholder="Duration" value="{{_ApplicantEmployementDetails.Duration}}" [(ngModel)]="_ApplicantEmployementDetails.Duration" name="Duration" #Duration="ngModel" required>
@@ -36,11 +37,11 @@
                                 </div>
                             </mat-form-field>
                         </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row m-0">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                <div class="row m-0">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field class="example-full-width">
                                 <input matInput placeholder="Income" value="{{_ApplicantEmployementDetails.Income}}" [(ngModel)]="_ApplicantEmployementDetails.Income" name="Income" #Income="ngModel" required>
@@ -51,8 +52,8 @@
                                 </div>
                             </mat-form-field>
                         </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field class="example-full-width">
                                 <input matInput placeholder="Status" value="{{_ApplicantEmployementDetails.Status}}" [(ngModel)]="_ApplicantEmployementDetails.Status" name="Status" #Status="ngModel" required>
@@ -63,9 +64,9 @@
                                 </div>
                             </mat-form-field>
                         </div>
+                    </div>
                 </div>
-            </div>
-
+            </form>
         </div>
         
     </div>

@@ -8,6 +8,6 @@ namespace FinServUnitOfWork.Interface
 {
     public interface IAuthenticate
     {
-        bool AuthenticateLogin(string UserEmailId, string password);
+        FinServBussinessEntities.Utility_Classes.AuthenticationDetails AuthenticateLogin(string UserEmailId, string password);
     }
 }

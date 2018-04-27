@@ -18,6 +18,8 @@ namespace FinServBussinessEntities
         public string Duration { get; set; }
         public string Income { get; set; }
         public string Status { get; set; }
+        public string EmployementType { get; set; }
+        public string Profession { get; set; }
         public Nullable<System.Guid> CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }
@@ -25,7 +27,6 @@ namespace FinServBussinessEntities
 
         public Applicants _ApplicationID { get; set; }
         public Applicants _ApplicantDetail { get; set; }
-
         public  EmploymentTypeMaster _EmploymentTypeDetail { get; set; }
         public  ProfessionTypeMaster _ProfessionTypeDetail { get; set; }
     }

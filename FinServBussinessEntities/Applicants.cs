@@ -32,10 +32,16 @@ namespace FinServBussinessEntities
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
+        public string ApplicantType { get; set; }
+        public string AddressLine1 { get; set; }
+        public string AddressLine2 { get; set; }
+        public string AddressLine3 { get; set; }
+        public string Country { get; set; }
+        public string ZipCode { get; set; }
+        public string Type { get; set; }
 
         public ApplicantTypeMaster _ApplicantTypeMasterID { get; set; }
         public LoanApplicationForms _LoanApplicationNo { get; set; }
-
-       
+       public ApplicantCommunicationDetails _ApplicantComunctnDetails { get; set; }
     }
 }

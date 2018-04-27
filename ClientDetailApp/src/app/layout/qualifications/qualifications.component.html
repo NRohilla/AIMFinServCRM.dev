@@ -1,0 +1,132 @@
+<div class="content-section">
+    <div class="col-lg-12 col-md-12">
+        <h3 class="text-uppercase border-bottom pb-2 mb-2">Qualifications</h3>
+        <div class="qualification-section">
+            <div class="content-setion">
+                <div class="example-container mat-elevation-z8">
+                    <mat-table #table [dataSource]="dataSource">
+                        <ng-container matColumnDef="University Name">
+                            <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold">University Name</mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.UniversityName}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Course Name">
+                            <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Course Name </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.CourseName}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="TypeOfQualification">
+                            <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Type Of Qualification </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.TypeOfQualification}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="PassingYear">
+                            <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Passing Year </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.PassingYear}} <button type="submit" (click)="ViewDetails(element.QualificationID)" class="btn btn-sm btn-secondary float-right"><i class="fa fa-eye"></i> View Details</button> </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    </mat-table>
+                    <mat-paginator #paginator
+                                   [pageSize]="1"
+                                   [pageSizeOptions]="[1, 2, 3]"
+                                   [showFirstLastButtons]="true">
+                    </mat-paginator>
+                </div>
+
+            </div>
+        </div>
+        <div class="qualification-details mt-4">
+            <form name="form" #Qualificationform="ngForm" novalidate>
+                <mat-card class="border">
+                    <h4 class="sub-heading text-uppercase text-center position-relative pb-2 mb-4">
+                        Course details
+                        <span class="top-btn">
+                            <input type="button" value="&#xf040; Edit" class="btn btn-sm btn-info" (click)="EditDetails()" *ngIf="!_EditDetails" />
+                            <input type="button" value="&#xf0c7; Save" (click)="UpdateDetails()" [disabled]="!Qualificationform.form.valid" *ngIf="_EditDetails" class="btn btn-sm btn-success" />
+                            <input type="button" value="&#xf00d; Cancel" (click)="CancelEditingDetails()" *ngIf="_EditDetails" class="btn btn-sm btn-secondary" />
+                        </span>
+                    </h4>
+                    <div class="">
+                        <div class="row mb-2">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-user text-info"></i> University Name</span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary">{{QualificationDetails.UniversityName}}</span>
+                                    </div>
+                                </div>
+                                <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                    <input matInput placeholder="Name" [(ngModel)]="QualificationDetails.UniversityName" name="UniversityName" #UniversityName="ngModel" required>
+                                    <div *ngIf="firstname.invalid && (UniversityName.dirty || UniversityName.touched)" class="alert alert-danger">
+                                        <div *ngIf="UniversityName.errors.required"></div>
+                                        Please enter University Name.
+                                    </div>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-mortar-board text-info"></i> Course Name</span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary">{{QualificationDetails.CourseName}}</span>
+                                    </div>
+                                </div>
+                                <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                    <input matInput placeholder="Course Name" [(ngModel)]="QualificationDetails.CourseName" name="coursename" #coursename="ngModel" required>
+                                    <div *ngIf="coursename.invalid && (coursename.dirty || coursename.toouched)" class="alert alert-danger">
+                                        <div *ngIf="coursename.errors.required">
+                                            Please enter Course Name.
+                                        </div>
+                                    </div>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-book text-info"></i> Course Type</span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary">{{QualificationDetails.Qualifications}}</span>
+                                    </div>
+                                </div>
+                                <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                    <input matInput placeholder="Course Type" [(ngModel)]="QualificationDetails.Qualifications" name="qualifications" #qualifications="ngModel" required>
+                                    <div *ngIf="qualifications.invalid && (qualifications.dirty || qualifications.touched)" class="alert alert-danger">
+                                        <div *ngIf="qualifications.errors.required">
+                                            Please enter Qualifications.
+                                        </div>
+                                    </div>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span><i class="fa fa-calendar text-info"></i> Passing Year</span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <span class="text-secondary">{{QualificationDetails.PassingYear}}</span>
+                                    </div>
+                                </div>
+                                <mat-form-field class="w-100" *ngIf="_EditDetails">
+                                    <input matInput placeholder="Passing Year" [(ngModel)]="QualificationDetails.PassingYear" name="PassingYear" #PassingYear="ngModel" required>
+                                    <div *ngIf="PassingYear.invalid && (PassingYear.dirty || PassingYear.touched)" class="alert alert-danger">
+                                        <div *ngIf="PassingYear.errors.required">
+                                            Please enter Passing Year.
+                                        </div>
+                                    </div>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card>
+            </form>
+        </div>
+    </div>
+</div>
+

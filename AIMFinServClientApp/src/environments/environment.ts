@@ -8,6 +8,6 @@ export const environment = {
     development: true,
     testing: false,
     //for local connection to the API service
-    baseAPIUrl: "http://localhost:61725/API/",
+    baseAPIUrl: "http://localhost:52997/API/",
     baseApplicationURL: "http://localhost:8080/#/",
 };

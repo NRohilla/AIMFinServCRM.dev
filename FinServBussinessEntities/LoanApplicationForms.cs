@@ -38,6 +38,8 @@ namespace FinServBussinessEntities
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
+        public string Status { get; set; }
+        public string LoanRateType { get; set; }
 
         public LoanTypeMaster _TypeOfLoanID { get; set; }
         public PurposeOfLoanMaster _PurposeOfLoanID { get; set; }

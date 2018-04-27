@@ -27,6 +27,7 @@ export class AddGuarantorDialog {
     public _EditViewDetails: boolean = false;
     public _AddGuarantor: boolean = true;
     public _ViewDetails: boolean = false;
+    public LoanApplicationNo: string = '';
 
     public _AddGuarantorDetails = {
         GuarantorID: '',
@@ -67,27 +68,24 @@ export class AddGuarantorDialog {
     }
     
     ngOnInit() {
-        this._ClientsService.GetAddedGuarantorGrid().subscribe(res => this.GetAddedGuarantorGridSuccess(res), res => this.GetAddedGuarantorGridError(res));
+        if (this._LocalStorageService.get("LoanApplicationNo") != undefined) {
+            this.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNo");
+            this._ClientsService.GetAddedGuarantorGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedGuarantorGridSuccess(res), res => this.GetAddedGuarantorGridError(res));
+        }
     }
     
     AddGuarantor() {
-        debugger;
-        if (this._LocalStorageService.get("LoanApplicationNoViewed") != undefined) {
-            this._AddGuarantorDetails.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNoViewed");
+        if (this._LocalStorageService.get("LoanApplicationNo") != undefined) {
+            this._AddGuarantorDetails.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNo");
             this._ClientsService.AddGuarantor(this._AddGuarantorDetails).subscribe(res => this.AddGuarantorSuccess(res), res => this.AddGuarantorError(res));
         }
     }
     AddGuarantorSuccess(res) {
         this._AddGuarantorDetails = JSON.parse(res._body);
-        this.GetAddedGuarantorGrid();
+        this._ClientsService.GetAddedGuarantorGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedGuarantorGridSuccess(res), res => this.GetAddedGuarantorGridError(res));
     }
     AddGuarantorError(res) { }
 
-    GetAddedGuarantorGrid() {
-        debugger;
-        this._ClientsService.GetAddedGuarantorGrid().subscribe(res => this.GetAddedGuarantorGridSuccess(res), res => this.GetAddedGuarantorGridError(res));
-       
-    }
     GetAddedGuarantorGridSuccess(res) {
       
         this.gridData = JSON.parse(res._body);
@@ -116,18 +114,16 @@ export class AddGuarantorDialog {
     ViewDetailsError(res) { }
 
     UpdateGuarantorDetails() {
-        debugger;
         this.FormatNZResidents();
         this._ClientsService.UpdateGuarantorDetails(this._AddGuarantorDetails).subscribe(res => this.UpdateGuarantorDetailsSuccess(res), res => this.UpdateGuarantorDetailsError(res));
     }
     UpdateGuarantorDetailsSuccess(res) {
-        debugger;
         this.FormatNZResidents();
         this._AddGuarantor = true;
         this.AddGuarantorform.reset();
         this._EditViewDetails = false;
         this._ViewDetails = false;
-        this.GetAddedGuarantorGrid();
+        this._ClientsService.GetAddedGuarantorGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedGuarantorGridSuccess(res), res => this.GetAddedGuarantorGridError(res));
     }
     UpdateGuarantorDetailsError(res) { }
 
@@ -138,7 +134,6 @@ export class AddGuarantorDialog {
  
     onNoClick(): void {
         this.dialogRef.close();
-        debugger;
     }
    
 

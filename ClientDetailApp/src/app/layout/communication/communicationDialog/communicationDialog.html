@@ -1,0 +1,168 @@
+<form name="form" #AddEditAddressform="ngForm" novalidate>
+    <div class="client-dialog border-bottom pb-3">
+        <h4 class="text-uppercase pb-2 mb-3 border-bottom" *ngIf="!_EditcommunicationDetails">Add New Address</h4>
+        <h4 class="text-uppercase pb-2 mb-3 border-bottom" *ngIf="_EditcommunicationDetails">Edit Address</h4>
+        <div class="bg-white p-4">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left" *ngIf="!_EditcommunicationDetails">
+                    <mat-form-field>
+                        <mat-select placeholder="Address Type" [(ngModel)]="CommunicationDialogDetails.ID" name="AddressType" #AddressType="ngModel" required>
+                            <mat-option *ngFor="let AddressTyp of _AddressType" [value]="AddressTyp.ID">{{AddressTyp.Type}}</mat-option>
+                        </mat-select>
+                        <div *ngIf="AddressType.invalid && (AddressType.dirty || AddressType.touched)" class="alert alert-danger">
+                            <div *ngIf="AddressType.errors.required ">
+                                Please enter valid Address Type.
+                            </div>
+                        </div>
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left" *ngIf="_EditcommunicationDetails">
+                    <mat-form-field>
+                        <mat-select placeholder="Address Type" [(ngModel)]="CommunicationDialogDetails.Type" name="AddressType" #AddressType="ngModel" required>
+                            <mat-option *ngFor="let AddressTyp of _AddressType" [value]="AddressTyp.Type">{{AddressTyp.Type}}</mat-option>
+                        </mat-select>
+                        <div *ngIf="AddressType.invalid && (AddressType.dirty || AddressType.touched)" class="alert alert-danger">
+                            <div *ngIf="AddressType.errors.required ">
+                                Please enter valid Address Type.
+                            </div>
+                        </div>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left" *ngIf="!_EditcommunicationDetails">
+                    <mat-form-field>
+                        <input matInput [(ngModel)]="CommunicationDialogDetails.AddressLine1" placeholder="Address1" name="Address1" #Address1="ngModel" required>
+                        <div *ngIf="Address1.invalid && (Address1.dirty || Address1.touched)" class="alert alert-danger">
+                            <div *ngIf="Address1.errors.required">
+                                Please enter Address Line 1.
+                            </div>
+                        </div>
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left" *ngIf="_EditcommunicationDetails">
+                    <mat-form-field>
+                        <input matInput placeholder="Address1" value="{{CommunicationDialogDetails.AddressLine1}}" [(ngModel)]="CommunicationDialogDetails.AddressLine1" name="Address1" #Address1="ngModel" required>
+                        <div *ngIf="Address1.invalid && (Address1.dirty || Address1.touched)" class="alert alert-danger">
+                            <div *ngIf="Address1.errors.required">
+                                Please enter Address Line 1.
+                            </div>
+                        </div>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left" *ngIf="!_EditcommunicationDetails">
+                    <mat-form-field>
+                        <input matInput [(ngModel)]="CommunicationDialogDetails.AddressLine2" placeholder="Address2" name="Address2" #Address2="ngModel" required>
+                        <div *ngIf="Address2.invalid && (Address2.dirty || Address2.touched)" class="alert alert-danger">
+                            <div *ngIf="Address2.errors.required">
+                                Please enter Address Line 2.
+                            </div>
+                        </div>
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left" *ngIf="_EditcommunicationDetails">
+                    <mat-form-field>
+                        <input matInput placeholder="Address2" [(ngModel)]="CommunicationDialogDetails.AddressLine2" name="Address2" #Address2="ngModel" required>
+                        <div *ngIf="Address2.invalid && (Address2.dirty || Address2.touched)" class="alert alert-danger">
+                            <div *ngIf="Address2.errors.required">
+                                Please enter Address Line 2.
+                            </div>
+                        </div>
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left" *ngIf="!_EditcommunicationDetails">
+                    <mat-form-field>
+                        <input matInput [(ngModel)]="CommunicationDialogDetails.AddressLine3" placeholder="Address3" name="Address3" #Address3="ngModel" required>
+                        <div *ngIf="Address3.invalid && (Address3.dirty || Address3.touched)" class="alert alert-danger">
+                            <div *ngIf="Address3.errors.required">
+                                Please enter Address 3.
+                            </div>
+                        </div>
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left" *ngIf="_EditcommunicationDetails">
+                    <mat-form-field>
+                        <input matInput placeholder="Address3" [(ngModel)]="CommunicationDialogDetails.AddressLine3" name="Address3" #Address3="ngModel" required>
+                        <div *ngIf="Address3.invalid && (Address3.dirty || Address3.touched)" class="alert alert-danger">
+                            <div *ngIf="Address3.errors.required">
+                                Please enter Address 3.
+                            </div>
+                        </div>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left" *ngIf="!_EditcommunicationDetails">
+                    <mat-form-field>
+                        <input matInput [(ngModel)]="CommunicationDialogDetails.Country" placeholder="Country" name="Country" #Country="ngModel" required>
+                        <div *ngIf="Country.invalid && (Country.dirty || Country.touched)" class="alert alert-danger">
+                            <div *ngIf="Country.errors.required">
+                                Please enter Country.
+                            </div>
+                        </div>
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left" *ngIf="_EditcommunicationDetails">
+                    <mat-form-field>
+                        <input matInput placeholder="Country" [(ngModel)]="CommunicationDialogDetails.Country" name="Country" #Country="ngModel" required>
+                        <div *ngIf="Country.invalid && (Country.dirty || Country.touched)" class="alert alert-danger">
+                            <div *ngIf="Country.errors.required">
+                                Please enter Country.
+                            </div>
+                        </div>
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left" *ngIf="!_EditcommunicationDetails">
+                    <mat-form-field>
+                        <input matInput [(ngModel)]="CommunicationDialogDetails.ZipCode" placeholder="Zip Code" name="ZipCode" #ZipCode="ngModel" required>
+                        <div *ngIf="ZipCode.invalid && (ZipCode.dirty || ZipCode.touched)" class="alert alert-danger">
+                            <div *ngIf="ZipCode.errors.required">
+                                Please enter Zip Code.
+                            </div>
+                        </div>
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left" *ngIf="_EditcommunicationDetails">
+                    <mat-form-field>
+                        <input matInput placeholder="Zip Code" [(ngModel)]="CommunicationDialogDetails.ZipCode" name="ZipCode" #ZipCode="ngModel" required>
+                        <div *ngIf="ZipCode.invalid && (ZipCode.dirty || ZipCode.touched)" class="alert alert-danger">
+                            <div *ngIf="ZipCode.errors.required">
+                                Please enter Zip Code.
+                            </div>
+                        </div>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left" *ngIf="!_EditcommunicationDetails">
+                    <mat-form-field>
+                        <input matInput [(ngModel)]="CommunicationDialogDetails.Duration" placeholder="Duration" name="Duration" #Duration="ngModel" required>
+                        <div *ngIf="Duration.invalid && (Duration.dirty || Duration.touched)" class="alert alert-danger">
+                            <div *ngIf="Duration.errors.required">
+                                Please enter Duration.
+                            </div>
+                        </div>
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left" *ngIf="_EditcommunicationDetails">
+                    <mat-form-field>
+                        <input matInput [(ngModel)]="CommunicationDialogDetails.Duration" placeholder="Duration" name="Duration" #Duration="ngModel" required>
+                        <div *ngIf="Duration.invalid && (Duration.dirty || Duration.touched)" class="alert alert-danger">
+                            <div *ngIf="Duration.errors.required">
+                                Please enter Duration.
+                            </div>
+                        </div>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3 dialog-bottom">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+            <input type="button" value="&#xf00d; Cancel" (click)="onNoClick()" class="btn btn-sm btn-secondary" />
+            <input type="button" value="&#xf0c7; Save" (click)="AddNewAddress()" [disabled]="!AddEditAddressform.form.valid" class="btn btn-sm btn-success" />
+        </div>
+    </div>
+    </form>
+

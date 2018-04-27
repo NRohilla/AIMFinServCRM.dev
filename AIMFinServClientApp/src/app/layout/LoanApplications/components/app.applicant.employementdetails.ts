@@ -15,6 +15,8 @@ import { ClientsService } from '../../../services/app.clients.service';
     providers: [ClientsService]
 })
 export class ApplicantEmployementComponent implements OnInit {
+    _isformvalid: boolean = false;
+    @ViewChild('AddEmployementDetails') form;
 
     public _ApplicantEmployementDetails = {
         EmploymentID :'',
@@ -31,6 +33,9 @@ export class ApplicantEmployementComponent implements OnInit {
     ngOnInit() {
     }
 
+    ngDoCheck() {
+        this._isformvalid = this.form.valid;
+    }
     SaveLoanApplicationEmployementDetails(applicantId) {
         this._ApplicantEmployementDetails.ApplicantID = applicantId;
       return  this._ClientsService.SaveLoanApplicationEmploymentDetails(this._ApplicantEmployementDetails);

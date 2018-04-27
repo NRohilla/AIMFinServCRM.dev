@@ -1,0 +1,117 @@
+
+<div class="application-details mt-0">
+    <div>
+        <h3 class="text-uppercase sub-head">Assign Applicant</h3>
+        <div class="section_box pl-0 pr-0 clearfix" style="padding-bottom:1px;">
+            <div class="w-100 float-left">
+                <div class="pl-4 pr-4 pt-0 pb-4">
+                    <div class="asign-select-box w-100 position-relative">
+                        <div class="row m-0">
+                            <div class="field_info w-100">
+                                <mat-form-field *ngIf="!_ShowDetails">
+                                    <mat-select placeholder="Applicant Name" [(ngModel)]="_ManageApplicantDetails.AutoID" name="applicantname">
+                                        <mat-option *ngFor="let ApplcntType of _ApplicantID" [value]="ApplcntType.AutoID">{{ApplcntType.Title}}{{ApplcntType.FirstName}}{{ApplcntType.MiddleName}}{{ApplcntType.LastName}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <input type="button" value="&#xf002; Search" (click)="GetAllApplicants()" *ngIf="!_ShowDetails" class="btn btn-info mt-2" />
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="row m-0">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                <div class="field_set">
+                                    <div class="field_label" *ngIf="_ShowDetails">Title</div>
+                                    <p *ngIf="_ShowDetails">{{_ManageApplicantDetails.Title}}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                <div class="field_set">
+                                    <div class="field_label" *ngIf="_ShowDetails">First Name</div>
+                                    <p *ngIf="_ShowDetails">{{_ManageApplicantDetails.FirstName}}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                <div class="field_set">
+                                    <div class="field_label" *ngIf="_ShowDetails">Middle Name</div>
+                                    <p *ngIf="_ShowDetails">{{_ManageApplicantDetails.MiddleName}}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row m-0">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                <div class="field_set">
+                                    <div class="field_label" *ngIf="_ShowDetails">Last Name</div>
+                                    <p *ngIf="_ShowDetails">{{_ManageApplicantDetails.LastName}}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                <div class="field_set">
+                                    <div class="field_label" *ngIf="_ShowDetails">Gender</div>
+                                    <p *ngIf="_ShowDetails">{{_ManageApplicantDetails.Gender}}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                <div class="field_set">
+                                    <div class="field_label" *ngIf="_ShowDetails">Date Of Birth</div>
+                                    <p *ngIf="_ShowDetails">{{_ManageApplicantDetails.DateOfBirth}}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                <div class="field_set">
+                                    <div class="field_label" *ngIf="_ShowDetails">NZResidents</div>
+                                    <p *ngIf="_ShowDetails">{{_ManageApplicantDetails.NZResidents}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-0 ">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                <div class="field_set">
+                                    <div class="field_label" *ngIf="_ShowDetails">Country of Birth</div>
+                                    <p *ngIf="_ShowDetails">{{_ManageApplicantDetails.CountryOfBirth}}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                <div class="field_set">
+                                    <div class="field_label" *ngIf="_ShowDetails">Email ID</div>
+                                    <p *ngIf="_ShowDetails">{{_ManageApplicantDetails.EmailID}}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                <div class="field_set">
+                                    <div class="field_label" *ngIf="_ShowDetails">Mobile No.</div>
+                                    <p *ngIf="_ShowDetails">{{_ManageApplicantDetails.MobileNo}}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                <div class="field_set">
+                                    <div class="field_label" *ngIf="_ShowDetails">Work Phone No.</div>
+                                    <p *ngIf="_ShowDetails">{{_ManageApplicantDetails.WorkPhoneNo}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-0 ">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                <div class="field_set">
+                                    <div class="field_label" *ngIf="_ShowDetails">Home Phone No.</div>
+                                    <p *ngIf="_ShowDetails">{{_ManageApplicantDetails.HomePhoneNo}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-100 float-left">
+                <div class="btn-bottom pl-4 pr-4 text-right">
+                    <input type="button" value="&#xf00d; Cancel" (click)="onNoClick()" class="btn btn-secondary" />
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>
+
+
+
+

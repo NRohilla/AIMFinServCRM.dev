@@ -54,3 +54,24 @@ E:\Clients\Nick\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.csprojResolveAssem
 E:\Clients\Nick\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.dll
 E:\Clients\Nick\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.pdb
 D:\Clients Project\Nick\code\Github\AIMFinServCRM.dev\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.csprojResolveAssemblyReference.cache
+D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\FinServUnitOfWork.dll.config
+D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\FinServUnitOfWork.dll
+D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\FinServUnitOfWork.pdb
+D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\EntityFramework.dll
+D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\EntityFramework.SqlServer.dll
+D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\EntityFramework.SqlServerCompact.dll
+D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\FinServBussinessEntities.dll
+D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\FinServDataModel.dll
+D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\Newtonsoft.Json.dll
+D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\System.Data.SqlServerCe.dll
+D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\EntityFramework.xml
+D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\EntityFramework.SqlServer.xml
+D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\EntityFramework.SqlServerCompact.xml
+D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\FinServBussinessEntities.pdb
+D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\FinServDataModel.pdb
+D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\FinServDataModel.dll.config
+D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\bin\Debug\Newtonsoft.Json.xml
+D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.csproj.CoreCompileInputs.cache
+D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.dll
+D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.pdb
+D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.csprojResolveAssemblyReference.cache

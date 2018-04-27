@@ -1,0 +1,57 @@
+﻿<div [@routerTransition] class="master-forms">
+    <app-page-header [heading]="'Employment Types'" [icon]="'fa-bar-chart-o'"></app-page-header>
+    <kendo-grid [kendoGridBinding]="_EmploymentTypes"
+                [pageSize]="10"
+                [sortable]="true"
+                [pageable]="true"
+                [scrollable]="true"
+                [filterable]="true"
+                [groupable]="true"
+                selectable="true"
+                #EmploymentTypes
+                (selectionChange)="GridSelectionChange(EmploymentTypes, $event)">
+        <kendo-grid-column field="EmployementType" title="Employment Type">
+        </kendo-grid-column>
+        <kendo-grid-column field="IsActive" title="Status">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <label *ngIf="dataItem.IsActive">Activated</label>
+                <label *ngIf="!dataItem.IsActive">Deactivated</label>
+            </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-command-column>
+            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                <button class="btn btn-lg btn-link" type="button" (click)="SwitchStatus(dataItem.ID)" *ngIf="dataItem.IsActive"><i class="fa fa-ban text-danger"></i> Deactivate</button>
+                <button class="btn btn-lg btn-link" type="button" (click)="SwitchStatus(dataItem.ID)" *ngIf="!dataItem.IsActive"><i class="fa fa-check-square-o text-success"></i> Activate</button>
+            </ng-template>
+        </kendo-grid-command-column>
+    </kendo-grid>
+
+    <div id="exTab1">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section_box">
+                    <div class="box_title">{{_Operationtitle}} Employment Type</div>
+                    <div class="tab-content clearfix">
+                        <div class="tab-pane active">
+                            <div class="field_set">
+                                <div class="field_label">Employment Type</div>
+                                <div class="field_info">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Employment type" value="{{_EmploymentObj.EmployementType}}" [(ngModel)]="_EmploymentObj.EmployementType" #EmployementType>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="float-right">
+                            <input type="button" value="Save" (click)="AddEmployementType()" class="btn btn-success" *ngIf="_Operationtitle=='Add'" />
+                            <input type="button" value="Update" (click)="UpdateEmployementType()" class="btn btn-success" *ngIf="_Operationtitle=='Update'" />
+                            <input type="button" value="Cancel" (click)="CancelEmployementType()" class="btn btn-secondary" />
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

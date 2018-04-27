@@ -23,7 +23,7 @@ namespace FinServDataModel
         public string FrequencyOffered { get; set; }
         public string LoanValueRatio { get; set; }
         public string LoanAmountOffered { get; set; }
-        public Nullable<int> LoanTypeID { get; set; }
+        public int LoanTypeID { get; set; }
         public string ClientID { get; set; }
         public int StatusID { get; set; }
         public string EMIStartDay { get; set; }

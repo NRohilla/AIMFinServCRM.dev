@@ -10,7 +10,7 @@ namespace FinServServices.Controllers
         IAuthenticate repository = new AuthenticateUser();
         [HttpGet]
         [Route("AuthenticateLogin")]
-        public bool AuthenticateLogin(string UserEmailId, string password)
+        public FinServBussinessEntities.Utility_Classes.AuthenticationDetails AuthenticateLogin(string UserEmailId, string password)
         {
             return repository.AuthenticateLogin(UserEmailId, password);
         }

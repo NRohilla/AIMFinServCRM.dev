@@ -11,9 +11,9 @@ namespace FinServServices.Controllers
     {
         IMasters Repository = new UOWMasters();
 
-        
+
         #region Get
-       
+
         [HttpGet]
         [Route("GetApplicantTypes")]
         public List<ApplicantTypeMaster> GetApplicantTypes()
@@ -28,6 +28,13 @@ namespace FinServServices.Controllers
             return Repository.GetAssetsTypes();
         }
 
+        // Added By Neha Bambah - For Advisor Groups on Loan Application Form
+        [HttpGet]
+        [Route("GetAdvisorGroups")]
+        public List<AdvisorTypeDetails> GetAdvisorGroups()
+        {
+            return Repository.GetAdvisorGroups();
+        }
         [HttpGet]
         [Route("GetEmploymentTypes")]
         public List<EmploymentTypeMaster> GetEmploymentTypes()
@@ -118,6 +125,26 @@ namespace FinServServices.Controllers
         public List<Applicants> GetApplicantNames(string loanappno)
         {
             return Repository.GetApplicantNames(loanappno);
+        }
+
+        [HttpGet]
+        [Route("GetApplicationFormNo")]
+        public List<LoanApplicationForms> GetApplicationFormNo()
+        {
+            return Repository.GetApplicationFormNo();
+        }
+
+        [HttpGet]
+        [Route("GetApplicants")]
+        public List<Applicants> GetApplicants()
+        {
+            return Repository.GetApplicants();
+        }
+        [HttpGet]
+        [Route("GetAddressTypes")]
+        public List<AddressTypeMaster> GetAddressTypes()
+        {
+            return Repository.GetAddressTypes();
         }
 
         #endregion

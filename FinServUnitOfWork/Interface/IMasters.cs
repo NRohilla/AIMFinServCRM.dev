@@ -9,6 +9,10 @@ namespace FinServUnitOfWork.Interface
         //get
         List<ApplicantTypeMaster> GetApplicantTypes();
         List<AssetsTypeMaster> GetAssetsTypes();
+
+
+        List<AdvisorTypeDetails> GetAdvisorGroups();
+
         List<EmploymentTypeMaster> GetEmploymentTypes();
         List<ExpenseTypeMaster> GetExpenseTypes();
         List<LiabilityTypeMaster> GetLiabilityTypes();
@@ -20,10 +24,13 @@ namespace FinServUnitOfWork.Interface
         List<QualificationTypeMaster> GetQualificationTypes();
         List<RelationshipTypeMaster> GetRelationshipTypes();
         List<SalutationTypeMaster> GetSalutationTypes();
+        List<LoanApplicationForms> GetApplicationFormNo();
         //Added by Neha
         List<StatusTypeMaster> GetStatusTypes();
 
         List<Applicants> GetApplicantNames(string loanappno);
+        List<Applicants> GetApplicants();
+        List<AddressTypeMaster> GetAddressTypes();
 
         //switch status
         bool SwitchApplicantEntityStatus(int ID);

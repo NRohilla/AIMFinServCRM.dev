@@ -54,6 +54,30 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
+
+        public List<AdvisorTypeDetails> GetAdvisorGroups()
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    return (from advsrdtls in db.tblAdvisorDetails
+                            select new AdvisorTypeDetails()
+                            {
+                                AdvisorID = advsrdtls.AdvisorID,
+                                AutoID=advsrdtls.AutoID,
+                                AdvisorCode = advsrdtls.AdvisorCode,
+                                AdvisorGroup = advsrdtls.AdvisorGroup,
+                            }).ToList();
+
+
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
         public List<EmploymentTypeMaster> GetEmploymentTypes()
         {
             try
@@ -83,7 +107,7 @@ namespace FinServUnitOfWork.Repository
                     return (from ExpnsMstr in db.tblMasterExpenseTypes
                             select new ExpenseTypeMaster()
                             {
-                                Description = ExpnsMstr.Description,
+                                ExpenseType = ExpnsMstr.ExpenseType,
                                 AutoID = ExpnsMstr.AutoID,
                                 ExpenseTypeID = ExpnsMstr.ExpenseTypeID,
                                 Frequency = ExpnsMstr.Frequency,
@@ -305,6 +329,31 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
+
+
+        public List<Applicants> GetApplicants() {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    return (from ObjAplcnts in db.tblApplicants
+                            select new Applicants()
+                            {
+                                ApplicantID = ObjAplcnts.ApplicantID,
+                                AutoID = ObjAplcnts.AutoID,
+                                Title = ObjAplcnts.Title,
+                                FirstName = ObjAplcnts.FirstName,
+                                MiddleName=ObjAplcnts.MiddleName,
+                                LastName = ObjAplcnts.LastName
+                            })
+                            .ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         public List<Applicants> GetApplicantNames(string loanappno)
         {
             try
@@ -327,7 +376,50 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
-        
+
+        public List<LoanApplicationForms> GetApplicationFormNo()
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    return (from ObjAplctnFormNo in db.tblLoanApplicationForms
+                            .Where(p => p.IsApplicationApproved == true)
+                            select new LoanApplicationForms()
+                            {
+                                AutoID = ObjAplctnFormNo.AutoID,
+                                ApplicationFormNumber = ObjAplctnFormNo.ApplicationFormNumber
+                            })
+                            .ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public List<AddressTypeMaster> GetAddressTypes()
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    return (from ObjAddressTyp in db.tblMasterAddressTypes
+                            select new AddressTypeMaster()
+                            {
+                                ID = ObjAddressTyp.ID,
+                                Type = ObjAddressTyp.Type
+                            })
+                            .ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         #endregion
 
 
@@ -729,7 +821,7 @@ namespace FinServUnitOfWork.Repository
                     var GetObjEntity = db.tblMasterExpenseTypes.Where(p => p.AutoID == ExpenseTypeMaster.AutoID).FirstOrDefault();
                     if (GetObjEntity != null)
                     {
-                        GetObjEntity.Description = ExpenseTypeMaster.Description;
+                        GetObjEntity.ExpenseType = ExpenseTypeMaster.ExpenseType;
                         GetObjEntity.Frequency = ExpenseTypeMaster.Frequency;
                         operationResult = db.SaveChanges();
                     }
@@ -1043,7 +1135,7 @@ namespace FinServUnitOfWork.Repository
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
                    tblMasterExpenseType Obj = new tblMasterExpenseType();
-                    Obj.Description = ExpenseTypeMaster.Description;
+                    Obj.ExpenseType = ExpenseTypeMaster.ExpenseType;
                     Obj.ExpenseTypeID = Guid.NewGuid();
                     Obj.IsActive = true;
                     db.tblMasterExpenseTypes.Add(Obj);

@@ -1,4 +1,4 @@
-﻿
+
 <div [@routerTransition] class="application-details">
     <app-page-header [heading]="'Clients'" [icon]="'fa-bar-chart-o'"></app-page-header>
     <div *ngIf="!_ViewApplicantDetails">
@@ -19,7 +19,10 @@
             </kendo-grid-column>
             <kendo-grid-column field="EmailID" title="Email">
             </kendo-grid-column>
-            <kendo-grid-column field="ApplicantType.ApplicantType" title="Applicant type">
+            <kendo-grid-column title="Applicant Type" [filter]="'text'">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label>{{dataItem._ApplicantTypeMasterID.ApplicantType}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-command-column>
                 <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
@@ -28,7 +31,7 @@
             </kendo-grid-command-column>
         </kendo-grid>
     </div>
-    <div *ngIf="_ViewApplicantDetails">
+    <!--<div *ngIf="_ViewApplicantDetails">
         <div class="back-btn">
             <button class="btn btn-lg btn-link text-white font-weight-bold" type="button" (click)="ViewClientDetails('ViewList')">Back</button>
         </div>
@@ -43,5 +46,5 @@
                 </mat-tab-group>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>

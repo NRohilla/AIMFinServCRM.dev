@@ -31,10 +31,12 @@ export class ClientsComponent implements OnInit {
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, public dialog: MatDialog) { }
 
     ngOnInit() {
+        //debugger;
         this._ClientsService.GetAllClients().subscribe(res => this.GetAllClientsSuccess(res), res => this.GetAllClientsError(res));
     }
 
     GetAllClientsSuccess(Res) {
+        //debugger;
         this.gridData = JSON.parse(Res._body);
     }
 
@@ -42,8 +44,9 @@ export class ClientsComponent implements OnInit {
 
     ViewClientDetails(ApplicantID) {
 
-        this._ViewApplicantDetails = !this._ViewApplicantDetails;
+        //this._ViewApplicantDetails = !this._ViewApplicantDetails;
         this._LocalStorageService.set("ApplicantID", ApplicantID);
+        this.router.navigateByUrl('clientdetails');
     }
 
     openDialog(): void {
@@ -58,7 +61,7 @@ export class ClientsComponent implements OnInit {
     }
 
     EditPersonalDetails() {
-        debugger;
+        //debugger;
         this._EditPersonalDetails = true;
     }
 

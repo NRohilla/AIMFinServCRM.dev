@@ -15,7 +15,8 @@ import { ClientsService } from '../../../services/app.clients.service';
     providers: [ClientsService]
 })
 export class ApplicantQualificationDetailsComponent implements OnInit {
-
+    _isformvalid: boolean = false;
+    @ViewChild('AddQualificationform') form;
     public _ApplicantQualificationDetails = {
         QualificationID: '',
         ApplicantID: '',
@@ -27,6 +28,10 @@ export class ApplicantQualificationDetailsComponent implements OnInit {
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { }
     ngOnInit() {
+    }
+
+    ngDoCheck() {
+        this._isformvalid = this.form.valid;
     }
 
     SaveLoanApplicationQualificationDetails(applicantID) {

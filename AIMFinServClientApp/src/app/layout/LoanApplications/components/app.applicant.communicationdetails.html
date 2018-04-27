@@ -1,7 +1,8 @@
     <div class="pt-4">
         <div class="w-100 float-left">
-            <div class="row m-0">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+            <form name="form" #AddCommunicationForm="ngForm" novalidate>
+                <div class="row m-0">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field class="example-full-width">
                                 <input matInput placeholder="Address Line 1" value="{{_ApplicantCommunicationDetails.AddressLine1}}" [(ngModel)]="_ApplicantCommunicationDetails.AddressLine1" name="AddressLine1" #AddressLine1="ngModel" required>
@@ -11,10 +12,10 @@
                                     </div>
                                 </div>
                             </mat-form-field>
-                            
+
                         </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field class="example-full-width">
                                 <input matInput placeholder="Address Line 2" value="{{_ApplicantCommunicationDetails.AddressLine2}}" [(ngModel)]="_ApplicantCommunicationDetails.AddressLine2" name="AddressLine2" #AddressLine2="ngModel" required>
@@ -25,8 +26,8 @@
                                 </div>
                             </mat-form-field>
                         </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field class="example-full-width">
                                 <input matInput placeholder="Address Line 3" value="{{_ApplicantCommunicationDetails.AddressLine3}}" [(ngModel)]="_ApplicantCommunicationDetails.AddressLine3" name="AddressLine3" #AddressLine3="ngModel" required>
@@ -37,11 +38,11 @@
                                 </div>
                             </mat-form-field>
                         </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row m-0">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                <div class="row m-0">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field class="example-full-width">
                                 <input matInput placeholder="Duration" value="{{_ApplicantCommunicationDetails.Duration}}" [(ngModel)]="_ApplicantCommunicationDetails.Duration" name="Duration" #Duration="ngModel" required>
@@ -52,8 +53,8 @@
                                 </div>
                             </mat-form-field>
                         </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field>
                                 <mat-select placeholder="Address Type" [(value)]="_ApplicantCommunicationDetails.AddressType">
@@ -64,9 +65,9 @@
                                 </mat-select>
                             </mat-form-field>
                         </div>
+                    </div>
                 </div>
-            </div>
-
+            </form>
         </div>
     </div>
 

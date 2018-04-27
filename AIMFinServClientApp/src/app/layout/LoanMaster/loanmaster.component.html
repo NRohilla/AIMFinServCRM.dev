@@ -1,277 +1,40 @@
-﻿<div [@routerTransition] class="application-details">
-    <app-page-header [heading]="'Loan Master'" [icon]="'fa-bar-chart-o'"></app-page-header>
-    <div *ngIf="!_ViewApplicationDetails">
-        <kendo-grid [kendoGridBinding]="gridData"
-                    [pageSize]="2"
+<div [@routerTransition] class="application-details">
+    <app-page-header [heading]="'Loan Details Master'" [icon]="'fa-bar-chart-o'"></app-page-header>
+    <div class="w-100 float-left">
+        <kendo-grid [kendoGridBinding]="_LoanMasterDetails"
+                    [pageSize]="10"
                     [sortable]="true"
                     [pageable]="true"
                     [scrollable]="true"
                     [filterable]="true"
                     [groupable]="true"
-                    selectable="true">
-
-            <kendo-grid-column field="LoanApplicationNo" title="LoanApplication No">
+                    selectable="true"
+                    #LANNumber>
+            <kendo-grid-column field="LANNumber" title="LANNumber" hidden="hidden">
             </kendo-grid-column>
-            <kendo-grid-column field="TypeOfLoan" title="Loan Type">
+            <kendo-grid-column field="_loanApplicationDetails.ApplicationFormNumber" title="Application Form No">
             </kendo-grid-column>
-            <kendo-grid-column field="LoanTerm" title="Term">
+            <kendo-grid-column field="ClientID" title="Client ID">
             </kendo-grid-column>
-
-            <kendo-grid-column field="RateType" title="Rate Type">
+            <kendo-grid-column field="LoanTermOffered" title="Term">
             </kendo-grid-column>
-            <kendo-grid-column field="PropertyType" title="Property Type">
+            <kendo-grid-column field="RateTypeOffered" title="Rate Type">
             </kendo-grid-column>
-            <kendo-grid-column field="Status" title="Status">
+            <kendo-grid-column field="FrequencyOffered" title="Frequency">
+            </kendo-grid-column>
+            <kendo-grid-column field="_propertyTypeDetails.PropertyType" title="Property Type">
+            </kendo-grid-column>
+            <kendo-grid-column field="_typeOfStatusDetails.Status" title="Status">
             </kendo-grid-column>
             <kendo-grid-command-column>
                 <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                    <button class="btn btn-lg btn-link" type="button" (click)="ViewDetails(dataItem.LoanApplicationNo)">View details</button>
+                    <button class="btn btn-lg btn-link" type="button" (click)="ViewDetails(dataItem.LANNumber)">View details</button>
                 </ng-template>
             </kendo-grid-command-column>
         </kendo-grid>
     </div>
-    <div class="" *ngIf="_ViewApplicationDetails">
-        <div class="back-btn">
-            <button class="btn btn-lg btn-link text-white font-weight-bold" type="button" (click)="ViewDetails('ViewList')">Back</button>
-        </div>
-        <div class="w-100 float-left">
-            <div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="section_box pb-0 pl-0 pr-0">
-                            <div class="box_title">Loan master Form</div>
-                            <div class="tab-content clearfix ml-0">
-                                <!--<div class="w-100 float-left text-right">
-                                    <input type="button" value="&#xf067; Add Applicant" class="btn btn-secondary" (click)="openDialog()" />
-                                </div>-->
-                                <div class="w-100 float-left">
-                                    <div class="tab-pane pt-3">
-                                        <div class="row m-0">
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Loan Application No</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">123456</p>
-                                                        <mat-form-field class="example-full-width" *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Loan Application No" value="Loan Application No">
-                                                        </mat-form-field>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Gender</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">Male</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <mat-select placeholder="Gender">
-                                                                <mat-option value="option">Male</mat-option>
-                                                                <mat-option value="option">Female</mat-option>
-                                                            </mat-select>
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set" *ngIf="!_EditDetails">
-                                                    <div class="field_label">Name</div>
-                                                    <div class="field_info">
-                                                        <p>Sant Lal Yadav</p>                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row m-0" *ngIf="_EditDetails">
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">First Name</div>
-                                                    <div class="field_info">
-                                                        <mat-form-field>
-                                                            <input matInput placeholder="First Name">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label float-left font-weight-bold">Middle Name</div>
-                                                    <div class="field_info float-left">
-                                                        <mat-form-field>
-                                                            <input matInput placeholder="Middle Name">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label float-left font-weight-bold">Last Name</div>
-                                                    <div class="field_info float-left">
-                                                        <mat-form-field>
-                                                            <input matInput placeholder="Last Name">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row m-0">
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Date Of Birth</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">15/02/1992</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Date Of Birth">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Country Of Birth</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">NZ</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Country Of Birth">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Marital Status</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">Married</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <mat-select placeholder="Marital Status">
-                                                                <mat-option value="option">Single</mat-option>
-                                                                <mat-option value="option">Married</mat-option>
-                                                            </mat-select>
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row m-0">
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Mobile No</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">+919716694546</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Mobile No">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Home Phone No</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">+919716694546</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Home Phone No">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Work Phone No</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">+919716694546</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Work Phone No">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row m-0">
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Email ID</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">sant.yadav@virtualemployee.com</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Email ID">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">NZ Residents</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">New Zealand</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <input matInput placeholder="NZ Residents">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Duration</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">20 Years</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Duration">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row m-0">
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Address Line1</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">New Zealand1</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Address Line1">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Address Line2</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">New Zealand2</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Address Line2">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
-                                                <div class="field_set">
-                                                    <div class="field_label">Address Line3</div>
-                                                    <div class="field_info">
-                                                        <p *ngIf="!_EditDetails">New Zealand3</p>
-                                                        <mat-form-field *ngIf="_EditDetails">
-                                                            <input matInput placeholder="Address Line3">
-                                                        </mat-form-field>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>                                
-                            </div>
-                            <div class="row m-0 btn-bottom pr-4 pl-4">
-                                <div class="w-100 float-left text-right">
-                                    <input type="button" value="&#xf0c7; Save" (click)="UpdateDetails()" *ngIf="_EditDetails" class="btn btn-success" />
-                                    <input type="button" value="&#xf00d; Cancel" (click)="CancelEditingDetails()" *ngIf="_EditDetails" class="btn btn-secondary" />
-                                    <input type="button" value="&#xf040; Edit" (click)="EditDetails()" *ngIf="!_EditDetails" class="btn btn-info" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="w-100 mt-3 float-left text-right">
+        <input type="button" value="&#xf067; Add Loan Master Details" (click)="AddLoanMasterForm()" class="btn btn-secondary" />
     </div>
 </div>
 

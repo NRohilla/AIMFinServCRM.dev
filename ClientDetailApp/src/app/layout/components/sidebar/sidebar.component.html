@@ -1,0 +1,28 @@
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
+    <div class="list-group nav-client">
+        <!--<a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Dashboard' | translate }}
+        </a>-->
+        <a [routerLink]="['/personal']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Personal' | translate }}
+        </a>
+        <a [routerLink]="['/communication']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-volume-control-phone"></i>&nbsp;{{ 'Communication' | translate }}
+        </a>
+        <a [routerLink]="['/lending']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-map"></i>&nbsp;{{ 'Lending' | translate }}
+        </a>
+        <!--<a [routerLink]="['/financials']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-money"></i>&nbsp;{{ 'Financials' | translate }}
+        </a>-->
+        <a [routerLink]="['/employment']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-file-text-o"></i>&nbsp;{{ 'Employment' | translate }}
+        </a>
+        <a [routerLink]="['/qualifications']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-mortar-board"></i>&nbsp;{{ 'Qualifications' | translate }}
+        </a>
+        <!--<a [routerLink]="['/charts']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-file-text-o"></i>&nbsp;{{ 'Chart' | translate }}
+        </a>-->             
+    </div>
+</nav>

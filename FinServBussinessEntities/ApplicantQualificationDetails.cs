@@ -20,7 +20,8 @@ namespace FinServBussinessEntities
         public Nullable<System.Guid> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public int TypeOfQualification { get; set; }
-
+        public string FirstName { get; set; }
+        public string Qualifications { get; set; }
         public Applicants _ApplicantID { get; set; }
         public QualificationTypeMaster _QualificationTypeDetail { get; set; }
     }

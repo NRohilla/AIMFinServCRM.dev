@@ -1,4 +1,4 @@
-﻿import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
+import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../../router.animations';
 import { Form, FormControl, FormBuilder, Validators  } from '@angular/forms';
@@ -8,58 +8,141 @@ import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
-import {ClientsService} from '../../services/app.clients.service';
-import {LoanApplicationDetailDialog} from '../../shared/dialogues/loanapplications/LoanApplicationDetailDialog';
+//import {ClientsService} from '../../services/app.clients.service';
+import { MastersService } from '../../services/app.masters.service';
+import {LoanMasterService} from '../../services/app.loanmaster.service';
+import { LoanApplicationDetailDialog } from '../../shared/dialogues/loanapplications/LoanApplicationDetailDialog';
+import { ClientDetailsDialog } from '../../shared/dialogues/clients/ClientDetailsDialog';
 @Component({
     templateUrl: './loanmaster.component.html',
     animations: [routerTransition()],
-    providers: [ClientsService]
+    providers: [LoanMasterService, MastersService]
 })
 export class LoanmasterComponent implements OnInit {
-    public _ViewApplicationDetails: boolean = false;
-    public gridData: any[];
-    public _EditDetails: boolean = false;
-    public _LoanApplicationDetails: {
+    public _LoanMasterDetailsObj =
+    {
+        LANNumber: '',
+        LoanApplicationNo: '',
+        ROIOffered: '',
+        LoanTermOffered: '',
+        RateTypeOffered: '',
+        FrequencyOffered: '',
+        LoanValueRatio: '',
+        LoanAmountOffered: '',
+        LoanTypeID: '',
+        ClientID: '',
+        StatusID: '',
+        EMIStartDay: '',
+        EMIStartMonth: '',
+        LoanProcessingFee: '',
+        AnyLegalCharges: '',
+        NoOfEMI: '',
+        Loanprovider: '',
+        PropertyCost: '',
+        PropertyTypeID: '',
+        FinanceDate: '',
+        SettlementDate: '',
+        ApplicationFormNumber: '',
+        LoanType: '',
+        PropertyType: '',
+        Status: '',
+        FirstName: '',
+        MiddleName: '',
+        LastName: '',
+        MobileNo: '',
+        EmailID: '',
+        ApplicantType: '',
+        _loanApplicationDetails: {
+            ApplicationFormNumber: '',
+            LoanApplicationNo: ''
+        },
+        _propertyTypeDetails: {
+            PropertyType: '',
+        },
+        _typeOfLoanDetails: {
+            LoanType: '',
+        },
+        _typeOfStatusDetails: {
+            Status: '',
+        }
+
     };
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, public dialog: MatDialog) { }
+    
 
-    ngOnInit() {
-        this._ClientsService.GetAllLoanApplications().subscribe(res => this.GetAllLoanApplicationSuccess(res), res => this.GetAllLoanApplicationError(res));
+    errorMessage: "No Data"
+
+    public _LoanMasterDetails = [];
+    public LoanMasterApplicantDetails = [];
+    public LoanApplicationNo: string = '';
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _LoanService: LoanMasterService, private _MasterService: MastersService, public dialog: MatDialog) { }
+
+    ngOnInit() {        
+        this._LoanMasterDetailsObj =
+            {
+                LANNumber: '',
+                LoanApplicationNo: '',
+                ROIOffered: '',
+                LoanTermOffered: '',
+                RateTypeOffered: '',
+                FrequencyOffered: '',
+                LoanValueRatio: '',
+                LoanAmountOffered: '',
+                LoanTypeID: '',
+                ClientID: '',
+                StatusID: '',
+                EMIStartDay: '',
+                EMIStartMonth: '',
+                LoanProcessingFee: '',
+                AnyLegalCharges: '',
+                NoOfEMI: '',
+                Loanprovider: '',
+                PropertyCost: '',
+                PropertyTypeID: '',
+                FinanceDate: '',
+                SettlementDate: '',
+                ApplicationFormNumber: '',
+                LoanType: '',
+                PropertyType: '',
+                Status: '',
+                FirstName: '',
+                MiddleName: '',
+                LastName: '',
+                MobileNo: '',
+                EmailID: '',
+                ApplicantType: '',
+                _loanApplicationDetails: {
+                    ApplicationFormNumber: '',
+                    LoanApplicationNo: ''
+                },
+                _propertyTypeDetails: {
+                    PropertyType: '',
+                },
+                _typeOfLoanDetails: {
+                    LoanType: '',
+                },
+                _typeOfStatusDetails: {
+                    Status: '',
+                }
+            };
+        this._LoanService.GetAllLoanMasterDetails().subscribe(res => this.GetAllLoanDetailSuccess(res), res => this.GetAllLoanDetailError(res));
     }
 
-    GetAllLoanApplicationSuccess(Res) {
+    GetAllLoanDetailSuccess(Res) {
         debugger;
-        this.gridData = JSON.parse(Res._body);
+        //this._LocalStorageService.set("LoanApplicationNo", this.LoanApplicationNo);
+        this._LoanMasterDetails = JSON.parse(Res._body);
+        //this._LoanMasterDetailsObj = JSON.parse(Res._body);
     }
+    GetAllLoanDetailError(Res) { }
 
-    GetAllLoanApplicationError(Res) { }
-
-    ViewDetails(LoanApplicationNo) {
-        this._ViewApplicationDetails = !this._ViewApplicationDetails;
-        this._ClientsService.GetLoanApplicationDetails(LoanApplicationNo).subscribe(res => this.GetAllLoanApplicationDetailSuccess(res), res => this.GetAllLoanApplicationDetailError(res));
-    }
-
-    GetAllLoanApplicationDetailSuccess(res) {
+    ViewDetails(LANNumber) {
         debugger;
-        this._LoanApplicationDetails = JSON.parse(res._body);
+        this._LocalStorageService.set("LANNumber", LANNumber);
+        this.router.navigateByUrl('loanmaster/loanDetails');
+       
     }
 
-    GetAllLoanApplicationDetailError(res) { }
-
-    openDialog(): void {
-        let dialogRef = this.dialog.open(LoanApplicationDetailDialog, {
-            //data: { name: this.name, animal: this.animal }
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
-            //this.animal = result;
-        });
+    AddLoanMasterForm() {
+        this.router.navigateByUrl('loanmaster/addLoanMasterForm');
     }
-
-    UpdateDetails() { }
-
-    CancelEditingDetails() { this._EditDetails = false; }
-
-    EditDetails() { this._EditDetails = true; }
 }

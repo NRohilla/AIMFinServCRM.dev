@@ -10,7 +10,7 @@ namespace FinServBussinessEntities
     {
         public int AutoID { get; set; }
         public System.Guid ExpenseTypeID { get; set; }
-        public string Description { get; set; }
+        public string ExpenseType { get; set; }
         public string Frequency { get; set; }
         public bool IsActive { get; set; }
         public Nullable<System.Guid> CreatedBy { get; set; }

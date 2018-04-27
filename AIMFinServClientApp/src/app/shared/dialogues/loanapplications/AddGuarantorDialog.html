@@ -333,7 +333,7 @@
                     <div class="btn-bottom pr-4 pl-4">
                         <input type="submit" *ngIf="_AddGuarantor" (click)="AddGuarantor()" value="&#xf055; Add" [disabled]="!AddGuarantorform.form.valid" class="btn btn-success" />
                         <input type="button" *ngIf="_ViewDetails" value="&#xf040; Edit" (click)="EditDetails()" class="btn btn-success" />
-                        <input type="button" *ngIf="_EditViewDetails" (click)="UpdateGuarantorDetails()" value="&#xf0c7; Save" class="btn btn-success" />
+                        <input type="button" *ngIf="_EditViewDetails" (click)="UpdateGuarantorDetails()" [disabled]="!AddGuarantorform.form.valid" value="&#xf0c7; Save" class="btn btn-success" />
                         <input type="button" value="&#xf00d; Cancel" (click)="onNoClick()" class="btn btn-secondary" />
                     </div>
                 </div>
