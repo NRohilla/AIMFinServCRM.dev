@@ -60,28 +60,24 @@ export class ClientsService {
         return this._http.get(this.baseurl + "Clients/GetQualificationDetailsByAppID?ApplicantID=" + ApplicantID, this.options);
     }
     UpdateQualificationDetailsByAppID(ApplicantQualificationDetails) {
-        debugger;
         return this._http.post(this.baseurl + "Clients/UpdateQualificationDetailsByAppID", ApplicantQualificationDetails, this.options);
     }
     GetEmploymentDetailsByAppID(ApplicantID) {
         return this._http.get(this.baseurl + "Clients/GetEmploymentDetailsByAppID?ApplicantID=" + ApplicantID, this.options);
     }
     UpdateEmploymentDetailsByAppID(ApplicantEmploymentDetails) {
-        debugger;
         return this._http.post(this.baseurl + "Clients/UpdateEmploymentDetailsByAppID", ApplicantEmploymentDetails, this.options);
     }
     GetLendingDetailsByAppID(ApplicantID) {
         return this._http.get(this.baseurl + "Clients/GetLendingDetailsByAppID?ApplicantID=" + ApplicantID, this.options);
     }
     UpdateLendingDetailsByAppID(LoanMasterDetails) {
-        debugger;
         return this._http.post(this.baseurl + "Clients/UpdateLendingDetailsByAppID", LoanMasterDetails, this.options);
     }
     GetPersonalDetailsByAppID(ApplicantID) {
         return this._http.get(this.baseurl + "Clients/GetPersonalDetailsByAppID?ApplicantID=" + ApplicantID, this.options);
     }
     UpdatePersonalDetailsByAppID(Applicants) {
-        debugger;
         return this._http.post(this.baseurl + "Clients/UpdatePersonalDetailsByAppID", Applicants, this.options);
     }
     //GetCommunicationDetailsByAppID(ApplicantID) {
@@ -100,22 +96,18 @@ export class ClientsService {
         return this._http.post(this.baseurl + "Clients/UpdateAddressesByAppID", ApplicantCommunicationDetails, this.options);
     }
     AddNewAddressByAppID(ApplicantCommunicationDetails) {
-        debugger;
         return this._http.post(this.baseurl + "Clients/AddNewAddressByAppID", ApplicantCommunicationDetails, this.options);
     }
     GetCommEditdata(CommunicationID) {
-        debugger;
         return this._http.get(this.baseurl + "Clients/GetCommEditdata?CommunicationID=" + CommunicationID, this.options);
     }
     GetMatQualificationDataByAppID(ApplicantID) {
         return this._http.get(this.baseurl + "Clients/GetMatQualificationDataByAppID?ApplicantID=" + ApplicantID, this.options);
     }
     GetMatLendingDetailsByAppID(ApplicantID) {
-        debugger;
         return this._http.get(this.baseurl + "Clients/GetMatLendingDetailsByAppID?ApplicantID=" + ApplicantID, this.options);
     }
     GetMatEmploymentDetailsByAppID(ApplicantID) {
-        debugger;
         return this._http.get(this.baseurl + "Clients/GetMatEmploymentDetailsByAppID?ApplicantID=" + ApplicantID, this.options);
     }
     ViewEmploymentDetailsByAppID(EmploymentID) {
@@ -128,7 +120,6 @@ export class ClientsService {
         return this._http.get(this.baseurl + "Clients/ViewLendingDetailsByAppID?LANNumber=" + LANNumber, this.options);
     }
     DeleteCommAddress(CommunicationID) {
-        debugger;
         return this._http.delete(this.baseurl + "Clients/DeleteCommAddress?CommunicationID=" + CommunicationID, this.options);
     }
 }

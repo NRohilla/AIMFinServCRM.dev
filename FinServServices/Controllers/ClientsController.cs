@@ -13,6 +13,7 @@ namespace FinServServices.Controllers
     {
         IClients Repository = new UOWClients();
 
+        #region AIMFINSERV Application 
         [HttpGet]
         [Route("GetAllClients")]
         public List<Applicants> GetAllClients()
@@ -281,50 +282,25 @@ namespace FinServServices.Controllers
         {
             return Repository.UpdateExpenseSheetDetails(_objApplicantExpenseSheet);
         }
+        #endregion
 
-        [HttpGet]
-        [Route("GetQualificationDetailsByAppID")]
-        public ApplicantQualificationDetails GetQualificationDetailsByAppID(Guid ApplicantID)
-        {
-            return Repository.GetQualificationDetailsByAppID(ApplicantID);
-        }
-        [HttpPost]
-        [Route("UpdateQualificationDetailsByAppID")]
-        public bool UpdateQualificationDetailsByAppID(ApplicantQualificationDetails _objApplicantQualificationDetails)
-        {
-            return Repository.UpdateQualificationDetailsByAppID(_objApplicantQualificationDetails);
-        }
-
-        [HttpGet]
-        [Route("GetEmploymentDetailsByAppID")]
-        public ApplicantEmploymentDetails GetEmploymentDetailsByAppID(Guid ApplicantID)
-        {
-            return Repository.GetEmploymentDetailsByAppID(ApplicantID);
-        }
-        [HttpPost]
-        [Route("UpdateEmploymentDetailsByAppID")]
-        public bool UpdateEmploymentDetailsByAppID(ApplicantEmploymentDetails _objApplicantEmploymentDetails)
-        {
-            return Repository.UpdateEmploymentDetailsByAppID(_objApplicantEmploymentDetails);
-        }
-        [HttpGet]
-        [Route("GetLendingDetailsByAppID")]
-        public LoanMasterDetails GetLendingDetailsByAppID(Guid ApplicantID)
-        {
-            return Repository.GetLendingDetailsByAppID(ApplicantID);
-        }
-        [HttpPost]
-        [Route("UpdateLendingDetailsByAppID")]
-        public bool UpdateLendingDetailsByAppID(LoanMasterDetails _objloanMasterDetails)
-        {
-            return Repository.UpdateLendingDetailsByAppID(_objloanMasterDetails);
-        }
+        #region Client Dashboard Application Code
+        #region Personal Module
         [HttpGet]
         [Route("GetPersonalDetailsByAppID")]
         public Applicants GetPersonalDetailsByAppID(Guid ApplicantID)
         {
             return Repository.GetPersonalDetailsByAppID(ApplicantID);
         }
+        [HttpPost]
+        [Route("UpdatePersonalDetailsByAppID")]
+        public bool UpdatePersonalDetailsByAppID(Applicants _objApplicantsDetails)
+        {
+            return Repository.UpdatePersonalDetailsByAppID(_objApplicantsDetails);
+        }
+        #endregion
+
+        #region Communication Module
         [HttpGet]
         [Route("GetAddresses")]
         public List<ApplicantCommunicationDetails> GetAddresses(Guid ApplicantID)
@@ -337,13 +313,6 @@ namespace FinServServices.Controllers
         {
             return Repository.GetCommunicationDetailsByAppID(ApplicantID);
         }
-        [HttpPost]
-        [Route("UpdatePersonalDetailsByAppID")]
-        public bool UpdatePersonalDetailsByAppID(Applicants _objApplicantsDetails)
-        {
-            return Repository.UpdatePersonalDetailsByAppID(_objApplicantsDetails);
-        }
-
         [HttpPost]
         [Route("UpdateAddressesByAppID")]
         public bool UpdateAddressesByAppID(ApplicantCommunicationDetails _objApplicantComDetails)
@@ -362,11 +331,32 @@ namespace FinServServices.Controllers
         {
             return Repository.GetCommEditdata(CommunicationID);
         }
-        [HttpGet]
-        [Route("GetMatQualificationDataByAppID")]
-        public List<ApplicantQualificationDetails> GetMatQualificationDataByAppID(Guid ApplicantID)
+        [HttpDelete]
+        [Route("DeleteCommAddress")]
+        public bool DeleteCommAddress(Guid CommunicationID)
         {
-            return Repository.GetMatQualificationDataByAppID(ApplicantID);
+            return Repository.DeleteCommAddress(CommunicationID);
+        }
+        #endregion
+
+        #region Lending Module
+        [HttpGet]
+        [Route("GetLendingDetailsByAppID")]
+        public LoanMasterDetails GetLendingDetailsByAppID(Guid ApplicantID)
+        {
+            return Repository.GetLendingDetailsByAppID(ApplicantID);
+        }
+        [HttpPost]
+        [Route("UpdateLendingDetailsByAppID")]
+        public bool UpdateLendingDetailsByAppID(LoanMasterDetails _objloanMasterDetails)
+        {
+            return Repository.UpdateLendingDetailsByAppID(_objloanMasterDetails);
+        }
+        [HttpGet]
+        [Route("ViewLendingDetailsByAppID")]
+        public LoanMasterDetails ViewLendingDetailsByAppID(Guid LANNumber)
+        {
+            return Repository.ViewLendingDetailsByAppID(LANNumber);
         }
         [HttpGet]
         [Route("GetMatLendingDetailsByAppID")]
@@ -374,44 +364,61 @@ namespace FinServServices.Controllers
         {
             return Repository.GetMatLendingDetailsByAppID(ApplicantID);
         }
+        #endregion
+
+        #region Employment Module
+        [HttpGet]
+        [Route("GetEmploymentDetailsByAppID")]
+        public ApplicantEmploymentDetails GetEmploymentDetailsByAppID(Guid ApplicantID)
+        {
+            return Repository.GetEmploymentDetailsByAppID(ApplicantID);
+        }
+        [HttpPost]
+        [Route("UpdateEmploymentDetailsByAppID")]
+        public bool UpdateEmploymentDetailsByAppID(ApplicantEmploymentDetails _objApplicantEmploymentDetails)
+        {
+            return Repository.UpdateEmploymentDetailsByAppID(_objApplicantEmploymentDetails);
+        }
         [HttpGet]
         [Route("GetMatEmploymentDetailsByAppID")]
         public List<ApplicantEmploymentDetails> GetMatEmploymentDetailsByAppID(Guid ApplicantID)
         {
             return Repository.GetMatEmploymentDetailsByAppID(ApplicantID);
         }
-
         [HttpGet]
         [Route("ViewEmploymentDetailsByAppID")]
         public ApplicantEmploymentDetails ViewEmploymentDetailsByAppID(Guid EmploymentID)
         {
             return Repository.ViewEmploymentDetailsByAppID(EmploymentID);
         }
+        #endregion
 
+        #region Qualification Module
+        [HttpGet]
+        [Route("GetQualificationDetailsByAppID")]
+        public ApplicantQualificationDetails GetQualificationDetailsByAppID(Guid ApplicantID)
+        {
+            return Repository.GetQualificationDetailsByAppID(ApplicantID);
+        }
+        [HttpPost]
+        [Route("UpdateQualificationDetailsByAppID")]
+        public bool UpdateQualificationDetailsByAppID(ApplicantQualificationDetails _objApplicantQualificationDetails)
+        {
+            return Repository.UpdateQualificationDetailsByAppID(_objApplicantQualificationDetails);
+        }
+        [HttpGet]
+        [Route("GetMatQualificationDataByAppID")]
+        public List<ApplicantQualificationDetails> GetMatQualificationDataByAppID(Guid ApplicantID)
+        {
+            return Repository.GetMatQualificationDataByAppID(ApplicantID);
+        }
         [HttpGet]
         [Route("ViewQualificationDetailsByAppID")]
         public ApplicantQualificationDetails ViewQualificationDetailsByAppID(Guid QualificationID)
         {
             return Repository.ViewQualificationDetailsByAppID(QualificationID);
         }
-        [HttpGet]
-        [Route("ViewLendingDetailsByAppID")]
-        public LoanMasterDetails  ViewLendingDetailsByAppID(Guid LANNumber)
-        {
-            return Repository.ViewLendingDetailsByAppID(LANNumber);
-        }
-        [HttpDelete]
-        [Route("DeleteCommAddress")]
-        public bool DeleteCommAddress(Guid CommunicationID)
-        {
-            return Repository.DeleteCommAddress(CommunicationID);
-        }
-        //[HttpPost]
-        //[Route("UpdateCommunicationDetailsByAppID")]
-        //public bool UpdateCommunicationDetailsByAppID(ApplicantCommunicationDetails _objApplicantCommunicationDetails)
-        //{
-        //    return Repository.UpdateCommunicationDetailsByAppID(_objApplicantCommunicationDetails);
-        //}
-
+        #endregion
+        #endregion
     }
 }

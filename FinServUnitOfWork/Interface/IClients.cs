@@ -6,6 +6,7 @@ namespace FinServUnitOfWork.Interface
 {
     public interface IClients
     {
+        #region AIMFINServ Application
         List<Applicants> GetAllClients();
         List<LoanApplicationForms> GetAllLoanApplications();
         List<Applicants> GetAllApplicantsByLoanID(Guid loanID);
@@ -60,28 +61,43 @@ namespace FinServUnitOfWork.Interface
         List<ApplicantExpenseSheet> GetAddedExpenseSheetGrid(Guid LoanAppNo);
         ApplicantExpenseSheet GetExpenseSheetDetails(Guid ApplicantID);
         bool UpdateExpenseSheetDetails(ApplicantExpenseSheet _objApplicantExpenseSheet);
-        ApplicantQualificationDetails GetQualificationDetailsByAppID(Guid ApplicantID);
-        bool UpdateQualificationDetailsByAppID(ApplicantQualificationDetails _objApplicantQualificationDetails);
+        #endregion
 
-        ApplicantEmploymentDetails GetEmploymentDetailsByAppID(Guid ApplicantID);
-        bool UpdateEmploymentDetailsByAppID(ApplicantEmploymentDetails _objApplicantEmploymentDetails);
-        LoanMasterDetails GetLendingDetailsByAppID(Guid ApplicantID);
-        bool UpdateLendingDetailsByAppID(LoanMasterDetails _objloanMasterDetails);
+        #region Client Dashboard Application Code
+        #region Personal Module
         Applicants GetPersonalDetailsByAppID(Guid ApplicantID);
-        //ApplicantCommunicationDetails GetCommunicationDetailsByAppID(Guid ApplicantID);
-        //bool UpdateCommunicationDetailsByAppID(ApplicantCommunicationDetails _objApplicantCommunicationDetails);
+        bool UpdatePersonalDetailsByAppID(Applicants _objApplicantsDetails);
+        #endregion
+
+        #region Communication Module
         List<ApplicantCommunicationDetails> GetAddresses(Guid ApplicantID);
         ApplicantCommunicationDetails GetCommunicationDetailsByAppID(Guid ApplicantID);
-        bool UpdatePersonalDetailsByAppID(Applicants _objApplicantsDetails);
         bool UpdateAddressesByAppID(ApplicantCommunicationDetails _objApplicantComDetails);
         bool AddNewAddressByAppID(ApplicantCommunicationDetails _objApplicantComDetails);
         ApplicantCommunicationDetails GetCommEditdata(Guid CommunicationID);
-        List<ApplicantQualificationDetails> GetMatQualificationDataByAppID(Guid ApplicantID);
+        bool DeleteCommAddress(Guid CommunicationID);
+        #endregion
+
+        #region Lending Module
+        LoanMasterDetails GetLendingDetailsByAppID(Guid ApplicantID);
+        bool UpdateLendingDetailsByAppID(LoanMasterDetails _objloanMasterDetails);
         List<LoanMasterDetails> GetMatLendingDetailsByAppID(Guid ApplicantID);
+        LoanMasterDetails ViewLendingDetailsByAppID(Guid LANNumber);
+        #endregion
+
+        #region Employment Module
         List<ApplicantEmploymentDetails> GetMatEmploymentDetailsByAppID(Guid ApplicantID);
         ApplicantEmploymentDetails ViewEmploymentDetailsByAppID(Guid EmploymentID);
+        ApplicantEmploymentDetails GetEmploymentDetailsByAppID(Guid ApplicantID);
+        bool UpdateEmploymentDetailsByAppID(ApplicantEmploymentDetails _objApplicantEmploymentDetails);
+        #endregion
+
+        #region Qualification Module
+        List<ApplicantQualificationDetails> GetMatQualificationDataByAppID(Guid ApplicantID);
         ApplicantQualificationDetails ViewQualificationDetailsByAppID(Guid QualificationID);
-        LoanMasterDetails ViewLendingDetailsByAppID(Guid LANNumber);
-        bool DeleteCommAddress(Guid CommunicationID);
+        ApplicantQualificationDetails GetQualificationDetailsByAppID(Guid ApplicantID);
+        bool UpdateQualificationDetailsByAppID(ApplicantQualificationDetails _objApplicantQualificationDetails);
+        #endregion
+        #endregion Client Dashboard  
     }
 }
