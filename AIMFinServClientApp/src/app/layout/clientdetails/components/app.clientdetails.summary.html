@@ -15,17 +15,17 @@
                                         <div class="field_set">
                                             <div class="field_label">Name</div>
                                             <div class="field_info">
-                                                <p>{{_ApplicantSummaryDetails.Title}} {{_ApplicantSummaryDetails.FirstName}} {{_ApplicantSummaryDetails.MiddleName}} {{_ApplicantSummaryDetails.LastName}}</p>
+                                                <p>{{_Name}}</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left" *ngIf="!_EditPersonalDetails">
                                         <div class="field_set">
-                                            <div class="field_label">Date of Birth</div>
+                                            <div class="field_label">DateOfBirth</div>
                                             <div class="field_info">
                                                 <p *ngIf="!_EditPersonalDetails">{{_ApplicantSummaryDetails.DateOfBirth}}</p>
                                                 <mat-form-field class="example-full-width" *ngIf="_EditPersonalDetails">
-                                                    <input matInput placeholder="Last" value="{{_ApplicantSummaryDetails.DateOfBirth}}" [(ngModel)]="_ApplicantSummaryDetails.DateOfBirth" #DateOfBirth>
+                                                    <input matInput placeholder="DateOfBirth" value="{{_ApplicantSummaryDetails.DateOfBirth}}" [(ngModel)]="_ApplicantSummaryDetails.DateOfBirth" #Gender>
                                                 </mat-form-field>
                                             </div>
                                         </div>
@@ -36,7 +36,7 @@
                                             <div class="field_info">
                                                 <p *ngIf="!_EditPersonalDetails">{{_ApplicantSummaryDetails.Gender}}</p>
                                                 <mat-form-field class="example-full-width" *ngIf="_EditPersonalDetails">
-                                                    <input matInput placeholder="Last" value="{{_ApplicantSummaryDetails.Gender}}" [(ngModel)]="_ApplicantSummaryDetails.DateOfBirth" #Gender>
+                                                    <input matInput placeholder="Gender" value="{{_ApplicantSummaryDetails.Gender}}" [(ngModel)]="_ApplicantSummaryDetails.Gender" #Gender>
                                                 </mat-form-field>
                                             </div>
                                         </div>
@@ -121,11 +121,9 @@
                             <div class="col-lg-3 col-md-3 col-sm-12 col-12 float-left">
                                 <div class="text-center">
                                     <div class="profile-pic clearfix">
-                                        <img src="../../../../assets/images/profile/nouser.jpg" class="img-thumbnail" />
-                                        <h5>Loren Lipsum</h5>
-                                        <label class="btn btn-sm btn-secondary">
-                                            Update Image<input type="file" hidden />
-                                        </label>
+                                        <img [src]="URL" />
+                                        <h5 class="mt-2 mb-2 text-secondary font-weight-bold">{{_Name}}</h5>
+                                        <input type="submit" value="Update Image" class="btn btn-info" (click)="openDialog()" />
                                     </div>
                                     <div class="login-date">
                                         <span><strong>Last Login:</strong> <small>13/03/2018</small> <span><small>7:00 PM</small></span></span>                                        

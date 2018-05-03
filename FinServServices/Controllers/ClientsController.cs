@@ -37,9 +37,9 @@ namespace FinServServices.Controllers
 
         [HttpGet]
         [Route("GetClientDetails")]
-        public Applicants GetClientDetails(string ClientID)
+        public Applicants GetClientDetails(Guid ApplicantID)
         {
-            return Repository.GetClientDetails(ClientID);
+            return Repository.GetClientDetails(ApplicantID);
         }
 
         [HttpGet]

@@ -12,7 +12,7 @@ namespace FinServUnitOfWork.Interface
         List<Applicants> GetAllApplicantsByLoanID(Guid loanID);
 
         Applicants GetApplicantDetails(int AutoId);
-        Applicants GetClientDetails(string ClientID);
+        Applicants GetClientDetails(Guid ApplicantID);
         LoanApplicationForms GetLoanApplicationDetails(string LoanAppNo);
 
 

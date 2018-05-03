@@ -43,8 +43,6 @@ export class ClientsComponent implements OnInit {
     GetAllClientsError(Res) { }
 
     ViewClientDetails(ApplicantID) {
-
-        //this._ViewApplicantDetails = !this._ViewApplicantDetails;
         this._LocalStorageService.set("ApplicantID", ApplicantID);
         this.router.navigateByUrl('clientdetails');
     }

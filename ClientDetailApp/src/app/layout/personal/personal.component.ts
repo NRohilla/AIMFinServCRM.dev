@@ -28,6 +28,8 @@ export class PersonalComponent implements OnInit {
     public _ShowHomeAddress: boolean = false;
     public _ShowWorkAddress: boolean = false;
     public _PersonInfo: string = '';
+    public URL: any;
+
 
     public PersonalDetails = {
         AutoID: '',
@@ -47,6 +49,10 @@ export class PersonalComponent implements OnInit {
         MobileNo: '',
         HomePhoneNo: '',
         WorkPhoneNo: '',
+        ApplicantImage: '',
+        FileTypeID:'',
+        FileType: '',
+        FileName: ''
     };
     public CommunicationDetails: any = [];
 
@@ -71,8 +77,13 @@ export class PersonalComponent implements OnInit {
             MobileNo: '',
             HomePhoneNo: '',
             WorkPhoneNo: '',
+            ApplicantImage: '',
+            FileTypeID: '',
+            FileType: '',
+            FileName:''
         };
         this.ApplicantID = this._LocalStorageService.get("LoggedInApplicantId");
+        this.URL = this.PersonalDetails.ApplicantImage;
         this._ClientsService.GetPersonalDetailsByAppID(this.ApplicantID).subscribe(res => this.GetPersonalDetailsByAppIDSuccess(res), res => this.GetPersonalDetailsByAppIDError(res));
 
         $(document).ready(function () {
@@ -84,8 +95,26 @@ export class PersonalComponent implements OnInit {
     GetPersonalDetailsByAppIDSuccess(res) {
         debugger;
         this.PersonalDetails = JSON.parse(res._body);
+        
+        this.URL = this.GetOriginalContentForPriview(this.PersonalDetails.FileType) + this.PersonalDetails.ApplicantImage;
         this._PersonInfo = this.PersonalDetails.FirstName + " " + this.PersonalDetails.MiddleName + " " + this.PersonalDetails.LastName
         this._ClientsService.GetAddresses(this.ApplicantID).subscribe(res => this.GetAddSuccess(res), res => this.GetAddError(res));
+        //this._HeaderComponent.UserInfo();
+       
+    }
+
+    GetOriginalContentForPriview(FileType) {
+        debugger;
+        if (FileType == "text/plain")
+            return 'data:text/plain;base64,';
+        if (FileType == 'application/pdf')
+            return 'data:application/pdf;base64,';
+        if (FileType == "image/png")
+            return 'data:image/png;base64,';
+        if (FileType == "image/jpeg")
+            return 'data:image/jpeg;base64,';
+        if (FileType == 'image/gif')
+            return 'data:image/gif;base64,';
     }
 
     GetPersonalDetailsByAppIDError(res) {
@@ -97,24 +126,22 @@ export class PersonalComponent implements OnInit {
 
     GetAddError(res) { }
 
-    UpdateDetails() {
-        debugger;
+    UpdateDetails() {        
+        this.PersonalDetails.ApplicantImage = this.PersonalDetails.ApplicantImage;
+        //this.PersonalDetails.FileName = this.PersonalDetails.FileName;
+        this.PersonalDetails.FileType = this.PersonalDetails.FileType;
         this._ClientsService.UpdatePersonalDetailsByAppID(this.PersonalDetails).subscribe(res => this.UpdatePersonalDetailsByAppIDSuccess(res), res => this.UpdatePersonalDetailsByAppIDError(res));
     }
 
-    UpdatePersonalDetailsByAppIDSuccess(res) {
-        debugger;
+    UpdatePersonalDetailsByAppIDSuccess(res) {        
         this._EditPersonalDetails = false;
         //this._ClientsService.UpdateAddressesByAppID(this.PersonalDetails).subscribe(res => this.UpdateAddressesByAppIDSuccess(res), res => this.UpdateAddressesByAppIDError(res));
         this._ClientsService.GetPersonalDetailsByAppID(this.ApplicantID).subscribe(res => this.GetPersonalDetailsByAppIDSuccess(res), res => this.GetPersonalDetailsByAppIDError(res));
+        window.location.reload();
+
+
 
     }
-    //UpdateAddressesByAppIDSuccess(res) {
-    //    debugger;
-    //    this.PersonalDetails = JSON.parse(res._body);
-    //}
-    //UpdateAddressesByAppIDError(res) { }
-
 
     UpdatePersonalDetailsByAppIDError(res) { }
 
@@ -126,4 +153,17 @@ export class PersonalComponent implements OnInit {
         this._EditPersonalDetails = false;
     }
 
+    OnSelectPersonalAttachmentFile(event) {        
+        let reader = new FileReader();
+        if (event.target.files && event.target.files.length > 0) {
+            let file = event.target.files[0];
+            reader.readAsDataURL(file);
+            this.PersonalDetails.FileType = file.type;
+           this.PersonalDetails.FileName = file.name;            
+            reader.onload = (event) => {                
+                this.URL = reader.result;
+                this.PersonalDetails.ApplicantImage = reader.result.split(',')[1];
+            };
+        }
+    }
 }

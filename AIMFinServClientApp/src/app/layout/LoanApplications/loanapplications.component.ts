@@ -58,9 +58,8 @@ export class LoanapplicationsComponent implements OnInit {
         _StatusID: {
             Status: ''
         }
-
-
     };
+
     errorMessage: "No Data"
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, public dialog: MatDialog, private _MasterService: MastersService) {
@@ -116,7 +115,6 @@ export class LoanapplicationsComponent implements OnInit {
     ViewDetails(LoanApplicationNo) {
         this._LocalStorageService.set("LoanApplicationNo", LoanApplicationNo);
         this.router.navigateByUrl('loanapplications/loanapplicationdetails');
-
     }
     
     AddLoanAplicationForm() {

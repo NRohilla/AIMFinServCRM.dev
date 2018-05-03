@@ -32,33 +32,25 @@ export class ClientsDetailsComponent implements OnInit {
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, public dialog: MatDialog, private _location: Location) { }
 
     ngOnInit() {
-       // debugger;
         this._ClientsService.GetAllClients().subscribe(res => this.GetAllClientsSuccess(res), res => this.GetAllClientsError(res));
     }
 
     GetAllClientsSuccess(Res) {
-        //debugger;
         this.gridData = JSON.parse(Res._body);
     }
 
     GetAllClientsError(Res) { }
 
     ViewClientDetails(ApplicantID, value) {
-        //debugger;
-        //this._ViewApplicantDetails = !this._ViewApplicantDetails;
-        this._LocalStorageService.set("ApplicantID", ApplicantID);
+        //this._LocalStorageService.set("ApplicantID", ApplicantID);
         this._location.back();
-        //this.router.navigateByUrl('clients');
     }
 
     openDialog(): void {
         let dialogRef = this.dialog.open(ClientDetailsDialog, {
-            data: { name: this.name, animal: this.animal }
         });
-
         dialogRef.afterClosed().subscribe(result => {
             console.log('The dialog was closed');
-            this.animal = result;
         });
     }
 

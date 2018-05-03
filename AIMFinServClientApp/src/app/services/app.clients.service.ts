@@ -21,8 +21,8 @@ export class ClientsService {
         return this._http.get(this.baseurl + "Clients/GetAllClients", this.options);
     }
 
-    GetClientDetails(ClientID) {
-        return this._http.get(this.baseurl + "Clients/GetClientDetails?ClientID=" + ClientID, this.options);
+    GetClientDetails(ApplicantID) {
+        return this._http.get(this.baseurl + "Clients/GetClientDetails?ApplicantID=" + ApplicantID, this.options);
     }
     GetAllApplicantsByLoanID(loanID) {
         return this._http.get(this.baseurl + "Clients/GetAllApplicantsByLoanID?loanID=" + loanID, this.options);
@@ -173,6 +173,9 @@ export class ClientsService {
     }
     ViewEmploymentDetailsByAppID(ApplicantID) {
         return this._http.get(this.baseurl + "Clients/ViewEmploymentDetailsByAppID?ApplicantID=" + ApplicantID, this.options);
+    }
+    GetPersonalDetailsByAppID(ApplicantID) {
+        return this._http.get(this.baseurl + "Clients/GetPersonalDetailsByAppID?ApplicantID=" + ApplicantID, this.options);
     }
 }
 

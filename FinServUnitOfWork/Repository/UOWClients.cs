@@ -187,12 +187,12 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
-        public Applicants GetClientDetails(string ClientID)
+        public Applicants GetClientDetails(Guid ApplicantID)
         {
             try
             {
                 Applicants objApplicants = new Applicants();
-                Guid ApplicantID = Guid.Parse(ClientID);
+                //Guid ApplicantID = Guid.Parse(ClientID);
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
                     var GetApplicantDetails = db.tblApplicants.Where(p => p.IsActive == true && p.ApplicantID == ApplicantID).FirstOrDefault();
@@ -228,7 +228,7 @@ namespace FinServUnitOfWork.Repository
                     return objApplicants;
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 return null;
             }

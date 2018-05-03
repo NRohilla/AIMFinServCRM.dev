@@ -438,7 +438,7 @@
             </kendo-grid-column>
             <kendo-grid-command-column>
                 <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                    <button class="btn btn-lg btn-link" type="button" (click)="ViewApplicantDetails()">View details</button>
+                    <button class="btn btn-lg btn-link" type="button" (click)="ViewApplicantDetails(dataItem.ApplicantID)">View details</button>
                 </ng-template>
             </kendo-grid-command-column>
         </kendo-grid>

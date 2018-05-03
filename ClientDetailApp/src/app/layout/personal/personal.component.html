@@ -4,10 +4,20 @@
         <form name="form" #Personalform="ngForm" novalidate>
             <div class="table-active p-4 position-relative personal-innersection">
                 <div class="profile-pic mb-5">
-                    <img src="assets/images/profile/nouser.jpg" />
-                    <h6 class="text-center font-weight-bold text-uppercase pt-1 mb-0">{{PersonalDetails.FirstName}}{{PersonalDetails.MiddleName}}{{PersonalDetails.LastName}} </h6>
+                    <div *ngIf="!_EditPersonalDetails">
+                        <img [src]="URL" />
+                    </div>
+                    <div *ngIf="_EditPersonalDetails" >
+                        <img [src]="URL" />
+                        <div class="col-md-7 col-sm-12 col-xs-12">
+                          <input type="file" id="applicantImage" accept="image/png, image/jpeg, image/gif, application/pdf, text/plain" (change)="OnSelectPersonalAttachmentFile($event)">
+                            <!--<label>{{PersonalDetails.ApplicantImage}}</label>-->
+                        </div>
+                    </div>
+                    <h6 class="text-center font-weight-bold text-uppercase pt-1 mb-0">{{_PersonInfo}}</h6>
                     <span class="d-block text-center text-secondary"><em>{{PersonalDetails.MobileNo}}</em></span>
                 </div>
+
                 <div class="edit-info text-center" (click)="EditPersonalDetails()" *ngIf="!_EditPersonalDetails">
                     <i class="fa fa-pencil"></i>
                 </div>

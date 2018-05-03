@@ -66,6 +66,7 @@ export class LoanapplicationdetailsComponent implements OnInit {
         LastName: "",
         MobileNo: "",
         EmailID: "",
+        Title:"",
         ApplicantType: "",
         _Applicant: {},
         _TypeOfLoanID: {},
@@ -93,7 +94,6 @@ export class LoanapplicationdetailsComponent implements OnInit {
     }
 
     ngOnInit() {
-        
         this._LoanApplicationDetails = {
             AgeOfProperty: "",
             ApplicantID: "",
@@ -127,6 +127,7 @@ export class LoanapplicationdetailsComponent implements OnInit {
             LastName: "",
             MobileNo: "",
             EmailID: "",
+            Title: "",
             ApplicantType: "",
             _TypeOfLoanID: {},
             _PurposeOfLoanID: {},
@@ -135,7 +136,6 @@ export class LoanapplicationdetailsComponent implements OnInit {
             _StatusID: {
                 Status: ''
             }
-
         };
         this.GetLoanType();
         this.GetPurposeofloanType();
@@ -371,7 +371,9 @@ export class LoanapplicationdetailsComponent implements OnInit {
         debugger;
         this.router.navigateByUrl('loanapplications/addloanaaplication');
     }
-    ViewApplicantDetails() {
+    ViewApplicantDetails(ApplicantID) {
+        debugger;
+        this._LocalStorageService.set("ApplicantID", ApplicantID);
         this.router.navigateByUrl('clientdetails');
     }
     ViewDetails() {

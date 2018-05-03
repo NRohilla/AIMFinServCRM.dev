@@ -5,7 +5,7 @@ import { Form, FormControl, Validators  } from '@angular/forms';
 import 'rxjs/Rx';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { environment } from '../../../../environments/environment';
-import {UserOperationService} from '../../../services/app.userops.service';
+import { UserOperationService } from '../../../services/app.userops.service';
 
 @Component({
     selector: 'app-header',
@@ -15,7 +15,9 @@ import {UserOperationService} from '../../../services/app.userops.service';
 })
 export class HeaderComponent implements OnInit {
     pushRightClass: string = 'push-right';
-    public _UserDetails: any = {
+    public _UserName: string = '';
+    public URL: any;
+    public _UserDetails = {
         AccountExpired: '',
         AccountLocked: '',
         ActivaitonCode: '',
@@ -41,7 +43,13 @@ export class HeaderComponent implements OnInit {
         Role: '',
         UserGuid: '',
         UserId: '',
+        ApplicantImage: '',
+        FileType: '',
+        FileName: '',
+        Extension: ''
     }
+
+   
     constructor(private translate: TranslateService, public router: Router, private _LocalStorageService: LocalStorageService,
         private _UserOperationService: UserOperationService) {
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
@@ -61,14 +69,37 @@ export class HeaderComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.UserInfo();
+    }
+
+    UserInfo() {
         if (this._LocalStorageService.get('LoggedInEmailId') != undefined && this._LocalStorageService.get('LoggedInEmailId') != null) {
+            this.URL = this._UserDetails.ApplicantImage;
             this._UserOperationService.GetLoggedInUserInfo(<string>this._LocalStorageService.get('LoggedInEmailId'))
                 .subscribe(result => this.UserInfoSuccess(result), result => this.UserInfoError(result));
         }
     }
 
+
     UserInfoSuccess(result) {
+        debugger;
+        this._UserName = JSON.parse(JSON.parse(result._body)).FirstName + " " + JSON.parse(JSON.parse(result._body)).LastName;
         this._UserDetails = JSON.parse((JSON.parse(result._body)));
+        this.URL = this.GetOriginalContentForPriview(this._UserDetails.FileType) + this._UserDetails.ApplicantImage;
+    }
+
+    GetOriginalContentForPriview(FileType) {
+        debugger;
+        if (FileType == "text/plain")
+            return 'data:text/plain;base64,';
+        if (FileType == 'application/pdf')
+            return 'data:application/pdf;base64,';
+        if (FileType == "image/png")
+            return 'data:image/png;base64,';
+        if (FileType == "image/jpeg")
+            return 'data:image/jpeg;base64,';
+        if (FileType == 'image/gif')
+            return 'data:image/gif;base64,';
     }
 
     UserInfoError(err) {
