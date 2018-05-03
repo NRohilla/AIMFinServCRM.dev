@@ -216,6 +216,11 @@ namespace FinServUnitOfWork.Repository
                         objApplicants.NoOfDependents = GetApplicantDetails.NoOfDependents;
                         objApplicants.NZResidents = GetApplicantDetails.NZResidents;
                         objApplicants.WorkPhoneNo = GetApplicantDetails.WorkPhoneNo;
+                        objApplicants.ApplicantImage = GetApplicantDetails.ApplicantImage;
+                        objApplicants.FileTypeID = GetApplicantDetails.FileTypeID;
+                        objApplicants.FileType = GetApplicantDetails.tblMasterFileType.FileType;
+                        objApplicants.FileName = GetApplicantDetails.FileName;
+                        objApplicants.Extension = GetApplicantDetails.tblMasterFileType.Extension;
 
                         objApplicants._ApplicantTypeMasterID = new ApplicantTypeMaster();
                         objApplicants._ApplicantTypeMasterID.ApplicantType = GetApplicantDetails.tblMasterApplicantType.ApplicantType;
@@ -620,7 +625,9 @@ namespace FinServUnitOfWork.Repository
                         FetchApplicantPersonalDetails.MobileNo = ApplicantPersonalDetails.MobileNo;
                         FetchApplicantPersonalDetails.WorkPhoneNo = ApplicantPersonalDetails.WorkPhoneNo;
                         FetchApplicantPersonalDetails.EmailID = ApplicantPersonalDetails.EmailID;
-                        //FetchApplicantPersonalDetails.Gender = ApplicantPersonalDetails.Gender;
+                        FetchApplicantPersonalDetails.ApplicantImage = ApplicantPersonalDetails.ApplicantImage;
+                        FetchApplicantPersonalDetails.FileName = ApplicantPersonalDetails.FileName;
+                        FetchApplicantPersonalDetails.FileTypeID = db.tblMasterFileTypes.Where(p => p.FileType == ApplicantPersonalDetails.FileType).Select(a => a.ID).FirstOrDefault();
 
                         RecordUpdate = db.SaveChanges();
                         return true;
@@ -1420,6 +1427,7 @@ namespace FinServUnitOfWork.Repository
                     var fetchapplicantsprsnldtls = (from ta in db.tblApplicants
                                                     join tca in db.tblApplicantCommunicationDetails on ta.ApplicantID equals tca.ApplicantID
                                                     join tma in db.tblMasterAddressTypes on tca.AddressType equals tma.ID
+                                                    join tmf in db.tblMasterFileTypes on ta.FileTypeID equals tmf.ID
                                                     where ta.ApplicantID == ApplicantID
                                                     select new Applicants
                                                     {
@@ -1441,7 +1449,12 @@ namespace FinServUnitOfWork.Repository
                                                         AddressLine3 = tca.AddressLine3,
                                                         ZipCode = tca.ZipCode,
                                                         Country = tca.Country,
-                                                        Type = tma.Type
+                                                        Type = tma.Type,
+                                                        ApplicantImage = ta.ApplicantImage,
+                                                        FileName = ta.FileName,
+                                                        FileType = tmf.FileType,
+                                                        Extension = tmf.Extension,
+                                                        FileTypeID = tmf.ID
                                                     }).FirstOrDefault();
                     return fetchapplicantsprsnldtls;
                 }
@@ -1474,6 +1487,9 @@ namespace FinServUnitOfWork.Repository
                         FetchPersonalDetails.HomePhoneNo = _objApplicantsDetails.HomePhoneNo;
                         FetchPersonalDetails.WorkPhoneNo = _objApplicantsDetails.WorkPhoneNo;
                         FetchPersonalDetails.EmailID = _objApplicantsDetails.EmailID;
+                        FetchPersonalDetails.ApplicantImage = _objApplicantsDetails.ApplicantImage;
+                        FetchPersonalDetails.FileName = _objApplicantsDetails.FileName;
+                        FetchPersonalDetails.FileTypeID = db.tblMasterFileTypes.Where(a => a.FileType == _objApplicantsDetails.FileType).Select(a => a.ID).FirstOrDefault();
                         db.SaveChanges();
                     }
                     return true;

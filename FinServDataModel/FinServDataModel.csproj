@@ -67,9 +67,6 @@
       <DependentUpon>AIMFinServDbModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="tblAdvisorDetail.cs">
       <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
     </Compile>
@@ -113,6 +110,9 @@
       <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMasterExpenseType.cs">
+      <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMasterFileType.cs">
       <DependentUpon>AIMFinServDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMasterLiabilityType.cs">
