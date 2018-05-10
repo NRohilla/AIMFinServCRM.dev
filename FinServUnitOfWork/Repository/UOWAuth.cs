@@ -100,22 +100,22 @@ namespace FinServUnitOfWork.Repository
             }
         }
 
-        //public UserOps IsUserLoggedIn(UserOps _UserOps)
-        //{
-        //    UserOps objUserOps = new UserOps();
-        //    using (AIMFinServDBEntities db = new AIMFinServDBEntities())
-        //        {
-        //            var getAllLoggedInUsers = (from tu in db.tblUsers
-        //                                       where tu.IsLoggedIn == true
-        //                                       select new UserOps
-        //                                       {
-        //                                           ActivaitonCode = tu.ActivaitonCode,
-        //                                           IsLoggedIn = tu.IsLoggedIn
-        //                               }).FirstOrDefault();
+        public UserOps IsUserLoggedIn(string UserEmailId, string password)
+        {
+            UserOps objUserOps = new UserOps();
+            using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+            {
+                var getAllLoggedInUsers = (from tu in db.tblUsers
+                                           where tu.Email == UserEmailId
+                                           select new UserOps
+                                           {
+                                               ActivaitonCode = tu.ActivaitonCode,
+                                               IsLoggedIn = tu.IsLoggedIn
+                                           }).FirstOrDefault();
 
-        //            return getAllLoggedInUsers;
-        //        }
-        //    }
+                return getAllLoggedInUsers;
+            }
+        }
 
         public bool LoggedOffUser(string ActivationCode, bool IsLoggedIn)
         {
