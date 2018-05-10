@@ -14,5 +14,13 @@ namespace FinServServices.Controllers
         {
             return repository.AuthenticateLogin(UserEmailId, password);
         }
+
+        [HttpPost]
+        [Route("LoggedOffUser")]
+        public bool LoggedOffUser(string ActivationCode, bool IsLoggedIn)
+        {
+            return repository.LoggedOffUser(ActivationCode, IsLoggedIn);
+        }
+
     }
 }

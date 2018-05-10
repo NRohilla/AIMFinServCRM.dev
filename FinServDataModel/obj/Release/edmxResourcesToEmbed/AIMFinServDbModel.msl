@@ -1,0 +1,539 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AIMFinServDBModelStoreContainer" CdmEntityContainer="AIMFinServDBEntities">
+    <EntitySetMapping Name="tblAdvisorDetails">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblAdvisorDetail">
+        <MappingFragment StoreEntitySet="tblAdvisorDetails">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="FaxNo" ColumnName="FaxNo" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Addressline3" ColumnName="Addressline3" />
+          <ScalarProperty Name="Addressline2" ColumnName="Addressline2" />
+          <ScalarProperty Name="Addressline1" ColumnName="Addressline1" />
+          <ScalarProperty Name="FirmName" ColumnName="FirmName" />
+          <ScalarProperty Name="AdvisorGroup" ColumnName="AdvisorGroup" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AdvisorCode" ColumnName="AdvisorCode" />
+          <ScalarProperty Name="AdvisorID" ColumnName="AdvisorID" />
+          <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblApplicantCommunicationDetails">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicantCommunicationDetail">
+        <MappingFragment StoreEntitySet="tblApplicantCommunicationDetails">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+          <ScalarProperty Name="AddressType" ColumnName="AddressType" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="CommunicationID" ColumnName="CommunicationID" />
+          <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblApplicantEmploymentDetails">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicantEmploymentDetail">
+        <MappingFragment StoreEntitySet="tblApplicantEmploymentDetails">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Income" ColumnName="Income" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="EmployerName" ColumnName="EmployerName" />
+          <ScalarProperty Name="ProfessionTypeID" ColumnName="ProfessionTypeID" />
+          <ScalarProperty Name="SourceOfIncome" ColumnName="SourceOfIncome" />
+          <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+          <ScalarProperty Name="EmploymentID" ColumnName="EmploymentID" />
+          <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblApplicantExpenseSheets">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicantExpenseSheet">
+        <MappingFragment StoreEntitySet="tblApplicantExpenseSheet">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
+          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+          <ScalarProperty Name="ExpenseTypeID" ColumnName="ExpenseTypeID" />
+          <ScalarProperty Name="ExpenseID" ColumnName="ExpenseID" />
+          <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblApplicantQualificationDetails">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicantQualificationDetail">
+        <MappingFragment StoreEntitySet="tblApplicantQualificationDetails">
+          <ScalarProperty Name="TypeOfQualification" ColumnName="TypeOfQualification" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UniversityName" ColumnName="UniversityName" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="PassingYear" ColumnName="PassingYear" />
+          <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+          <ScalarProperty Name="QualificationID" ColumnName="QualificationID" />
+          <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblApplicants">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicant">
+        <MappingFragment StoreEntitySet="tblApplicants">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ApplicantImage" ColumnName="ApplicantImage" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FileTypeID" ColumnName="FileTypeID" />
+          <ScalarProperty Name="LoanApplicationNo" ColumnName="LoanApplicationNo" />
+          <ScalarProperty Name="WorkPhoneNo" ColumnName="WorkPhoneNo" />
+          <ScalarProperty Name="HomePhoneNo" ColumnName="HomePhoneNo" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="ApplicantTypeID" ColumnName="ApplicantTypeID" />
+          <ScalarProperty Name="CountryOfBirth" ColumnName="CountryOfBirth" />
+          <ScalarProperty Name="NZResidents" ColumnName="NZResidents" />
+          <ScalarProperty Name="NoOfDependents" ColumnName="NoOfDependents" />
+          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+          <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAssets">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblAsset">
+        <MappingFragment StoreEntitySet="tblAssets">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+          <ScalarProperty Name="Ownership" ColumnName="Ownership" />
+          <ScalarProperty Name="NetValue" ColumnName="NetValue" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AssetTypeID" ColumnName="AssetTypeID" />
+          <ScalarProperty Name="AssetID" ColumnName="AssetID" />
+          <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblLiabilities">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblLiability">
+        <MappingFragment StoreEntitySet="tblLiabilities">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+          <ScalarProperty Name="Ownership" ColumnName="Ownership" />
+          <ScalarProperty Name="NetValue" ColumnName="NetValue" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="LiabilityTypeID" ColumnName="LiabilityTypeID" />
+          <ScalarProperty Name="LiabilityID" ColumnName="LiabilityID" />
+          <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblLoanApplicationForms">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblLoanApplicationForm">
+        <MappingFragment StoreEntitySet="tblLoanApplicationForm">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="FinanceDate" ColumnName="FinanceDate" />
+          <ScalarProperty Name="AdvisorID" ColumnName="AdvisorID" />
+          <ScalarProperty Name="IsPropertyDecided" ColumnName="IsPropertyDecided" />
+          <ScalarProperty Name="PropertyUsedFor" ColumnName="PropertyUsedFor" />
+          <ScalarProperty Name="ShiftedDuration" ColumnName="ShiftedDuration" />
+          <ScalarProperty Name="AgeOfProperty" ColumnName="AgeOfProperty" />
+          <ScalarProperty Name="IsShifted" ColumnName="IsShifted" />
+          <ScalarProperty Name="PropertyTypeID" ColumnName="PropertyTypeID" />
+          <ScalarProperty Name="CostOfProperty" ColumnName="CostOfProperty" />
+          <ScalarProperty Name="IsAnyGuarantor" ColumnName="IsAnyGuarantor" />
+          <ScalarProperty Name="ReasonForNotApproval" ColumnName="ReasonForNotApproval" />
+          <ScalarProperty Name="ApprovalExpiryDate" ColumnName="ApprovalExpiryDate" />
+          <ScalarProperty Name="IsApplicationApproved" ColumnName="IsApplicationApproved" />
+          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+          <ScalarProperty Name="RateTypeID" ColumnName="RateTypeID" />
+          <ScalarProperty Name="LoanTerm" ColumnName="LoanTerm" />
+          <ScalarProperty Name="CashInHand" ColumnName="CashInHand" />
+          <ScalarProperty Name="FinanceRequired" ColumnName="FinanceRequired" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="PurposeOfLoanID" ColumnName="PurposeOfLoanID" />
+          <ScalarProperty Name="TypeOfLoanID" ColumnName="TypeOfLoanID" />
+          <ScalarProperty Name="IsPreApproval" ColumnName="IsPreApproval" />
+          <ScalarProperty Name="ApplicationFormNumber" ColumnName="ApplicationFormNumber" />
+          <ScalarProperty Name="LoanApplicationNo" ColumnName="LoanApplicationNo" />
+          <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblLoanGuarantors">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblLoanGuarantor">
+        <MappingFragment StoreEntitySet="tblLoanGuarantor">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="CountryOfBirth" ColumnName="CountryOfBirth" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="NZResidents" ColumnName="NZResidents" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="WorkPhoneNo" ColumnName="WorkPhoneNo" />
+          <ScalarProperty Name="HomePhoneNo" ColumnName="HomePhoneNo" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="LoanApplicationNo" ColumnName="LoanApplicationNo" />
+          <ScalarProperty Name="GuarantorID" ColumnName="GuarantorID" />
+          <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblLoanMasters">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblLoanMaster">
+        <MappingFragment StoreEntitySet="tblLoanMaster">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="SettlementDate" ColumnName="SettlementDate" />
+          <ScalarProperty Name="FinanceDate" ColumnName="FinanceDate" />
+          <ScalarProperty Name="PropertyTypeID" ColumnName="PropertyTypeID" />
+          <ScalarProperty Name="PropertyCost" ColumnName="PropertyCost" />
+          <ScalarProperty Name="Loanprovider" ColumnName="Loanprovider" />
+          <ScalarProperty Name="NoOfEMI" ColumnName="NoOfEMI" />
+          <ScalarProperty Name="AnyLegalCharges" ColumnName="AnyLegalCharges" />
+          <ScalarProperty Name="LoanProcessingFee" ColumnName="LoanProcessingFee" />
+          <ScalarProperty Name="EMIStartMonth" ColumnName="EMIStartMonth" />
+          <ScalarProperty Name="EMIStartDay" ColumnName="EMIStartDay" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="LoanTypeID" ColumnName="LoanTypeID" />
+          <ScalarProperty Name="LoanAmountOffered" ColumnName="LoanAmountOffered" />
+          <ScalarProperty Name="LoanValueRatio" ColumnName="LoanValueRatio" />
+          <ScalarProperty Name="FrequencyOffered" ColumnName="FrequencyOffered" />
+          <ScalarProperty Name="RateTypeOffered" ColumnName="RateTypeOffered" />
+          <ScalarProperty Name="LoanTermOffered" ColumnName="LoanTermOffered" />
+          <ScalarProperty Name="ROIOffered" ColumnName="ROIOffered" />
+          <ScalarProperty Name="LoanApplicationNo" ColumnName="LoanApplicationNo" />
+          <ScalarProperty Name="LANNumber" ColumnName="LANNumber" />
+          <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMasterAddressTypes">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterAddressType">
+        <MappingFragment StoreEntitySet="tblMasterAddressTypes">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMasterApplicantTypes">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterApplicantType">
+        <MappingFragment StoreEntitySet="tblMasterApplicantType">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ApplicantType" ColumnName="ApplicantType" />
+          <ScalarProperty Name="ApplicantTypeID" ColumnName="ApplicantTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMasterAssetTypes">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterAssetType">
+        <MappingFragment StoreEntitySet="tblMasterAssetTypes">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Createdon" ColumnName="Createdon" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="AssetType" ColumnName="AssetType" />
+          <ScalarProperty Name="AssetTypeID" ColumnName="AssetTypeID" />
+          <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMasterExpenseTypes">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterExpenseType">
+        <MappingFragment StoreEntitySet="tblMasterExpenseType">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+          <ScalarProperty Name="ExpenseType" ColumnName="ExpenseType" />
+          <ScalarProperty Name="ExpenseTypeID" ColumnName="ExpenseTypeID" />
+          <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMasterFileTypes">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterFileType">
+        <MappingFragment StoreEntitySet="tblMasterFileType">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Extension" ColumnName="Extension" />
+          <ScalarProperty Name="FileType" ColumnName="FileType" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMasterLiabilityTypes">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterLiabilityType">
+        <MappingFragment StoreEntitySet="tblMasterLiabilityTypes">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="LiabilityType" ColumnName="LiabilityType" />
+          <ScalarProperty Name="LiabilityTypeID" ColumnName="LiabilityTypeID" />
+          <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMasterLoanRateTypes">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterLoanRateType">
+        <MappingFragment StoreEntitySet="tblMasterLoanRateType">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="LoanRateType" ColumnName="LoanRateType" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMasterPropertyTypes">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterPropertyType">
+        <MappingFragment StoreEntitySet="tblMasterPropertyType">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="PropertyType" ColumnName="PropertyType" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMasterPurposeOfLoans">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterPurposeOfLoan">
+        <MappingFragment StoreEntitySet="tblMasterPurposeOfLoan">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="PurposeOfLoan" ColumnName="PurposeOfLoan" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMasterSalutations">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterSalutation">
+        <MappingFragment StoreEntitySet="tblMasterSalutation">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Salutation" ColumnName="Salutation" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMasterTypeOfEmployments">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterTypeOfEmployment">
+        <MappingFragment StoreEntitySet="tblMasterTypeOfEmployment">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="EmployementType" ColumnName="EmployementType" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMasterTypeOfLoans">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterTypeOfLoan">
+        <MappingFragment StoreEntitySet="tblMasterTypeOfLoan">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="LoanType" ColumnName="LoanType" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMasterTypeOfProfessions">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterTypeOfProfession">
+        <MappingFragment StoreEntitySet="tblMasterTypeOfProfession">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Profession" ColumnName="Profession" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMasterTypeOfQualifications">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterTypeOfQualification">
+        <MappingFragment StoreEntitySet="tblMasterTypeOfQualification">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Qualifications" ColumnName="Qualifications" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMasterTypeOfRelationships">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterTypeOfRelationship">
+        <MappingFragment StoreEntitySet="tblMasterTypeOfRelationship">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RelationshipWithApplicant" ColumnName="RelationshipWithApplicant" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMasterTypeOfStatus">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblMasterTypeOfStatu">
+        <MappingFragment StoreEntitySet="tblMasterTypeOfStatus">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblRoles">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblRole">
+        <MappingFragment StoreEntitySet="tblRole">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RoleGuid" ColumnName="RoleGuid" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsers">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblUser">
+        <MappingFragment StoreEntitySet="tblUsers">
+          <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ActivaitonCode" ColumnName="ActivaitonCode" />
+          <ScalarProperty Name="AccountLocked" ColumnName="AccountLocked" />
+          <ScalarProperty Name="AccountExpired" ColumnName="AccountExpired" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="LastLoggedOn" ColumnName="LastLoggedOn" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="FailedPasswordAttempts" ColumnName="FailedPasswordAttempts" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="PasswordResetToken" ColumnName="PasswordResetToken" />
+          <ScalarProperty Name="LastPasswordChangedOn" ColumnName="LastPasswordChangedOn" />
+          <ScalarProperty Name="PasswordExpired" ColumnName="PasswordExpired" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+          <ScalarProperty Name="UserGuid" ColumnName="UserGuid" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsersRoles">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblUsersRole">
+        <MappingFragment StoreEntitySet="tblUsersRole">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="UserGuid" ColumnName="UserGuid" />
+          <ScalarProperty Name="RoleGuid" ColumnName="RoleGuid" />
+          <ScalarProperty Name="UsersRoleId" ColumnName="UsersRoleId" />
+          <ScalarProperty Name="UsersRoleGuid" ColumnName="UsersRoleGuid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,4 +1,4 @@
-﻿import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
+import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../../../router.animations';
 import { Form, FormControl, FormBuilder, Validators  } from '@angular/forms';
@@ -17,7 +17,11 @@ import {MastersService} from '../../../services/app.masters.service';
 export class ApplicantComponent implements OnInit {
 
     public _Operationtitle: string = "Add";
-    public _ApplicantObj: {};
+    public _ApplicantObj: {
+        ApplicantType: "",
+        ApplicantTypeID: "",
+        IsActive: ""
+    };
     public _ApplicantTypes: {
         ApplicantType: "",
         ApplicantTypeID: "",

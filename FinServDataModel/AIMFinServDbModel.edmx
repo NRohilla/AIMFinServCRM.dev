@@ -61,7 +61,7 @@
           <Property Name="Duration" Type="nvarchar" MaxLength="50" />
           <Property Name="Income" Type="nchar" MaxLength="10" />
           <Property Name="Status" Type="nvarchar" MaxLength="50" />
-          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="ModifiedBy" Type="uniqueidentifier" />
           <Property Name="ModifiedOn" Type="datetime" />
@@ -498,6 +498,7 @@
           <Property Name="IsActive" Type="bit" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="LocationId" Type="int" />
+          <Property Name="IsLoggedIn" Type="bit" />
         </EntityType>
         <EntityType Name="tblUsersRole">
           <Key>
@@ -530,42 +531,6 @@
             </Principal>
             <Dependent Role="tblApplicantCommunicationDetails">
               <PropertyRef Name="AddressType" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblApplicantEmploymentDetails_tblApplicants">
-          <End Role="tblApplicants" Type="Self.tblApplicants" Multiplicity="1" />
-          <End Role="tblApplicantEmploymentDetails" Type="Self.tblApplicantEmploymentDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblApplicants">
-              <PropertyRef Name="ApplicantID" />
-            </Principal>
-            <Dependent Role="tblApplicantEmploymentDetails">
-              <PropertyRef Name="ApplicantID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblApplicantEmploymentDetails_tblMasterTypeOfEmployment">
-          <End Role="tblMasterTypeOfEmployment" Type="Self.tblMasterTypeOfEmployment" Multiplicity="1" />
-          <End Role="tblApplicantEmploymentDetails" Type="Self.tblApplicantEmploymentDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblMasterTypeOfEmployment">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="tblApplicantEmploymentDetails">
-              <PropertyRef Name="SourceOfIncome" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblApplicantEmploymentDetails_tblMasterTypeOfProfession">
-          <End Role="tblMasterTypeOfProfession" Type="Self.tblMasterTypeOfProfession" Multiplicity="1" />
-          <End Role="tblApplicantEmploymentDetails" Type="Self.tblApplicantEmploymentDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblMasterTypeOfProfession">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="tblApplicantEmploymentDetails">
-              <PropertyRef Name="ProfessionTypeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -872,18 +837,6 @@
             <End Role="tblMasterAddressTypes" EntitySet="tblMasterAddressTypes" />
             <End Role="tblApplicantCommunicationDetails" EntitySet="tblApplicantCommunicationDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblApplicantEmploymentDetails_tblApplicants" Association="Self.FK_tblApplicantEmploymentDetails_tblApplicants">
-            <End Role="tblApplicants" EntitySet="tblApplicants" />
-            <End Role="tblApplicantEmploymentDetails" EntitySet="tblApplicantEmploymentDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblApplicantEmploymentDetails_tblMasterTypeOfEmployment" Association="Self.FK_tblApplicantEmploymentDetails_tblMasterTypeOfEmployment">
-            <End Role="tblMasterTypeOfEmployment" EntitySet="tblMasterTypeOfEmployment" />
-            <End Role="tblApplicantEmploymentDetails" EntitySet="tblApplicantEmploymentDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblApplicantEmploymentDetails_tblMasterTypeOfProfession" Association="Self.FK_tblApplicantEmploymentDetails_tblMasterTypeOfProfession">
-            <End Role="tblMasterTypeOfProfession" EntitySet="tblMasterTypeOfProfession" />
-            <End Role="tblApplicantEmploymentDetails" EntitySet="tblApplicantEmploymentDetails" />
-          </AssociationSet>
           <AssociationSet Name="FK_tblApplicantExpenseSheet_tblApplicants" Association="Self.FK_tblApplicantExpenseSheet_tblApplicants">
             <End Role="tblApplicants" EntitySet="tblApplicants" />
             <End Role="tblApplicantExpenseSheet" EntitySet="tblApplicantExpenseSheet" />
@@ -1006,7 +959,6 @@
           <EntitySet Name="tblMasterTypeOfRelationships" EntityType="AIMFinServDBModel.tblMasterTypeOfRelationship" />
           <EntitySet Name="tblMasterTypeOfStatus" EntityType="AIMFinServDBModel.tblMasterTypeOfStatu" />
           <EntitySet Name="tblRoles" EntityType="AIMFinServDBModel.tblRole" />
-          <EntitySet Name="tblUsers" EntityType="AIMFinServDBModel.tblUser" />
           <EntitySet Name="tblUsersRoles" EntityType="AIMFinServDBModel.tblUsersRole" />
           <AssociationSet Name="FK_tblLoanApplicationForm_tblAdvisorDetails" Association="AIMFinServDBModel.FK_tblLoanApplicationForm_tblAdvisorDetails">
             <End Role="tblAdvisorDetail" EntitySet="tblAdvisorDetails" />
@@ -1116,6 +1068,7 @@
             <End Role="tblMasterTypeOfStatu" EntitySet="tblMasterTypeOfStatus" />
             <End Role="tblLoanMaster" EntitySet="tblLoanMasters" />
           </AssociationSet>
+          <EntitySet Name="tblUsers" EntityType="AIMFinServDBModel.tblUser" />
         </EntityContainer>
         <EntityType Name="tblAdvisorDetail">
           <Key>
@@ -1176,7 +1129,7 @@
           <Property Name="Duration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Income" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="ModifiedBy" Type="Guid" />
           <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
@@ -1635,36 +1588,6 @@
           <Property Name="ModifiedOn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="tblUser">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserGuid" Type="Guid" Nullable="false" />
-          <Property Name="LoginID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DisplayName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="PasswordExpired" Type="Boolean" />
-          <Property Name="LastPasswordChangedOn" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="PasswordResetToken" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Role" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="FailedPasswordAttempts" Type="Int32" />
-          <Property Name="CreatedBy" Type="Guid" />
-          <Property Name="CreatedOn" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="LastLoggedOn" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedBy" Type="Guid" />
-          <Property Name="ModifiedOn" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="AccountExpired" Type="Boolean" />
-          <Property Name="AccountLocked" Type="Boolean" />
-          <Property Name="ActivaitonCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="LocationId" Type="Int32" />
-        </EntityType>
         <EntityType Name="tblUsersRole">
           <Key>
             <PropertyRef Name="UsersRoleGuid" />
@@ -1999,6 +1922,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserGuid" Type="Guid" Nullable="false" />
+          <Property Name="LoginID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordExpired" Type="Boolean" />
+          <Property Name="LastPasswordChangedOn" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordResetToken" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="FailedPasswordAttempts" Type="Int32" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="CreatedOn" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="LastLoggedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <Property Name="ModifiedOn" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AccountExpired" Type="Boolean" />
+          <Property Name="AccountLocked" Type="Boolean" />
+          <Property Name="ActivaitonCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LocationId" Type="Int32" />
+          <Property Name="IsLoggedIn" Type="Boolean" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2497,9 +2451,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblUsersRoles">
+            <EntityTypeMapping TypeName="AIMFinServDBModel.tblUsersRole">
+              <MappingFragment StoreEntitySet="tblUsersRole">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UserGuid" ColumnName="UserGuid" />
+                <ScalarProperty Name="RoleGuid" ColumnName="RoleGuid" />
+                <ScalarProperty Name="UsersRoleId" ColumnName="UsersRoleId" />
+                <ScalarProperty Name="UsersRoleGuid" ColumnName="UsersRoleGuid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblUsers">
             <EntityTypeMapping TypeName="AIMFinServDBModel.tblUser">
               <MappingFragment StoreEntitySet="tblUsers">
+                <ScalarProperty Name="IsLoggedIn" ColumnName="IsLoggedIn" />
                 <ScalarProperty Name="LocationId" ColumnName="LocationId" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
@@ -2525,17 +2491,6 @@
                 <ScalarProperty Name="LoginID" ColumnName="LoginID" />
                 <ScalarProperty Name="UserGuid" ColumnName="UserGuid" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblUsersRoles">
-            <EntityTypeMapping TypeName="AIMFinServDBModel.tblUsersRole">
-              <MappingFragment StoreEntitySet="tblUsersRole">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="UserGuid" ColumnName="UserGuid" />
-                <ScalarProperty Name="RoleGuid" ColumnName="RoleGuid" />
-                <ScalarProperty Name="UsersRoleId" ColumnName="UsersRoleId" />
-                <ScalarProperty Name="UsersRoleGuid" ColumnName="UsersRoleGuid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

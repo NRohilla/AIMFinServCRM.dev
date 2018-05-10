@@ -67,10 +67,10 @@
                                     </div>
                                 </div>
                                 <mat-form-field class="w-100" *ngIf="_EditPersonalDetails">
-                                    <input matInput placeholder="Date of Birth" [(ngModel)]="PersonalDetails.LastName" name="LastName" #LastName="ngModel" required>
-                                    <div *ngIf="LastName.invalid && (LastName.dirty || LastName.touched)" class="alert alert-danger">
-                                        <div *ngIf="LastName.errors.required"></div>
-                                        Please enter Last Name.
+                                    <input matInput placeholder="Date of Birth" [(ngModel)]="PersonalDetails.DateOfBirth" name="DateOfBirth" #DateOfBirth="ngModel" required>
+                                    <div *ngIf="DateOfBirth.invalid && (DateOfBirth.dirty || DateOfBirth.touched)" class="alert alert-danger">
+                                        <div *ngIf="DateOfBirth.errors.required"></div>
+                                        Please enter Date Of Birth.
                                     </div>
                                 </mat-form-field>
                                 <div class="border bg-white pt-3 pb-3 clearfix" *ngIf="!_EditPersonalDetails">

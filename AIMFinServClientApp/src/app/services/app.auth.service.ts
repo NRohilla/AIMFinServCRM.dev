@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx'; //get everything from Rx  
@@ -17,8 +17,19 @@ export class AuthenticateService {
         this.baseurl = environment.baseAPIUrl;
     }
 
-    AuthenticateLogin(UserEmailId, password) {
+    AuthenticateLogin(UserEmailId, password)
+    {
         debugger;
         return this._http.get(this.baseurl + "Auth/AuthenticateLogin?UserEmailId=" + UserEmailId + "&password=" + password, this.options);
+    }
+
+    //IsUserLoggedIn(UserOps) {
+    //    debugger;
+    //    return this._http.post(this.baseurl + "Auth/AuthenticateLogin", UserOps, this.options);
+    //}
+
+    LoggedOffUser(ActivationCode, IsLoggedIn) {
+        debugger;
+        return this._http.post(this.baseurl + "Auth/LoggedOffUser?ActivationCode=" + ActivationCode + "&IsLoggedIn=" + IsLoggedIn, this.options);
     }
 }

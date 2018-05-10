@@ -5,16 +5,22 @@ import { Form, FormControl, Validators  } from '@angular/forms';
 import 'rxjs/Rx';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { environment } from '../../../../environments/environment';
-import {UserOperationService} from '../../../services/app.userops.service';
+import { UserOperationService } from '../../../services/app.userops.service';
+import { AuthenticateService } from '../../../services/app.auth.service';
 
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
-    providers: [UserOperationService]
+    providers: [UserOperationService, AuthenticateService]
 })
 export class HeaderComponent implements OnInit {
     pushRightClass: string = 'push-right';
+    public AuthenticationToken: string = '';
+   // public IsLoggedIn: boolean = false;
+
+
+
     public _UserDetails: any = {
         AccountExpired: '',
         AccountLocked: '',
@@ -43,7 +49,7 @@ export class HeaderComponent implements OnInit {
         UserId: '',
     }
     constructor(private translate: TranslateService, public router: Router, private _LocalStorageService: LocalStorageService,
-        private _UserOperationService: UserOperationService) {
+        private _UserOperationService: UserOperationService, private _AuthenticateService:AuthenticateService) {
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
         this.translate.setDefaultLang('en');
         const browserLang = this.translate.getBrowserLang();
@@ -90,8 +96,19 @@ export class HeaderComponent implements OnInit {
     }
 
     onLoggedout() {
-        localStorage.removeItem('isLoggedin');
+        debugger;
+       // localStorage.removeItem('isLoggedin');
+        var IsLoggedIn = localStorage.getItem('isLoggedin') === "true";
+        this.AuthenticationToken = this._LocalStorageService.get('ActivaitonCode');
+        //localStorage.setItem('isLoggedin', 'true');
+        this._AuthenticateService.LoggedOffUser(this.AuthenticationToken, IsLoggedIn)
+            .subscribe(result => this.LoggedOffUserSuccess(result), result => this.LoggedOffUserError(result));
+        window.location.href = "http://localhost:8080/login";
     }
+
+    LoggedOffUserSuccess(result) { }
+
+    LoggedOffUserError(result) { }
 
     changeLang(language: string) {
         this.translate.use(language);

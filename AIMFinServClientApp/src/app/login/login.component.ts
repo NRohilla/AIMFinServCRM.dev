@@ -18,7 +18,9 @@ export class LoginComponent implements OnInit {
     public _Password: string;
     public _Username: string;
     public _FormErrors;
+    public IsLoggedIn: boolean = true;
     public _FormErrorsDescription: string = '';
+    public ActivationCode: string = '';
     constructor(public router: Router, private _AuthenticateService: AuthenticateService, private _LocalStorageService: LocalStorageService) { }
 
     ngOnInit() {
@@ -26,16 +28,19 @@ export class LoginComponent implements OnInit {
     }
 
     LoginVaidate() {
+        debugger;
         this._FormErrors = false;
-        if (this._Username.trim().length > 0 && this._Password.trim().length > 0) {
+        //this.IsLoggedIn = true;
+        if (this._Username.length > 0 && this._Password.length > 0) {
+           // this.IsLoggedIn = true;
             this._AuthenticateService.AuthenticateLogin(this._Username, this._Password)
                 .subscribe(result => this.RequestSuccess(result), result => this.RequestError(result));
         } else {
             this._FormErrors = true;
-            if (this._Username.trim().length == 0)
-                this._FormErrorsDescription = "Please enter email address"
-            if (this._Password.trim().length == 0)
-                this._FormErrorsDescription = "Please enter password"
+            if (this._Username.length == 0)
+                this._FormErrorsDescription = "Please enter Email Address"
+            if (this._Password.length == 0)
+                this._FormErrorsDescription = "Please enter Password"
         }
     }
 
@@ -43,24 +48,35 @@ export class LoginComponent implements OnInit {
         debugger;
         var resultReturned = JSON.parse(result._body);
 
-        if (resultReturned._IsAuthenticated == false) {
+        if (resultReturned._IsAuthenticated == false)
+        {
             this._FormErrors = true;
             this._FormErrorsDescription = "Invalid Credentials!"
-        } else {
-            this._LocalStorageService.set('LoggedInEmailId', this._Username.trim());
-            localStorage.setItem('isLoggedin', 'true');
-            this._LocalStorageService.set('LoggedInUserId', resultReturned._UserID.trim());
+        }
+        else
+        {
+            this._LocalStorageService.set('LoggedInEmailId', this._Username);
+            // localStorage.setItem('isLoggedin', resultReturned._IsLoggedIn);
+            this._LocalStorageService.set('LoggedInUserId', resultReturned._UserID);
+            this._LocalStorageService.set('ActivaitonCode', resultReturned.ActivaitonCode);
+            localStorage.setItem('isLoggedin', resultReturned.IsLoggedIn);
 
-            if (resultReturned._RoleDesc == "Client") {
+
+            if (resultReturned._RoleDesc == "Client")
+            {
                 debugger;
+                this._LocalStorageService.set('LoggedInUserId', resultReturned._UserID);
                 this._LocalStorageService.set('LoggedInApplicantId', resultReturned._ApplicantID);
-                window.location.href = "http://localhost:8081/dashboard?LoggedInEmailId=" + this._Username.trim();
+                //window.location.href = "http://localhost:8081/#/";
+                window.location.href = "http://localhost:8081/dashboard?LoggedInEmailId=" + this._Username;
             }
 
-            if (resultReturned._RoleDesc == "Admin" || resultReturned._RoleDesc == "Employee") {
+            if (resultReturned._RoleDesc == "Admin" || resultReturned._RoleDesc == "Employee")
+            {
                 this.router.navigateByUrl('dashboard');
             }
         }
+        localStorage.setItem('isLoggedin', resultReturned.IsLoggedIn);
     }
 
     RequestError(err) {

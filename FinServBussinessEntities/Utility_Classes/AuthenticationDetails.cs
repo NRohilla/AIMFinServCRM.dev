@@ -12,5 +12,8 @@ namespace FinServBussinessEntities.Utility_Classes
         public string _UserID { get; set; }
         public string _ApplicantID { get; set; }
         public bool _IsAuthenticated { get; set; }
+        public string ActivaitonCode { get; set; }
+
+        public Nullable<bool> IsLoggedIn { get; set; }
     }
 }

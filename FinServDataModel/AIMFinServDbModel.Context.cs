@@ -53,7 +53,7 @@ namespace FinServDataModel
         public virtual DbSet<tblMasterTypeOfRelationship> tblMasterTypeOfRelationships { get; set; }
         public virtual DbSet<tblMasterTypeOfStatu> tblMasterTypeOfStatus { get; set; }
         public virtual DbSet<tblRole> tblRoles { get; set; }
-        public virtual DbSet<tblUser> tblUsers { get; set; }
         public virtual DbSet<tblUsersRole> tblUsersRoles { get; set; }
+        public virtual DbSet<tblUser> tblUsers { get; set; }
     }
 }

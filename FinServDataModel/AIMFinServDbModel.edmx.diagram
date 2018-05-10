@@ -33,7 +33,6 @@
         <EntityTypeShape EntityType="AIMFinServDBModel.tblMasterTypeOfRelationship" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblMasterTypeOfStatu" Width="1.5" PointX="0.75" PointY="25.625" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblRole" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="AIMFinServDBModel.tblUser" Width="1.5" PointX="0.75" PointY="4.75" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblUsersRole" Width="1.5" PointX="2.75" PointY="4.75" />
         <AssociationConnector Association="AIMFinServDBModel.FK_tblLoanApplicationForm_tblAdvisorDetails" />
         <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantCommunicationDetails_tblApplicants" />
@@ -62,6 +61,7 @@
         <AssociationConnector Association="AIMFinServDBModel.FK_tblLoanMaster_tblMasterPropertyType" />
         <AssociationConnector Association="AIMFinServDBModel.FK_tblLoanMaster_tblMasterTypeOfLoan" />
         <AssociationConnector Association="AIMFinServDBModel.FK_tblLoanMaster_tblMasterTypeOfStatus" />
+        <EntityTypeShape EntityType="AIMFinServDBModel.tblUser" Width="1.5" PointX="5.375" PointY="4.75" />
       </Diagram>
       <Diagram DiagramId="9ffe6693a3454488bd526b5fbd46fe2d" Name="Diagram2" >
       </Diagram>

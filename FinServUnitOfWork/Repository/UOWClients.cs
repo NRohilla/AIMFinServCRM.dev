@@ -362,6 +362,7 @@ namespace FinServUnitOfWork.Repository
                         _objDetails.Duration = _objEmploymentDetails.Duration;
                         _objDetails.Income = _objEmploymentDetails.Income;
                         _objDetails.Status = _objEmploymentDetails.Status;
+                        _objDetails.CreatedOn = DateTime.Now;
                         db.tblApplicantEmploymentDetails.Add(_objDetails);
                         db.SaveChanges();
                     }
@@ -391,6 +392,8 @@ namespace FinServUnitOfWork.Repository
                         fetchObj.Duration = _objEmploymentDetails.Duration;
                         fetchObj.Income = _objEmploymentDetails.Income;
                         fetchObj.Status = _objEmploymentDetails.Status;
+                        fetchObj.ModifiedOn = DateTime.Now;
+                        fetchObj.tblApplicant.ApplicantID = _objEmploymentDetails.ModifiedBy.GetValueOrDefault();
                         TotalRecordsUpdated += db.SaveChanges();
                         
                     }
@@ -460,6 +463,7 @@ namespace FinServUnitOfWork.Repository
                         _objDetails.PassingYear = _objQualificationDetails.PassingYear;
                         _objDetails.UniversityName = _objQualificationDetails.UniversityName;
                         _objDetails.TypeOfQualification = _objQualificationDetails._QualificationTypeDetail.ID;
+                        _objDetails.CreatedOn = DateTime.Now;
                         db.tblApplicantQualificationDetails.Add(_objDetails);
                         db.SaveChanges();
                     }
@@ -486,6 +490,7 @@ namespace FinServUnitOfWork.Repository
                         fetchObj.PassingYear = _objQualificationDetails.PassingYear;
                         fetchObj.UniversityName = _objQualificationDetails.UniversityName;
                         fetchObj.TypeOfQualification = _objQualificationDetails._QualificationTypeDetail.ID;
+                        fetchObj.ModifiedOn = DateTime.Now;
                         TotalRecordsUpdated += db.SaveChanges();
                         return true;
                     }
@@ -558,6 +563,7 @@ namespace FinServUnitOfWork.Repository
                         _objAppCommDetails.AddressType = _objApplicantCommDetails.AddressType;
                         _objAppCommDetails.Country = _objApplicantCommDetails.Country;
                         _objAppCommDetails.ZipCode = _objApplicantCommDetails.ZipCode;
+                        _objAppCommDetails.CreatedOn = DateTime.Now;
                         db.tblApplicantCommunicationDetails.Add(_objAppCommDetails);
                         db.SaveChanges();
                     }
@@ -585,6 +591,7 @@ namespace FinServUnitOfWork.Repository
                         FetchDetailsOfEmployment.AddressLine3 = _objApplicantCommDetails.AddressLine3;
                         FetchDetailsOfEmployment.Country = _objApplicantCommDetails.Country;
                         FetchDetailsOfEmployment.ZipCode = _objApplicantCommDetails.ZipCode;
+                        FetchDetailsOfEmployment.ModifiedOn = DateTime.Now;
                         FetchDetailsOfEmployment.AddressType = Convert.ToInt32(_objApplicantCommDetails.AddressType);
                         TotalRecordsUpdated += db.SaveChanges();
                         return true;
@@ -627,6 +634,8 @@ namespace FinServUnitOfWork.Repository
                         FetchApplicantPersonalDetails.EmailID = ApplicantPersonalDetails.EmailID;
                         FetchApplicantPersonalDetails.ApplicantImage = ApplicantPersonalDetails.ApplicantImage;
                         FetchApplicantPersonalDetails.FileName = ApplicantPersonalDetails.FileName;
+                        FetchApplicantPersonalDetails.ModifiedOn = DateTime.Now;
+                        FetchApplicantPersonalDetails.ModifiedBy = ApplicantPersonalDetails.ModifiedBy;
                         FetchApplicantPersonalDetails.FileTypeID = db.tblMasterFileTypes.Where(p => p.FileType == ApplicantPersonalDetails.FileType).Select(a => a.ID).FirstOrDefault();
 
                         RecordUpdate = db.SaveChanges();
@@ -669,6 +678,7 @@ namespace FinServUnitOfWork.Repository
                         FetchLoanApplicationDetails.ShiftedDuration = LoanApplicationDetails.ShiftedDuration;
                         FetchLoanApplicationDetails.StatusID = LoanApplicationDetails.StatusID;
                         FetchLoanApplicationDetails.TypeOfLoanID = LoanApplicationDetails.TypeOfLoanID;
+                        FetchLoanApplicationDetails.ModifiedOn = DateTime.Now;
 
                         TotalRecordsUpdated += db.SaveChanges();
                         return true;
@@ -713,6 +723,7 @@ namespace FinServUnitOfWork.Repository
                         _tblApplicant.LoanApplicationNo = ApplicantPersonalDetails.LoanApplicationNo;
                         _tblApplicant.ApplicantTypeID = ApplicantPersonalDetails.ApplicantTypeID;
                         _tblApplicant.IsActive = true;
+                        _tblApplicant.CreatedOn = DateTime.Now;
                         db.tblApplicants.Add(_tblApplicant);
                         db.SaveChanges();
 
@@ -741,6 +752,7 @@ namespace FinServUnitOfWork.Repository
                         _tblApplicantQualificationDetails.CourseName = ApplicantQualificationDetails.CourseName;
                         _tblApplicantQualificationDetails.UniversityName = ApplicantQualificationDetails.UniversityName;
                         _tblApplicantQualificationDetails.TypeOfQualification = ApplicantQualificationDetails.TypeOfQualification;
+                        _tblApplicantQualificationDetails.CreatedOn = DateTime.Now;
 
                         db.tblApplicantQualificationDetails.Add(_tblApplicantQualificationDetails);
                         db.SaveChanges();
@@ -770,6 +782,7 @@ namespace FinServUnitOfWork.Repository
                         _tblApplicantEmploymentDetail.Duration = ApplicantEmploymentDetails.Duration;
                         _tblApplicantEmploymentDetail.Income = ApplicantEmploymentDetails.Income;
                         _tblApplicantEmploymentDetail.Status = ApplicantEmploymentDetails.Status;
+                        _tblApplicantEmploymentDetail.CreatedOn = DateTime.Now;
 
                         db.tblApplicantEmploymentDetails.Add(_tblApplicantEmploymentDetail);
                         db.SaveChanges();
@@ -801,6 +814,7 @@ namespace FinServUnitOfWork.Repository
                         _tblApplicantCommunicationDetail.Duration = ApplicantCommunicationDetails.Duration;
                         _tblApplicantCommunicationDetail.ApplicantID = ApplicantCommunicationDetails.ApplicantID;
                         _tblApplicantCommunicationDetail.AddressType = ApplicantCommunicationDetails.AddressType;
+                        _tblApplicantCommunicationDetail.CreatedOn = DateTime.Now;
 
                         db.tblApplicantCommunicationDetails.Add(_tblApplicantCommunicationDetail);
                         db.SaveChanges();
@@ -845,6 +859,7 @@ namespace FinServUnitOfWork.Repository
                         _tblLoanGuarantorDetail.AddressLine3 = _objGuarantorDetails.AddressLine3;
                         _tblLoanGuarantorDetail.Country = _objGuarantorDetails.Country;
                         _tblLoanGuarantorDetail.ZipCode = _objGuarantorDetails.ZipCode;
+                        _tblLoanGuarantorDetail.CreatedOn = DateTime.Now;
 
                         db.tblLoanGuarantors.Add(_tblLoanGuarantorDetail);
                         db.SaveChanges();
@@ -965,6 +980,7 @@ namespace FinServUnitOfWork.Repository
                         FetchGuarantorDetails.AddressLine3 = _objUpdateGuartDetails.AddressLine3;
                         FetchGuarantorDetails.Country = _objUpdateGuartDetails.Country;
                         FetchGuarantorDetails.ZipCode = _objUpdateGuartDetails.ZipCode;
+                        FetchGuarantorDetails.ModifiedOn = DateTime.Now;
 
                        db.SaveChanges();
 
@@ -993,6 +1009,7 @@ namespace FinServUnitOfWork.Repository
                         _tblAssetDetail.Description = _objAssetDetails.Description;
                         _tblAssetDetail.NetValue = _objAssetDetails.NetValue;
                         _tblAssetDetail.Ownership = _objAssetDetails.Ownership;
+                        _tblAssetDetail.CreatedOn = DateTime.Now;
                         tblApplicant _tblApplicant = new tblApplicant();
                         _tblApplicant.FirstName = _objAssetDetails._ApplicationID.FirstName;
 
@@ -1094,6 +1111,7 @@ namespace FinServUnitOfWork.Repository
                         FetchAssetDetails.Description = _objAssetDetails.Description;
                         FetchAssetDetails.NetValue = _objAssetDetails.NetValue;
                         FetchAssetDetails.Ownership = _objAssetDetails.Ownership;
+                        FetchAssetDetails.ModifiedOn = DateTime.Now;
                         db.SaveChanges();
                     }
                     return true;
@@ -1120,6 +1138,7 @@ namespace FinServUnitOfWork.Repository
                         _tblLiabilityDetail.Description = _objLiabilityDetails.Description;
                         _tblLiabilityDetail.NetValue = _objLiabilityDetails.NetValue;
                         _tblLiabilityDetail.Ownership = _objLiabilityDetails.Ownership;
+                        _tblLiabilityDetail.CreatedOn = DateTime.Now;
                         tblApplicant _tblApplicant = new tblApplicant();
                         _tblApplicant.FirstName = _objLiabilityDetails.FirstName;
 
@@ -1222,6 +1241,7 @@ namespace FinServUnitOfWork.Repository
                         FetchLiabilityDetails.Description = _objLiabilityDetails.Description;
                         FetchLiabilityDetails.NetValue = _objLiabilityDetails.NetValue;
                         FetchLiabilityDetails.Ownership = _objLiabilityDetails.Ownership;
+                        FetchLiabilityDetails.ModifiedOn = DateTime.Now;
 
                         db.SaveChanges();
                     }
@@ -1272,6 +1292,7 @@ namespace FinServUnitOfWork.Repository
                         _tblLoanApplicationFormDetails.IsPreApproval = LoanApplicationDetails.IsPreApproval;
                         _tblLoanApplicationFormDetails.ReasonForNotApproval = LoanApplicationDetails.ReasonForNotApproval;
                         _tblLoanApplicationFormDetails.ShiftedDuration = LoanApplicationDetails.ShiftedDuration;
+                        _tblLoanApplicationFormDetails.CreatedOn = DateTime.Now;
 
                         db.tblLoanApplicationForms.Add(_tblLoanApplicationFormDetails);
                         db.SaveChanges();
@@ -1301,6 +1322,7 @@ namespace FinServUnitOfWork.Repository
                         _tblExpenseDetails.Description = _objApplicantExpenseSheet.Description;
                         _tblExpenseDetails.Frequency = _objApplicantExpenseSheet.Frequency;
                         _tblExpenseDetails.NetAmount = _objApplicantExpenseSheet.NetAmount;
+                        _tblExpenseDetails.CreatedOn = DateTime.Now;
                         tblApplicant _tblApplicant = new tblApplicant();
                         _tblApplicant.FirstName = _objApplicantExpenseSheet._ApplicationID.FirstName;
 
@@ -1400,6 +1422,7 @@ namespace FinServUnitOfWork.Repository
                         FetchExpenseDetails.Description = _objApplicantExpenseSheet.Description;
                         FetchExpenseDetails.NetAmount = _objApplicantExpenseSheet.NetAmount;
                         FetchExpenseDetails.Frequency = _objApplicantExpenseSheet.Frequency;
+                        FetchExpenseDetails.ModifiedOn = DateTime.Now;
 
                         db.SaveChanges();
                     }
@@ -1489,6 +1512,7 @@ namespace FinServUnitOfWork.Repository
                         FetchPersonalDetails.EmailID = _objApplicantsDetails.EmailID;
                         FetchPersonalDetails.ApplicantImage = _objApplicantsDetails.ApplicantImage;
                         FetchPersonalDetails.FileName = _objApplicantsDetails.FileName;
+                        FetchPersonalDetails.ModifiedOn = DateTime.Now;
                         FetchPersonalDetails.FileTypeID = db.tblMasterFileTypes.Where(a => a.FileType == _objApplicantsDetails.FileType).Select(a => a.ID).FirstOrDefault();
                         db.SaveChanges();
                     }
@@ -1516,6 +1540,7 @@ namespace FinServUnitOfWork.Repository
                         fetchAddresses.AddressLine3 = _objApplicantComDetails.AddressLine3;
                         fetchAddresses.Country = _objApplicantComDetails.Country;
                         fetchAddresses.ZipCode = _objApplicantComDetails.ZipCode;
+                        fetchAddresses.ModifiedOn = DateTime.Now;
                     }
                     return true;
                 }
@@ -1635,6 +1660,7 @@ namespace FinServUnitOfWork.Repository
                             _objDetails.Duration = _objApplicantComDetails.Duration;
                             _objDetails.ZipCode = _objApplicantComDetails.ZipCode;
                             _objDetails.AddressType = _objApplicantComDetails.ID;
+                            _objDetails.CreatedOn = DateTime.Now;
 
                             db.tblApplicantCommunicationDetails.Add(_objDetails);
 
@@ -1654,6 +1680,7 @@ namespace FinServUnitOfWork.Repository
                                 _objDetails.Country = _objApplicantComDetails.Country;
                                 _objDetails.Duration = _objApplicantComDetails.Duration;
                                 _objDetails.ZipCode = _objApplicantComDetails.ZipCode;
+                                _objDetails.ModifiedOn = DateTime.Now;
 
                                 db.SaveChanges();
                             }
@@ -1751,6 +1778,7 @@ namespace FinServUnitOfWork.Repository
                         FetchLoanMaterDetails.tblMasterTypeOfLoan.LoanType = _objLoanMasterDetails.LoanType;
                         FetchLoanMaterDetails.NoOfEMI = _objLoanMasterDetails.NoOfEMI;
                         FetchLoanMaterDetails.AnyLegalCharges = _objLoanMasterDetails.AnyLegalCharges;
+                        FetchLoanMaterDetails.ModifiedOn = DateTime.Now;
 
                         db.SaveChanges();
                     }
@@ -1943,6 +1971,7 @@ namespace FinServUnitOfWork.Repository
                         objapp.Income = dataofapplicants.Income;
                         objapp.EmployementType = dataofapplicants.tblMasterTypeOfEmployment.EmployementType;
                         objapp.Profession = dataofapplicants.tblMasterTypeOfProfession.Profession;
+                        //objapp.Profession = dataofapplicants.tblMasterTypeOfProfession.Profession;
 
                     }
 
@@ -1975,6 +2004,7 @@ namespace FinServUnitOfWork.Repository
                         FetchEmploymentDetails.Income = _objApplicantEmploymentDetails.Income;
                         FetchEmploymentDetails.tblMasterTypeOfEmployment.EmployementType = _objApplicantEmploymentDetails.EmployementType;
                         FetchEmploymentDetails.tblMasterTypeOfProfession.Profession = _objApplicantEmploymentDetails.Profession;
+                        FetchEmploymentDetails.ModifiedOn = DateTime.Now;
 
                         db.SaveChanges();
                     }
@@ -2114,6 +2144,7 @@ namespace FinServUnitOfWork.Repository
                         FetchQualificationDetails.PassingYear = _objApplicantQualificationDetails.PassingYear;
                         FetchQualificationDetails.CourseName = _objApplicantQualificationDetails.CourseName;
                         FetchQualificationDetails.tblApplicant.FirstName = _objApplicantQualificationDetails.FirstName;
+                        FetchQualificationDetails.ModifiedOn = DateTime.Now;
 
                         db.SaveChanges();
                     }

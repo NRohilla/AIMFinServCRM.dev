@@ -23,6 +23,7 @@ export class CommunicationComponent implements OnInit {
     public _EditcommunicationDetails: boolean = false;
     public ApplicantID: string = '';
     items: any;
+    public data: any;
 
     public CommunicationDetails: any = [];
 
@@ -61,7 +62,7 @@ export class CommunicationComponent implements OnInit {
 
     }
     openDialog(ComId, data): void {
-
+        debugger;
         if (data != undefined) {
             this.EditcommunicationDetails();
             var dialogRef = this.dialog.open(CommunicationDialog, { data: { CommunicationID: ComId, isEdit: data } });
