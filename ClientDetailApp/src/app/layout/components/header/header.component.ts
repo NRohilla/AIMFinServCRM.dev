@@ -175,7 +175,7 @@ export class HeaderComponent implements OnInit {
     LoggedOffUserSuccess(res) {
         debugger;
         this._LocalStorageService.clearAll();
-        window.location.href = environment.baseAdminURl + "login";
+        window.location.href = environment.baseAdminURl;
     }
 
     LoggedOffUserError(res) { }

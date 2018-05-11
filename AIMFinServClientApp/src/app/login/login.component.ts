@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
         else {
             if (resultReturned._RoleDesc == "Client") {
                 debugger;
-                window.location.href = environment.baseClientAppURL + "dashboard?LoggedInEmailId=" + this._Username;
+                window.location.href = environment.baseClientAppURL + "?LoggedInEmailId=" + this._Username;
             }
 
             if (resultReturned._RoleDesc == "Admin" || resultReturned._RoleDesc == "Employee") {
