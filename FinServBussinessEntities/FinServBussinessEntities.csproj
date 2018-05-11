@@ -55,6 +55,7 @@
     <Compile Include="AssetsTypeMaster.cs" />
     <Compile Include="EmploymentTypeMaster.cs" />
     <Compile Include="ExpenseTypeMaster.cs" />
+    <Compile Include="FileTypeMaster.cs" />
     <Compile Include="Liability.cs" />
     <Compile Include="LiabilityTypeMaster.cs" />
     <Compile Include="LoanApplicationForms.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Role.cs" />
     <Compile Include="SalutationTypeMaster.cs" />
     <Compile Include="StatusTypeMaster.cs" />
+    <Compile Include="UserApplicant.cs" />
     <Compile Include="UserOps.cs" />
     <Compile Include="UserRole.cs" />
     <Compile Include="Utility_Classes\AuthenticationDetails.cs" />

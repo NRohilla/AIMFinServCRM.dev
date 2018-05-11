@@ -1,39 +1,41 @@
-<nav class="navbar-expand-lg fixed-top">
+<nav class="navbar-expand-lg fixed-top headsection" *ngIf="_ShowDetails">
     <div class="profile-section">
         <a href="/">
         <div class="profile w-100 pl-2 pr-2 pt-1 pb-1 float-left">
           <div class="client-pic float-left">
-            <img src="../assets/images/profile/nouser.jpg" title="no user" />
+              <img [src]="URL" />
           </div>
-          <h3 class="float-left text-white">Nicholas Alcock</h3>      
+          <h3 class="float-left text-white">{{_UserName}}</h3>      
         </div>
         </a>
-        <div class="w-100 float-left">
+        <!--<div class="w-100 float-left">
           <ul class="p-0 m-0">
             <li *ngFor="let navData of mainNav"><a routerLink="/{{navData.url}}" [innerHTML]='navData.name'> </a></li>
           </ul>
-        </div>
+        </div>-->
       </div>
-    <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
-        <!-- <span class="navbar-toggler-icon"></span> -->
-        <i class="fa fa-bars text-muted" aria-hidden="true"></i>
-    </button>
-    <div class="collapse navbar-collapse headsection">
+    <div class="pull-right mt-3">
+        <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+            <!-- <span class="navbar-toggler-icon"></span> -->
+            <i class="fa fa-bars text-muted" aria-hidden="true"></i>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse">
         <ul class="p-0 m-0">
             <li><button type="submit" class="btn btn-sm btn-info">send email</button></li>
-            <li><button type="submit" class="btn btn-sm btn-primary">send email</button></li>
-            <li><button type="submit" class="btn btn-sm btn-success">send email</button></li>
-            <li><button type="submit" class="btn btn-sm btn-secondary">send email</button></li>
-            <li><button type="submit" class="btn btn-sm btn-warning">send email</button></li>
+            <li><button type="submit" class="btn btn-sm btn-primary">change password</button></li>
+            <li><button type="submit" class="btn btn-sm btn-success">upload image</button></li>
+            <li><button type="submit" class="btn btn-sm btn-secondary">update profile</button></li>
+            <!--<li><button type="submit" class="btn btn-sm btn-warning">send email</button></li>-->
         </ul>
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            <!--<li class="nav-item">
                 <a href="javascript:void(0)" class="nav-link mt-1"
                     style="padding: 0.375rem 1rem !important; border-color: #999;"
                     (click)="rltAndLtr()">
                     Toggle menu
                 </a>
-            </li> &nbsp;
+            </li> &nbsp;-->
             <li class="nav-item dropdown" ngbDropdown>
                 <a class="nav-link" href="javascript:void(0)" ngbDropdownToggle>
                     <i class="fa fa-envelope"></i> <b class="caret"></b><span class="sr-only">(current)</span>

@@ -30,6 +30,7 @@ import { ManageExpenseSheetDialog } from './shared/dialogues/loanapplications/Ma
 import { MasterEmployementComponent } from './layout/LoanMaster/components/app.master.employementdetails';
 import { MasterQualificationDetailsComponent } from './layout/LoanMaster/components/app.master.qualificationdetails';
 import { MasterPersonalDetailsComponent } from './layout/LoanMaster/components/app.master.personaldetails';
+import { ClientSummaryDialog } from './shared/dialogues/clients/ClientSummaryDialog';
 
 
 
@@ -81,10 +82,11 @@ export function createTranslateLoader(http: HttpClient) {
         ManageExpenseSheetDialog,
         MasterEmployementComponent,
         MasterQualificationDetailsComponent,
-        MasterPersonalDetailsComponent
+        MasterPersonalDetailsComponent,
+        ClientSummaryDialog
     ],
     providers: [AuthGuard],
     bootstrap: [AppComponent],
-    entryComponents: [LoanApplicationDetailDialog, ClientDetailsDialog, AddGuarantorDialog, ManageAssetAndLiabilityDialog, ManageApplicantDialog, ManageExpenseSheetDialog, MasterEmployementComponent, MasterQualificationDetailsComponent, MasterPersonalDetailsComponent]
+    entryComponents: [LoanApplicationDetailDialog, ClientDetailsDialog, AddGuarantorDialog, ManageAssetAndLiabilityDialog, ManageApplicantDialog, ManageExpenseSheetDialog, MasterEmployementComponent, MasterQualificationDetailsComponent, MasterPersonalDetailsComponent, ClientSummaryDialog]
 })
 export class AppModule { }

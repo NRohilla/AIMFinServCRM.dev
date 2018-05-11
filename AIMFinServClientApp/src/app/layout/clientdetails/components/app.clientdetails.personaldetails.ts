@@ -22,6 +22,8 @@ export class ClientsPersonalDetailsComponent extends AppBaseComponent implements
     public _FormErrorsDescription: string = '';
     public _EditPersonalDetails: boolean = false;
     public _EditCommunicationDetails: boolean = false;
+    public _LoggedInUserID: string = '';
+    public ModifiedBy: string = '';
 
     public _ApplicantDetails = {
         AutoID: '',
@@ -63,6 +65,10 @@ export class ClientsPersonalDetailsComponent extends AppBaseComponent implements
         HomePhoneNo: '',
         WorkPhoneNo: '',
         EmailID: '',
+        CreatedBy:'',
+        CreatedOn:'',
+        ModifiedBy:'',
+        ModifiedOn:''
     }
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) {
@@ -70,6 +76,7 @@ export class ClientsPersonalDetailsComponent extends AppBaseComponent implements
     }
 
     ngOnInit() {
+        debugger;
         if (this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
             this._ClientsService.GetClientDetails(<string>this._LocalStorageService.get("ApplicantID")).subscribe(res => this.GetClientDetailsSuccess(res), res => this.GetClientDetailsError(res));
             this._ClientsService.GetClientCommunicationDetails(<string>this._LocalStorageService.get("ApplicantID")).subscribe(res => this.GetClientCommDetailsSuccess(res), res => this.GetClientCommDetailsError(res));
@@ -78,7 +85,6 @@ export class ClientsPersonalDetailsComponent extends AppBaseComponent implements
 
     GetClientDetailsSuccess(res) {
         if (res._body != null && res._body != undefined && res._body.toString().trim().length > 0) {
-            //debugger;
             this._ApplicantDetails = this.trimObj(JSON.parse(res._body));
             if (this._ApplicantDetails.NZResidents == true) {
                 this._ApplicantDetails.DNZResidents = "Yes";
@@ -104,7 +110,8 @@ export class ClientsPersonalDetailsComponent extends AppBaseComponent implements
     }
 
     UpdatePersonalDetails() {
-        //debugger;
+        debugger;
+        
         this._EditPersonalDetails = false;
         if (this._ApplicantDetails.NZResidents.toString() == "1") {
             this._ApplicantDetails.NZResidents = true;
@@ -112,24 +119,20 @@ export class ClientsPersonalDetailsComponent extends AppBaseComponent implements
         else {
             this._ApplicantDetails.NZResidents = false;
         }
+        this._ApplicantDetails.ModifiedBy = this._LocalStorageService.get("ApplicantID");
         this._ClientsService.UpdateClientPersonalDetails(this._ApplicantDetails).subscribe(res => this.updateclientPersonalSuccess(res), res => this.updateclientPersonalError(res));
     }
-    updateclientPersonalSuccess(res) {
-        //debugger;
-    }
+    updateclientPersonalSuccess(res) {}
 
-    updateclientPersonalError(res) {
-        //debugger;
-    }
+    updateclientPersonalError(res) {}
 
     UpdateCommunicationDetails() {
-        //debugger;
         this._EditCommunicationDetails = false;
+        this._ApplicantCommunicationDetails.ModifiedBy = this._LocalStorageService.get("ApplicantID");
         this._ClientsService.UpdateClientCommunicationDetails(this._ApplicantCommunicationDetails).subscribe(res => this.updateclientCommunicationSuccess(res), res => this.updateclientCommunicationError(res));
     }
 
     updateclientCommunicationSuccess(res) {
-        //debugger;
     }
 
     updateclientCommunicationError(res) {

@@ -1,20 +1,26 @@
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute, Params } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { Component, Injectable, ViewChild, OnInit  } from '@angular/core';
-import { Form, FormControl, Validators  } from '@angular/forms';
+import { Component, Injectable, ViewChild, OnInit } from '@angular/core';
+import { Form, FormControl, Validators } from '@angular/forms';
 import 'rxjs/Rx';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { environment } from '../../../../environments/environment';
-import {UserOperationService} from '../../../services/app.userops.service';
+import { UserOperationService } from '../../../services/app.userops.service';
+import { AuthenticateService } from '../../../services/app.auth.service';
 
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
-    providers: [UserOperationService]
+    providers: [UserOperationService, AuthenticateService]
 })
 export class HeaderComponent implements OnInit {
     pushRightClass: string = 'push-right';
+    public AuthenticationToken: string = '';
+    // public IsLoggedIn: boolean = false;
+
+
+
     public _UserDetails: any = {
         AccountExpired: '',
         AccountLocked: '',
@@ -42,8 +48,9 @@ export class HeaderComponent implements OnInit {
         UserGuid: '',
         UserId: '',
     }
+
     constructor(private translate: TranslateService, public router: Router, private _LocalStorageService: LocalStorageService,
-        private _UserOperationService: UserOperationService) {
+        private _UserOperationService: UserOperationService, private _AuthenticateService: AuthenticateService, private activatedRoute: ActivatedRoute) {
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
         this.translate.setDefaultLang('en');
         const browserLang = this.translate.getBrowserLang();
@@ -68,6 +75,7 @@ export class HeaderComponent implements OnInit {
     }
 
     UserInfoSuccess(result) {
+        debugger;
         this._UserDetails = JSON.parse((JSON.parse(result._body)));
     }
 
@@ -90,8 +98,20 @@ export class HeaderComponent implements OnInit {
     }
 
     onLoggedout() {
-        localStorage.removeItem('isLoggedin');
+        debugger;
+        var IsLoggedIn = localStorage.getItem('isLoggedin') === "true";
+        this.AuthenticationToken = this._LocalStorageService.get('ActivaitonCode');
+        this._AuthenticateService.LoggedOffUser(this.AuthenticationToken, IsLoggedIn)
+            .subscribe(result => this.LoggedOffUserSuccess(result), result => this.LoggedOffUserError(result));
+
     }
+
+    LoggedOffUserSuccess(result) {
+        this._LocalStorageService.clearAll();
+        window.location.href = environment.baseApplicationURL;
+    }
+
+    LoggedOffUserError(result) { }
 
     changeLang(language: string) {
         this.translate.use(language);

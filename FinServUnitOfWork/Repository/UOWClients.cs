@@ -9,6 +9,7 @@ namespace FinServUnitOfWork.Repository
 {
     public class UOWClients : IClients
     {
+        #region AIM FinServ Application Code
         public List<Applicants> GetAllClients()
         {
             List<Applicants> objApplicants = new List<Applicants>();
@@ -131,7 +132,6 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
-
         public List<LoanApplicationForms> GetAllLoanApplications()
         {
             List<LoanApplicationForms> objLoanApplicationForms = new List<LoanApplicationForms>();
@@ -187,12 +187,12 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
-        public Applicants GetClientDetails(string ClientID)
+        public Applicants GetClientDetails(Guid ApplicantID)
         {
             try
             {
                 Applicants objApplicants = new Applicants();
-                Guid ApplicantID = Guid.Parse(ClientID);
+                //Guid ApplicantID = Guid.Parse(ClientID);
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
                     var GetApplicantDetails = db.tblApplicants.Where(p => p.IsActive == true && p.ApplicantID == ApplicantID).FirstOrDefault();
@@ -216,6 +216,11 @@ namespace FinServUnitOfWork.Repository
                         objApplicants.NoOfDependents = GetApplicantDetails.NoOfDependents;
                         objApplicants.NZResidents = GetApplicantDetails.NZResidents;
                         objApplicants.WorkPhoneNo = GetApplicantDetails.WorkPhoneNo;
+                        objApplicants.ApplicantImage = GetApplicantDetails.ApplicantImage;
+                        objApplicants.FileTypeID = GetApplicantDetails.FileTypeID;
+                        objApplicants.FileType = GetApplicantDetails.tblMasterFileType.FileType;
+                        objApplicants.FileName = GetApplicantDetails.FileName;
+                        objApplicants.Extension = GetApplicantDetails.tblMasterFileType.Extension;
 
                         objApplicants._ApplicantTypeMasterID = new ApplicantTypeMaster();
                         objApplicants._ApplicantTypeMasterID.ApplicantType = GetApplicantDetails.tblMasterApplicantType.ApplicantType;
@@ -223,7 +228,7 @@ namespace FinServUnitOfWork.Repository
                     return objApplicants;
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 return null;
             }
@@ -293,9 +298,6 @@ namespace FinServUnitOfWork.Repository
             }
         }
 
-
-
-        
         #region Employment_Detail Methods   //Deepak Saini [16-03-2018]
         public List<ApplicantEmploymentDetails> GetClientEmploymentDetails(string ClientID)
         {
@@ -360,6 +362,7 @@ namespace FinServUnitOfWork.Repository
                         _objDetails.Duration = _objEmploymentDetails.Duration;
                         _objDetails.Income = _objEmploymentDetails.Income;
                         _objDetails.Status = _objEmploymentDetails.Status;
+                        _objDetails.CreatedOn = DateTime.Now;
                         db.tblApplicantEmploymentDetails.Add(_objDetails);
                         db.SaveChanges();
                     }
@@ -389,6 +392,8 @@ namespace FinServUnitOfWork.Repository
                         fetchObj.Duration = _objEmploymentDetails.Duration;
                         fetchObj.Income = _objEmploymentDetails.Income;
                         fetchObj.Status = _objEmploymentDetails.Status;
+                        fetchObj.ModifiedOn = DateTime.Now;
+                        fetchObj.tblApplicant.ApplicantID = _objEmploymentDetails.ModifiedBy.GetValueOrDefault();
                         TotalRecordsUpdated += db.SaveChanges();
                         
                     }
@@ -400,7 +405,6 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
-
         #endregion
 
         #region Qualification_Detail Methods   //Deepak Saini [16-03-2018]
@@ -443,7 +447,6 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
-
         public bool SaveClientQualificationDetails(ApplicantQualificationDetails _objQualificationDetails)
         {
 
@@ -460,6 +463,7 @@ namespace FinServUnitOfWork.Repository
                         _objDetails.PassingYear = _objQualificationDetails.PassingYear;
                         _objDetails.UniversityName = _objQualificationDetails.UniversityName;
                         _objDetails.TypeOfQualification = _objQualificationDetails._QualificationTypeDetail.ID;
+                        _objDetails.CreatedOn = DateTime.Now;
                         db.tblApplicantQualificationDetails.Add(_objDetails);
                         db.SaveChanges();
                     }
@@ -471,7 +475,6 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
-
         public bool UpdateClientQualificationDetails(ApplicantQualificationDetails _objQualificationDetails)
         {
             int TotalRecordsUpdated = 0;
@@ -487,6 +490,7 @@ namespace FinServUnitOfWork.Repository
                         fetchObj.PassingYear = _objQualificationDetails.PassingYear;
                         fetchObj.UniversityName = _objQualificationDetails.UniversityName;
                         fetchObj.TypeOfQualification = _objQualificationDetails._QualificationTypeDetail.ID;
+                        fetchObj.ModifiedOn = DateTime.Now;
                         TotalRecordsUpdated += db.SaveChanges();
                         return true;
                     }
@@ -498,7 +502,6 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
-
         #endregion
 
         #region Communication_Detail Methods   //Deepak Saini [16-03-2018]
@@ -560,6 +563,7 @@ namespace FinServUnitOfWork.Repository
                         _objAppCommDetails.AddressType = _objApplicantCommDetails.AddressType;
                         _objAppCommDetails.Country = _objApplicantCommDetails.Country;
                         _objAppCommDetails.ZipCode = _objApplicantCommDetails.ZipCode;
+                        _objAppCommDetails.CreatedOn = DateTime.Now;
                         db.tblApplicantCommunicationDetails.Add(_objAppCommDetails);
                         db.SaveChanges();
                     }
@@ -587,6 +591,7 @@ namespace FinServUnitOfWork.Repository
                         FetchDetailsOfEmployment.AddressLine3 = _objApplicantCommDetails.AddressLine3;
                         FetchDetailsOfEmployment.Country = _objApplicantCommDetails.Country;
                         FetchDetailsOfEmployment.ZipCode = _objApplicantCommDetails.ZipCode;
+                        FetchDetailsOfEmployment.ModifiedOn = DateTime.Now;
                         FetchDetailsOfEmployment.AddressType = Convert.ToInt32(_objApplicantCommDetails.AddressType);
                         TotalRecordsUpdated += db.SaveChanges();
                         return true;
@@ -627,7 +632,11 @@ namespace FinServUnitOfWork.Repository
                         FetchApplicantPersonalDetails.MobileNo = ApplicantPersonalDetails.MobileNo;
                         FetchApplicantPersonalDetails.WorkPhoneNo = ApplicantPersonalDetails.WorkPhoneNo;
                         FetchApplicantPersonalDetails.EmailID = ApplicantPersonalDetails.EmailID;
-                        //FetchApplicantPersonalDetails.Gender = ApplicantPersonalDetails.Gender;
+                        FetchApplicantPersonalDetails.ApplicantImage = ApplicantPersonalDetails.ApplicantImage;
+                        FetchApplicantPersonalDetails.FileName = ApplicantPersonalDetails.FileName;
+                        FetchApplicantPersonalDetails.ModifiedOn = DateTime.Now;
+                        FetchApplicantPersonalDetails.ModifiedBy = ApplicantPersonalDetails.ModifiedBy;
+                        FetchApplicantPersonalDetails.FileTypeID = db.tblMasterFileTypes.Where(p => p.FileType == ApplicantPersonalDetails.FileType).Select(a => a.ID).FirstOrDefault();
 
                         RecordUpdate = db.SaveChanges();
                         return true;
@@ -669,6 +678,7 @@ namespace FinServUnitOfWork.Repository
                         FetchLoanApplicationDetails.ShiftedDuration = LoanApplicationDetails.ShiftedDuration;
                         FetchLoanApplicationDetails.StatusID = LoanApplicationDetails.StatusID;
                         FetchLoanApplicationDetails.TypeOfLoanID = LoanApplicationDetails.TypeOfLoanID;
+                        FetchLoanApplicationDetails.ModifiedOn = DateTime.Now;
 
                         TotalRecordsUpdated += db.SaveChanges();
                         return true;
@@ -713,6 +723,7 @@ namespace FinServUnitOfWork.Repository
                         _tblApplicant.LoanApplicationNo = ApplicantPersonalDetails.LoanApplicationNo;
                         _tblApplicant.ApplicantTypeID = ApplicantPersonalDetails.ApplicantTypeID;
                         _tblApplicant.IsActive = true;
+                        _tblApplicant.CreatedOn = DateTime.Now;
                         db.tblApplicants.Add(_tblApplicant);
                         db.SaveChanges();
 
@@ -741,6 +752,7 @@ namespace FinServUnitOfWork.Repository
                         _tblApplicantQualificationDetails.CourseName = ApplicantQualificationDetails.CourseName;
                         _tblApplicantQualificationDetails.UniversityName = ApplicantQualificationDetails.UniversityName;
                         _tblApplicantQualificationDetails.TypeOfQualification = ApplicantQualificationDetails.TypeOfQualification;
+                        _tblApplicantQualificationDetails.CreatedOn = DateTime.Now;
 
                         db.tblApplicantQualificationDetails.Add(_tblApplicantQualificationDetails);
                         db.SaveChanges();
@@ -770,6 +782,7 @@ namespace FinServUnitOfWork.Repository
                         _tblApplicantEmploymentDetail.Duration = ApplicantEmploymentDetails.Duration;
                         _tblApplicantEmploymentDetail.Income = ApplicantEmploymentDetails.Income;
                         _tblApplicantEmploymentDetail.Status = ApplicantEmploymentDetails.Status;
+                        _tblApplicantEmploymentDetail.CreatedOn = DateTime.Now;
 
                         db.tblApplicantEmploymentDetails.Add(_tblApplicantEmploymentDetail);
                         db.SaveChanges();
@@ -801,6 +814,7 @@ namespace FinServUnitOfWork.Repository
                         _tblApplicantCommunicationDetail.Duration = ApplicantCommunicationDetails.Duration;
                         _tblApplicantCommunicationDetail.ApplicantID = ApplicantCommunicationDetails.ApplicantID;
                         _tblApplicantCommunicationDetail.AddressType = ApplicantCommunicationDetails.AddressType;
+                        _tblApplicantCommunicationDetail.CreatedOn = DateTime.Now;
 
                         db.tblApplicantCommunicationDetails.Add(_tblApplicantCommunicationDetail);
                         db.SaveChanges();
@@ -845,6 +859,7 @@ namespace FinServUnitOfWork.Repository
                         _tblLoanGuarantorDetail.AddressLine3 = _objGuarantorDetails.AddressLine3;
                         _tblLoanGuarantorDetail.Country = _objGuarantorDetails.Country;
                         _tblLoanGuarantorDetail.ZipCode = _objGuarantorDetails.ZipCode;
+                        _tblLoanGuarantorDetail.CreatedOn = DateTime.Now;
 
                         db.tblLoanGuarantors.Add(_tblLoanGuarantorDetail);
                         db.SaveChanges();
@@ -859,7 +874,6 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
-
         public List<LoanGuarantorDetails> GetAddedGuarantorGrid(Guid loanAppID)
         {
             List<LoanGuarantorDetails> objGuarantorDetails = new List<LoanGuarantorDetails>();
@@ -894,7 +908,6 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
-
         public LoanGuarantorDetails GetGuarantorDetails(string GuarntID)
         {
             try
@@ -938,7 +951,6 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
-
         public bool UpdateGuarantorDetails(LoanGuarantorDetails _objUpdateGuartDetails)
         {
             try
@@ -968,6 +980,7 @@ namespace FinServUnitOfWork.Repository
                         FetchGuarantorDetails.AddressLine3 = _objUpdateGuartDetails.AddressLine3;
                         FetchGuarantorDetails.Country = _objUpdateGuartDetails.Country;
                         FetchGuarantorDetails.ZipCode = _objUpdateGuartDetails.ZipCode;
+                        FetchGuarantorDetails.ModifiedOn = DateTime.Now;
 
                        db.SaveChanges();
 
@@ -996,6 +1009,7 @@ namespace FinServUnitOfWork.Repository
                         _tblAssetDetail.Description = _objAssetDetails.Description;
                         _tblAssetDetail.NetValue = _objAssetDetails.NetValue;
                         _tblAssetDetail.Ownership = _objAssetDetails.Ownership;
+                        _tblAssetDetail.CreatedOn = DateTime.Now;
                         tblApplicant _tblApplicant = new tblApplicant();
                         _tblApplicant.FirstName = _objAssetDetails._ApplicationID.FirstName;
 
@@ -1097,6 +1111,7 @@ namespace FinServUnitOfWork.Repository
                         FetchAssetDetails.Description = _objAssetDetails.Description;
                         FetchAssetDetails.NetValue = _objAssetDetails.NetValue;
                         FetchAssetDetails.Ownership = _objAssetDetails.Ownership;
+                        FetchAssetDetails.ModifiedOn = DateTime.Now;
                         db.SaveChanges();
                     }
                     return true;
@@ -1123,6 +1138,7 @@ namespace FinServUnitOfWork.Repository
                         _tblLiabilityDetail.Description = _objLiabilityDetails.Description;
                         _tblLiabilityDetail.NetValue = _objLiabilityDetails.NetValue;
                         _tblLiabilityDetail.Ownership = _objLiabilityDetails.Ownership;
+                        _tblLiabilityDetail.CreatedOn = DateTime.Now;
                         tblApplicant _tblApplicant = new tblApplicant();
                         _tblApplicant.FirstName = _objLiabilityDetails.FirstName;
 
@@ -1210,7 +1226,6 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
-
         public bool UpdateLiabilityDetails(Liability _objLiabilityDetails)
         {
             try
@@ -1226,6 +1241,7 @@ namespace FinServUnitOfWork.Repository
                         FetchLiabilityDetails.Description = _objLiabilityDetails.Description;
                         FetchLiabilityDetails.NetValue = _objLiabilityDetails.NetValue;
                         FetchLiabilityDetails.Ownership = _objLiabilityDetails.Ownership;
+                        FetchLiabilityDetails.ModifiedOn = DateTime.Now;
 
                         db.SaveChanges();
                     }
@@ -1238,7 +1254,6 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
-
         public bool AddLoanApplicationDetails(LoanApplicationForms LoanApplicationDetails)
         {
             try
@@ -1277,6 +1292,7 @@ namespace FinServUnitOfWork.Repository
                         _tblLoanApplicationFormDetails.IsPreApproval = LoanApplicationDetails.IsPreApproval;
                         _tblLoanApplicationFormDetails.ReasonForNotApproval = LoanApplicationDetails.ReasonForNotApproval;
                         _tblLoanApplicationFormDetails.ShiftedDuration = LoanApplicationDetails.ShiftedDuration;
+                        _tblLoanApplicationFormDetails.CreatedOn = DateTime.Now;
 
                         db.tblLoanApplicationForms.Add(_tblLoanApplicationFormDetails);
                         db.SaveChanges();
@@ -1291,7 +1307,6 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
-
         public bool AddExpenseSheet(ApplicantExpenseSheet _objApplicantExpenseSheet)
         {
             try
@@ -1307,6 +1322,7 @@ namespace FinServUnitOfWork.Repository
                         _tblExpenseDetails.Description = _objApplicantExpenseSheet.Description;
                         _tblExpenseDetails.Frequency = _objApplicantExpenseSheet.Frequency;
                         _tblExpenseDetails.NetAmount = _objApplicantExpenseSheet.NetAmount;
+                        _tblExpenseDetails.CreatedOn = DateTime.Now;
                         tblApplicant _tblApplicant = new tblApplicant();
                         _tblApplicant.FirstName = _objApplicantExpenseSheet._ApplicationID.FirstName;
 
@@ -1323,7 +1339,6 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
-
         public List<ApplicantExpenseSheet> GetAddedExpenseSheetGrid(Guid LoanAppNo)
         {
             try
@@ -1364,7 +1379,6 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
-
         public ApplicantExpenseSheet GetExpenseSheetDetails(Guid ApplicantID)
         {
             try
@@ -1393,7 +1407,6 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
-
         public bool UpdateExpenseSheetDetails(ApplicantExpenseSheet _objApplicantExpenseSheet)
         {
             try
@@ -1409,6 +1422,7 @@ namespace FinServUnitOfWork.Repository
                         FetchExpenseDetails.Description = _objApplicantExpenseSheet.Description;
                         FetchExpenseDetails.NetAmount = _objApplicantExpenseSheet.NetAmount;
                         FetchExpenseDetails.Frequency = _objApplicantExpenseSheet.Frequency;
+                        FetchExpenseDetails.ModifiedOn = DateTime.Now;
 
                         db.SaveChanges();
                     }
@@ -1422,220 +1436,10 @@ namespace FinServUnitOfWork.Repository
             }
         }
 
-        public ApplicantQualificationDetails GetQualificationDetailsByAppID(Guid ApplicantID)
-        {
-            try
-            {
-                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
-                {
-                    ApplicantQualificationDetails objapp = new ApplicantQualificationDetails();
-                    var dataofapplicants = db.tblApplicantQualificationDetails.Where(x => x.ApplicantID == ApplicantID).FirstOrDefault();
-                    if (dataofapplicants != null)
-                    {
-                        objapp.AutoID = dataofapplicants.AutoID;
-                        objapp.ApplicantID = dataofapplicants.ApplicantID;
-                        objapp.QualificationID = dataofapplicants.QualificationID;
-                        objapp.PassingYear = dataofapplicants.PassingYear;
-                        objapp.CourseName = dataofapplicants.CourseName;
-                        objapp.TypeOfQualification = dataofapplicants.TypeOfQualification;
-                        objapp.UniversityName = dataofapplicants.UniversityName;
-                        objapp.FirstName = dataofapplicants.tblApplicant.FirstName;
-                        objapp.Qualifications = dataofapplicants.tblMasterTypeOfQualification.Qualifications;
-                    }
+        #endregion AIMFINSERV application code
 
-                    return objapp;
-                }
-            }
-
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
-
-        public bool UpdateQualificationDetailsByAppID(ApplicantQualificationDetails _objApplicantQualificationDetails) {
-            try
-            {
-                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
-                {
-                    var FetchQualificationDetails = db.tblApplicantQualificationDetails.Where(p => p.QualificationID == _objApplicantQualificationDetails.QualificationID).FirstOrDefault();
-                    if (FetchQualificationDetails != null)
-                    {
-                        FetchQualificationDetails.QualificationID = _objApplicantQualificationDetails.QualificationID;
-                        FetchQualificationDetails.AutoID = _objApplicantQualificationDetails.AutoID;
-                        FetchQualificationDetails.ApplicantID = _objApplicantQualificationDetails.ApplicantID;
-                        FetchQualificationDetails.TypeOfQualification = _objApplicantQualificationDetails.TypeOfQualification;
-                        FetchQualificationDetails.UniversityName = _objApplicantQualificationDetails.UniversityName;
-                        FetchQualificationDetails.PassingYear = _objApplicantQualificationDetails.PassingYear;
-                        FetchQualificationDetails.CourseName = _objApplicantQualificationDetails.CourseName;
-                        FetchQualificationDetails.tblApplicant.FirstName = _objApplicantQualificationDetails.FirstName;
-
-                        db.SaveChanges();
-                    }
-                    return true;
-                }
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
-
-        public ApplicantEmploymentDetails GetEmploymentDetailsByAppID(Guid ApplicantID)
-        {
-            try
-            {
-                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
-                {
-                    ApplicantEmploymentDetails objapp = new ApplicantEmploymentDetails();
-                    var dataofapplicants = db.tblApplicantEmploymentDetails.Where(x => x.ApplicantID == ApplicantID).FirstOrDefault();
-                    if (dataofapplicants != null)
-                    {
-                        objapp.AutoID = dataofapplicants.AutoID;
-                        objapp.ApplicantID = dataofapplicants.ApplicantID;
-                        objapp.EmploymentID = dataofapplicants.EmploymentID;
-                        objapp.EmployerName = dataofapplicants.EmployerName;
-                        objapp.Income = dataofapplicants.Income;
-                        objapp.ProfessionTypeID = dataofapplicants.ProfessionTypeID;
-                        objapp.SourceOfIncome = dataofapplicants.SourceOfIncome;
-                        objapp.Status = dataofapplicants.Status;
-                        objapp.Duration = dataofapplicants.Duration;
-                        objapp.Income = dataofapplicants.Income;
-                        objapp.EmployementType = dataofapplicants.tblMasterTypeOfEmployment.EmployementType;
-                        objapp.Profession = dataofapplicants.tblMasterTypeOfProfession.Profession;
-
-                    }
-
-                    return objapp;
-                }
-            }
-
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
-
-        public bool UpdateEmploymentDetailsByAppID(ApplicantEmploymentDetails _objApplicantEmploymentDetails)
-        {
-            try
-            {
-                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
-                {
-                    var FetchEmploymentDetails = db.tblApplicantEmploymentDetails.Where(p => p.EmploymentID == _objApplicantEmploymentDetails.EmploymentID).FirstOrDefault();
-                    if (FetchEmploymentDetails != null)
-                    {
-                        FetchEmploymentDetails.EmploymentID = _objApplicantEmploymentDetails.EmploymentID;
-                        FetchEmploymentDetails.AutoID = _objApplicantEmploymentDetails.AutoID;
-                        FetchEmploymentDetails.ApplicantID = _objApplicantEmploymentDetails.ApplicantID;
-                        FetchEmploymentDetails.SourceOfIncome = _objApplicantEmploymentDetails.SourceOfIncome;
-                        FetchEmploymentDetails.ProfessionTypeID = _objApplicantEmploymentDetails.ProfessionTypeID;
-                        FetchEmploymentDetails.Duration = _objApplicantEmploymentDetails.Duration;
-                        FetchEmploymentDetails.EmployerName = _objApplicantEmploymentDetails.EmployerName;
-                        FetchEmploymentDetails.Status = _objApplicantEmploymentDetails.Status;
-                        FetchEmploymentDetails.Income = _objApplicantEmploymentDetails.Income;
-                        FetchEmploymentDetails.tblMasterTypeOfEmployment.EmployementType = _objApplicantEmploymentDetails.EmployementType;
-                        FetchEmploymentDetails.tblMasterTypeOfProfession.Profession = _objApplicantEmploymentDetails.Profession;
-
-
-                        db.SaveChanges();
-                    }
-                    return true;
-                }
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
-
-        public LoanMasterDetails GetLendingDetailsByAppID(Guid ApplicantID)
-        {
-          LoanMasterDetails objLoanMaster = new LoanMasterDetails();
-            try
-            {
-                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
-                {
-                    var getAllLoans = (from tlm in db.tblLoanMasters
-                                       join tlf in db.tblLoanApplicationForms on tlm.LoanApplicationNo equals tlf.LoanApplicationNo
-                                       join tla in db.tblApplicants on tlf.LoanApplicationNo equals tla.LoanApplicationNo
-                                       join tlmp in db.tblMasterPropertyTypes on tlm.PropertyTypeID equals tlmp.ID
-                                       join tlms in db.tblMasterTypeOfStatus on tlm.StatusID equals tlms.ID
-                                       join tlml in db.tblMasterTypeOfLoans on tlm.LoanTypeID equals tlml.ID
-                                       where tla.ApplicantID == ApplicantID
-                                       select new LoanMasterDetails
-                                       {
-                                           LANNumber=tlm.LANNumber,
-                                           LoanApplicationNo = tlm.LoanApplicationNo,
-                                           AutoID = tla.AutoID,
-                                           ApplicationFormNumber = tlf.ApplicationFormNumber,
-                                           LoanTermOffered = tlm.LoanTermOffered,
-                                           StatusID = tlm.StatusID,
-                                           LoanProcessingFee = tlm.LoanProcessingFee,
-                                           ROIOffered = tlm.ROIOffered,
-                                           LoanAmountOffered = tlm.LoanAmountOffered,
-                                           LoanValueRatio = tlm.LoanValueRatio,
-                                           ClientID = tlm.ClientID,
-                                           RateTypeOffered= tlm.RateTypeOffered,
-                                           PropertyTypeID = tlm.PropertyTypeID,
-                                           EMIStartDay = tlm.EMIStartDay,
-                                           Loanprovider = tlm.Loanprovider,
-                                           LoanTypeID = tlm.LoanTypeID,
-                                           NoOfEMI = tlm.NoOfEMI,
-                                           AnyLegalCharges = tlm.AnyLegalCharges,
-                                           FrequencyOffered = tlm.FrequencyOffered,
-                                           PropertyType = tlmp.PropertyType,
-                                           Status = tlms.Status,
-                                           LoanType = tlml.LoanType
-                                       }).FirstOrDefault();
-                        
-                    return getAllLoans;
-                }
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
-        }
-
-        public bool UpdateLendingDetailsByAppID(LoanMasterDetails _objLoanMasterDetails)
-        {
-            try
-            {
-                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
-                {
-                    var FetchLoanMaterDetails = db.tblLoanMasters.Where(p => p.LANNumber == _objLoanMasterDetails.LANNumber).FirstOrDefault();
-                    if (FetchLoanMaterDetails != null)
-                    {
-                        FetchLoanMaterDetails.LANNumber = _objLoanMasterDetails.LANNumber;
-                        FetchLoanMaterDetails.LoanApplicationNo = _objLoanMasterDetails.LoanApplicationNo;
-                        FetchLoanMaterDetails.tblLoanApplicationForm.ApplicationFormNumber = _objLoanMasterDetails.ApplicationFormNumber;
-                        FetchLoanMaterDetails.LoanTermOffered = _objLoanMasterDetails.LoanTermOffered;
-                        FetchLoanMaterDetails.FrequencyOffered = _objLoanMasterDetails.FrequencyOffered;
-                        FetchLoanMaterDetails.tblMasterTypeOfStatu.Status = _objLoanMasterDetails.Status;
-                        FetchLoanMaterDetails.LoanProcessingFee = _objLoanMasterDetails.LoanProcessingFee;
-                        FetchLoanMaterDetails.ROIOffered = _objLoanMasterDetails.ROIOffered;
-                        FetchLoanMaterDetails.LoanAmountOffered = _objLoanMasterDetails.LoanAmountOffered;
-                        FetchLoanMaterDetails.LoanValueRatio = _objLoanMasterDetails.LoanValueRatio;
-                        FetchLoanMaterDetails.ClientID = _objLoanMasterDetails.ClientID;
-                        FetchLoanMaterDetails.RateTypeOffered = _objLoanMasterDetails.RateTypeOffered;
-                        FetchLoanMaterDetails.tblMasterPropertyType.PropertyType = _objLoanMasterDetails.PropertyType;
-                        FetchLoanMaterDetails.EMIStartDay = _objLoanMasterDetails.EMIStartDay;
-                        FetchLoanMaterDetails.Loanprovider = _objLoanMasterDetails.Loanprovider;
-                        FetchLoanMaterDetails.tblMasterTypeOfLoan.LoanType = _objLoanMasterDetails.LoanType;
-                        FetchLoanMaterDetails.NoOfEMI = _objLoanMasterDetails.NoOfEMI;
-                        FetchLoanMaterDetails.AnyLegalCharges = _objLoanMasterDetails.AnyLegalCharges;
-
-                        db.SaveChanges();
-                    }
-                    return true;
-                }
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
+        #region Client Dashboard Application code
+        #region Personal Module
         public Applicants GetPersonalDetailsByAppID(Guid ApplicantID)
         {
             Applicants objapp = new Applicants();
@@ -1646,16 +1450,17 @@ namespace FinServUnitOfWork.Repository
                     var fetchapplicantsprsnldtls = (from ta in db.tblApplicants
                                                     join tca in db.tblApplicantCommunicationDetails on ta.ApplicantID equals tca.ApplicantID
                                                     join tma in db.tblMasterAddressTypes on tca.AddressType equals tma.ID
+                                                    join tmf in db.tblMasterFileTypes on ta.FileTypeID equals tmf.ID
                                                     where ta.ApplicantID == ApplicantID
                                                     select new Applicants
                                                     {
-                                                        LoanApplicationNo=ta.LoanApplicationNo,
-                                                        Title=ta.Title,
+                                                        LoanApplicationNo = ta.LoanApplicationNo,
+                                                        Title = ta.Title,
                                                         ApplicantID = ta.ApplicantID,
                                                         FirstName = ta.FirstName,
                                                         MiddleName = ta.MiddleName,
                                                         LastName = ta.LastName,
-                                                        DateOfBirth= ta.DateOfBirth,
+                                                        DateOfBirth = ta.DateOfBirth,
                                                         Gender = ta.Gender,
                                                         MaritalStatus = ta.MaritalStatus,
                                                         MobileNo = ta.MobileNo,
@@ -1667,7 +1472,12 @@ namespace FinServUnitOfWork.Repository
                                                         AddressLine3 = tca.AddressLine3,
                                                         ZipCode = tca.ZipCode,
                                                         Country = tca.Country,
-                                                        Type= tma.Type
+                                                        Type = tma.Type,
+                                                        ApplicantImage = ta.ApplicantImage,
+                                                        FileName = ta.FileName,
+                                                        FileType = tmf.FileType,
+                                                        Extension = tmf.Extension,
+                                                        FileTypeID = tmf.ID
                                                     }).FirstOrDefault();
                     return fetchapplicantsprsnldtls;
                 }
@@ -1678,6 +1488,73 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
+        public bool UpdatePersonalDetailsByAppID(Applicants _objApplicantsDetails)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var FetchPersonalDetails = db.tblApplicants.Where(p => p.ApplicantID == _objApplicantsDetails.ApplicantID).FirstOrDefault();
+                    if (FetchPersonalDetails != null)
+                    {
+                        FetchPersonalDetails.ApplicantID = _objApplicantsDetails.ApplicantID;
+                        FetchPersonalDetails.LoanApplicationNo = _objApplicantsDetails.LoanApplicationNo;
+                        FetchPersonalDetails.Title = _objApplicantsDetails.Title;
+                        FetchPersonalDetails.FirstName = _objApplicantsDetails.FirstName;
+                        FetchPersonalDetails.MiddleName = _objApplicantsDetails.MiddleName;
+                        FetchPersonalDetails.LastName = _objApplicantsDetails.LastName;
+                        FetchPersonalDetails.DateOfBirth = _objApplicantsDetails.DateOfBirth;
+                        FetchPersonalDetails.Gender = _objApplicantsDetails.Gender;
+                        FetchPersonalDetails.MaritalStatus = _objApplicantsDetails.MaritalStatus;
+                        FetchPersonalDetails.MobileNo = _objApplicantsDetails.MobileNo;
+                        FetchPersonalDetails.HomePhoneNo = _objApplicantsDetails.HomePhoneNo;
+                        FetchPersonalDetails.WorkPhoneNo = _objApplicantsDetails.WorkPhoneNo;
+                        FetchPersonalDetails.EmailID = _objApplicantsDetails.EmailID;
+                        FetchPersonalDetails.ApplicantImage = _objApplicantsDetails.ApplicantImage;
+                        FetchPersonalDetails.FileName = _objApplicantsDetails.FileName;
+                        FetchPersonalDetails.ModifiedOn = DateTime.Now;
+                        FetchPersonalDetails.FileTypeID = db.tblMasterFileTypes.Where(a => a.FileType == _objApplicantsDetails.FileType).Select(a => a.ID).FirstOrDefault();
+                        db.SaveChanges();
+                    }
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public bool UpdateAddressesByAppID(ApplicantCommunicationDetails _objApplicantComDetails)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var fetchAddresses = db.tblApplicantCommunicationDetails.Where(p => p.ApplicantID == _objApplicantComDetails.ApplicantID).FirstOrDefault();
+                    if (fetchAddresses != null)
+                    {
+                        fetchAddresses.AddressType = _objApplicantComDetails.AddressType;
+                        fetchAddresses.tblMasterAddressType.Type = _objApplicantComDetails.Type;
+                        fetchAddresses.AddressLine1 = _objApplicantComDetails.AddressLine1;
+                        fetchAddresses.AddressLine2 = _objApplicantComDetails.AddressLine2;
+                        fetchAddresses.AddressLine3 = _objApplicantComDetails.AddressLine3;
+                        fetchAddresses.Country = _objApplicantComDetails.Country;
+                        fetchAddresses.ZipCode = _objApplicantComDetails.ZipCode;
+                        fetchAddresses.ModifiedOn = DateTime.Now;
+                    }
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+
+        }
+        #endregion
+
+        #region Communication Module
         public List<ApplicantCommunicationDetails> GetAddresses(Guid ApplicantID)
         {
             try
@@ -1694,7 +1571,7 @@ namespace FinServUnitOfWork.Repository
                                                 _FirstName = ta.FirstName,
                                                 _MiddleName = ta.MiddleName,
                                                 _LastName = ta.LastName,
-                                                _ApplicantID= ta.ApplicantID,
+                                                _ApplicantID = ta.ApplicantID,
                                                 _AddressType = tlma.Type,
                                                 _Type = tlc.AddressType,
                                                 _AddressLine1 = tlc.AddressLine1,
@@ -1709,7 +1586,7 @@ namespace FinServUnitOfWork.Repository
                                                 FirstName = x._FirstName,
                                                 MiddleName = x._MiddleName,
                                                 LastName = x._LastName,
-                                                ApplicantID= x._ApplicantID,
+                                                ApplicantID = x._ApplicantID,
                                                 AddressType = x._Type,
                                                 Type = x._AddressType,
                                                 AddressLine1 = x._AddressLine1,
@@ -1727,7 +1604,7 @@ namespace FinServUnitOfWork.Repository
             {
                 return null;
             }
-            }
+        }
         public ApplicantCommunicationDetails GetCommunicationDetailsByAppID(Guid ApplicantID)
         {
             ApplicantCommunicationDetails objapp = new ApplicantCommunicationDetails();
@@ -1762,66 +1639,6 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
-        public bool UpdatePersonalDetailsByAppID(Applicants _objApplicantsDetails)
-        {
-            try
-            {
-                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
-                {
-                    var FetchPersonalDetails = db.tblApplicants.Where(p => p.ApplicantID == _objApplicantsDetails.ApplicantID).FirstOrDefault();
-                    if (FetchPersonalDetails != null)
-                    {
-                        FetchPersonalDetails.ApplicantID = _objApplicantsDetails.ApplicantID;
-                        FetchPersonalDetails.LoanApplicationNo = _objApplicantsDetails.LoanApplicationNo;
-                        FetchPersonalDetails.Title = _objApplicantsDetails.Title;
-                        FetchPersonalDetails.FirstName = _objApplicantsDetails.FirstName;
-                        FetchPersonalDetails.MiddleName = _objApplicantsDetails.MiddleName;
-                        FetchPersonalDetails.LastName = _objApplicantsDetails.LastName;
-                        FetchPersonalDetails.DateOfBirth = _objApplicantsDetails.DateOfBirth;
-                        FetchPersonalDetails.Gender = _objApplicantsDetails.Gender;
-                        FetchPersonalDetails.MaritalStatus = _objApplicantsDetails.MaritalStatus;
-                        FetchPersonalDetails.MobileNo = _objApplicantsDetails.MobileNo;
-                        FetchPersonalDetails.HomePhoneNo = _objApplicantsDetails.HomePhoneNo;
-                        FetchPersonalDetails.WorkPhoneNo = _objApplicantsDetails.WorkPhoneNo;
-                        FetchPersonalDetails.EmailID = _objApplicantsDetails.EmailID;
-                        db.SaveChanges();
-                    }
-                    return true;
-                }
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
-
-        public bool UpdateAddressesByAppID(ApplicantCommunicationDetails _objApplicantComDetails) {
-            try
-            {
-                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
-                {
-                    var fetchAddresses = db.tblApplicantCommunicationDetails.Where(p => p.ApplicantID == _objApplicantComDetails.ApplicantID).FirstOrDefault();
-                    if (fetchAddresses != null)
-                    {
-                        fetchAddresses.AddressType = _objApplicantComDetails.AddressType;
-                        fetchAddresses.tblMasterAddressType.Type = _objApplicantComDetails.Type;
-                        fetchAddresses.AddressLine1 = _objApplicantComDetails.AddressLine1;
-                        fetchAddresses.AddressLine2 = _objApplicantComDetails.AddressLine2;
-                        fetchAddresses.AddressLine3 = _objApplicantComDetails.AddressLine3;
-                        fetchAddresses.Country = _objApplicantComDetails.Country;
-                        fetchAddresses.ZipCode = _objApplicantComDetails.ZipCode;
-                    }
-                    return true;
-                }
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-
-
-        }
-
         public bool AddNewAddressByAppID(ApplicantCommunicationDetails _objApplicantComDetails)
         {
             try
@@ -1831,8 +1648,9 @@ namespace FinServUnitOfWork.Repository
                     if (_objApplicantComDetails != null)
                     {
                         tblApplicantCommunicationDetail _objDetails = new tblApplicantCommunicationDetail();
-                        if (_objApplicantComDetails.CommunicationID == Guid.Empty)                        {
-                            
+                        if (_objApplicantComDetails.CommunicationID == Guid.Empty)
+                        {
+
                             _objDetails.CommunicationID = Guid.NewGuid();
                             _objDetails.ApplicantID = _objApplicantComDetails.ApplicantID;
                             _objDetails.AddressLine1 = _objApplicantComDetails.AddressLine1;
@@ -1842,6 +1660,7 @@ namespace FinServUnitOfWork.Repository
                             _objDetails.Duration = _objApplicantComDetails.Duration;
                             _objDetails.ZipCode = _objApplicantComDetails.ZipCode;
                             _objDetails.AddressType = _objApplicantComDetails.ID;
+                            _objDetails.CreatedOn = DateTime.Now;
 
                             db.tblApplicantCommunicationDetails.Add(_objDetails);
 
@@ -1850,7 +1669,7 @@ namespace FinServUnitOfWork.Repository
                         else
                         {
                             _objDetails = db.tblApplicantCommunicationDetails.Where(a => a.CommunicationID == _objApplicantComDetails.CommunicationID).FirstOrDefault();
-                            if(_objDetails != null)
+                            if (_objDetails != null)
                             {
                                 _objDetails.CommunicationID = _objApplicantComDetails.CommunicationID;
                                 _objDetails.ApplicantID = _objApplicantComDetails.ApplicantID;
@@ -1861,6 +1680,7 @@ namespace FinServUnitOfWork.Repository
                                 _objDetails.Country = _objApplicantComDetails.Country;
                                 _objDetails.Duration = _objApplicantComDetails.Duration;
                                 _objDetails.ZipCode = _objApplicantComDetails.ZipCode;
+                                _objDetails.ModifiedOn = DateTime.Now;
 
                                 db.SaveChanges();
                             }
@@ -1874,8 +1694,6 @@ namespace FinServUnitOfWork.Repository
                 return false;
             }
         }
-
-
         public ApplicantCommunicationDetails GetCommEditdata(Guid CommunicationID)
         {
             ApplicantCommunicationDetails objapp = new ApplicantCommunicationDetails();
@@ -1884,21 +1702,22 @@ namespace FinServUnitOfWork.Repository
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
                     var fetchapplicantscomdtls = (from ta in db.tblApplicants
-                                                    join tlc in db.tblApplicantCommunicationDetails on ta.ApplicantID equals tlc.ApplicantID
-                                                    join tlma in db.tblMasterAddressTypes on tlc.AddressType equals tlma.ID
-                                                    where tlc.CommunicationID == CommunicationID
+                                                  join tlc in db.tblApplicantCommunicationDetails on ta.ApplicantID equals tlc.ApplicantID
+                                                  join tlma in db.tblMasterAddressTypes on tlc.AddressType equals tlma.ID
+                                                  where tlc.CommunicationID == CommunicationID
                                                   select new ApplicantCommunicationDetails
-                                                    {
-                                                        CommunicationID=tlc.CommunicationID,
-                                                        ApplicantID = ta.ApplicantID,
-                                                        Type = tlma.Type,
-                                                        AddressType = tlc.AddressType,
-                                                        AddressLine1 = tlc.AddressLine1,
-                                                        AddressLine2 = tlc.AddressLine2,
-                                                        AddressLine3 = tlc.AddressLine3,
-                                                        Country = tlc.Country,
-                                                        ZipCode = tlc.ZipCode,
-                                                    }).FirstOrDefault();
+                                                  {
+                                                      CommunicationID = tlc.CommunicationID,
+                                                      ApplicantID = ta.ApplicantID,
+                                                      Type = tlma.Type,
+                                                      AddressType = tlc.AddressType,
+                                                      AddressLine1 = tlc.AddressLine1,
+                                                      AddressLine2 = tlc.AddressLine2,
+                                                      AddressLine3 = tlc.AddressLine3,
+                                                      Country = tlc.Country,
+                                                      ZipCode = tlc.ZipCode,
+                                                      Duration = tlc.Duration
+                                                  }).FirstOrDefault();
                     return fetchapplicantscomdtls;
                 }
 
@@ -1908,47 +1727,117 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
-
-        public List<ApplicantQualificationDetails> GetMatQualificationDataByAppID(Guid ApplicantID)
+        public bool DeleteCommAddress(Guid CommunicationID)
         {
             try
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var dataforQualifications = (from ta in db.tblApplicants
-                                            join tlq in db.tblApplicantQualificationDetails on ta.ApplicantID equals tlq.ApplicantID
-                                            join tlma in db.tblMasterTypeOfQualifications on tlq.TypeOfQualification equals tlma.ID
-                                            where ta.ApplicantID == ApplicantID
-                                            select new
-                                            {
-                                                _QualificationID = tlq.QualificationID,
-                                                _ApplicantID = ta.ApplicantID,
-                                                _QualificationType = tlma.ID,
-                                                _Type = tlma.Qualifications,
-                                                _University = tlq.UniversityName,
-                                                _CourseName = tlq.CourseName,
-                                                _PassingYear = tlq.PassingYear,
-                                            }).ToList().Select(x => new ApplicantQualificationDetails()
-                                            {
-                                               QualificationID = x._QualificationID,
-                                               ApplicantID = x._ApplicantID,
-                                               TypeOfQualification=x._QualificationType,
-                                               Qualifications=x._Type,
-                                               UniversityName=x._University,
-                                               CourseName=x._CourseName,
-                                               PassingYear =x._PassingYear
-                                            }).ToList();
+                    tblApplicantCommunicationDetail obj = db.tblApplicantCommunicationDetails.Find(CommunicationID);
 
-                    return dataforQualifications;
+                    if (obj.CommunicationID != null)
+                    {
+                        db.tblApplicantCommunicationDetails.Remove(obj);
+                        db.SaveChanges();
+                    }
+                    return true;
                 }
             }
             catch (Exception ex)
             {
+                return false;
+            }
+        }
+        #endregion
+
+        #region Lending Module
+        public bool UpdateLendingDetailsByAppID(LoanMasterDetails _objLoanMasterDetails)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var FetchLoanMaterDetails = db.tblLoanMasters.Where(p => p.LANNumber == _objLoanMasterDetails.LANNumber).FirstOrDefault();
+                    if (FetchLoanMaterDetails != null)
+                    {
+                        FetchLoanMaterDetails.LANNumber = _objLoanMasterDetails.LANNumber;
+                        FetchLoanMaterDetails.LoanApplicationNo = _objLoanMasterDetails.LoanApplicationNo;
+                        FetchLoanMaterDetails.tblLoanApplicationForm.ApplicationFormNumber = _objLoanMasterDetails.ApplicationFormNumber;
+                        FetchLoanMaterDetails.LoanTermOffered = _objLoanMasterDetails.LoanTermOffered;
+                        FetchLoanMaterDetails.FrequencyOffered = _objLoanMasterDetails.FrequencyOffered;
+                        FetchLoanMaterDetails.tblMasterTypeOfStatu.Status = _objLoanMasterDetails.Status;
+                        FetchLoanMaterDetails.LoanProcessingFee = _objLoanMasterDetails.LoanProcessingFee;
+                        FetchLoanMaterDetails.ROIOffered = _objLoanMasterDetails.ROIOffered;
+                        FetchLoanMaterDetails.LoanAmountOffered = _objLoanMasterDetails.LoanAmountOffered;
+                        FetchLoanMaterDetails.LoanValueRatio = _objLoanMasterDetails.LoanValueRatio;
+                        FetchLoanMaterDetails.ClientID = _objLoanMasterDetails.ClientID;
+                        FetchLoanMaterDetails.RateTypeOffered = _objLoanMasterDetails.RateTypeOffered;
+                        FetchLoanMaterDetails.tblMasterPropertyType.PropertyType = _objLoanMasterDetails.PropertyType;
+                        FetchLoanMaterDetails.EMIStartDay = _objLoanMasterDetails.EMIStartDay;
+                        FetchLoanMaterDetails.Loanprovider = _objLoanMasterDetails.Loanprovider;
+                        FetchLoanMaterDetails.tblMasterTypeOfLoan.LoanType = _objLoanMasterDetails.LoanType;
+                        FetchLoanMaterDetails.NoOfEMI = _objLoanMasterDetails.NoOfEMI;
+                        FetchLoanMaterDetails.AnyLegalCharges = _objLoanMasterDetails.AnyLegalCharges;
+                        FetchLoanMaterDetails.ModifiedOn = DateTime.Now;
+
+                        db.SaveChanges();
+                    }
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public LoanMasterDetails GetLendingDetailsByAppID(Guid ApplicantID)
+        {
+            LoanMasterDetails objLoanMaster = new LoanMasterDetails();
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var getAllLoans = (from tlm in db.tblLoanMasters
+                                       join tlf in db.tblLoanApplicationForms on tlm.LoanApplicationNo equals tlf.LoanApplicationNo
+                                       join tla in db.tblApplicants on tlf.LoanApplicationNo equals tla.LoanApplicationNo
+                                       join tlmp in db.tblMasterPropertyTypes on tlm.PropertyTypeID equals tlmp.ID
+                                       join tlms in db.tblMasterTypeOfStatus on tlm.StatusID equals tlms.ID
+                                       join tlml in db.tblMasterTypeOfLoans on tlm.LoanTypeID equals tlml.ID
+                                       where tla.ApplicantID == ApplicantID
+                                       select new LoanMasterDetails
+                                       {
+                                           LANNumber = tlm.LANNumber,
+                                           LoanApplicationNo = tlm.LoanApplicationNo,
+                                           AutoID = tla.AutoID,
+                                           ApplicationFormNumber = tlf.ApplicationFormNumber,
+                                           LoanTermOffered = tlm.LoanTermOffered,
+                                           StatusID = tlm.StatusID,
+                                           LoanProcessingFee = tlm.LoanProcessingFee,
+                                           ROIOffered = tlm.ROIOffered,
+                                           LoanAmountOffered = tlm.LoanAmountOffered,
+                                           LoanValueRatio = tlm.LoanValueRatio,
+                                           ClientID = tlm.ClientID,
+                                           RateTypeOffered = tlm.RateTypeOffered,
+                                           PropertyTypeID = tlm.PropertyTypeID,
+                                           EMIStartDay = tlm.EMIStartDay,
+                                           Loanprovider = tlm.Loanprovider,
+                                           LoanTypeID = tlm.LoanTypeID,
+                                           NoOfEMI = tlm.NoOfEMI,
+                                           AnyLegalCharges = tlm.AnyLegalCharges,
+                                           FrequencyOffered = tlm.FrequencyOffered,
+                                           PropertyType = tlmp.PropertyType,
+                                           Status = tlms.Status,
+                                           LoanType = tlml.LoanType
+                                       }).FirstOrDefault();
+
+                    return getAllLoans;
+                }
+            }
+            catch (Exception e)
+            {
                 return null;
             }
         }
-
-
         public List<LoanMasterDetails> GetMatLendingDetailsByAppID(Guid ApplicantID)
         {
             try
@@ -1963,7 +1852,7 @@ namespace FinServUnitOfWork.Repository
                                           join tlml in db.tblMasterTypeOfLoans on tlm.LoanTypeID equals tlml.ID
                                           where tla.ApplicantID == ApplicantID
                                           select new
-                                                 {
+                                          {
                                               _LANNumber = tlm.LANNumber,
                                               _LoanApplicationNo = tlm.LoanApplicationNo,
                                               _ApplicationFormNumber = tlf.ApplicationFormNumber,
@@ -1986,8 +1875,8 @@ namespace FinServUnitOfWork.Repository
                                               _Status = tlms.Status,
                                               _LoanType = tlml.LoanType
                                           }).ToList().Select(x => new LoanMasterDetails()
-                                       {
-                                              LANNumber=x._LANNumber,
+                                          {
+                                              LANNumber = x._LANNumber,
                                               LoanApplicationNo = x._LoanApplicationNo,
                                               ApplicationFormNumber = x._ApplicationFormNumber,
                                               LoanTermOffered = x._LoanTermOffered,
@@ -2003,126 +1892,15 @@ namespace FinServUnitOfWork.Repository
                                               Loanprovider = x._Loanprovider,
                                               LoanTypeID = x._LoanTypeID,
                                               NoOfEMI = x._NoOfEMI,
-                                              AnyLegalCharges=x._AnyLegalCharges,
+                                              AnyLegalCharges = x._AnyLegalCharges,
                                               FrequencyOffered = x._FrequencyOffered,
                                               PropertyType = x._PropertyType,
                                               Status = x._Status,
-                                              LoanType=x._LoanType
+                                              LoanType = x._LoanType
 
                                           }).ToList();
 
                     return dataforLending;
-                }
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
-
-
-        public List<ApplicantEmploymentDetails> GetMatEmploymentDetailsByAppID(Guid ApplicantID) {
-            try
-            {
-                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
-                {
-                    var dataforemployment = (from tle in db.tblApplicantEmploymentDetails
-                                             join tla in db.tblApplicants on tle.ApplicantID equals tla.ApplicantID
-                                             join tlmp in db.tblMasterTypeOfProfessions on tle.ProfessionTypeID equals tlmp.ID
-                                             join tlme in db.tblMasterTypeOfEmployments on tle.SourceOfIncome equals tlme.ID
-                                             where tla.ApplicantID == ApplicantID
-                                          select new
-                                          {
-                                           _AutoID= tle.AutoID,
-                                           _EmploymentID= tle.EmploymentID,
-                                           _ApplicantID = tla.ApplicantID,
-                                           _SourceOfIncome = tle.SourceOfIncome,
-                                           _Employment = tlme.EmployementType,
-                                           _Profession = tle.ProfessionTypeID,
-                                           _ProfessionType = tlmp.Profession,
-                                           _EmployerName = tle.EmployerName,
-                                           _Duration = tle.Duration,
-                                           _Income = tle.Income,
-                                           _Status = tle.Status
-                                          }).ToList().Select(x => new ApplicantEmploymentDetails()
-                                          {
-                                              AutoID=x._AutoID,
-                                              EmploymentID=x._EmploymentID,
-                                              ApplicantID=x._ApplicantID,
-                                              SourceOfIncome=x._SourceOfIncome,
-                                              EmployementType=x._Employment,
-                                              ProfessionTypeID = x._Profession,
-                                              Profession = x._ProfessionType,
-                                              EmployerName = x._EmployerName,
-                                              Duration = x._Duration,
-                                              Income = x._Income,
-                                              Status=x._Status
-
-
-                                          }).ToList();
-
-                    return dataforemployment;
-                }
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
-
-
-        public ApplicantEmploymentDetails ViewEmploymentDetailsByAppID(Guid EmploymentID)
-        {
-            try
-            {
-                ApplicantEmploymentDetails objtoReturn = new ApplicantEmploymentDetails();
-                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
-                {
-                    var GetEmploymentDetails = db.tblApplicantEmploymentDetails.Where(p => p.EmploymentID == EmploymentID).FirstOrDefault();
-                    if (GetEmploymentDetails != null)
-                    {
-                        objtoReturn.AutoID = GetEmploymentDetails.AutoID;
-                        objtoReturn.EmploymentID = GetEmploymentDetails.EmploymentID;
-                        objtoReturn.ApplicantID = GetEmploymentDetails.ApplicantID;
-                        objtoReturn.ProfessionTypeID = GetEmploymentDetails.ProfessionTypeID;
-                        objtoReturn.Profession = GetEmploymentDetails.tblMasterTypeOfProfession.Profession;
-                        objtoReturn.SourceOfIncome = GetEmploymentDetails.SourceOfIncome;
-                        objtoReturn.Income = GetEmploymentDetails.Income;
-                        objtoReturn.EmployerName = GetEmploymentDetails.EmployerName;
-                        objtoReturn.EmployementType = GetEmploymentDetails.tblMasterTypeOfEmployment.EmployementType;
-                        objtoReturn.Status = GetEmploymentDetails.Status;
-                        objtoReturn.Duration = GetEmploymentDetails.Duration;
-                    }
-                    return objtoReturn;
-                }
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
-
-
-        public ApplicantQualificationDetails ViewQualificationDetailsByAppID(Guid QualificationID)
-        {
-            try
-            {
-                ApplicantQualificationDetails objtoReturn = new ApplicantQualificationDetails();
-                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
-                {
-                    var GetQualificationDetails = db.tblApplicantQualificationDetails.Where(p => p.QualificationID == QualificationID).FirstOrDefault();
-                    if (GetQualificationDetails != null)
-                    {
-                        objtoReturn.AutoID = GetQualificationDetails.AutoID;
-                        objtoReturn.QualificationID = GetQualificationDetails.QualificationID;
-                        objtoReturn.ApplicantID = GetQualificationDetails.ApplicantID;
-                        objtoReturn.UniversityName = GetQualificationDetails.UniversityName;
-                        objtoReturn.CourseName = GetQualificationDetails.CourseName;
-                        objtoReturn.TypeOfQualification = GetQualificationDetails.TypeOfQualification;
-                        objtoReturn.PassingYear = GetQualificationDetails.PassingYear;
-                        objtoReturn.Qualifications = GetQualificationDetails.tblMasterTypeOfQualification.Qualifications;
-                    }
-                    return objtoReturn;
                 }
             }
             catch (Exception ex)
@@ -2168,33 +1946,280 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
+        #endregion
 
-        public bool DeleteCommAddress(Guid CommunicationID)
+        #region Employment Module
+        public ApplicantEmploymentDetails GetEmploymentDetailsByAppID(Guid ApplicantID)
         {
             try
             {
-               
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    tblApplicantCommunicationDetail obj = db.tblApplicantCommunicationDetails.Find(CommunicationID);
-
-                    //var fetchID = db.tblApplicantCommunicationDetails.Single(x => x.CommunicationID == obj.CommunicationID).CommunicationID;
-                    //db.tblApplicantCommunicationDetails.Remove(fetchID);
-                    if (obj.CommunicationID != null)
-                    { 
-                    db.tblApplicantCommunicationDetails.Remove(obj);
-                    db.SaveChanges();
+                    ApplicantEmploymentDetails objapp = new ApplicantEmploymentDetails();
+                    var dataofapplicants = db.tblApplicantEmploymentDetails.Where(x => x.ApplicantID == ApplicantID).FirstOrDefault();
+                    if (dataofapplicants != null)
+                    {
+                        objapp.AutoID = dataofapplicants.AutoID;
+                        objapp.ApplicantID = dataofapplicants.ApplicantID;
+                        objapp.EmploymentID = dataofapplicants.EmploymentID;
+                        objapp.EmployerName = dataofapplicants.EmployerName;
+                        objapp.Income = dataofapplicants.Income;
+                        objapp.ProfessionTypeID = dataofapplicants.ProfessionTypeID;
+                        objapp.SourceOfIncome = dataofapplicants.SourceOfIncome;
+                        objapp.Status = dataofapplicants.Status;
+                        objapp.Duration = dataofapplicants.Duration;
+                        objapp.Income = dataofapplicants.Income;
+                        objapp.EmployementType = dataofapplicants.tblMasterTypeOfEmployment.EmployementType;
+                        objapp.Profession = dataofapplicants.tblMasterTypeOfProfession.Profession;
                     }
 
+                    return objapp;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public bool UpdateEmploymentDetailsByAppID(ApplicantEmploymentDetails _objApplicantEmploymentDetails)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var FetchEmploymentDetails = db.tblApplicantEmploymentDetails.Where(p => p.EmploymentID == _objApplicantEmploymentDetails.EmploymentID).FirstOrDefault();
+                    if (FetchEmploymentDetails != null)
+                    {
+                        FetchEmploymentDetails.EmploymentID = _objApplicantEmploymentDetails.EmploymentID;
+                        FetchEmploymentDetails.AutoID = _objApplicantEmploymentDetails.AutoID;
+                        FetchEmploymentDetails.ApplicantID = _objApplicantEmploymentDetails.ApplicantID;
+                        FetchEmploymentDetails.SourceOfIncome = _objApplicantEmploymentDetails.SourceOfIncome;
+                        FetchEmploymentDetails.ProfessionTypeID = _objApplicantEmploymentDetails.ProfessionTypeID;
+                        FetchEmploymentDetails.Duration = _objApplicantEmploymentDetails.Duration;
+                        FetchEmploymentDetails.EmployerName = _objApplicantEmploymentDetails.EmployerName;
+                        FetchEmploymentDetails.Status = _objApplicantEmploymentDetails.Status;
+                        FetchEmploymentDetails.Income = _objApplicantEmploymentDetails.Income;
+                        FetchEmploymentDetails.tblMasterTypeOfEmployment.EmployementType = _objApplicantEmploymentDetails.EmployementType;
+                        FetchEmploymentDetails.tblMasterTypeOfProfession.Profession = _objApplicantEmploymentDetails.Profession;
+                        FetchEmploymentDetails.ModifiedOn = DateTime.Now;
+
+                        db.SaveChanges();
+                    }
                     return true;
-                    
                 }
             }
             catch (Exception ex)
             {
                 return false;
             }
-       }
+        }
+        public List<ApplicantEmploymentDetails> GetMatEmploymentDetailsByAppID(Guid ApplicantID)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var dataforemployment = (from tle in db.tblApplicantEmploymentDetails
+                                             join tla in db.tblApplicants on tle.ApplicantID equals tla.ApplicantID
+                                             join tlmp in db.tblMasterTypeOfProfessions on tle.ProfessionTypeID equals tlmp.ID
+                                             join tlme in db.tblMasterTypeOfEmployments on tle.SourceOfIncome equals tlme.ID
+                                             where tla.ApplicantID == ApplicantID
+                                             select new
+                                             {
+                                                 _AutoID = tle.AutoID,
+                                                 _EmploymentID = tle.EmploymentID,
+                                                 _ApplicantID = tla.ApplicantID,
+                                                 _SourceOfIncome = tle.SourceOfIncome,
+                                                 _Employment = tlme.EmployementType,
+                                                 _Profession = tle.ProfessionTypeID,
+                                                 _ProfessionType = tlmp.Profession,
+                                                 _EmployerName = tle.EmployerName,
+                                                 _Duration = tle.Duration,
+                                                 _Income = tle.Income,
+                                                 _Status = tle.Status
+                                             }).ToList().Select(x => new ApplicantEmploymentDetails()
+                                             {
+                                                 AutoID = x._AutoID,
+                                                 EmploymentID = x._EmploymentID,
+                                                 ApplicantID = x._ApplicantID,
+                                                 SourceOfIncome = x._SourceOfIncome,
+                                                 EmployementType = x._Employment,
+                                                 ProfessionTypeID = x._Profession,
+                                                 Profession = x._ProfessionType,
+                                                 EmployerName = x._EmployerName,
+                                                 Duration = x._Duration,
+                                                 Income = x._Income,
+                                                 Status = x._Status
 
+
+                                             }).ToList();
+
+                    return dataforemployment;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public ApplicantEmploymentDetails ViewEmploymentDetailsByAppID(Guid EmploymentID)
+        {
+            try
+            {
+                ApplicantEmploymentDetails objtoReturn = new ApplicantEmploymentDetails();
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetEmploymentDetails = db.tblApplicantEmploymentDetails.Where(p => p.EmploymentID == EmploymentID).FirstOrDefault();
+                    if (GetEmploymentDetails != null)
+                    {
+                        objtoReturn.AutoID = GetEmploymentDetails.AutoID;
+                        objtoReturn.EmploymentID = GetEmploymentDetails.EmploymentID;
+                        objtoReturn.ApplicantID = GetEmploymentDetails.ApplicantID;
+                        objtoReturn.ProfessionTypeID = GetEmploymentDetails.ProfessionTypeID;
+                        objtoReturn.Profession = GetEmploymentDetails.tblMasterTypeOfProfession.Profession;
+                        objtoReturn.SourceOfIncome = GetEmploymentDetails.SourceOfIncome;
+                        objtoReturn.Income = GetEmploymentDetails.Income;
+                        objtoReturn.EmployerName = GetEmploymentDetails.EmployerName;
+                        objtoReturn.EmployementType = GetEmploymentDetails.tblMasterTypeOfEmployment.EmployementType;
+                        objtoReturn.Status = GetEmploymentDetails.Status;
+                        objtoReturn.Duration = GetEmploymentDetails.Duration;
+                    }
+                    return objtoReturn;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        #endregion Employment Module
+
+        #region Qualification Module
+        public ApplicantQualificationDetails GetQualificationDetailsByAppID(Guid ApplicantID)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    ApplicantQualificationDetails objapp = new ApplicantQualificationDetails();
+                    var dataofapplicants = db.tblApplicantQualificationDetails.Where(x => x.ApplicantID == ApplicantID).FirstOrDefault();
+                    if (dataofapplicants != null)
+                    {
+                        objapp.AutoID = dataofapplicants.AutoID;
+                        objapp.ApplicantID = dataofapplicants.ApplicantID;
+                        objapp.QualificationID = dataofapplicants.QualificationID;
+                        objapp.PassingYear = dataofapplicants.PassingYear;
+                        objapp.CourseName = dataofapplicants.CourseName;
+                        objapp.TypeOfQualification = dataofapplicants.TypeOfQualification;
+                        objapp.UniversityName = dataofapplicants.UniversityName;
+                        objapp.FirstName = dataofapplicants.tblApplicant.FirstName;
+                        objapp.Qualifications = dataofapplicants.tblMasterTypeOfQualification.Qualifications;
+                    }
+
+                    return objapp;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public bool UpdateQualificationDetailsByAppID(ApplicantQualificationDetails _objApplicantQualificationDetails) {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var FetchQualificationDetails = db.tblApplicantQualificationDetails.Where(p => p.QualificationID == _objApplicantQualificationDetails.QualificationID).FirstOrDefault();
+                    if (FetchQualificationDetails != null)
+                    {
+                        FetchQualificationDetails.QualificationID = _objApplicantQualificationDetails.QualificationID;
+                        FetchQualificationDetails.AutoID = _objApplicantQualificationDetails.AutoID;
+                        FetchQualificationDetails.ApplicantID = _objApplicantQualificationDetails.ApplicantID;
+                        FetchQualificationDetails.TypeOfQualification = _objApplicantQualificationDetails.TypeOfQualification;
+                        FetchQualificationDetails.UniversityName = _objApplicantQualificationDetails.UniversityName;
+                        FetchQualificationDetails.PassingYear = _objApplicantQualificationDetails.PassingYear;
+                        FetchQualificationDetails.CourseName = _objApplicantQualificationDetails.CourseName;
+                        FetchQualificationDetails.tblApplicant.FirstName = _objApplicantQualificationDetails.FirstName;
+                        FetchQualificationDetails.ModifiedOn = DateTime.Now;
+
+                        db.SaveChanges();
+                    }
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public List<ApplicantQualificationDetails> GetMatQualificationDataByAppID(Guid ApplicantID)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var dataforQualifications = (from ta in db.tblApplicants
+                                                 join tlq in db.tblApplicantQualificationDetails on ta.ApplicantID equals tlq.ApplicantID
+                                                 join tlma in db.tblMasterTypeOfQualifications on tlq.TypeOfQualification equals tlma.ID
+                                                 where ta.ApplicantID == ApplicantID
+                                                 select new
+                                                 {
+                                                     _QualificationID = tlq.QualificationID,
+                                                     _ApplicantID = ta.ApplicantID,
+                                                     _QualificationType = tlma.ID,
+                                                     _Type = tlma.Qualifications,
+                                                     _University = tlq.UniversityName,
+                                                     _CourseName = tlq.CourseName,
+                                                     _PassingYear = tlq.PassingYear,
+                                                 }).ToList().Select(x => new ApplicantQualificationDetails()
+                                                 {
+                                                     QualificationID = x._QualificationID,
+                                                     ApplicantID = x._ApplicantID,
+                                                     TypeOfQualification = x._QualificationType,
+                                                     Qualifications = x._Type,
+                                                     UniversityName = x._University,
+                                                     CourseName = x._CourseName,
+                                                     PassingYear = x._PassingYear
+                                                 }).ToList();
+
+                    return dataforQualifications;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public ApplicantQualificationDetails ViewQualificationDetailsByAppID(Guid QualificationID)
+        {
+            try
+            {
+                ApplicantQualificationDetails objtoReturn = new ApplicantQualificationDetails();
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetQualificationDetails = db.tblApplicantQualificationDetails.Where(p => p.QualificationID == QualificationID).FirstOrDefault();
+                    if (GetQualificationDetails != null)
+                    {
+                        objtoReturn.AutoID = GetQualificationDetails.AutoID;
+                        objtoReturn.QualificationID = GetQualificationDetails.QualificationID;
+                        objtoReturn.ApplicantID = GetQualificationDetails.ApplicantID;
+                        objtoReturn.UniversityName = GetQualificationDetails.UniversityName;
+                        objtoReturn.CourseName = GetQualificationDetails.CourseName;
+                        objtoReturn.TypeOfQualification = GetQualificationDetails.TypeOfQualification;
+                        objtoReturn.PassingYear = GetQualificationDetails.PassingYear;
+                        objtoReturn.Qualifications = GetQualificationDetails.tblMasterTypeOfQualification.Qualifications;
+                    }
+                    return objtoReturn;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        #endregion Qualification 
+        #endregion Client Dashboard application code.
     }
 }

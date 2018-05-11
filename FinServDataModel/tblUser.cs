@@ -39,5 +39,6 @@ namespace FinServDataModel
         public Nullable<bool> IsActive { get; set; }
         public string Description { get; set; }
         public Nullable<int> LocationId { get; set; }
+        public Nullable<bool> IsLoggedIn { get; set; }
     }
 }

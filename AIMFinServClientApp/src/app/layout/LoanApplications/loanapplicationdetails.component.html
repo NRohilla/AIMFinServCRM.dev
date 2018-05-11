@@ -399,7 +399,7 @@
                                     <input type="button" value="&#xf00d; Cancel" (click)="CancelEditingDetails()" *ngIf="_EditDetails" class="btn btn-secondary" />
                                     <input type="button" value="&#xf040; Manage Guarantor" (click)="ManageGuarantor()" *ngIf="!_EditDetails" class="btn btn-primary" />
                                     <input type="button" value="&#xf040; Manage Asset/Liability" (click)="ManageAssetandLiability()" *ngIf="!_EditDetails" class="btn btn-primary" />
-                                    <input type="button" value="&#xf040; Assign Applicants" (click)="AssignApplicant()" *ngIf="!_EditDetails" class="btn btn-primary" />
+                                    <!--<input type="button" value="&#xf040; Assign Applicants" (click)="AssignApplicant()" *ngIf="!_EditDetails" class="btn btn-primary" />-->
                                     <input type="button" value="&#xf040; Manage Expense Sheet" (click)="ManageExpenseSheet()" *ngIf="!_EditDetails" class="btn btn-primary" />
                                     <input type="button" value="&#xf040; Edit" (click)="EditDetails()" *ngIf="!_EditDetails" class="btn btn-info" />
 
@@ -438,7 +438,7 @@
             </kendo-grid-column>
             <kendo-grid-command-column>
                 <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                    <button class="btn btn-lg btn-link" type="button" (click)="ViewApplicantDetails()">View details</button>
+                    <button class="btn btn-lg btn-link" type="button" (click)="ViewApplicantDetails(dataItem.ApplicantID)">View details</button>
                 </ng-template>
             </kendo-grid-command-column>
         </kendo-grid>

@@ -43,6 +43,8 @@ namespace FinServDataModel
         public string HomePhoneNo { get; set; }
         public string WorkPhoneNo { get; set; }
         public System.Guid LoanApplicationNo { get; set; }
+        public int FileTypeID { get; set; }
+        public string FileName { get; set; }
         public byte[] ApplicantImage { get; set; }
         public bool IsActive { get; set; }
         public Nullable<System.Guid> CreatedBy { get; set; }
@@ -58,8 +60,9 @@ namespace FinServDataModel
         public virtual ICollection<tblApplicantExpenseSheet> tblApplicantExpenseSheets { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblApplicantQualificationDetail> tblApplicantQualificationDetails { get; set; }
-        public virtual tblMasterApplicantType tblMasterApplicantType { get; set; }
         public virtual tblLoanApplicationForm tblLoanApplicationForm { get; set; }
+        public virtual tblMasterApplicantType tblMasterApplicantType { get; set; }
+        public virtual tblMasterFileType tblMasterFileType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblAsset> tblAssets { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -3,6 +3,7 @@ export const environment = {
     development: false,
     testing: false,
     //for local connection to the API service
-    baseAPIUrl: "http://192.168.6.243:9393/AIMFinServService/API/",
-    baseApplicationURL: "http://localhost:8080/#/",
+    baseAPIUrl: "http://182.75.120.10:9393/AIMFinServAPI/API/",
+    baseApplicationURL: "http://182.75.120.10:9393/AimFinServe_Client/",
+    baseAdminURl: "http://182.75.120.10:9393/AimFinServe_Admin/",
 };

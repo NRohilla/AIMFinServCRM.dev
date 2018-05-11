@@ -1,5 +1,5 @@
 <app-header></app-header>
 <app-sidebar></app-sidebar>
-<section class="main-container">
+<section class="main-container" *ngIf="_showDetails">
     <router-outlet></router-outlet>
 </section>

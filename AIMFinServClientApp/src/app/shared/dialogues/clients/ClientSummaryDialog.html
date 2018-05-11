@@ -1,0 +1,29 @@
+<div class="summary-dialog">
+    <h4 class="text-info text-center">Update Client Image</h4>
+    <hr />
+    <div class="w-100 float-left mt-2">
+        <div class="profile-pic">
+            <img [src]="URL" />
+        </div>
+    </div>
+    <div class="w-100">       
+        <div class="w-100 mt-2 pb-2 text-center position-relative float-left">
+            <div class="upload-input position-absolute">
+                <input type="file" id="applicantImage" accept="image/png, image/jpeg, image/gif, application/pdf, text/plain" (change)="OnSelectClientPersonalAttachmentFile($event)">
+            </div>
+            <div class="upload-image text-center">
+                <p class="m-0"><i class="fa fa-upload text-secondary table-active pt-2 pb-2 pl-5 pr-5"></i><br /> <small class="text-success">Image size should be 200px X 200px</small></p>
+            </div>
+        </div>
+        <div class="w-100 float-left">
+            <hr />
+        </div>
+        <div class="w-100 mt-2 float-left">
+            <input type="submit" value="Save" (click)="UpdateImage()" class="btn btn-sm btn-success float-left" />
+            <input type="submit" value="Cancel" (click)="onNoClick()" class="btn btn-sm btn-secondary float-right" />
+        </div>
+    </div>
+</div>
+
+
+

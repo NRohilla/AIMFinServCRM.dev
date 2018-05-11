@@ -92,12 +92,13 @@ export class EmployementComponent implements OnInit {
     GetMatEmploymentDetailsByAppIDError(res) { }
 
     GetEmploymentDetails() {
+        debugger;
         this.ApplicantID = this._LocalStorageService.get("LoggedInApplicantId");
         this._ClientsService.GetEmploymentDetailsByAppID(this.ApplicantID).subscribe(res => this.GetEmploymentDetailsByAppIDSuccess(res), res => this.GetEmploymentDetailsByAppIDError(res));
     }
     GetEmploymentDetailsByAppIDSuccess(res) {
+        debugger;
         this.EmploymentDetails = JSON.parse(res._body);
-      //  this._OnLoad = true;
     }
     GetEmploymentDetailsByAppIDError(res) {
     }
@@ -107,7 +108,6 @@ export class EmployementComponent implements OnInit {
     }
     UpdateEmploymentDetailsByAppIDSuccess(res) {
         this._EditDetails = false;
-       // this._OnLoad = true;
         this._ClientsService.GetEmploymentDetailsByAppID(this.ApplicantID).subscribe(res => this.GetEmploymentDetailsByAppIDSuccess(res), res => this.GetEmploymentDetailsByAppIDError(res));
 
     }

@@ -10,6 +10,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { ClientsService } from '../../services/app.clients.service';
 import { CommunicationDialog } from './communicationDialog/communicationDialog';
+import { CommunicationDeleteDialog } from './communicationDialog/communicationDeleteDialog';
 declare var jquery: any;
 declare var $: any;
 
@@ -22,6 +23,7 @@ export class CommunicationComponent implements OnInit {
     public _EditcommunicationDetails: boolean = false;
     public ApplicantID: string = '';
     items: any;
+    public data: any;
 
     public CommunicationDetails: any = [];
 
@@ -60,7 +62,7 @@ export class CommunicationComponent implements OnInit {
 
     }
     openDialog(ComId, data): void {
-
+        debugger;
         if (data != undefined) {
             this.EditcommunicationDetails();
             var dialogRef = this.dialog.open(CommunicationDialog, { data: { CommunicationID: ComId, isEdit: data } });
@@ -72,6 +74,24 @@ export class CommunicationComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             debugger;
             setTimeout(() => {
+                this.GetAddresses();
+            }, 1000);
+            console.log('The dialog was closed');
+        });
+    }
+
+
+    deleteDialog(ComId, data): void {
+        if (data != undefined) {
+            var dialogRef = this.dialog.open(CommunicationDeleteDialog, { data: { CommunicationID: ComId, isEdit: data } });
+        }
+        else {
+            dialogRef = this.dialog.open(CommunicationDeleteDialog, { data: { CommunicationID: ComId, isEdit: data } });
+        }
+
+        dialogRef.afterClosed().subscribe(result => {
+            setTimeout(() => {
+                debugger;
                 this.GetAddresses();
             }, 1000);
             console.log('The dialog was closed');

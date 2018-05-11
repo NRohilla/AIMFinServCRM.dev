@@ -4,7 +4,7 @@
         <h3 class="text-uppercase border-bottom pb-2">Communication</h3>
         <div class="mt-3 clearfix">
             <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-6 col-12 pt-2 pb-2 float-left" *ngFor="let _Address of CommunicationDetails">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 pt-2 pb-2 float-left" *ngFor="let _Address of CommunicationDetails">
                     <div class="communication-box">
                         <div class="border-bottom mb-3">
                             <h5 class="text-secondary text-uppercase"><i class="fa fa-address-card"></i> {{_Address.Type}}</h5>
@@ -14,20 +14,23 @@
                             <span>{{_Address.AddressLine1}}</span>
                             <span>{{_Address.AddressLine2}}</span>
                             <span>{{_Address.AddressLine3}}</span>
+                            <span>{{_Address.Country}}</span>
+                            <span>{{_Address.ZipCode}}</span>
+                            <span>{{_Address.Duration}}</span>
                         </address>
-                        <div class="clearfix">
+                        <div class="clearfix text-right">
                         <button type="submit" class="btn btn-sm btn-info" (click)="openDialog(_Address.CommunicationID,true)">Edit</button>
-                        <button type="submit" class="btn btn-sm btn-danger" (click)="DeleteComAdress(_Address.CommunicationID)">Delete</button></div>
+                        <button type="submit" class="btn btn-sm btn-danger" (click)="deleteDialog(_Address.CommunicationID,true)">Delete</button></div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-6 col-12 pt-2 pb-2 float-left">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 pt-2 pb-2 float-left">
                     <div class="communication-box">
                         <div class="border-bottom mb-3">
                             <h5 class="text-secondary text-uppercase"><i class="fa fa-thumb-tack"></i> Add New Address</h5>
                         </div>
-                        <div class="add-address" (click)="openDialog(data)">
+                        <div class="add-address" (click)="openDialog(CommunicationDetails.CommunicationID, data)">
                         </div>
                     </div>
                 </div>

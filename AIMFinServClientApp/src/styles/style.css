@@ -46,9 +46,10 @@
 .master-forms .form-section .field_set .field_label { margin-top:15px;}
 .btn-bottom { background:#fafafa; border-top:1px solid #e0e0e0; padding:10px 15px;}
 a{ outline:none;}
-
-.profile-pic img { max-width:160px; border-radius:50%; }
+.profile-pic img { width:160px; height:160px; border-radius:50%; padding:2px; border:1px solid #cccccc; }
 .profile-pic h5 { font-size:14px; color:#1b9ec5;}
+.summary-dialog .profile-pic { margin: 0 auto; width:160px; height:auto; display:block; border-radius:50%; }
+.summary-dialog .profile-pic img { border:1px solid #ccc;}
 .login-date { position:absolute; z-index:10; right:0; top:-40px;}
  .custom-radio-label {width: 100%; color: rgba(0,0,0,.46); font-size: 10.5px; display:block;}
  .marggn-bottom{ margin-bottom: -12px; } 
@@ -62,9 +63,17 @@ a{ outline:none;}
 .k-grid th, .k-grid td { text-align:center;}
 .asign-select-box .field_info { margin-right: 100px;}
 .asign-select-box input[type="button"] { position: absolute; right: 0; top: 0px; z-index: 10;}
-.dropdown-menu .media {
-    color: #ffffff;
-}
+.dropdown-menu .media { color: #ffffff; }
+.detailbox1, .detailbox2, .detailbox3 { border-radius: 5px;}
+.detailbox1 { background: linear-gradient(58deg,#f44336,#673ab7); }
+.detailbox2 { background: linear-gradient(58deg,#009688,#673ab7); }
+.detailbox3 { background: linear-gradient(58deg,#aaa315,#673ab7); }
+.bottom-value { font-size: 45px;}
+.card-header h3 { color:#1b9ec5; font-size:22px; text-transform:uppercase; margin: 0px; padding: 5px 0px;}
+.upload-input { opacity:0; top:0px; z-index:2; width:100%; }
+.upload-input input { display:block; height:35px; width:111px; margin:0 auto; cursor:pointer;}
+.upload-image i { font-size:20px; cursor:pointer; }
+
 
 .dropdown-menu .media .text-muted {
     color: #aeb3b9 !important;

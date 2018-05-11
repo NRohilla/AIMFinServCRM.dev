@@ -1,17 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import { LocalStorageService } from 'angular-2-local-storage';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { AuthenticateService } from '../../services/app.auth.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss'],
+    providers: [AuthenticateService],
     animations: [routerTransition()]
 })
-export class DashboardComponent implements OnInit{
+
+export class DashboardComponent implements OnInit {
+    
+    constructor(public router: Router, private _AuthenticateService: AuthenticateService, private _LocalStorageService: LocalStorageService, private activatedRoute: ActivatedRoute) {
+    }
+
+    ngOnInit() {
+         
+    }
+
     public barChartOptions: any = {
         scaleShowVerticalLines: false,
         responsive: true
     };
+
     public barChartLabels: string[] = [
         '2006',
         '2007',
@@ -156,8 +171,4 @@ export class DashboardComponent implements OnInit{
          * assign it;
          */
     }
-
-    constructor() {}
-
-    ngOnInit() {}
 }

@@ -3,6 +3,7 @@ import { CanActivate } from '@angular/router';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { ActivatedRoute, Params } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -21,8 +22,8 @@ export class AuthGuard implements CanActivate {
             && this._LocalStorageService.get('LoggedInEmailId') != null) {
             return true;
         }
-
-        this.router.navigate(['/login']);
+       // window.location.href = environment.baseAdminURl;
+       // this.router.navigate(['/dashboard']);
         return false;
     }
 
