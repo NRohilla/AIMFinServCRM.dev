@@ -50,12 +50,7 @@
                                             <p *ngIf="!_EditPersonalDetails" class="datevalue">{{_ApplicantDetails.MiddleName}}</p>
                                             <div class="field_info w-100" *ngIf="_EditPersonalDetails">
                                                 <mat-form-field class="example-full-width">
-                                                    <input matInput placeholder="Middle" value="{{_ApplicantDetails.MiddleName}}" [(ngModel)]="_ApplicantDetails.MiddleName" name="MiddleName" #MiddleName="ngModel" required>
-                                                    <div *ngIf="MiddleName.invalid && (MiddleName.dirty || MiddleName.touched)" class="alert alert-danger">
-                                                        <div *ngIf="MiddleName.errors.required">
-                                                            Please enter Middle Name.
-                                                        </div>
-                                                    </div>
+                                                    <input matInput placeholder="Middle" value="{{_ApplicantDetails.MiddleName}}" [(ngModel)]="_ApplicantDetails.MiddleName" name="MiddleName" #MiddleName="ngModel">
                                                 </mat-form-field>
                                             </div>
                                         </div>

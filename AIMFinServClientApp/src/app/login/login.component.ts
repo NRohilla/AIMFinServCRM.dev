@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
+        debugger;
         this._LocalStorageService.clearAll();
     }
 
@@ -51,7 +52,7 @@ export class LoginComponent implements OnInit {
     }
 
     RequestSuccess(result) {
-        debugger;
+        //debugger;
         var resultReturned = JSON.parse(result._body);
 
         if (resultReturned._IsAuthenticated == false) {
@@ -59,22 +60,16 @@ export class LoginComponent implements OnInit {
             this._FormErrorsDescription = "Invalid Credentials!"
         }
         else {
-            this._LocalStorageService.set('LoggedInEmailId', this._Username);
-            // localStorage.setItem('isLoggedin', resultReturned._IsLoggedIn);
-            this._LocalStorageService.set('LoggedInUserId', resultReturned._UserID);
-            this._LocalStorageService.set('ActivaitonCode', resultReturned.ActivaitonCode);
-            localStorage.setItem('isLoggedin', resultReturned.IsLoggedIn);
-
-
             if (resultReturned._RoleDesc == "Client") {
-                debugger;
-                this._LocalStorageService.set('LoggedInUserId', resultReturned._UserID);
-                this._LocalStorageService.set('LoggedInApplicantId', resultReturned._ApplicantID);
-
                 window.location.href = environment.baseClientAppURL + "/dashboard?LoggedInEmailId=" + this._Username;
             }
 
             if (resultReturned._RoleDesc == "Admin" || resultReturned._RoleDesc == "Employee") {
+                debugger;
+                this._LocalStorageService.set('LoggedInEmailId', this._Username);
+                this._LocalStorageService.set('LoggedInUserId', resultReturned._UserID);
+                this._LocalStorageService.set('ActivaitonCode', resultReturned.ActivaitonCode);
+                localStorage.setItem('isLoggedin', resultReturned.IsLoggedIn);
                 this.router.navigateByUrl('dashboard');
             }
         }

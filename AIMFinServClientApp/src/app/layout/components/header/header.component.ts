@@ -1,4 +1,4 @@
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute, Params } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Component, Injectable, ViewChild, OnInit } from '@angular/core';
 import { Form, FormControl, Validators } from '@angular/forms';
@@ -48,8 +48,9 @@ export class HeaderComponent implements OnInit {
         UserGuid: '',
         UserId: '',
     }
+
     constructor(private translate: TranslateService, public router: Router, private _LocalStorageService: LocalStorageService,
-        private _UserOperationService: UserOperationService, private _AuthenticateService: AuthenticateService) {
+        private _UserOperationService: UserOperationService, private _AuthenticateService: AuthenticateService, private activatedRoute: ActivatedRoute) {
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
         this.translate.setDefaultLang('en');
         const browserLang = this.translate.getBrowserLang();
@@ -74,6 +75,7 @@ export class HeaderComponent implements OnInit {
     }
 
     UserInfoSuccess(result) {
+        debugger;
         this._UserDetails = JSON.parse((JSON.parse(result._body)));
     }
 

@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { LocalStorageService } from 'angular-2-local-storage';
 
 @Component({
     selector: 'app-sidebar',
     templateUrl: './sidebar.component.html',
     styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit{
+    public _ShowDetails: boolean = false;
     isActive: boolean = false;
     showMenu: string = '';
     pushRightClass: string = 'push-right';
 
-    constructor(private translate: TranslateService, public router: Router) {
+    constructor(private translate: TranslateService, public router: Router, private _LocalStorageService: LocalStorageService) {
+        debugger;
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de']);
         this.translate.setDefaultLang('en');
         const browserLang = this.translate.getBrowserLang();
@@ -27,6 +30,13 @@ export class SidebarComponent {
                 this.toggleSidebar();
             }
         });
+    }
+
+    ngOnInit() {
+        debugger;
+        if (this._LocalStorageService.get('LoggedInEmailId') != null && this._LocalStorageService.get('LoggedInEmailId') != undefined) {
+            this._ShowDetails = true;
+        }
     }
 
     eventCalled() {

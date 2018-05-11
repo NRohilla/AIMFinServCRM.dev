@@ -27,6 +27,6 @@ export class AuthenticateService {
     //}
     LoggedOffUser(ActivationCode, IsLoggedIn) {
         debugger;
-        return this._http.post(this.baseurl + "Auth/AuthenticateLogin?ActivationCode=" + ActivationCode + "&IsLoggedIn=" + IsLoggedIn, this.options);
+        return this._http.post(this.baseurl + "Auth/LoggedOffUser?ActivationCode=" + ActivationCode + "&IsLoggedIn=" + IsLoggedIn, this.options);
     }
 }

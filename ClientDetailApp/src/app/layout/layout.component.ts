@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalStorageService } from 'angular-2-local-storage';
 
 @Component({
     selector: 'app-layout',
@@ -6,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
-    constructor() {
-        console.log('hi');
+    public _showDetails: boolean = false;
+    constructor(private _LocalStorageService: LocalStorageService) {
+
+        if (this._LocalStorageService.get("LoggedInEmailId") != null && this._LocalStorageService.get("LoggedInEmailId") != undefined) {
+            this._showDetails = true;
+        }
     }
 
     ngOnInit() {}

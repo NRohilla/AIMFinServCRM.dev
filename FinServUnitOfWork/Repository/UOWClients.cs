@@ -1971,8 +1971,6 @@ namespace FinServUnitOfWork.Repository
                         objapp.Income = dataofapplicants.Income;
                         objapp.EmployementType = dataofapplicants.tblMasterTypeOfEmployment.EmployementType;
                         objapp.Profession = dataofapplicants.tblMasterTypeOfProfession.Profession;
-                        //objapp.Profession = dataofapplicants.tblMasterTypeOfProfession.Profession;
-
                     }
 
                     return objapp;

@@ -23,10 +23,10 @@ export class AuthenticateService {
         return this._http.get(this.baseurl + "Auth/AuthenticateLogin?UserEmailId=" + UserEmailId + "&password=" + password, this.options);
     }
 
-    //IsUserLoggedIn(UserOps) {
-    //    debugger;
-    //    return this._http.post(this.baseurl + "Auth/AuthenticateLogin", UserOps, this.options);
-    //}
+    IsUserLoggedIn(UserEmailId, password) {
+        debugger;
+        return this._http.get(this.baseurl + "Auth/IsUserLoggedIn?UserEmailId=" + UserEmailId + "&password=" + password, this.options);
+    }
 
     LoggedOffUser(ActivationCode, IsLoggedIn) {
         debugger;

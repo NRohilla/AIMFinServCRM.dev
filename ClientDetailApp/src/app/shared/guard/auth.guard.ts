@@ -22,7 +22,8 @@ export class AuthGuard implements CanActivate {
             && this._LocalStorageService.get('LoggedInEmailId') != null) {
             return true;
         }
-        window.location.href = environment.baseAdminURl;
+       // window.location.href = environment.baseAdminURl;
+       // this.router.navigate(['/dashboard']);
         return false;
     }
 

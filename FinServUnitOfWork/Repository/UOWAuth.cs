@@ -64,15 +64,17 @@ namespace FinServUnitOfWork.Repository
                                     objReturnobj._IsAuthenticated = true;
                                     objReturnobj._RoleDesc = getRole.Name;
                                     objReturnobj._UserID = Convert.ToString(getuserdetails.UserGuid);
+                                    objReturnobj.IsLoggedIn = true;
+                                    objReturnobj.ActivaitonCode = LoggedInUser(UserEmailId, password);
                                 }
                                 if (objReturnobj._RoleDesc == "Client")
                                 {
                                     var getApplicantID = db.tblApplicants.Where(p => p.EmailID == UserEmailId).FirstOrDefault();
                                     if (getApplicantID != null)
                                     objReturnobj._ApplicantID = Convert.ToString(getApplicantID.ApplicantID);
+                                    objReturnobj.IsLoggedIn = true;
                                     objReturnobj.ActivaitonCode = LoggedInUser(UserEmailId, password);
                                 }
-                              
                             }
                         }
                     }
@@ -95,25 +97,29 @@ namespace FinServUnitOfWork.Repository
                     getusrdetails.ActivaitonCode = strActcode;
                     db.SaveChanges();                    
                 }
-
                 return strActcode;
             }
         }
 
-        public UserOps IsUserLoggedIn(string UserEmailId, string password)
+        public bool IsUserLoggedIn(string UserEmailId, string password)
         {
-            UserOps objUserOps = new UserOps();
+            bool status = false;
             using (AIMFinServDBEntities db = new AIMFinServDBEntities())
-            {
-                var getAllLoggedInUsers = (from tu in db.tblUsers
-                                           where tu.Email == UserEmailId
-                                           select new UserOps
-                                           {
-                                               ActivaitonCode = tu.ActivaitonCode,
-                                               IsLoggedIn = tu.IsLoggedIn
-                                           }).FirstOrDefault();
+            {                
+                var getusrdetails = db.tblUsers.Where(p => p.Email.ToLower() == UserEmailId.ToLower() && p.Password.ToLower() == password.ToLower()).FirstOrDefault();
+                if (getusrdetails != null)
+                {
+                    if(getusrdetails.IsLoggedIn == true && getusrdetails.ActivaitonCode != null && getusrdetails.ActivaitonCode != string.Empty)
+                    {
+                        status = true;
+                    }
+                    else
+                    {
+                        status = false;
+                    }                    
+                }
 
-                return getAllLoggedInUsers;
+                return status;
             }
         }
 

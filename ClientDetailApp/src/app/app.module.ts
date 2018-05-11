@@ -23,6 +23,9 @@ import { QualificationDetailsComponent } from './layout/communication/components
 import {MaterialModule} from './shared/app.material';
 import { CommunicationDialog } from './layout/communication/communicationDialog/communicationDialog';
 import { CommunicationDeleteDialog } from './layout/communication/communicationDialog/communicationDeleteDialog';
+
+import { AuthenticateService } from './services/app.auth.service';
+
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
     // for development
@@ -62,7 +65,7 @@ export function createTranslateLoader(http: HttpClient) {
         CommunicationDialog,
         CommunicationDeleteDialog],
 
-    providers: [AuthGuard],
+    providers: [AuthGuard, AuthenticateService],
     bootstrap: [AppComponent],
     entryComponents: [LoanApplicationDetailDialog, ClientDetailsDialog, CommunicationDialog, CommunicationDeleteDialog]
 })

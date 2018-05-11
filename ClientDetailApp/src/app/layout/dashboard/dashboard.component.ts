@@ -3,6 +3,7 @@ import { routerTransition } from '../../router.animations';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AuthenticateService } from '../../services/app.auth.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-dashboard',
@@ -12,38 +13,20 @@ import { AuthenticateService } from '../../services/app.auth.service';
     animations: [routerTransition()]
 })
 
-export class DashboardComponent implements OnInit{
-
-    public _Password: string;
-    public _Username: string;
-    public _FormErrors;
-    public _FormErrorsDescription: string = '';
-    public ApplicantID: string = '';
-    constructor(public router: Router, private _AuthenticateService: AuthenticateService, private _LocalStorageService: LocalStorageService, private activatedRoute: ActivatedRoute) { }
-
-    ngOnInit()
-    {
-        debugger;
-        this._Username = this.activatedRoute.snapshot.queryParams["LoggedInEmailId"]
-        this._AuthenticateService.AuthenticateLogin(this._Username, this._Password)
-            .subscribe(result => this.RequestSuccess(result), result => this.RequestError(result));
+export class DashboardComponent implements OnInit {
+    
+    constructor(public router: Router, private _AuthenticateService: AuthenticateService, private _LocalStorageService: LocalStorageService, private activatedRoute: ActivatedRoute) {
     }
 
-    RequestSuccess(result) {
-        debugger;
-        var resultReturned = JSON.parse(result._body);
-
-        this._LocalStorageService.set('LoggedInApplicantId', resultReturned._ApplicantID);
-        this.router.navigateByUrl('dashboard');
+    ngOnInit() {
+         
     }
-
-    RequestError(err) {}
 
     public barChartOptions: any = {
         scaleShowVerticalLines: false,
         responsive: true
     };
-   
+
     public barChartLabels: string[] = [
         '2006',
         '2007',
