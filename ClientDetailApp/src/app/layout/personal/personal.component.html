@@ -33,7 +33,7 @@
                             <div [ngClass]="{'bg-white p-3':_EditPersonalDetails}">
                                 <div class="border bg-white pt-3 pb-3 clearfix" *ngIf="!_EditPersonalDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <span><i class="fa fa-user text-info"></i> Name</span>
+                                        <span><i class="fa fa-user text-info"></i> Name :</span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                         <span class="text-secondary">{{_PersonInfo}}</span>
@@ -61,7 +61,7 @@
                                 </mat-form-field>
                                 <div class="border bg-white pt-3 pb-3 clearfix" *ngIf="!_EditPersonalDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <span><i class="fa fa-calendar text-info"></i> Date of Birth</span>
+                                        <span><i class="fa fa-calendar text-info"></i> Date of Birth :</span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                         <span class="text-secondary">{{PersonalDetails.DateOfBirth}}</span>
@@ -76,7 +76,7 @@
                                 </mat-form-field>
                                 <div class="border bg-white pt-3 pb-3 clearfix" *ngIf="!_EditPersonalDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <span><i class="fa fa-user text-info"></i> Gender</span>
+                                        <span><i class="fa fa-user text-info"></i> Gender :</span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                         <span class="text-secondary">{{PersonalDetails.Gender}}</span>
@@ -92,7 +92,7 @@
                                 </mat-form-field>
                                 <div class="border bg-white pt-3 pb-3 clearfix" *ngIf="!_EditPersonalDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <span><i class="fa fa-user text-info"></i> Marital Status</span>
+                                        <span><i class="fa fa-user text-info"></i> Marital Status :</span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                         <span class="text-secondary">{{PersonalDetails.MaritalStatus}}</span>
@@ -107,7 +107,7 @@
                                 </mat-form-field>
                                 <div class="border bg-white pt-3 pb-3 clearfix" *ngIf="!_EditPersonalDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <span><i class="fa fa-mobile text-info"></i> Mobile No.</span>
+                                        <span><i class="fa fa-mobile text-info"></i> Mobile No :</span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                         <span class="text-secondary">{{PersonalDetails.MobileNo}}</span>
@@ -122,7 +122,7 @@
                                 </mat-form-field>
                                 <div class="border bg-white pt-3 pb-3 clearfix" *ngIf="!_EditPersonalDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <span><i class="fa fa-phone text-info"></i> Home Phone No.</span>
+                                        <span><i class="fa fa-phone text-info"></i> Home Phone No :</span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                         <span class="text-secondary">{{PersonalDetails.HomePhoneNo}}</span>
@@ -139,7 +139,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                        <h5 class="sub-heading text-uppercase font-weight-bold">Contact Information</h5>
+                        <h5 class="sub-heading text-uppercase font-weight-bold">Contact Information :</h5>
                         <div class="personal-details">
                             <div *ngFor="let _Address of CommunicationDetails">
                                 <div class="border bg-white pt-3 pb-3 clearfix" *ngIf="(_Address.AddressType==1 || _Address.AddressType==2) && !_EditPersonalDetails">
@@ -155,7 +155,7 @@
 
                                 <div class="border bg-white pt-3 pb-3 clearfix" *ngIf="!_EditPersonalDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <span><i class="fa fa-envelope text-info"></i> Email Id</span>
+                                        <span><i class="fa fa-envelope text-info"></i> Email Id :</span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                         <span class="text-primary">{{PersonalDetails.EmailID}}</span>
@@ -170,7 +170,7 @@
                                 </mat-form-field>
                                 <div class="border bg-white pt-3 pb-3 clearfix" *ngIf="!_EditPersonalDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <span><i class="fa fa-phone text-info"></i> Work Phone No.</span>
+                                        <span><i class="fa fa-phone text-info"></i> Work Phone No :</span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                         <span class="text-secondary">{{PersonalDetails.WorkPhoneNo}}</span>
