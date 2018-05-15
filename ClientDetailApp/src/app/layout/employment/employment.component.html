@@ -60,14 +60,28 @@
                                             <span class="text-secondary">{{EmploymentDetails.EmployementType}}</span>
                                         </div>
                                     </div>
-                                    <mat-form-field class="w-100" *ngIf="_EditDetails">
-                                        <input matInput placeholder="Source of Income" [(ngModel)]="EmploymentDetails.SourceOfIncome" name="SourceOfIncome" #SourceOfIncome="ngModel" required>
+                                    <div *ngIf="_EditDetails">
+                                        <mat-form-field class="w-100">
+                                            <mat-select placeholder="Source of Income" value="EmploymentDetails.EmployementType" [(ngModel)]="EmploymentDetails.EmployementType" name="SourceOfIncome" #SourceOfIncome="ngModel" required>
+                                                <mat-option *ngFor="let sourceOfIncome of _EmploymentType" [value]="sourceOfIncome.EmployementType">{{sourceOfIncome.EmployementType}}</mat-option>
+                                            </mat-select>
+                                            <div *ngIf="SourceOfIncome.invalid && (SourceOfIncome.dirty || SourceOfIncome.touched)" class="alert alert-danger">
+                                                <div *ngIf="SourceOfIncome.errors.required ">
+                                                    Please select Source Of Income.
+                                                </div>
+                                            </div>
+                                        </mat-form-field>
+                                    </div>
+
+
+                                    <!--<mat-form-field class="w-100" *ngIf="_EditDetails">
+                                        <input matInput placeholder="Source of Income" value="EmploymentDetails.SourceOfIncome" [(ngModel)]="EmploymentDetails.EmployementType" name="SourceOfIncome" #SourceOfIncome="ngModel" required>
                                         <div *ngIf="SourceOfIncome.invalid && (SourceOfIncome.dirty || SourceOfIncome.touched)" class="alert alert-danger">
                                             <div *ngIf="SourceOfIncome.errors.required ">
-                                                Please enter Employement Type.
+                                                Please enter Source of Income.
                                             </div>
                                         </div>
-                                    </mat-form-field>
+                                    </mat-form-field>-->
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                     <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
@@ -78,14 +92,18 @@
                                             <span class="text-secondary">{{EmploymentDetails.Profession}}</span>
                                         </div>
                                     </div>
-                                    <mat-form-field class="w-100" *ngIf="_EditDetails">
-                                        <input matInput placeholder="Profession" [(ngModel)]="EmploymentDetails.ProfessionTypeID" name="profession" #profession="ngModel" required>
-                                        <div *ngIf="profession.invalid && (profession.dirty || profession.touched)" class="alert alert-danger">
-                                            <div *ngIf="profession.errors.required">
-                                                Please enter profession.
+                                    <div *ngIf="_EditDetails">
+                                        <mat-form-field class="w-100">
+                                            <mat-select placeholder="Profession" value="EmploymentDetails.Profession" [(ngModel)]="EmploymentDetails.Profession" name="Profession" #Profession="ngModel" required>
+                                                <mat-option *ngFor="let profession of _ProfessionType" [value]="profession.Profession">{{profession.Profession}}</mat-option>
+                                            </mat-select>
+                                            <div *ngIf="Profession.invalid && (Profession.dirty || Profession.touched)" class="alert alert-danger">
+                                                <div *ngIf="Profession.errors.required ">
+                                                    Please select Profession.
+                                                </div>
                                             </div>
-                                        </div>
-                                    </mat-form-field>
+                                        </mat-form-field>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row mb-2">

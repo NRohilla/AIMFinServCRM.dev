@@ -85,7 +85,8 @@ export class HeaderComponent implements OnInit {
             //check if logged in or not
             if (!(this._LocalStorageService.get('LoggedInEmailId') != null && this._LocalStorageService.get('LoggedInEmailId') != undefined)) {
                 // no redirect to admin
-                window.location.href = environment.baseAdminURl + "login";
+                debugger;
+                window.location.href = environment.baseAdminURl;
             } else {
                 debugger;
                 this._ShowDetails = true;
@@ -97,14 +98,13 @@ export class HeaderComponent implements OnInit {
     }
 
     RequestSuccess(result) {
-        debugger;
-        
         var resultReturned = JSON.parse(result._body);
         this._LocalStorageService.set('LoggedInEmailId', this._UserName);
         this._LocalStorageService.set('LoggedInApplicantId', resultReturned._ApplicantID);
         this._LocalStorageService.set('ActivaitonCode', resultReturned.ActivaitonCode);
         this.UserInfo();
     }
+
 
     RequestError(err) { }
 
@@ -175,7 +175,7 @@ export class HeaderComponent implements OnInit {
     LoggedOffUserSuccess(res) {
         debugger;
         this._LocalStorageService.clearAll();
-        window.location.href = environment.baseAdminURl + "login";
+        window.location.href = environment.baseAdminURl;
     }
 
     LoggedOffUserError(res) { }

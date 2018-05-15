@@ -2142,6 +2142,7 @@ namespace FinServUnitOfWork.Repository
                         FetchQualificationDetails.PassingYear = _objApplicantQualificationDetails.PassingYear;
                         FetchQualificationDetails.CourseName = _objApplicantQualificationDetails.CourseName;
                         FetchQualificationDetails.tblApplicant.FirstName = _objApplicantQualificationDetails.FirstName;
+                        FetchQualificationDetails.tblMasterTypeOfQualification.Qualifications = _objApplicantQualificationDetails.Qualifications;
                         FetchQualificationDetails.ModifiedOn = DateTime.Now;
 
                         db.SaveChanges();
