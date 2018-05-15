@@ -126,22 +126,19 @@ export class PersonalComponent implements OnInit {
 
     GetAddError(res) { }
 
-    UpdateDetails() {        
+    UpdateDetails() {
+        debugger;
         this.PersonalDetails.ApplicantImage = this.PersonalDetails.ApplicantImage;
-        //this.PersonalDetails.FileName = this.PersonalDetails.FileName;
         this.PersonalDetails.FileType = this.PersonalDetails.FileType;
         this._ClientsService.UpdatePersonalDetailsByAppID(this.PersonalDetails).subscribe(res => this.UpdatePersonalDetailsByAppIDSuccess(res), res => this.UpdatePersonalDetailsByAppIDError(res));
     }
 
-    UpdatePersonalDetailsByAppIDSuccess(res) {        
+    UpdatePersonalDetailsByAppIDSuccess(res) {
         this._EditPersonalDetails = false;
-        //this._ClientsService.UpdateAddressesByAppID(this.PersonalDetails).subscribe(res => this.UpdateAddressesByAppIDSuccess(res), res => this.UpdateAddressesByAppIDError(res));
         this._ClientsService.GetPersonalDetailsByAppID(this.ApplicantID).subscribe(res => this.GetPersonalDetailsByAppIDSuccess(res), res => this.GetPersonalDetailsByAppIDError(res));
         window.location.reload();
-
-
-
     }
+
 
     UpdatePersonalDetailsByAppIDError(res) { }
 

@@ -12,6 +12,7 @@ import { ClientsService } from '../../services/app.clients.service';
 import 'rxjs/add/observable/of';
 import { MatTableModule, MatPaginator, MatSort } from '@angular/material';
 import { DataSource } from '@angular/cdk/table';
+import { MastersService } from '../../services/app.masters.service';
 declare var jquery: any;
 declare var $: any;
 
@@ -25,7 +26,7 @@ export interface Element {
 @Component({
     templateUrl: './qualifications.component.html',
     animations: [routerTransition()],
-    providers: [ClientsService]
+    providers: [ClientsService, MastersService]
 })
 
 export class QualificationsComponent implements OnInit {
@@ -36,6 +37,7 @@ export class QualificationsComponent implements OnInit {
     @ViewChild(MatSort) sort: MatSort;
 
     public displayedColumns = ['University Name', 'Course Name', 'TypeOfQualification', 'PassingYear'];
+    public _Qualifications = [];
     public dataSource: any;
     public QualificationDetails = {
         QualificationID: '',
@@ -48,7 +50,7 @@ export class QualificationsComponent implements OnInit {
         Qualifications: ''
     };
 
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, public dialog: MatDialog) {
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, private _MasterService: MastersService, public dialog: MatDialog) {
         this._ClientsService.GetMatQualificationDataByAppID(this._LocalStorageService.get("LoggedInApplicantId")).subscribe(res => this.GetMatQualificationDataByAppIDSuccess(res), res => this.GetMatQualificationDataByAppIDError(res))
     }
 
@@ -66,7 +68,7 @@ export class QualificationsComponent implements OnInit {
 
         this.ApplicantID = this._LocalStorageService.get("LoggedInApplicantId");
         this._ClientsService.GetQualificationDetailsByAppID(this.ApplicantID).subscribe(res => this.GetQualificationDetailsSuccess(res), res => this.GetQualificationDetailsError(res));
-
+        this.GetQualificationType();
         $(document).ready(function () {
             $(".content-section").parent().parent().parent().parent().parent().css("background", "#ffffff");
         });
@@ -94,7 +96,8 @@ export class QualificationsComponent implements OnInit {
     GetQualificationDetailsGridError(res) {
     }
 
-   UpdateDetails() {
+    UpdateDetails() {
+        debugger;
         this._ClientsService.UpdateQualificationDetailsByAppID(this.QualificationDetails).subscribe(res => this.UpdateQualificationDetailsByAppIDSuccess(res), res => this.UpdateQualificationDetailsByAppIDError(res));
     }
 
@@ -123,6 +126,16 @@ export class QualificationsComponent implements OnInit {
     }
 
     ViewQualificationDetailsByAppIDError(res) { }
+
+    GetQualificationType() {
+        this._MasterService.GetQualificationTypes().subscribe(res => this.GetQualificationTypesSuccess(res), res => this.GetQualificationTypesError(res));
+    }
+    GetQualificationTypesSuccess(res) {
+        debugger;
+        this._Qualifications = JSON.parse(res._body);
+    }
+    GetQualificationTypesError(res) { }
+
 
     EditDetails() {
         this._EditDetails = true;

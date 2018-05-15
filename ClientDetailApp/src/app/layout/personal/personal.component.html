@@ -7,10 +7,10 @@
                     <div *ngIf="!_EditPersonalDetails">
                         <img [src]="URL" />
                     </div>
-                    <div *ngIf="_EditPersonalDetails" >
+                    <div *ngIf="_EditPersonalDetails">
                         <img [src]="URL" />
                         <div class="col-md-7 col-sm-12 col-xs-12">
-                          <input type="file" id="applicantImage" accept="image/png, image/jpeg, image/gif, application/pdf, text/plain" (change)="OnSelectPersonalAttachmentFile($event)">
+                            <input type="file" id="applicantImage" accept="image/png, image/jpeg, image/gif, application/pdf, text/plain" (change)="OnSelectPersonalAttachmentFile($event)">
                             <!--<label>{{PersonalDetails.ApplicantImage}}</label>-->
                         </div>
                     </div>
@@ -21,6 +21,7 @@
                 <div class="edit-info text-center" (click)="EditPersonalDetails()" *ngIf="!_EditPersonalDetails">
                     <i class="fa fa-pencil"></i>
                 </div>
+
                 <div class="top-btn position-absolute" *ngIf="_EditPersonalDetails">
                     <input type="button" value="&#xf0c7; Save" (click)="UpdateDetails()" [disabled]="!Personalform.form.valid" class="btn btn-sm btn-success" />
                     <input type="button" value="&#xf00d; Cancel" (click)="CancelEditingPersonalDetails()" *ngIf="_EditPersonalDetails" class="btn btn-sm btn-secondary" />
@@ -53,10 +54,10 @@
                                     </div>
                                 </mat-form-field>
                                 <mat-form-field class="w-100" *ngIf="_EditPersonalDetails">
-                                    <input matInput placeholder="Middle Name" [(ngModel)]="PersonalDetails.MiddleName" name="MiddleName" >
+                                    <input matInput placeholder="Middle Name" [(ngModel)]="PersonalDetails.MiddleName" name="MiddleName">
                                 </mat-form-field>
                                 <mat-form-field class="w-100" *ngIf="_EditPersonalDetails">
-                                    <input matInput placeholder="Last Name" [(ngModel)]="PersonalDetails.LastName" name="LastName" >
+                                    <input matInput placeholder="Last Name" [(ngModel)]="PersonalDetails.LastName" name="LastName">
                                 </mat-form-field>
                                 <div class="border bg-white pt-3 pb-3 clearfix" *ngIf="!_EditPersonalDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
@@ -128,7 +129,7 @@
                                     </div>
                                 </div>
                                 <mat-form-field class="w-100" *ngIf="_EditPersonalDetails">
-                                    <input matInput placeholder="Mobile No." [(ngModel)]="PersonalDetails.HomePhoneNo" name="HomePhoneNo" #HomePhoneNo="ngModel" required>
+                                    <input matInput placeholder="Home Phone No." [(ngModel)]="PersonalDetails.HomePhoneNo" name="HomePhoneNo" #HomePhoneNo="ngModel" required>
                                     <div *ngIf="HomePhoneNo.invalid && (HomePhoneNo.dirty || HomePhoneNo.touched)" class="alert alert-danger">
                                         <div *ngIf="HomePhoneNo.errors.required"></div>
                                         Please enter Home Phone No.
@@ -141,16 +142,17 @@
                         <h5 class="sub-heading text-uppercase font-weight-bold">Contact Information</h5>
                         <div class="personal-details">
                             <div *ngFor="let _Address of CommunicationDetails">
-                                <div class="border bg-white pt-3 pb-3 clearfix" *ngIf="_Address.AddressType==1 || _Address.AddressType==2">
+                                <div class="border bg-white pt-3 pb-3 clearfix" *ngIf="(_Address.AddressType==1 || _Address.AddressType==2) && !_EditPersonalDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
-                                        <span><i class="fa fa-map-marker text-info"></i> {{_Address.Type}} : Address</span>
+                                        <span><i class="fa fa-map-marker text-info"></i> {{_Address.Type}} Address :</span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                         <span class="text-secondary">{{_Address.AddressLine1}} {{_Address.AddressLine2}}{{_Address.AddressLine3}}{{_Address.ZipCode}}{{_Address.Country}} </span>
                                     </div>
                                 </div>
                             </div>
-                            <div [ngClass]="{'bg-white p-3 mt-1':_EditPersonalDetails}">
+                            <div [ngClass]="{'bg-white p-3 mt-1':_EditPersonalDetails}" class="communication-edit">
+
                                 <div class="border bg-white pt-3 pb-3 clearfix" *ngIf="!_EditPersonalDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                         <span><i class="fa fa-envelope text-info"></i> Email Id</span>

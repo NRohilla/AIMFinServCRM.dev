@@ -12,6 +12,7 @@ import { ClientsService } from '../../services/app.clients.service';
 import 'rxjs/add/observable/of';
 import { MatTableModule, MatPaginator, MatSort } from '@angular/material';
 import { DataSource } from '@angular/cdk/table';
+import { MastersService } from '../../services/app.masters.service';
 declare var jquery: any;
 declare var $: any;
 
@@ -28,11 +29,13 @@ export interface Element {
 @Component({
     templateUrl: './employment.component.html',
     animations: [routerTransition()],
-    providers: [ClientsService]
+    providers: [ClientsService, MastersService]
 })
 export class EmployementComponent implements OnInit {
     public _EditDetails: boolean = false;
     public ApplicantID: string = '';
+    public _EmploymentType = [];
+    public _ProfessionType = [];
     items: any;
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -58,7 +61,7 @@ export class EmployementComponent implements OnInit {
     };
 
 
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, public dialog: MatDialog) { }
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _MasterService: MastersService, private _ClientsService: ClientsService, public dialog: MatDialog) { }
 
     ngOnInit() {
         this.EmploymentDetails = {
@@ -77,6 +80,8 @@ export class EmployementComponent implements OnInit {
             _ProfessionTypeDetail: {}
         };
         this.GetEmploymentDetails();
+        this.GetEmploymentTypes();
+        this.GetProfessionType();
         this._ClientsService.GetMatEmploymentDetailsByAppID(this.ApplicantID).subscribe(res => this.GetMatEmploymentDetailsByAppIDSuccess(res), res => this.GetMatEmploymentDetailsByAppIDError(res));
         $(document).ready(function () {
             $(".content-section").parent().parent().parent().parent().parent().css("background", "#ffffff");
@@ -127,6 +132,26 @@ export class EmployementComponent implements OnInit {
         this._EditDetails = false;
         this.EmploymentDetails = JSON.parse(res._body);
     }
+
+    GetEmploymentTypes() {
+        debugger;
+        this._MasterService.GetEmploymentTypes().subscribe(res => this.GetEmploymentTypesSuccess(res), res => this.GetEmploymentTypesError(res));
+    }
+    GetEmploymentTypesSuccess(res) {
+        debugger;
+        this._EmploymentType = JSON.parse(res._body);
+    }
+    GetEmploymentTypesError(res) { }
+
+    GetProfessionType() {
+        this._MasterService.GetProfessionTypes().subscribe(res => this.GetProfessionTypesSuccess(res), res => this.GetProfessionTypesError(res));
+    }
+    GetProfessionTypesSuccess(res) {
+        debugger;
+        this._ProfessionType = JSON.parse(res._body);
+    }
+    GetProfessionTypesError(res) { }
+
 
     ViewDetailsByAppIDError(res) { }
     CancelEditingDetails() { this._EditDetails = false; }

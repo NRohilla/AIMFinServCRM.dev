@@ -119,6 +119,11 @@
         display: block;
     }
 
+    .communication-edit h5 {
+        font-size: 18px;
+        color: #379ec5;
+    }
+
 .border-bottom {
     border-bottom: 1px solid #cccccc;
 }
