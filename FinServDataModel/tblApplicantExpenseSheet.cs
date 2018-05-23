@@ -20,7 +20,7 @@ namespace FinServDataModel
         public System.Guid ApplicantID { get; set; }
         public string Description { get; set; }
         public string Frequency { get; set; }
-        public Nullable<decimal> NetAmount { get; set; }
+        public decimal NetAmount { get; set; }
         public Nullable<System.Guid> CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }

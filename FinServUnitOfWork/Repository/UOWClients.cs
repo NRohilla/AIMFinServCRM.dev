@@ -1343,15 +1343,17 @@ namespace FinServUnitOfWork.Repository
         {
             try
             {
+                
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var Expensedata = (from tla in db.tblApplicantExpenseSheets
+                    var Expensedata = (from tla in db.tblApplicantExpenseSheets.AsEnumerable()
                                      join ta in db.tblApplicants on tla.ApplicantID equals ta.ApplicantID
                                      join tme in db.tblMasterExpenseTypes on tla.ExpenseTypeID equals tme.ExpenseTypeID
                                      join tlf in db.tblLoanApplicationForms on ta.LoanApplicationNo equals tlf.LoanApplicationNo
                                      where tlf.LoanApplicationNo == LoanAppNo
-                                       select new
+                                     group tla by new 
                                      {
+                                         _loanApplicationNo= tlf.LoanApplicationNo,
                                          _Description = tla.Description,
                                          _ExpenseID = tla.ExpenseID,
                                          _NetAmount = tla.NetAmount,
@@ -1359,19 +1361,30 @@ namespace FinServUnitOfWork.Repository
                                          _ExpenseTypeID = tla.ExpenseTypeID,
                                          _ExpenseType = tme.ExpenseType,
                                          _firstName = ta.FirstName,
-                                         _applicantID = ta.ApplicantID
-                                     }).ToList().Select(x => new ApplicantExpenseSheet()
+                                         _applicantID = ta.ApplicantID,
+
+                                     } into g 
+                                     select new ApplicantExpenseSheet()
                                      {
-                                         Description = x._Description,
-                                         ExpenseID = x._ExpenseID,
-                                         NetAmount = x._NetAmount,
-                                         Frequency = x._Frequency,
-                                         ExpenseTypeID = x._ExpenseTypeID,
-                                         ExpenseType = x._ExpenseType,
-                                         FirstName = x._firstName,
-                                         ApplicantID = x._applicantID
+                                         LoanApplicationNo = g.Key._loanApplicationNo,
+                                         Description = g.Key._Description,
+                                         ExpenseID = g.Key._ExpenseID,
+                                         NetAmount = g.Key._NetAmount,
+                                         Frequency = g.Key._Frequency,
+                                         ExpenseTypeID = g.Key._ExpenseTypeID,
+                                         ExpenseType = g.Key._ExpenseType,
+                                         FirstName = g.Key._firstName,
+                                         ApplicantID = g.Key._applicantID
+                                         //Total= g.Sum(x=>x.NetAmount)
                                      }).ToList();
-                    return Expensedata;
+
+                    var distinctlistApplicantid = Expensedata.Select(r => r.ApplicantID).Distinct();
+                    Array.ForEach(distinctlistApplicantid.ToArray(), delegate (Guid item) {
+                        decimal _total = Expensedata.Where(t => t.ApplicantID == item).Sum(m => m.NetAmount);
+                        Expensedata.Where(t => t.ApplicantID == item).All(r => { r.Total = _total; return true; });
+                    });
+                    
+                    return Expensedata.ToList();
                 }
             }
             catch (Exception ex)
@@ -1379,7 +1392,32 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
-        public ApplicantExpenseSheet GetExpenseSheetDetails(Guid ApplicantID)
+
+        public List<ApplicantExpenseSheet> GetExpenseNetAmount(Guid LoanAppNo)
+        {
+            using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+            {
+                var suma = (from tla in db.tblApplicantExpenseSheets
+                            join tl in db.tblApplicants on tla.ApplicantID equals tl.ApplicantID
+                            join tll in db.tblLoanApplicationForms on tl.LoanApplicationNo equals tll.LoanApplicationNo
+                            where tll.LoanApplicationNo == LoanAppNo
+                            group tla by new { tll.LoanApplicationNo } into g
+                            let sumaTotal = (g.Sum(n => n.NetAmount))
+                            select new
+                            {
+                                _total = sumaTotal,
+
+                            }).ToList().Select(x => new ApplicantExpenseSheet()
+                            {
+                                Total = x._total,
+                            }).ToList();
+
+                return suma;
+            }
+        }
+
+
+        public ApplicantExpenseSheet GetExpenseSheetDetails(Guid ExpenseID)
         {
             try
             {
@@ -1387,7 +1425,7 @@ namespace FinServUnitOfWork.Repository
 
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var GetExpenseDetails = db.tblApplicantExpenseSheets.Where(p => p.ApplicantID == ApplicantID).FirstOrDefault();
+                    var GetExpenseDetails = db.tblApplicantExpenseSheets.Where(p => p.ExpenseID == ExpenseID).FirstOrDefault();
                     if (GetExpenseDetails != null)
                     {
                         objtoReturn.ExpenseID = GetExpenseDetails.ExpenseID;
@@ -1413,7 +1451,7 @@ namespace FinServUnitOfWork.Repository
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var FetchExpenseDetails = db.tblApplicantExpenseSheets.Where(p => p.ApplicantID == _objApplicantExpenseSheet.ApplicantID).FirstOrDefault();
+                    var FetchExpenseDetails = db.tblApplicantExpenseSheets.Where(p => p.ExpenseID == _objApplicantExpenseSheet.ExpenseID).FirstOrDefault();
                     if (FetchExpenseDetails != null)
                     {
                         FetchExpenseDetails.ExpenseID = _objApplicantExpenseSheet.ExpenseID;
@@ -1438,7 +1476,7 @@ namespace FinServUnitOfWork.Repository
 
         #endregion AIMFINSERV application code
 
-        #region Client Dashboard Application code
+        #region Client Dashboard Application code --Added by Neha Bambah
         #region Personal Module
         public Applicants GetPersonalDetailsByAppID(Guid ApplicantID)
         {

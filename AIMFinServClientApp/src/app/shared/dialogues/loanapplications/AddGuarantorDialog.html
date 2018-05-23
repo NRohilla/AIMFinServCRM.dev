@@ -3,7 +3,7 @@
         <h3 class="text-uppercase sub-head">Manage Guarantor</h3>
         <div class="section_box pl-0 pb-0 pr-0 mb-4 mt-3 clearfix">
             <form name="form" #AddGuarantorform="ngForm" novalidate>
-                <div class="p-4">
+                <div class="p-4" [ngClass]="{'update_details':_ValidationClass}">
                     <div class="row m-0">
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
@@ -28,7 +28,7 @@
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
                                         <input matInput placeholder="First Name" name="FirstName" [(ngModel)]="_AddGuarantorDetails.FirstName" class="w-100" #FirstName required>
-                                        <div *ngIf="FirstName.invalid && (FirstName.dirty || FirstName.touched)" class="alert alert-danger">
+                                        <div *ngIf="FirstName.invalid && (FirstName.dirty || FirstName.touched)" class="alert alert-danger" >
                                             <div *ngIf="FirstName.errors.required ">
                                                 Please enter First Name.
                                             </div>
@@ -134,7 +134,7 @@
                                     <mat-radio-group class="w-100" [(ngModel)]="_AddGuarantorDetails.NZResidents" name="NZResidents" #NZResidents="ngModel" required>
                                         <mat-radio-button class="example-radio-button" value="1">Yes</mat-radio-button>
                                         <mat-radio-button class="example-radio-button" value="0">No</mat-radio-button>
-                                        <div *ngIf="NZResidents.invalid && (NZResidents.dirty || NZResidents.touched)" class="alert alert-danger">
+                                        <div *ngIf="NZResidents.invalid && (NZResidents.dirty || NZResidents.touched) &&  _AddGuarantor" [ngClass]="{'update_details':_ValidationClass}" class="alert alert-danger">
                                             <div *ngIf="NZResidents.errors.required ">
                                                 Please select NZResidents.
                                             </div>

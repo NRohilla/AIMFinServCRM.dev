@@ -162,8 +162,12 @@ export class ClientsService {
     GetAddedExpenseSheetGrid(LoanAppNo) {
         return this._http.get(this.baseurl + "Clients/GetAddedExpenseSheetGrid?LoanAppNo=" + LoanAppNo, this.options);
     }
-    GetExpenseSheetDetails(ApplicantID) {
-        return this._http.get(this.baseurl + "Clients/GetExpenseSheetDetails?ApplicantID=" + ApplicantID, this.options);
+    GetExpenseNetAmount(LoanAppNo) {
+        return this._http.get(this.baseurl + "Clients/GetExpenseNetAmount?LoanAppNo=" + LoanAppNo, this.options);
+    }
+    GetExpenseSheetDetails(ExpenseID) {
+        debugger;
+        return this._http.get(this.baseurl + "Clients/GetExpenseSheetDetails?ExpenseID=" + ExpenseID, this.options);
     }
     UpdateExpenseSheetDetails(ApplicantExpenseSheet) {
         return this._http.post(this.baseurl + "Clients/UpdateExpenseSheetDetails", ApplicantExpenseSheet, this.options);

@@ -71,7 +71,7 @@
     <Property Name="ApplicantID" Type="uniqueidentifier" Nullable="false" />
     <Property Name="Description" Type="nvarchar" MaxLength="50" />
     <Property Name="Frequency" Type="nvarchar" MaxLength="50" />
-    <Property Name="NetAmount" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="NetAmount" Type="numeric" Precision="18" Scale="2" Nullable="false" />
     <Property Name="CreatedBy" Type="uniqueidentifier" />
     <Property Name="CreatedOn" Type="datetime" />
     <Property Name="ModifiedBy" Type="uniqueidentifier" />

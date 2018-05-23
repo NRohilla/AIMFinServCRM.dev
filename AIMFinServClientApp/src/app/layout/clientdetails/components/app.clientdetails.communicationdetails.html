@@ -1,5 +1,5 @@
 
-<div class="application-details">
+<div class="application-details client-details">
     <div>
         <kendo-grid [kendoGridBinding]="_ClientCommunicationDetails"
                     [pageSize]="5"
@@ -27,16 +27,14 @@
     </div>
 </div>
 
-<div class="w-100 float-left">
+<div class="w-100 float-left mt-3">
     <form name="form" #AddClientCommunicationform="ngForm" novalidate>
             <div class="section_box pb-0 pl-0 pr-0">
-                <div class="box_title">{{_Operationtitle}} Communication Details</div>
                 <div class="tab-content clearfix ml-0">
-
                     <div class="w-100 float-left">
+                        <h3 class="sub-head text-center">{{_Operationtitle}} Communication Details</h3>
                         <div class="tab-pane pt-3">
                             <div class="row m-0">
-
                                 <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
                                     <div class="field_set">
                                         <div class="field_info w-100">

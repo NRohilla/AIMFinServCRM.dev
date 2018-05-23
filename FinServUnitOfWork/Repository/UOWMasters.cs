@@ -365,6 +365,7 @@ namespace FinServUnitOfWork.Repository
                             .Where(p => p.LoanApplicationNo == appGuid)
                             select new Applicants()
                             {
+                                AutoID = ObjAplcnts.AutoID,
                                 ApplicantID = ObjAplcnts.ApplicantID,
                                 FirstName = ObjAplcnts.FirstName
                             })

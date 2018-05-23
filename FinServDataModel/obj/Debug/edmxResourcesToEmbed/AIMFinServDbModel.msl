@@ -65,23 +65,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tblApplicantExpenseSheets">
-      <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicantExpenseSheet">
-        <MappingFragment StoreEntitySet="tblApplicantExpenseSheet">
-          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
-          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
-          <ScalarProperty Name="ExpenseTypeID" ColumnName="ExpenseTypeID" />
-          <ScalarProperty Name="ExpenseID" ColumnName="ExpenseID" />
-          <ScalarProperty Name="AutoID" ColumnName="AutoID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tblApplicantQualificationDetails">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicantQualificationDetail">
         <MappingFragment StoreEntitySet="tblApplicantQualificationDetails">
@@ -533,6 +516,23 @@
           <ScalarProperty Name="LoginID" ColumnName="LoginID" />
           <ScalarProperty Name="UserGuid" ColumnName="UserGuid" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblApplicantExpenseSheets">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicantExpenseSheet">
+        <MappingFragment StoreEntitySet="tblApplicantExpenseSheet">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
+          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+          <ScalarProperty Name="ExpenseTypeID" ColumnName="ExpenseTypeID" />
+          <ScalarProperty Name="ExpenseID" ColumnName="ExpenseID" />
+          <ScalarProperty Name="AutoID" ColumnName="AutoID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
