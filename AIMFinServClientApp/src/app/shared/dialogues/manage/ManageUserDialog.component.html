@@ -1,0 +1,48 @@
+<div class="application-details">
+        <h3 class="text-uppercase sub-head"> Change Password </h3>
+        <div class="section_box pl-0 pb-0 pr-0 mb-4 mt-3 clearfix">
+            <div class="row m-0">
+                <form class="w-100" name="form" #AddChangePasswordDialogeform="ngForm" novalidate>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                        <mat-form-field>
+                            <input matInput placeholder="Current Password" type="password" [(ngModel)]="_UserPassword.currentPassword" name="currentPassword" #currentPassword="ngModel" required>
+                        </mat-form-field>
+                        <div *ngIf="currentPassword.invalid && (currentPassword.dirty || currentPassword.touched)" class="alert alert-danger">
+                            <div *ngIf="currentPassword.errors.required">
+                                Please enter the Current Password.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                        <mat-form-field>
+                            <input matInput placeholder="Change Password" type="password" [(ngModel)]="_UserPassword.newPassword" name="newPassword" #newPassword="ngModel" required>
+                        </mat-form-field>
+                        <div *ngIf="newPassword.invalid && (newPassword.dirty || newPassword.touched)" class="alert alert-danger">
+                            <div *ngIf="newPassword.errors.required">
+                                Please enter the New Password.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                        <mat-form-field>
+                            <input matInput placeholder="Confirm Password" type="password" [(ngModel)]="_UserPassword.confirmPassword" name="confirmPassword" #confirmPassword="ngModel" required>
+                        </mat-form-field>
+                        <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" class="alert alert-danger">
+                            <div *ngIf="confirmPassword.errors.required">
+                                Please enter the Confirm Password.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 float-left text-danger text-center" *ngIf="isErrorMsg">
+                        {{errorMsg}}
+                    </div>
+                </form>
+            </div>
+            <div class="row m-0">
+                <div class="w-100 btn-bottom text-right pl-4 pr-4">
+                    <input type="button" class="btn btn-sm btn-success" value="&#xf0c7; Save" (click)="savePassword(); AddChangePasswordDialogeform.reset()" [disabled]="!AddChangePasswordDialogeform.form.valid"/>
+                    <input type="button" class="btn btn-sm btn-secondary" value="&#xf00d; Cancel" (click)="onNoClick();AddChangePasswordDialogeform.reset()"/>
+                </div>
+            </div>
+        </div>
+</div>

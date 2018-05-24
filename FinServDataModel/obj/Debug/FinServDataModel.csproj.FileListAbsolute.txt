@@ -47,3 +47,15 @@ D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServDataModel\bin\Debug\E
 D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServDataModel\obj\Debug\FinServDataModel.csproj.CoreCompileInputs.cache
 D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServDataModel\obj\Debug\FinServDataModel.dll
 D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServDataModel\obj\Debug\FinServDataModel.pdb
+D:\Client Project\Nick_Alcock\FinServDataModel\bin\Debug\FinServDataModel.dll.config
+D:\Client Project\Nick_Alcock\FinServDataModel\bin\Debug\FinServDataModel.dll
+D:\Client Project\Nick_Alcock\FinServDataModel\bin\Debug\FinServDataModel.pdb
+D:\Client Project\Nick_Alcock\FinServDataModel\bin\Debug\EntityFramework.dll
+D:\Client Project\Nick_Alcock\FinServDataModel\bin\Debug\EntityFramework.SqlServer.dll
+D:\Client Project\Nick_Alcock\FinServDataModel\bin\Debug\EntityFramework.xml
+D:\Client Project\Nick_Alcock\FinServDataModel\bin\Debug\EntityFramework.SqlServer.xml
+D:\Client Project\Nick_Alcock\FinServDataModel\obj\Debug\FinServDataModel.csprojResolveAssemblyReference.cache
+D:\Client Project\Nick_Alcock\FinServDataModel\obj\Debug\FinServDataModel.csproj.CoreCompileInputs.cache
+D:\Client Project\Nick_Alcock\FinServDataModel\obj\Debug\FinServDataModel.csproj.CopyComplete
+D:\Client Project\Nick_Alcock\FinServDataModel\obj\Debug\FinServDataModel.dll
+D:\Client Project\Nick_Alcock\FinServDataModel\obj\Debug\FinServDataModel.pdb

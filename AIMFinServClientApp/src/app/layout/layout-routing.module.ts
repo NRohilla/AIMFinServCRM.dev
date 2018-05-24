@@ -27,7 +27,8 @@ const routes: Routes = [
             { path: 'master-purposeofloan', loadChildren: './masters/purposeofloan/purposeofloan.module#PurposeofloanModule' },
             { path: 'master-qualification', loadChildren: './masters/qualification/qualification.module#QualificationModule' },
             { path: 'master-relationship', loadChildren: './masters/relationship/relationship.module#RelationshipModule' },
-            { path: 'master-salutation', loadChildren: './masters/salutation/salutation.module#SalutationModule' },            
+            { path: 'master-salutation', loadChildren: './masters/salutation/salutation.module#SalutationModule' },
+            { path: 'master-manageuser', loadChildren: './masters/manageuser/manageuser.module#ManageuserModule' },           
 
             { path: 'components', loadChildren: './bs-component/bs-component.module#BsComponentModule' },
             { path: 'bs-element', loadChildren: './bs-element/bs-element.module#BsElementModule' },

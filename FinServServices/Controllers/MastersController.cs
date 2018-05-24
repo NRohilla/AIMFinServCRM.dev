@@ -147,6 +147,28 @@ namespace FinServServices.Controllers
             return Repository.GetAddressTypes();
         }
 
+        [HttpGet]
+        [Route("GetAllUser")]
+        public List<UserDetails> GetAllUser()
+        {
+            return Repository.GetAllUser();
+        }
+
+
+        [HttpGet]
+        [Route("GetRole")]
+        public List<Role> GetRoleType()
+        {
+            return Repository.GetRoleType();
+        }
+
+        [HttpGet]
+        [Route("GetUpdatedPassword")]
+        public List<UserDetails> GetUpdatedPassword(Guid UserGuid)
+        {
+            return Repository.GetUpdatedPassword(UserGuid);
+        }
+
         #endregion
 
 
@@ -184,6 +206,13 @@ namespace FinServServices.Controllers
         public bool SwitchLiabilityEntityStatus(int ID)
         {
             return Repository.SwitchLiabilityEntityStatus(Convert.ToInt32(ID));
+        }
+
+        [HttpGet]
+        [Route("SwitchManageUserEntityStatus")]
+        public bool SwitchManageUserEntityStatus(Guid UserGuid)
+        {
+            return Repository.SwitchManageUserEntityStatus(UserGuid);
         }
 
         [HttpGet]
@@ -234,6 +263,13 @@ namespace FinServServices.Controllers
         public bool SwitchRelationshipEntityStatus(string ID)
         {
             return Repository.SwitchRelationshipEntityStatus(Convert.ToInt32(ID));
+        }
+
+        [HttpGet]
+        [Route("GetUserDetails")]
+        public Applicants GetUserDetails(Guid ApplicantID)
+        {
+            return Repository.GetUserDetails(ApplicantID);
         }
 
         [HttpGet]
@@ -355,6 +391,13 @@ namespace FinServServices.Controllers
         }
 
         [HttpPost]
+        [Route("AddUser")]
+        public bool AddUser(UserDetails _objManageUser)
+        {
+            return Repository.AddUser(_objManageUser);
+        }
+
+        [HttpPost]
         [Route("AddEmploymentEntity")]
         public bool AddEmploymentEntity(EmploymentTypeMaster EmploymentTypeMaster)
         {
@@ -429,6 +472,13 @@ namespace FinServServices.Controllers
         public bool AddSalutationEntity(SalutationTypeMaster SalutationTypeMaster)
         {
             return Repository.AddSalutationEntity(SalutationTypeMaster);
+        }
+
+        [HttpPost]
+        [Route("UpdatePassword")]
+        public bool UpdatePassword(UserDetails UserDetails)
+        {
+            return Repository.UpdatePassword(UserDetails);
         }
 
         #endregion
