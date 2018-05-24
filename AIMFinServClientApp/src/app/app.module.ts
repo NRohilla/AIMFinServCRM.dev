@@ -33,8 +33,7 @@ import { MasterPersonalDetailsComponent } from './layout/LoanMaster/components/a
 import { ClientSummaryDialog } from './shared/dialogues/clients/ClientSummaryDialog';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
-
-
+import { ManageUserDialog } from './shared/dialogues/manage/ManageUserDialog';
 
 //this is test
 import {MaterialModule} from './shared/app.material';
@@ -86,10 +85,12 @@ export function createTranslateLoader(http: HttpClient) {
         MasterEmployementComponent,
         MasterQualificationDetailsComponent,
         MasterPersonalDetailsComponent,
-        ClientSummaryDialog
+        ClientSummaryDialog,
+        ManageUserDialog
+        
     ],
     providers: [AuthGuard],
     bootstrap: [AppComponent],
-    entryComponents: [LoanApplicationDetailDialog, ClientDetailsDialog, AddGuarantorDialog, ManageAssetAndLiabilityDialog, ManageApplicantDialog, ManageExpenseSheetDialog, MasterEmployementComponent, MasterQualificationDetailsComponent, MasterPersonalDetailsComponent, ClientSummaryDialog]
+    entryComponents: [LoanApplicationDetailDialog, ClientDetailsDialog, AddGuarantorDialog, ManageAssetAndLiabilityDialog, ManageApplicantDialog, ManageExpenseSheetDialog, MasterEmployementComponent, MasterQualificationDetailsComponent, MasterPersonalDetailsComponent, ClientSummaryDialog, ManageUserDialog]
 })
 export class AppModule { }

@@ -400,6 +400,28 @@ namespace FinServUnitOfWork.Repository
             }
         }
 
+        public List<UserDetails> GetUpdatedPassword(Guid UserGuid)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    return (from UpdtPasswrdObj in db.tblUsers
+                            .Where(p => p.UserGuid == UserGuid)
+                            select new UserDetails()
+                            {
+                                UserGuid = UpdtPasswrdObj.UserGuid,
+                                Password = UpdtPasswrdObj.Password
+                            })
+                            .ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         public List<AddressTypeMaster> GetAddressTypes()
         {
             try
@@ -413,6 +435,34 @@ namespace FinServUnitOfWork.Repository
                                 Type = ObjAddressTyp.Type
                             })
                             .ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public Applicants GetUserDetails(Guid ApplicantID)
+        {
+            try
+            {
+                Applicants objApplicants = new Applicants();
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetApplicantDetails = db.tblApplicants.Where(p =>  p.ApplicantID == ApplicantID).FirstOrDefault();
+                    if (GetApplicantDetails != null)
+                    {
+                        objApplicants.ApplicantID = GetApplicantDetails.ApplicantID;
+                        objApplicants.ApplicantTypeID = GetApplicantDetails.ApplicantTypeID;
+                        objApplicants.AutoID = GetApplicantDetails.AutoID;
+                        objApplicants.EmailID = GetApplicantDetails.EmailID;
+                        objApplicants.FirstName = GetApplicantDetails.FirstName;
+                        objApplicants.LastName = GetApplicantDetails.LastName;
+                        objApplicants.MobileNo = GetApplicantDetails.MobileNo;
+                       
+                    }
+                    return objApplicants;
                 }
             }
             catch (Exception ex)
@@ -731,6 +781,28 @@ namespace FinServUnitOfWork.Repository
                     return true;
                 else
                     return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool SwitchManageUserEntityStatus(Guid UserGuid)
+        {
+         
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetEmploymentEntity = db.tblUsers.Where(p => p.UserGuid == UserGuid).FirstOrDefault();
+                    if (GetEmploymentEntity != null)
+                    {
+                        GetEmploymentEntity.IsActive = !GetEmploymentEntity.IsActive;
+                        db.SaveChanges();
+                    }
+                }
+                return true;
             }
             catch (Exception e)
             {
@@ -1363,5 +1435,110 @@ namespace FinServUnitOfWork.Repository
             }
         }
         #endregion
+
+        public List<UserDetails> GetAllUser()
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    return (from MasterUser in db.tblUsers
+                            select new UserDetails()
+                            {
+                                UserGuid = MasterUser.UserGuid,
+                                FirstName = MasterUser.FirstName,
+                                LastName = MasterUser.LastName,
+                                DisplayName = MasterUser.DisplayName,
+                                Role = MasterUser.Role,
+                                EmailID = MasterUser.Email,
+                                Mobile = MasterUser.Mobile,
+                                Password = MasterUser.Password,
+                                LoginID = MasterUser.LoginID,
+                                IsActive = MasterUser.IsActive
+
+                            }).ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public List<Role> GetRoleType()
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    return (from UserRoleType in db.tblRoles
+                            select new Role()
+                            {
+                                RoleId = UserRoleType.RoleId,
+                                Name = UserRoleType.Name,
+                                Description = UserRoleType.Description,
+
+                            }).ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public bool AddUser(UserDetails _objUserDetails)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+
+                        tblUser _objDetails = new tblUser();
+                        _objDetails.UserGuid = Guid.NewGuid();
+                        _objDetails.LoginID = _objUserDetails.LoginID;
+                        _objDetails.FirstName = _objUserDetails.FirstName;
+                        _objDetails.LastName = _objUserDetails.LastName;
+                        _objDetails.DisplayName = _objUserDetails.DisplayName;
+                        _objDetails.Email = _objUserDetails.EmailID;
+                        _objDetails.Password = _objUserDetails.Password;
+                       _objDetails.Mobile = _objUserDetails.Mobile;
+                       _objDetails.Role = _objUserDetails.Role;
+                       _objDetails.CreatedBy = _objUserDetails.CreatedBy;
+                       _objDetails.CreatedOn = _objUserDetails.CreatedOn;
+                       _objDetails.IsActive = _objUserDetails.IsActive;
+                       _objDetails.ModifiedBy = _objUserDetails.ModifiedBy;
+                       _objDetails.ModifiedOn = _objUserDetails.ModifiedOn;
+                        db.tblUsers.Add(_objDetails);
+                        db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool UpdatePassword(UserDetails masterUser)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var GetPasswordEntity = db.tblUsers.Where(p => p.UserGuid == masterUser.UserGuid).FirstOrDefault();
+                    if (GetPasswordEntity != null)
+                    {
+                        GetPasswordEntity.Password = masterUser.Password;
+                        db.SaveChanges();
+                    }
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

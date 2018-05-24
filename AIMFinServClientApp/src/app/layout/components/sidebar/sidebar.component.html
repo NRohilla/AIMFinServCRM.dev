@@ -81,9 +81,14 @@
                         </li>
                         <li>
                             <a [routerLink]="['/master-salutation']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                                <i class="fa fa-lightbulb-o"></i>&nbsp;{{ 'Salutation' | translate }}
+                                <i class="fa fa-hand-paper-o"></i>&nbsp;{{ 'Salutation' | translate }}
                             </a>
-                        </li>                        
+                        </li>
+                        <li>
+                            <a [routerLink]="['/master-manageuser']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                                <i class="fa fa-user"></i>&nbsp;{{ 'Manage User' | translate }}
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>
