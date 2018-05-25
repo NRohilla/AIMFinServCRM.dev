@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                        <div class="field_set">
+                        <div class="field_set">v
                             <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Details</label>
                             <p *ngIf="_ViewDetails">{{_AssetDetailsObj.Description}}</p>
                             <div class="field_info w-100">
@@ -103,7 +103,7 @@
     </div>
     <div>
         <kendo-grid [kendoGridBinding]="gridData"
-                    [pageSize]="10"
+                    [pageSize]="2"
                     [sortable]="true"
                     [pageable]="true"
                     [scrollable]="true"
@@ -128,7 +128,7 @@
             </kendo-grid-column>
             <kendo-grid-command-column>
                 <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                    <button class="btn btn-lg btn-link p-0" type="button" (click)="ViewDetails(dataItem.ApplicantID)">View Details</button>
+                    <button class="btn btn-lg btn-link p-0" type="button" (click)="ViewDetails(dataItem.AssetID)">View Details</button>
                 </ng-template>
             </kendo-grid-command-column>
         </kendo-grid>

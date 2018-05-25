@@ -20,8 +20,6 @@ import { AppBaseComponent } from '../../app.basecomponent';
 })
 export class AddLiabilityComponent implements OnInit {
 
-
-    
     @ViewChild("AddLiabilityform")
     AddLiabilityform: NgForm;
 
@@ -33,6 +31,7 @@ export class AddLiabilityComponent implements OnInit {
     public _AddLiability: boolean = true;
     public _EditViewDetails: boolean = false;
     public LoanApplicationNo: string = '';
+    public _ValidationClass: boolean = false;
 
     public _LiabilityDetailsObj = {
         AutoID: '',
@@ -63,16 +62,28 @@ export class AddLiabilityComponent implements OnInit {
         this._ClientsService.GetAddedLiabilityGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedLiabilityGridSuccess(res), res => this.GetAddedLiabilityGridError(res));
         this.GetLiabilityTypes();
     }
-    //Start - Add Liability
-    AddLiability() {
-        if (this._LocalStorageService.get("ApplicantID") != undefined) {
-            this._LiabilityDetailsObj.ApplicantID = this._LocalStorageService.get("ApplicantID");
-            this._ClientsService.AddLiability(this._LiabilityDetailsObj).subscribe(res => this.AddLiabilitySuccess(res), res => this.AddLiabilityError(res));
-        }
-    }
-    AddLiabilitySuccess(res) {
-        this._LiabilityDetailsObj = JSON.parse(res._body);
+
+    //Start- Grid Liability
+    GetAddedLiabilityGrid()
+    {
         this._ClientsService.GetAddedLiabilityGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedLiabilityGridSuccess(res), res => this.GetAddedLiabilityGridError(res));
+    }
+    GetAddedLiabilityGridSuccess(res)
+    {
+        this.gridData = JSON.parse(res._body);
+        //this.AddLiabilityform.reset();
+    }
+    GetAddedLiabilityGridError(res) { }
+    //End - Liability Grid
+
+    //Start - Add Liability
+    AddLiability()
+    {
+            this._ClientsService.AddLiability(this._LiabilityDetailsObj).subscribe(res => this.AddLiabilitySuccess(res), res => this.AddLiabilityError(res));
+    }
+    AddLiabilitySuccess(res)
+    {
+        this._LiabilityDetailsObj = JSON.parse(res._body);
         this._LiabilityDetailsObj = {
             AutoID: '',
             LiabilityID: '',
@@ -87,27 +98,18 @@ export class AddLiabilityComponent implements OnInit {
             _ApplicationID: {},
             _LiabilityID: {}
         }
+        this.GetAddedLiabilityGrid();
+        this._ValidationClass = true;
     }
     AddLiabilityError(res) { }
     // End - Liability
 
-    //Start- Grid Liability
-    GetAddedLiabilityGrid() {
-            this._ClientsService.GetAddedLiabilityGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedLiabilityGridSuccess(res), res => this.GetAddedLiabilityGridError(res));
-    }
-    GetAddedLiabilityGridSuccess(res) {
-        this.gridData = JSON.parse(res._body);
-        //this.AddLiabilityform.reset();
-    }
-    GetAddedLiabilityGridError(res) { }
-    //End - Liability Grid
-
-     //Start- View Details 
+    //Start- View Details 
     ViewDetails(LiabilityID) {
         this._ViewDetails = true;
         this._AddLiability = false;
         this._EditViewDetails = false;
-        this._LocalStorageService.set("LiabilityIDNoViewed", LiabilityID);
+       // this._LocalStorageService.set("LiabilityIDNoViewed", LiabilityID);
         this._ClientsService.GetLiabilityDetails(LiabilityID).subscribe(res => this.ViewDetailsSuccess(res), res => this.ViewDetailsError(res));
     }
     ViewDetailsSuccess(res) {
@@ -117,6 +119,10 @@ export class AddLiabilityComponent implements OnInit {
     //End - View Details
 
     // Start - Update Details
+    EditDetails() {
+        this._ViewDetails = false;
+        this._EditViewDetails = true;
+    }
     UpdateLiabilityDetails() {
         this._ClientsService.UpdateLiabilityDetails(this._LiabilityDetailsObj).subscribe(res => this.UpdateLiabilityDetailsSuccess(res), res => this.UpdateLiabilityDetailsError(res));
     }
@@ -128,14 +134,7 @@ export class AddLiabilityComponent implements OnInit {
         this.GetAddedLiabilityGrid();
     }
     UpdateLiabilityDetailsError(res) { }
-
-    EditDetails() {
-        this._ViewDetails = false;
-        this._EditViewDetails = true;
-    }
     //End - Update Details
-
-   
 
     GetApplicantNames(LoanApplicationNo) {
         debugger;

@@ -56,23 +56,34 @@ export class AddAssetComponent extends AppBaseComponent implements OnInit{
     {
         if (this._LocalStorageService.get("LoanApplicationNo") != undefined)
         {
+            debugger;
             this.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNo");
             this.GetApplicantNames(this.LoanApplicationNo);
             this._ClientsService.GetAddedAssetGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedAssetGridSuccess(res), res => this.GetAddedAssetGridError(res));
         }
         this.GetAssetTypes();
-        this.GetApplicants();
     }
+    //start - To get Asset Grid 
+    GetAddedAssetGrid()
+    {
+            this._ClientsService.GetAddedAssetGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedAssetGridSuccess(res), res => this.GetAddedAssetGridError(res));
+    }
+    GetAddedAssetGridSuccess(res) {
+        this.gridData = JSON.parse(res._body);
+       this.AddAssetform.reset();
+       this._ValidationClass = true;
+    }
+    GetAddedAssetGridError(res) { }
+    //End - To get asset grid
 
+    //Start To add asset 
     AddAsset()
     {
-        if (this._LocalStorageService.get("ApplicantID") != undefined) {
-            this._AssetDetailsObj.ApplicantID = this._LocalStorageService.get("ApplicantID");
             this._ClientsService.AddAsset(this._AssetDetailsObj).subscribe(res => this.AddAssetSuccess(res), res => this.AddAssetError(res));
-        }
     }
     AddAssetSuccess(res)
     {
+        debugger;
         this._AssetDetailsObj = JSON.parse(res._body);
         this._AssetDetailsObj = {
             AutoID: '',
@@ -89,26 +100,12 @@ export class AddAssetComponent extends AppBaseComponent implements OnInit{
             _AssetTypeID: {}
         }
         this.GetAddedAssetGrid();
-        this._ValidationClass = true;
+        //this._ValidationClass = true;
     }
     AddAssetError(res) { }
-
-    GetAddedAssetGrid()
-    {
-        debugger;
-        if (this._LocalStorageService.get("LoanApplicationNo") != undefined) {
-            this._AssetDetailsObj.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNo");
-            this._ClientsService.GetAddedAssetGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedAssetGridSuccess(res), res => this.GetAddedAssetGridError(res));
-        }
-    }
-    GetAddedAssetGridSuccess(res)
-    {
-        this.gridData = JSON.parse(res._body);
-        this.AddAssetform.reset();
-        this._ValidationClass = true;
-    }
-    GetAddedAssetGridError(res) { }
-
+    //End To add asset
+ 
+    //Start Drop Down code for asset details
     GetApplicantNames(LoanApplicationNo)
     {
         debugger;
@@ -118,7 +115,6 @@ export class AddAssetComponent extends AppBaseComponent implements OnInit{
         debugger;
         this._ObjApplicantNames = JSON.parse(res._body);
     }
- 
     GetAssetTypes()
     {
         this._MasterService.GetAssetsTypes().subscribe(res => this.GetAssetsTypeSuccess(res), error => this.errorMessage = <any>error);
@@ -127,29 +123,29 @@ export class AddAssetComponent extends AppBaseComponent implements OnInit{
     {
         this._objAssetTypeID = JSON.parse(res._body);
     }
-    GetApplicants()
-    {
-        this._MasterService.GetApplicants().subscribe(res => this.GetApplicantsNameSuccess(res), error => this.errorMessage = <any>error);
-    }
-    GetApplicantsNameSuccess(res)
-    {
-        this._ObjApplicantNames = JSON.parse(res._body);
-    }
+    //End - Drop Down Code
 
-    ViewDetails(ApplicantID)
+    //Start - to view details 
+    ViewDetails(AssetID)
     {
+        debugger;
         this._ViewDetails = true;
         this._AddAsset = false;
         this._EditViewDetails = false;
-        this._LocalStorageService.set("ApplicantID", ApplicantID);
-        this._ClientsService.GetAssetDetails(ApplicantID).subscribe(res => this.ViewDetailsSuccess(res), res => this.ViewDetailsError(res));
+        this._ClientsService.GetAssetDetails(AssetID).subscribe(res => this.ViewDetailsSuccess(res), res => this.ViewDetailsError(res));
     }
     ViewDetailsSuccess(res)
     {
         this._AssetDetailsObj = JSON.parse(res._body);
     }
     ViewDetailsError(res) { }
+    //end - to view details
 
+    //Start- to update details
+    EditDetails() {
+        this._ViewDetails = false;
+        this._EditViewDetails = true;
+    }
     UpdateAssetDetails()
     {
         this._ClientsService.UpdateAssetDetails(this._AssetDetailsObj).subscribe(res => this.UpdateAssetDetailsSuccess(res), res => this.UpdateAssetDetailsError(res));
@@ -164,13 +160,8 @@ export class AddAssetComponent extends AppBaseComponent implements OnInit{
         this._ValidationClass = true;
     }
     UpdateAssetDetailsError(res) { }
+    //End - to update details
 
-    EditDetails()
-    {
-        this._ViewDetails = false;
-        this._EditViewDetails = true;
-    }
- 
     onNoClick(): void
     {
         this.dialogRef.close();

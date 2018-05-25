@@ -12,11 +12,9 @@ export class ManageAssetAndLiabilityDialog {
     @ViewChild(AddLiabilityComponent)
     private _AddLiabilityComponent: AddLiabilityComponent;
     
-    private _ApplicantID: string = '';
     constructor(
         public dialogRef: MatDialogRef<ManageAssetAndLiabilityDialog>,
         @Inject(MAT_DIALOG_DATA) public data: any) { }
-
 
     onNoClick(): void {
         this.dialogRef.close();

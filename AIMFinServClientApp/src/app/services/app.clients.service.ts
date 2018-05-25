@@ -127,8 +127,8 @@ export class ClientsService {
     GetAddedAssetGrid(LoanAppNo) {
         return this._http.get(this.baseurl + "Clients/GetAddedAssetGrid?LoanAppNo=" + LoanAppNo, this.options);
     }
-    GetAssetDetails(ClientID) {
-        return this._http.get(this.baseurl + "Clients/GetAssetDetails?ClientID=" + ClientID, this.options);
+    GetAssetDetails(AssetID) {
+        return this._http.get(this.baseurl + "Clients/GetAssetDetails?AssetID=" + AssetID, this.options);
     }
     UpdateAssetDetails(Asset) {
         return this._http.post(this.baseurl + "Clients/UpdateAssetDetails", Asset, this.options);

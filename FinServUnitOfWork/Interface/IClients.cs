@@ -48,7 +48,7 @@ namespace FinServUnitOfWork.Interface
 
         bool AddAsset(Asset _objAssetDetails);
         List<Asset> GetAddedAssetGrid(Guid LoanAppNo);
-        Asset GetAssetDetails(string ClientID);
+        Asset GetAssetDetails(string AssetID);
         bool UpdateAssetDetails(Asset _objAssetDetails);
 
         bool AddLiability(Liability _objLiabilityDetails);

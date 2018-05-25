@@ -1,7 +1,7 @@
 <div class="">    
     <div class="section_box pl-0 pb-0 pr-0 mb-4 mt-3 clearfix">
         <form name="form" #AddLiabilityform="ngForm" novalidate>
-            <div class="p-4">
+            <div class="p-4" [ngClass]="{'update_details':_ValidationClass}">
                 <div class="row m-0">
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_set">
@@ -103,7 +103,7 @@
     </div>
     <div>
         <kendo-grid [kendoGridBinding]="gridData"
-                    [pageSize]="10"
+                    [pageSize]="2"
                     [sortable]="true"
                     [pageable]="true"
                     [scrollable]="true"

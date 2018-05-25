@@ -212,9 +212,9 @@ namespace FinServServices.Controllers
 
         [HttpGet]
         [Route("GetAssetDetails")]
-        public Asset GetAssetDetails(string ClientID)
+        public Asset GetAssetDetails(string AssetID)
         {
-            return Repository.GetAssetDetails(ClientID);
+            return Repository.GetAssetDetails(AssetID);
         }
 
         [HttpPost]

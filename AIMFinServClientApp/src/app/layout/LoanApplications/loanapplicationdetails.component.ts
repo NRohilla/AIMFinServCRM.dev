@@ -15,10 +15,12 @@ import { AddGuarantorDialog } from '../../shared/dialogues/loanapplications/AddG
 import { ManageAssetAndLiabilityDialog } from '../../shared/dialogues/loanapplications/ManageAssetandLiabilityDialog';
 import { ManageApplicantDialog } from '../../shared/dialogues/loanapplications/ManageApplicantDialog';
 import { ManageExpenseSheetDialog } from '../../shared/dialogues/loanapplications/ManageExpenseSheetDialog.component';
+import { GoogleService } from '../../services/app.googleservices.service';
+
 @Component({
     templateUrl: './loanapplicationdetails.component.html',
     animations: [routerTransition()],
-    providers: [ClientsService, MastersService]
+    providers: [ClientsService, MastersService, GoogleService]
 })
 export class LoanapplicationdetailsComponent implements OnInit {
 
@@ -76,8 +78,6 @@ export class LoanapplicationdetailsComponent implements OnInit {
         _StatusID: {
             Status: ''
         }
-
-
     };
 
     public _TypeOfLoanID = [];
@@ -88,9 +88,7 @@ export class LoanapplicationdetailsComponent implements OnInit {
 
     errorMessage: "No Data"
 
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, public dialog: MatDialog, private _MasterService: MastersService) {
-
-
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, private _GoogleService: GoogleService, public dialog: MatDialog, private _MasterService: MastersService) {
     }
 
     ngOnInit() {
@@ -378,6 +376,15 @@ export class LoanapplicationdetailsComponent implements OnInit {
     }
     ViewDetails() {
         this.router.navigateByUrl('loanapplications');
+    }
+
+    SendMail()
+    {
+        debugger;
+        this._GoogleService.SendEmail().subscribe(res => this.SendEmailSuccess(res), error => this.errorMessage = <any>error);
+    }
+    SendEmailSuccess(res) {
+        return true;
     }
 
 }

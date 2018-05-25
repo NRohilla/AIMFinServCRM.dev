@@ -32,7 +32,7 @@ export class AddGuarantorDialog {
 
     public _AddGuarantorDetails = {
         GuarantorID: '',
-        Title:'',
+        Title: '',
         FirstName: '',
         MiddleName: '',
         LastName: '',
@@ -46,53 +46,91 @@ export class AddGuarantorDialog {
         MobileNo: '',
         HomePhoneNo: '',
         WorkPhoneNo: '',
-        Duration:'',
+        Duration: '',
         AddressLine1: '',
         AddressLine2: '',
         AddressLine3: '',
         Country: '',
-        ZipCode:'',
-        LoanApplicationNo:'',
+        ZipCode: '',
+        LoanApplicationNo: '',
         _LoanApplicationFormDetails: {
-            LoanApplicationNo:''
+            LoanApplicationNo: ''
         }
     };
 
     public FormatNZResidents() {
-  
-        if (this._AddGuarantorDetails.NZResidents.toString() == "1") {
+        if (this._AddGuarantorDetails.NZResidents.toString() == "1")
+        {
             this._AddGuarantorDetails.NZResidents = true;
         }
-        else {
+        else
+        {
             this._AddGuarantorDetails.NZResidents = false;
         }
         this._ValidationClass = true;
     }
-    
-    ngOnInit() {
+
+    ngOnInit()
+    {
+        debugger;
         if (this._LocalStorageService.get("LoanApplicationNo") != undefined) {
             this.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNo");
-            this._ClientsService.GetAddedGuarantorGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedGuarantorGridSuccess(res), res => this.GetAddedGuarantorGridError(res));
+            this.GetGuarantorGrid();
         }
     }
-    
-    AddGuarantor() {
+
+    AddGuarantor()
+    {
+        debugger;
         if (this._LocalStorageService.get("LoanApplicationNo") != undefined) {
             this._AddGuarantorDetails.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNo");
             this._ClientsService.AddGuarantor(this._AddGuarantorDetails).subscribe(res => this.AddGuarantorSuccess(res), res => this.AddGuarantorError(res));
         }
     }
-    AddGuarantorSuccess(res) {
+    AddGuarantorSuccess(res)
+    {
+        debugger;
         this._AddGuarantorDetails = JSON.parse(res._body);
-        this._ClientsService.GetAddedGuarantorGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedGuarantorGridSuccess(res), res => this.GetAddedGuarantorGridError(res));
+        this._AddGuarantorDetails = {
+            GuarantorID: '',
+            Title: '',
+            FirstName: '',
+            MiddleName: '',
+            LastName: '',
+            Gender: '',
+            DateOfBirth: '',
+            MaritalStatus: '',
+            NZResidents: true,
+            DNZResidents: '',
+            CountryOfBirth: '',
+            EmailID: '',
+            MobileNo: '',
+            HomePhoneNo: '',
+            WorkPhoneNo: '',
+            Duration: '',
+            AddressLine1: '',
+            AddressLine2: '',
+            AddressLine3: '',
+            Country: '',
+            ZipCode: '',
+            LoanApplicationNo: '',
+            _LoanApplicationFormDetails: {
+                LoanApplicationNo: ''
+            }
+        };
+        this.GetGuarantorGrid();
         this._ValidationClass = true;  
     }
     AddGuarantorError(res) { }
 
-    GetAddedGuarantorGridSuccess(res) {
-      
+    GetGuarantorGrid()
+    {
+        debugger;
+        this._ClientsService.GetAddedGuarantorGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedGuarantorGridSuccess(res), res => this.GetAddedGuarantorGridError(res));
+    }
+    GetAddedGuarantorGridSuccess(res)
+    {
         this.gridData = JSON.parse(res._body);
-     
     }
     GetAddedGuarantorGridError(res) { }
 
@@ -140,6 +178,4 @@ export class AddGuarantorDialog {
     onNoClick(): void {
         this.dialogRef.close();
     }
-   
-
 }

@@ -1012,14 +1012,11 @@ namespace FinServUnitOfWork.Repository
                         _tblAssetDetail.CreatedOn = DateTime.Now;
                         tblApplicant _tblApplicant = new tblApplicant();
                         _tblApplicant.FirstName = _objAssetDetails._ApplicationID.FirstName;
-
                         db.tblAssets.Add(_tblAssetDetail);
                         db.SaveChanges();
-
                     }
                     return true;
                 }
-
             }
             catch (Exception ex)
             {
@@ -1066,19 +1063,19 @@ namespace FinServUnitOfWork.Repository
                 return null;
             }
         }
-        public Asset GetAssetDetails(string ClientID)
+        public Asset GetAssetDetails(string AssetID)
         {
             try
             {
                 Asset objtoReturn = new Asset();
-                Guid ApplicantID = Guid.Parse(ClientID);
+                Guid Assetid = Guid.Parse(AssetID);
 
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var GetAssetDetails = db.tblAssets.Where(p => p.ApplicantID == ApplicantID).FirstOrDefault();
+                    var GetAssetDetails = db.tblAssets.Where(p => p.AssetID == Assetid).FirstOrDefault();
                     if (GetAssetDetails != null)
                     {
-                        objtoReturn.AssetID = GetAssetDetails.AssetID;
+                        objtoReturn.AssetID = Assetid;
                         objtoReturn.Description = GetAssetDetails.Description;
                         objtoReturn.NetValue = GetAssetDetails.NetValue;
                         objtoReturn.Ownership = GetAssetDetails.Ownership;
@@ -1144,11 +1141,9 @@ namespace FinServUnitOfWork.Repository
 
                         db.tblLiabilities.Add(_tblLiabilityDetail);
                         db.SaveChanges();
-
                     }
                     return true;
                 }
-
             }
             catch (Exception ex)
             {
