@@ -86,6 +86,22 @@ export class MastersService {
         return this._http.get(this.baseurl + "Masters/GetApplicants" , this.options)
     }
 
+    GetAllUser() {
+        return this._http.get(this.baseurl + "Masters/GetAllUser", this.options)
+    }
+
+    GetRole() {
+        return this._http.get(this.baseurl + "Masters/GetRole", this.options)
+    }
+
+    GetUserDetails(ID) {
+        return this._http.get(this.baseurl + "Masters/GetUserDetails?ApplicantID=" + ID, this.options);
+    }
+
+    GetUpdatedPassword(ID) {
+        return this._http.get(this.baseurl + "Masters/GetUpdatedPassword?UserGuid=" + ID, this.options);
+    }
+
     //switch status
 
     SwitchApplicantEntityStatus(ID) {
@@ -98,6 +114,10 @@ export class MastersService {
 
     SwitchEmploymentEntityStatus(ID) {
         return this._http.get(this.baseurl + "Masters/SwitchEmploymentEntityStatus?ID=" + ID, this.options);
+    }
+
+    SwitchManageUserEntityStatus(ID) {
+        return this._http.get(this.baseurl + "Masters/SwitchManageUserEntityStatus?UserGuid=" + ID, this.options);
     }
 
     SwitchExpenseEntityStatus(ID) {
@@ -193,6 +213,10 @@ export class MastersService {
         return this._http.post(this.baseurl + "Masters/UpdateSalutationEntity", SalutationTypeMaster, this.options);
     }
 
+    UpdatePassword(manageUserTypeMaster) {
+        return this._http.post(this.baseurl + "Masters/UpdatePassword", manageUserTypeMaster, this.options);
+    }
+
     //add types
     AddApplicantEntity(ApplicantTypeMaster) {
         return this._http.post(this.baseurl + "Masters/AddApplicantEntity", ApplicantTypeMaster, this.options);
@@ -245,4 +269,9 @@ export class MastersService {
     AddSalutationEntity(SalutationTypeMaster) {
         return this._http.post(this.baseurl + "Masters/AddSalutationEntity", SalutationTypeMaster, this.options);
     }
+
+    AddUser(ManageUserTypeMaster) {
+        return this._http.post(this.baseurl + "Masters/AddUser", ManageUserTypeMaster, this.options);
+    }
+
 }

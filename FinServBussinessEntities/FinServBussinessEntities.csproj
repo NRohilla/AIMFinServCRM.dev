@@ -73,7 +73,7 @@
     <Compile Include="SalutationTypeMaster.cs" />
     <Compile Include="StatusTypeMaster.cs" />
     <Compile Include="UserApplicant.cs" />
-    <Compile Include="UserOps.cs" />
+    <Compile Include="UserDetails.cs" />
     <Compile Include="UserRole.cs" />
     <Compile Include="Utility_Classes\AuthenticationDetails.cs" />
   </ItemGroup>

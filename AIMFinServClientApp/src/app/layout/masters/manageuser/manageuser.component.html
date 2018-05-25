@@ -1,0 +1,164 @@
+<div [@routerTransition] class="master-forms">
+    <app-page-header [heading]="'Manage User Type'" [icon]="'fa-bar-chart-o'"></app-page-header>
+    <kendo-grid [kendoGridBinding]="_ManageUserGridData"
+                [pageSize]="5"
+                [sortable]="true"
+                [pageable]="true"
+                [scrollable]="true"
+                [filterable]="true"
+                [groupable]="true"
+                selectable="true"
+                #UserType
+                (selectionChange)="GridSelectionChange(UserType, $event)">
+        <kendo-grid-column field="FirstName" title="FirstName">
+        </kendo-grid-column>
+        <kendo-grid-column field="LastName" title="LastName">
+        </kendo-grid-column>
+        <kendo-grid-column field="DisplayName" title="DisplayName">
+        </kendo-grid-column>
+        <kendo-grid-column field="EmailID" title="EmailID">
+        </kendo-grid-column>
+        <kendo-grid-column field="Role" title="Role">
+        </kendo-grid-column>
+        <kendo-grid-command-column>
+            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                <button class="btn btn-lg btn-link" type="button" (click)="ChangePassword(dataItem)">Change Password</button>
+            </ng-template>
+        </kendo-grid-command-column>
+        <kendo-grid-column field="IsActive" title="Status">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <label *ngIf="dataItem.IsActive">Activated</label>
+                <label *ngIf="!dataItem.IsActive">Deactivated</label>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-command-column>
+            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                <button class="btn btn-lg btn-link" type="button" (click)="SwitchStatus(dataItem.UserGuid)" *ngIf="dataItem.IsActive"><i class="fa fa-ban text-danger"></i> Deactivate</button>
+                <button class="btn btn-lg btn-link" type="button" (click)="SwitchStatus(dataItem.UserGuid)" *ngIf="!dataItem.IsActive"><i class="fa fa-check-square-o text-success"></i> Activate</button>
+            </ng-template>
+        </kendo-grid-command-column>
+    </kendo-grid>
+    <div id="exTab1">
+        <form name="form" #AddManageform="ngForm" novalidate>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section_box pl-0 pr-0 pb-0 mt-5">
+                        <div class="box_title">{{_Operationtitle}} User</div>
+                        <div class="tab-content pl-0 pr-0 pb-0 clearfix">
+                            <div class="tab-pane active" [ngClass]="{'update_details':_addUpdateClass}">
+                                <div class="row m-0">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                                        <div class="field_set w-100">
+                                            <div class="field_info">
+                                                <mat-form-field class="example-full-width">
+                                                    <mat-select placeholder="User Type" [(ngModel)]="_UserTypeRole.Role" name="Name" (change)="SelectUserType(_UserTypeRole.Role)">
+                                                        <mat-option *ngFor="let roleOfUser of _RoleOfUser" [value]="roleOfUser.Name">{{roleOfUser.Name}}</mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left" *ngIf="_isClientRole">
+                                        <div class="field_set w-100" >
+                                            <div class="field_info">
+                                                <mat-form-field class="example-full-width">
+                                                    <mat-select placeholder="Client Name" [(ngModel)]="_SelectApplicantId.ApplicantID" name="FirstName" (change)="SelectApplicantName(_SelectApplicantId.ApplicantID)">
+                                                        <mat-option *ngFor="let nameOfClient of _ClientName" [value]="nameOfClient.ApplicantID">{{nameOfClient.FirstName}}</mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row m-0">
+                                    <div class="col float-left" >
+                                        <div class="field_set w-100">
+                                            <div class="field_info w-100">
+                                                <mat-form-field class="example-full-width">
+                                                    <input matInput placeholder="First Name" value="{{_UserRecord.FirstName}}" [(ngModel)]="_UserRecord.FirstName" name="FirstName" #FirstName="ngModel" required>
+                                                    <div *ngIf="FirstName.invalid && (FirstName.dirty || FirstName.touched)" class="alert alert-danger">
+                                                        <div *ngIf="FirstName.errors.required">
+                                                            Please enter the Last Name.
+                                                        </div>
+                                                    </div>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col float-left" >
+                                        <div class="field_set w-100">
+                                            <div class="field_info w-100">
+                                                <mat-form-field class="example-full-width">
+                                                    <input matInput placeholder="Last Name" value="{{_UserRecord.LastName}}" [(ngModel)]="_UserRecord.LastName" name="LastName" #LastName="ngModel" required>
+                                                    <div *ngIf="LastName.invalid && (LastName.dirty || LastName.touched)" class="alert alert-danger">
+                                                        <div *ngIf="LastName.errors.required">
+                                                            Please enter the Last Name.
+                                                        </div>
+                                                    </div>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col float-left">
+                                        <div class="field_set w-100">
+                                            <div class="field_info w-100">
+                                                <mat-form-field class="example-full-width">
+                                                    <input matInput placeholder="Display Name" value="{{_UserRecord.DisplayName}}" [(ngModel)]="_UserRecord.DisplayName" name="DisplayName" #DisplayName="ngModel" required>
+                                                    <div *ngIf="DisplayName.invalid && (DisplayName.dirty || DisplayName.touched)" class="alert alert-danger">
+                                                        <div *ngIf="DisplayName.errors.required">
+                                                            Please enter the Display Name.
+                                                        </div>
+                                                    </div>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col float-left">
+                                        <div class="field_set w-100">
+                                            <div class="field_info w-100">
+                                                <mat-form-field class="example-full-width">
+                                                    <input matInput placeholder="Email" value="{{_UserRecord.EmailID}}" [(ngModel)]="_UserRecord.EmailID" name="EmailID" #EmailID="ngModel" required  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                                                    <div *ngIf="EmailID.invalid && (EmailID.dirty || EmailID.touched)" class="alert alert-danger">
+                                                        <div *ngIf="EmailID.errors && EmailID.errors.required">
+                                                            Please enter the Email Id.
+                                                        </div>
+                                                        <div *ngIf="EmailID.errors && EmailID.errors.pattern">
+                                                            Please Enter the valid Email.
+                                                        </div>
+                                                    </div>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col float-left" *ngIf="!_EditUser">
+                                        <div class="field_set w-100">
+                                            <div class="field_info w-100">
+                                                <mat-form-field class="example-full-width">
+                                                    <input matInput placeholder="password" [(ngModel)]="_UserRecord.Password" type ="password" name="Password" #Password="ngModel" required />
+                                                    <div *ngIf="Password.invalid && (Password.dirty || Password.touched)" class="alert alert-danger">
+                                                        <div *ngIf="Password.errors.required">
+                                                            Please enter the Password.
+                                                        </div>
+                                                    </div>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-0">
+                                <div class="w-100 float-left">
+                                    <div class="btn-bottom pr-4 pl-4 text-right">
+                                        <input type="button" value="Save" (click)="AddUser(); AddManageform.reset()" class="btn btn-success" *ngIf="_Operationtitle=='Add'" />
+                                        <input type="button" value="Update" (click)="UpdateSalutationType()" class="btn btn-success" *ngIf="_Operationtitle=='Update'" />
+                                        <input type="button" value="Cancel" (click)="CancelManageUserType();AddManageform.reset()" class="btn btn-secondary" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
