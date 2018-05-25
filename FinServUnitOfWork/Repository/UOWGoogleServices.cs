@@ -15,10 +15,10 @@ namespace FinServUnitOfWork.Repository
         {
             MailMessage mail = new MailMessage();
             SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com", 587);
-            SmtpServer.Credentials = new System.Net.NetworkCredential("nbambah93@gmail.com", "neh@12345");
+            SmtpServer.Credentials = new System.Net.NetworkCredential("ve.dksaini@gmail.com", "sandy@9871");
             SmtpServer.EnableSsl = true;
 
-            mail.From = new MailAddress("nbambah93@gmail.com");
+            mail.From = new MailAddress("ve.dksaini@gmail.com");
             mail.To.Add("nehabambah@virtualemployee.com");
             mail.CC.Add("deepaksaini@virtualemployee.com");
             mail.Subject = "Test";

@@ -151,6 +151,7 @@
                                     <div class="btn-bottom pr-4 pl-4 text-right">
                                         <input type="button" value="Save" (click)="AddUser(); AddManageform.reset()" class="btn btn-success" *ngIf="_Operationtitle=='Add'" />
                                         <input type="button" value="Update" (click)="UpdateSalutationType()" class="btn btn-success" *ngIf="_Operationtitle=='Update'" />
+                                        <input type="button" value="&#xf040; Send Email" (click)="SendEmail()" *ngIf="!_EditDetails" class="btn btn-primary" />
                                         <input type="button" value="Cancel" (click)="CancelManageUserType();AddManageform.reset()" class="btn btn-secondary" />
                                     </div>
                                 </div>

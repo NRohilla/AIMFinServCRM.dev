@@ -10,16 +10,17 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { MastersService } from '../../../services/app.masters.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ManageUserDialog } from '../../../shared/dialogues/manage/ManageUserDialog';
+import { GoogleService } from '../../../services/app.googleservices.service';
 
 @Component({
     templateUrl: './manageuser.component.html',
     animations: [routerTransition()],
-    providers: [MastersService]
+    providers: [MastersService, GoogleService]
 })
 export class ManageuserComponent implements OnInit {
 
     public _ManageUserGridData: {
-        FirstName:'',
+        FirstName: '',
         LastName: '',
         Mobile: '',
         Email: '',
@@ -27,28 +28,29 @@ export class ManageuserComponent implements OnInit {
         DisplayName: ''
     }
 
-    public _UserTypeRole:any= {}
+    public _UserTypeRole: any = {}
 
     public _RoleOfUser: {
         Name: '',
         RoleId: '',
-        Description:''
+        Description: ''
     }
 
     public _ClientName: {
-        FirstName:''
+        FirstName: ''
     }
 
-    public _SelectApplicantId={
-        ApplicantID:''
+    public _SelectApplicantId = {
+        ApplicantID: ''
     };
 
     public _UserRecord: any = {};
     public _Operationtitle: string = "Add";
     public _isClientRole: boolean = false;
     public _EditUser: boolean = false;
+    public errorMessage: string = '';
 
-    constructor(private _mastersServices: MastersService, public dialog: MatDialog) { }
+    constructor(private _mastersServices: MastersService, public dialog: MatDialog, private _GoogleService: GoogleService) { }
 
     ngOnInit() {
         this.GetAllUser();
@@ -73,7 +75,7 @@ export class ManageuserComponent implements OnInit {
         this._RoleOfUser = JSON.parse(res._body);
     }
 
-    GetRoleError(res) {}
+    GetRoleError(res) { }
 
     SelectApplicantName(applicantId) {
         this._EditUser = false;
@@ -82,7 +84,7 @@ export class ManageuserComponent implements OnInit {
 
     GetUserDetailsSuccess(res) {
         this._UserRecord = JSON.parse(res._body);
-            this._UserRecord.DisplayName = this._UserRecord.FirstName + this._UserRecord.LastName
+        this._UserRecord.DisplayName = this._UserRecord.FirstName + this._UserRecord.LastName
     }
 
     GetUserDetailsError(res) { }
@@ -94,7 +96,7 @@ export class ManageuserComponent implements OnInit {
         if (role == "Client") {
             this._isClientRole = true;
             this._mastersServices.GetApplicants().subscribe(res => this.GetApplicantsSuccess(res), res => this.GetApplicantsError(res));
-        }else {
+        } else {
             this._isClientRole = false;
         }
     }
@@ -104,7 +106,7 @@ export class ManageuserComponent implements OnInit {
         console.log(this._ClientName)
     }
 
-    GetApplicantsError(res) {}
+    GetApplicantsError(res) { }
 
     AddUser() {
         this._mastersServices.AddUser(this._UserRecord).subscribe(res => this.AddUserSuccess(res), res => this.AddUserError(res));
@@ -120,12 +122,12 @@ export class ManageuserComponent implements OnInit {
     CancelManageUserType() {
         this._UserRecord = {}
         this._Operationtitle = "Update";
-        
+
     }
 
     ChangePassword(dataItem): void {
-        let dialogRef = this.dialog.open(ManageUserDialog,{ data: { dataItem } });
-       
+        let dialogRef = this.dialog.open(ManageUserDialog, { data: { dataItem } });
+
         dialogRef.afterClosed().subscribe(result => {
         });
     }
@@ -146,4 +148,16 @@ export class ManageuserComponent implements OnInit {
         this._EditUser = true;
         this._UserRecord = data.data.data[event.index];
     }
+    SendEmail() {
+        debugger;
+        this._GoogleService.SendEmail().subscribe(res => this.SendEmailSuccess(res), error => this.errorMessage = <any>error);
+    }
+    SendEmailSuccess(res) {
+
+       // let dialogRef = this.dialog.open(MailSentSuccessfully);
+    }
 }
+
+    
+
+

@@ -378,13 +378,6 @@ export class LoanapplicationdetailsComponent implements OnInit {
         this.router.navigateByUrl('loanapplications');
     }
 
-    SendMail()
-    {
-        debugger;
-        this._GoogleService.SendEmail().subscribe(res => this.SendEmailSuccess(res), error => this.errorMessage = <any>error);
-    }
-    SendEmailSuccess(res) {
-        return true;
-    }
+   
 
 }
