@@ -50,6 +50,7 @@ namespace FinServUnitOfWork.Interface
         bool SwitchRelationshipEntityStatus(int ID);
         bool SwitchSalutationEntityStatus(int ID);
         bool SwitchManageUserEntityStatus(Guid UserGuid);
+        bool vaildEmail(string Email);
 
         //update
         bool UpdateApplicantEntity(ApplicantTypeMaster ApplicantTypeMaster);
@@ -65,8 +66,8 @@ namespace FinServUnitOfWork.Interface
         bool UpdateQualificationEntity(QualificationTypeMaster QualificationTypeMaster);
         bool UpdateRelationshipEntity(RelationshipTypeMaster RelationshipTypeMaster);
         bool UpdateSalutationEntity(SalutationTypeMaster SalutationTypeMaster);
-
         bool UpdatePassword(UserDetails UserDetails);
+        bool UpdateUserDetails(UserDetails UserDetails);
 
 
         //add

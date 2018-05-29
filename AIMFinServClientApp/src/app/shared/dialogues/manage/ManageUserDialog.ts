@@ -10,6 +10,7 @@ export class ManageUserDialog {
     public _UserPassword: any = {};
     public errorMsg: string = ''
     public isErrorMsg: Boolean = false;
+    public AddUpdateDetailsClass: Boolean = false;
     public _updatePassword:any= {
         UserGuid: '',
         Password:''
@@ -21,12 +22,13 @@ export class ManageUserDialog {
         @Inject(MAT_DIALOG_DATA) public data: any, private _mastersServices: MastersService) { }
 
     onNoClick(): void {
+        this.AddUpdateDetailsClass = true;
         this.dialogRef.close();
     }
 
-
     savePassword() {
         this.errorMsg = ''
+       
         
         if (this._UserPassword.currentPassword == this.data.dataItem.Password) {
             if (this._UserPassword.newPassword == this._UserPassword.confirmPassword) {

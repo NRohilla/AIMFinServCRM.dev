@@ -372,6 +372,20 @@ namespace FinServServices.Controllers
         {
             return Repository.UpdateSalutationEntity(SalutationTypeMaster);
         }
+
+        [HttpPost]
+        [Route("UpdateUserDetails")]
+        public bool UpdateUserDetails(UserDetails UserDetails)
+        {
+            return Repository.UpdateUserDetails(UserDetails);
+        }
+
+        [HttpPost]
+        [Route("UpdatePassword")]
+        public bool UpdatePassword(UserDetails UserDetails)
+        {
+            return Repository.UpdatePassword(UserDetails);
+        }
         #endregion
 
 
@@ -474,11 +488,12 @@ namespace FinServServices.Controllers
             return Repository.AddSalutationEntity(SalutationTypeMaster);
         }
 
-        [HttpPost]
-        [Route("UpdatePassword")]
-        public bool UpdatePassword(UserDetails UserDetails)
+        [HttpGet]
+        [Route("ValidateEmail")]
+        public bool ValidateEmail(string email)
         {
-            return Repository.UpdatePassword(UserDetails);
+            return Repository.vaildEmail(email);
+           
         }
 
         #endregion

@@ -1441,19 +1441,19 @@ namespace FinServUnitOfWork.Repository
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    return (from MasterUser in db.tblUsers
+                    return (from UserDetails in db.tblUsers
                             select new UserDetails()
                             {
-                                UserGuid = MasterUser.UserGuid,
-                                FirstName = MasterUser.FirstName,
-                                LastName = MasterUser.LastName,
-                                DisplayName = MasterUser.DisplayName,
-                                Role = MasterUser.Role,
-                                EmailID = MasterUser.Email,
-                                Mobile = MasterUser.Mobile,
-                                Password = MasterUser.Password,
-                                LoginID = MasterUser.LoginID,
-                                IsActive = MasterUser.IsActive
+                                UserGuid = UserDetails.UserGuid,
+                                FirstName = UserDetails.FirstName,
+                                LastName = UserDetails.LastName,
+                                DisplayName = UserDetails.DisplayName,
+                                Role = UserDetails.Role,
+                                EmailID = UserDetails.Email,
+                                Mobile = UserDetails.Mobile,
+                                Password = UserDetails.Password,
+                                LoginID = UserDetails.LoginID,
+                                IsActive = UserDetails.IsActive
 
                             }).ToList();
                 }
@@ -1486,7 +1486,7 @@ namespace FinServUnitOfWork.Repository
             }
         }
 
-        public bool AddUser(UserDetails _objUserDetails)
+        public bool AddUser(UserDetails UserDetails)
         {
             try
             {
@@ -1495,21 +1495,30 @@ namespace FinServUnitOfWork.Repository
 
                         tblUser _objDetails = new tblUser();
                         _objDetails.UserGuid = Guid.NewGuid();
-                        _objDetails.LoginID = _objUserDetails.LoginID;
-                        _objDetails.FirstName = _objUserDetails.FirstName;
-                        _objDetails.LastName = _objUserDetails.LastName;
-                        _objDetails.DisplayName = _objUserDetails.DisplayName;
-                        _objDetails.Email = _objUserDetails.EmailID;
-                        _objDetails.Password = _objUserDetails.Password;
-                       _objDetails.Mobile = _objUserDetails.Mobile;
-                       _objDetails.Role = _objUserDetails.Role;
-                       _objDetails.CreatedBy = _objUserDetails.CreatedBy;
-                       _objDetails.CreatedOn = _objUserDetails.CreatedOn;
-                       _objDetails.IsActive = _objUserDetails.IsActive;
-                       _objDetails.ModifiedBy = _objUserDetails.ModifiedBy;
-                       _objDetails.ModifiedOn = _objUserDetails.ModifiedOn;
+                        _objDetails.LoginID = UserDetails.EmailID;
+                        _objDetails.FirstName = UserDetails.FirstName;
+                        _objDetails.LastName = UserDetails.LastName;
+                        _objDetails.DisplayName = UserDetails.DisplayName;
+                        _objDetails.Email = UserDetails.EmailID;
+                        _objDetails.Password = UserDetails.Password;
+                       _objDetails.Mobile = UserDetails.Mobile;
+                       _objDetails.Role = UserDetails.Role;
+                       _objDetails.CreatedBy = UserDetails.CreatedBy;
+                       _objDetails.CreatedOn = UserDetails.CreatedOn;
+                       _objDetails.IsActive = UserDetails.IsActive;
+                       _objDetails.ModifiedBy = UserDetails.ModifiedBy;
+                       _objDetails.ModifiedOn = UserDetails.ModifiedOn;
                         db.tblUsers.Add(_objDetails);
-                        db.SaveChanges();
+                    tblUsersRole _UserRole = new tblUsersRole();
+                    _UserRole.UserGuid = UserDetails._UserRole.UserGuid;
+                    _UserRole.IsActive = UserDetails._UserRole.IsActive;
+                    _UserRole.UsersRoleGuid = UserDetails._UserRole.UsersRoleGuid;
+                    _UserRole.UsersRoleId = UserDetails._UserRole.UsersRoleId;
+                    _UserRole.RoleGuid = UserDetails._UserRole.RoleGuid;
+                    db.tblUsersRoles.Add(_UserRole);
+
+                    db.SaveChanges();
+
                     return true;
                 }
             }
@@ -1519,16 +1528,16 @@ namespace FinServUnitOfWork.Repository
             }
         }
 
-        public bool UpdatePassword(UserDetails masterUser)
+        public bool UpdatePassword(UserDetails UserDetails)
         {
             try
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var GetPasswordEntity = db.tblUsers.Where(p => p.UserGuid == masterUser.UserGuid).FirstOrDefault();
+                    var GetPasswordEntity = db.tblUsers.Where(p => p.UserGuid == UserDetails.UserGuid).FirstOrDefault();
                     if (GetPasswordEntity != null)
                     {
-                        GetPasswordEntity.Password = masterUser.Password;
+                        GetPasswordEntity.Password = UserDetails.Password;
                         db.SaveChanges();
                     }
                     return true;
@@ -1537,6 +1546,72 @@ namespace FinServUnitOfWork.Repository
             catch (Exception ex)
             {
                 return false;
+            }
+        }
+
+        public bool UpdateUserDetails(UserDetails UserDetails)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var FetchUserDetails = db.tblUsers.Where(p => p.UserGuid == UserDetails.UserGuid).FirstOrDefault();
+                    if (FetchUserDetails != null)
+                    {
+                        FetchUserDetails.UserGuid = UserDetails.UserGuid;
+                        FetchUserDetails.LoginID = UserDetails.EmailID;
+                        FetchUserDetails.FirstName = UserDetails.FirstName;
+                        FetchUserDetails.LastName = UserDetails.LastName;
+                        FetchUserDetails.DisplayName = UserDetails.DisplayName;
+                        FetchUserDetails.Mobile = UserDetails.Mobile;
+                        FetchUserDetails.Email = UserDetails.EmailID;
+                        FetchUserDetails.Password = UserDetails.Password;
+                        FetchUserDetails.PasswordExpired = UserDetails.PasswordExpired;
+                        FetchUserDetails.LastPasswordChangedOn = UserDetails.LastPasswordChangedOn;
+                        FetchUserDetails.PasswordResetToken = UserDetails.PasswordResetToken;
+                        FetchUserDetails.Role = UserDetails.Role;
+                        FetchUserDetails.CreatedBy = UserDetails.CreatedBy;
+                        FetchUserDetails.CreatedOn = UserDetails.CreatedOn;
+                        FetchUserDetails.LastLoggedOn = UserDetails.LastLoggedOn;
+                        FetchUserDetails.AccountLocked = UserDetails.AccountLocked;
+                        FetchUserDetails.AccountExpired = UserDetails.AccountExpired;
+                        FetchUserDetails.Description = UserDetails.Description;
+                        FetchUserDetails.IsLoggedIn = UserDetails.IsLoggedIn;
+                        FetchUserDetails.IsActive = UserDetails.IsActive;
+                        FetchUserDetails.ModifiedBy = UserDetails.ModifiedBy;
+                        FetchUserDetails.ModifiedOn = UserDetails.ModifiedOn;
+                        db.SaveChanges();
+                    }
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool vaildEmail(string email)
+        {
+            try
+            {
+                using (AIMFinServDBEntities db = new AIMFinServDBEntities())
+                {
+                    var isValidEmail = db.tblUsers.FirstOrDefault(x => x.Email == email);
+                    if (isValidEmail != null)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
     }

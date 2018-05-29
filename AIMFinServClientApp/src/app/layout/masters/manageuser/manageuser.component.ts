@@ -43,10 +43,15 @@ export class ManageuserComponent implements OnInit {
         ApplicantID:''
     };
 
+    public _GridUser: any = {};
     public _UserRecord: any = {};
     public _Operationtitle: string = "Add";
     public _isClientRole: boolean = false;
     public _EditUser: boolean = false;
+    public AddUpdateDetailsClass: boolean = false;
+    public isEmailAllreadyExits: boolean = false;
+    public ErrorMsg: string = "";
+    public IsErrorMsg: boolean = false;
 
     constructor(private _mastersServices: MastersService, public dialog: MatDialog) { }
 
@@ -77,12 +82,24 @@ export class ManageuserComponent implements OnInit {
 
     SelectApplicantName(applicantId) {
         this._EditUser = false;
-        this._mastersServices.GetUserDetails(applicantId).subscribe(res => this.GetUserDetailsSuccess(res), res => this.GetUserDetailsError(res));
+        this._mastersServices.GetUserDetails(applicantId).subscribe(res => this.GetUserDetailsSuccess(res,), res => this.GetUserDetailsError(res));
+
     }
 
     GetUserDetailsSuccess(res) {
+        this._UserRecord = {}
         this._UserRecord = JSON.parse(res._body);
-            this._UserRecord.DisplayName = this._UserRecord.FirstName + this._UserRecord.LastName
+        this._UserRecord = {
+            FirstName: this._UserRecord.FirstName,
+            LastName: this._UserRecord.LastName,
+            DisplayName: this._UserRecord.FirstName + this._UserRecord.LastName,
+            EmailID: this._UserRecord.EmailID,
+            Password: this._UserRecord.Password,
+            Role: 'Client'
+
+        }
+
+       // this._UserRecord.DisplayName = this._UserRecord.FirstName + this._UserRecord.LastName
     }
 
     GetUserDetailsError(res) { }
@@ -91,6 +108,7 @@ export class ManageuserComponent implements OnInit {
         this._EditUser = false;
         this._UserRecord = {}
         this._UserRecord.Role = role;
+        this._Operationtitle = "Add";
         if (role == "Client") {
             this._isClientRole = true;
             this._mastersServices.GetApplicants().subscribe(res => this.GetApplicantsSuccess(res), res => this.GetApplicantsError(res));
@@ -101,25 +119,41 @@ export class ManageuserComponent implements OnInit {
 
     GetApplicantsSuccess(res) {
         this._ClientName = JSON.parse(res._body);
-        console.log(this._ClientName)
     }
 
     GetApplicantsError(res) {}
 
     AddUser() {
-        this._mastersServices.AddUser(this._UserRecord).subscribe(res => this.AddUserSuccess(res), res => this.AddUserError(res));
+        console.log(this._UserRecord.EmailID)
+        this._mastersServices.ValidateEmail(this._UserRecord.EmailID).subscribe(res => this.ValidateEmailSuccess(res), res => this.ValidateEmailError(res))
+        this.AddUpdateDetailsClass = true;
+        if (this.isEmailAllreadyExits) {
+            this.IsErrorMsg = false;
+            this._mastersServices.AddUser(this._UserRecord).subscribe(res => this.AddUserSuccess(res), res => this.AddUserError(res));
+        } else {
+            this.IsErrorMsg = true
+            this.ErrorMsg = "this Email Address already exits.";
+        }
     }
+
+    ValidateEmailSuccess(res) {
+        this.isEmailAllreadyExits = JSON.parse(res._body);
+        console.log(this.isEmailAllreadyExits)
+    }
+
+    ValidateEmailError(res) {}
 
     AddUserSuccess(res) {
         this._mastersServices.GetAllUser().subscribe(res => this.GetAllUserSuccess(res), res => this.GetAllUserError(res));
-        this.CancelManageUserType();
+        this.CancelUser();
     }
 
     AddUserError(res) { }
 
-    CancelManageUserType() {
+    CancelUser() {
+        this.AddUpdateDetailsClass = true;
         this._UserRecord = {}
-        this._Operationtitle = "Update";
+        this._Operationtitle = "Add";
         
     }
 
@@ -141,9 +175,24 @@ export class ManageuserComponent implements OnInit {
     SwitchManageUserEntityStatusError(res) { }
 
     GridSelectionChange(data, event) {
+        this._UserRecord = {};
         this._isClientRole = false;
         this._Operationtitle = "Update";
         this._EditUser = true;
-        this._UserRecord = data.data.data[event.index];
+        this._GridUser = this._ManageUserGridData[event.index];
+        Object.assign(this._UserRecord, this._GridUser);
     }
+
+    UpdateUser() {
+        this.AddUpdateDetailsClass = true;
+        this._mastersServices.UpdateUserDetails(this._UserRecord).subscribe(res => this.UpdateUserDetailsSuccess(res), res => this.UpdateUserDetailsError(res));
+    }
+
+    UpdateUserDetailsSuccess(res) {
+        this.CancelUser();
+        this._mastersServices.GetAllUser().subscribe(res => this.GetAllUserSuccess(res), res => this.GetAllUserError(res));
+    }
+
+    UpdateUserDetailsError(res) {}
+
 }
