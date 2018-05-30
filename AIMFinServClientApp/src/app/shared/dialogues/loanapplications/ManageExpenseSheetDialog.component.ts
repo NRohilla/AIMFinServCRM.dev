@@ -57,6 +57,7 @@ export class ManageExpenseSheetDialog {
     };
 
     ngOnInit() {
+        debugger;
         this.GetExpenseTypes();
         if (this._LocalStorageService.get("LoanApplicationNo") != undefined)
         {

@@ -135,7 +135,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
+
                                     <div class="col float-left" *ngIf="!_EditUser">
                                         <div class="field_set w-100">
                                             <div class="field_info w-100">
@@ -155,9 +155,9 @@
                         </div>
                         <div class="row m-0">
                             <div class="btn-bottom w-100 float-left text-right">
-                                <input type="button" value="&#xf0c7; Save" (click)="AddUser(); AddManageform.reset()" [disabled]="!AddManageform.form.valid" class="btn btn-success" *ngIf="_Operationtitle=='Add'" />
-                                <input type="button" value="&#xf0c7; Update" (click)="UpdateUser();AddManageform.reset()" class="btn btn-success" *ngIf="_Operationtitle=='Update'" />
-                                <input type="button" value="&#xf00d; Cancel" (click)="CancelUser();AddManageform.reset()" class="btn btn-secondary" />
+                                <input type="button" value="&#xf0c7; Save" (click)="AddUser()" [disabled]="!AddManageform.form.valid" class="btn btn-success" *ngIf="_Operationtitle=='Add'" />
+                                <input type="button" value="&#xf0c7; Update" (click)="UpdateUser()" class="btn btn-success" *ngIf="_Operationtitle=='Update'" />
+                                <input type="button" value="&#xf00d; Cancel" (click)="CancelUser()" class="btn btn-secondary" />
                             </div>
                         </div>
                     </div>

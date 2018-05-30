@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, AfterViewInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MastersService } from '../../../services/app.masters.service';
 
@@ -10,7 +10,6 @@ export class ManageUserDialog {
     public _UserPassword: any = {};
     public errorMsg: string = ''
     public isErrorMsg: Boolean = false;
-    public AddUpdateDetailsClass: Boolean = false;
     public _updatePassword:any= {
         UserGuid: '',
         Password:''
@@ -22,14 +21,11 @@ export class ManageUserDialog {
         @Inject(MAT_DIALOG_DATA) public data: any, private _mastersServices: MastersService) { }
 
     onNoClick(): void {
-        this.AddUpdateDetailsClass = true;
         this.dialogRef.close();
     }
 
-    savePassword() {
+    SavePassword() {
         this.errorMsg = ''
-       
-        
         if (this._UserPassword.currentPassword == this.data.dataItem.Password) {
             if (this._UserPassword.newPassword == this._UserPassword.confirmPassword) {
                 this.isErrorMsg = false;
@@ -60,5 +56,4 @@ export class ManageUserDialog {
     }
 
     GetUpdatedPasswordError(res) { }
-
 }

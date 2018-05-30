@@ -17,9 +17,8 @@ import { ManageUserDialog } from '../../../shared/dialogues/manage/ManageUserDia
     providers: [MastersService]
 })
 export class ManageuserComponent implements OnInit {
-
     public _ManageUserGridData: {
-        FirstName:'',
+        FirstName: '',
         LastName: '',
         Mobile: '',
         Email: '',
@@ -27,20 +26,20 @@ export class ManageuserComponent implements OnInit {
         DisplayName: ''
     }
 
-    public _UserTypeRole:any= {}
+    public _UserTypeRole: any = {}
 
     public _RoleOfUser: {
         Name: '',
         RoleId: '',
-        Description:''
+        Description: ''
     }
 
     public _ClientName: {
-        FirstName:''
+        FirstName: ''
     }
 
-    public _SelectApplicantId={
-        ApplicantID:''
+    public _SelectApplicantId = {
+        ApplicantID: ''
     };
 
     public _GridUser: any = {};
@@ -78,11 +77,11 @@ export class ManageuserComponent implements OnInit {
         this._RoleOfUser = JSON.parse(res._body);
     }
 
-    GetRoleError(res) {}
+    GetRoleError(res) { }
 
     SelectApplicantName(applicantId) {
         this._EditUser = false;
-        this._mastersServices.GetUserDetails(applicantId).subscribe(res => this.GetUserDetailsSuccess(res,), res => this.GetUserDetailsError(res));
+        this._mastersServices.GetUserDetails(applicantId).subscribe(res => this.GetUserDetailsSuccess(res, ), res => this.GetUserDetailsError(res));
 
     }
 
@@ -98,8 +97,6 @@ export class ManageuserComponent implements OnInit {
             Role: 'Client'
 
         }
-
-       // this._UserRecord.DisplayName = this._UserRecord.FirstName + this._UserRecord.LastName
     }
 
     GetUserDetailsError(res) { }
@@ -112,7 +109,7 @@ export class ManageuserComponent implements OnInit {
         if (role == "Client") {
             this._isClientRole = true;
             this._mastersServices.GetApplicants().subscribe(res => this.GetApplicantsSuccess(res), res => this.GetApplicantsError(res));
-        }else {
+        } else {
             this._isClientRole = false;
         }
     }
@@ -121,29 +118,27 @@ export class ManageuserComponent implements OnInit {
         this._ClientName = JSON.parse(res._body);
     }
 
-    GetApplicantsError(res) {}
+    GetApplicantsError(res) { }
 
     AddUser() {
-        console.log(this._UserRecord.EmailID)
         this._mastersServices.ValidateEmail(this._UserRecord.EmailID).subscribe(res => this.ValidateEmailSuccess(res), res => this.ValidateEmailError(res))
-        this.AddUpdateDetailsClass = true;
-        if (this.isEmailAllreadyExits) {
+    }
+
+    ValidateEmailSuccess(res) {
+        this.isEmailAllreadyExits = JSON.parse(res._body);
+        if (!this.isEmailAllreadyExits) {
             this.IsErrorMsg = false;
             this._mastersServices.AddUser(this._UserRecord).subscribe(res => this.AddUserSuccess(res), res => this.AddUserError(res));
-        } else {
+        }else {
             this.IsErrorMsg = true
             this.ErrorMsg = "this Email Address already exits.";
         }
     }
 
-    ValidateEmailSuccess(res) {
-        this.isEmailAllreadyExits = JSON.parse(res._body);
-        console.log(this.isEmailAllreadyExits)
-    }
-
-    ValidateEmailError(res) {}
+    ValidateEmailError(res) { }
 
     AddUserSuccess(res) {
+        this.AddUpdateDetailsClass = true;
         this._mastersServices.GetAllUser().subscribe(res => this.GetAllUserSuccess(res), res => this.GetAllUserError(res));
         this.CancelUser();
     }
@@ -152,14 +147,18 @@ export class ManageuserComponent implements OnInit {
 
     CancelUser() {
         this.AddUpdateDetailsClass = true;
-        this._UserRecord = {}
         this._Operationtitle = "Add";
-        
+        this._UserRecord = {}
+        this._UserTypeRole = {}
+        this._SelectApplicantId = {
+            ApplicantID:''
+        }
+
     }
 
     ChangePassword(dataItem): void {
-        let dialogRef = this.dialog.open(ManageUserDialog,{ data: { dataItem } });
-       
+        let dialogRef = this.dialog.open(ManageUserDialog, { data: { dataItem } });
+
         dialogRef.afterClosed().subscribe(result => {
         });
     }
@@ -179,20 +178,20 @@ export class ManageuserComponent implements OnInit {
         this._isClientRole = false;
         this._Operationtitle = "Update";
         this._EditUser = true;
+        this._UserTypeRole = {}
         this._GridUser = this._ManageUserGridData[event.index];
         Object.assign(this._UserRecord, this._GridUser);
     }
 
     UpdateUser() {
-        this.AddUpdateDetailsClass = true;
         this._mastersServices.UpdateUserDetails(this._UserRecord).subscribe(res => this.UpdateUserDetailsSuccess(res), res => this.UpdateUserDetailsError(res));
     }
 
     UpdateUserDetailsSuccess(res) {
-        this.CancelUser();
+        this.AddUpdateDetailsClass = true;
         this._mastersServices.GetAllUser().subscribe(res => this.GetAllUserSuccess(res), res => this.GetAllUserError(res));
+        this.CancelUser();
     }
 
-    UpdateUserDetailsError(res) {}
-
+    UpdateUserDetailsError(res) { }
 }

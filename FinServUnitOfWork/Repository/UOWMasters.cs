@@ -45,8 +45,8 @@ namespace FinServUnitOfWork.Repository
                                 AutoID = AssetstMstr.AutoID,
                                 IsActive = AssetstMstr.IsActive,
                             }).ToList();
-                    
-                    
+
+
                 }
             }
             catch (Exception e)
@@ -65,7 +65,7 @@ namespace FinServUnitOfWork.Repository
                             select new AdvisorTypeDetails()
                             {
                                 AdvisorID = advsrdtls.AdvisorID,
-                                AutoID=advsrdtls.AutoID,
+                                AutoID = advsrdtls.AutoID,
                                 AdvisorCode = advsrdtls.AdvisorCode,
                                 AdvisorGroup = advsrdtls.AdvisorGroup,
                             }).ToList();
@@ -331,7 +331,8 @@ namespace FinServUnitOfWork.Repository
         }
 
 
-        public List<Applicants> GetApplicants() {
+        public List<Applicants> GetApplicants()
+        {
             try
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
@@ -343,7 +344,7 @@ namespace FinServUnitOfWork.Repository
                                 AutoID = ObjAplcnts.AutoID,
                                 Title = ObjAplcnts.Title,
                                 FirstName = ObjAplcnts.FirstName,
-                                MiddleName=ObjAplcnts.MiddleName,
+                                MiddleName = ObjAplcnts.MiddleName,
                                 LastName = ObjAplcnts.LastName
                             })
                             .ToList();
@@ -365,7 +366,6 @@ namespace FinServUnitOfWork.Repository
                             .Where(p => p.LoanApplicationNo == appGuid)
                             select new Applicants()
                             {
-                                AutoID = ObjAplcnts.AutoID,
                                 ApplicantID = ObjAplcnts.ApplicantID,
                                 FirstName = ObjAplcnts.FirstName
                             })
@@ -450,7 +450,7 @@ namespace FinServUnitOfWork.Repository
                 Applicants objApplicants = new Applicants();
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    var GetApplicantDetails = db.tblApplicants.Where(p =>  p.ApplicantID == ApplicantID).FirstOrDefault();
+                    var GetApplicantDetails = db.tblApplicants.Where(p => p.ApplicantID == ApplicantID).FirstOrDefault();
                     if (GetApplicantDetails != null)
                     {
                         objApplicants.ApplicantID = GetApplicantDetails.ApplicantID;
@@ -460,7 +460,7 @@ namespace FinServUnitOfWork.Repository
                         objApplicants.FirstName = GetApplicantDetails.FirstName;
                         objApplicants.LastName = GetApplicantDetails.LastName;
                         objApplicants.MobileNo = GetApplicantDetails.MobileNo;
-                       
+
                     }
                     return objApplicants;
                 }
@@ -790,15 +790,21 @@ namespace FinServUnitOfWork.Repository
 
         public bool SwitchManageUserEntityStatus(Guid UserGuid)
         {
-         
+
             try
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
                     var GetEmploymentEntity = db.tblUsers.Where(p => p.UserGuid == UserGuid).FirstOrDefault();
+
                     if (GetEmploymentEntity != null)
                     {
                         GetEmploymentEntity.IsActive = !GetEmploymentEntity.IsActive;
+
+                        var _userRole = db.tblUsersRoles.Where(x => x.UserGuid == GetEmploymentEntity.UserGuid).FirstOrDefault();
+                        if (_userRole != null)
+                            _userRole.IsActive = !_userRole.IsActive;
+
                         db.SaveChanges();
                     }
                 }
@@ -1207,7 +1213,7 @@ namespace FinServUnitOfWork.Repository
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                   tblMasterExpenseType Obj = new tblMasterExpenseType();
+                    tblMasterExpenseType Obj = new tblMasterExpenseType();
                     Obj.ExpenseType = ExpenseTypeMaster.ExpenseType;
                     Obj.ExpenseTypeID = Guid.NewGuid();
                     Obj.IsActive = true;
@@ -1257,7 +1263,7 @@ namespace FinServUnitOfWork.Repository
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
                     tblMasterTypeOfLoan Obj = new tblMasterTypeOfLoan();
-                    Obj.LoanType= LoanTypeMaster.LoanType;
+                    Obj.LoanType = LoanTypeMaster.LoanType;
                     Obj.IsActive = true;
                     db.tblMasterTypeOfLoans.Add(Obj);
                     operationResult = db.SaveChanges();
@@ -1493,30 +1499,33 @@ namespace FinServUnitOfWork.Repository
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
+                    Guid _guid = Guid.NewGuid();
 
-                        tblUser _objDetails = new tblUser();
-                        _objDetails.UserGuid = Guid.NewGuid();
-                        _objDetails.LoginID = UserDetails.EmailID;
-                        _objDetails.FirstName = UserDetails.FirstName;
-                        _objDetails.LastName = UserDetails.LastName;
-                        _objDetails.DisplayName = UserDetails.DisplayName;
-                        _objDetails.Email = UserDetails.EmailID;
-                        _objDetails.Password = UserDetails.Password;
-                       _objDetails.Mobile = UserDetails.Mobile;
-                       _objDetails.Role = UserDetails.Role;
-                       _objDetails.CreatedBy = UserDetails.CreatedBy;
-                       _objDetails.CreatedOn = UserDetails.CreatedOn;
-                       _objDetails.IsActive = UserDetails.IsActive;
-                       _objDetails.ModifiedBy = UserDetails.ModifiedBy;
-                       _objDetails.ModifiedOn = UserDetails.ModifiedOn;
-                        db.tblUsers.Add(_objDetails);
+                    tblUser _objDetails = new tblUser();
+                    _objDetails.UserGuid = _guid;
+                    _objDetails.LoginID = UserDetails.EmailID;
+                    _objDetails.FirstName = UserDetails.FirstName;
+                    _objDetails.LastName = UserDetails.LastName;
+                    _objDetails.DisplayName = UserDetails.DisplayName;
+                    _objDetails.Email = UserDetails.EmailID;
+                    _objDetails.Password = UserDetails.Password;
+                    _objDetails.Mobile = UserDetails.Mobile;
+                    _objDetails.Role = UserDetails.Role;
+                    _objDetails.CreatedBy = UserDetails.CreatedBy;
+                    _objDetails.CreatedOn = UserDetails.CreatedOn;
+                    _objDetails.IsActive = true;
+                    _objDetails.ModifiedBy = UserDetails.ModifiedBy;
+                    _objDetails.ModifiedOn = UserDetails.ModifiedOn;
+                    db.tblUsers.Add(_objDetails);
+
                     tblUsersRole _UserRole = new tblUsersRole();
-                    _UserRole.UserGuid = UserDetails._UserRole.UserGuid;
-                    _UserRole.IsActive = UserDetails._UserRole.IsActive;
-                    _UserRole.UsersRoleGuid = UserDetails._UserRole.UsersRoleGuid;
-                    _UserRole.UsersRoleId = UserDetails._UserRole.UsersRoleId;
-                    _UserRole.RoleGuid = UserDetails._UserRole.RoleGuid;
+                    _UserRole.UserGuid = _guid;
+                    _UserRole.IsActive = true;
+                    _UserRole.UsersRoleGuid = Guid.NewGuid();
+                    _UserRole.UsersRoleId = _UserRole.UsersRoleId;
+                    _UserRole.RoleGuid = Guid.NewGuid();
                     db.tblUsersRoles.Add(_UserRole);
+
 
                     db.SaveChanges();
 
