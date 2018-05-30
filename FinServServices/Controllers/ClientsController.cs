@@ -270,11 +270,19 @@ namespace FinServServices.Controllers
             return Repository.GetAddedExpenseSheetGrid(LoanAppNo);
         }
 
+
+        [HttpGet]
+        [Route("GetExpenseNetAmount")]
+        public List<ApplicantExpenseSheet> GetExpenseNetAmount(Guid LoanAppNo)
+        {
+            return Repository.GetExpenseNetAmount(LoanAppNo);
+        }
+
         [HttpGet]
         [Route("GetExpenseSheetDetails")]
-        public ApplicantExpenseSheet GetExpenseSheetDetails(Guid ApplicantID)
+        public ApplicantExpenseSheet GetExpenseSheetDetails(Guid ExpenseID)
         {
-            return Repository.GetExpenseSheetDetails(ApplicantID);
+            return Repository.GetExpenseSheetDetails(ExpenseID);
         }
         [HttpPost]
         [Route("UpdateExpenseSheetDetails")]

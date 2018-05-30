@@ -31,6 +31,8 @@ import { MasterEmployementComponent } from './layout/LoanMaster/components/app.m
 import { MasterQualificationDetailsComponent } from './layout/LoanMaster/components/app.master.qualificationdetails';
 import { MasterPersonalDetailsComponent } from './layout/LoanMaster/components/app.master.personaldetails';
 import { ClientSummaryDialog } from './shared/dialogues/clients/ClientSummaryDialog';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
 import { ManageUserDialog } from './shared/dialogues/manage/ManageUserDialog';
 
 //this is test
@@ -52,6 +54,7 @@ export function createTranslateLoader(http: HttpClient) {
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
+        NgxDatatableModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

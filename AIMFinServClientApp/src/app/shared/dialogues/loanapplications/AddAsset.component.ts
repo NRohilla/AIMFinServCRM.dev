@@ -30,7 +30,9 @@ export class AddAssetComponent extends AppBaseComponent implements OnInit{
     public _objAssetTypeID = [];
     public _AddAsset: boolean = true;
     public _EditViewDetails: boolean = false;
-    public LoanApplicationNo: string='';
+    public LoanApplicationNo: string = '';
+    public _ValidationClass: boolean = false;
+
     public _AssetDetailsObj = {
         AutoID: '',
         AssetID: '',
@@ -50,8 +52,10 @@ export class AddAssetComponent extends AppBaseComponent implements OnInit{
         public dialogRef: MatDialogRef<AddAssetComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any, private _ClientsService: ClientsService, public dialog: MatDialog, private _MasterService: MastersService, private _LocalStorageService: LocalStorageService, ) { super();}
 
-    ngOnInit() {
-        if (this._LocalStorageService.get("LoanApplicationNo") != undefined) {
+    ngOnInit()
+    {
+        if (this._LocalStorageService.get("LoanApplicationNo") != undefined)
+        {
             this.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNo");
             this.GetApplicantNames(this.LoanApplicationNo);
             this._ClientsService.GetAddedAssetGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedAssetGridSuccess(res), res => this.GetAddedAssetGridError(res));
@@ -60,15 +64,16 @@ export class AddAssetComponent extends AppBaseComponent implements OnInit{
         this.GetApplicants();
     }
 
-    AddAsset() {
+    AddAsset()
+    {
         if (this._LocalStorageService.get("ApplicantID") != undefined) {
             this._AssetDetailsObj.ApplicantID = this._LocalStorageService.get("ApplicantID");
             this._ClientsService.AddAsset(this._AssetDetailsObj).subscribe(res => this.AddAssetSuccess(res), res => this.AddAssetError(res));
         }
     }
-    AddAssetSuccess(res) {
+    AddAssetSuccess(res)
+    {
         this._AssetDetailsObj = JSON.parse(res._body);
-        this.GetAddedAssetGrid();
         this._AssetDetailsObj = {
             AutoID: '',
             AssetID: '',
@@ -83,72 +88,91 @@ export class AddAssetComponent extends AppBaseComponent implements OnInit{
             _ApplicationID: {},
             _AssetTypeID: {}
         }
+        this.GetAddedAssetGrid();
+        this._ValidationClass = true;
     }
     AddAssetError(res) { }
 
-    GetAddedAssetGrid() {
+    GetAddedAssetGrid()
+    {
+        debugger;
         if (this._LocalStorageService.get("LoanApplicationNo") != undefined) {
             this._AssetDetailsObj.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNo");
             this._ClientsService.GetAddedAssetGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedAssetGridSuccess(res), res => this.GetAddedAssetGridError(res));
         }
     }
-    GetAddedAssetGridSuccess(res) {
+    GetAddedAssetGridSuccess(res)
+    {
         this.gridData = JSON.parse(res._body);
         this.AddAssetform.reset();
+        this._ValidationClass = true;
     }
     GetAddedAssetGridError(res) { }
 
-    GetApplicantNames(LoanApplicationNo) {
+    GetApplicantNames(LoanApplicationNo)
+    {
+        debugger;
         this._MasterService.GetApplicantNames(this.LoanApplicationNo).subscribe(res => this.GetApplicantNamesSuccess(res), error => this.errorMessage = <any>error);
-        
     }
     GetApplicantNamesSuccess(res) {
+        debugger;
         this._ObjApplicantNames = JSON.parse(res._body);
     }
  
-    GetAssetTypes() {
+    GetAssetTypes()
+    {
         this._MasterService.GetAssetsTypes().subscribe(res => this.GetAssetsTypeSuccess(res), error => this.errorMessage = <any>error);
     }
-    GetAssetsTypeSuccess(res) {
+    GetAssetsTypeSuccess(res)
+    {
         this._objAssetTypeID = JSON.parse(res._body);
     }
-    GetApplicants() {
+    GetApplicants()
+    {
         this._MasterService.GetApplicants().subscribe(res => this.GetApplicantsNameSuccess(res), error => this.errorMessage = <any>error);
     }
-    GetApplicantsNameSuccess(res) {
+    GetApplicantsNameSuccess(res)
+    {
         this._ObjApplicantNames = JSON.parse(res._body);
     }
 
-    ViewDetails(ApplicantID) {
+    ViewDetails(ApplicantID)
+    {
         this._ViewDetails = true;
         this._AddAsset = false;
         this._EditViewDetails = false;
         this._LocalStorageService.set("ApplicantID", ApplicantID);
         this._ClientsService.GetAssetDetails(ApplicantID).subscribe(res => this.ViewDetailsSuccess(res), res => this.ViewDetailsError(res));
     }
-    ViewDetailsSuccess(res) {
+    ViewDetailsSuccess(res)
+    {
         this._AssetDetailsObj = JSON.parse(res._body);
     }
     ViewDetailsError(res) { }
 
-    UpdateAssetDetails() {
+    UpdateAssetDetails()
+    {
         this._ClientsService.UpdateAssetDetails(this._AssetDetailsObj).subscribe(res => this.UpdateAssetDetailsSuccess(res), res => this.UpdateAssetDetailsError(res));
     }
-    UpdateAssetDetailsSuccess(res) {
+    UpdateAssetDetailsSuccess(res)
+    {
         this._AddAsset = true;
         this.AddAssetform.reset();
         this._EditViewDetails = false;
         this._ViewDetails = false;
         this.GetAddedAssetGrid();
+        this._ValidationClass = true;
     }
     UpdateAssetDetailsError(res) { }
 
-    EditDetails() {
+    EditDetails()
+    {
         this._ViewDetails = false;
         this._EditViewDetails = true;
     }
  
-    onNoClick(): void {
+    onNoClick(): void
+    {
         this.dialogRef.close();
     }
 

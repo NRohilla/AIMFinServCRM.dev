@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="AIMFinServDBModel.tblAdvisorDetail" Width="1.5" PointX="0.75" PointY="29.125" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblApplicantCommunicationDetail" Width="1.5" PointX="13.5" PointY="21.125" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblApplicantEmploymentDetail" Width="1.5" PointX="10.5" PointY="16.125" />
-        <EntityTypeShape EntityType="AIMFinServDBModel.tblApplicantExpenseSheet" Width="1.5" PointX="10.5" PointY="26.5" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblApplicantQualificationDetail" Width="1.5" PointX="7.5" PointY="15.5" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblApplicant" Width="1.5" PointX="5.25" PointY="19.375" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblAsset" Width="1.5" PointX="10.5" PointY="21.5" />
@@ -40,8 +39,6 @@
         <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblApplicants" />
         <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblMasterTypeOfEmployment" />
         <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblMasterTypeOfProfession" />
-        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblApplicants" />
-        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblMasterExpenseType" />
         <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantQualificationDetails_tblApplicants" />
         <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantQualificationDetails_tblMasterTypeOfQualification" />
         <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicants_tblLoanApplicationForm" />
@@ -62,6 +59,9 @@
         <AssociationConnector Association="AIMFinServDBModel.FK_tblLoanMaster_tblMasterTypeOfLoan" />
         <AssociationConnector Association="AIMFinServDBModel.FK_tblLoanMaster_tblMasterTypeOfStatus" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblUser" Width="1.5" PointX="5.375" PointY="4.75" />
+        <EntityTypeShape EntityType="AIMFinServDBModel.tblApplicantExpenseSheet" Width="1.5" PointX="10.5" PointY="26.25" />
+        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblApplicants" />
+        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblMasterExpenseType" />
       </Diagram>
       <Diagram DiagramId="9ffe6693a3454488bd526b5fbd46fe2d" Name="Diagram2" >
       </Diagram>

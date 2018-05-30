@@ -109,6 +109,7 @@ export class EmployementComponent implements OnInit {
     }
 
     UpdateDetails() {
+        debugger;
         this._ClientsService.UpdateEmploymentDetailsByAppID(this.EmploymentDetails).subscribe(res => this.UpdateEmploymentDetailsByAppIDSuccess(res), res => this.UpdateEmploymentDetailsByAppIDError(res));
     }
     UpdateEmploymentDetailsByAppIDSuccess(res) {
@@ -154,6 +155,11 @@ export class EmployementComponent implements OnInit {
 
 
     ViewDetailsByAppIDError(res) { }
-    CancelEditingDetails() { this._EditDetails = false; }
+    CancelEditingDetails()
+    {
+        debugger;
+        this._EditDetails = false;
+        this.router.navigate(['/employment']);
+    }
 }
 

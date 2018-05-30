@@ -149,7 +149,11 @@ export class LendingComponent {
         this.LendingDetails = JSON.parse(res._body);
     }
     ViewLendingDetailsByAppIDError(res) { }
-    CancelEditingDetails() { this._EditDetails = false; }
+
+    CancelEditingDetails() {
+        this._EditDetails = false;
+        this.router.navigate(['/lending']);
+    }
 
     EditDetails() { this._EditDetails = true; }
 }

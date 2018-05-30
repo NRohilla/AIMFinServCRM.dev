@@ -1,17 +1,16 @@
 .application-details, .master-forms { min-width:1150px;}
 .master-forms .k-grouping-header, .application-details .k-grouping-header { display:none;}
 .master-forms .breadcrumb, .application-details .breadcrumb { background:#776d84;}
-.application-details .breadcrumb { margin-bottom: 0px; border-radius: 0.25rem 0.25rem 0px 0px; }
 .master-forms .breadcrumb li:first-child, .master-forms .breadcrumb li:first-child a, .application-details .breadcrumb li:first-child, .application-details .breadcrumb li:first-child a { color:#ffffff; text-decoration:none;}
 .master-forms .breadcrumb li, .master-forms .breadcrumb .breadcrumb-item + .breadcrumb-item::before, .application-details .breadcrumb li, .application-details .breadcrumb .breadcrumb-item + .breadcrumb-item::before { color:#c6c6c6;}
 .master-forms .btn-link { padding:0px;}
 .master-forms h2, .application-details h2 { color:#1b9ec5; font-size:25px; text-transform:uppercase; font-weight:600; padding:12px 0px;}
 .sub-head { color: #1b9ec5; font-size: 20px; text-transform: uppercase; font-weight: 600; }
-/*.master-forms th { background:#d7d7d7; padding:10px;}*/
+.master-forms th { background:#d7d7d7; padding:10px;}
 .master-forms th .ng-star-inserted { text-transform:uppercase; color:#212529;}
 .master-forms th .ng-star-inserted:hover { color:#1b9ec5;}
-.master-forms .section_box, .application-details .section_box{ margin-left:0; width:100%;}
-/*.master-forms .section_box .tab-content { padding:40px 10px 0px 10px;}*/
+.master-forms .section_box, .application-details .section_box{ margin-left:0; margin-top:27px; width:100%;}
+.master-forms .section_box .tab-content { padding:40px 10px 0px 10px;}
 .master-forms .section_box .box_title, .application-details .section_box .box_title { background:#f9f9f9; font-size:14px; color:#1b9ec5; z-index:100;}
 .master-forms input[type="button"], .application-details input[type="button"], .master-forms input[type="submit"], .application-details input[type="submit"] {
         padding: 5px 10px;
@@ -90,7 +89,8 @@ a{ outline:none;}
 .data-table .datatable-body-cell:last-child { text-align: center;}
 .data-table .datatable-body-cell:last-child input[type="button"] { line-height: 15px; font-size: 11px; text-transform: uppercase; }
 
-.client-details .section_box, .client-details .mat-tab-header { background: #f7f7f7; margin-top: 0px; }
+.client-details .section_box, .client-details .mat-tab-header { background: #f7f7f7; }
+.client-details .section_box { margin-top:0px; }
 .client-details .mat-tab-header { border: none; height: 60px; border-left: 1px solid rgba(0,0,0,.08); border-right: 1px solid rgba(0,0,0,.08);}
 .client-details .mat-tab-label-container .mat-tab-labels { background: #326575; }
 .client-details .mat-tab-label { width: 25%; opacity: 1; border-right: 1px solid #ffffff; }
@@ -119,20 +119,16 @@ a{ outline:none;}
 .net-amount { font-size: 14px;}
 .net-amount span { color: #007b9f; font-weight: 600; }
 
-.application-details .k-grid-header tr:first-child { background: #1b9ec5; }
-.application-details .k-grid-header tr:first-child th { color: #ffffff; padding: 10px 12px; }
-.application-details .k-grid-header tr:nth-child(2), .application-details .k-pager-wrap  { background: #bee5eb; }
-.application-details .k-state-selected { background: #7ba6ad; }
-.application-details .k-pager-wrap .k-state-selected:hover { background: #1b9ec5; }
-.application-details .k-grid-content { overflow-y: auto; }
-.application-details .k-grid-footer-wrap, .application-details .k-grid-header-wrap, .application-details .k-widget { border: none;}
-.application-details .k-grid-header { padding: 0px !important; }
-.application-details .k-pager-numbers .k-link, .application-details .k-pager-numbers .k-link:link { color: #656565; }
-.application-details .btn-hover:hover { background: #bdbdbd; }
 
-/* Media Query*/
-@media (max-width: 1700px) {
-    .application-details .field_set .field_label, .master-forms .field_set .field_label {
+
+
+
+
+
+
+    /* Media Query*/
+    @media (max-width: 1700px) {
+        .application-details .field_set .field_label, .master-forms .field_set .field_label {
        width:45%;
    }
     .application-details .tab-content .field_set .field_info, .master-forms .field_set .field_info, .application-details .field_set p {

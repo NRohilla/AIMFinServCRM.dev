@@ -3,18 +3,18 @@
         <h3 class="text-uppercase sub-head">Manage Expense Sheet</h3>
         <div class="section_box pl-0 pb-0 pr-0 mb-4 mt-3 clearfix">
             <form name="form" #AddExpenseform="ngForm" novalidate>
-                <div class="p-4">
+                <div class="p-4" [ngClass]="{'update_details':_ValidationClass}">
                     <div class="row m-0">
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Applicant Name</label>
-                                <p *ngIf="_ViewDetails">{{_ManageExpenseSheetDetails.FirstName}}</p>
+                                <span *ngIf="_ViewDetails">{{_ManageExpenseSheetDetails.FirstName}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field *ngIf="_EditViewDetails || _AddExpense">
                                         <mat-select placeholder="Applicant Name" [(ngModel)]="_ManageExpenseSheetDetails.ApplicantID" name="applicantname" #applicantname="ngModel" required>
                                             <mat-option *ngFor="let ApplcntType of _ObjApplicantNames" [value]="ApplcntType.ApplicantID">{{ApplcntType.FirstName}}</mat-option>
                                         </mat-select>
-                                        <div *ngIf="applicantname.invalid && (applicantname.dirty || applicantname.touched)" class="alert alert-danger">
+                                        <div *ngIf="applicantname.invalid && (applicantname.dirty || applicantname.touched)" class="alert alert-danger" >
                                             <div *ngIf="applicantname.errors.required ">
                                                 Please select Applicant Name.
                                             </div>
@@ -26,7 +26,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Expense Type</label>
-                                <p *ngIf="_ViewDetails">{{_ManageExpenseSheetDetails.ExpenseType}}</p>
+                                <span *ngIf="_ViewDetails">{{_ManageExpenseSheetDetails.ExpenseType}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field *ngIf="_EditViewDetails || _AddExpense">
                                         <mat-select placeholder="Expense Type" [(ngModel)]="_ManageExpenseSheetDetails.ExpenseTypeID" name="Expensetype" #Expensetype="ngModel" required>
@@ -44,7 +44,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Description</label>
-                                <p *ngIf="_ViewDetails">{{_ManageExpenseSheetDetails.Description}}</p>
+                                <span *ngIf="_ViewDetails">{{_ManageExpenseSheetDetails.Description}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddExpense">
                                         <input matInput placeholder="Details" name="Details" [(ngModel)]="_ManageExpenseSheetDetails.Description" class="w-100" #Details required>
@@ -62,7 +62,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Frequency</label>
-                                <p *ngIf="_ViewDetails">{{_ManageExpenseSheetDetails.Frequency}}</p>
+                                <span *ngIf="_ViewDetails">{{_ManageExpenseSheetDetails.Frequency}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddExpense">
                                         <input matInput placeholder="Frequency" name="Frequency" [(ngModel)]="_ManageExpenseSheetDetails.Frequency" class="w-100" #Frequency required>
@@ -78,7 +78,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Net Amount</label>
-                                <p *ngIf="_ViewDetails">{{_ManageExpenseSheetDetails.NetAmount}}</p>
+                                <span *ngIf="_ViewDetails">{{_ManageExpenseSheetDetails.NetAmount}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddExpense">
                                         <input matInput placeholder="Net Amount" name="NetAmount" [(ngModel)]="_ManageExpenseSheetDetails.NetAmount" class="w-100" #NetAmount required>
@@ -104,36 +104,116 @@
             </form>
         </div>
         <div>
-            <kendo-grid [kendoGridBinding]="gridData"
-                        [pageSize]="10"
-                        [sortable]="true"
-                        [pageable]="true"
-                        [scrollable]="true"
-                        [filterable]="true"
-                        [groupable]="true"
-                        selectable="true">
-                <kendo-grid-column title="Applicant Name">
-                    <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                        <label>{{dataItem.FirstName}}</label>
-                    </ng-template>
-                </kendo-grid-column>
-                <kendo-grid-column title="Expense Type">
-                    <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                        <label>{{dataItem.ExpenseType}}</label>
-                    </ng-template>
-                </kendo-grid-column>
-                <kendo-grid-column field="Description" title="Details">
-                </kendo-grid-column>
-                <kendo-grid-column field="NetAmount" title="Net Amount">
-                </kendo-grid-column>
-                <kendo-grid-column field="Frequency" title="Ownership">
-                </kendo-grid-column>
-                <kendo-grid-command-column>
-                    <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                        <button class="btn btn-lg btn-link p-0" type="button" (click)="ViewDetails(dataItem.ApplicantID)">View Details</button>
-                    </ng-template>
-                </kendo-grid-command-column>
-            </kendo-grid>
+            <!--<kendo-grid [kendoGridBinding]="gridData"
+                [pageSize]="10"
+                [sortable]="true"
+                [pageable]="true"
+                [scrollable]="true"
+                [filterable]="true"
+                [groupable]="true"
+                selectable="true">
+        <kendo-grid-column title="Applicant Name">
+            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                <label>{{dataItem.FirstName}}</label>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column title="Expense Type">
+            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                <label>{{dataItem.ExpenseType}}</label>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="Description" title="Details">
+        </kendo-grid-column>
+        <kendo-grid-column field="NetAmount" title="Net Amount">
+        </kendo-grid-column>
+        <kendo-grid-column field="Frequency" title="Ownership">
+        </kendo-grid-column>
+        <kendo-grid-command-column>
+            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                <button class="btn btn-lg btn-link p-0" type="button" (click)="ViewDetails(dataItem.ApplicantID)">View Details</button>
+            </ng-template>
+        </kendo-grid-command-column>
+    </kendo-grid>-->
+    <div class="data-table">
+        <ngx-datatable #myTable
+                       class='material expandable'
+                       [rows]="rows"
+                       [groupRowsBy]="'FirstName'"
+                       [columnMode]="'force'"
+                       [scrollbarH]="true"
+                       [headerHeight]="50"
+                       [footerHeight]="50"
+                       [rowHeight]="40"
+                       [limit]="4"
+                       [groupExpansionDefault]="true">
+            <!-- Group Header Template -->
+            <ngx-datatable-group-header [rowHeight]="50" #myGroupHeader (toggle)="onDetailToggle($event)">
+                <ng-template let-group="group" let-expanded="expanded" ngx-datatable-group-header-template>
+                    <div class="p-2 table-secondary">
+                        <span [class.datatable-icon-right]="!expanded"
+                              [class.datatable-icon-down]="expanded"
+                              title="Expand/Collapse Group"
+                              (click)="toggleExpandGroup(group)">
+                            <b>Applicant Name: {{group.value[0].FirstName}}</b>
+                        </span>
+                        <span class="float-right net-amount"
+                              title="Expand/Collapse Group"
+                              (click)="toggleExpandGroup(group)">
+                            <b>Total Amount: {{group.value[0].Total}}</b>
+                        </span>
+                            <!--<strong>Total Amount:</strong>
+                                
+    <span>{{rows[0].Total}}</span>
+    </span>-->
+</div>
+                </ng-template>
+            </ngx-datatable-group-header>
+            <!-- Row Column Template -->
+            <!--<ngx-datatable-column name="Exp. Pay." prop="" editable="true" frozenLeft="True">
+        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row"
+                        let-group="group">
+
+        </ng-template>
+    </ngx-datatable-column>-->
+
+            <!--<div class="p-2 table-secondary clearfix">
+                <span class="float-left"
+                      [class.datatable-icon-right]="!expanded"
+                      [class.datatable-icon-down]="expanded"
+                      title="Expand/Collapse Group"
+                      (click)="toggleExpandGroup(group)">
+                    <strong>Applicant Name: {{group.value[0].FirstName}}</strong>
+                </span>
+                <span class="float-right net-amount"><strong>Total Amount:</strong> <span>50000</span></span>
+            </div>-->
+
+            <ngx-datatable-column name="Applicant Name" prop="FirstName" editable="false" frozenLeft="True"></ngx-datatable-column>
+            <ngx-datatable-column name="Expense Type" prop="ExpenseType" editable="true"></ngx-datatable-column>
+            <ngx-datatable-column name="Details" prop="Description"></ngx-datatable-column>
+            <ngx-datatable-column name="Frequency" prop="Frequency"></ngx-datatable-column>
+            <ngx-datatable-column name="Net Amount" prop="NetAmount"> </ngx-datatable-column>
+            <!--<ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row"
+                     let-group="group" let-rowHeight="rowHeight">
+         <input autofocus
+         (blur)="updateValue($event, 'comment', rowIndex)"
+         type="text"
+         name="NetAmount"
+         [value]="value" />
+    </ng-template>(click)="ViewDetails(rowIndex)"-->
+
+            <ngx-datatable-column name="" prop="">
+                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row"
+                             let-group="group" let-rowHeight="rowHeight">
+                    <input autofocus
+                           type="button"
+                           name="View Details"
+                           value="view details"
+                           (click)="ViewDetails(row)"
+                           class="btn btn-sm btn-info" />
+                </ng-template>
+            </ngx-datatable-column>
+        </ngx-datatable>
+    </div>
         </div>
     </div>
     </div>

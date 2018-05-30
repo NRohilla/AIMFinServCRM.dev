@@ -493,9 +493,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tblUsersRoles">
+      <EntityTypeMapping TypeName="AIMFinServDBModel.tblUsersRole">
+        <MappingFragment StoreEntitySet="tblUsersRole">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="UserGuid" ColumnName="UserGuid" />
+          <ScalarProperty Name="RoleGuid" ColumnName="RoleGuid" />
+          <ScalarProperty Name="UsersRoleId" ColumnName="UsersRoleId" />
+          <ScalarProperty Name="UsersRoleGuid" ColumnName="UsersRoleGuid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tblUsers">
       <EntityTypeMapping TypeName="AIMFinServDBModel.tblUser">
         <MappingFragment StoreEntitySet="tblUsers">
+          <ScalarProperty Name="IsLoggedIn" ColumnName="IsLoggedIn" />
           <ScalarProperty Name="LocationId" ColumnName="LocationId" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
@@ -521,17 +533,6 @@
           <ScalarProperty Name="LoginID" ColumnName="LoginID" />
           <ScalarProperty Name="UserGuid" ColumnName="UserGuid" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tblUsersRoles">
-      <EntityTypeMapping TypeName="AIMFinServDBModel.tblUsersRole">
-        <MappingFragment StoreEntitySet="tblUsersRole">
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="UserGuid" ColumnName="UserGuid" />
-          <ScalarProperty Name="RoleGuid" ColumnName="RoleGuid" />
-          <ScalarProperty Name="UsersRoleId" ColumnName="UsersRoleId" />
-          <ScalarProperty Name="UsersRoleGuid" ColumnName="UsersRoleGuid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

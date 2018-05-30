@@ -59,7 +59,9 @@ namespace FinServUnitOfWork.Interface
         bool AddLoanApplicationDetails(LoanApplicationForms LoanApplicationDetails);
         bool AddExpenseSheet(ApplicantExpenseSheet _objApplicantExpenseSheet);
         List<ApplicantExpenseSheet> GetAddedExpenseSheetGrid(Guid LoanAppNo);
-        ApplicantExpenseSheet GetExpenseSheetDetails(Guid ApplicantID);
+
+        List<ApplicantExpenseSheet> GetExpenseNetAmount(Guid LoanAppNo);
+        ApplicantExpenseSheet GetExpenseSheetDetails(Guid ExpenseID);
         bool UpdateExpenseSheetDetails(ApplicantExpenseSheet _objApplicantExpenseSheet);
         #endregion
 

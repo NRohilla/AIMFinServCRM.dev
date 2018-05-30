@@ -28,6 +28,7 @@ export class AddGuarantorDialog {
     public _AddGuarantor: boolean = true;
     public _ViewDetails: boolean = false;
     public LoanApplicationNo: string = '';
+    public _ValidationClass: boolean = false;
 
     public _AddGuarantorDetails = {
         GuarantorID: '',
@@ -65,6 +66,7 @@ export class AddGuarantorDialog {
         else {
             this._AddGuarantorDetails.NZResidents = false;
         }
+        this._ValidationClass = true;
     }
     
     ngOnInit() {
@@ -83,6 +85,7 @@ export class AddGuarantorDialog {
     AddGuarantorSuccess(res) {
         this._AddGuarantorDetails = JSON.parse(res._body);
         this._ClientsService.GetAddedGuarantorGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedGuarantorGridSuccess(res), res => this.GetAddedGuarantorGridError(res));
+        this._ValidationClass = true;  
     }
     AddGuarantorError(res) { }
 
@@ -110,6 +113,7 @@ export class AddGuarantorDialog {
         else {
             this._AddGuarantorDetails.DNZResidents = "No";
         }
+        this._ValidationClass = true;
     }
     ViewDetailsError(res) { }
 
@@ -124,6 +128,7 @@ export class AddGuarantorDialog {
         this._EditViewDetails = false;
         this._ViewDetails = false;
         this._ClientsService.GetAddedGuarantorGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedGuarantorGridSuccess(res), res => this.GetAddedGuarantorGridError(res));
+        this._ValidationClass = true;
     }
     UpdateGuarantorDetailsError(res) { }
 

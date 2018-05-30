@@ -23,6 +23,7 @@ export class ManageApplicantDialog {
     public _ApplicantID = [];
     public _ShowDetails: boolean = false;
     public ApplicantID: string = '';
+    public LoanApplicationNo: string = '';
 
     public _ManageApplicantDetails = {
         ApplicantID: '',
@@ -69,17 +70,13 @@ export class ManageApplicantDialog {
             HomePhoneNo:''
 
         }
-        this.GetApplicants();
+        if (this._LocalStorageService.get("LoanApplicationNo") != undefined) {
+            debugger;
+            this.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNo");
+            this.GetApplicantNames(this.LoanApplicationNo);
+        }
     }
 
-    GetApplicants() {
-        this._MasterService.GetApplicants().subscribe(res => this.GetApplicantsSuccess(res), res => this.GetApplicantsError(res));
-    }
-    GetApplicantsSuccess(res) {
-        debugger;
-        this._ApplicantID = JSON.parse(res._body);
-    }
-    GetApplicantsError(res) { }
 
     GetAllApplicants() {
         debugger;
@@ -92,6 +89,17 @@ export class ManageApplicantDialog {
     }
     GetAllApplicantsSuccessError(res) {}
 
+
+    //Drop Down for Assign Applicant 
+    GetApplicantNames(LoanApplicationNo) {
+        debugger;
+        this._MasterService.GetApplicantNames(this.LoanApplicationNo).subscribe(res => this.GetApplicantsSuccess(res), res => this.GetApplicantsError(res));
+    }
+    GetApplicantsSuccess(res) {
+        debugger;
+        this._ApplicantID = JSON.parse(res._body);
+    }
+    GetApplicantsError(res) { }
     onNoClick(): void {
         this.dialogRef.close();
         debugger;

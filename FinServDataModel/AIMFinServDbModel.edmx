@@ -76,7 +76,7 @@
           <Property Name="ApplicantID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="50" />
           <Property Name="Frequency" Type="nvarchar" MaxLength="50" />
-          <Property Name="NetAmount" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="NetAmount" Type="numeric" Precision="18" Scale="2" Nullable="false" />
           <Property Name="CreatedBy" Type="uniqueidentifier" />
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="ModifiedBy" Type="uniqueidentifier" />
@@ -934,7 +934,6 @@
           <EntitySet Name="tblAdvisorDetails" EntityType="AIMFinServDBModel.tblAdvisorDetail" />
           <EntitySet Name="tblApplicantCommunicationDetails" EntityType="AIMFinServDBModel.tblApplicantCommunicationDetail" />
           <EntitySet Name="tblApplicantEmploymentDetails" EntityType="AIMFinServDBModel.tblApplicantEmploymentDetail" />
-          <EntitySet Name="tblApplicantExpenseSheets" EntityType="AIMFinServDBModel.tblApplicantExpenseSheet" />
           <EntitySet Name="tblApplicantQualificationDetails" EntityType="AIMFinServDBModel.tblApplicantQualificationDetail" />
           <EntitySet Name="tblApplicants" EntityType="AIMFinServDBModel.tblApplicant" />
           <EntitySet Name="tblAssets" EntityType="AIMFinServDBModel.tblAsset" />
@@ -983,14 +982,6 @@
           <AssociationSet Name="FK_tblApplicantEmploymentDetails_tblMasterTypeOfProfession" Association="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblMasterTypeOfProfession">
             <End Role="tblMasterTypeOfProfession" EntitySet="tblMasterTypeOfProfessions" />
             <End Role="tblApplicantEmploymentDetail" EntitySet="tblApplicantEmploymentDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblApplicantExpenseSheet_tblApplicants" Association="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblApplicants">
-            <End Role="tblApplicant" EntitySet="tblApplicants" />
-            <End Role="tblApplicantExpenseSheet" EntitySet="tblApplicantExpenseSheets" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblApplicantExpenseSheet_tblMasterExpenseType" Association="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblMasterExpenseType">
-            <End Role="tblMasterExpenseType" EntitySet="tblMasterExpenseTypes" />
-            <End Role="tblApplicantExpenseSheet" EntitySet="tblApplicantExpenseSheets" />
           </AssociationSet>
           <AssociationSet Name="FK_tblApplicantQualificationDetails_tblApplicants" Association="AIMFinServDBModel.FK_tblApplicantQualificationDetails_tblApplicants">
             <End Role="tblApplicant" EntitySet="tblApplicants" />
@@ -1069,6 +1060,15 @@
             <End Role="tblLoanMaster" EntitySet="tblLoanMasters" />
           </AssociationSet>
           <EntitySet Name="tblUsers" EntityType="AIMFinServDBModel.tblUser" />
+          <EntitySet Name="tblApplicantExpenseSheets" EntityType="AIMFinServDBModel.tblApplicantExpenseSheet" />
+          <AssociationSet Name="FK_tblApplicantExpenseSheet_tblApplicants" Association="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblApplicants">
+            <End Role="tblApplicant" EntitySet="tblApplicants" />
+            <End Role="tblApplicantExpenseSheet" EntitySet="tblApplicantExpenseSheets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblApplicantExpenseSheet_tblMasterExpenseType" Association="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblMasterExpenseType">
+            <End Role="tblMasterExpenseType" EntitySet="tblMasterExpenseTypes" />
+            <End Role="tblApplicantExpenseSheet" EntitySet="tblApplicantExpenseSheets" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="tblAdvisorDetail">
           <Key>
@@ -1137,24 +1137,6 @@
           <NavigationProperty Name="tblMasterTypeOfEmployment" Relationship="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblMasterTypeOfEmployment" FromRole="tblApplicantEmploymentDetail" ToRole="tblMasterTypeOfEmployment" />
           <NavigationProperty Name="tblMasterTypeOfProfession" Relationship="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblMasterTypeOfProfession" FromRole="tblApplicantEmploymentDetail" ToRole="tblMasterTypeOfProfession" />
         </EntityType>
-        <EntityType Name="tblApplicantExpenseSheet">
-          <Key>
-            <PropertyRef Name="ExpenseID" />
-          </Key>
-          <Property Name="AutoID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ExpenseID" Type="Guid" Nullable="false" />
-          <Property Name="ExpenseTypeID" Type="Guid" Nullable="false" />
-          <Property Name="ApplicantID" Type="Guid" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Frequency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NetAmount" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="CreatedBy" Type="Guid" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedBy" Type="Guid" />
-          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="tblApplicant" Relationship="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblApplicants" FromRole="tblApplicantExpenseSheet" ToRole="tblApplicant" />
-          <NavigationProperty Name="tblMasterExpenseType" Relationship="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblMasterExpenseType" FromRole="tblApplicantExpenseSheet" ToRole="tblMasterExpenseType" />
-        </EntityType>
         <EntityType Name="tblApplicantQualificationDetail">
           <Key>
             <PropertyRef Name="QualificationID" />
@@ -1205,13 +1187,13 @@
           <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tblApplicantCommunicationDetails" Relationship="AIMFinServDBModel.FK_tblApplicantCommunicationDetails_tblApplicants" FromRole="tblApplicant" ToRole="tblApplicantCommunicationDetail" />
           <NavigationProperty Name="tblApplicantEmploymentDetails" Relationship="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblApplicants" FromRole="tblApplicant" ToRole="tblApplicantEmploymentDetail" />
-          <NavigationProperty Name="tblApplicantExpenseSheets" Relationship="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblApplicants" FromRole="tblApplicant" ToRole="tblApplicantExpenseSheet" />
           <NavigationProperty Name="tblApplicantQualificationDetails" Relationship="AIMFinServDBModel.FK_tblApplicantQualificationDetails_tblApplicants" FromRole="tblApplicant" ToRole="tblApplicantQualificationDetail" />
           <NavigationProperty Name="tblLoanApplicationForm" Relationship="AIMFinServDBModel.FK_tblApplicants_tblLoanApplicationForm" FromRole="tblApplicant" ToRole="tblLoanApplicationForm" />
           <NavigationProperty Name="tblMasterApplicantType" Relationship="AIMFinServDBModel.FK_tblApplicants_tblMasterApplicantType" FromRole="tblApplicant" ToRole="tblMasterApplicantType" />
           <NavigationProperty Name="tblMasterFileType" Relationship="AIMFinServDBModel.FK_tblApplicants_tblMasterFileType" FromRole="tblApplicant" ToRole="tblMasterFileType" />
           <NavigationProperty Name="tblAssets" Relationship="AIMFinServDBModel.FK_tblAssets_tblApplicants" FromRole="tblApplicant" ToRole="tblAsset" />
           <NavigationProperty Name="tblLiabilities" Relationship="AIMFinServDBModel.FK_tblLiabilities_tblApplicants" FromRole="tblApplicant" ToRole="tblLiability" />
+          <NavigationProperty Name="tblApplicantExpenseSheets" Relationship="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblApplicants" FromRole="tblApplicant" ToRole="tblApplicantExpenseSheet" />
         </EntityType>
         <EntityType Name="tblAsset">
           <Key>
@@ -1670,30 +1652,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tblApplicantExpenseSheet_tblApplicants">
-          <End Type="AIMFinServDBModel.tblApplicant" Role="tblApplicant" Multiplicity="1" />
-          <End Type="AIMFinServDBModel.tblApplicantExpenseSheet" Role="tblApplicantExpenseSheet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblApplicant">
-              <PropertyRef Name="ApplicantID" />
-            </Principal>
-            <Dependent Role="tblApplicantExpenseSheet">
-              <PropertyRef Name="ApplicantID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblApplicantExpenseSheet_tblMasterExpenseType">
-          <End Type="AIMFinServDBModel.tblMasterExpenseType" Role="tblMasterExpenseType" Multiplicity="1" />
-          <End Type="AIMFinServDBModel.tblApplicantExpenseSheet" Role="tblApplicantExpenseSheet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblMasterExpenseType">
-              <PropertyRef Name="ExpenseTypeID" />
-            </Principal>
-            <Dependent Role="tblApplicantExpenseSheet">
-              <PropertyRef Name="ExpenseTypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_tblApplicantQualificationDetails_tblApplicants">
           <End Type="AIMFinServDBModel.tblApplicant" Role="tblApplicant" Multiplicity="1" />
           <End Type="AIMFinServDBModel.tblApplicantQualificationDetail" Role="tblApplicantQualificationDetail" Multiplicity="*" />
@@ -1953,6 +1911,48 @@
           <Property Name="LocationId" Type="Int32" />
           <Property Name="IsLoggedIn" Type="Boolean" />
         </EntityType>
+        <EntityType Name="tblApplicantExpenseSheet">
+          <Key>
+            <PropertyRef Name="ExpenseID" />
+          </Key>
+          <Property Name="AutoID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExpenseID" Type="Guid" Nullable="false" />
+          <Property Name="ExpenseTypeID" Type="Guid" Nullable="false" />
+          <Property Name="ApplicantID" Type="Guid" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Frequency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NetAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblApplicant" Relationship="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblApplicants" FromRole="tblApplicantExpenseSheet" ToRole="tblApplicant" />
+          <NavigationProperty Name="tblMasterExpenseType" Relationship="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblMasterExpenseType" FromRole="tblApplicantExpenseSheet" ToRole="tblMasterExpenseType" />
+        </EntityType>
+        <Association Name="FK_tblApplicantExpenseSheet_tblApplicants">
+          <End Type="AIMFinServDBModel.tblApplicant" Role="tblApplicant" Multiplicity="1" />
+          <End Type="AIMFinServDBModel.tblApplicantExpenseSheet" Role="tblApplicantExpenseSheet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblApplicant">
+              <PropertyRef Name="ApplicantID" />
+            </Principal>
+            <Dependent Role="tblApplicantExpenseSheet">
+              <PropertyRef Name="ApplicantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblApplicantExpenseSheet_tblMasterExpenseType">
+          <End Type="AIMFinServDBModel.tblMasterExpenseType" Role="tblMasterExpenseType" Multiplicity="1" />
+          <End Type="AIMFinServDBModel.tblApplicantExpenseSheet" Role="tblApplicantExpenseSheet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMasterExpenseType">
+              <PropertyRef Name="ExpenseTypeID" />
+            </Principal>
+            <Dependent Role="tblApplicantExpenseSheet">
+              <PropertyRef Name="ExpenseTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2019,23 +2019,6 @@
                 <ScalarProperty Name="SourceOfIncome" ColumnName="SourceOfIncome" />
                 <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
                 <ScalarProperty Name="EmploymentID" ColumnName="EmploymentID" />
-                <ScalarProperty Name="AutoID" ColumnName="AutoID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblApplicantExpenseSheets">
-            <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicantExpenseSheet">
-              <MappingFragment StoreEntitySet="tblApplicantExpenseSheet">
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
-                <ScalarProperty Name="Frequency" ColumnName="Frequency" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
-                <ScalarProperty Name="ExpenseTypeID" ColumnName="ExpenseTypeID" />
-                <ScalarProperty Name="ExpenseID" ColumnName="ExpenseID" />
                 <ScalarProperty Name="AutoID" ColumnName="AutoID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2491,6 +2474,23 @@
                 <ScalarProperty Name="LoginID" ColumnName="LoginID" />
                 <ScalarProperty Name="UserGuid" ColumnName="UserGuid" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblApplicantExpenseSheets">
+            <EntityTypeMapping TypeName="AIMFinServDBModel.tblApplicantExpenseSheet">
+              <MappingFragment StoreEntitySet="tblApplicantExpenseSheet">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
+                <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+                <ScalarProperty Name="ExpenseTypeID" ColumnName="ExpenseTypeID" />
+                <ScalarProperty Name="ExpenseID" ColumnName="ExpenseID" />
+                <ScalarProperty Name="AutoID" ColumnName="AutoID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

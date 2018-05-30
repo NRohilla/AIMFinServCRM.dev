@@ -55,15 +55,15 @@ export class AddLiabilityComponent implements OnInit {
         {  }
 
     ngOnInit() {
-
+        debugger;
         if (this._LocalStorageService.get("LoanApplicationNo") != undefined) {
             this.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNo");
             this.GetApplicantNames(this.LoanApplicationNo);
-            this._ClientsService.GetAddedLiabilityGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedLiabilityGridSuccess(res), res => this.GetAddedLiabilityGridError(res));
         }
+        this._ClientsService.GetAddedLiabilityGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedLiabilityGridSuccess(res), res => this.GetAddedLiabilityGridError(res));
         this.GetLiabilityTypes();
     }
-
+    //Start - Add Liability
     AddLiability() {
         if (this._LocalStorageService.get("ApplicantID") != undefined) {
             this._LiabilityDetailsObj.ApplicantID = this._LocalStorageService.get("ApplicantID");
@@ -72,7 +72,7 @@ export class AddLiabilityComponent implements OnInit {
     }
     AddLiabilitySuccess(res) {
         this._LiabilityDetailsObj = JSON.parse(res._body);
-        this.GetAddedLiabilityGrid();
+        this._ClientsService.GetAddedLiabilityGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedLiabilityGridSuccess(res), res => this.GetAddedLiabilityGridError(res));
         this._LiabilityDetailsObj = {
             AutoID: '',
             LiabilityID: '',
@@ -89,30 +89,20 @@ export class AddLiabilityComponent implements OnInit {
         }
     }
     AddLiabilityError(res) { }
+    // End - Liability
 
+    //Start- Grid Liability
     GetAddedLiabilityGrid() {
             this._ClientsService.GetAddedLiabilityGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedLiabilityGridSuccess(res), res => this.GetAddedLiabilityGridError(res));
     }
     GetAddedLiabilityGridSuccess(res) {
         this.gridData = JSON.parse(res._body);
-        this.AddLiabilityform.reset();
+        //this.AddLiabilityform.reset();
     }
     GetAddedLiabilityGridError(res) { }
+    //End - Liability Grid
 
-    GetApplicantNames(LoanApplicationNo) {
-        this._MasterService.GetApplicantNames(this.LoanApplicationNo).subscribe(res => this.GetApplicantNamesSuccess(res), error => this.errorMessage = <any>error);
-    }
-    GetApplicantNamesSuccess(res) {
-        this._ObjApplicantNames = JSON.parse(res._body);
-    }
-
-    GetLiabilityTypes() {
-        this._MasterService.GetLiabilityTypes().subscribe(res => this.GetLiabilityTypesSuccess(res), error => this.errorMessage = <any>error);
-    }
-    GetLiabilityTypesSuccess(res) {
-        this._objLiabilityTypeID = JSON.parse(res._body);
-    }
-
+     //Start- View Details 
     ViewDetails(LiabilityID) {
         this._ViewDetails = true;
         this._AddLiability = false;
@@ -124,7 +114,9 @@ export class AddLiabilityComponent implements OnInit {
         this._LiabilityDetailsObj = JSON.parse(res._body);
     }
     ViewDetailsError(res) { }
+    //End - View Details
 
+    // Start - Update Details
     UpdateLiabilityDetails() {
         this._ClientsService.UpdateLiabilityDetails(this._LiabilityDetailsObj).subscribe(res => this.UpdateLiabilityDetailsSuccess(res), res => this.UpdateLiabilityDetailsError(res));
     }
@@ -141,11 +133,26 @@ export class AddLiabilityComponent implements OnInit {
         this._ViewDetails = false;
         this._EditViewDetails = true;
     }
+    //End - Update Details
+
+   
+
+    GetApplicantNames(LoanApplicationNo) {
+        debugger;
+        this._MasterService.GetApplicantNames(this.LoanApplicationNo).subscribe(res => this.GetApplicantNamesSuccess(res), error => this.errorMessage = <any>error);
+    }
+    GetApplicantNamesSuccess(res) {
+        debugger;
+        this._ObjApplicantNames = JSON.parse(res._body);
+    }
+    GetLiabilityTypes() {
+        this._MasterService.GetLiabilityTypes().subscribe(res => this.GetLiabilityTypesSuccess(res), error => this.errorMessage = <any>error);
+    }
+    GetLiabilityTypesSuccess(res) {
+        this._objLiabilityTypeID = JSON.parse(res._body);
+    }
 
     onNoClick(): void {
         this.dialogRef.close();
     }
-
-
-
 }

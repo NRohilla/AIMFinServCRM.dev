@@ -56,7 +56,7 @@
     <Property Name="Duration" Type="nvarchar" MaxLength="50" />
     <Property Name="Income" Type="nchar" MaxLength="10" />
     <Property Name="Status" Type="nvarchar" MaxLength="50" />
-    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
     <Property Name="CreatedOn" Type="datetime" />
     <Property Name="ModifiedBy" Type="uniqueidentifier" />
     <Property Name="ModifiedOn" Type="datetime" />
@@ -493,6 +493,7 @@
     <Property Name="IsActive" Type="bit" />
     <Property Name="Description" Type="nvarchar(max)" />
     <Property Name="LocationId" Type="int" />
+    <Property Name="IsLoggedIn" Type="bit" />
   </EntityType>
   <EntityType Name="tblUsersRole">
     <Key>
@@ -525,42 +526,6 @@
       </Principal>
       <Dependent Role="tblApplicantCommunicationDetails">
         <PropertyRef Name="AddressType" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tblApplicantEmploymentDetails_tblApplicants">
-    <End Role="tblApplicants" Type="Self.tblApplicants" Multiplicity="1" />
-    <End Role="tblApplicantEmploymentDetails" Type="Self.tblApplicantEmploymentDetails" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblApplicants">
-        <PropertyRef Name="ApplicantID" />
-      </Principal>
-      <Dependent Role="tblApplicantEmploymentDetails">
-        <PropertyRef Name="ApplicantID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tblApplicantEmploymentDetails_tblMasterTypeOfEmployment">
-    <End Role="tblMasterTypeOfEmployment" Type="Self.tblMasterTypeOfEmployment" Multiplicity="1" />
-    <End Role="tblApplicantEmploymentDetails" Type="Self.tblApplicantEmploymentDetails" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblMasterTypeOfEmployment">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="tblApplicantEmploymentDetails">
-        <PropertyRef Name="SourceOfIncome" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tblApplicantEmploymentDetails_tblMasterTypeOfProfession">
-    <End Role="tblMasterTypeOfProfession" Type="Self.tblMasterTypeOfProfession" Multiplicity="1" />
-    <End Role="tblApplicantEmploymentDetails" Type="Self.tblApplicantEmploymentDetails" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblMasterTypeOfProfession">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="tblApplicantEmploymentDetails">
-        <PropertyRef Name="ProfessionTypeID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -866,18 +831,6 @@
     <AssociationSet Name="FK_tblApplicantCommunicationDetails_tblMasterAddressTypes" Association="Self.FK_tblApplicantCommunicationDetails_tblMasterAddressTypes">
       <End Role="tblMasterAddressTypes" EntitySet="tblMasterAddressTypes" />
       <End Role="tblApplicantCommunicationDetails" EntitySet="tblApplicantCommunicationDetails" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tblApplicantEmploymentDetails_tblApplicants" Association="Self.FK_tblApplicantEmploymentDetails_tblApplicants">
-      <End Role="tblApplicants" EntitySet="tblApplicants" />
-      <End Role="tblApplicantEmploymentDetails" EntitySet="tblApplicantEmploymentDetails" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tblApplicantEmploymentDetails_tblMasterTypeOfEmployment" Association="Self.FK_tblApplicantEmploymentDetails_tblMasterTypeOfEmployment">
-      <End Role="tblMasterTypeOfEmployment" EntitySet="tblMasterTypeOfEmployment" />
-      <End Role="tblApplicantEmploymentDetails" EntitySet="tblApplicantEmploymentDetails" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tblApplicantEmploymentDetails_tblMasterTypeOfProfession" Association="Self.FK_tblApplicantEmploymentDetails_tblMasterTypeOfProfession">
-      <End Role="tblMasterTypeOfProfession" EntitySet="tblMasterTypeOfProfession" />
-      <End Role="tblApplicantEmploymentDetails" EntitySet="tblApplicantEmploymentDetails" />
     </AssociationSet>
     <AssociationSet Name="FK_tblApplicantExpenseSheet_tblApplicants" Association="Self.FK_tblApplicantExpenseSheet_tblApplicants">
       <End Role="tblApplicants" EntitySet="tblApplicants" />
