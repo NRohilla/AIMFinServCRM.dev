@@ -17,14 +17,14 @@ import { ManageUserDialog } from '../../../shared/dialogues/manage/ManageUserDia
     providers: [MastersService]
 })
 export class ManageuserComponent implements OnInit {
-    public _ManageUserGridData: {
-        FirstName: '',
-        LastName: '',
-        Mobile: '',
-        Email: '',
-        Role: '',
-        DisplayName: ''
-    }
+    public _ManageUserGridData: any = [];
+        //FirstName: '',
+        //LastName: '',
+        //Mobile: '',
+        //Email: '',
+        //Role: '',
+        //DisplayName: ''
+    
 
     public _UserTypeRole: any = {}
 
@@ -51,8 +51,10 @@ export class ManageuserComponent implements OnInit {
     public isEmailAllreadyExits: boolean = false;
     public ErrorMsg: string = "";
     public IsErrorMsg: boolean = false;
+    public emailId: string = '';
+    public _UserData: any = {}
 
-    constructor(private _mastersServices: MastersService, public dialog: MatDialog) { }
+    constructor(private _mastersServices: MastersService, private LocalStorageService: LocalStorageService, public dialog: MatDialog) { }
 
     ngOnInit() {
         this.GetAllUser();
@@ -65,6 +67,9 @@ export class ManageuserComponent implements OnInit {
 
     GetAllUserSuccess(res) {
         this._ManageUserGridData = JSON.parse(res._body);
+        this._UserData = this._ManageUserGridData.find(c => c.EmailID === this.emailId);
+        console.log(this._UserData)
+
     }
 
     GetAllUserError(res) { }
@@ -128,6 +133,9 @@ export class ManageuserComponent implements OnInit {
         this.isEmailAllreadyExits = JSON.parse(res._body);
         if (!this.isEmailAllreadyExits) {
             this.IsErrorMsg = false;
+            debugger;
+            this.LocalStorageService.set('Email', this._UserRecord.EmailID);
+            this.emailId = this.LocalStorageService.get('Email');
             this._mastersServices.AddUser(this._UserRecord).subscribe(res => this.AddUserSuccess(res), res => this.AddUserError(res));
         }else {
             this.IsErrorMsg = true
@@ -138,6 +146,7 @@ export class ManageuserComponent implements OnInit {
     ValidateEmailError(res) { }
 
     AddUserSuccess(res) {
+        console.log(res)
         this.AddUpdateDetailsClass = true;
         this._mastersServices.GetAllUser().subscribe(res => this.GetAllUserSuccess(res), res => this.GetAllUserError(res));
         this.CancelUser();
