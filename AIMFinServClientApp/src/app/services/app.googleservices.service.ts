@@ -17,9 +17,20 @@ export class GoogleService {
         this.baseurl = environment.baseAPIUrl;
     }
 
-    SendEmail()
-    {
+    //SendEmail()
+    //{
+    //    debugger;
+    //    return this._http.post(this.baseurl + "GoogleServices/SendEmail", this.options);
+    //}
+
+    GenerateUserTemplate(UserGuid) {
         debugger;
-        return this._http.post(this.baseurl + "GoogleServices/SendEmail", this.options);
+        return this._http.post(this.baseurl + "GoogleServices/GenerateUserTemplate?UserGuid=" + UserGuid, this.options);
     }
+    GeneratePasswordTemplate(UserGuid) {
+        debugger;
+        return this._http.post(this.baseurl + "GoogleServices/GeneratePasswordTemplate?UserGuid=" + UserGuid, this.options);
+    }
+
+
 }

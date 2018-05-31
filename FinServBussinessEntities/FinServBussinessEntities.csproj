@@ -53,6 +53,7 @@
     <Compile Include="Applicants.cs" />
     <Compile Include="Asset.cs" />
     <Compile Include="AssetsTypeMaster.cs" />
+    <Compile Include="EmailTemplate.cs" />
     <Compile Include="EmploymentTypeMaster.cs" />
     <Compile Include="ExpenseTypeMaster.cs" />
     <Compile Include="FileTypeMaster.cs" />

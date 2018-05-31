@@ -8,6 +8,9 @@ namespace FinServUnitOfWork.Interface
 {
    public interface IGoogleServices
     {
-      string SendEmail();
+     // string SendEmail();
+      bool GenerateUserTemplate(Guid UserGuid);
+      bool GeneratePasswordTemplate(Guid UserGuid);
+
     }
 }

@@ -11,6 +11,8 @@ import { MastersService } from '../../../services/app.masters.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ManageUserDialog } from '../../../shared/dialogues/manage/ManageUserDialog';
 import { GoogleService } from '../../../services/app.googleservices.service';
+//import { AuthenticateService } from '../../../services/app.auth.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
     templateUrl: './manageuser.component.html',
@@ -27,6 +29,9 @@ export class ManageuserComponent implements OnInit {
         Role: '',
         DisplayName: ''
     }
+    public UserGuid: string = '';
+    public _IsNewUser: boolean = false;
+    public str: boolean = false;
 
     public _UserTypeRole: any = {}
 
@@ -50,7 +55,11 @@ export class ManageuserComponent implements OnInit {
     public _EditUser: boolean = false;
     public errorMessage: string = '';
 
-    constructor(private _mastersServices: MastersService, public dialog: MatDialog, private _GoogleService: GoogleService) { }
+    public AuthenticationToken: string = '';
+    public IsLoggedIn: boolean = false;
+
+
+    constructor(private _mastersServices: MastersService, public dialog: MatDialog, private _GoogleService: GoogleService, private _LocalStorageService: LocalStorageService) { }
 
     ngOnInit() {
         this.GetAllUser();
@@ -62,6 +71,7 @@ export class ManageuserComponent implements OnInit {
     }
 
     GetAllUserSuccess(res) {
+        debugger
         this._ManageUserGridData = JSON.parse(res._body);
     }
 
@@ -83,6 +93,7 @@ export class ManageuserComponent implements OnInit {
     }
 
     GetUserDetailsSuccess(res) {
+        debugger;
         this._UserRecord = JSON.parse(res._body);
         this._UserRecord.DisplayName = this._UserRecord.FirstName + this._UserRecord.LastName
     }
@@ -109,17 +120,27 @@ export class ManageuserComponent implements OnInit {
     GetApplicantsError(res) { }
 
     AddUser() {
+        debugger;
         this._mastersServices.AddUser(this._UserRecord).subscribe(res => this.AddUserSuccess(res), res => this.AddUserError(res));
     }
 
     AddUserSuccess(res) {
+        debugger;
+        this._UserRecord = JSON.parse(res._body);
+        this._LocalStorageService.set("UserGuid", this._UserRecord.UserGuid);
         this._mastersServices.GetAllUser().subscribe(res => this.GetAllUserSuccess(res), res => this.GetAllUserError(res));
+
+        this.UserGuid = this._LocalStorageService.get("UserGuid");
+        this._GoogleService.GenerateUserTemplate(this.UserGuid).subscribe(res => this.GenerateUserTemplateSuccess(res), error => this.errorMessage = <any>error);
         this.CancelManageUserType();
     }
+
+    GenerateUserTemplateSuccess(res) { }
 
     AddUserError(res) { }
 
     CancelManageUserType() {
+        debugger;
         this._UserRecord = {}
         this._Operationtitle = "Update";
 
@@ -148,14 +169,29 @@ export class ManageuserComponent implements OnInit {
         this._EditUser = true;
         this._UserRecord = data.data.data[event.index];
     }
-    SendEmail() {
-        debugger;
-        this._GoogleService.SendEmail().subscribe(res => this.SendEmailSuccess(res), error => this.errorMessage = <any>error);
-    }
-    SendEmailSuccess(res) {
+    //SendEmail() {
+    //    debugger;
+    //    this._GoogleService.GenerateUserTemplate(this.str).subscribe(res => this.SendEmailSuccess(res), error => this.errorMessage = <any>error);
+    //}
+    //SendEmailSuccess(res) {
+    //   // let dialogRef = this.dialog.open(MailSentSuccessfully);
+    //}
 
-       // let dialogRef = this.dialog.open(MailSentSuccessfully);
-    }
+    //LoginHereClick() {
+    //    var IsLoggedIn = localStorage.getItem('isLoggedin') === "true";
+    //    this.AuthenticationToken = this._LocalStorageService.get('ActivaitonCode');
+
+    //    this._AuthenticateService.LoggedOffUser(this.AuthenticationToken, IsLoggedIn)
+    //        .subscribe(result => this.LoggedOffUserSuccess(result), result => this.LoggedOffUserError(result));
+    //}
+
+    //LoggedOffUserSuccess(res) {
+    //    debugger;
+    //    window.location.href = environment.baseApplicationURL;
+    //}
+
+    //LoggedOffUserError(res) { }
+
 }
 
     

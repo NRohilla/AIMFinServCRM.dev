@@ -1496,6 +1496,7 @@ namespace FinServUnitOfWork.Repository
 
                         tblUser _objDetails = new tblUser();
                         _objDetails.UserGuid = Guid.NewGuid();
+                    _objDetails.UserId = _objUserDetails.UserId;
                         _objDetails.LoginID = _objUserDetails.LoginID;
                         _objDetails.FirstName = _objUserDetails.FirstName;
                         _objDetails.LastName = _objUserDetails.LastName;

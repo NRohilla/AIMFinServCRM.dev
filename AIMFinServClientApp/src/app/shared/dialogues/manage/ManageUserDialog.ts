@@ -1,15 +1,17 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MastersService } from '../../../services/app.masters.service';
+import { GoogleService } from '../../../services/app.googleservices.service';
 
 @Component({
     templateUrl: './ManageUserDialog.component.html',
-    providers: [MastersService]
+    providers: [MastersService, GoogleService]
 })
 export class ManageUserDialog {
     public _UserPassword: any = {};
     public errorMsg: string = ''
     public isErrorMsg: Boolean = false;
+    public errorMessage: string = '';
     public _updatePassword:any= {
         UserGuid: '',
         Password:''
@@ -18,7 +20,7 @@ export class ManageUserDialog {
     constructor(
        
         public dialogRef: MatDialogRef<ManageUserDialog>,
-        @Inject(MAT_DIALOG_DATA) public data: any, private _mastersServices: MastersService) { }
+        @Inject(MAT_DIALOG_DATA) public data: any, private _mastersServices: MastersService,private _GoogleService: GoogleService) { }
 
     onNoClick(): void {
         this.dialogRef.close();
@@ -48,8 +50,11 @@ export class ManageUserDialog {
     }
 
     UpdatePasswordSuccess(res) {
+        debugger;
         this._mastersServices.GetUpdatedPassword(this._updatePassword.UserGuid).subscribe(res => this.GetUpdatedPasswordSuccess(res), res => this.GetUpdatedPasswordError(res))
+        this._GoogleService.GeneratePasswordTemplate(this._updatePassword.UserGuid).subscribe(res => this.GeneratePasswordTemplateSuccess(res), error => this.errorMessage = <any>error);
     }
+    GeneratePasswordTemplateSuccess(res) { }
 
     UpdatePasswordError(res) { }
 

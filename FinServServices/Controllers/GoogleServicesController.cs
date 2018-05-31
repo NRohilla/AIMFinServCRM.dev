@@ -15,11 +15,26 @@ namespace FinServServices.Controllers
 
         IGoogleServices Repository = new UOWGoogleServices();
 
+        //[HttpPost]
+        //[Route("SendEmail")]
+        //public string SendEmail()
+        //{
+        //    return Repository.SendEmail();
+        //}
+
         [HttpPost]
-        [Route("SendEmail")]
-        public string SendEmail()
+        [Route("GenerateUserTemplate")]
+        public bool GenerateUserTemplate(Guid UserGuid)
         {
-            return Repository.SendEmail();
+            return Repository.GenerateUserTemplate(UserGuid);
         }
+        [HttpPost]
+        [Route("GeneratePasswordTemplate")]
+        public bool GeneratePasswordTemplate(Guid UserGuid)
+        {
+            return Repository.GeneratePasswordTemplate(UserGuid);
+        }
+
+
     }
 }
