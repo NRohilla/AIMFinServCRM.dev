@@ -35,5 +35,6 @@ namespace FinServBussinessEntities
         public Nullable<int> LocationId { get; set; }
 
         public Nullable<bool> IsLoggedIn { get; set; }
+        public UserRole _UserRole { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, AfterViewInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MastersService } from '../../../services/app.masters.service';
 import { GoogleService } from '../../../services/app.googleservices.service';
@@ -26,10 +26,8 @@ export class ManageUserDialog {
         this.dialogRef.close();
     }
 
-
-    savePassword() {
+    SavePassword() {
         this.errorMsg = ''
-        
         if (this._UserPassword.currentPassword == this.data.dataItem.Password) {
             if (this._UserPassword.newPassword == this._UserPassword.confirmPassword) {
                 this.isErrorMsg = false;
@@ -63,5 +61,4 @@ export class ManageUserDialog {
     }
 
     GetUpdatedPasswordError(res) { }
-
 }

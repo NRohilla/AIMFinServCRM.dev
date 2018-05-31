@@ -20,18 +20,14 @@ import { environment } from '../../../../environments/environment';
     providers: [MastersService, GoogleService]
 })
 export class ManageuserComponent implements OnInit {
-
-    public _ManageUserGridData: {
-        FirstName: '',
-        LastName: '',
-        Mobile: '',
-        Email: '',
-        Role: '',
-        DisplayName: ''
-    }
-    public UserGuid: string = '';
-    public _IsNewUser: boolean = false;
-    public str: boolean = false;
+    public _ManageUserGridData: any = [];
+        //FirstName: '',
+        //LastName: '',
+        //Mobile: '',
+        //Email: '',
+        //Role: '',
+        //DisplayName: ''
+    
 
     public _UserTypeRole: any = {}
 
@@ -49,14 +45,19 @@ export class ManageuserComponent implements OnInit {
         ApplicantID: ''
     };
 
+    public _GridUser: any = {};
     public _UserRecord: any = {};
     public _Operationtitle: string = "Add";
     public _isClientRole: boolean = false;
     public _EditUser: boolean = false;
-    public errorMessage: string = '';
+    public AddUpdateDetailsClass: boolean = false;
+    public isEmailAllreadyExits: boolean = false;
+    public ErrorMsg: string = "";
+    public IsErrorMsg: boolean = false;
+    public emailId: string = '';
+    public _UserData: any = {}
 
-    public AuthenticationToken: string = '';
-    public IsLoggedIn: boolean = false;
+    constructor(private _mastersServices: MastersService, private LocalStorageService: LocalStorageService, public dialog: MatDialog) { }
 
 
     constructor(private _mastersServices: MastersService, public dialog: MatDialog, private _GoogleService: GoogleService, private _LocalStorageService: LocalStorageService) { }
@@ -73,6 +74,9 @@ export class ManageuserComponent implements OnInit {
     GetAllUserSuccess(res) {
         debugger
         this._ManageUserGridData = JSON.parse(res._body);
+        this._UserData = this._ManageUserGridData.find(c => c.EmailID === this.emailId);
+        console.log(this._UserData)
+
     }
 
     GetAllUserError(res) { }
@@ -89,13 +93,22 @@ export class ManageuserComponent implements OnInit {
 
     SelectApplicantName(applicantId) {
         this._EditUser = false;
-        this._mastersServices.GetUserDetails(applicantId).subscribe(res => this.GetUserDetailsSuccess(res), res => this.GetUserDetailsError(res));
+        this._mastersServices.GetUserDetails(applicantId).subscribe(res => this.GetUserDetailsSuccess(res, ), res => this.GetUserDetailsError(res));
+
     }
 
     GetUserDetailsSuccess(res) {
-        debugger;
+        this._UserRecord = {}
         this._UserRecord = JSON.parse(res._body);
-        this._UserRecord.DisplayName = this._UserRecord.FirstName + this._UserRecord.LastName
+        this._UserRecord = {
+            FirstName: this._UserRecord.FirstName,
+            LastName: this._UserRecord.LastName,
+            DisplayName: this._UserRecord.FirstName + this._UserRecord.LastName,
+            EmailID: this._UserRecord.EmailID,
+            Password: this._UserRecord.Password,
+            Role: 'Client'
+
+        }
     }
 
     GetUserDetailsError(res) { }
@@ -104,6 +117,7 @@ export class ManageuserComponent implements OnInit {
         this._EditUser = false;
         this._UserRecord = {}
         this._UserRecord.Role = role;
+        this._Operationtitle = "Add";
         if (role == "Client") {
             this._isClientRole = true;
             this._mastersServices.GetApplicants().subscribe(res => this.GetApplicantsSuccess(res), res => this.GetApplicantsError(res));
@@ -114,35 +128,49 @@ export class ManageuserComponent implements OnInit {
 
     GetApplicantsSuccess(res) {
         this._ClientName = JSON.parse(res._body);
-        console.log(this._ClientName)
     }
 
     GetApplicantsError(res) { }
 
     AddUser() {
-        debugger;
-        this._mastersServices.AddUser(this._UserRecord).subscribe(res => this.AddUserSuccess(res), res => this.AddUserError(res));
+        this._mastersServices.ValidateEmail(this._UserRecord.EmailID).subscribe(res => this.ValidateEmailSuccess(res), res => this.ValidateEmailError(res))
     }
 
-    AddUserSuccess(res) {
-        debugger;
-        this._UserRecord = JSON.parse(res._body);
-        this._LocalStorageService.set("UserGuid", this._UserRecord.UserGuid);
-        this._mastersServices.GetAllUser().subscribe(res => this.GetAllUserSuccess(res), res => this.GetAllUserError(res));
+    ValidateEmailSuccess(res) {
+        this.isEmailAllreadyExits = JSON.parse(res._body);
+        if (!this.isEmailAllreadyExits) {
+            this.IsErrorMsg = false;
+            debugger;
+            this.LocalStorageService.set('Email', this._UserRecord.EmailID);
+            this.emailId = this.LocalStorageService.get('Email');
+            this._mastersServices.AddUser(this._UserRecord).subscribe(res => this.AddUserSuccess(res), res => this.AddUserError(res));
+        }else {
+            this.IsErrorMsg = true
+            this.ErrorMsg = "this Email Address already exits.";
+        }
+    }
 
-        this.UserGuid = this._LocalStorageService.get("UserGuid");
-        this._GoogleService.GenerateUserTemplate(this.UserGuid).subscribe(res => this.GenerateUserTemplateSuccess(res), error => this.errorMessage = <any>error);
-        this.CancelManageUserType();
+    ValidateEmailError(res) { }
+
+    AddUserSuccess(res) {
+        console.log(res)
+        this.AddUpdateDetailsClass = true;
+        this._mastersServices.GetAllUser().subscribe(res => this.GetAllUserSuccess(res), res => this.GetAllUserError(res));
+        this.CancelUser();
     }
 
     GenerateUserTemplateSuccess(res) { }
 
     AddUserError(res) { }
 
-    CancelManageUserType() {
-        debugger;
+    CancelUser() {
+        this.AddUpdateDetailsClass = true;
+        this._Operationtitle = "Add";
         this._UserRecord = {}
-        this._Operationtitle = "Update";
+        this._UserTypeRole = {}
+        this._SelectApplicantId = {
+            ApplicantID:''
+        }
 
     }
 
@@ -164,34 +192,24 @@ export class ManageuserComponent implements OnInit {
     SwitchManageUserEntityStatusError(res) { }
 
     GridSelectionChange(data, event) {
+        this._UserRecord = {};
         this._isClientRole = false;
         this._Operationtitle = "Update";
         this._EditUser = true;
-        this._UserRecord = data.data.data[event.index];
+        this._UserTypeRole = {}
+        this._GridUser = this._ManageUserGridData[event.index];
+        Object.assign(this._UserRecord, this._GridUser);
     }
-    //SendEmail() {
-    //    debugger;
-    //    this._GoogleService.GenerateUserTemplate(this.str).subscribe(res => this.SendEmailSuccess(res), error => this.errorMessage = <any>error);
-    //}
-    //SendEmailSuccess(res) {
-    //   // let dialogRef = this.dialog.open(MailSentSuccessfully);
-    //}
 
-    //LoginHereClick() {
-    //    var IsLoggedIn = localStorage.getItem('isLoggedin') === "true";
-    //    this.AuthenticationToken = this._LocalStorageService.get('ActivaitonCode');
+    UpdateUser() {
+        this._mastersServices.UpdateUserDetails(this._UserRecord).subscribe(res => this.UpdateUserDetailsSuccess(res), res => this.UpdateUserDetailsError(res));
+    }
 
-    //    this._AuthenticateService.LoggedOffUser(this.AuthenticationToken, IsLoggedIn)
-    //        .subscribe(result => this.LoggedOffUserSuccess(result), result => this.LoggedOffUserError(result));
-    //}
-
-    //LoggedOffUserSuccess(res) {
-    //    debugger;
-    //    window.location.href = environment.baseApplicationURL;
-    //}
-
-    //LoggedOffUserError(res) { }
-
+    UpdateUserDetailsSuccess(res) {
+        this.AddUpdateDetailsClass = true;
+        this._mastersServices.GetAllUser().subscribe(res => this.GetAllUserSuccess(res), res => this.GetAllUserError(res));
+        this.CancelUser();
+    }
 }
 
     

@@ -17,8 +17,9 @@ using System;
     
 public partial class tblUser
 {
+        public object tblUsersRole;
 
-    public long UserId { get; set; }
+        public long UserId { get; set; }
 
     public System.Guid UserGuid { get; set; }
 

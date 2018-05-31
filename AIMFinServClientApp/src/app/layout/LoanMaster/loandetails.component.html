@@ -247,10 +247,10 @@
                                             <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
                                                 <div class="field_set">
                                                     <div class="field_label" *ngIf="!_EditDetails">Property Cost</div>
-                                                    <p *ngIf="!_EditDetails">{{_LoanDetailsObj._propertyTypeDetails.LoanTermOffered}}</p>
+                                                    <p *ngIf="!_EditDetails">{{_LoanDetailsObj.PropertyCost}}</p>
                                                     <div class="field_info w-100" *ngIf="_EditDetails">
                                                         <mat-form-field>
-                                                            <input matInput placeholder="Property Cost" [(ngModel)]="_LoanDetailsObj._propertyTypeDetails.PropertyCost" name="PropertyCost" #PropertyCost="ngModel" required>
+                                                            <input matInput placeholder="Property Cost" [(ngModel)]="_LoanDetailsObj.PropertyCost" name="PropertyCost" #PropertyCost="ngModel" required>
                                                             <div *ngIf="PropertyCost.invalid && (PropertyCost.dirty || PropertyCost.touched)" class="alert alert-danger">
                                                                 <div *ngIf="PropertyCost.errors.required ">
                                                                     Please select PropertyCost.
@@ -299,7 +299,7 @@
                                             <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
                                                 <div class="field_set">
                                                     <div class="field_label" *ngIf="!_EditDetails">Type Of Property</div>
-                                                    <p *ngIf="!_EditDetails">{{_LoanDetailsObj.PropertyType}}</p>
+                                                    <p *ngIf="!_EditDetails">{{_LoanDetailsObj._propertyTypeDetails.PropertyType}}</p>
                                                     <div class="field_info w-100" *ngIf="_EditDetails">
                                                         <mat-form-field>
                                                             <mat-select placeholder="Type of Property" [(ngModel)]="_LoanDetailsObj._propertyTypeDetails.ID" name="PropertyType" #PropertyType="ngModel" required>

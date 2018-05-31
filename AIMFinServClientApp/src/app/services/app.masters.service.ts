@@ -213,8 +213,12 @@ export class MastersService {
         return this._http.post(this.baseurl + "Masters/UpdateSalutationEntity", SalutationTypeMaster, this.options);
     }
 
-    UpdatePassword(manageUserTypeMaster) {
-        return this._http.post(this.baseurl + "Masters/UpdatePassword", manageUserTypeMaster, this.options);
+    UpdatePassword(UserPassword) {
+        return this._http.post(this.baseurl + "Masters/UpdatePassword", UserPassword, this.options);
+    }
+
+    UpdateUserDetails(UpdatedUserDetails) {
+        return this._http.post(this.baseurl + "Masters/UpdateUserDetails", UpdatedUserDetails, this.options);
     }
 
     //add types
@@ -272,6 +276,10 @@ export class MastersService {
 
     AddUser(ManageUserTypeMaster) {
         return this._http.post(this.baseurl + "Masters/AddUser", ManageUserTypeMaster, this.options);
+    }
+
+    ValidateEmail(email) {
+        return this._http.get(this.baseurl + "Masters/ValidateEmail?email=" + email, this.options);
     }
 
 }
