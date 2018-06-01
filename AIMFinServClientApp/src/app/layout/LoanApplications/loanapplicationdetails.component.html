@@ -9,14 +9,14 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="section_box pl-0 pr-0 clearfix" style="padding-bottom:1px;">
-                            <div class="box_title">Loan Application Form</div>
                             <div class="tab-content clearfix ml-0">
+                                <h3 class="sub-head text-center">Loan Application Form</h3>
                                 <div class="w-100 float-left text-right">
                                     <input type="button" value="&#xf067; Add Applicant" class="btn btn-secondary" (click)="openDialog()" />
                                 </div>
                                 <div class="w-100 float-left">
                                     <form name="form" #LoanApplicantform="ngForm" novalidate>
-                                        <div class="tab-pane active">
+                                        <div class="">
                                             <div class="row m-0">
                                                 <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
                                                     <div class="field_set">
@@ -397,10 +397,10 @@
                                 <div class="btn-bottom pr-4 pl-4 text-right">
                                     <input type="button" value="&#xf0c7; Save" (click)="UpdateLoanApplicationDetails()" [disabled]="!LoanApplicantform.form.valid" *ngIf="_EditDetails" class="btn btn-success" />
                                     <input type="button" value="&#xf00d; Cancel" (click)="CancelEditingDetails()" *ngIf="_EditDetails" class="btn btn-secondary" />
-                                    <input type="button" value="&#xf040; Manage Guarantor" (click)="ManageGuarantor()" *ngIf="!_EditDetails" class="btn btn-primary" />
-                                    <input type="button" value="&#xf040; Manage Asset/Liability" (click)="ManageAssetandLiability()" *ngIf="!_EditDetails" class="btn btn-primary" />
+                                    <input type="button" value="&#xf040; Manage Guarantor" (click)="ManageGuarantor()" *ngIf="!_EditDetails" class="btn btn-secondary" />
+                                    <input type="button" value="&#xf040; Manage Asset/Liability" (click)="ManageAssetandLiability()" *ngIf="!_EditDetails" class="btn btn-secondary" />
                                     <!--<input type="button" value="&#xf040; Assign Applicants" (click)="AssignApplicant()" *ngIf="!_EditDetails" class="btn btn-primary" />-->
-                                    <input type="button" value="&#xf040; Manage Expense Sheet" (click)="ManageExpenseSheet()" *ngIf="!_EditDetails" class="btn btn-primary" />
+                                    <input type="button" value="&#xf040; Manage Expense Sheet" (click)="ManageExpenseSheet()" *ngIf="!_EditDetails" class="btn btn-secondary" />
                                     <input type="button" value="&#xf040; Edit" (click)="EditDetails()" *ngIf="!_EditDetails" class="btn btn-info" />
 
                                 </div>
@@ -438,7 +438,7 @@
             </kendo-grid-column>
             <kendo-grid-command-column>
                 <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                    <button class="btn btn-lg btn-link" type="button" (click)="ViewApplicantDetails(dataItem.ApplicantID)">View details</button>
+                    <button class="btn btn-sm btn-info" type="button" (click)="ViewApplicantDetails(dataItem.ApplicantID)">View details</button>
                 </ng-template>
             </kendo-grid-command-column>
         </kendo-grid>

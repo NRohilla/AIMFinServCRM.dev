@@ -152,26 +152,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row m-0">
-                                <div class="w-100 float-left">
-                                    <div class="btn-bottom pr-4 pl-4 text-right">
-                                        <input type="button" value="Save" (click)="AddUser()" class="btn btn-success" *ngIf="_Operationtitle=='Add'" />
-                                        <input type="button" value="Update" (click)="UpdateSalutationType()" class="btn btn-success" *ngIf="_Operationtitle=='Update'" />
-                                        <input type="button" value="&#xf040; Send Email" (click)="SendEmail()" *ngIf="!_EditDetails" class="btn btn-primary" />
-                                        <input type="button" value="Cancel" (click)="CancelManageUserType()" class="btn btn-secondary" />
-                                    </div>
-                                </div>
                         </div>
                         <div class="row m-0">
                             <div class="btn-bottom w-100 float-left text-right">
                                 <input type="button" value="&#xf0c7; Save" (click)="AddUser()" [disabled]="!AddManageform.form.valid" class="btn btn-success" *ngIf="_Operationtitle=='Add'" />
                                 <input type="button" value="&#xf0c7; Update" (click)="UpdateUser()" class="btn btn-success" *ngIf="_Operationtitle=='Update'" />
+                                <!--<input type="button" value="&#xf040; Send Email" (click)="SendEmail()" *ngIf="!_EditDetails" class="btn btn-primary" />-->
                                 <input type="button" value="&#xf00d; Cancel" (click)="CancelUser()" class="btn btn-secondary" />
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
+                </div>
         </form>
+        
     </div>
 </div>

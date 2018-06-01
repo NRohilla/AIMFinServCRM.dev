@@ -1,4 +1,4 @@
-<div [@routerTransition] class="application-details">
+<div [@routerTransition] class="application-details client-details">
     <app-page-header [heading]="'Loan Details Master'" [icon]="'fa-bar-chart-o'"></app-page-header>
     <div class="back-btn">
         <button class="btn btn-lg btn-link text-white font-weight-bold" type="button" (click)="ViewDetails()">Back</button>
@@ -9,8 +9,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="section_box pb-0 pl-0 pr-0">
-                            <div class="box_title">Loan master Form</div>
                             <div class="tab-content clearfix ml-0">
+                                <h3 class="sub-head text-center">Loan master Form</h3>
                                 <div class="w-100 float-left">
                                     <div class="tab-pane pt-3">
                                         <div class="row m-0">
@@ -371,7 +371,7 @@
             </kendo-grid-column>
             <kendo-grid-command-column>
                 <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                    <button class="btn btn-lg btn-link" type="button" (click)="ViewApplicantDetails()">View details</button>
+                    <button class="btn btn-sm btn-info" type="button" (click)="ViewApplicantDetails()">View details</button>
                 </ng-template>
             </kendo-grid-command-column>
         </kendo-grid>

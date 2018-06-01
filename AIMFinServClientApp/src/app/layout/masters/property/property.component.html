@@ -1,4 +1,4 @@
-﻿<div [@routerTransition] class="master-forms">
+<div [@routerTransition] class="application-details client-details">
     <app-page-header [heading]="'Property Types'" [icon]="'fa-bar-chart-o'"></app-page-header>
     <kendo-grid [kendoGridBinding]="_PropertyTypes"
                 [pageSize]="10"
@@ -21,8 +21,8 @@
 
         <kendo-grid-command-column>
             <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                <button class="btn btn-sm btn-link" type="button" (click)="SwitchStatus(dataItem.ID)" *ngIf="dataItem.IsActive"><i class="fa fa-ban text-danger"></i> Deactivate</button>
-                <button class="btn btn-sm btn-link" type="button" (click)="SwitchStatus(dataItem.ID)" *ngIf="!dataItem.IsActive"><i class="fa fa-check-square-o text-success"></i> Activate</button>
+                <button class="btn btn-sm btn-default" type="button" (click)="SwitchStatus(dataItem.ID)" *ngIf="dataItem.IsActive"><i class="fa fa-ban text-danger"></i> Deactivate</button>
+                <button class="btn btn-sm btn-default" type="button" (click)="SwitchStatus(dataItem.ID)" *ngIf="!dataItem.IsActive"><i class="fa fa-check-square-o text-success"></i> Activate</button>
             </ng-template>
         </kendo-grid-command-column>
     </kendo-grid>
@@ -30,25 +30,27 @@
     <div id="exTab1">
         <div class="row">
             <div class="col-md-12">
-                <div class="section_box">
-                    <div class="box_title">{{_Operationtitle}} Property Type</div>
+                <div class="section_box pl-0 pb-0 pr-0 mt-4">
                     <div class="tab-content clearfix">
-                        <div class="tab-pane active">
-                            <div class="field_set">
-                                <div class="field_label">Property Type</div>
-                                <div class="field_info">
-                                    <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Property type" value="{{_PropertyObj.PropertyType}}" [(ngModel)]="_PropertyObj.PropertyType" #PropertyType>
-                                    </mat-form-field>
+                        <h3 class="sub-head text-center">{{_Operationtitle}} Property Type</h3>
+                        <div class="row m-0">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                <div class="field_set w-100">
+                                    <div class="field_info w-100">
+                                        <mat-form-field>
+                                            <input matInput placeholder="Property type" value="{{_PropertyObj.PropertyType}}" [(ngModel)]="_PropertyObj.PropertyType" #PropertyType>
+                                        </mat-form-field>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="float-right">
-                            <input type="button" value="Save" (click)="AddPropertyType()" class="btn btn-success" *ngIf="_Operationtitle=='Add'" />
-                            <input type="button" value="Update" (click)="UpdatePropertyType()" class="btn btn-success" *ngIf="_Operationtitle=='Update'" />
-                            <input type="button" value="Cancel" (click)="CancelPropertyType()" class="btn btn-secondary" />
+                    </div>
+                    <div class="row m-0">
+                        <div class="w-100 float-left btn-bottom text-right">
+                            <input type="button" value="&#xf0c7; Save" (click)="AddPropertyType()" class="btn btn-success" *ngIf="_Operationtitle=='Add'" />
+                            <input type="button" value="&#xf0c7; Update" (click)="UpdatePropertyType()" class="btn btn-success" *ngIf="_Operationtitle=='Update'" />
+                            <input type="button" value="&#xf00d; Cancel" (click)="CancelPropertyType()" class="btn btn-secondary" />
                         </div>
-                         
                     </div>
                 </div>
             </div>

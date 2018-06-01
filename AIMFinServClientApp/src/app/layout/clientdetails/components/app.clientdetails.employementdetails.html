@@ -1,31 +1,29 @@
 <div class="client-details">
     <div class="application-details">
-        <div>
-            <kendo-grid [kendoGridBinding]="_ClientEmploymentDetails"
-                        [pageSize]="2"
-                        [sortable]="true"
-                        [pageable]="true"
-                        [scrollable]="true"
-                        [filterable]="true"
-                        [groupable]="true"
-                        selectable="true"
-                        #EmploymentID
-                        (selectionChange)="GridSelectionChange(EmploymentID, $event)">
+        <kendo-grid [kendoGridBinding]="_ClientEmploymentDetails"
+                    [pageSize]="2"
+                    [sortable]="true"
+                    [pageable]="true"
+                    [scrollable]="true"
+                    [filterable]="true"
+                    [groupable]="true"
+                    selectable="true"
+                    #EmploymentID
+                    (selectionChange)="GridSelectionChange(EmploymentID, $event)">
 
-                <kendo-grid-column field="_EmploymentTypeDetail.EmployementType" title="Source Of Income">
-                </kendo-grid-column>
-                <kendo-grid-column field="_ProfessionTypeDetail.Profession" title="Profession">
-                </kendo-grid-column>
-                <kendo-grid-column field="EmployerName" title="Employer Name">
-                </kendo-grid-column>
-                <kendo-grid-column field="Duration" title="Duration">
-                </kendo-grid-column>
-                <kendo-grid-column field="Income" title="Income">
-                </kendo-grid-column>
-                <kendo-grid-column field="Status" title="Status">
-                </kendo-grid-column>
-            </kendo-grid>
-        </div>
+            <kendo-grid-column field="_EmploymentTypeDetail.EmployementType" title="Source Of Income">
+            </kendo-grid-column>
+            <kendo-grid-column field="_ProfessionTypeDetail.Profession" title="Profession">
+            </kendo-grid-column>
+            <kendo-grid-column field="EmployerName" title="Employer Name">
+            </kendo-grid-column>
+            <kendo-grid-column field="Duration" title="Duration">
+            </kendo-grid-column>
+            <kendo-grid-column field="Income" title="Income">
+            </kendo-grid-column>
+            <kendo-grid-column field="Status" title="Status">
+            </kendo-grid-column>
+        </kendo-grid>
     </div>
 
     <div class="w-100 float-left mt-3">

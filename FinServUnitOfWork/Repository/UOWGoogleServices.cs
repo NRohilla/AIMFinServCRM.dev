@@ -63,7 +63,7 @@ namespace FinServUnitOfWork.Repository
                 SmtpServer.EnableSsl = true;
 
                 mail.From = new MailAddress("ve.dksaini@gmail.com");
-                mail.To.Add("nehabambah@virtualemployee.com");
+                mail.To.Add("shrangalishukla@virtualemployee.com");
                 mail.CC.Add("deepaksaini@virtualemployee.com");
                 mail.Subject = "Test";
                 // "This is test mail";
@@ -128,8 +128,14 @@ namespace FinServUnitOfWork.Repository
                                                                             <tr>
                                                                                 <td width='10%;'></td>
                                                                                 <td width='80%;' style='padding-top:20px; padding-bottom:20px;'>
-                                                                                    <p style='color:#1b9ec5; font-size: 21px' align='center'>UserId #UserId#</p>
-                                                                                    <p style='color:#1b9ec5; font-size: 21px' align='center'>Password #Password#</p>
+                                                                                    <p style='color:#626f78; font-size: 14px' align='center'><strong>UserId:</strong>";
+                str += " ";
+                str +=objToReturn.EmailID;
+                str += @"</p>
+                                                                                    <p style='color:#626f78; font-size: 14px' align='center'><strong>Password:</strong>";
+                str += " ";
+                str += objToReturn.Password;
+                str+= @"</p>
                                                                                 </td>
                                                                                 <td width='10%;'></td>
                                                                             </tr>
@@ -141,11 +147,11 @@ namespace FinServUnitOfWork.Repository
 
 
 
-                                                                <tr><td height='60px' style='color:#626f78; font-size: 17px' align='center'>To review and update your profile, please log on to AIM. </td></tr>
+                                                                <tr><td height='60px' style='color:#626f78; font-size: 14px' align='center'>To review and update your profile, please log on to AIM. </td></tr>
                                                                 <tr><td height='10'></td></tr>
                                                                 <tr>
                                                                     <td bgcolor='#ebebeb' align='center' valign='middle' height='120'>
-                                                                        <a href='#EmailUrl#' click='LoginHereClick()' style='width:170px; padding:15px; text-align:center; border-radius:20px; display:block; background:#269226; text-decoration:none; color:#FFF;'> Login Here</a>
+                                                                        <a href='http://localhost:8080/login' click='LoginHereClick()' style='width:170px; padding:15px; text-align:center; border-radius:20px; display:block; background:#269226; text-decoration:none; color:#FFF;'> Login Here</a>
                                                                     </td>
                                                                 </tr>
                                                             </table>
@@ -223,7 +229,7 @@ namespace FinServUnitOfWork.Repository
                 SmtpServer.EnableSsl = true;
 
                 mail.From = new MailAddress("ve.dksaini@gmail.com");
-                mail.To.Add("nehabambah@virtualemployee.com");
+                mail.To.Add("shrangalishukla@virtualemployee.com");
                 mail.CC.Add("deepaksaini@virtualemployee.com");
                 mail.Subject = "Test";
                 // "This is test mail";
@@ -266,7 +272,7 @@ namespace FinServUnitOfWork.Repository
                 str += objToReturn.DisplayName;
                 str += @"</td></tr>
                                                                             <tr><td height='11'></td></tr>
-                                                                            <tr><td align='center' style='color:#626f78; font-size: 17px'>Your password has been successfully changed</td></tr>
+                                                                            <tr><td align='center' style='color:#626f78; font-size: 14px'>Your password has been successfully changed</td></tr>
                                                                             <tr>
                                                                                 <td height='20' width='100%'></td>
                                                                             </tr>
@@ -286,10 +292,10 @@ namespace FinServUnitOfWork.Repository
                                                                             <tr>
                                                                                 <td width='10%;'></td>
                                                                                 <td width='80%;' style='padding-top:20px; padding-bottom:20px;'>
-                                                                                    <p style='color:#819196; font-size: 18px' align='center'>Your UserId is: <span style='color:#cc4b19; font-size: 21px;'>";
+                                                                                    <p style='color:#819196; font-size: 14px' align='center'><strong>UserId:</strong> <span style='color:#626f78; font-size: 14px;'>";
                 str += objToReturn.EmailID;
                 str += @"</span></p>
-                                                                                    <p style='color:#819196; font-size: 18px' align='center'>Your Password is <span style='color:#cc4b19; font-size: 21px;'>";
+                                                                                    <p style='color:#819196; font-size: 14px' align='center'><strong>Password:</strong> <span style='color:#626f78; font-size: 14px;'>";
                 str += objToReturn.Password;
     str +=@" </span></p>
                                                                                 </td>
@@ -298,7 +304,6 @@ namespace FinServUnitOfWork.Repository
                                                                         </table>
                                                                     </td>
                                                                 </tr>
-                                                                <tr><td height='60px' style='color:#09bb39; font-size: 18px' align='center'>Your user id &amp; password has been successfully changed. Yo can login Now!. </td></tr>
                                                                 <tr><td height='40px' style='color:#819096; font-size: 14px' align='center'><strong>Disclaimer:</strong> <em>If it is not done by you, then please contact to Admin.</em> </td></tr>
                                                                 <tr><td height='10'></td></tr>
                                                                 <tr>

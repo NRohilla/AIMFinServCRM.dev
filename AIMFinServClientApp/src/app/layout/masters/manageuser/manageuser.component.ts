@@ -57,8 +57,6 @@ export class ManageuserComponent implements OnInit {
     public emailId: string = '';
     public _UserData: any = {}
 
-    constructor(private _mastersServices: MastersService, private LocalStorageService: LocalStorageService, public dialog: MatDialog) { }
-
 
     constructor(private _mastersServices: MastersService, public dialog: MatDialog, private _GoogleService: GoogleService, private _LocalStorageService: LocalStorageService) { }
 
@@ -75,9 +73,15 @@ export class ManageuserComponent implements OnInit {
         debugger
         this._ManageUserGridData = JSON.parse(res._body);
         this._UserData = this._ManageUserGridData.find(c => c.EmailID === this.emailId);
-        console.log(this._UserData)
+        if (this._UserData.UserGuid !== null) {
+            this._GoogleService.GenerateUserTemplate(this._UserData.UserGuid).subscribe(res => this.GenerateUserTemplateSuccess(res), res => this.GenerateUserTemplateError(res));
+        }
 
     }
+
+    GenerateUserTemplateSuccess(res) { }
+
+    GenerateUserTemplateError(res) {}
 
     GetAllUserError(res) { }
 
@@ -141,8 +145,8 @@ export class ManageuserComponent implements OnInit {
         if (!this.isEmailAllreadyExits) {
             this.IsErrorMsg = false;
             debugger;
-            this.LocalStorageService.set('Email', this._UserRecord.EmailID);
-            this.emailId = this.LocalStorageService.get('Email');
+            this._LocalStorageService.set('Email', this._UserRecord.EmailID);
+            this.emailId = this._LocalStorageService.get('Email');
             this._mastersServices.AddUser(this._UserRecord).subscribe(res => this.AddUserSuccess(res), res => this.AddUserError(res));
         }else {
             this.IsErrorMsg = true
@@ -159,7 +163,6 @@ export class ManageuserComponent implements OnInit {
         this.CancelUser();
     }
 
-    GenerateUserTemplateSuccess(res) { }
 
     AddUserError(res) { }
 
@@ -210,6 +213,9 @@ export class ManageuserComponent implements OnInit {
         this._mastersServices.GetAllUser().subscribe(res => this.GetAllUserSuccess(res), res => this.GetAllUserError(res));
         this.CancelUser();
     }
+
+    UpdateUserDetailsError(res) { }
+
 }
 
     
