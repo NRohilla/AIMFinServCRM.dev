@@ -11,11 +11,14 @@
                 #LiabilityTypes
                 (selectionChange)="GridSelectionChange(LiabilityTypes, $event)">
         <kendo-grid-column field="Description" title="Liability Type">
+            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                <label title="Liability Type: ">{{dataItem.Description}}</label>
+            </ng-template>
         </kendo-grid-column>
         <kendo-grid-column field="IsActive" title="Status">
             <ng-template kendoGridCellTemplate let-dataItem>
-                <label *ngIf="dataItem.IsActive">Activated</label>
-                <label *ngIf="!dataItem.IsActive">Deactivated</label>
+                <label *ngIf="dataItem.IsActive" title="Status: ">Activated</label>
+                <label *ngIf="!dataItem.IsActive" title="Status: ">Deactivated</label>
             </ng-template>
         </kendo-grid-column>
 
@@ -34,7 +37,7 @@
                     <div class="tab-content clearfix">
                         <h3 class="sub-head text-center">{{_Operationtitle}} Liability Type</h3>
                         <div class="row m-0">
-                            <div class="col-lg-3col-md-3 col-sm-6 col-12 float-left">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
                                 <div class="field_set w-100">
                                     <div class="field_info w-100">
                                         <mat-form-field class="example-full-width">

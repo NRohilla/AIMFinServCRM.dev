@@ -9,10 +9,11 @@ import {ClientSummaryComponent} from './components/app.clientdetails.summary'
 import {ClientsPersonalDetailsComponent} from './components/app.clientdetails.personaldetails'
 import {ClientscommunicationComponent} from './components/app.clientdetails.communicationdetails'
 import {ClientsEmployementComponent} from './components/app.clientdetails.employementdetails'
-import {ClientqualificationComponent} from './components/app.clientdetails.qualificationdetails'
+import { ClientqualificationComponent } from './components/app.clientdetails.qualificationdetails'
+import { UploadDocumnetComponent } from './components/app.clientdetails.uploaddocument'
 import { FormsModule } from '@angular/forms';
 @NgModule({
     imports: [CommonModule, ClientsRoutingModule, PageHeaderModule, GridModule, MaterialModule, FormsModule],
-    declarations: [ClientsDetailsComponent, ClientSummaryComponent,ClientsPersonalDetailsComponent,ClientscommunicationComponent, ClientsEmployementComponent, ClientqualificationComponent]
+    declarations: [ClientsDetailsComponent, ClientSummaryComponent, ClientsPersonalDetailsComponent, ClientscommunicationComponent, ClientsEmployementComponent, ClientqualificationComponent, UploadDocumnetComponent]
 })
 export class ClientsDetailsModule { }

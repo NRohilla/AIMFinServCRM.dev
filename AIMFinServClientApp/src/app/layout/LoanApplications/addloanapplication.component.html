@@ -2,13 +2,13 @@
             <button class="btn btn-lg btn-link text-white font-weight-bold" type="button" (click)="ViewDetails('ViewList')">Back</button>
         </div>
         <div class="w-100 float-left">
-            <div>
+            <div class="application-details edit-texts">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="section_box p-0 mt-3 clearfix">
                             <form name="form" #AddLoanApplicantform="ngForm" novalidate>
                                 <div class="tab-content clearfix ml-0">
-                                    <h3 class="sub-head text-center">Add Loan Application Form</h3>
+                                    <h3 class="sub-head text-center pt-3 pb-4">Add Loan Application Form</h3>
                                     <div class="w-100 float-left">
                                         <div class="">
                                             <div class="row m-0">
@@ -134,7 +134,7 @@
                                                 </div>
                                             </div>
                                             <hr />
-                                            <div class="row m-0 pt-4">
+                                            <div class="row m-0 pt-2">
                                                 <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
                                                     <div class="field_set w-100">
                                                         <div class="field_info w-100">
@@ -157,7 +157,7 @@
                                                             <mat-form-field class="w-100">
                                                                 <input matInput placeholder="Frequency" [(ngModel)]="_AddLoanApplicationDetails.Frequency" name="Frequency" #Frequency="ngModel" required>
                                                                 <div *ngIf="Frequency.invalid && (Frequency.dirty || Frequency.touched)" class="alert alert-danger">
-                                                                    <div *ngIf="TypeOfloan.errors.required ">
+                                                                    <div *ngIf="Frequency.errors.required ">
                                                                         Please select Frequency.
                                                                     </div>
                                                                 </div>
@@ -166,7 +166,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                    <div class="field_set w-100">
+                                                    <div class="field_set w-100 pt-3">
                                                         <div class="field_info w-100">
                                                             <label class="custom-radio-label">Is Any Guarantor</label>
                                                             <mat-radio-group [(ngModel)]="_AddLoanApplicationDetails.IsAnyGuarantor" name="IsAnyGuarantor" #IsAnyGuarantor="ngModel" class="w-100">
@@ -182,7 +182,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                    <div class="field_set w-100">
+                                                    <div class="field_set w-100 pt-3">
                                                         <div class="field_info w-100">
                                                             <label class="custom-radio-label">Is Pre-approval</label>
                                                             <mat-radio-group [(ngModel)]="_AddLoanApplicationDetails.IsPreApproval" (click)="SwitchApproval()" name="IsPreApproval" #IsPreApproval="ngModel" class="w-100" required>
@@ -197,15 +197,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </div>
                                             <hr />
-                                            <div class="row m-0 pt-4">
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left" *ngIf="_ShowApprovalExpiryDate">
+                                            <div class="row m-0 pt-2">
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
                                                     <div class="field_set w-100">
                                                         <div class="field_info w-100">
                                                             <mat-form-field class="w-100">
-                                                                <input matInput [matDatepicker]="DateArriveFrom" placeholder="MM/DD/YYYY" [(ngModel)]="_AddLoanApplicationDetails.ApprovalExpiryDate" name="DateArriveFrom" #DateArriveFrom="ngModel">
+                                                                <input matInput [matDatepicker]="DateArriveFrom" placeholder="MM/DD/YYYY" [disabled]="!_ShowApprovalExpiryDate" [(ngModel)]="_AddLoanApplicationDetails.ApprovalExpiryDate" name="DateArriveFrom" #DateArriveFrom="ngModel">
                                                                 <mat-datepicker-toggle matSuffix [for]="DateArriveFrom"></mat-datepicker-toggle>
                                                                 <mat-datepicker #DateArriveFrom></mat-datepicker>
                                                                 <div *ngIf="DateArriveFrom.invalid && (DateArriveFrom.dirty || DateArriveFrom.touched)" class="alert alert-danger">
@@ -218,7 +217,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                    <div class="field_set w-100">
+                                                    <div class="field_set w-100 mb-0">
                                                         <div class="field_info w-100">
                                                             <mat-form-field class="w-100">
                                                                 <input matInput placeholder="Age Of Property" [(ngModel)]="_AddLoanApplicationDetails.AgeOfProperty" name="AgeOfProperty" #AgeOfProperty="ngModel" required>
@@ -232,7 +231,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                    <div class="field_set w-100">
+                                                    <div class="field_set w-100 pt-3 mb-0">
                                                         <div class="field_info w-100">
                                                             <label class="custom-radio-label">Is Shifted</label>
                                                             <mat-radio-group [(ngModel)]="_AddLoanApplicationDetails.IsShifted" (click)="SwitchShifted()" name="IsShifted" #IsShifted="ngModel" class="w-100" required>
@@ -247,11 +246,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left" *ngIf="_ShowShiftedDuration">
-                                                    <div class="field_set w-100">
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                                    <div class="field_set w-100 mb-0">
                                                         <div class="field_info w-100">
                                                             <mat-form-field class="w-100">
-                                                                <input matInput placeholder="Shifted Duration" [(ngModel)]="_AddLoanApplicationDetails.ShiftedDuration" name="ShiftedDuration" #ShiftedDuration="ngModel" required>
+                                                                <input matInput placeholder="Shifted Duration" [disabled]="!_ShowShiftedDuration" [(ngModel)]="_AddLoanApplicationDetails.ShiftedDuration" name="ShiftedDuration" #ShiftedDuration="ngModel" required>
                                                                 <div *ngIf="ShiftedDuration.invalid && (ShiftedDuration.dirty || ShiftedDuration.touched)" class="alert alert-danger">
                                                                     <div *ngIf="ShiftedDuration.errors.required ">
                                                                         Please enter Shifted Duration.
@@ -264,7 +263,7 @@
                                             </div>
                                             <div class="row m-0">
                                                 <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                    <div class="field_set w-100">
+                                                    <div class="field_set w-100 pt-3 mb-0">
                                                         <div class="field_info w-100">
                                                             <label class="custom-radio-label">Is Property Decided</label>
                                                             <mat-radio-group [(ngModel)]="_AddLoanApplicationDetails.IsPropertyDecided" name="IsPropertyDecided" #IsPropertyDecided="ngModel" (click)="SwitchCostOfProperty()" class="w-100">
@@ -279,11 +278,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left" *ngIf="_ShowCostOfProperty">
-                                                    <div class="field_set w-100">
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
+                                                    <div class="field_set w-100 mb-0">
                                                         <div class="field_info w-100">
                                                             <mat-form-field class="w-100">
-                                                                <input matInput placeholder="Cost Of Property" [(ngModel)]="_AddLoanApplicationDetails.CostOfProperty" name="CostOfProperty" #CostOfProperty="ngModel" required>
+                                                                <input matInput placeholder="Cost Of Property" [disabled]="!_ShowCostOfProperty" [(ngModel)]="_AddLoanApplicationDetails.CostOfProperty" name="CostOfProperty" #CostOfProperty="ngModel" required>
                                                                 <div *ngIf="CostOfProperty.invalid && (CostOfProperty.dirty || CostOfProperty.touched)" class="alert alert-danger">
                                                                     <div *ngIf="CostOfProperty.errors.required ">
                                                                         Please select CostOfProperty.
@@ -294,7 +293,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                    <div class="field_set w-100">
+                                                    <div class="field_set w-100 mb-0">
                                                         <div class="field_info w-100">
                                                             <mat-form-field class="w-100">
                                                                 <mat-select placeholder="Type of Property" [(ngModel)]="_AddLoanApplicationDetails._PropertyTypeID.ID" name="PropertyType" #PropertyType="ngModel" required>
@@ -310,7 +309,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                    <div class="field_set w-100">
+                                                    <div class="field_set w-100 mb-0">
                                                         <div class="field_info w-100">
                                                             <mat-form-field class="w-100">
                                                                 <input matInput placeholder="Property Used For" [(ngModel)]="_AddLoanApplicationDetails.PropertyUsedFor" name="PropertyUsedFor" #PropertyUsedFor="ngModel" required>
@@ -326,7 +325,7 @@
                                             </div>
                                             <div class="row m-0">
                                                 <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                    <div class="field_set w-100">
+                                                    <div class="field_set w-100 pt-3 mb-0">
                                                         <div class="field_info w-100">
                                                             <label class="custom-radio-label">Is Application Aprroved</label>
                                                             <mat-radio-group [(ngModel)]="_AddLoanApplicationDetails.IsApplicationApproved" name="IsApplicationApproved" #IsApplicationApproved="ngModel" class="w-100" required>
@@ -342,7 +341,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
-                                                    <div class="field_set w-100">
+                                                    <div class="field_set w-100 mb-0">
                                                         <mat-form-field class="w-100">
                                                             <mat-select placeholder="Current Status" [(ngModel)]="_AddLoanApplicationDetails._StatusID.ID" name="StatusID" (change)="updateDiv($event)" #StatusID="ngModel" required>
                                                                 <mat-option *ngFor="let StatusTypeValues of _StatusID" [value]="StatusTypeValues.ID">{{StatusTypeValues.Status}}</mat-option>
@@ -355,11 +354,11 @@
                                                         </mat-form-field>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left" *ngIf="_ShowReasonForNotApproval">
-                                                    <div class="field_set w-100">
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left" >
+                                                    <div class="field_set w-100 mb-0">
                                                         <div class="field_info w-100">
                                                             <mat-form-field class="w-100">
-                                                                <input matInput placeholder="Reason For Not Approval" [(ngModel)]="_AddLoanApplicationDetails.ReasonForNotApproval" name="ReasonForNotApproval" #ReasonForNotApproval="ngModel">
+                                                                <input matInput placeholder="Reason For Not Approval"  [(ngModel)]="_AddLoanApplicationDetails.ReasonForNotApproval" name="ReasonForNotApproval" #ReasonForNotApproval="ngModel">
                                                                 <div *ngIf="ReasonForNotApproval.invalid && (ReasonForNotApproval.dirty || ReasonForNotApproval.touched)" class="alert alert-danger">
                                                                     <div *ngIf="ReasonForNotApproval.errors.required ">
                                                                         Please select Reason For Not Approval.

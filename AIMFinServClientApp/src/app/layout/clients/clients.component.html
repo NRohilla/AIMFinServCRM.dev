@@ -1,4 +1,3 @@
-
 <div [@routerTransition] class="application-details">
     <app-page-header [heading]="'Clients'" [icon]="'fa-bar-chart-o'"></app-page-header>
     <div *ngIf="!_ViewApplicantDetails">
@@ -12,16 +11,22 @@
                     selectable="true">
             <kendo-grid-column title="Client name" [filter]="'text'">
                 <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                    <label>{{dataItem.FirstName}} {{dataItem.MiddleName}} {{dataItem.LastName}}</label>
+                    <label title="Client name: ">{{dataItem.FirstName}} {{dataItem.MiddleName}} {{dataItem.LastName}}</label>
                 </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="MobileNo" title="Contact">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Contact: ">{{dataItem.MobileNo}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="EmailID" title="Email">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Email: ">{{dataItem.EmailID}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-column title="Applicant Type" [filter]="'text'">
                 <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                    <label>{{dataItem._ApplicantTypeMasterID.ApplicantType}}</label>
+                    <label title="Applicant Type: ">{{dataItem._ApplicantTypeMasterID.ApplicantType}}</label>
                 </ng-template>
             </kendo-grid-column>
             <kendo-grid-command-column>

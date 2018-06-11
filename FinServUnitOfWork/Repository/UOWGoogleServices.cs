@@ -63,7 +63,7 @@ namespace FinServUnitOfWork.Repository
                 SmtpServer.EnableSsl = true;
 
                 mail.From = new MailAddress("ve.dksaini@gmail.com");
-                mail.To.Add("shrangalishukla@virtualemployee.com");
+                mail.To.Add("nehabambah@virtualemployee.com");
                 mail.CC.Add("deepaksaini@virtualemployee.com");
                 mail.Subject = "Test";
                 // "This is test mail";
@@ -229,7 +229,7 @@ namespace FinServUnitOfWork.Repository
                 SmtpServer.EnableSsl = true;
 
                 mail.From = new MailAddress("ve.dksaini@gmail.com");
-                mail.To.Add("shrangalishukla@virtualemployee.com");
+                mail.To.Add("nehabambah@virtualemployee.com");
                 mail.CC.Add("deepaksaini@virtualemployee.com");
                 mail.Subject = "Test";
                 // "This is test mail";

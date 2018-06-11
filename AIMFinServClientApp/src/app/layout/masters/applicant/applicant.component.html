@@ -11,12 +11,15 @@
                 #ApplicantTypes
                 (selectionChange)="GridSelectionChange(ApplicantTypes, $event)">
         <kendo-grid-column field="ApplicantType" title="Applicant type">
+            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                <label title="Applicant type: ">{{dataItem.ApplicantType}}</label>
+            </ng-template>
         </kendo-grid-column>
 
         <kendo-grid-column field="IsActive" title="Status">
-            <ng-template kendoGridCellTemplate let-dataItem>
-                <label *ngIf="dataItem.IsActive">Activated</label>
-                <label *ngIf="!dataItem.IsActive">Deactivated</label>
+            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                <label *ngIf="dataItem.IsActive" title="Status: ">Activated</label>
+                <label *ngIf="!dataItem.IsActive" title="Status: ">Deactivated</label>
             </ng-template>
         </kendo-grid-column>
 

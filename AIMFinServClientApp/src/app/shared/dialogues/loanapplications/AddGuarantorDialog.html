@@ -351,20 +351,29 @@
                         selectable="true">
                 <kendo-grid-column title="Guarantor Name" [filter]="'text'">
                     <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                        <label>{{dataItem.Title}}{{dataItem.FirstName}} {{dataItem.MiddleName}} {{dataItem.LastName}}</label>
+                        <label title="Guarantor Name: ">{{dataItem.Title}}{{dataItem.FirstName}} {{dataItem.MiddleName}} {{dataItem.LastName}}</label>
                     </ng-template>
                 </kendo-grid-column>
                 <kendo-grid-column title="NZ Resident">
                  <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                        <label *ngIf="(dataItem.NZResidents == true )">Yes</label>
-                        <label *ngIf="(dataItem.NZResidents == false )">No</label>
+                        <label *ngIf="(dataItem.NZResidents == true )" title="NZ Residents: ">Yes</label>
+                        <label *ngIf="(dataItem.NZResidents == false )" title="NZ Residents: ">No</label>
                     </ng-template>
                 </kendo-grid-column>
                 <kendo-grid-column field="MobileNo" title="Mobile No.">
+                    <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                        <label title="Mobile No: ">{{dataItem.MobileNo}}</label>
+                    </ng-template>
                 </kendo-grid-column>
                 <kendo-grid-column field="HomePhoneNo" title="Home No.">
+                    <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                        <label title="Home No: ">{{dataItem.HomePhoneNo}}</label>
+                    </ng-template>
                 </kendo-grid-column>
                 <kendo-grid-column field="EmailID" title="Email ID">
+                    <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                        <label title="Email ID: ">{{dataItem.EmailID}}</label>
+                    </ng-template>
                 </kendo-grid-column>
                 <kendo-grid-command-column>
                     <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">

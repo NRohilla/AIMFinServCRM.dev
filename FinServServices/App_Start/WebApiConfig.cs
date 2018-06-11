@@ -16,7 +16,16 @@ namespace FinServServices
             config.Formatters.Add(new JsonMediaTypeFormatter());
             // Web API routes
             config.MapHttpAttributeRoutes();
-            config.EnableCors(new EnableCorsAttribute(origins: "*", headers: "*", methods: "*"));
+            //config.EnableCors(new EnableCorsAttribute(origins: "*", headers: "*", methods: "*"));
+            //config.EnableCors();
+
+            //var cors = new EnableCorsAttribute("*", "*", "*");
+            //config.EnableCors(cors);
+
+            var enableCorsAttribute = new EnableCorsAttribute("*",
+                                               "Origin, Content-Type, Accept",
+                                               "GET, PUT, POST, DELETE, OPTIONS");
+            config.EnableCors(enableCorsAttribute);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

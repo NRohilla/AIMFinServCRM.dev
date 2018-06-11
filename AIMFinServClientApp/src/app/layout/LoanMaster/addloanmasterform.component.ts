@@ -170,6 +170,7 @@ export class AddLoanmasterComponent implements OnInit {
 
 
     AddLoanMasterDetails() {
+        debugger;
         this._LoanService.AddLoanMasterDetails(this._AddLoanMasterDetailsObj).subscribe(res => this.AddLoanMasterDetailsSuccess(res), res => this.AddLoanMasterDetailsError(res));
     }
 

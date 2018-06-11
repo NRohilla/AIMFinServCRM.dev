@@ -75,3 +75,36 @@ D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\obj\Debug\
 D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.dll
 D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.pdb
 D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.csprojResolveAssemblyReference.cache
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\client_secret.json
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\FinServUnitOfWork.dll.config
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\FinServUnitOfWork.dll
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\FinServUnitOfWork.pdb
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\FinServBussinessEntities.dll
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\FinServDataModel.dll
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\Google.Apis.Auth.dll
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\Google.Apis.Auth.PlatformServices.dll
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\Google.Apis.Core.dll
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\Google.Apis.dll
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\Google.Apis.Drive.v3.dll
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\Google.Apis.PlatformServices.dll
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\System.Net.Http.dll
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\System.Security.Cryptography.Algorithms.dll
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\System.Security.Cryptography.Encoding.dll
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\System.Security.Cryptography.Primitives.dll
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\System.Security.Cryptography.X509Certificates.dll
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\FinServBussinessEntities.pdb
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\FinServDataModel.pdb
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\FinServDataModel.dll.config
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\Google.Apis.pdb
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\Google.Apis.xml
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\Google.Apis.Auth.pdb
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\Google.Apis.Auth.xml
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\Google.Apis.Core.pdb
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\Google.Apis.Core.xml
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\Google.Apis.Drive.v3.pdb
+D:\Nick_Alcock\FinServUnitOfWork\bin\Debug\Google.Apis.Drive.v3.xml
+D:\Nick_Alcock\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.csprojResolveAssemblyReference.cache
+D:\Nick_Alcock\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.csproj.CoreCompileInputs.cache
+D:\Nick_Alcock\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.csproj.CopyComplete
+D:\Nick_Alcock\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.dll
+D:\Nick_Alcock\FinServUnitOfWork\obj\Debug\FinServUnitOfWork.pdb

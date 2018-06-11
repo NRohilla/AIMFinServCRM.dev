@@ -149,11 +149,11 @@
             <!-- Group Header Template -->
             <ngx-datatable-group-header [rowHeight]="50" #myGroupHeader (toggle)="onDetailToggle($event)">
                 <ng-template let-group="group" let-expanded="expanded" ngx-datatable-group-header-template>
-                    <div class="p-2 table-secondary">
+                    <div class="p-2 table-secondary clearfix">
                         <span [class.datatable-icon-right]="!expanded"
                               [class.datatable-icon-down]="expanded"
                               title="Expand/Collapse Group"
-                              (click)="toggleExpandGroup(group)">
+                              (click)="toggleExpandGroup(group)" class="float-left">
                             <b>Applicant Name: {{group.value[0].FirstName}}</b>
                         </span>
                         <span class="float-right net-amount"

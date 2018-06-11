@@ -12,16 +12,34 @@
                     #CommunicationID
                     (selectionChange)="GridSelectionChange(CommunicationID, $event)">
             <kendo-grid-column field="_AddressTypeDetail.Type" title="Address Type">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Address Type: ">{{dataItem._AddressTypeDetail.Type}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="AddressLine1" title="Address Line 1">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Address Line 1: ">{{dataItem.AddressLine1}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="AddressLine2" title="Address Line 2">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Address Line 2: ">{{dataItem.AddressLine2}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="AddressLine3" title="Address Line 3">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Address Line 3: ">{{dataItem.AddressLine3}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="Country" title="Country">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Country: ">{{dataItem.Country}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="ZipCode" title="Zip Code">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Zip Code: ">{{dataItem.ZipCode}}</label>
+                </ng-template>
             </kendo-grid-column>
         </kendo-grid>
     </div>

@@ -13,12 +13,24 @@
                         (selectionChange)="GridSelectionChange(QualificationID, $event)">
 
                 <kendo-grid-column field="_QualificationTypeDetail.Qualifications" title="Type Of Qualification">
+                    <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                        <label title="Type Of Qualification: ">{{dataItem._QualificationTypeDetail.Qualifications}}</label>
+                    </ng-template>
                 </kendo-grid-column>
                 <kendo-grid-column field="CourseName" title="Course Name">
+                    <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                        <label title="Course Name: ">{{dataItem.CourseName}}</label>
+                    </ng-template>
                 </kendo-grid-column>
                 <kendo-grid-column field="UniversityName" title="University Name">
+                    <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                        <label title="University Name: ">{{dataItem.UniversityName}}</label>
+                    </ng-template>
                 </kendo-grid-column>
                 <kendo-grid-column field="PassingYear" title="Passing Year">
+                    <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                        <label title="Passing Year ">{{dataItem.PassingYear}}</label>
+                    </ng-template>
                 </kendo-grid-column>
 
             </kendo-grid>

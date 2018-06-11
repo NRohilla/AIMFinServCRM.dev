@@ -10,20 +10,35 @@
                 selectable="true"
                 #UserType
                 (selectionChange)="GridSelectionChange(UserType, $event)">
-        <kendo-grid-column field="FirstName" title="FirstName">
+        <kendo-grid-column field="FirstName" title="First Name">
+            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                <label title="First Name: ">{{dataItem.FirstName}}</label>
+            </ng-template>
         </kendo-grid-column>
-        <kendo-grid-column field="LastName" title="LastName">
+        <kendo-grid-column field="LastName" title="Last Name">
+            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                <label title="Last Name: ">{{dataItem.LastName}}</label>
+            </ng-template>
         </kendo-grid-column>
-        <kendo-grid-column field="DisplayName" title="DisplayName">
+        <kendo-grid-column field="DisplayName" title="Display Name">
+            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                <label title="Display Name: ">{{dataItem.DisplayName}}</label>
+            </ng-template>
         </kendo-grid-column>
         <kendo-grid-column field="EmailID" title="EmailID">
+            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                <label title="EmailID: ">{{dataItem.EmailID}}</label>
+            </ng-template>
         </kendo-grid-column>
         <kendo-grid-column field="Role" title="Role">
+            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                <label title="Role: ">{{dataItem.Role}}</label>
+            </ng-template>
         </kendo-grid-column>
         <kendo-grid-column field="IsActive" title="Status">
             <ng-template kendoGridCellTemplate let-dataItem>
-                <label *ngIf="dataItem.IsActive">Activated</label>
-                <label *ngIf="!dataItem.IsActive">Deactivated</label>
+                <label *ngIf="dataItem.IsActive" title="Status: ">Activated</label>
+                <label *ngIf="!dataItem.IsActive" title="Status: ">Deactivated</label>
             </ng-template>
         </kendo-grid-column>
         <kendo-grid-command-column>

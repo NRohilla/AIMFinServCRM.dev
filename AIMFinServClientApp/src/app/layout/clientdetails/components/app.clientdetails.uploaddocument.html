@@ -1,0 +1,49 @@
+<div class="application-details">
+    <div class="section_box pb-0 pl-0 pr-0 border-top-0">
+        <h3 class="sub-head text-center pt-2 pb-4">Upload Documents</h3>
+        <div class="upload-image-tab d-block position-relative clearfix text-center">
+            <input type="file" (change)="FileUpload($event)" multiple placeholder="Upload file" accept=".pdf,.doc,.docx" class="w-100 float-left position-relative" title="Click here to upload your file">
+            <div class="position-absolute w-100 text-center">
+                <i class="fa fa-cloud-upload"></i>
+            </div>
+            <h6 class="text-success">Choose your files here</h6>            
+        </div>
+    </div>
+    <div class="clearfix">
+        <kendo-grid [kendoGridBinding]="GetDriveFinalData"
+                    [pageSize]="5"
+                    [sortable]="true"
+                    [pageable]="true"
+                    [scrollable]="true"
+                    [groupable]="true"
+                    selectable="true"
+                    #CommunicationID>
+            <kendo-grid-column field="SerialNumber" title="S. No.">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="S. No.: ">{{dataItem.SerialNumber}}</label>
+                </ng-template>
+            </kendo-grid-column>
+            <kendo-grid-column field="Name" title="Name Of Document">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Name Of Document: ">{{dataItem.Name}}</label>
+                </ng-template>
+            </kendo-grid-column>
+            <kendo-grid-column field="Location" title="Location">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Location: ">{{dataItem.Location}}</label>
+                </ng-template>
+            </kendo-grid-column>
+            <kendo-grid-command-column>
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <button class="btn btn-sm btn-info" type="button" (click)="DownloadFile(dataItem.Id)">Download</button>
+                </ng-template>
+            </kendo-grid-command-column>
+            <kendo-grid-command-column>
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <button class="btn btn-sm btn-info" type="button" (click)="DeleteFile(dataItem)">Delete</button>
+                </ng-template>
+            </kendo-grid-command-column>
+        </kendo-grid>
+    </div>
+</div>
+

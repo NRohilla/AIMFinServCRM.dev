@@ -12,19 +12,40 @@
                     [groupable]="true"
                     selectable="true">
             <kendo-grid-column field="ApplicationFormNumber" title="Application Form No">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Application Form No: ">{{dataItem.ApplicationFormNumber}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="LoanApplicationNo" title="LoanApplication No" hidden="hidden">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="LoanApplication No: ">{{dataItem.LoanApplicationNo}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="_TypeOfLoanID.LoanType" title="Loan Type">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Loan Type: ">{{dataItem._TypeOfLoanID.LoanType}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="LoanTerm" title="Term">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Term: ">{{dataItem.LoanTerm}}</label>
+                </ng-template>
             </kendo-grid-column>
 
             <kendo-grid-column field="_RateTypeID.LoanRateType" title="Rate Type">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Rate Type: ">{{dataItem._RateTypeID.LoanRateType}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="_PropertyTypeID.PropertyType" title="Property Type">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Property Type: ">{{dataItem._PropertyTypeID.PropertyType}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="_StatusID.Status" title="Status">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Status: ">{{dataItem._StatusID.Status}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-command-column>
                 <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">

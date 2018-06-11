@@ -263,7 +263,7 @@
                                             <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
                                                 <div class="field_set">
                                                     <div class="field_label" *ngIf="!_EditDetails">Finance Date</div>
-                                                    <p *ngIf="!_EditDetails">{{_LoanDetailsObj.FinanceDate}}</p>
+                                                    <p *ngIf="!_EditDetails">{{_LoanDetailsObj.FinanceDate | date: 'MM/dd/yyyy'}}</p>
                                                     <div class="field_info w-100" *ngIf="_EditDetails">
                                                         <mat-form-field>
                                                             <input matInput placeholder="Finance Date" [(ngModel)]="_LoanDetailsObj.FinanceDate" name="FinanceDate" #FinanceDate="ngModel" required>
@@ -360,14 +360,23 @@
                     selectable="true">
             <kendo-grid-column title="Client name" [filter]="'text'">
                 <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                    <label>{{dataItem.FirstName}} {{dataItem.MiddleName}} {{dataItem.LastName}}</label>
+                    <label title="Client name: ">{{dataItem.FirstName}} {{dataItem.MiddleName}} {{dataItem.LastName}}</label>
                 </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="MobileNo" title="Contact">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Contact: ">{{dataItem.MobileNo}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="EmailID" title="Email">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Email: ">{{dataItem.EmailID}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="ApplicantType" title="Applicant Type">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Applicant Type: ">{{dataItem.ApplicantType}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-command-column>
                 <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">

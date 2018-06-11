@@ -1,4 +1,4 @@
-<div class="">    
+<div class="application-details">    
     <div class="section_box pl-0 pb-0 pr-0 mb-4 mt-3 clearfix">
         <form name="form" #AddLiabilityform="ngForm" novalidate>
             <div class="p-4" [ngClass]="{'update_details':_ValidationClass}">
@@ -112,19 +112,28 @@
                     selectable="true">
             <kendo-grid-column title="Applicant Name">
                 <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                    <label>{{dataItem.FirstName}}</label>
+                    <label title="Applicant Name: ">{{dataItem.FirstName}}</label>
                 </ng-template>
             </kendo-grid-column>
             <kendo-grid-column title="Liability Type">
                 <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                    <label>{{dataItem.LiabilityType}}</label>
+                    <label title="Liability Type: ">{{dataItem.LiabilityType}}</label>
                 </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="Description" title="Details">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Details: ">{{dataItem.Description}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="NetValue" title="Net Value">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Net Value: ">{{dataItem.NetValue}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="Ownership" title="Ownership">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Ownership: ">{{dataItem.Ownership}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-command-column>
                 <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">

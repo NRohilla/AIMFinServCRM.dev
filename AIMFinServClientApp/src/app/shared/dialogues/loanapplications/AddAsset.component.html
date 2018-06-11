@@ -1,4 +1,4 @@
-<div class="">
+<div class="application-details">
     <div class="section_box pl-0 pb-0 pr-0 mb-4 mt-3 clearfix">
         <form name="form" #AddAssetform="ngForm" novalidate>
             <div class="p-4"  [ngClass]="{'update_details':_ValidationClass}">
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                        <div class="field_set">v
+                        <div class="field_set">
                             <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Details</label>
                             <p *ngIf="_ViewDetails">{{_AssetDetailsObj.Description}}</p>
                             <div class="field_info w-100">
@@ -112,19 +112,28 @@
                     selectable="true">
             <kendo-grid-column title="Applicant Name">
                 <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                    <label>{{dataItem.FirstName}}</label>
+                    <label title="Applicant Name: ">{{dataItem.FirstName}}</label>
                 </ng-template>
             </kendo-grid-column>
             <kendo-grid-column title="Asset Type">
                 <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                    <label>{{dataItem.AssetType}}</label>
+                    <label title="Asset Type: ">{{dataItem.AssetType}}</label>
                 </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="Description" title="Details">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Details: ">{{dataItem.Description}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="NetValue" title="Net Value">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Net Value: ">{{dataItem.NetValue}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="Ownership" title="Ownership">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Ownership: ">{{dataItem.Ownership}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-command-column>
                 <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">

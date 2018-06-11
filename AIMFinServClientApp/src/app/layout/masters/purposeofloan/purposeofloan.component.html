@@ -11,11 +11,14 @@
                  #PurposeofloanTypes
                  (selectionChange)="GridSelectionChange(PurposeofloanTypes, $event)">
         <kendo-grid-column field="PurposeOfLoan" title="Purpose of Loan">
+            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                <label title="Purpose of Loan: ">{{dataItem.PurposeOfLoan}}</label>
+            </ng-template>
         </kendo-grid-column>
         <kendo-grid-column field="IsActive" title="Status">
             <ng-template kendoGridCellTemplate let-dataItem>
-                <label *ngIf="dataItem.IsActive">Activated</label>
-                <label *ngIf="!dataItem.IsActive">Deactivated</label>
+                <label *ngIf="dataItem.IsActive" title="Status: ">Activated</label>
+                <label *ngIf="!dataItem.IsActive" title="Status: ">Deactivated</label>
             </ng-template>
         </kendo-grid-column>
 

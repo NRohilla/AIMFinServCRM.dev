@@ -1364,7 +1364,7 @@ namespace FinServUnitOfWork.Repository
                                          LoanApplicationNo = g.Key._loanApplicationNo,
                                          Description = g.Key._Description,
                                          ExpenseID = g.Key._ExpenseID,
-                                         NetAmount = g.Key._NetAmount,
+                                         NetAmount = (decimal) g.Key._NetAmount,
                                          Frequency = g.Key._Frequency,
                                          ExpenseTypeID = g.Key._ExpenseTypeID,
                                          ExpenseType = g.Key._ExpenseType,
@@ -1404,7 +1404,7 @@ namespace FinServUnitOfWork.Repository
 
                             }).ToList().Select(x => new ApplicantExpenseSheet()
                             {
-                                Total = x._total,
+                                Total = (decimal) x._total,
                             }).ToList();
 
                 return suma;
@@ -1425,7 +1425,7 @@ namespace FinServUnitOfWork.Repository
                     {
                         objtoReturn.ExpenseID = GetExpenseDetails.ExpenseID;
                         objtoReturn.Description = GetExpenseDetails.Description;
-                        objtoReturn.NetAmount = GetExpenseDetails.NetAmount;
+                        objtoReturn.NetAmount = (decimal) GetExpenseDetails.NetAmount;
                         objtoReturn.Frequency = GetExpenseDetails.Frequency;
                         objtoReturn.ApplicantID = GetExpenseDetails.ApplicantID;
                         objtoReturn.ExpenseType = GetExpenseDetails.tblMasterExpenseType.ExpenseType;

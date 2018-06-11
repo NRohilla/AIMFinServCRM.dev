@@ -108,3 +108,13 @@ $topnav-background-color: #222;
         border: 2px solid #fff;
     }
 }
+
+/* media query */
+
+@media (max-width: 767px){
+    .login-page { padding: 1em; }
+    .login-page h1 { font-size: 4.81vw; margin: 5px 0px; }
+    .login-page .form-content { padding: 0px; }
+    .login-page .input-underline { font-size: 14px;}
+    .login-page .form-group { margin-bottom: 5px; }
+ }

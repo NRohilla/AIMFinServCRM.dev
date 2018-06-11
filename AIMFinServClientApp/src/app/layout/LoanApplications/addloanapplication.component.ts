@@ -91,7 +91,6 @@ export class AddLoanApplicationComponent implements OnInit {
     }
 
     ngOnInit() {
-        debugger;
         this.GetLoanType();
         this.GetPurposeofloanType();
         this.GetLoanrateType();
@@ -111,7 +110,7 @@ export class AddLoanApplicationComponent implements OnInit {
         }
     }
 
-    Conditions(){
+    Conditions() {
         if(this._AddLoanApplicationDetails.IsPreApproval == true)
             this._ShowApprovalExpiryDate = true;
 
@@ -133,11 +132,9 @@ export class AddLoanApplicationComponent implements OnInit {
     AddLoanApplicationDetailsError(res) { }
 
     GetLoanType() {
-        debugger;
         this._MasterService.GetLoanTypes().subscribe(res => this.GetLoanTypesSuccess(res), error => this.errorMessage = <any>error);
     }
     GetLoanTypesSuccess(res) {
-        debugger;
         this._TypeOfLoanID = JSON.parse(res._body);
     }
 
@@ -169,35 +166,35 @@ export class AddLoanApplicationComponent implements OnInit {
         this._StatusID = JSON.parse(res._body);
     }
     GetAdvisorGroups() {
-        debugger;
         this._MasterService.GetAdvisorGroups().subscribe(res => this.GetAdvisorGroupsSuccess(res), error => this.errorMessage = <any>error);
     }
     GetAdvisorGroupsSuccess(res) {
-        debugger;
         this._AdvisorID = JSON.parse(res._body);
     }
 
     SwitchApproval() {
-        debugger;
         this._ShowApprovalExpiryDate = false;
-        if (this._AddLoanApplicationDetails.IsPreApproval == false)
-            this._ShowApprovalExpiryDate = true;
+        if (this._AddLoanApplicationDetails.IsPreApproval == false) {
+            this._ShowApprovalExpiryDate = !this._ShowApprovalExpiryDate;
+        }
     }
 
     SwitchShifted() {
         this._ShowShiftedDuration = false;
-        if (this._AddLoanApplicationDetails.IsShifted == false)
-            this._ShowShiftedDuration = true;
+        if (this._AddLoanApplicationDetails.IsShifted == false) {
+            this._ShowShiftedDuration = !this._ShowShiftedDuration;
+        }
+
+
     }
 
     SwitchCostOfProperty() {
         this._ShowCostOfProperty = false;
         if (this._AddLoanApplicationDetails.IsPropertyDecided == false)
-            this._ShowCostOfProperty = true;
+            this._ShowCostOfProperty = !this._ShowCostOfProperty;
     }
 
     formatvalues() {
-
         if (this._AddLoanApplicationDetails.IsAnyGuarantor.toString() == "1") {
            this._AddLoanApplicationDetails.IsAnyGuarantor= true;
         }
@@ -235,11 +232,9 @@ export class AddLoanApplicationComponent implements OnInit {
     }
 
     updateDiv(event) {
-        debugger;
         for (var i = 0; i < this._StatusID.length; i++) {
             if (this._StatusID[i].ID == event.value) {
                 this.selectedStatus = this._StatusID[i].Status;
-
                 if (this.selectedStatus == "Not Approved") {
                     this._ShowReasonForNotApproval = true;
                 }

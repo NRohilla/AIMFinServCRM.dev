@@ -12,16 +12,34 @@
                     (selectionChange)="GridSelectionChange(EmploymentID, $event)">
 
             <kendo-grid-column field="_EmploymentTypeDetail.EmployementType" title="Source Of Income">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Source Of Income: ">{{dataItem._EmploymentTypeDetail.EmployementType}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="_ProfessionTypeDetail.Profession" title="Profession">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Profession: ">{{dataItem._ProfessionTypeDetail.Profession}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="EmployerName" title="Employer Name">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Employer Name: ">{{dataItem.EmployerName}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="Duration" title="Duration">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Duration: ">{{dataItem.Duration}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="Income" title="Income">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Income: ">{{dataItem.Income}}</label>
+                </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="Status" title="Status">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
+                    <label title="Status: ">{{dataItem.Status}}</label>
+                </ng-template>
             </kendo-grid-column>
         </kendo-grid>
     </div>
@@ -132,8 +150,8 @@
                 </div>
                 <div class="row m-0 btn-bottom pr-4 pl-4">
                     <div class="w-100 float-left text-right">
-                        <input type="submit" value="&#xf0c7; Save" (click)="AddEmploymentDetails()" [disabled]="!AddClientEmployementDetails.form.valid" *ngIf="!_EditEmployementDetails" class="btn btn-lg btn-success" />
-                        <input type="submit" value="&#xf0c7; Update" (click)="UpdateEmploymentDetails()" [disabled]="!AddClientEmployementDetails.form.valid" *ngIf="_EditEmployementDetails" class="btn btn-lg btn-success" />
+                        <input type="button" value="&#xf0c7; Save" (click)="AddEmploymentDetails()" [disabled]="!AddClientEmployementDetails.form.valid" *ngIf="!_EditEmployementDetails" class="btn btn-lg btn-success" />
+                        <input type="button" value="&#xf0c7; Update" (click)="UpdateEmploymentDetails()" [disabled]="!AddClientEmployementDetails.form.valid" *ngIf="_EditEmployementDetails" class="btn btn-lg btn-success" />
                         <input type="button" value="&#xf00d; Cancel" (click)="CancelAddEditEmploymentDetails()" class="btn btn-lg btn-secondary" />
                     </div>
                 </div>
