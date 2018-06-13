@@ -1,4 +1,4 @@
-﻿import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
+import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../../../router.animations';
 import { Form, FormControl, FormBuilder, Validators  } from '@angular/forms';
@@ -17,13 +17,15 @@ import {MastersService} from '../../../services/app.masters.service';
 export class AssetsComponent implements OnInit {
     public _Operationtitle: string = "Add";
     public _AssetsTypes: {
+        AssetType: "",
         AssetTypeID: "",
         AutoID: "",
         Description: "",
         IsActive: ""
     };
 
-    public _AssetsObj: {
+    public _AssetsObj:any= {
+        AssetType:"",
         AssetTypeID: "",
         AutoID: "",
         Description: "",
@@ -35,6 +37,7 @@ export class AssetsComponent implements OnInit {
     ngOnInit() {
         this._MastersService.GetAssetsTypes().subscribe(res => this.GetAssetsSuccess(res), res => this.GetAssetsError(res));
         this._AssetsObj = {
+            AssetType: "",
             AssetTypeID: "",
             AutoID: "",
             Description: "",
@@ -54,9 +57,11 @@ export class AssetsComponent implements OnInit {
     SwitchAssetsSuccess(res) { this._MastersService.GetAssetsTypes().subscribe(res => this.GetAssetsSuccess(res), res => this.GetAssetsError(res)); }
     SwitchAssetsError(res) { }
 
-    GridSelectionChange(data, selection) {
+    GridSelectionChange(data, event) {
+        debugger
         this._Operationtitle = "Update";
-        this._AssetsObj = data.data.data[selection.index]
+        Object.assign(this._AssetsObj, this._AssetsTypes[event.index]);
+        //this._AssetsObj = data.data.data[selection.index]
     }
 
     UpdateAssetsType() {
@@ -73,6 +78,7 @@ export class AssetsComponent implements OnInit {
         debugger;
         this._Operationtitle = "Add";
         this._AssetsObj = {
+            AssetType: "",
             AssetTypeID: "",
             AutoID: "",
             Description: "",

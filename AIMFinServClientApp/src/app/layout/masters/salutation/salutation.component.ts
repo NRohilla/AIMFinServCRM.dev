@@ -1,4 +1,4 @@
-﻿import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
+import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../../../router.animations';
 import { Form, FormControl, FormBuilder, Validators  } from '@angular/forms';
@@ -54,9 +54,10 @@ export class SalutationComponent implements OnInit {
     SwitchSalutationSuccess(res) { this._MastersService.GetSalutationTypes().subscribe(res => this.GetSalutationSuccess(res), res => this.GetSalutationError(res)); }
     SwitchSalutationError(res) { }
 
-    GridSelectionChange(data, selection) {
+    GridSelectionChange(data, event) {
         debugger;
-        this._SalutationObj = data.data.data[selection.index];
+       // this._SalutationObj = data.data.data[selection.index];
+        Object.assign(this._SalutationObj, this._SalutationTypes[event.index]);
         this._Operationtitle = "Update";
     }
 

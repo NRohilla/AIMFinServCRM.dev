@@ -132,8 +132,7 @@ export class ClientsEmployementComponent extends AppBaseComponent implements OnI
     }
 
     UpdateEmploymentDetails() {
-        //debugger;
-
+        debugger;
         this._ClientsService.UpdateClientEmploymentdetails(this._ClientEmploymentDetailsObj).subscribe(res => this.UpdateEmploymentDetailsSuccess(res), res => this.UpdateEmploymentDetailsError(res));
     }
 

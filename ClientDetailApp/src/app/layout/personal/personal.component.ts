@@ -136,7 +136,7 @@ export class PersonalComponent implements OnInit {
     UpdatePersonalDetailsByAppIDSuccess(res) {
         this._EditPersonalDetails = false;
         this._ClientsService.GetPersonalDetailsByAppID(this.ApplicantID).subscribe(res => this.GetPersonalDetailsByAppIDSuccess(res), res => this.GetPersonalDetailsByAppIDError(res));
-        window.location.reload();
+        //window.location.reload();
     }
 
 

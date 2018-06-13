@@ -131,7 +131,9 @@ export class AddLoanmasterComponent implements OnInit {
         
     }
 
-    ViewDetails(obj){}
+    ViewDetails() {
+        this.router.navigateByUrl('loanmaster');
+    }
 
     GetApplicationFormNo() {
         this._MasterService.GetApplicationFormNo().subscribe(res => this.GetApplicationFormNoSuccess(res), error => this.errorMessage = <any>error);

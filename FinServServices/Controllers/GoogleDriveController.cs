@@ -49,16 +49,23 @@ namespace FinServServices.Controllers
         [Route("DownloadFile")]
         public string DownloadFile(string Id)
         {
-            string FilePath = Repository.DownloadGoogleFile(Id);
-            System.Web.HttpContext.Current.Response.ContentType = "application/zip";
-            System.Web.HttpContext.Current.Response.AddHeader("Content-Disposition", "attachment; filename=" + Path.GetFileName(FilePath));
-            System.Web.HttpContext.Current.Response.WriteFile(Path.Combine((@"D:\\" + Path.GetFileName(FilePath))));
-            System.Web.HttpContext.Current.Response.End();
-            System.Web.HttpContext.Current.Response.Flush();
+            FinServUnitOfWork.utility objutility = new FinServUnitOfWork.utility();
+            string FilePath = string.Empty;
 
-            return Repository.DownloadGoogleFile(Id);
+            foreach (string item in objutility.letters)
+            {
+                string path = item.ToString() + @":\";
+                if (Directory.Exists(path))
+                {
+                    FilePath = Repository.DownloadGoogleFile(Id, path);
+                    break;
+                }
+            }
 
-            
+            if (FilePath.Trim().Length > 0)
+                return "File is downloaded at : " + FilePath.Trim().ToString();
+            else
+                return "issue with download";
         }
     }
 }

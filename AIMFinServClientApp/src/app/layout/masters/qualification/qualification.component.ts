@@ -1,4 +1,4 @@
-﻿import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
+import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../../../router.animations';
 import { Form, FormControl, FormBuilder, Validators  } from '@angular/forms';
@@ -52,9 +52,10 @@ export class QualificationComponent implements OnInit {
     SwitchQualificationSuccess(res) { this._MastersService.GetQualificationTypes().subscribe(res => this.GetQualificationSuccess(res), res => this.GetQualificationError(res)); }
     SwitchQualificationError(res) { }
 
-    GridSelectionChange(data, selection) {
+    GridSelectionChange(data, event) {
         debugger;
-        this._QualificationObj = data.data.data[selection.index];
+        //this._QualificationObj = data.data.data[selection.index];
+        Object.assign(this._QualificationObj, this._QualificationTypes[event.index]);
         this._Operationtitle = "Update";
     }
 

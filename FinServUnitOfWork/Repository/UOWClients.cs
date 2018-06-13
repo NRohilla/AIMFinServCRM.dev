@@ -393,12 +393,15 @@ namespace FinServUnitOfWork.Repository
                         fetchObj.Income = _objEmploymentDetails.Income;
                         fetchObj.Status = _objEmploymentDetails.Status;
                         fetchObj.ModifiedOn = DateTime.Now;
-                        fetchObj.tblApplicant.ApplicantID = _objEmploymentDetails.ModifiedBy.GetValueOrDefault();
+                        fetchObj.tblApplicant.ModifiedBy = _objEmploymentDetails.ApplicantID;
                         TotalRecordsUpdated += db.SaveChanges();
-                        
+                        return true;
                     }
+                }
+                if (TotalRecordsUpdated > 0)
                     return true;
-                }                
+                else
+                    return false;
             }
             catch(Exception ex)
             {

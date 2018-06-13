@@ -1,4 +1,4 @@
-﻿import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
+import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../../../router.animations';
 import { Form, FormControl, FormBuilder, Validators  } from '@angular/forms';
@@ -53,9 +53,10 @@ export class RelationshipComponent implements OnInit {
     SwitchRelationshipSuccess(res) { this._MastersService.GetRelationshipTypes().subscribe(res => this.GetRelationshipSuccess(res), res => this.GetRelationshipError(res));}
     SwitchRelationshipError(res) { }
 
-    GridSelectionChange(data, selection) {
+    GridSelectionChange(data, event) {
         debugger;
-        this._RelationshipObj = data.data.data[selection.index];
+      //  this._RelationshipObj = data.data.data[selection.index];
+        Object.assign(this._RelationshipObj, this._RelationshipTypes[event.index]);
         this._Operationtitle = "Update";
     }
 

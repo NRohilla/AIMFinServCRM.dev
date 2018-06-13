@@ -10,9 +10,9 @@
                 selectable="true"
                 #AssetsTypes
                 (selectionChange)="GridSelectionChange(AssetsTypes, $event)">
-        <kendo-grid-column field="Description" title="Assets Type">
+        <kendo-grid-column field="AssetType" title="Assets Type">
             <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                <label title="Assets Type: ">{{dataItem.Description}}</label>
+                <label title="Assets Type: ">{{dataItem.AssetType}}</label>
             </ng-template>
         </kendo-grid-column>
         <kendo-grid-column field="IsActive" title="Status">
@@ -39,7 +39,7 @@
                                 <div class="field_set w-100">
                                     <div class="field_info w-100">
                                         <mat-form-field>
-                                            <input matInput placeholder="Assets type" value="{{_AssetsObj.Description}}" [(ngModel)]="_AssetsObj.Description" #Description>
+                                            <input matInput placeholder="Assets type" value="{{_AssetsObj.AssetType}}" [(ngModel)]="_AssetsObj.AssetType" #AssetType>
                                         </mat-form-field>
                                     </div>
                                 </div>

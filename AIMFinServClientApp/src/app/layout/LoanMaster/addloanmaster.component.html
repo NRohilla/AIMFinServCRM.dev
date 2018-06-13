@@ -1,7 +1,7 @@
 <div [@routerTransition] class="application-details client-details">
     <app-page-header [heading]="'Loan Details Master'" [icon]="'fa-bar-chart-o'"></app-page-header>
         <div class="back-btn">
-            <button class="btn btn-lg btn-link text-white font-weight-bold" type="button" (click)="ViewDetails('ViewList')">Back</button>
+            <button class="btn btn-lg btn-link text-white font-weight-bold" type="button" (click)="ViewDetails()">Back</button>
         </div>
         <div class="w-100 float-left">
             <form name="form" #AddLoanMaster="ngForm" novalidate>
@@ -267,7 +267,7 @@
                                                             <mat-form-field>
                                                                 <input matInput placeholder="Any Legal Charges" [(ngModel)]="_AddLoanMasterDetailsObj.AnyLegalCharges" name="AnyLegalCharges" #AnyLegalCharges="ngModel" required>
                                                                 <div *ngIf="AnyLegalCharges.invalid && (AnyLegalCharges.dirty || AnyLegalCharges.touched)" class="alert alert-danger">
-                                                                    <div *ngIf="LoanTermOffered.errors.required ">
+                                                                    <div *ngIf="AnyLegalCharges.errors.required ">
                                                                         Please enter Any Legal Charges.
                                                                     </div>
                                                                 </div>
@@ -309,7 +309,7 @@
                                 </div>
                                 <div class="row m-0 btn-bottom pr-4 pl-4">
                                     <div class="w-100 float-left text-right">
-                                        <input type="button" value="&#xf0c7; Save" (click)="AddLoanMasterDetails()" [disabled]="!AddLoanMaster.form.valid" class="btn btn-success" />
+                                        <input type="button" value="&#xf0c7; Save" (click)="AddLoanMasterDetails();AddLoanMaster.reset()" [disabled]="!AddLoanMaster.form.valid" class="btn btn-success" />
                                         <input type="button" value="&#xf00d; Cancel" (click)="CancelEditingDetails()" class="btn btn-secondary" />
                                     </div>
                                 </div>

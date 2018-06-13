@@ -1,4 +1,4 @@
-﻿import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
+import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../../../router.animations';
 import { Form, FormControl, FormBuilder, Validators  } from '@angular/forms';
@@ -52,9 +52,10 @@ export class EmploymentComponent implements OnInit {
     SwitchEmploymentSuccess(res) { this._MastersService.GetEmploymentTypes().subscribe(res => this.GetEmploymentSuccess(res), res => this.GetEmploymentError(res)); }
     SwitchEmploymentError(res) { }
 
-    GridSelectionChange(data, selection) {
+    GridSelectionChange(data, event) {
         this._Operationtitle = "Update";
-        this._EmploymentObj = data.data.data[selection.index]
+        Object.assign(this._EmploymentObj, this._EmploymentTypes[event.index]);
+       // this._EmploymentObj = data.data.data[selection.index]
     }
 
     UpdateEmployementType() {

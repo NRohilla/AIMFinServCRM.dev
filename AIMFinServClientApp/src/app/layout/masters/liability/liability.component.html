@@ -10,9 +10,9 @@
                 selectable="true"
                 #LiabilityTypes
                 (selectionChange)="GridSelectionChange(LiabilityTypes, $event)">
-        <kendo-grid-column field="Description" title="Liability Type">
+        <kendo-grid-column field="LiabilityType" title="Liability Type">
             <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                <label title="Liability Type: ">{{dataItem.Description}}</label>
+                <label title="Liability Type: ">{{dataItem.LiabilityType}}</label>
             </ng-template>
         </kendo-grid-column>
         <kendo-grid-column field="IsActive" title="Status">
@@ -41,7 +41,7 @@
                                 <div class="field_set w-100">
                                     <div class="field_info w-100">
                                         <mat-form-field class="example-full-width">
-                                            <input matInput placeholder="Liability type" value="{{_LiabilityObj.Description}}" [(ngModel)]="_LiabilityObj.Description" #Description>
+                                            <input matInput placeholder="Liability type" value="{{_LiabilityObj.LiabilityType}}" [(ngModel)]="_LiabilityObj.LiabilityType" #LiabilityType>
                                         </mat-form-field>
                                     </div>
                                 </div>

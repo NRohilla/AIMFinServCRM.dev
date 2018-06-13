@@ -112,6 +112,7 @@ export class QualificationsComponent implements OnInit {
 
     CancelEditingDetails() {
         this._EditDetails = false;
+        this._ClientsService.GetQualificationDetailsByAppID(this.ApplicantID).subscribe(res => this.GetQualificationDetailsSuccess(res), res => this.GetQualificationDetailsError(res));
     }
 
     ViewDetails(QualificationID)

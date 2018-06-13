@@ -151,7 +151,7 @@ namespace FinServServices.Controllers
         [Route("SaveLoanApplicationPersonalDetails")]
         public string SaveLoanApplicationPersonalDetails(Applicants ApplicantPersonalDetails)
         {
-            return Repository.SaveLoanApplicationPersonalDetails(ApplicantPersonalDetails);
+           return Repository.SaveLoanApplicationPersonalDetails(ApplicantPersonalDetails);
         }
         [HttpPost]
         [Route("SaveLoanApplicationQualificationDetails")]

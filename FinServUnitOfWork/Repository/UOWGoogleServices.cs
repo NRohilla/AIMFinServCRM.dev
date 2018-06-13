@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Web;
 using FinServBussinessEntities;
 using FinServDataModel;
-
+using System.Web.Configuration;
 
 namespace FinServUnitOfWork.Repository
 {
@@ -56,10 +56,13 @@ namespace FinServUnitOfWork.Repository
                 }
 
                 // string clientName = "Mahesh";
+                string Email = WebConfigurationManager.AppSettings["ClientEmailId"];
+                string Password = WebConfigurationManager.AppSettings["ClientPassword"];
+
                 string str = null;
                 MailMessage mail = new MailMessage();
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com", 587);
-                SmtpServer.Credentials = new System.Net.NetworkCredential("ve.dksaini@gmail.com", "sandy@9871");
+                SmtpServer.Credentials = new System.Net.NetworkCredential(Email, Password);
                 SmtpServer.EnableSsl = true;
 
                 mail.From = new MailAddress("ve.dksaini@gmail.com");
@@ -222,10 +225,13 @@ namespace FinServUnitOfWork.Repository
                 }
 
                 // string clientName = "Mahesh";
+                string Email = WebConfigurationManager.AppSettings["ClientEmailId"];
+                string Password = WebConfigurationManager.AppSettings["ClientPassword"];
+
                 string str = null;
                 MailMessage mail = new MailMessage();
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com", 587);
-                SmtpServer.Credentials = new System.Net.NetworkCredential("ve.dksaini@gmail.com", "sandy@9871");
+                SmtpServer.Credentials = new System.Net.NetworkCredential(Email, Password);
                 SmtpServer.EnableSsl = true;
 
                 mail.From = new MailAddress("ve.dksaini@gmail.com");

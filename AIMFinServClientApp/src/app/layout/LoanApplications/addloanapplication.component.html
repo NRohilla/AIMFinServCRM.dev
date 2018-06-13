@@ -375,7 +375,7 @@
                             </form>
                             <div class="w-100 float-left">
                                 <div class="btn-bottom pr-4 pl-4 text-right">
-                                    <input type="button" value="&#xf0c7; Save" (click)="AddLoanApplicationDetails()" [disabled]="!AddLoanApplicantform.form.valid" class="btn btn-success" />
+                                    <input type="button" value="&#xf0c7; Save" (click)="AddLoanApplicationDetails();AddLoanApplicantform.reset()" [disabled]="!AddLoanApplicantform.form.valid" class="btn btn-success" />
                                     <input type="button" value="&#xf00d; Cancel" (click)="CancelEditingDetails()" class="btn btn-secondary" />
                                 </div>
                             </div>

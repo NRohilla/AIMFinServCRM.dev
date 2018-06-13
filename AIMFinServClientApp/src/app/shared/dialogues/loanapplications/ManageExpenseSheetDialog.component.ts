@@ -40,7 +40,6 @@ export class ManageExpenseSheetDialog {
     public _ObjApplicantNames = [];
     errorMessage: "No Data"
     public LoanApplicationNo: string = '';
-    public _ValidationClass: boolean = false;
 
     public _ManageExpenseSheetDetails = {
         ExpenseID: '',
@@ -65,7 +64,6 @@ export class ManageExpenseSheetDialog {
             this.GetApplicants(this.LoanApplicationNo);
         }
         this.GetAddedExpenseSheetGrid();
-        this._ValidationClass = true;
     }
 
     // Start - To Load Expense Sheet Grid
@@ -136,7 +134,6 @@ export class ManageExpenseSheetDialog {
         this._EditViewDetails = false;
         this._ViewDetails = false;
         this._ClientsService.GetAddedExpenseSheetGrid(this.LoanApplicationNo).subscribe(res => this.AddExpenseSheetSuccess(res), res => this.AddExpenseSheetError(res));
-        this._ValidationClass = true;
     }
     UpdateExpenseSheetDetailsError(res) { }
 
@@ -145,7 +142,6 @@ export class ManageExpenseSheetDialog {
     GetExpenseTypes() {
         debugger;
         this._MasterService.GetExpenseTypes().subscribe(res => this.GetExpenseTypesSuccess(res), error => this.errorMessage = <any>error);
-        this._ValidationClass = true;
     }
     GetExpenseTypesSuccess(res) {
         this._objExpenseTypeID = JSON.parse(res._body);
@@ -157,7 +153,6 @@ export class ManageExpenseSheetDialog {
     }
     GetApplicantsNameSuccess(res) {
         this._ObjApplicantNames = JSON.parse(res._body);
-        this._ValidationClass = true;
     }
     EditDetails() {
         this._ViewDetails = false;

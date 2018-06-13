@@ -1,4 +1,4 @@
-import { Component, Inject, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, Inject, Injectable, AfterViewInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ApplicantPersonalDetailsComponent } from '../../../layout/LoanApplications/components/app.applicant.personaldetails';
 import { ApplicantEmployementComponent } from '../../../layout/LoanApplications/components/app.applicant.employementdetails';
@@ -20,9 +20,11 @@ export class LoanApplicationDetailDialog {
     private _ApplicantCommunicationDetailsComponent: ApplicantCommunicationDetailsComponent;
 
     private _ApplicantID: string = '';
+ 
     constructor(
         public dialogRef: MatDialogRef<LoanApplicationDetailDialog>,
-        @Inject(MAT_DIALOG_DATA) public data: any) { }
+        @Inject(MAT_DIALOG_DATA) public data: any) {
+    }
 
     SaveNewApplicant(): void {
         debugger;

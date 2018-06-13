@@ -125,6 +125,7 @@ export class LendingComponent {
     GetMatLendingDetailsByAppIDError(res) { }
 
     GetLendingDetailsByAppIDSuccess(res) {
+        debugger;
         this.LendingDetails = JSON.parse(res._body);
     }
     GetLendingDetailsByAppIDError(res) {
@@ -152,6 +153,7 @@ export class LendingComponent {
 
     CancelEditingDetails() {
         this._EditDetails = false;
+        this._ClientsService.GetLendingDetailsByAppID(this.ApplicantID).subscribe(res => this.GetLendingDetailsByAppIDSuccess(res), res => this.GetLendingDetailsByAppIDError(res));
         this.router.navigate(['/lending']);
     }
 

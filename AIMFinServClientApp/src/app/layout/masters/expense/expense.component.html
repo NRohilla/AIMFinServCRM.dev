@@ -10,9 +10,9 @@
                 selectable="true"
                 #ExpenseTypes
                 (selectionChange)="GridSelectionChange(ExpenseTypes, $event)">
-        <kendo-grid-column field="Description" title="Expense Type">
+        <kendo-grid-column field="ExpenseType" title="Expense Type">
             <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                <label title="Expense Type: ">{{dataItem.Description}}</label>
+                <label title="Expense Type: ">{{dataItem.ExpenseType}}</label>
             </ng-template>
         </kendo-grid-column>
         <kendo-grid-column field="IsActive" title="Status">
@@ -41,7 +41,7 @@
                                 <div class="field_set w-100">
                                     <div class="field_info w-100">
                                         <mat-form-field>
-                                            <input matInput placeholder="Expense type" value="{{_ExpenseObj.Description}}" [(ngModel)]="_ExpenseObj.Description" #Description>
+                                            <input matInput placeholder="Expense type" value="{{_ExpenseObj.ExpenseType}}" [(ngModel)]="_ExpenseObj.ExpenseType" #ExpenseType>
                                         </mat-form-field>
                                     </div>
                                 </div>

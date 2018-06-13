@@ -101,8 +101,14 @@ export class ClientsPersonalDetailsComponent extends AppBaseComponent implements
         this._ApplicantCommunicationDetails = JSON.parse(res._body);
     }
     GetClientCommDetailsError(res) { }
+
     EditPersonalDetails() {
         this._EditPersonalDetails = !this._EditPersonalDetails;
+    }
+
+    cancelEditDetails() {
+        this._EditPersonalDetails = false;
+        this._ClientsService.GetClientDetails(<string>this._LocalStorageService.get("ApplicantID")).subscribe(res => this.GetClientDetailsSuccess(res), res => this.GetClientDetailsError(res));
     }
 
     EditCommunicationDetails() {

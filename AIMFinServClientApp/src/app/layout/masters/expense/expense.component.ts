@@ -1,4 +1,4 @@
-﻿import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
+import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../../../router.animations';
 import { Form, FormControl, FormBuilder, Validators  } from '@angular/forms';
@@ -57,9 +57,10 @@ export class ExpenseComponent implements OnInit {
     SwitchExpenseSuccess(res) { this._MastersService.GetExpenseTypes().subscribe(res => this.GetExpenseSuccess(res), res => this.GetExpenseError(res)); }
     SwitchExpenseError(res) { }
 
-    GridSelectionChange(data, selection) {
+    GridSelectionChange(data, event) {
         this._Operationtitle = "Update";
-        this._ExpenseObj = data.data.data[selection.index]
+        Object.assign(this._ExpenseObj, this._ExpenseTypes[event.index]);
+        //this._ExpenseObj = data.data.data[selection.index]
     }
 
     UpdateExpenseType() {

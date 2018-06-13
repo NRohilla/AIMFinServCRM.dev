@@ -193,13 +193,13 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left" *ngIf="_ShowApprovalExpiryDate">
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Approval Expiry</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.ApprovalExpiryDate}}</p>
                                                         <div class="field_info w-100">
                                                             <mat-form-field *ngIf="_EditDetails">
-                                                                <input matInput [matDatepicker]="DateArriveFrom" placeholder="MM/DD/YYYY" [(ngModel)]="_LoanApplicationDetails.ApprovalExpiryDate" name="DateArriveFrom" #DateArriveFrom="ngModel">
+                                                                <input matInput [matDatepicker]="DateArriveFrom" [disabled]="!_ShowApprovalExpiryDate" placeholder="MM/DD/YYYY" [(ngModel)]="_LoanApplicationDetails.ApprovalExpiryDate" name="DateArriveFrom" #DateArriveFrom="ngModel">
                                                                 <mat-datepicker-toggle matSuffix [for]="DateArriveFrom"></mat-datepicker-toggle>
                                                                 <mat-datepicker #DateArriveFrom></mat-datepicker>
                                                                 <div *ngIf="DateArriveFrom.invalid && (DateArriveFrom.dirty || DateArriveFrom.touched)" class="alert alert-danger">
@@ -248,13 +248,13 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left" *ngIf="_ShowShiftedDuration">
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Shifted Duration</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.ShiftedDuration}}</p>
                                                         <div class="field_info w-100">
                                                             <mat-form-field *ngIf="_EditDetails">
-                                                                <input matInput placeholder="Shifted Duration" [(ngModel)]="_LoanApplicationDetails.ShiftedDuration">
+                                                                <input matInput placeholder="Shifted Duration" [disabled]="!_ShowShiftedDuration" [(ngModel)]="_LoanApplicationDetails.ShiftedDuration" name="ShiftedDuration" #ShiftedDuration="ngModel">
                                                                 <div *ngIf="ShiftedDuration.invalid && (ShiftedDuration.dirty || ShiftedDuration.touched)" class="alert alert-danger">
                                                                     <div *ngIf="ShiftedDuration.errors.required ">
                                                                         Please select Is Shifted Duration.
@@ -282,13 +282,13 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left" *ngIf="_ShowCostOfProperty">
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
                                                     <div class="field_set">
                                                         <div class="field_label" *ngIf="!_EditDetails">Cost Of Property</div>
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails.CostOfProperty}}</p>
                                                         <div class="field_info">
                                                             <mat-form-field *ngIf="_EditDetails">
-                                                                <input matInput placeholder="Cost Of Property" [(ngModel)]="_LoanApplicationDetails.CostOfProperty" name="CostOfProperty" #CostOfProperty="ngModel" required>
+                                                                <input matInput placeholder="Cost Of Property" [disabled]="!_ShowCostOfProperty" [(ngModel)]="_LoanApplicationDetails.CostOfProperty" name="CostOfProperty" #CostOfProperty="ngModel" required>
                                                                 <div *ngIf="CostOfProperty.invalid && (CostOfProperty.dirty || CostOfProperty.touched)" class="alert alert-danger">
                                                                     <div *ngIf="CostOfProperty.errors.required ">
                                                                         Please select CostOfProperty.

@@ -1,7 +1,7 @@
 <div class="application-details">
     <div class="section_box pl-0 pb-0 pr-0 mb-4 mt-3 clearfix">
         <form name="form" #AddAssetform="ngForm" novalidate>
-            <div class="p-4"  [ngClass]="{'update_details':_ValidationClass}">
+            <div class="p-4">
                 <div class="row m-0">
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_set">
@@ -45,7 +45,7 @@
                             <p *ngIf="_ViewDetails">{{_AssetDetailsObj.Description}}</p>
                             <div class="field_info w-100">
                                 <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddAsset" >
-                                    <input matInput placeholder="Details" name="Details" [(ngModel)]="_AssetDetailsObj.Description" class="w-100" #Details required>
+                                    <input matInput placeholder="Details" name="Details" [(ngModel)]="_AssetDetailsObj.Description" class="w-100" #Details="ngModel" required>
                                     <div *ngIf="Details.invalid && (Details.dirty || Details.touched)" class="alert alert-danger">
                                         <div *ngIf="Details.errors.required ">
                                             Please enter Details.
@@ -63,7 +63,7 @@
                             <p *ngIf="_ViewDetails">{{_AssetDetailsObj.NetValue}}</p>
                             <div class="field_info w-100">
                                 <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddAsset">
-                                    <input matInput placeholder="Net Value" name="NetValue" [(ngModel)]="_AssetDetailsObj.NetValue" class="w-100" #NetValue required>
+                                    <input matInput placeholder="Net Value" name="NetValue" [(ngModel)]="_AssetDetailsObj.NetValue" class="w-100" #NetValue="ngModel" required>
                                     <div *ngIf="NetValue.invalid && (NetValue.dirty || NetValue.touched)" class="alert alert-danger">
                                         <div *ngIf="NetValue.errors.required ">
                                             Please enter Net Value.
@@ -79,7 +79,7 @@
                             <p *ngIf="_ViewDetails">{{_AssetDetailsObj.Ownership}}</p>
                             <div class="field_info w-100">
                                 <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddAsset">
-                                    <input matInput placeholder="Ownership" name="Ownership" [(ngModel)]="_AssetDetailsObj.Ownership" class="w-100" #Ownership required>
+                                    <input matInput placeholder="Ownership" name="Ownership" [(ngModel)]="_AssetDetailsObj.Ownership" class="w-100" #Ownership="ngModel" required>
                                     <div *ngIf="Ownership.invalid && (Ownership.dirty || Ownership.touched)" class="alert alert-danger">
                                         <div *ngIf="Ownership.errors.required ">
                                             Please enter Ownership.
@@ -93,7 +93,7 @@
             </div>
             <div class="w-100 float-left text-right">
                 <div class="btn-bottom pr-4 pl-4">
-                    <input type="submit" *ngIf="_AddAsset"  (click)="AddAsset()" value="&#xf055; Add" [disabled]="!AddAssetform.form.valid" class="btn btn-success" />
+                    <input type="submit" *ngIf="_AddAsset"  (click)="AddAsset();AddAssetform.reset()" value="&#xf055; Add" [disabled]="!AddAssetform.form.valid" class="btn btn-success" />
                     <input type="button" *ngIf="_ViewDetails" value="&#xf040; Edit" (click)="EditDetails()" class="btn btn-success" />
                     <input type="button" *ngIf="_EditViewDetails" (click)="UpdateAssetDetails()"  [disabled]="!AddAssetform.form.valid"  value="&#xf0c7; Save" class="btn btn-success" />
                     <input type="button" value="&#xf00d; Cancel" (click)="onNoClick()" class="btn btn-secondary" />

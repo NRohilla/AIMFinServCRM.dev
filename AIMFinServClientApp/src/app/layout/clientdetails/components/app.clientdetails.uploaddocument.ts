@@ -9,14 +9,15 @@ import { LocalStorageService } from 'angular-2-local-storage';
     templateUrl: './app.clientdetails.uploaddocument.html',
     providers: [GoogleDriveService]
 })
-export class UploadDocumnetComponent implements OnInit  {
+export class UploadDocumnetComponent implements OnInit {
+    public FileDownLoadPath: string = "";
     public FileList: any = {}
     public file;
     public GetAllDriveFile: any = []
     public GetDriveFinalData: {
         'SerialNumber': '',
         'Name': '',
-        'Location':''
+        'Location': ''
     };
 
     public index = 1
@@ -24,22 +25,22 @@ export class UploadDocumnetComponent implements OnInit  {
     constructor(private GoogleDrive: GoogleDriveService, private _LocalStorageService: LocalStorageService) { }
 
     ngOnInit() {
-       
+
         if (this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null)
             console.log(this._LocalStorageService.get("ApplicantID"))
-            this.GoogleDrive.GetDriveFiles(<string>this._LocalStorageService.get("ApplicantID")).subscribe(res => this.GetDriveFilesSuccess(res), res => this.GetDriveFilesError(res));
+        this.GoogleDrive.GetDriveFiles(<string>this._LocalStorageService.get("ApplicantID")).subscribe(res => this.GetDriveFilesSuccess(res), res => this.GetDriveFilesError(res));
     }
 
     GetDriveFilesSuccess(res) {
         this.GetAllDriveFile = JSON.parse(res._body);
         this.index = 1
         this.GetDriveFinalData = this.GetAllDriveFile.map(object => {
-            return { Location: 'Google Drive', SerialNumber: this.index++, Name: object.Name, Id: object.Id};
-           
+            return { Location: 'Google Drive', SerialNumber: this.index++, Name: object.Name, Id: object.Id };
+
         });
     }
 
-    GetDriveFilesError(res) {}
+    GetDriveFilesError(res) { }
 
     FileUpload(event) {
         this.FileList = event.target.files;
@@ -72,14 +73,16 @@ export class UploadDocumnetComponent implements OnInit  {
     }
 
     DownloadFileSuccess(res) {
-        let anchor = document.createElement("a");
-        document.body.appendChild(anchor);
-        anchor.href = res.url;
-        anchor.download = 'name';
-        anchor.click();
-        document.body.removeChild(anchor);
+        debugger;
+        if (res._body.trim().length > 0) {
+            this.FileDownLoadPath = res._body.trim().replace('"', '').replace('"', '');
+
+            setTimeout(() => {
+                this.FileDownLoadPath = "";
+            }, 10000);
+        }
     };
-       
+
     DownloadFileError(res) { }
 
 }

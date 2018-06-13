@@ -1,4 +1,4 @@
-﻿import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
+import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../../../router.animations';
 import { Form, FormControl, FormBuilder, Validators  } from '@angular/forms';
@@ -52,9 +52,10 @@ export class PurposeofloanComponent implements OnInit {
     SwitchPurposeofloanSuccess(res) { this._MastersService.GetPurposeofloanTypes().subscribe(res => this.GetPurposeofloanSuccess(res), res => this.GetPurposeofloanError(res)); }
     SwitchPurposeofloanError(res) { }
 
-    GridSelectionChange(data, selection) {
+    GridSelectionChange(data, event) {
         debugger;
-        this._PurposeofloanObj = data.data.data[selection.index];
+        //this._PurposeofloanObj = data.data.data[selection.index];
+        Object.assign(this._PurposeofloanObj, this._PurposeofloanTypes[event.index]);
         this._Operationtitle = "Update";
     }
 

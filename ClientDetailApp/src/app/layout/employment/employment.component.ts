@@ -159,6 +159,7 @@ export class EmployementComponent implements OnInit {
     {
         debugger;
         this._EditDetails = false;
+        this._ClientsService.GetEmploymentDetailsByAppID(this.ApplicantID).subscribe(res => this.GetEmploymentDetailsByAppIDSuccess(res), res => this.GetEmploymentDetailsByAppIDError(res));
         this.router.navigate(['/employment']);
     }
 }

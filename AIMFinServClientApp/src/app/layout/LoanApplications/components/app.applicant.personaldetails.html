@@ -78,7 +78,7 @@
                             <mat-form-field>
                                 <input matInput placeholder="Date Of Birth" value="{{_ApplicantPersonalDetails.DateOfBirth}}" [(ngModel)]="_ApplicantPersonalDetails.DateOfBirth" name="DateOfBirth" #DateOfBirth="ngModel" required>
                                 <div *ngIf="DateOfBirth.invalid && (DateOfBirth.dirty || DateOfBirth.touched)" class="alert alert-danger">
-                                    <div *ngIf="ApplicantTypeID.errors.required ">
+                                    <div *ngIf="DateOfBirth.errors.required ">
                                         Please select Date Of Birth.
                                     </div>
                                 </div>

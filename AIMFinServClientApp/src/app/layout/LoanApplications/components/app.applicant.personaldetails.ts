@@ -30,43 +30,74 @@ export class ApplicantPersonalDetailsComponent extends AppBaseComponent implemen
     ngDoCheck() {
         this._isformvalid = this.form.valid;
     }
+
     public _ApplicantPersonalDetails = {
+        AddressLine1: '',
+        AddressLine2: '',
+        AddressLine3: '',
         ApplicantID: '',
-        FirstName: '',
-        MiddleName: '',
-        LastName: '',
-        Gender: '',
-        DateOfBirth: '',
-        MaritalStatus: '',
-        NoOfDependents: '',
-        NZResidents: '',
+        ApplicantImage: '',
+        ApplicantType: '',
+        ApplicantTypeID: 0,
+        AutoID: '',
+        Country: '',
         CountryOfBirth: '',
-        ApplicantTypeID: '',
+        CreatedBy: '',
+        CreatedOn: '',
+        DNZResidents: '',
+        DateOfBirth: '',
         EmailID: '',
-        MobileNo: '',
+        Extension: '',
+        FileName: '',
+        FileType: '',
+        FileTypeID: '',
+        FirstName: '',
+        Gender: '',
         HomePhoneNo: '',
+        IsActive: true,
+        LastName: '',
+        LoanApplicationNo: '',
+        MaritalStatus: '',
+        MiddleName: '',
+        MobileNo: '',
+        ModifiedBy: '',
+        ModifiedOn: '',
+        NZResidents: false,
+        NoOfDependents: '',
+        Title: '',
+        Type: '',
         WorkPhoneNo: '',
-        LoanApplicationNo:'',
-        ApplicantType: {
-            ApplicantTypeID: '',
-            ApplicantType: ''
-        }
+        ZipCode: '',
+        _ApplicantComunctnDetails: '',
+        _ApplicantTypeMasterID: {
+            ApplicantTypeID: 0,
+            ApplicantType: '',
+            IsActive: false,
+            CreatedBy: '',
+            CreatedOn: '',
+            sActive: false,
+            ModifiedBy: '',
+            ModifiedOn: ''
+        },
+        _LoanApplicationNo: '',
+        _fileTypeMaster: '',
     };
 
     GetApplicantTypes() {
         this._MasterService.GetApplicantTypes().subscribe(res => this.GetApplicantTypesSuccess(res), error => this.errorMessage = <any>error);
     }
     GetApplicantTypesSuccess(res) {
+        debugger
         this._ApplicantTypeID = JSON.parse(res._body);
     }
 
     SaveLoanApplicationPersonalDetails() {
         debugger;
+        if (this._LocalStorageService.get("LoanApplicationNo") != undefined) {
+            this._ApplicantPersonalDetails.ApplicantTypeID = this._ApplicantPersonalDetails._ApplicantTypeMasterID.ApplicantTypeID;
 
-        if (this._LocalStorageService.get("LoanApplicationNoViewed") != undefined) {
-            this._ApplicantPersonalDetails.ApplicantTypeID = this._ApplicantPersonalDetails.ApplicantType.ApplicantTypeID;
-
-            this._ApplicantPersonalDetails.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNoViewed");
+            this._ApplicantPersonalDetails.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNo");
+            
             return this._ClientsService.SaveLoanApplicationPersonalDetails(this._ApplicantPersonalDetails);
         }
         

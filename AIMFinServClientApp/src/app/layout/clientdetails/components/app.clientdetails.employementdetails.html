@@ -150,9 +150,9 @@
                 </div>
                 <div class="row m-0 btn-bottom pr-4 pl-4">
                     <div class="w-100 float-left text-right">
-                        <input type="button" value="&#xf0c7; Save" (click)="AddEmploymentDetails()" [disabled]="!AddClientEmployementDetails.form.valid" *ngIf="!_EditEmployementDetails" class="btn btn-lg btn-success" />
-                        <input type="button" value="&#xf0c7; Update" (click)="UpdateEmploymentDetails()" [disabled]="!AddClientEmployementDetails.form.valid" *ngIf="_EditEmployementDetails" class="btn btn-lg btn-success" />
-                        <input type="button" value="&#xf00d; Cancel" (click)="CancelAddEditEmploymentDetails()" class="btn btn-lg btn-secondary" />
+                        <input type="button" value="&#xf0c7; Save" (click)="AddEmploymentDetails();AddClientEmployementDetails.reset()" [disabled]="!AddClientEmployementDetails.form.valid" *ngIf="!_EditEmployementDetails" class="btn btn-lg btn-success" />
+                        <input type="button" value="&#xf0c7; Update" (click)="UpdateEmploymentDetails();AddClientEmployementDetails.reset()" [disabled]="!AddClientEmployementDetails.form.valid" *ngIf="_EditEmployementDetails" class="btn btn-lg btn-success" />
+                        <input type="button" value="&#xf00d; Cancel" (click)="CancelAddEditEmploymentDetails();AddClientEmployementDetails.reset()" class="btn btn-lg btn-secondary" />
                     </div>
                 </div>
             </div>

@@ -31,7 +31,6 @@ export class AddAssetComponent extends AppBaseComponent implements OnInit{
     public _AddAsset: boolean = true;
     public _EditViewDetails: boolean = false;
     public LoanApplicationNo: string = '';
-    public _ValidationClass: boolean = false;
 
     public _AssetDetailsObj = {
         AutoID: '',
@@ -71,7 +70,7 @@ export class AddAssetComponent extends AppBaseComponent implements OnInit{
     GetAddedAssetGridSuccess(res) {
         this.gridData = JSON.parse(res._body);
        this.AddAssetform.reset();
-       this._ValidationClass = true;
+   
     }
     GetAddedAssetGridError(res) { }
     //End - To get asset grid
@@ -148,6 +147,7 @@ export class AddAssetComponent extends AppBaseComponent implements OnInit{
     }
     UpdateAssetDetails()
     {
+        debugger;
         this._ClientsService.UpdateAssetDetails(this._AssetDetailsObj).subscribe(res => this.UpdateAssetDetailsSuccess(res), res => this.UpdateAssetDetailsError(res));
     }
     UpdateAssetDetailsSuccess(res)
@@ -157,7 +157,6 @@ export class AddAssetComponent extends AppBaseComponent implements OnInit{
         this._EditViewDetails = false;
         this._ViewDetails = false;
         this.GetAddedAssetGrid();
-        this._ValidationClass = true;
     }
     UpdateAssetDetailsError(res) { }
     //End - to update details

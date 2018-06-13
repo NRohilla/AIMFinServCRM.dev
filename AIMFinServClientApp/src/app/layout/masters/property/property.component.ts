@@ -1,4 +1,4 @@
-﻿import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
+import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../../../router.animations';
 import { Form, FormControl, FormBuilder, Validators  } from '@angular/forms';
@@ -53,9 +53,10 @@ export class PropertyComponent implements OnInit {
     SwitchPropertySuccess(res) { this._MastersService.GetPropertyTypes().subscribe(res => this.GetPropertySuccess(res), res => this.GetPropertyError(res));}
     SwitchPropertyError(res) { }
 
-    GridSelectionChange(data, selection) {
+    GridSelectionChange(data, event) {
         debugger;
-        this._PropertyObj = data.data.data[selection.index];
+      //  this._PropertyObj = data.data.data[selection.index];
+        Object.assign(this._PropertyObj, this._PropertyTypes[event.index]);
         this._Operationtitle = "Update";
     }
 

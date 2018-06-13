@@ -22,7 +22,7 @@ export class ApplicantComponent implements OnInit {
         ApplicantTypeID: "",
         IsActive: ""
     };
-    public _ApplicantTypes: {
+    public _ApplicantTypes:  {
         ApplicantType: "",
         ApplicantTypeID: "",
         IsActive: ""
@@ -67,10 +67,11 @@ export class ApplicantComponent implements OnInit {
     }
     UpdateApplicantError(res) { }
 
-    GridSelectionChange(data, selection) {
+    GridSelectionChange(data, event) {
         debugger;
         this._Operationtitle = "Update";
-        this._ApplicantObj = data.data.data[selection.index];
+       Object.assign(this._ApplicantObj, this._ApplicantTypes[event.index]);
+        //this._ApplicantObj = this._ApplicantTypes[event.index];
     }
     CancelApplicantType() {
         debugger;

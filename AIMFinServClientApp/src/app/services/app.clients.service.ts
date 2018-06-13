@@ -90,6 +90,7 @@ export class ClientsService {
    
     //===Adding Applicant Details in Loan Application START HERE ====// Neha Bambah
     SaveLoanApplicationPersonalDetails(ApplicantPersonalDetails) {
+        debugger
         return this._http.post(this.baseurl + "Clients/SaveLoanApplicationPersonalDetails", ApplicantPersonalDetails, this.options);
     }
 

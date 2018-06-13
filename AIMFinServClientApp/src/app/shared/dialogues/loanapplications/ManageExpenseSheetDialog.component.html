@@ -3,7 +3,7 @@
         <h3 class="text-uppercase sub-head">Manage Expense Sheet</h3>
         <div class="section_box pl-0 pb-0 pr-0 mb-4 mt-3 clearfix">
             <form name="form" #AddExpenseform="ngForm" novalidate>
-                <div class="p-4" [ngClass]="{'update_details':_ValidationClass}">
+                <div class="p-4">
                     <div class="row m-0">
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
@@ -47,7 +47,7 @@
                                 <span *ngIf="_ViewDetails">{{_ManageExpenseSheetDetails.Description}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddExpense">
-                                        <input matInput placeholder="Details" name="Details" [(ngModel)]="_ManageExpenseSheetDetails.Description" class="w-100" #Details required>
+                                        <input matInput placeholder="Details" name="Details" [(ngModel)]="_ManageExpenseSheetDetails.Description" class="w-100" #Details="ngModel" required>
                                         <div *ngIf="Details.invalid && (Details.dirty || Details.touched)" class="alert alert-danger">
                                             <div *ngIf="Details.errors.required ">
                                                 Please enter Details.
@@ -65,7 +65,7 @@
                                 <span *ngIf="_ViewDetails">{{_ManageExpenseSheetDetails.Frequency}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddExpense">
-                                        <input matInput placeholder="Frequency" name="Frequency" [(ngModel)]="_ManageExpenseSheetDetails.Frequency" class="w-100" #Frequency required>
+                                        <input matInput placeholder="Frequency" name="Frequency" [(ngModel)]="_ManageExpenseSheetDetails.Frequency" class="w-100" #Frequency="ngModel" required>
                                         <div *ngIf="Frequency.invalid && (Frequency.dirty || Frequency.touched)" class="alert alert-danger">
                                             <div *ngIf="Frequency.errors.required ">
                                                 Please enter Frequency.
@@ -81,7 +81,7 @@
                                 <span *ngIf="_ViewDetails">{{_ManageExpenseSheetDetails.NetAmount}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddExpense">
-                                        <input matInput placeholder="Net Amount" name="NetAmount" [(ngModel)]="_ManageExpenseSheetDetails.NetAmount" class="w-100" #NetAmount required>
+                                        <input matInput placeholder="Net Amount" name="NetAmount" [(ngModel)]="_ManageExpenseSheetDetails.NetAmount" class="w-100" #NetAmount="ngModel" required>
                                         <div *ngIf="NetAmount.invalid && (NetAmount.dirty || NetAmount.touched)" class="alert alert-danger">
                                             <div *ngIf="NetAmount.errors.required ">
                                                 Please enter Net Amount.
@@ -95,7 +95,7 @@
                 </div>
                 <div class="w-100 float-left text-right">
                     <div class="btn-bottom pr-4 pl-4">
-                        <input type="submit" *ngIf="_AddExpense" (click)="AddExpenseSheet()" value="&#xf055; Add" [disabled]="!AddExpenseform.form.valid" class="btn btn-success" />
+                        <input type="submit" *ngIf="_AddExpense" (click)="AddExpenseSheet();AddExpenseform.reset()" value="&#xf055; Add" [disabled]="!AddExpenseform.form.valid" class="btn btn-success" />
                         <input type="button" *ngIf="_ViewDetails" value="&#xf040; Edit" (click)="EditDetails()" class="btn btn-success" />
                         <input type="button" *ngIf="_EditViewDetails" (click)="UpdateExpenseSheetDetails()" [disabled]="!AddExpenseform.form.valid" value="&#xf0c7; Save" class="btn btn-success" />
                         <input type="button" value="&#xf00d; Cancel" (click)="onNoClick()" class="btn btn-secondary" />

@@ -126,7 +126,7 @@ namespace FinServUnitOfWork.Repository
         }
 
         //Download file from Google Drive by fileId.
-        public string DownloadGoogleFile(string fileId)
+        public string DownloadGoogleFile(string fileId, string drive)
         {
             DriveService service = GetService();
             string ItemName = "";
@@ -138,17 +138,17 @@ namespace FinServUnitOfWork.Repository
             //get file list.
             IList<Google.Apis.Drive.v3.Data.File> files = FileListRequest.Execute().Files;
 
-             foreach (var item in files)
-             {
+            foreach (var item in files)
+            {
                 // download each file
                 if (item.Id.Trim().ToLower() == fileId.Trim().ToLower())
                 {
-                    DownloadFile(service, item, string.Format(@"D:\{0}", item.Name));
-                    ItemName = item.Name;
+                    DownloadFile(service, item, string.Format(drive + @"{0}", item.Name));
+                    ItemName = string.Format(drive + @"{0}", item.Name);
                 }
-                              
-             }
-             return  ItemName;
+
+            }
+            return ItemName;
         }
 
         private static void DownloadFile(Google.Apis.Drive.v3.DriveService service, Google.Apis.Drive.v3.Data.File file, string saveTo)

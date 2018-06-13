@@ -1,4 +1,4 @@
-﻿import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
+import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../../../router.animations';
 import { Form, FormControl, FormBuilder, Validators  } from '@angular/forms';
@@ -55,9 +55,10 @@ export class LiabilityComponent implements OnInit {
     SwitchLiabilitySuccess(res) { this._MastersService.GetLiabilityTypes().subscribe(res => this.GetLiabilitySuccess(res), res => this.GetLiabilityError(res)); }
     SwitchLiabilityError(res) { }
 
-    GridSelectionChange(data, selection) {
+    GridSelectionChange(data, event) {
         this._Operationtitle = "Update";
-        this._LiabilityObj = data.data.data[selection.index]
+       // this._LiabilityObj = data.data.data[selection.index]
+        Object.assign(this._LiabilityObj, this._LiabilityTypes[event.index]);
     }
 
     UpdateLiabilityType() {

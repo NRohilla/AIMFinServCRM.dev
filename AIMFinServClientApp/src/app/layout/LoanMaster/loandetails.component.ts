@@ -142,10 +142,12 @@ export class LoanDetails implements OnInit {
     }
 
     GetLoanMasterGridSuccess(Res) {
-        //debugger;
+        debugger;
         this.LoanMasterApplicantDetails = JSON.parse(Res._body);
     }
-    ViewApplicantDetails() {
+    ViewApplicantDetails(ApplicantID) {
+        debugger;
+        this._LocalStorageService.set("ApplicantID", ApplicantID);
         this.router.navigateByUrl('clientdetails');
     }
     GetLoanMasterGridError(res) { }
@@ -245,7 +247,11 @@ export class LoanDetails implements OnInit {
     UpdateLoanMasterDetailsError(res) {
     }
 
-    CancelEditingDetails() { this._EditDetails = false; }
+    CancelEditingDetails() {
+        this._EditDetails = false;
+        this._LANNumber = this._LocalStorageService.get("LANNumber");
+        this._LoanService.GetLoanMasterDetails(this._LANNumber).subscribe(res => this.GetLoanMasterDetailsSuccess(res), res => this.GetLoanMasterDetailsError(res));
+    }
 
     EditDetails() {
         this._EditDetails = true;

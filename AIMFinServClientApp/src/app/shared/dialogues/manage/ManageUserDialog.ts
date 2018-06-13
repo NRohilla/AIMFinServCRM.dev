@@ -24,6 +24,7 @@ export class ManageUserDialog {
 
     onNoClick(): void {
         this.dialogRef.close();
+       
     }
 
     SavePassword() {

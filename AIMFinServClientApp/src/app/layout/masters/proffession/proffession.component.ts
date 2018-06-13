@@ -1,4 +1,4 @@
-﻿import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
+import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../../../router.animations';
 import { Form, FormControl, FormBuilder, Validators  } from '@angular/forms';
@@ -50,9 +50,10 @@ export class ProffessionComponent implements OnInit {
     SwitchProfessionSuccess(res) { this._MastersService.GetProfessionTypes().subscribe(res => this.GetProfessionSuccess(res), res => this.GetProfessionError(res)); }
     SwitchProfessionError(res) { }
 
-    GridSelectionChange(data, selection) {
+    GridSelectionChange(data, event) {
         debugger;
-        this._ProfessionObj = data.data.data[selection.index];
+       // this._ProfessionObj = data.data.data[selection.index];
+        Object.assign(this._ProfessionObj, this._ProfessionTypes[event.index]);
         this._Operationtitle = "Update";
     }
 

@@ -31,7 +31,7 @@ export class AddLiabilityComponent implements OnInit {
     public _AddLiability: boolean = true;
     public _EditViewDetails: boolean = false;
     public LoanApplicationNo: string = '';
-    public _ValidationClass: boolean = false;
+ 
 
     public _LiabilityDetailsObj = {
         AutoID: '',
@@ -99,7 +99,7 @@ export class AddLiabilityComponent implements OnInit {
             _LiabilityID: {}
         }
         this.GetAddedLiabilityGrid();
-        this._ValidationClass = true;
+        
     }
     AddLiabilityError(res) { }
     // End - Liability

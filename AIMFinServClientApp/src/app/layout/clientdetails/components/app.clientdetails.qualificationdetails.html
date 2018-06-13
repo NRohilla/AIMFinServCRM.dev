@@ -113,9 +113,9 @@
                     </div>
                     <div class="row m-0 btn-bottom pr-4 pl-4">
                         <div class="w-100 float-left text-right">
-                            <input type="button" value="&#xf0c7; Save" (click)="AddQualificationDetails()" [disabled]="!AddClientQualificationform.form.valid" *ngIf="!_EditQualificationDetails" class="btn btn-lg btn-success" />
-                            <input type="button" value="&#xf0c7; Update" (click)="UpdateQualificationDetails()" [disabled]="!AddClientQualificationform.form.valid" *ngIf="_EditQualificationDetails" class="btn btn-lg btn-success" />
-                            <input type="button" value="&#xf00d; Cancel" (click)="CancelAddEditQualificationDetails()" class="btn btn-lg btn-secondary" />
+                            <input type="button" value="&#xf0c7; Save" (click)="AddQualificationDetails();AddClientQualificationform.reset()" [disabled]="!AddClientQualificationform.form.valid" *ngIf="!_EditQualificationDetails" class="btn btn-lg btn-success" />
+                            <input type="button" value="&#xf0c7; Update" (click)="UpdateQualificationDetails();AddClientQualificationform.reset()" [disabled]="!AddClientQualificationform.form.valid" *ngIf="_EditQualificationDetails" class="btn btn-lg btn-success" />
+                            <input type="button" value="&#xf00d; Cancel" (click)="CancelAddEditQualificationDetails();AddClientQualificationform.reset()" class="btn btn-lg btn-secondary" />
                         </div>
                     </div>
                 </div>

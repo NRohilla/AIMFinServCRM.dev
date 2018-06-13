@@ -202,7 +202,7 @@
                                                         <mat-form-field>
                                                             <input matInput placeholder="Any Legal Charges" [(ngModel)]="_LoanDetailsObj.AnyLegalCharges" name="AnyLegalCharges" #AnyLegalCharges="ngModel" required>
                                                             <div *ngIf="AnyLegalCharges.invalid && (AnyLegalCharges.dirty || AnyLegalCharges.touched)" class="alert alert-danger">
-                                                                <div *ngIf="LoanTermOffered.errors.required ">
+                                                                <div *ngIf="AnyLegalCharges.errors.required ">
                                                                     Please enter Any Legal Charges.
                                                                 </div>
                                                             </div>
@@ -338,7 +338,7 @@
                             </div>
                             <div class="row m-0 btn-bottom pr-4 pl-4">
                                 <div class="w-100 float-left text-right">
-                                    <input type="button" value="&#xf0c7; Save" (click)="UpdateLoanMasterDetails()" [disabled]="!EditLoanMaster.form.valid" *ngIf="_EditDetails" class="btn btn-success" />
+                                    <input type="button" value="&#xf0c7; Save" (click)="UpdateLoanMasterDetails();EditLoanMaster.reset()" [disabled]="!EditLoanMaster.form.valid" *ngIf="_EditDetails" class="btn btn-success" />
                                     <input type="button" value="&#xf00d; Cancel" (click)="CancelEditingDetails()" *ngIf="_EditDetails" class="btn btn-secondary" />
                                     <input type="button" value="&#xf040; Edit" (click)="EditDetails()" *ngIf="!_EditDetails" class="btn btn-info" />
                                 </div>
@@ -380,7 +380,7 @@
             </kendo-grid-column>
             <kendo-grid-command-column>
                 <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem">
-                    <button class="btn btn-sm btn-info" type="button" (click)="ViewApplicantDetails()">View details</button>
+                    <button class="btn btn-sm btn-info" type="button" (click)="ViewApplicantDetails(dataItem.ApplicantID)">View details</button>
                 </ng-template>
             </kendo-grid-command-column>
         </kendo-grid>

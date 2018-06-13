@@ -1,4 +1,4 @@
-﻿import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
+import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../../../router.animations';
 import { Form, FormControl, FormBuilder, Validators  } from '@angular/forms';
@@ -53,9 +53,10 @@ export class LoanrateComponent implements OnInit {
     SwitchLoanrateSuccess(res) { this._MastersService.GetLoanrateTypes().subscribe(res => this.GetLoanrateSuccess(res), res => this.GetLoanrateError(res)); }
     SwitchLoanrateError(res) { }
 
-    GridSelectionChange(data, selection) {
+    GridSelectionChange(data, event) {
         debugger;
-        this._LoanrateObj = data.data.data[selection.index];
+       // this._LoanrateObj = data.data.data[selection.index];
+        Object.assign(this._LoanrateObj, this._LoanrateTypes[event.index]);
         this._Operationtitle = "Update";
     }
 

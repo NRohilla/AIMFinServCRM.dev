@@ -57,7 +57,6 @@ export class ManageuserComponent implements OnInit {
     public emailId: string = '';
     public _UserData: any = {}
 
-
     constructor(private _mastersServices: MastersService, public dialog: MatDialog, private _GoogleService: GoogleService, private _LocalStorageService: LocalStorageService) { }
 
     ngOnInit() {
@@ -113,6 +112,7 @@ export class ManageuserComponent implements OnInit {
             Role: 'Client'
 
         }
+        this.AddUpdateDetailsClass = false
     }
 
     GetUserDetailsError(res) { }
@@ -122,6 +122,7 @@ export class ManageuserComponent implements OnInit {
         this._UserRecord = {}
         this._UserRecord.Role = role;
         this._Operationtitle = "Add";
+        this.AddUpdateDetailsClass = false
         if (role == "Client") {
             this._isClientRole = true;
             this._mastersServices.GetApplicants().subscribe(res => this.GetApplicantsSuccess(res), res => this.GetApplicantsError(res));
@@ -158,8 +159,9 @@ export class ManageuserComponent implements OnInit {
 
     AddUserSuccess(res) {
         console.log(res)
-        this.AddUpdateDetailsClass = true;
+       // this.AddUpdateDetailsClass = false;
         this._mastersServices.GetAllUser().subscribe(res => this.GetAllUserSuccess(res), res => this.GetAllUserError(res));
+        //this.AddUpdateDetailsClass = true;
         this.CancelUser();
     }
 
@@ -195,11 +197,13 @@ export class ManageuserComponent implements OnInit {
     SwitchManageUserEntityStatusError(res) { }
 
     GridSelectionChange(data, event) {
+        this.AddUpdateDetailsClass = false
         this._UserRecord = {};
         this._isClientRole = false;
         this._Operationtitle = "Update";
         this._EditUser = true;
         this._UserTypeRole = {}
+        this.ErrorMsg = "";
         this._GridUser = this._ManageUserGridData[event.index];
         Object.assign(this._UserRecord, this._GridUser);
     }

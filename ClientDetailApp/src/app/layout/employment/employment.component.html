@@ -110,7 +110,7 @@
                                     <mat-form-field class="w-100" *ngIf="_EditDetails">
                                         <input matInput placeholder="Employer Name" [(ngModel)]="EmploymentDetails.EmployerName" name="employername" #employername="ngModel" required>
                                         <div *ngIf="employername.invalid && (employername.dirty || employername.touched)" class="alert alert-danger">
-                                            <div *ngIf="employername.errors.requirerd">
+                                            <div *ngIf="employername.errors.required">
                                                 Please enter Employer Name.
                                             </div>
                                         </div>

@@ -169,7 +169,8 @@ namespace FinServUnitOfWork.Repository
                                               join tmat in db.tblMasterApplicantTypes on tba.ApplicantTypeID equals tmat.ApplicantTypeID                                              
                                               where tlm.LoanApplicationNo == LoanApplicationNo
                                               select new
-                                              {                                                 
+                                              {       
+                                                _ApplicantID = tba.ApplicantID,
                                                _FirstName = tba.FirstName,
                                                _MiddleName = tba.MiddleName,
                                                _LastName = tba.LastName,
@@ -178,6 +179,7 @@ namespace FinServUnitOfWork.Repository
                                                _ApplicantType = tmat.ApplicantType
                                            }).ToList().Select(x => new LoanMasterDetails()
                                            {
+                                               ApplicantID = x._ApplicantID,
                                                FirstName = x._FirstName,
                                                MiddleName = x._MiddleName,
                                                LastName = x._LastName,

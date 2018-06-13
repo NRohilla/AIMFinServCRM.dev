@@ -146,9 +146,9 @@
                 </div>
                 <div class="row m-0 btn-bottom pr-4 pl-4">
                     <div class="w-100 float-left text-right">
-                        <input type="submit" value="&#xf0c7; Save" (click)="AddCommunicationDetails()" [disabled]="!AddClientCommunicationform.form.valid" *ngIf="!_EditCommunicationDetails" class="btn btn-success" />
-                        <input type="button" value="&#xf0c7; Update" (click)="UpdateCommunicationDetails()" [disabled]="!AddClientCommunicationform.form.valid" *ngIf="_EditCommunicationDetails " class="btn btn-success" />
-                        <input type="button" value="&#xf00d; Cancel" (click)="CancelAddEditCommunicationDetails()" class="btn btn-secondary" />
+                        <input type="submit" value="&#xf0c7; Save" (click)="AddCommunicationDetails();AddClientCommunicationform.reset()" [disabled]="!AddClientCommunicationform.form.valid" *ngIf="!_EditCommunicationDetails" class="btn btn-success" />
+                        <input type="button" value="&#xf0c7; Update" (click)="UpdateCommunicationDetails();AddClientCommunicationform.reset()" [disabled]="!AddClientCommunicationform.form.valid" *ngIf="_EditCommunicationDetails " class="btn btn-success" />
+                        <input type="button" value="&#xf00d; Cancel" (click)="CancelAddEditCommunicationDetails();AddClientCommunicationform.reset()" class="btn btn-secondary" />
 
                     </div>
                 </div>

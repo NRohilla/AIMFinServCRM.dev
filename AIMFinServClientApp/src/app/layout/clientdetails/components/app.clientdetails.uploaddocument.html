@@ -6,9 +6,11 @@
             <div class="position-absolute w-100 text-center">
                 <i class="fa fa-cloud-upload"></i>
             </div>
-            <h6 class="text-success">Choose your files here</h6>            
+            <h6 class="text-success">Choose your files here</h6>
         </div>
     </div>
+    <div class="w-100 text-center" style="color:red;">{{FileDownLoadPath}}</div>
+
     <div class="clearfix">
         <kendo-grid [kendoGridBinding]="GetDriveFinalData"
                     [pageSize]="5"
@@ -45,5 +47,7 @@
             </kendo-grid-command-column>
         </kendo-grid>
     </div>
+
+
 </div>
 
