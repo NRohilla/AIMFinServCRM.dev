@@ -28,7 +28,8 @@ export class LiabilityComponent implements OnInit {
         AutoID: "",
         Description: "",
         IsActive: "",
-        LiabilityTypeID: ""
+        LiabilityTypeID: "",
+        LiabilityType:""
     };
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _MastersService: MastersService) { }
@@ -39,7 +40,8 @@ export class LiabilityComponent implements OnInit {
             AutoID: "",
             Description: "",
             IsActive: "",
-            LiabilityTypeID: ""
+            LiabilityTypeID: "",
+            LiabilityType:""
         };
     }
     GetLiabilitySuccess(res) {
@@ -78,7 +80,8 @@ export class LiabilityComponent implements OnInit {
             AutoID: "",
             Description: "",
             IsActive: "",
-            LiabilityTypeID: ""
+            LiabilityTypeID: "",
+            LiabilityType:""
         };
     }
 

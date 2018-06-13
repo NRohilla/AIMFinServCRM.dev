@@ -29,7 +29,8 @@ export class ExpenseComponent implements OnInit {
         Description: "",
         ExpenseTypeID: "",
         Frequency: "",
-        IsActive: ""
+        IsActive: "",
+        ExpenseType:""
     };
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _MastersService: MastersService) { }
@@ -41,7 +42,8 @@ export class ExpenseComponent implements OnInit {
             Description: "",
             ExpenseTypeID: "",
             Frequency: "",
-            IsActive: ""
+            IsActive: "",
+            ExpenseType: ""
         };
     }
     GetExpenseSuccess(res) {
@@ -81,7 +83,8 @@ export class ExpenseComponent implements OnInit {
             Description: "",
             ExpenseTypeID: "",
             Frequency: "",
-            IsActive: ""
+            IsActive: "",
+            ExpenseType:""
         };
     }
 
