@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="AIMFinServDBModel.tblApplicantCommunicationDetail" Width="1.5" PointX="13.5" PointY="21.125" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblApplicantEmploymentDetail" Width="1.5" PointX="10.5" PointY="16.125" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblApplicantQualificationDetail" Width="1.5" PointX="7.5" PointY="15.5" />
-        <EntityTypeShape EntityType="AIMFinServDBModel.tblApplicant" Width="1.5" PointX="5.25" PointY="19.375" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblAsset" Width="1.5" PointX="10.5" PointY="21.5" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblLiability" Width="1.5" PointX="7.5" PointY="27.5" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblLoanApplicationForm" Width="1.5" PointX="3" PointY="19" />
@@ -34,18 +33,10 @@
         <EntityTypeShape EntityType="AIMFinServDBModel.tblRole" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblUsersRole" Width="1.5" PointX="2.75" PointY="4.75" />
         <AssociationConnector Association="AIMFinServDBModel.FK_tblLoanApplicationForm_tblAdvisorDetails" />
-        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantCommunicationDetails_tblApplicants" />
         <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantCommunicationDetails_tblMasterAddressTypes" />
-        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblApplicants" />
         <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblMasterTypeOfEmployment" />
         <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantEmploymentDetails_tblMasterTypeOfProfession" />
-        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantQualificationDetails_tblApplicants" />
         <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantQualificationDetails_tblMasterTypeOfQualification" />
-        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicants_tblLoanApplicationForm" />
-        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicants_tblMasterApplicantType" />
-        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicants_tblMasterFileType" />
-        <AssociationConnector Association="AIMFinServDBModel.FK_tblAssets_tblApplicants" />
-        <AssociationConnector Association="AIMFinServDBModel.FK_tblLiabilities_tblApplicants" />
         <AssociationConnector Association="AIMFinServDBModel.FK_tblAssets_tblAssetTypes" />
         <AssociationConnector Association="AIMFinServDBModel.FK_tblLiabilities_tblLiabilityTypes" />
         <AssociationConnector Association="AIMFinServDBModel.FK_tblLoanApplicationForm_tblMasterLoanRateType" />
@@ -60,8 +51,15 @@
         <AssociationConnector Association="AIMFinServDBModel.FK_tblLoanMaster_tblMasterTypeOfStatus" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblUser" Width="1.5" PointX="5.375" PointY="4.75" />
         <EntityTypeShape EntityType="AIMFinServDBModel.tblApplicantExpenseSheet" Width="1.5" PointX="10.5" PointY="26.25" />
-        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblApplicants" />
         <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblMasterExpenseType" />
+        <EntityTypeShape EntityType="AIMFinServDBModel.tblApplicant" Width="1.5" PointX="5.25" PointY="19.625" />
+        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantCommunicationDetails_tblApplicants" />
+        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantExpenseSheet_tblApplicants" />
+        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicantQualificationDetails_tblApplicants" />
+        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicants_tblLoanApplicationForm" />
+        <AssociationConnector Association="AIMFinServDBModel.FK_tblApplicants_tblMasterApplicantType" />
+        <AssociationConnector Association="AIMFinServDBModel.FK_tblAssets_tblApplicants" />
+        <AssociationConnector Association="AIMFinServDBModel.FK_tblLiabilities_tblApplicants" />
       </Diagram>
       <Diagram DiagramId="9ffe6693a3454488bd526b5fbd46fe2d" Name="Diagram2" >
       </Diagram>

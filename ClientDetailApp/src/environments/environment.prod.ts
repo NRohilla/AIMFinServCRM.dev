@@ -4,6 +4,6 @@ export const environment = {
     testing: false,
     //for local connection to the API service
     baseAPIUrl: "http://182.75.120.10:9393/AIMFinServAPI/API/",
-    baseApplicationURL: "http://182.75.120.10:9393/AimFinServe_Client/",
-    baseAdminURl: "http://182.75.120.10:9393/AimFinServe_Admin/",
+    baseApplicationURL: "http://www.loaner.co.nz/Admin/",
+    baseAdminURl: "http://www.loaner.co.nz/Clients/",
 };

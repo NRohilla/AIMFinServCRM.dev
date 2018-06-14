@@ -115,7 +115,7 @@
     <Property Name="HomePhoneNo" Type="nvarchar" MaxLength="15" />
     <Property Name="WorkPhoneNo" Type="nvarchar" MaxLength="15" />
     <Property Name="LoanApplicationNo" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="FileTypeID" Type="int" Nullable="false" />
+    <Property Name="FileTypeID" Type="int" />
     <Property Name="FileName" Type="nvarchar" MaxLength="50" />
     <Property Name="ApplicantImage" Type="varbinary(max)" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
@@ -490,7 +490,7 @@
     <Property Name="AccountExpired" Type="bit" />
     <Property Name="AccountLocked" Type="bit" />
     <Property Name="ActivaitonCode" Type="nvarchar(max)" />
-    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="Description" Type="nvarchar(max)" />
     <Property Name="LocationId" Type="int" />
     <Property Name="IsLoggedIn" Type="bit" />
@@ -598,18 +598,6 @@
       </Principal>
       <Dependent Role="tblApplicants">
         <PropertyRef Name="ApplicantTypeID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tblApplicants_tblMasterFileType">
-    <End Role="tblMasterFileType" Type="Self.tblMasterFileType" Multiplicity="1" />
-    <End Role="tblApplicants" Type="Self.tblApplicants" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblMasterFileType">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="tblApplicants">
-        <PropertyRef Name="FileTypeID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -854,10 +842,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_tblApplicants_tblMasterApplicantType" Association="Self.FK_tblApplicants_tblMasterApplicantType">
       <End Role="tblMasterApplicantType" EntitySet="tblMasterApplicantType" />
-      <End Role="tblApplicants" EntitySet="tblApplicants" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tblApplicants_tblMasterFileType" Association="Self.FK_tblApplicants_tblMasterFileType">
-      <End Role="tblMasterFileType" EntitySet="tblMasterFileType" />
       <End Role="tblApplicants" EntitySet="tblApplicants" />
     </AssociationSet>
     <AssociationSet Name="FK_tblAssets_tblApplicants" Association="Self.FK_tblAssets_tblApplicants">

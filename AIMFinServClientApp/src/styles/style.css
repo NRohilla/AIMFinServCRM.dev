@@ -33,7 +33,7 @@
 .application-details .mat-form-field, .master-forms .mat-form-field { display: block; }
 .application-details hr { border-top: 1px dashed #ccc; box-shadow: 0px 0px 2px #a0a0a0; margin: 7px 15px; }
 .application-details .field_set .field_label, .master-forms .field_set .field_label { width: 40%; float: left; color: #585858; }
-.application-details .tab-content .field_set .field_info, .master-forms .field_set .field_info, .application-details .field_set p { width: 60%; float: left; line-height: 35px; margin-bottom: 0px; }
+.application-details .tab-content .field_set .field_info, .master-forms .field_set .field_info, .application-details .field_set p { width: 60%; float: left; line-height: 35px; margin-bottom: 0px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .edit-texts .field_set .field_info { line-height:16px !important; }
 
 /*.application-details .section_box .tab-content .datevalue { margin-bottom:0px; padding-top:7px; float:left;}*/
@@ -287,7 +287,13 @@ a { outline: none; }
 
 @media (max-width: 1200px) {
     .application-details .field_set .field_label, .master-forms .field_set .field_label {
-        width: 100%;
+        width: 100%;    
+    }
+    .detailbox1.p-4, .detailbox2.p-4, .detailbox3.p-4 {
+        padding: 15px !important;
+    }
+    .detailbox1 h3, .detailbox2 h3, .detailbox3 h3, .bottom-value {
+        font-size: 22px;
     }
 
     .application-details .tab-content .field_set .field_info, .master-forms .field_set .field_info, .application-details .field_set p {
@@ -304,6 +310,12 @@ a { outline: none; }
     .application-details td label { width: 100%; position:relative; }
     .application-details td label:before { left: 6px; width: 45%; font-weight: 600; content: attr(title); }
     .application-details .k-grid td { border-left:1px solid #ebebeb !important; border-right:1px solid #ebebeb !important; }
-    .btn-bottom input[type="button"], .btn-bottom input[type="submit"] { width:190px; margin:2px 0px; display:block; }    
+    .btn-bottom input[type="button"], .btn-bottom input[type="submit"] { width:190px; margin:2px 0px; display:block; }
+    .tab-content .field_set { margin-bottom:0px; }
+    .login-date { position:relative; top:0px; }
  }
 
+@media (max-width: 575px){
+
+        
+ }
