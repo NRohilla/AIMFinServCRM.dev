@@ -55,3 +55,15 @@ D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServBussinessEntities\obj
 D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServBussinessEntities\obj\Debug\FinServBussinessEntities.csproj.CoreCompileInputs.cache
 D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServBussinessEntities\obj\Debug\FinServBussinessEntities.dll
 D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServBussinessEntities\obj\Debug\FinServBussinessEntities.pdb
+D:\Nick_Alcock\FinServBussinessEntities\bin\Debug\FinServBussinessEntities.dll
+D:\Nick_Alcock\FinServBussinessEntities\bin\Debug\FinServBussinessEntities.pdb
+D:\Nick_Alcock\FinServBussinessEntities\bin\Debug\FinServDataModel.dll
+D:\Nick_Alcock\FinServBussinessEntities\bin\Debug\EntityFramework.dll
+D:\Nick_Alcock\FinServBussinessEntities\bin\Debug\FinServDataModel.pdb
+D:\Nick_Alcock\FinServBussinessEntities\bin\Debug\FinServDataModel.dll.config
+D:\Nick_Alcock\FinServBussinessEntities\bin\Debug\EntityFramework.xml
+D:\Nick_Alcock\FinServBussinessEntities\obj\Debug\FinServBussinessEntities.csprojResolveAssemblyReference.cache
+D:\Nick_Alcock\FinServBussinessEntities\obj\Debug\FinServBussinessEntities.csproj.CoreCompileInputs.cache
+D:\Nick_Alcock\FinServBussinessEntities\obj\Debug\FinServBussinessEntities.csproj.CopyComplete
+D:\Nick_Alcock\FinServBussinessEntities\obj\Debug\FinServBussinessEntities.dll
+D:\Nick_Alcock\FinServBussinessEntities\obj\Debug\FinServBussinessEntities.pdb

@@ -115,6 +115,7 @@
     <Compile Include="Repository\UOWLoanMaster.cs" />
     <Compile Include="Repository\UOWMasters.cs" />
     <Compile Include="Repository\UOWUserOps.cs" />
+    <Compile Include="utility.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -9,3 +9,15 @@ D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServBussinessEntities\obj
 D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServBussinessEntities\obj\Release\FinServBussinessEntities.csproj.CoreCompileInputs.cache
 D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServBussinessEntities\obj\Release\FinServBussinessEntities.dll
 D:\Client Projects\Nick-21-3-2018\AIMFinServCRM.dev\FinServBussinessEntities\obj\Release\FinServBussinessEntities.pdb
+D:\Nick_Alcock\FinServBussinessEntities\bin\Release\FinServBussinessEntities.dll
+D:\Nick_Alcock\FinServBussinessEntities\bin\Release\FinServBussinessEntities.pdb
+D:\Nick_Alcock\FinServBussinessEntities\bin\Release\FinServDataModel.dll
+D:\Nick_Alcock\FinServBussinessEntities\bin\Release\EntityFramework.dll
+D:\Nick_Alcock\FinServBussinessEntities\bin\Release\FinServDataModel.pdb
+D:\Nick_Alcock\FinServBussinessEntities\bin\Release\FinServDataModel.dll.config
+D:\Nick_Alcock\FinServBussinessEntities\bin\Release\EntityFramework.xml
+D:\Nick_Alcock\FinServBussinessEntities\obj\Release\FinServBussinessEntities.csprojResolveAssemblyReference.cache
+D:\Nick_Alcock\FinServBussinessEntities\obj\Release\FinServBussinessEntities.csproj.CoreCompileInputs.cache
+D:\Nick_Alcock\FinServBussinessEntities\obj\Release\FinServBussinessEntities.csproj.CopyComplete
+D:\Nick_Alcock\FinServBussinessEntities\obj\Release\FinServBussinessEntities.dll
+D:\Nick_Alcock\FinServBussinessEntities\obj\Release\FinServBussinessEntities.pdb

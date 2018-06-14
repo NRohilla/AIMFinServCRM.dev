@@ -59,15 +59,3 @@ D:\Client Project\Nick_Alcock\FinServDataModel\obj\Debug\FinServDataModel.csproj
 D:\Client Project\Nick_Alcock\FinServDataModel\obj\Debug\FinServDataModel.csproj.CopyComplete
 D:\Client Project\Nick_Alcock\FinServDataModel\obj\Debug\FinServDataModel.dll
 D:\Client Project\Nick_Alcock\FinServDataModel\obj\Debug\FinServDataModel.pdb
-D:\Nick_Alcock\FinServDataModel\bin\Debug\FinServDataModel.dll.config
-D:\Nick_Alcock\FinServDataModel\bin\Debug\FinServDataModel.dll
-D:\Nick_Alcock\FinServDataModel\bin\Debug\FinServDataModel.pdb
-D:\Nick_Alcock\FinServDataModel\bin\Debug\EntityFramework.dll
-D:\Nick_Alcock\FinServDataModel\bin\Debug\EntityFramework.SqlServer.dll
-D:\Nick_Alcock\FinServDataModel\bin\Debug\EntityFramework.xml
-D:\Nick_Alcock\FinServDataModel\bin\Debug\EntityFramework.SqlServer.xml
-D:\Nick_Alcock\FinServDataModel\obj\Debug\FinServDataModel.csprojResolveAssemblyReference.cache
-D:\Nick_Alcock\FinServDataModel\obj\Debug\FinServDataModel.csproj.CoreCompileInputs.cache
-D:\Nick_Alcock\FinServDataModel\obj\Debug\FinServDataModel.csproj.CopyComplete
-D:\Nick_Alcock\FinServDataModel\obj\Debug\FinServDataModel.dll
-D:\Nick_Alcock\FinServDataModel\obj\Debug\FinServDataModel.pdb
