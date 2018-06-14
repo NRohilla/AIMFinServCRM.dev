@@ -76,7 +76,10 @@ export class HeaderComponent implements OnInit {
 
     UserInfoSuccess(result) {
         debugger;
+        if (result._body != undefined) {
+
         this._UserDetails = JSON.parse((JSON.parse(result._body)));
+        }
     }
 
     UserInfoError(err) {

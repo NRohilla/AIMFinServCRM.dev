@@ -1,14 +1,14 @@
-import { Component, Injectable, ViewChild, OnInit, ElementRef  } from '@angular/core';
+import { Component, Injectable, ViewChild, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../../../router.animations';
-import { Form, FormControl, FormBuilder, Validators  } from '@angular/forms';
+import { Form, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
-import {ClientsService} from '../../../services/app.clients.service';
-import {AppBaseComponent} from '../../../shared/app.basecomponent';
+import { ClientsService } from '../../../services/app.clients.service';
+import { AppBaseComponent } from '../../../shared/app.basecomponent';
 
 @Component({
     selector: `client-communication-details`,
@@ -69,23 +69,27 @@ export class ClientscommunicationComponent extends AppBaseComponent implements O
     }
 
     GridSelectionChange(data, event) {
+        debugger;
         this._EditCommunicationDetails = true;
         this._Operationtitle = "Update";
-        var FetchedValues = this._ClientCommunicationDetails[event.index];
-        this._ClientCommDetailsObj.AddressLine1 = FetchedValues.AddressLine1;
-        this._ClientCommDetailsObj.AddressLine2 = FetchedValues.AddressLine2;
-        this._ClientCommDetailsObj.AddressLine3 = FetchedValues.AddressLine3;
-        this._ClientCommDetailsObj.Country = FetchedValues.Country;
-        this._ClientCommDetailsObj.ZipCode = FetchedValues.ZipCode;
-        this._ClientCommDetailsObj.AddressType = FetchedValues.AddressType.toString();
-        this._ClientCommDetailsObj.AutoID = FetchedValues.AutoID;
-        this._ClientCommDetailsObj.CommunicationID = FetchedValues.CommunicationID;
-        //debugger;
+        if (this._ClientCommunicationDetails != undefined) {
+            var FetchedValues = this._ClientCommunicationDetails[event.index];
+            if (FetchedValues != undefined) {
+                this._ClientCommDetailsObj.AddressLine1 = FetchedValues.AddressLine1;
+                this._ClientCommDetailsObj.AddressLine2 = FetchedValues.AddressLine2;
+                this._ClientCommDetailsObj.AddressLine3 = FetchedValues.AddressLine3;
+                this._ClientCommDetailsObj.Country = FetchedValues.Country;
+                this._ClientCommDetailsObj.ZipCode = FetchedValues.ZipCode;
+                this._ClientCommDetailsObj.AddressType = FetchedValues.AddressType.toString();
+                this._ClientCommDetailsObj.AutoID = FetchedValues.AutoID;
+                this._ClientCommDetailsObj.CommunicationID = FetchedValues.CommunicationID;
+            }
+        }
     }
 
     updateclientCommunicationSuccess(res) {
         //debugger;
-        if(this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
+        if (this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
             this._ClientsService.GetClientCommunicationDetails(<string>this._LocalStorageService.get("ApplicantID"))
                 .subscribe(res => this.GetClientCommDetailsSuccess(res), res => this.GetClientCommDetailsError(res));
         }
@@ -105,7 +109,7 @@ export class ClientscommunicationComponent extends AppBaseComponent implements O
 
     AddClientCommunicationSuccess(res) {
         //debugger;
-        if(this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
+        if (this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
             this._ClientsService.GetClientCommunicationDetails(<string>this._LocalStorageService.get("ApplicantID"))
                 .subscribe(res => this.GetClientCommDetailsSuccess(res), res => this.GetClientCommDetailsError(res));
         }

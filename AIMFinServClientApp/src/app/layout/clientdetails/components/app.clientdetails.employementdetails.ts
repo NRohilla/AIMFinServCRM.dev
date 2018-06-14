@@ -98,15 +98,19 @@ export class ClientsEmployementComponent extends AppBaseComponent implements OnI
         //debugger;
         this._EditEmployementDetails = true;
         this._Operationtitle = "Update";
-        var FetchedValues = this._ClientEmploymentDetails[event.index];        
-        this._ClientEmploymentDetailsObj.EmployerName = FetchedValues.EmployerName;
-        this._ClientEmploymentDetailsObj.Duration = FetchedValues.Duration;
-        this._ClientEmploymentDetailsObj.Income = FetchedValues.Income;
-        this._ClientEmploymentDetailsObj._ProfessionTypeDetail = FetchedValues._ProfessionTypeDetail;
-        this._ClientEmploymentDetailsObj._EmploymentTypeDetail = FetchedValues._EmploymentTypeDetail;
-        this._ClientEmploymentDetailsObj.AutoID = FetchedValues.AutoID;
-        this._ClientEmploymentDetailsObj.Status = FetchedValues.Status;
-        this._ClientEmploymentDetailsObj.EmploymentID = FetchedValues.EmploymentID;        
+        if (this._ClientEmploymentDetails != undefined) {
+            var FetchedValues = this._ClientEmploymentDetails[event.index];
+            if (FetchedValues != undefined) {
+                this._ClientEmploymentDetailsObj.EmployerName = FetchedValues.EmployerName;
+                this._ClientEmploymentDetailsObj.Duration = FetchedValues.Duration;
+                this._ClientEmploymentDetailsObj.Income = FetchedValues.Income;
+                this._ClientEmploymentDetailsObj._ProfessionTypeDetail = FetchedValues._ProfessionTypeDetail;
+                this._ClientEmploymentDetailsObj._EmploymentTypeDetail = FetchedValues._EmploymentTypeDetail;
+                this._ClientEmploymentDetailsObj.AutoID = FetchedValues.AutoID;
+                this._ClientEmploymentDetailsObj.Status = FetchedValues.Status;
+                this._ClientEmploymentDetailsObj.EmploymentID = FetchedValues.EmploymentID;
+            }
+        }
     }
 
 

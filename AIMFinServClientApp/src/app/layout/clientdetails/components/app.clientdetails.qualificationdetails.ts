@@ -82,16 +82,19 @@ export class ClientqualificationComponent extends AppBaseComponent implements On
         //debugger;
         this._EditQualificationDetails = true;
         this._Operationtitle = "Update";
-        var FetchedValues = this._ClientQualificationDetails[selection.index];
-
-        this._ClientQualificationDetailsObj.AutoID = FetchedValues.AutoID;
-        this._ClientQualificationDetailsObj.ApplicantID = FetchedValues.ApplicantID;
-        this._ClientQualificationDetailsObj.CourseName = FetchedValues.CourseName;        
-        this._ClientQualificationDetailsObj.PassingYear = FetchedValues.PassingYear;
-        this._ClientQualificationDetailsObj.QualificationID = FetchedValues.QualificationID;
-        this._ClientQualificationDetailsObj.TypeOfQualification = FetchedValues.TypeOfQualification;        
-        this._ClientQualificationDetailsObj.UniversityName = FetchedValues.UniversityName;
-        this._ClientQualificationDetailsObj._QualificationTypeDetail = FetchedValues._QualificationTypeDetail;
+        if (this._ClientQualificationDetails != undefined) {
+            var FetchedValues = this._ClientQualificationDetails[selection.index];
+            if (FetchedValues != undefined) {
+                this._ClientQualificationDetailsObj.AutoID = FetchedValues.AutoID;
+                this._ClientQualificationDetailsObj.ApplicantID = FetchedValues.ApplicantID;
+                this._ClientQualificationDetailsObj.CourseName = FetchedValues.CourseName;
+                this._ClientQualificationDetailsObj.PassingYear = FetchedValues.PassingYear;
+                this._ClientQualificationDetailsObj.QualificationID = FetchedValues.QualificationID;
+                this._ClientQualificationDetailsObj.TypeOfQualification = FetchedValues.TypeOfQualification;
+                this._ClientQualificationDetailsObj.UniversityName = FetchedValues.UniversityName;
+                this._ClientQualificationDetailsObj._QualificationTypeDetail = FetchedValues._QualificationTypeDetail;
+            }
+        }
     }
 
     AddQualificationDetails() {
