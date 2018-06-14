@@ -26,7 +26,7 @@ export class LoanApplicationDetailDialog {
         @Inject(MAT_DIALOG_DATA) public data: any) {
     }
 
-    SaveNewApplicant(): void {
+    SaveNewApplicant(): void { 
         debugger;
         this._ApplicantPersonalDetailsComponent.SaveLoanApplicationPersonalDetails()
             .subscribe(res => this.SaveLoanApplicationPersonalDetailsSuccess(res), res => this.SaveLoanApplicationPersonalDetailsError(res));
