@@ -94,11 +94,11 @@ export class ClientsEmployementComponent extends AppBaseComponent implements OnI
     }
 
 
-    GridSelectionChange(data, selection) {
+    GridSelectionChange(data, event) {
         //debugger;
         this._EditEmployementDetails = true;
         this._Operationtitle = "Update";
-        var FetchedValues = data.data.data[selection.index];        
+        var FetchedValues = this._ClientEmploymentDetails[event.index];        
         this._ClientEmploymentDetailsObj.EmployerName = FetchedValues.EmployerName;
         this._ClientEmploymentDetailsObj.Duration = FetchedValues.Duration;
         this._ClientEmploymentDetailsObj.Income = FetchedValues.Income;

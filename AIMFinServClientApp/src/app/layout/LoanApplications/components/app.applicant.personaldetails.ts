@@ -70,7 +70,7 @@ export class ApplicantPersonalDetailsComponent extends AppBaseComponent implemen
         ZipCode: '',
         _ApplicantComunctnDetails: '',
         _ApplicantTypeMasterID: {
-            ApplicantTypeID: 0,
+            ApplicantTypeID: '',
             ApplicantType: '',
             IsActive: false,
             CreatedBy: '',
@@ -94,7 +94,7 @@ export class ApplicantPersonalDetailsComponent extends AppBaseComponent implemen
     SaveLoanApplicationPersonalDetails() {
         debugger;
         if (this._LocalStorageService.get("LoanApplicationNo") != undefined) {
-            this._ApplicantPersonalDetails.ApplicantTypeID = this._ApplicantPersonalDetails._ApplicantTypeMasterID.ApplicantTypeID;
+           // this._ApplicantPersonalDetails.ApplicantTypeID = this._ApplicantPersonalDetails._ApplicantTypeMasterID.ApplicantTypeID;
 
             this._ApplicantPersonalDetails.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNo");
             

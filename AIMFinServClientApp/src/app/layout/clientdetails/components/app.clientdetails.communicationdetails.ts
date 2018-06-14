@@ -68,10 +68,10 @@ export class ClientscommunicationComponent extends AppBaseComponent implements O
         this._ClientsService.UpdateClientCommunicationDetails(this._ClientCommDetailsObj).subscribe(res => this.updateclientCommunicationSuccess(res), res => this.updateclientCommunicationError(res));
     }
 
-    GridSelectionChange(data, selection) {
+    GridSelectionChange(data, event) {
         this._EditCommunicationDetails = true;
         this._Operationtitle = "Update";
-        var FetchedValues = data.data.data[selection.index];
+        var FetchedValues = this._ClientCommunicationDetails[event.index];
         this._ClientCommDetailsObj.AddressLine1 = FetchedValues.AddressLine1;
         this._ClientCommDetailsObj.AddressLine2 = FetchedValues.AddressLine2;
         this._ClientCommDetailsObj.AddressLine3 = FetchedValues.AddressLine3;

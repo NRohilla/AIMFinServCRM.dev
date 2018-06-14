@@ -39,11 +39,12 @@ namespace FinServBussinessEntities
         public string Country { get; set; }
         public string ZipCode { get; set; }
         public string Type { get; set; }
-        public int FileTypeID { get; set; }
+        public Nullable<int> FileTypeID { get; set; }
         public string FileName { get; set; }
         public string FileType { get; set; }
         public string Extension { get; set; }
 
+        public int ID { get; set; }
         public ApplicantTypeMaster _ApplicantTypeMasterID { get; set; }
         public LoanApplicationForms _LoanApplicationNo { get; set; }
         public ApplicantCommunicationDetails _ApplicantComunctnDetails { get; set; }

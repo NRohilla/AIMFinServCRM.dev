@@ -248,7 +248,7 @@
                     </div>
                     <div class="row m-0 btn-bottom pr-4 pl-4">
                         <div class="w-100 float-left text-right">
-                            <input type="submit" value="&#xf0c7; Save" (click)="UpdatePersonalDetails();AddClientPersonalDetails.reset()" [disabled]="!AddClientPersonalDetails.form.valid" *ngIf="_EditPersonalDetails" class="btn btn-success" />
+                            <input type="submit" value="&#xf0c7; Save" (click)="UpdatePersonalDetails()" [disabled]="!AddClientPersonalDetails.form.valid" *ngIf="_EditPersonalDetails" class="btn btn-success" />
                             <input type="button" value="&#xf00d; Cancel" (click)="cancelEditDetails()" *ngIf="_EditPersonalDetails" class="btn btn-secondary" />
                             <input type="button" value="&#xf040; Edit" (click)="EditPersonalDetails()" *ngIf="!_EditPersonalDetails" class="btn btn-info" />
                         </div>

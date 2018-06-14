@@ -82,7 +82,7 @@ export class ClientqualificationComponent extends AppBaseComponent implements On
         //debugger;
         this._EditQualificationDetails = true;
         this._Operationtitle = "Update";
-        var FetchedValues = data.data.data[selection.index];
+        var FetchedValues = this._ClientQualificationDetails[selection.index];
 
         this._ClientQualificationDetailsObj.AutoID = FetchedValues.AutoID;
         this._ClientQualificationDetailsObj.ApplicantID = FetchedValues.ApplicantID;
