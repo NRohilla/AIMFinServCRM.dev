@@ -19,8 +19,7 @@ namespace FinServUnitOfWork.Repository
              using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
                     var fetchLoggedInUserInfo = (from tu in db.tblUsers 
-                                                 join ta in db.tblApplicants on tu.Email equals ta.EmailID
-                                                 join tmf in db.tblMasterFileTypes on ta.FileTypeID equals tmf.ID
+                                                 join ta in db.tblApplicants on tu.Email equals ta.EmailID                                                 
                                                  where tu.Email == UserEmailId
                                                     select new UserApplicant
                                                     {
@@ -30,24 +29,14 @@ namespace FinServUnitOfWork.Repository
                                                         MiddleName = ta.MiddleName,
                                                         LastName = ta.LastName,
                                                         EmailID = ta.EmailID,
-                                                        ApplicantImage = ta.ApplicantImage,
-                                                        FileName = ta.FileName,
-                                                        FileType = tmf.FileType,
-                                                        Extension = tmf.Extension,
-                                                        FileTypeID = tmf.ID,
+                                                        ApplicantImage = ta.ApplicantImage,                                                       
                                                         DisplayName = tu.DisplayName,
                                                         Mobile = tu.Mobile,
                                                         Email = tu.Email,
                                                         Password = tu.Password,
-                                                        PasswordExpired = tu.PasswordExpired,
-                                                        LastPasswordChangedOn = tu.LastPasswordChangedOn,
-                                                        PasswordResetToken = tu.PasswordResetToken,
-                                                        FailedPasswordAttempts = tu.FailedPasswordAttempts,
-                                                        AccountExpired = tu.AccountExpired,
-                                                        AccountLocked = tu.AccountLocked,
+                                                        LastLoggedOn = tu.LastLoggedOn,                                                                                                               
                                                         ActivaitonCode = tu.ActivaitonCode,
-                                                        Description = tu.Description,
-                                                        LocationId = tu.LocationId
+                                                        Description = tu.Description                                                        
                                                     }).FirstOrDefault();
 
                     return JsonConvert.SerializeObject(fetchLoggedInUserInfo);

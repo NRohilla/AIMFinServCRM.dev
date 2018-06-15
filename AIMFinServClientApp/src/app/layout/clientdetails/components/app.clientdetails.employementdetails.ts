@@ -95,7 +95,7 @@ export class ClientsEmployementComponent extends AppBaseComponent implements OnI
 
 
     GridSelectionChange(data, event) {
-        //debugger;
+        debugger;
         this._EditEmployementDetails = true;
         this._Operationtitle = "Update";
         if (this._ClientEmploymentDetails != undefined) {

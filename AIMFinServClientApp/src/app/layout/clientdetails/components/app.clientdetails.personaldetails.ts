@@ -51,7 +51,7 @@ export class ClientsPersonalDetailsComponent extends AppBaseComponent implements
         ModifiedOn: '',
         ApplicantType: {},
     }
-
+ 
     public _ApplicantCommunicationDetails: {
         AutoID: '',
         CommunicationID: '',

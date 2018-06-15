@@ -122,6 +122,7 @@ export class HeaderComponent implements OnInit {
         debugger;
         this._UserName = JSON.parse(JSON.parse(result._body)).FirstName + " " + JSON.parse(JSON.parse(result._body)).LastName;
         this._UserDetails = JSON.parse((JSON.parse(result._body)));
+
         this.URL = this.GetOriginalContentForPriview(this._UserDetails.FileType) + this._UserDetails.ApplicantImage;
 
         this._LocalStorageService.set('this._UserName', this._UserName);

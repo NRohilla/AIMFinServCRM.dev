@@ -22,7 +22,7 @@ export class LoanApplicationDetailDialog {
     private _ApplicantID: string = '';
  
     constructor(
-        public dialogRef: MatDialogRef<LoanApplicationDetailDialog>,
+        public dialogRef: MatDialogRef<LoanApplicationDetailDialog>, 
         @Inject(MAT_DIALOG_DATA) public data: any) {
     }
 

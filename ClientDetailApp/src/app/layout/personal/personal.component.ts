@@ -94,12 +94,14 @@ export class PersonalComponent implements OnInit {
 
     GetPersonalDetailsByAppIDSuccess(res) {
         debugger;
-        this.PersonalDetails = JSON.parse(res._body);
-        
-        this.URL = this.GetOriginalContentForPriview(this.PersonalDetails.FileType) + this.PersonalDetails.ApplicantImage;
-        this._PersonInfo = this.PersonalDetails.FirstName + " " + this.PersonalDetails.MiddleName + " " + this.PersonalDetails.LastName
-        this._ClientsService.GetAddresses(this.ApplicantID).subscribe(res => this.GetAddSuccess(res), res => this.GetAddError(res));
-        //this._HeaderComponent.UserInfo();
+        if (JSON.parse(res._body) != null) {
+            this.PersonalDetails = JSON.parse(res._body);
+
+            this.URL = this.GetOriginalContentForPriview(this.PersonalDetails.FileType) + this.PersonalDetails.ApplicantImage;
+            this._PersonInfo = this.PersonalDetails.FirstName + " " + this.PersonalDetails.MiddleName + " " + this.PersonalDetails.LastName
+            this._ClientsService.GetAddresses(this.ApplicantID).subscribe(res => this.GetAddSuccess(res), res => this.GetAddError(res));
+            //this._HeaderComponent.UserInfo();
+        }
        
     }
 

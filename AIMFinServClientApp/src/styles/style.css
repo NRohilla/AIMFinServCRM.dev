@@ -33,7 +33,7 @@
 .application-details .mat-form-field, .master-forms .mat-form-field { display: block; }
 .application-details hr { border-top: 1px dashed #ccc; box-shadow: 0px 0px 2px #a0a0a0; margin: 7px 15px; }
 .application-details .field_set .field_label, .master-forms .field_set .field_label { width: 40%; float: left; color: #585858; }
-.application-details .tab-content .field_set .field_info, .master-forms .field_set .field_info, .application-details .field_set p { width: 60%; float: left; line-height: 35px; margin-bottom: 0px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.application-details .tab-content .field_set .field_info, .master-forms .field_set .field_info, .application-details .field_set p { width: 60%; float: left; line-height: 35px; margin-bottom: 0px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color:#656565; }
 .edit-texts .field_set .field_info { line-height:16px !important; }
 
 /*.application-details .section_box .tab-content .datevalue { margin-bottom:0px; padding-top:7px; float:left;}*/
@@ -125,8 +125,8 @@ a { outline: none; }
 .client-details .mat-tab-header {
     border: none;
     height: 60px;
-    border-left: 1px solid rgba(0,0,0,.08);
-    border-right: 1px solid rgba(0,0,0,.08);
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
 }
 
 .client-details .mat-tab-label-container .mat-tab-labels {
