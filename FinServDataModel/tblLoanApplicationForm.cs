@@ -17,9 +17,9 @@ namespace FinServDataModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblLoanApplicationForm()
         {
+            this.tblApplicants = new HashSet<tblApplicant>();
             this.tblLoanGuarantors = new HashSet<tblLoanGuarantor>();
             this.tblLoanMasters = new HashSet<tblLoanMaster>();
-            this.tblApplicants = new HashSet<tblApplicant>();
         }
     
         public long AutoID { get; set; }
@@ -54,6 +54,8 @@ namespace FinServDataModel
         public Nullable<System.DateTime> ModifiedOn { get; set; }
     
         public virtual tblAdvisorDetail tblAdvisorDetail { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblApplicant> tblApplicants { get; set; }
         public virtual tblMasterLoanRateType tblMasterLoanRateType { get; set; }
         public virtual tblMasterPropertyType tblMasterPropertyType { get; set; }
         public virtual tblMasterPurposeOfLoan tblMasterPurposeOfLoan { get; set; }
@@ -63,7 +65,5 @@ namespace FinServDataModel
         public virtual ICollection<tblLoanGuarantor> tblLoanGuarantors { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblLoanMaster> tblLoanMasters { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblApplicant> tblApplicants { get; set; }
     }
 }

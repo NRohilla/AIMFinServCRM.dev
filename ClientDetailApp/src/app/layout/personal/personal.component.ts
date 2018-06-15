@@ -28,7 +28,7 @@ export class PersonalComponent implements OnInit {
     public _ShowHomeAddress: boolean = false;
     public _ShowWorkAddress: boolean = false;
     public _PersonInfo: string = '';
-    public URL: any;
+    public URL: any = '';
 
 
     public PersonalDetails = {
@@ -84,6 +84,7 @@ export class PersonalComponent implements OnInit {
         };
         this.ApplicantID = this._LocalStorageService.get("LoggedInApplicantId");
         this.URL = this.PersonalDetails.ApplicantImage;
+
         this._ClientsService.GetPersonalDetailsByAppID(this.ApplicantID).subscribe(res => this.GetPersonalDetailsByAppIDSuccess(res), res => this.GetPersonalDetailsByAppIDError(res));
 
         $(document).ready(function () {
@@ -98,6 +99,7 @@ export class PersonalComponent implements OnInit {
             this.PersonalDetails = JSON.parse(res._body);
 
             this.URL = this.GetOriginalContentForPriview(this.PersonalDetails.FileType) + this.PersonalDetails.ApplicantImage;
+            console.log(this.URL)
             this._PersonInfo = this.PersonalDetails.FirstName + " " + this.PersonalDetails.MiddleName + " " + this.PersonalDetails.LastName
             this._ClientsService.GetAddresses(this.ApplicantID).subscribe(res => this.GetAddSuccess(res), res => this.GetAddError(res));
             //this._HeaderComponent.UserInfo();
@@ -150,9 +152,11 @@ export class PersonalComponent implements OnInit {
 
     CancelEditingPersonalDetails() {
         this._EditPersonalDetails = false;
+
     }
 
-    OnSelectPersonalAttachmentFile(event) {        
+    OnSelectPersonalAttachmentFile(event) {
+        debugger;
         let reader = new FileReader();
         if (event.target.files && event.target.files.length > 0) {
             let file = event.target.files[0];
@@ -162,6 +166,7 @@ export class PersonalComponent implements OnInit {
             reader.onload = (event) => {                
                 this.URL = reader.result;
                 this.PersonalDetails.ApplicantImage = reader.result.split(',')[1];
+               // console.log(this.PersonalDetails.ApplicantImage);
             };
         }
     }

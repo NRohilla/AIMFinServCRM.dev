@@ -28,7 +28,9 @@ namespace FinServDataModel
         public virtual DbSet<tblAdvisorDetail> tblAdvisorDetails { get; set; }
         public virtual DbSet<tblApplicantCommunicationDetail> tblApplicantCommunicationDetails { get; set; }
         public virtual DbSet<tblApplicantEmploymentDetail> tblApplicantEmploymentDetails { get; set; }
+        public virtual DbSet<tblApplicantExpenseSheet> tblApplicantExpenseSheets { get; set; }
         public virtual DbSet<tblApplicantQualificationDetail> tblApplicantQualificationDetails { get; set; }
+        public virtual DbSet<tblApplicant> tblApplicants { get; set; }
         public virtual DbSet<tblAsset> tblAssets { get; set; }
         public virtual DbSet<tblLiability> tblLiabilities { get; set; }
         public virtual DbSet<tblLoanApplicationForm> tblLoanApplicationForms { get; set; }
@@ -51,9 +53,7 @@ namespace FinServDataModel
         public virtual DbSet<tblMasterTypeOfRelationship> tblMasterTypeOfRelationships { get; set; }
         public virtual DbSet<tblMasterTypeOfStatu> tblMasterTypeOfStatus { get; set; }
         public virtual DbSet<tblRole> tblRoles { get; set; }
-        public virtual DbSet<tblUsersRole> tblUsersRoles { get; set; }
         public virtual DbSet<tblUser> tblUsers { get; set; }
-        public virtual DbSet<tblApplicantExpenseSheet> tblApplicantExpenseSheets { get; set; }
-        public virtual DbSet<tblApplicant> tblApplicants { get; set; }
+        public virtual DbSet<tblUsersRole> tblUsersRoles { get; set; }
     }
 }

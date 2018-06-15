@@ -19,7 +19,8 @@ namespace FinServUnitOfWork.Repository
              using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
                     var fetchLoggedInUserInfo = (from tu in db.tblUsers 
-                                                 join ta in db.tblApplicants on tu.Email equals ta.EmailID                                                 
+                                                 join ta in db.tblApplicants on tu.Email equals ta.EmailID
+                                                 join tmf in db.tblMasterFileTypes on ta.FileTypeID equals tmf.ID
                                                  where tu.Email == UserEmailId
                                                     select new UserApplicant
                                                     {
@@ -36,7 +37,8 @@ namespace FinServUnitOfWork.Repository
                                                         Password = tu.Password,
                                                         LastLoggedOn = tu.LastLoggedOn,                                                                                                               
                                                         ActivaitonCode = tu.ActivaitonCode,
-                                                        Description = tu.Description                                                        
+                                                        Description = tu.Description,
+                                                        FileType = tmf.FileType,
                                                     }).FirstOrDefault();
 
                     return JsonConvert.SerializeObject(fetchLoggedInUserInfo);

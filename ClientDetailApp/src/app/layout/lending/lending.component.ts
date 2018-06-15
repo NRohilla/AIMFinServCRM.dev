@@ -126,7 +126,8 @@ export class LendingComponent {
 
     GetLendingDetailsByAppIDSuccess(res) {
         debugger;
-        this.LendingDetails = JSON.parse(res._body);
+        if (JSON.parse(res._body) != null) 
+            this.LendingDetails = JSON.parse(res._body);
     }
     GetLendingDetailsByAppIDError(res) {
     }

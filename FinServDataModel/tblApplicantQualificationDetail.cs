@@ -26,7 +26,7 @@ namespace FinServDataModel
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public int TypeOfQualification { get; set; }
     
-        public virtual tblMasterTypeOfQualification tblMasterTypeOfQualification { get; set; }
         public virtual tblApplicant tblApplicant { get; set; }
+        public virtual tblMasterTypeOfQualification tblMasterTypeOfQualification { get; set; }
     }
 }

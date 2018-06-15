@@ -75,8 +75,8 @@ export class HeaderComponent implements OnInit {
     }
 
     ngOnInit() {
-        debugger;
         this._UserName = this.activatedRoute.snapshot.queryParams["LoggedInEmailId"];
+        console.log(this._UserName)
         if (this._UserName != undefined) {
             this._AuthenticateService.AuthenticateLogin(this._UserName, "")
                 .subscribe(result => this.RequestSuccess(result), result => this.RequestError(result));
@@ -110,7 +110,6 @@ export class HeaderComponent implements OnInit {
 
 
     UserInfo() {
-        debugger;
         if (this._LocalStorageService.get('LoggedInEmailId') != undefined && this._LocalStorageService.get('LoggedInEmailId') != null) {
             this.URL = this._UserDetails.ApplicantImage;
             this._UserOperationService.GetLoggedInUserInfo(<string>this._LocalStorageService.get('LoggedInEmailId'))
@@ -119,9 +118,9 @@ export class HeaderComponent implements OnInit {
     }
 
     UserInfoSuccess(result) {
-        debugger;
         this._UserName = JSON.parse(JSON.parse(result._body)).FirstName + " " + JSON.parse(JSON.parse(result._body)).LastName;
         this._UserDetails = JSON.parse((JSON.parse(result._body)));
+        console.log(this._UserDetails)
 
         this.URL = this.GetOriginalContentForPriview(this._UserDetails.FileType) + this._UserDetails.ApplicantImage;
 
@@ -132,7 +131,6 @@ export class HeaderComponent implements OnInit {
     }
 
     GetOriginalContentForPriview(FileType) {
-        debugger;
         if (FileType == "text/plain")
             return 'data:text/plain;base64,';
         if (FileType == 'application/pdf')
@@ -164,7 +162,6 @@ export class HeaderComponent implements OnInit {
     }
 
     onLoggedout() {
-        debugger;
         var IsLoggedIn = localStorage.getItem('isLoggedin') === "true";
         this.AuthenticationToken = this._LocalStorageService.get('ActivaitonCode');
 
@@ -174,7 +171,6 @@ export class HeaderComponent implements OnInit {
     }
 
     LoggedOffUserSuccess(res) {
-        debugger;
         this._LocalStorageService.clearAll();
         window.location.href = environment.baseAdminURl;
     }
