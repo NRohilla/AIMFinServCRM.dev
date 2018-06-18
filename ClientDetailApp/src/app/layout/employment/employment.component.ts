@@ -114,7 +114,8 @@ export class EmployementComponent implements OnInit {
     }
     UpdateEmploymentDetailsByAppIDSuccess(res) {
         this._EditDetails = false;
-        this._ClientsService.GetEmploymentDetailsByAppID(this.ApplicantID).subscribe(res => this.GetEmploymentDetailsByAppIDSuccess(res), res => this.GetEmploymentDetailsByAppIDError(res));
+       // this._ClientsService.GetEmploymentDetailsByAppID(this.ApplicantID).subscribe(res => this.GetEmploymentDetailsByAppIDSuccess(res), res => this.GetEmploymentDetailsByAppIDError(res));
+        this._ClientsService.GetMatEmploymentDetailsByAppID(this.ApplicantID).subscribe(res => this.GetMatEmploymentDetailsByAppIDSuccess(res), res => this.GetMatEmploymentDetailsByAppIDError(res));
 
     }
     UpdateEmploymentDetailsByAppIDError(res) { }

@@ -99,7 +99,8 @@ export class PersonalComponent implements OnInit {
             this.PersonalDetails = JSON.parse(res._body);
 
             this.URL = this.GetOriginalContentForPriview(this.PersonalDetails.FileType) + this.PersonalDetails.ApplicantImage;
-            console.log(this.URL)
+           // console.log(this.URL)
+           // this._LocalStorageService.set('this.URL', this.URL);
             this._PersonInfo = this.PersonalDetails.FirstName + " " + this.PersonalDetails.MiddleName + " " + this.PersonalDetails.LastName
             this._ClientsService.GetAddresses(this.ApplicantID).subscribe(res => this.GetAddSuccess(res), res => this.GetAddError(res));
             //this._HeaderComponent.UserInfo();
@@ -138,9 +139,12 @@ export class PersonalComponent implements OnInit {
     }
 
     UpdatePersonalDetailsByAppIDSuccess(res) {
+        debugger;
         this._EditPersonalDetails = false;
+        this._LocalStorageService.set('this.URL', this.URL);
+        window.location.reload();
         this._ClientsService.GetPersonalDetailsByAppID(this.ApplicantID).subscribe(res => this.GetPersonalDetailsByAppIDSuccess(res), res => this.GetPersonalDetailsByAppIDError(res));
-        //window.location.reload();
+   
     }
 
 
@@ -152,7 +156,7 @@ export class PersonalComponent implements OnInit {
 
     CancelEditingPersonalDetails() {
         this._EditPersonalDetails = false;
-
+        this._ClientsService.GetPersonalDetailsByAppID(this.ApplicantID).subscribe(res => this.GetPersonalDetailsByAppIDSuccess(res), res => this.GetPersonalDetailsByAppIDError(res));
     }
 
     OnSelectPersonalAttachmentFile(event) {
@@ -166,7 +170,6 @@ export class PersonalComponent implements OnInit {
             reader.onload = (event) => {                
                 this.URL = reader.result;
                 this.PersonalDetails.ApplicantImage = reader.result.split(',')[1];
-               // console.log(this.PersonalDetails.ApplicantImage);
             };
         }
     }

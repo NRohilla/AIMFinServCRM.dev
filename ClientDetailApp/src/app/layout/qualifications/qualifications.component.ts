@@ -51,7 +51,7 @@ export class QualificationsComponent implements OnInit {
     };
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, private _MasterService: MastersService, public dialog: MatDialog) {
-        this._ClientsService.GetMatQualificationDataByAppID(this._LocalStorageService.get("LoggedInApplicantId")).subscribe(res => this.GetMatQualificationDataByAppIDSuccess(res), res => this.GetMatQualificationDataByAppIDError(res))
+        this._ClientsService.GetMatQualificationDataByAppID(this._LocalStorageService.get("LoggedInApplicantId")).subscribe(res => this.GetMatQualificationDataByAppIDSuccess(res), res => this.GetMatQualificationDataByAppIDError(res));
     }
 
     ngOnInit() {
@@ -103,8 +103,10 @@ export class QualificationsComponent implements OnInit {
 
    UpdateQualificationDetailsByAppIDSuccess(res)
    {
+       debugger;
         this._EditDetails = false;
-        this._ClientsService.GetQualificationDetailsByAppID(this.ApplicantID).subscribe(res => this.GetQualificationDetailsSuccess(res), res => this.GetQualificationDetailsError(res));
+       // this._ClientsService.GetQualificationDetailsByAppID(this.ApplicantID).subscribe(res => this.GetQualificationDetailsSuccess(res), res => this.GetQualificationDetailsError(res));
+       this._ClientsService.GetMatQualificationDataByAppID(this.ApplicantID).subscribe(res => this.GetMatQualificationDataByAppIDSuccess(res), res => this.GetMatQualificationDataByAppIDError(res))
     }
 
     UpdateQualificationDetailsByAppIDError(res) {

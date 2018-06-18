@@ -105,7 +105,7 @@ export class LendingComponent {
             LoanType: '',
             Status: ''
         };
-
+        debugger;
         this.GetLendingDetails();
         this._ClientsService.GetLendingDetailsByAppID(this.ApplicantID).subscribe(res => this.GetLendingDetailsByAppIDSuccess(res), res => this.GetLendingDetailsByAppIDError(res));
         $(document).ready(function () {
@@ -126,13 +126,14 @@ export class LendingComponent {
 
     GetLendingDetailsByAppIDSuccess(res) {
         debugger;
-        if (JSON.parse(res._body) != null) 
+     
             this.LendingDetails = JSON.parse(res._body);
     }
     GetLendingDetailsByAppIDError(res) {
     }
 
     UpdateDetails() {
+        debugger;
         this._ClientsService.UpdateLendingDetailsByAppID(this.LendingDetails).subscribe(res => this.UpdateLendingDetailsByAppIDSuccess(res), res => this.UpdateLendingDetailsByAppIDError(res));
     }
     UpdateLendingDetailsByAppIDSuccess(res) {

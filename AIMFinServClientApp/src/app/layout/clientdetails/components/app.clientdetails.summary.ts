@@ -117,7 +117,7 @@ export class ClientSummaryComponent extends AppBaseComponent implements OnInit {
             }
         }
         this._Name = this._ApplicantSummaryDetails.Title+" "+ this._ApplicantSummaryDetails.FirstName+" "+this._ApplicantSummaryDetails.MiddleName + " "+ this._ApplicantSummaryDetails.LastName
-      this.URL = this.GetOriginalContentForPreview(this._ApplicantSummaryDetails.FileType) + this._ApplicantSummaryDetails.ApplicantImage;
+        this.URL = this.GetOriginalContentForPreview(this._ApplicantSummaryDetails.FileType) + this._ApplicantSummaryDetails.ApplicantImage;
     }
 
     GetClientDetailsError(res) { }

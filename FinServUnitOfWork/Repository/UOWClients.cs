@@ -218,10 +218,15 @@ namespace FinServUnitOfWork.Repository
                         objApplicants.WorkPhoneNo = GetApplicantDetails.WorkPhoneNo;
                         objApplicants.ApplicantImage = GetApplicantDetails.ApplicantImage;
                         objApplicants.FileTypeID = GetApplicantDetails.FileTypeID;
-                        //objApplicants.FileType = GetApplicantDetails.tblMasterFileType.FileType;
+                        var GetFileDetails = db.tblMasterFileTypes.Where(p => p.ID == GetApplicantDetails.FileTypeID).FirstOrDefault();
+                        // tblMasterFileType _tblMasterFileType = new tblMasterFileType();
+                        objApplicants.FileType = GetFileDetails.FileType;
                         objApplicants.FileName = GetApplicantDetails.FileName;
-                        // objApplicants.Extension = GetApplicantDetails.tblMasterFileType.Extension;
+                        objApplicants._fileTypeMaster = new FileTypeMaster();
 
+
+                       // objApplicants.FileType = GetApplicantDetails.tblMasterFileType.FileType;
+                        
                         objApplicants._ApplicantTypeMasterID = new ApplicantTypeMaster();
                         objApplicants._ApplicantTypeMasterID.ApplicantType = GetApplicantDetails.tblMasterApplicantType.ApplicantType;
                     }
@@ -1521,8 +1526,8 @@ namespace FinServUnitOfWork.Repository
                                                         ApplicantImage = ta.ApplicantImage,
                                                         FileName = ta.FileName,
                                                         FileType = tmf.FileType,
-                                                        Extension = tmf.Extension,
-                                                        FileTypeID = tmf.ID
+                                                       // Extension = tmf.Extension,
+                                                      //  FileTypeID = tmf.ID
                                                     }).FirstOrDefault();
                     return fetchapplicantsprsnldtls;
                 }
@@ -1844,16 +1849,16 @@ namespace FinServUnitOfWork.Repository
                 {
                     var getAllLoans = (from tlm in db.tblLoanMasters
                                        join tlf in db.tblLoanApplicationForms on tlm.LoanApplicationNo equals tlf.LoanApplicationNo
-                                       join tla in db.tblApplicants on tlf.LoanApplicationNo equals tla.LoanApplicationNo
+                                       //join tla in db.tblApplicants on tlf.LoanApplicationNo equals tla.LoanApplicationNo
                                        join tlmp in db.tblMasterPropertyTypes on tlm.PropertyTypeID equals tlmp.ID
                                        join tlms in db.tblMasterTypeOfStatus on tlm.StatusID equals tlms.ID
                                        join tlml in db.tblMasterTypeOfLoans on tlm.LoanTypeID equals tlml.ID
-                                       where tla.ApplicantID == ApplicantID
+                                      // where tla.ApplicantID == ApplicantID
                                        select new LoanMasterDetails
                                        {
                                            LANNumber = tlm.LANNumber,
                                            LoanApplicationNo = tlm.LoanApplicationNo,
-                                           AutoID = tla.AutoID,
+                                       //    AutoID = tla.AutoID,
                                            ApplicationFormNumber = tlf.ApplicationFormNumber,
                                            LoanTermOffered = tlm.LoanTermOffered,
                                            StatusID = tlm.StatusID,
@@ -1871,8 +1876,8 @@ namespace FinServUnitOfWork.Repository
                                            AnyLegalCharges = tlm.AnyLegalCharges,
                                            FrequencyOffered = tlm.FrequencyOffered,
                                            PropertyType = tlmp.PropertyType,
-                                           Status = tlms.Status,
-                                           LoanType = tlml.LoanType
+                                          Status = tlms.Status,
+                                          LoanType = tlml.LoanType
                                        }).FirstOrDefault();
 
                     return getAllLoans;

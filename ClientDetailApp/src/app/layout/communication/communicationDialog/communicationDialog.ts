@@ -101,7 +101,9 @@ export class CommunicationDialog {
     GetCommEditdataError(res) { }
 
     onNoClick(): void {
-        this.dialogRef.close(true);
+        debugger;
+       // this.router.navigateByUrl('communication');
+        this.dialogRef.close();
     }
 
     UpdateDetails() { }

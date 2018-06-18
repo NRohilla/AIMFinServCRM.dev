@@ -384,14 +384,16 @@ namespace FinServUnitOfWork.Repository
             {
                 using (AIMFinServDBEntities db = new AIMFinServDBEntities())
                 {
-                    return (from ObjAplctnFormNo in db.tblLoanApplicationForms
-                            .Where(p => p.IsApplicationApproved == true)
-                            select new LoanApplicationForms()
-                            {
-                                AutoID = ObjAplctnFormNo.AutoID,
-                                ApplicationFormNumber = ObjAplctnFormNo.ApplicationFormNumber
-                            })
-                            .ToList();
+                    var GetLoanApplicationFormNo = (
+                        from ObjAplctnFormNo in db.tblLoanApplicationForms
+                              .Where(p => p.IsApplicationApproved == true)
+                        select new LoanApplicationForms()
+                        {
+                            AutoID = ObjAplctnFormNo.AutoID,
+                            ApplicationFormNumber = ObjAplctnFormNo.ApplicationFormNumber
+                        });
+
+                    return GetLoanApplicationFormNo.ToList();
                 }
             }
             catch (Exception ex)

@@ -27,6 +27,7 @@ namespace FinServBussinessEntities
         public string WorkPhoneNo { get; set; }
         public System.Guid LoanApplicationNo { get; set; }
         public byte[] ApplicantImage { get; set; }
+        public string FileType { get; set; }
         public bool IsActive { get; set; }
         public Nullable<System.Guid> CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
@@ -41,7 +42,6 @@ namespace FinServBussinessEntities
         public string Type { get; set; }
         public Nullable<int> FileTypeID { get; set; }
         public string FileName { get; set; }
-        public string FileType { get; set; }
         public string Extension { get; set; }
 
         public int ID { get; set; }

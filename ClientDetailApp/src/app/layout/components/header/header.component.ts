@@ -75,11 +75,13 @@ export class HeaderComponent implements OnInit {
     }
 
     ngOnInit() {
+        debugger;
         this._UserName = this.activatedRoute.snapshot.queryParams["LoggedInEmailId"];
         console.log(this._UserName)
         if (this._UserName != undefined) {
             this._AuthenticateService.AuthenticateLogin(this._UserName, "")
                 .subscribe(result => this.RequestSuccess(result), result => this.RequestError(result));
+            this.URL = this._LocalStorageService.get('this.URL');
         }
         else {
             //check if logged in or not
@@ -118,6 +120,7 @@ export class HeaderComponent implements OnInit {
     }
 
     UserInfoSuccess(result) {
+
         this._UserName = JSON.parse(JSON.parse(result._body)).FirstName + " " + JSON.parse(JSON.parse(result._body)).LastName;
         this._UserDetails = JSON.parse((JSON.parse(result._body)));
         console.log(this._UserDetails)

@@ -46,7 +46,9 @@ export class ApplicantComponent implements OnInit {
     }
     GetApplicantSuccess(res) {
         debugger;
-        this._ApplicantTypes = JSON.parse(res._body);
+        if (res._body != null && res._body != undefined && res._body.toString().trim().length > 0) {
+            this._ApplicantTypes = JSON.parse(res._body);
+        }
 
     }
     GetApplicantError(res) { }

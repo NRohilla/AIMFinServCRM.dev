@@ -140,7 +140,9 @@ export class AddLoanmasterComponent implements OnInit {
     }
 
     GetApplicationFormNoSuccess(res) {
+        debugger;
         this._LoanApplicationDetails = JSON.parse(res._body);
+        console.log(this._LoanApplicationDetails)
     }
     
     GetLoanType() {

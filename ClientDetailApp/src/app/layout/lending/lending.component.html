@@ -318,7 +318,7 @@
                                 </div>
                                 <mat-form-field class="w-100" *ngIf="_EditDetails">
                                     <input matInput placeholder="No. of EMI" [(ngModel)]="LendingDetails.NoOfEMI" name="NoOfEMI" #NoOfEMI="ngModel" required>
-                                    <div *ngIf="NoOfEMI.invalid && (NoOfEMI.dirty || FrequencyOffered.touched)" class="alert alert-danger">
+                                    <div *ngIf="NoOfEMI.invalid && (NoOfEMI.dirty || NoOfEMI.touched)" class="alert alert-danger">
                                         <div *ngIf="NoOfEMI.errors.required">
                                             Please enter No Of EMI.
                                         </div>

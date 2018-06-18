@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx'; //get everything from Rx  
@@ -18,6 +18,7 @@ export class UserOperationService {
     }
 
     GetLoggedInUserInfo(UserEmailId) {
+        console.log(UserEmailId)
         return this._http.get(this.baseurl + "UserOperations/GetLoggedInUserInfo?UserEmailId=" + UserEmailId, this.options);
     }
 }

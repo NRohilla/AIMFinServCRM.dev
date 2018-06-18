@@ -68,6 +68,7 @@ export class HeaderComponent implements OnInit {
     }
 
     ngOnInit() {
+        debugger;
         if (this._LocalStorageService.get('LoggedInEmailId') != undefined && this._LocalStorageService.get('LoggedInEmailId') != null) {
             this._UserOperationService.GetLoggedInUserInfo(<string>this._LocalStorageService.get('LoggedInEmailId'))
                 .subscribe(result => this.UserInfoSuccess(result), result => this.UserInfoError(result));
@@ -76,10 +77,11 @@ export class HeaderComponent implements OnInit {
 
     UserInfoSuccess(result) {
         debugger;
-        if (result._body != undefined) {
-
-        this._UserDetails = JSON.parse((JSON.parse(result._body)));
+        if (JSON.parse(result._body) != null || JSON.parse(result._body) != undefined) {
+            console.log(JSON.parse(result._body))
+            this._UserDetails = JSON.parse((JSON.parse(result._body)));
         }
+       
     }
 
     UserInfoError(err) {
