@@ -62,7 +62,7 @@ export class ApplicantPersonalDetailsComponent extends AppBaseComponent implemen
         MobileNo: '',
         ModifiedBy: '',
         ModifiedOn: '',
-        NZResidents: false,
+        NZResidents: true,
         NoOfDependents: '',
         Title: '',
         Type: '',
@@ -93,14 +93,17 @@ export class ApplicantPersonalDetailsComponent extends AppBaseComponent implemen
 
     SaveLoanApplicationPersonalDetails() {
         debugger;
-        if (this._LocalStorageService.get("LoanApplicationNo") != undefined) {
-           // this._ApplicantPersonalDetails.ApplicantTypeID = this._ApplicantPersonalDetails._ApplicantTypeMasterID.ApplicantTypeID;
 
+        if (this._ApplicantPersonalDetails.NZResidents.toString() == "1") {
+            this._ApplicantPersonalDetails.NZResidents = true;
+        }
+        else {
+            this._ApplicantPersonalDetails.NZResidents = false;
+        }
+        if (this._LocalStorageService.get("LoanApplicationNo") != undefined) {
             this._ApplicantPersonalDetails.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNo");
-            
             return this._ClientsService.SaveLoanApplicationPersonalDetails(this._ApplicantPersonalDetails);
         }
-        
     }
 }
 

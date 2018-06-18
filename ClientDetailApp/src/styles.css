@@ -293,9 +293,14 @@ input[type="button"], input[type="submit"] {
 
 .personal-details { max-height:50vh; overflow-y:auto;}
 
+.personal-border { border-right: 2px solid #ccc; }
+
+
 /* media query */
 
 @media ( max-width: 767px ) {
     .personal-innersection .top-btn { position:relative !important; top:0px; right:0px; text-align:center; }
     .profile-pic.mb-5 { margin-bottom:20px !important;}
+    .personal-border { border-right:none;}
+    .top-btn { position:relative !important; float:right; }
 }

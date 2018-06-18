@@ -8,15 +8,20 @@ import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { ClientsService } from '../../../services/app.clients.service';
+import {MastersService } from '../../../services/app.masters.service';
 @Component({
     selector: `applicant-employement-details`,
     templateUrl: './app.applicant.employementdetails.html',
     animations: [routerTransition()],
-    providers: [ClientsService]
+    providers: [ClientsService, MastersService]
 })
 export class ApplicantEmployementComponent implements OnInit {
     _isformvalid: boolean = false;
     @ViewChild('AddEmployementDetails') form;
+
+    errorMessage: "No Data"
+   public _TypeOfProfession = [];
+   public _TypeOfEmployment= [];
 
     public _ApplicantEmployementDetails = {
         EmploymentID :'',
@@ -25,12 +30,17 @@ export class ApplicantEmployementComponent implements OnInit {
         Duration:'',
        Income:'',
        Status: '',
-       ApplicantID: ''
+       ApplicantID: '',
+       _ProfessionTypeDetail: { ID: ''},
+       _EmploymentTypeDetail: { ID: ''}
     };
      
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) { }
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, private _MasterService: MastersService) { }
 
     ngOnInit() {
+        debugger;
+        this.GetEmploymentTypeDetails();
+        this.GetProfessionTypeDetails();
     }
 
     ngDoCheck() {
@@ -39,6 +49,22 @@ export class ApplicantEmployementComponent implements OnInit {
     SaveLoanApplicationEmployementDetails(applicantId) {
         this._ApplicantEmployementDetails.ApplicantID = applicantId;
       return  this._ClientsService.SaveLoanApplicationEmploymentDetails(this._ApplicantEmployementDetails);
+    }
+
+       GetEmploymentTypeDetails() {
+        this._MasterService.GetEmploymentTypes().subscribe(res => this.GetEmploymentTypeDetailsSuccess(res), error => this.errorMessage = <any>error);
+    }
+    GetEmploymentTypeDetailsSuccess(res) {
+        debugger
+        this._TypeOfEmployment = JSON.parse(res._body);
+    }
+
+    GetProfessionTypeDetails() {
+        this._MasterService.GetProfessionTypes().subscribe(res => this.GetProfessionTypeDetailsSuccess(res), error => this.errorMessage = <any>error);
+    }
+    GetProfessionTypeDetailsSuccess(res) {
+        debugger
+        this._TypeOfProfession = JSON.parse(res._body);
     }
 
 }

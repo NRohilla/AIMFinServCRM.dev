@@ -21,6 +21,18 @@
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field>
+                                <input matInput placeholder="Title" value="{{_ApplicantPersonalDetails.Title}}" [(ngModel)]="_ApplicantPersonalDetails.Title" name="Title" #Title="ngModel" required>
+                                <div *ngIf="Title.invalid && (Title.dirty || Title.touched)" class="alert alert-danger">
+                                    <div *ngIf="Title.errors.required ">
+                                        Please enter Title.
+                                    </div>
+                                </div>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                        <div class="field_info">
+                            <mat-form-field>
                                 <input matInput placeholder="First Name" value="{{_ApplicantPersonalDetails.FirstName}}" [(ngModel)]="_ApplicantPersonalDetails.FirstName" name="FirstName" #FirstName="ngModel" required>
                                 <div *ngIf="FirstName.invalid && (FirstName.dirty || FirstName.touched)" class="alert alert-danger">
                                     <div *ngIf="FirstName.errors.required ">
@@ -30,6 +42,9 @@
                             </mat-form-field>
                         </div>
                     </div>
+                </div>
+
+                <div class="row m-0">
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field>
@@ -42,9 +57,6 @@
                             </mat-form-field>
                         </div>
                     </div>
-                </div>
-
-                <div class="row m-0">
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field>
@@ -73,6 +85,9 @@
                             </mat-form-field>
                         </div>
                     </div>
+                </div>
+
+                <div class="row m-0">
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="form-group">
                             <mat-form-field>
@@ -85,9 +100,6 @@
                             </mat-form-field>
                         </div>
                     </div>
-                </div>
-
-                <div class="row m-0">
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field>
@@ -112,21 +124,24 @@
                             </mat-form-field>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
-                        <div class="field_info">
-                            <mat-form-field>
-                                <input matInput placeholder="NZ Residents" value="{{_ApplicantPersonalDetails.NZResidents}}" [(ngModel)]="_ApplicantPersonalDetails.NZResidents" name="NZResidents" #NZResidents="ngModel" required>
-                                <div *ngIf="NZResidents.invalid && (NZResidents.dirty || NZResidents.touched)" class="alert alert-danger">
-                                    <div *ngIf="NZResidents.errors.required ">
-                                        Please enter NZ Residency.
-                                    </div>
-                                </div>
-                            </mat-form-field>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="row m-0">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                        <div class="field_info">
+                            <label class="custom-radio-label">NZ Residents</label>
+                            <mat-radio-group class="example-radio-group" [(ngModel)]="_ApplicantPersonalDetails.NZResidents" name="NZResidents" #NZResidents="ngModel" required>
+                                <mat-radio-button class="example-radio-button" value="1">Yes</mat-radio-button>
+                                <mat-radio-button class="example-radio-button" value="0">No</mat-radio-button>
+                                <div *ngIf="NZResidents.invalid && (NZResidents.dirty || NZResidents.touched)" class="alert alert-danger">
+                                    <div *ngIf="NZResidents.errors.required">
+                                        Please select NZ Residency.
+                                    </div>
+                                </div>
+                            </mat-radio-group>
+                        </div>
+                        </div>
+                  
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field>
@@ -151,6 +166,9 @@
                             </mat-form-field>
                         </div>
                     </div>
+                </div>
+
+                <div class="row m-0">
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field>
@@ -163,10 +181,6 @@
                             </mat-form-field>
                         </div>
                     </div>
-
-                </div>
-
-                <div class="row m-0">
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field>

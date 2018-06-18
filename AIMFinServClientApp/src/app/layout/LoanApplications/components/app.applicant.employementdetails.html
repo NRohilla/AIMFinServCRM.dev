@@ -5,10 +5,10 @@
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Source Of Income" value="{{_ApplicantEmployementDetails.SourceOfIncome}}" [(ngModel)]="_ApplicantEmployementDetails.SourceOfIncome" name="SourceOfIncome" #SourceOfIncome="ngModel" required>
-                                <div *ngIf="SourceOfIncome.invalid && (SourceOfIncome.dirty || SourceOfIncome.touched)" class="alert alert-danger">
-                                    <div *ngIf="SourceOfIncome.errors.required ">
-                                        Please enter Source Of Income.
+                                <input matInput placeholder="EmployerName" value="{{_ApplicantEmployementDetails.EmployerName}}" [(ngModel)]="_ApplicantEmployementDetails.EmployerName" name="EmployerName" #EmployerName="ngModel" required>
+                                <div *ngIf="EmployerName.invalid && (EmployerName.dirty || EmployerName.touched)" class="alert alert-danger">
+                                    <div *ngIf="EmployerName.errors.required ">
+                                        Please enter EmployerName.
                                     </div>
                                 </div>
                             </mat-form-field>
@@ -17,15 +17,35 @@
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field class="example-full-width">
-                                <input matInput placeholder="EmployerName" value="{{_ApplicantEmployementDetails.EmployerName}}" [(ngModel)]="_ApplicantEmployementDetails.EmployerName" name="EmployerName" #EmployerName="ngModel" required>
-                                <div *ngIf="EmployerName.invalid && (EmployerName.dirty || EmployerName.touched)" class="alert alert-danger">
-                                    <div *ngIf="EmployerName.errors.required ">
-                                        Please enter Employer Name.
+                                <mat-select placeholder="Source Of Income" [(ngModel)]="_ApplicantEmployementDetails._EmploymentTypeDetail.ID" name="sourceofincome" #sourceofincome="ngModel" required>
+                                    <mat-option *ngFor="let employmentType of _TypeOfEmployment" [value]="employmentType.ID">{{employmentType.EmployementType}}</mat-option>
+                                </mat-select>
+                                <div *ngIf="sourceofincome.invalid && (sourceofincome.dirty || sourceofincome.touched)" class="alert alert-danger">
+                                    <div *ngIf="sourceofincome.errors.required ">
+                                        Please select Source of Income.
                                     </div>
                                 </div>
                             </mat-form-field>
                         </div>
                     </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <mat-select placeholder="Type of Profession" [(ngModel)]="_ApplicantEmployementDetails._ProfessionTypeDetail.ID" name="profession" #profession="ngModel" required>
+                                    <mat-option *ngFor="let professionType of _TypeOfProfession" [value]="professionType.ID">{{professionType.Profession}}</mat-option>
+                                </mat-select>
+                                <div *ngIf="profession.invalid && (profession.dirty || profession.touched)" class="alert alert-danger">
+                                    <div *ngIf="profession.errors.required ">
+                                        Please select Profession Type.
+                                    </div>
+                                </div>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="row m-0">
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field class="example-full-width">
@@ -38,9 +58,6 @@
                             </mat-form-field>
                         </div>
                     </div>
-                </div>
-
-                <div class="row m-0">
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field class="example-full-width">
@@ -56,12 +73,11 @@
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_info">
                             <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Status" value="{{_ApplicantEmployementDetails.Status}}" [(ngModel)]="_ApplicantEmployementDetails.Status" name="Status" #Status="ngModel" required>
-                                <div *ngIf="Status.invalid && (Status.dirty || Status.touched)" class="alert alert-danger">
-                                    <div *ngIf="Status.errors.required ">
-                                        Please enter Status.
-                                    </div>
-                                </div>
+                                <mat-select [(value)]="_ApplicantEmployementDetails.Status" placeholder="Status">
+                                    <mat-option>None</mat-option>
+                                    <mat-option value="Current">Current Employer</mat-option>
+                                    <mat-option value="Previous">Previous Employer</mat-option>
+                                </mat-select>
                             </mat-form-field>
                         </div>
                     </div>

@@ -24,7 +24,10 @@ export class ApplicantCommunicationDetailsComponent implements OnInit {
         AddressLine3: '',
         Duration: '',
         AddressType: '',
-        ApplicantID: ''
+        ApplicantID: '',
+        Status: '',
+        Country: '',
+        ZipCode:''
     };
 
     constructor(public router: Router, private _LocalStorageService: LocalStorageService,private _ClientsService: ClientsService) { }
