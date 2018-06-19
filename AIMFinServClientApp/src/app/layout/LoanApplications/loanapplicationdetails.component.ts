@@ -232,6 +232,7 @@ export class LoanapplicationdetailsComponent implements OnInit {
     }
 
     updateLoanApplicationSuccess(res) {
+        debugger;
         this._ClientsService.GetAllLoanApplications().subscribe(res => this.GetAllLoanApplicationSuccess(res), res => this.GetAllLoanApplicationError(res));
 
         this._ViewApplicationDetails = !this._ViewApplicationDetails;
@@ -246,7 +247,7 @@ export class LoanapplicationdetailsComponent implements OnInit {
     formatvalues() {
 
         if (this._LoanApplicationDetails.IsAnyGuarantor.toString() == "1") {
-            true;
+            //true;
         }
         else {
             this._LoanApplicationDetails.IsAnyGuarantor = false;
@@ -283,6 +284,7 @@ export class LoanapplicationdetailsComponent implements OnInit {
 
     GetAllLoanApplicationSuccess(Res) {
         this.gridData = JSON.parse(Res._body);
+        console.log(this.gridData)
        
     }
     GetAllClientsSuccess(Res) {

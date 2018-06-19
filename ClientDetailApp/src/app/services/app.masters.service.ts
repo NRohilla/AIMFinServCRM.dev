@@ -72,6 +72,10 @@ export class MastersService {
         return this._http.get(this.baseurl + "Masters/GetAddressTypes", this.options);
     }
 
+    GetStatusTypes() {
+        return this._http.get(this.baseurl + "Masters/GetStatusTypes", this.options);
+    }
+
     //switch status
 
     SwitchApplicantEntityStatus(ID) {

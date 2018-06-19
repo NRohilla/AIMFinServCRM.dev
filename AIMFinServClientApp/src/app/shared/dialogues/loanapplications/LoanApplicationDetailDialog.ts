@@ -72,6 +72,9 @@ export class LoanApplicationDetailDialog {
         if (Data == true) {
             alert("The Applicant have been added successfully");
         }
+        this.onNoClick();
+        window.location.reload();
+
     }
 
     SaveLoanApplicationCommunicationDetailsError(res) { }

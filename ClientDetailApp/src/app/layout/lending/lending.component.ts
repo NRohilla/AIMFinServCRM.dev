@@ -10,6 +10,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatPaginator, MatSort, MatTab
 
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { ClientsService } from '../../services/app.clients.service';
+import { MastersService } from '../../services/app.masters.service';
 declare var jquery: any;
 declare var $: any;
 
@@ -27,7 +28,7 @@ export interface Element {
 @Component({
     templateUrl: './lending.component.html',
     animations: [routerTransition()],
-    providers: [ClientsService]
+    providers: [ClientsService, MastersService]
 })
 export class LendingComponent {
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -36,6 +37,11 @@ export class LendingComponent {
     public _EditDetails: boolean = false;
     public ApplicantID: string = '';
     items: any;
+
+    public GetStatusType: any = [];
+    public GetLoanRateType: any = [];
+    public GetPropertyType: any = [];
+    public GetLoanType: any = [];
 
     public displayedColumns = ['ApplicationFormNumber', 'Client Id', 'Term', 'Rate', 'Frequency','Status'];
     public dataSource: any;
@@ -67,8 +73,8 @@ export class LendingComponent {
         LoanType: '',
         Status: ''
     };
-    
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, public dialog: MatDialog) {
+
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, public dialog: MatDialog, private _MastersService: MastersService) {
         debugger;
         this.ApplicantID = this._LocalStorageService.get("LoggedInApplicantId");
         this._ClientsService.GetMatLendingDetailsByAppID(this.ApplicantID)
@@ -108,10 +114,59 @@ export class LendingComponent {
         debugger;
         this.GetLendingDetails();
         this._ClientsService.GetLendingDetailsByAppID(this.ApplicantID).subscribe(res => this.GetLendingDetailsByAppIDSuccess(res), res => this.GetLendingDetailsByAppIDError(res));
+        this._MastersService.GetStatusTypes().subscribe(res => this.GetStatusTypesSuccess(res), res => this.GetStatusTypesError(res));
+        this.GetLoanrateTypes()
+        this.GetPropertyTypes()
+        this.GetLoanTypes()
         $(document).ready(function () {
             $(".content-section").parent().parent().parent().parent().parent().css("background", "#ffffff");
         });
     }
+    GetLoanrateTypes() {
+        this._MastersService.GetLoanrateTypes().subscribe(res => this.GetLoanrateTypesSuccess(res), res => this.GetLoanrateTypesError(res));
+
+    }
+
+    GetLoanrateTypesSuccess(res) {
+        this.GetLoanRateType = JSON.parse(res._body)
+    }
+
+    GetLoanrateTypesError(res) {
+
+    }
+
+    GetPropertyTypes() {
+        this._MastersService.GetPropertyTypes().subscribe(res => this.GetPropertyTypesSuccess(res), res => this.GetPropertyTypesError(res));
+
+    }
+
+    GetPropertyTypesSuccess(res) {
+        this.GetPropertyType = JSON.parse(res._body)
+
+    }
+
+    GetPropertyTypesError(res) { }
+
+    GetLoanTypes() {
+        this._MastersService.GetLoanTypes().subscribe(res => this.GetLoanTypesSuccess(res), res => this.GetLoanTypesError(res));
+    }
+
+    GetLoanTypesSuccess(res) {
+        this.GetLoanType = JSON.parse(res._body)
+        console.log(this.GetLoanType)
+    }
+
+    GetLoanTypesError(res) {}
+
+
+    GetStatusTypesSuccess(res) {
+        this.GetStatusType = JSON.parse(res._body);
+    }
+
+    GetStatusTypesError(res) {
+
+    }
+
 
     GetLendingDetails() {
         this.ApplicantID = this._LocalStorageService.get("LoggedInApplicantId");

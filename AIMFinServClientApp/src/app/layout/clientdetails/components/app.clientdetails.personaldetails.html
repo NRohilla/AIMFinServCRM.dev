@@ -49,7 +49,7 @@
                                             <p *ngIf="!_EditPersonalDetails" class="datevalue">{{_ApplicantDetails.MiddleName}}</p>
                                             <div class="field_info w-100" *ngIf="_EditPersonalDetails">
                                                 <mat-form-field class="example-full-width">
-                                                    <input matInput placeholder="Middle" value="{{_ApplicantDetails.MiddleName}}" [(ngModel)]="_ApplicantDetails.MiddleName" name="MiddleName" #MiddleName="ngModel">
+                                                    <input matInput placeholder="Middle" value="{{_ApplicantDetails.MiddleName}}" [(ngModel)]="_ApplicantDetails.MiddleName" name="MiddleName">
                                                 </mat-form-field>
                                             </div>
                                         </div>

@@ -127,10 +127,12 @@
                                     </div>
                                 </div>
                                 <mat-form-field class="w-100" *ngIf="_EditDetails">
-                                    <input matInput placeholder="Rate Type" [(ngModel)]="LendingDetails.RateTypeOffered" name="ratetypeoffered" #ratetypeoffered="ngModel" required>
-                                    <div *ngIf="ratetypeoffered.invalid && (ratetypeoffered.dirty || ratetypeoffered.touched)" class="alert alert-danger">
-                                        <div *ngIf="ratetypeoffered.errors.required">
-                                            Please enter Rate type Offered.
+                                    <mat-select placeholder="RateType" value="LendingDetails.RateTypeOffered" [(ngModel)]="LendingDetails.RateTypeOffered" name="RateTypeOffered" #RateTypeOffered="ngModel" required>
+                                        <mat-option *ngFor="let RateType of GetLoanRateType" [value]="RateType.LoanRateType">{{RateType.LoanRateType}}</mat-option>
+                                    </mat-select>
+                                    <div *ngIf="RateTypeOffered.invalid && (RateTypeOffered.dirty || RateTypeOffered.touched)" class="alert alert-danger">
+                                        <div *ngIf="RateTypeOffered.errors.required ">
+                                            Please select RateType.
                                         </div>
                                     </div>
                                 </mat-form-field>
@@ -165,10 +167,12 @@
                                     </div>
                                 </div>
                                 <mat-form-field class="w-100" *ngIf="_EditDetails">
-                                    <input matInput placeholder="Property Type" [(ngModel)]="LendingDetails.PropertyType" name="PropertyType" #PropertyType="ngModel" required>
+                                    <mat-select placeholder="PropertyType" value="LendingDetails.PropertyType" [(ngModel)]="LendingDetails.PropertyType" name="PropertyType" #PropertyType="ngModel" required>
+                                        <mat-option *ngFor="let PropertyType of GetPropertyType" [value]="PropertyType.PropertyType">{{PropertyType.PropertyType}}</mat-option>
+                                    </mat-select>
                                     <div *ngIf="PropertyType.invalid && (PropertyType.dirty || PropertyType.touched)" class="alert alert-danger">
-                                        <div *ngIf="PropertyType.errors.required">
-                                            Please enter Property Type.
+                                        <div *ngIf="PropertyType.errors.required ">
+                                            Please select PropertyType.
                                         </div>
                                     </div>
                                 </mat-form-field>
@@ -185,10 +189,12 @@
                                     </div>
                                 </div>
                                 <mat-form-field class="w-100" *ngIf="_EditDetails">
-                                    <input matInput placeholder="Status" [(ngModel)]="LendingDetails.Status" name="Status" #Status="ngModel" required>
+                                    <mat-select placeholder="Status" value="LendingDetails.Status" [(ngModel)]="LendingDetails.Status" name="Status" #Status="ngModel" required>
+                                        <mat-option *ngFor="let Status of GetStatusType" [value]="Status.Status">{{Status.Status}}</mat-option>
+                                    </mat-select>
                                     <div *ngIf="Status.invalid && (Status.dirty || Status.touched)" class="alert alert-danger">
-                                        <div *ngIf="Status.errors.required">
-                                            Please enter Status.
+                                        <div *ngIf="Status.errors.required ">
+                                            Please select status.
                                         </div>
                                     </div>
                                 </mat-form-field>
@@ -279,10 +285,12 @@
                                     </div>
                                 </div>
                                 <mat-form-field class="w-100" *ngIf="_EditDetails">
-                                    <input matInput placeholder="Type of Loan" [(ngModel)]="LendingDetails.LoanType" name="LoanType" #LoanType="ngModel" required>
+                                    <mat-select placeholder="LoanType" value="LendingDetails.LoanType" [(ngModel)]="LendingDetails.LoanType" name="LoanType" #LoanType="ngModel" required>
+                                        <mat-option *ngFor="let LoanType of GetLoanType" [value]="LoanType.LoanType">{{LoanType.LoanType}}</mat-option>
+                                    </mat-select>
                                     <div *ngIf="LoanType.invalid && (LoanType.dirty || LoanType.touched)" class="alert alert-danger">
-                                        <div *ngIf="LoanType.errors.required">
-                                            Please enter Loan Type.
+                                        <div *ngIf="LoanType.errors.required ">
+                                            Please select LoanType.
                                         </div>
                                     </div>
                                 </mat-form-field>

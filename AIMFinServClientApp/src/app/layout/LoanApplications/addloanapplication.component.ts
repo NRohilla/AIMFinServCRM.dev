@@ -130,6 +130,7 @@ export class AddLoanApplicationComponent implements OnInit {
         this.formatvalues();
         this._AddLoanApplicationDetails = JSON.parse(res._body);
         this.AddLoanApplicantform.reset();
+        this.router.navigateByUrl('loanapplications');
     }
     AddLoanApplicationDetailsError(res) { }
 

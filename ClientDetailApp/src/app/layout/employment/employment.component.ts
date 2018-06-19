@@ -91,6 +91,7 @@ export class EmployementComponent implements OnInit {
     GetMatEmploymentDetailsByAppIDSuccess(res) {
         debugger;
         this.dataSource = new MatTableDataSource<Element>(JSON.parse(res._body));
+        console.log(JSON.parse(res._body));
         this.dataSource.paginator = this.paginator;
     }
 

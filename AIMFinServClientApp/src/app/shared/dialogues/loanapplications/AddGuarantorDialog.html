@@ -43,12 +43,7 @@
                                 <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.MiddleName}}</p>
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
-                                        <input matInput placeholder="Middle Name" name="MiddleName" [(ngModel)]="_AddGuarantorDetails.MiddleName" class="w-100" #MiddleName="ngModel" required>
-                                        <div *ngIf="MiddleName.invalid && (MiddleName.dirty || MiddleName.touched)" class="alert alert-danger">
-                                            <div *ngIf="MiddleName.errors.required ">
-                                                Please enter Middle Name.
-                                            </div>
-                                        </div>
+                                        <input matInput placeholder="Middle Name" name="MiddleName" [(ngModel)]="_AddGuarantorDetails.MiddleName" class="w-100">
                                     </mat-form-field>
                                 </div>
                             </div>

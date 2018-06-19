@@ -181,6 +181,8 @@ export class AddLoanmasterComponent implements OnInit {
     AddLoanMasterDetailsSuccess(res) {
         this._AddLoanMasterDetailsObj = JSON.parse(res._body);
         this.AddLoanMaster.reset();
+        this.router.navigateByUrl('loanmaster');
+
     }
 
     AddLoanMasterDetailsError(res) {
