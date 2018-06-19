@@ -148,6 +148,7 @@ export class LoanapplicationdetailsComponent implements OnInit {
     GetLoanApplicationDetailsSuccess(res) {
         debugger;
         this._LoanApplicationDetails = JSON.parse(res._body);
+        console.log(this._LoanApplicationDetails);
         this._ClientsService.GetAllApplicantsByLoanID(this._LoanAppNo).subscribe(res => this.GetAllClientsGridSuccess(res), res => this.GetAllClientsGridError(res));
     }
     GetLoanApplicationDetailsError(res) { }

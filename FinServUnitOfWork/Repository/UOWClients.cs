@@ -179,7 +179,7 @@ namespace FinServUnitOfWork.Repository
                         });
                     }
 
-                    return objLoanApplicationForms;
+                    return objLoanApplicationForms.OrderBy(x => x.AutoID).ToList();
                 }
             }
             catch (Exception e)
@@ -1849,16 +1849,16 @@ namespace FinServUnitOfWork.Repository
                 {
                     var getAllLoans = (from tlm in db.tblLoanMasters
                                        join tlf in db.tblLoanApplicationForms on tlm.LoanApplicationNo equals tlf.LoanApplicationNo
-                                       //join tla in db.tblApplicants on tlf.LoanApplicationNo equals tla.LoanApplicationNo
+                                       join tla in db.tblApplicants on tlf.LoanApplicationNo equals tla.LoanApplicationNo
                                        join tlmp in db.tblMasterPropertyTypes on tlm.PropertyTypeID equals tlmp.ID
                                        join tlms in db.tblMasterTypeOfStatus on tlm.StatusID equals tlms.ID
                                        join tlml in db.tblMasterTypeOfLoans on tlm.LoanTypeID equals tlml.ID
-                                      // where tla.ApplicantID == ApplicantID
+                                       where tla.ApplicantID == ApplicantID
                                        select new LoanMasterDetails
                                        {
                                            LANNumber = tlm.LANNumber,
                                            LoanApplicationNo = tlm.LoanApplicationNo,
-                                       //    AutoID = tla.AutoID,
+                                           AutoID = tla.AutoID,
                                            ApplicationFormNumber = tlf.ApplicationFormNumber,
                                            LoanTermOffered = tlm.LoanTermOffered,
                                            StatusID = tlm.StatusID,
@@ -1896,7 +1896,7 @@ namespace FinServUnitOfWork.Repository
                 {
                     var dataforLending = (from tlm in db.tblLoanMasters
                                           join tlf in db.tblLoanApplicationForms on tlm.LoanApplicationNo equals tlf.LoanApplicationNo
-                                          join tla in db.tblApplicants on tlf.LoanApplicationNo equals tla.LoanApplicationNo
+                                          join tla in db.tblApplicants on ApplicantID equals tla.ApplicantID
                                           join tlmp in db.tblMasterPropertyTypes on tlm.PropertyTypeID equals tlmp.ID
                                           join tlms in db.tblMasterTypeOfStatus on tlm.StatusID equals tlms.ID
                                           join tlml in db.tblMasterTypeOfLoans on tlm.LoanTypeID equals tlml.ID

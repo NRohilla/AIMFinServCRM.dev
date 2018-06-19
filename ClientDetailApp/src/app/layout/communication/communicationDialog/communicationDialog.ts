@@ -36,7 +36,7 @@ export class CommunicationDialog {
         ZipCode: '',
         AddressType: '',
         ApplicantID: '',
-        ID: '',
+        ID: 1,
         Type: '',
     }
 
@@ -61,7 +61,7 @@ export class CommunicationDialog {
                 ZipCode: '',
                 AddressType: '',
                 ApplicantID: '',
-                ID: '',
+                ID: 1,
                 Type: '',
             }
         this.GetAddressType();

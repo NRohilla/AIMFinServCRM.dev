@@ -138,7 +138,9 @@ export class LendingComponent {
     }
     UpdateLendingDetailsByAppIDSuccess(res) {
         this._EditDetails = false;
-        this._ClientsService.GetLendingDetailsByAppID(this.ApplicantID).subscribe(res => this.GetLendingDetailsByAppIDSuccess(res), res => this.GetLendingDetailsByAppIDError(res));
+        //this._ClientsService.GetLendingDetailsByAppID(this.ApplicantID).subscribe(res => this.GetLendingDetailsByAppIDSuccess(res), res => this.GetLendingDetailsByAppIDError(res));
+        this._ClientsService.GetMatLendingDetailsByAppID(this.ApplicantID)
+            .subscribe(res => this.GetMatLendingDetailsByAppIDSuccess(res), res => this.GetMatLendingDetailsByAppIDError(res));
 
     }
     UpdateLendingDetailsByAppIDError(res) { }
