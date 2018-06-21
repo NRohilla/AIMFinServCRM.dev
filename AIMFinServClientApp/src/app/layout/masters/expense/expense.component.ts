@@ -47,8 +47,9 @@ export class ExpenseComponent implements OnInit {
         };
     }
     GetExpenseSuccess(res) {
-        debugger;
-        this._ExpenseTypes = JSON.parse(res._body);
+        if (res._body != null || res._body != undefined || res._body.toString().trim().length > 0) {
+            this._ExpenseTypes = JSON.parse(res._body);
+        }
     }
     GetExpenseError(res) { }
 

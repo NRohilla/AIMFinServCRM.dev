@@ -68,8 +68,11 @@ export class AddAssetComponent extends AppBaseComponent implements OnInit{
             this._ClientsService.GetAddedAssetGrid(this.LoanApplicationNo).subscribe(res => this.GetAddedAssetGridSuccess(res), res => this.GetAddedAssetGridError(res));
     }
     GetAddedAssetGridSuccess(res) {
-        this.gridData = JSON.parse(res._body);
-       this.AddAssetform.reset();
+        if (res._body != null || res._body != undefined || res._body.toString().trim().length > 0) {
+            this.gridData = JSON.parse(res._body);
+         
+        }
+        this.AddAssetform.reset();
    
     }
     GetAddedAssetGridError(res) { }
@@ -111,8 +114,10 @@ export class AddAssetComponent extends AppBaseComponent implements OnInit{
         this._MasterService.GetApplicantNames(this.LoanApplicationNo).subscribe(res => this.GetApplicantNamesSuccess(res), error => this.errorMessage = <any>error);
     }
     GetApplicantNamesSuccess(res) {
-        debugger;
-        this._ObjApplicantNames = JSON.parse(res._body);
+        if (res._body != null || res._body != undefined || res._body.toString().trim().length > 0) {
+            debugger;
+            this._ObjApplicantNames = JSON.parse(res._body);
+        }
     }
     GetAssetTypes()
     {

@@ -73,9 +73,10 @@ export class ClientSummaryDialog {
         }
     }
     GetClientDetailsSuccess(res) {
-        debugger;
-        this.ClientDetails = JSON.parse(res._body);
-        this.URL = this.GetOriginalContentForPriview(this.ClientDetails.FileType) + this.ClientDetails.ApplicantImage;
+        if (res._body != null || res._body != undefined || res._body.toString().trim().length > 0) {
+            this.ClientDetails = JSON.parse(res._body);
+            this.URL = this.GetOriginalContentForPriview(this.ClientDetails.FileType) + this.ClientDetails.ApplicantImage;
+        }
     }
     GetOriginalContentForPriview(FileType) {
         debugger;

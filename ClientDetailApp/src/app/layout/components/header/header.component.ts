@@ -100,11 +100,13 @@ export class HeaderComponent implements OnInit {
     }
 
     RequestSuccess(result) {
-        var resultReturned = JSON.parse(result._body);
-        this._LocalStorageService.set('LoggedInEmailId', this._UserName);
-        this._LocalStorageService.set('LoggedInApplicantId', resultReturned._ApplicantID);
-        this._LocalStorageService.set('ActivaitonCode', resultReturned.ActivaitonCode);
-        this.UserInfo();
+        if (JSON.parse(result._body) != null || JSON.parse(result._body) != undefined) {
+            var resultReturned = JSON.parse(result._body);
+            this._LocalStorageService.set('LoggedInEmailId', this._UserName);
+            this._LocalStorageService.set('LoggedInApplicantId', resultReturned._ApplicantID);
+            this._LocalStorageService.set('ActivaitonCode', resultReturned.ActivaitonCode);
+            this.UserInfo();
+        }
     }
 
 
@@ -120,7 +122,7 @@ export class HeaderComponent implements OnInit {
     }
 
     UserInfoSuccess(result) {
-        if (JSON.parse((JSON.parse(result._body))) != null) {
+        if (JSON.parse((JSON.parse(result._body))) != null || JSON.parse((JSON.parse(result._body))) != undefined) {
 
             this._UserName = JSON.parse(JSON.parse(result._body)).FirstName + " " + JSON.parse(JSON.parse(result._body)).LastName;
             this._UserDetails = JSON.parse((JSON.parse(result._body)));

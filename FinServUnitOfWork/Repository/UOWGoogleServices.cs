@@ -66,7 +66,7 @@ namespace FinServUnitOfWork.Repository
                 SmtpServer.EnableSsl = true;
 
                 mail.From = new MailAddress("ve.dksaini@gmail.com");
-                mail.To.Add("nehabambah@virtualemployee.com");
+                mail.To.Add("shrangalishukla@virtualemployee.com");
                 mail.CC.Add("deepaksaini@virtualemployee.com");
                 mail.Subject = "Test";
                 // "This is test mail";
@@ -154,7 +154,7 @@ namespace FinServUnitOfWork.Repository
                                                                 <tr><td height='10'></td></tr>
                                                                 <tr>
                                                                     <td bgcolor='#ebebeb' align='center' valign='middle' height='120'>
-                                                                        <a href='http://localhost:8080/login' click='LoginHereClick()' style='width:170px; padding:15px; text-align:center; border-radius:20px; display:block; background:#269226; text-decoration:none; color:#FFF;'> Login Here</a>
+                                                                        <a href='http://www.loaner.co.nz/' click='LoginHereClick()' style='width:170px; padding:15px; text-align:center; border-radius:20px; display:block; background:#269226; text-decoration:none; color:#FFF;'> Login Here</a>
                                                                     </td>
                                                                 </tr>
                                                             </table>
@@ -203,7 +203,14 @@ namespace FinServUnitOfWork.Repository
  ";
                 mail.Body = str;
                 mail.IsBodyHtml = true;
-                SmtpServer.Send(mail);
+                try
+                {
+                    SmtpServer.Send(mail);
+                }
+                catch(Exception ex)
+                {
+
+                }
                 mail.Dispose();
                 return true;
             }
@@ -235,7 +242,7 @@ namespace FinServUnitOfWork.Repository
                 SmtpServer.EnableSsl = true;
 
                 mail.From = new MailAddress("ve.dksaini@gmail.com");
-                mail.To.Add("nehabambah@virtualemployee.com");
+                mail.To.Add("shrangalishukla@virtualemployee.com");
                 mail.CC.Add("deepaksaini@virtualemployee.com");
                 mail.Subject = "Test";
                 // "This is test mail";
@@ -362,7 +369,14 @@ namespace FinServUnitOfWork.Repository
 </html> ";
                 mail.Body = str;
                 mail.IsBodyHtml = true;
-                SmtpServer.Send(mail);
+                try
+                {
+                    SmtpServer.Send(mail);
+                }
+                catch (Exception ex)
+                {
+
+                }
                 mail.Dispose();
                 return true;
             }

@@ -92,7 +92,9 @@ export class CommunicationDialog {
     }
 
     GetAddressTypesSuccess(res) {
-        this._AddressType = JSON.parse(res._body);
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            this._AddressType = JSON.parse(res._body);
+        }
     }
 
     GetCommEditdataSuccess(res) {

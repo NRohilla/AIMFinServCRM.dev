@@ -74,7 +74,9 @@ export class ManageExpenseSheetDialog {
 
     GetAddedExpenseSheetGridSuccess(res) {
         debugger;
-        this.rows = JSON.parse(res._body);
+        if (res._body != null || res._body != undefined || res._body.toString().trim().length > 0) {
+            this.rows = JSON.parse(res._body);
+        }
     }
     GetAddedExpenseSheetGridError(res) { }
     //End -  To Load Expense Sheet Grid
@@ -152,7 +154,9 @@ export class ManageExpenseSheetDialog {
         this._MasterService.GetApplicantNames(this.LoanApplicationNo).subscribe(res => this.GetApplicantsNameSuccess(res), error => this.errorMessage = <any>error);
     }
     GetApplicantsNameSuccess(res) {
-        this._ObjApplicantNames = JSON.parse(res._body);
+        if (res._body != null || res._body != undefined || res._body.toString().trim().length > 0) {
+            this._ObjApplicantNames = JSON.parse(res._body);
+        }
     }
     EditDetails() {
         this._ViewDetails = false;

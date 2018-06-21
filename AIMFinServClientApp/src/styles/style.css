@@ -18,7 +18,7 @@
 .master-forms .section_box, .application-details .section_box { margin-left: 0; width: 100%; }
     /*.master-forms .section_box .tab-content { padding:40px 10px 0px 10px;}*/
     .master-forms .section_box .box_title, .application-details .section_box .box_title { background: #f9f9f9; font-size: 14px; color: #1b9ec5; z-index: 100; }
-.master-forms input[type="button"], .application-details input[type="button"], .master-forms input[type="submit"], .application-details input[type="submit"] { padding: 5px 10px; font-size: 14px; font-family: FontAwesome, "Open Sans", Verdana, sans-serif; font-style: normal; font-weight: normal; text-decoration: inherit; }
+.master-forms input[type="button"], .application-details input[type="button"], .master-forms input[type="submit"], .application-details input[type="submit"], .summary-dialog  input[type="submit"]{ padding: 5px 10px; font-size: 14px; font-family: FontAwesome, "Open Sans", Verdana, sans-serif; font-style: normal; font-weight: normal; text-decoration: inherit; }
 .master-forms .btn:focus, .master-forms .btn.focus, .application-details .btn:focus, .application-details .btn.focus, .btn-secondary:not([disabled]):not(.disabled):active:focus { box-shadow: none; }
 .application-details .mat-tab-label-container { z-index: unset !important; }
 /*.application-details .mat-tab-labels { height:60px;}*/
@@ -39,7 +39,7 @@
 /*.application-details .section_box .tab-content .datevalue { margin-bottom:0px; padding-top:7px; float:left;}*/
 .form-section { display: flex; flex-direction: column; }
 .master-forms .form-section .field_set .field_label { margin-top: 15px; }
-.btn-bottom { background: #fafafa; border-top: 1px solid #e0e0e0; padding: 10px 15px; }
+.btn-bottom { background: #fafafa; border-top: 1px solid #e0e0e0; padding: 10px 15px; overflow:hidden; }
 a { outline: none; }
 .profile-pic img { width: 160px; height: 160px; border-radius: 50%; padding: 2px; border: 1px solid #cccccc; }
 .profile-pic h5 { font-size: 14px; color: #1b9ec5; }
@@ -299,6 +299,10 @@ a { outline: none; }
     .application-details .tab-content .field_set .field_info, .master-forms .field_set .field_info, .application-details .field_set p {
         width: 100%;
     }
+    .application-details .field_set { margin-bottom:10px !important; }
+    .application-details .field_set p { line-height:normal; }
+    .section_box .field_label { margin-bottom:0px; }
+
 }
 
 @media (max-width: 767px){
@@ -310,9 +314,10 @@ a { outline: none; }
     .application-details td label { width: 100%; position:relative; }
     .application-details td label:before { left: 6px; width: 45%; font-weight: 600; content: attr(title); }
     .application-details .k-grid td { border-left:1px solid #ebebeb !important; border-right:1px solid #ebebeb !important; }
-    .btn-bottom input[type="button"], .btn-bottom input[type="submit"] { width:190px; margin:2px 0px; display:block; }
+    .btn-bottom input[type="button"], .btn-bottom input[type="submit"] { margin:2px; float:left; }
     .tab-content .field_set { margin-bottom:0px; }
     .login-date { position:relative; top:0px; }
+    .summary-dialog h4 { font-size:18px; }
  }
 
 @media (max-width: 575px){

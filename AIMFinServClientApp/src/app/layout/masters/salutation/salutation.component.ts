@@ -41,8 +41,10 @@ export class SalutationComponent implements OnInit {
         };
     }
     GetSalutationSuccess(res) {
-        debugger;
-        this._SalutationTypes = JSON.parse(res._body);
+        if (res._body != null || res._body != undefined || res._body.toString().trim().length > 0) {
+            debugger;
+            this._SalutationTypes = JSON.parse(res._body);
+        }
 
     }
     GetSalutationError(res) { }

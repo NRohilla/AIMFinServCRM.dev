@@ -123,7 +123,9 @@ export class ClientSummaryComponent extends AppBaseComponent implements OnInit {
     GetClientDetailsError(res) { }
 
     GetClientCommDetailsSuccess(res) {
-        this._ApplicantCommunicationDetails = JSON.parse(res._body);
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            this._ApplicantCommunicationDetails = JSON.parse(res._body);
+         }
     }
     GetClientCommDetailsError(res) { }
 

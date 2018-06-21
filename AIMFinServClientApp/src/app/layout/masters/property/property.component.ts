@@ -40,8 +40,10 @@ export class PropertyComponent implements OnInit {
         };
     }
     GetPropertySuccess(res) {
-        debugger;
-        this._PropertyTypes = JSON.parse(res._body);
+        if (res._body != null || res._body != undefined || res._body.toString().trim().length > 0) {
+            debugger;
+            this._PropertyTypes = JSON.parse(res._body);
+        }
         
     }
     GetPropertyError(res) { }

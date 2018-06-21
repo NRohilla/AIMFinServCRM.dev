@@ -142,8 +142,9 @@ export class LoanDetails implements OnInit {
     }
 
     GetLoanMasterGridSuccess(Res) {
-        debugger;
-        this.LoanMasterApplicantDetails = JSON.parse(Res._body);
+        if (JSON.parse(Res._body) != null || JSON.parse(Res._body) != undefined) {
+            this.LoanMasterApplicantDetails = JSON.parse(Res._body);
+        }
     }
     ViewApplicantDetails(ApplicantID) {
         debugger;

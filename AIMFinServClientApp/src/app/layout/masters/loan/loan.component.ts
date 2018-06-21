@@ -39,8 +39,9 @@ export class LoanComponent implements OnInit {
         };
     }
     GetLoanSuccess(res) {
-        debugger;
-        this._LoanTypes = JSON.parse(res._body);
+        if (res._body != null || res._body != undefined || res._body.toString().trim().length > 0) {
+            this._LoanTypes = JSON.parse(res._body);
+        }
 
     }
     GetLoanError(res) { }

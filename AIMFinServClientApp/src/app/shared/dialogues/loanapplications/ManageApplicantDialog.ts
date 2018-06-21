@@ -96,8 +96,10 @@ export class ManageApplicantDialog {
         this._MasterService.GetApplicantNames(this.LoanApplicationNo).subscribe(res => this.GetApplicantsSuccess(res), res => this.GetApplicantsError(res));
     }
     GetApplicantsSuccess(res) {
-        debugger;
-        this._ApplicantID = JSON.parse(res._body);
+        if (res._body != null || res._body != undefined || res._body.toString().trim().length > 0) {
+            debugger;
+            this._ApplicantID = JSON.parse(res._body);
+        }
     }
     GetApplicantsError(res) { }
     onNoClick(): void {

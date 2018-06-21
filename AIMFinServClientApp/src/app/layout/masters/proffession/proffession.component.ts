@@ -39,7 +39,9 @@ export class ProffessionComponent implements OnInit {
     }
     GetProfessionSuccess(res) {
         debugger;
-        this._ProfessionTypes = JSON.parse(res._body);
+        if (res._body != null || res._body != undefined || res._body.toString().trim().length > 0) {
+            this._ProfessionTypes = JSON.parse(res._body);
+        }
     }
     GetProfessionError(res) { }
 

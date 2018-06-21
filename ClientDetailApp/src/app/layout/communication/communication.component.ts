@@ -46,7 +46,9 @@ export class CommunicationComponent implements OnInit {
     }
     GetCommunicationDetailsByAppIDSuccess(res) {
         debugger;
-        this.CommunicationDetails = JSON.parse(res._body);
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            this.CommunicationDetails = JSON.parse(res._body);
+        }
     }
     GetCommunicationDetailsByAppIDError(res) {
     }

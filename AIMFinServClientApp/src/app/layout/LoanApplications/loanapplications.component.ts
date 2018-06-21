@@ -110,7 +110,9 @@ export class LoanapplicationsComponent implements OnInit {
     GetAllLoanApplicationError(res) { }
    
     GetAllLoanApplicationSuccess(Res) {
-        this.gridData = JSON.parse(Res._body);
+        if (JSON.parse(Res._body) != null || JSON.parse(Res._body) != undefined) {
+            this.gridData = JSON.parse(Res._body);
+        }
     }
     ViewDetails(LoanApplicationNo) {
         this._LocalStorageService.set("LoanApplicationNo", LoanApplicationNo);

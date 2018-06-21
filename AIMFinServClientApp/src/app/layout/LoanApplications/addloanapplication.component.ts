@@ -139,41 +139,53 @@ export class AddLoanApplicationComponent implements OnInit {
         this._MasterService.GetLoanTypes().subscribe(res => this.GetLoanTypesSuccess(res), error => this.errorMessage = <any>error);
     }
     GetLoanTypesSuccess(res) {
-        this._TypeOfLoanID = JSON.parse(res._body);
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            this._TypeOfLoanID = JSON.parse(res._body);
+        }
     }
 
     GetPurposeofloanType() {
         this._MasterService.GetPurposeofloanTypes().subscribe(res => this.GetPurposeofloanTypesSuccess(res), error => this.errorMessage = <any>error);
     }
     GetPurposeofloanTypesSuccess(res) {
-        this._PurposeOfLoanID = JSON.parse(res._body);
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            this._PurposeOfLoanID = JSON.parse(res._body);
+        }
     }
 
     GetLoanrateType() {
         this._MasterService.GetLoanrateTypes().subscribe(res => this.GetLoanrateTypeSuccess(res), error => this.errorMessage = <any>error);
     }
     GetLoanrateTypeSuccess(res) {
-        this._RateTypeID = JSON.parse(res._body);
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            this._RateTypeID = JSON.parse(res._body);
+        }
     }
 
     GetPropertyType() {
         this._MasterService.GetPropertyTypes().subscribe(res => this.GetPropertyTypeSuccess(res), error => this.errorMessage = <any>error);
     }
     GetPropertyTypeSuccess(res) {
-        this._PropertyTypeID = JSON.parse(res._body);
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            this._PropertyTypeID = JSON.parse(res._body);
+        }
     }
 
     GetStatusType() {
         this._MasterService.GetStatusTypes().subscribe(res => this.GetStatusTypeSuccess(res), error => this.errorMessage = <any>error);
     }
     GetStatusTypeSuccess(res) {
-        this._StatusID = JSON.parse(res._body);
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            this._StatusID = JSON.parse(res._body);
+        }
     }
     GetAdvisorGroups() {
         this._MasterService.GetAdvisorGroups().subscribe(res => this.GetAdvisorGroupsSuccess(res), error => this.errorMessage = <any>error);
     }
     GetAdvisorGroupsSuccess(res) {
-        this._AdvisorID = JSON.parse(res._body);
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            this._AdvisorID = JSON.parse(res._body);
+        }
     }
 
     SwitchApproval() {

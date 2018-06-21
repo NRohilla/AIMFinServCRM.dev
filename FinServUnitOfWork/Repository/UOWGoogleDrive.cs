@@ -101,28 +101,35 @@ namespace FinServUnitOfWork.Repository
         //file Upload to the Google Drive.
         public bool FileUpload(HttpPostedFile file)
         {
-            if (file != null && file.ContentLength > 0)
+            try
             {
-                DriveService service = GetService();
-
-                string path = Path.Combine(HttpContext.Current.Server.MapPath("~/GoogleDriveFiles"),
-                Path.GetFileName(file.FileName));
-                file.SaveAs(path);
-
-                var FileMetaData = new Google.Apis.Drive.v3.Data.File();
-                FileMetaData.Name = Path.GetFileName(file.FileName);
-                FileMetaData.MimeType = MimeMapping.GetMimeMapping(path);
-
-                FilesResource.CreateMediaUpload request;
-
-                using (var stream = new System.IO.FileStream(path, System.IO.FileMode.Open))
+                if (file != null && file.ContentLength > 0)
                 {
-                    request = service.Files.Create(FileMetaData, stream, FileMetaData.MimeType);
-                    request.Fields = "id";
-                    request.Upload();
+                    DriveService service = GetService();
+
+                    string path = Path.Combine(HttpContext.Current.Server.MapPath("~/GoogleDriveFiles"),
+                    Path.GetFileName(file.FileName));
+                    file.SaveAs(path);
+
+                    var FileMetaData = new Google.Apis.Drive.v3.Data.File();
+                    FileMetaData.Name = Path.GetFileName(file.FileName);
+                    FileMetaData.MimeType = MimeMapping.GetMimeMapping(path);
+
+                    FilesResource.CreateMediaUpload request;
+
+                    using (var stream = new System.IO.FileStream(path, System.IO.FileMode.Open))
+                    {
+                        request = service.Files.Create(FileMetaData, stream, FileMetaData.MimeType);
+                        request.Fields = "id";
+                        request.Upload();
+                    }
                 }
+                return true;
             }
-            return true;
+            catch(Exception ex)
+            {
+                return false;
+            }
         }
 
         //Download file from Google Drive by fileId.

@@ -70,10 +70,12 @@ export class ManageuserComponent implements OnInit {
 
     GetAllUserSuccess(res) {
         debugger
-        this._ManageUserGridData = JSON.parse(res._body);
-        this._UserData = this._ManageUserGridData.find(c => c.EmailID === this.emailId);
-        if (this._UserData.UserGuid !== null) {
-            this._GoogleService.GenerateUserTemplate(this._UserData.UserGuid).subscribe(res => this.GenerateUserTemplateSuccess(res), res => this.GenerateUserTemplateError(res));
+        if (res._body != null || res._body != undefined || res._body.toString().trim().length > 0) {
+            this._ManageUserGridData = JSON.parse(res._body);
+            this._UserData = this._ManageUserGridData.find(c => c.EmailID === this.emailId);
+            if (this._UserData.UserGuid !== null) {
+                this._GoogleService.GenerateUserTemplate(this._UserData.UserGuid).subscribe(res => this.GenerateUserTemplateSuccess(res), res => this.GenerateUserTemplateError(res));
+            }
         }
 
     }
@@ -89,7 +91,9 @@ export class ManageuserComponent implements OnInit {
     }
 
     GetRoleSuccess(res) {
-        this._RoleOfUser = JSON.parse(res._body);
+        if (res._body != null || res._body != undefined || res._body.toString().trim().length > 0) {
+            this._RoleOfUser = JSON.parse(res._body);
+        }
     }
 
     GetRoleError(res) { }

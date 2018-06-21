@@ -128,7 +128,9 @@ export class LendingComponent {
     }
 
     GetLoanrateTypesSuccess(res) {
-        this.GetLoanRateType = JSON.parse(res._body)
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            this.GetLoanRateType = JSON.parse(res._body)
+        }
     }
 
     GetLoanrateTypesError(res) {
@@ -141,7 +143,9 @@ export class LendingComponent {
     }
 
     GetPropertyTypesSuccess(res) {
-        this.GetPropertyType = JSON.parse(res._body)
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            this.GetPropertyType = JSON.parse(res._body)
+        }
 
     }
 
@@ -152,15 +156,19 @@ export class LendingComponent {
     }
 
     GetLoanTypesSuccess(res) {
-        this.GetLoanType = JSON.parse(res._body)
-        console.log(this.GetLoanType)
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            this.GetLoanType = JSON.parse(res._body)
+            console.log(this.GetLoanType)
+        }
     }
 
     GetLoanTypesError(res) {}
 
 
     GetStatusTypesSuccess(res) {
-        this.GetStatusType = JSON.parse(res._body);
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            this.GetStatusType = JSON.parse(res._body);
+        }
     }
 
     GetStatusTypesError(res) {
@@ -181,8 +189,10 @@ export class LendingComponent {
 
     GetLendingDetailsByAppIDSuccess(res) {
         debugger;
-     
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+
             this.LendingDetails = JSON.parse(res._body);
+        }
     }
     GetLendingDetailsByAppIDError(res) {
     }

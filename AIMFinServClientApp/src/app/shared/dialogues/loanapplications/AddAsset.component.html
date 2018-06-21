@@ -1,4 +1,4 @@
-<div class="application-details">
+<div class="">
     <div class="section_box pl-0 pb-0 pr-0 mb-4 mt-3 clearfix">
         <form name="form" #AddAssetform="ngForm" novalidate>
             <div class="p-4">
@@ -6,7 +6,7 @@
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_set">
                             <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Applicant Name</label>
-                            <p *ngIf="_ViewDetails">{{_AssetDetailsObj.FirstName}}</p>
+                            <span *ngIf="_ViewDetails">{{_AssetDetailsObj.FirstName}}</span>
                             <div class="field_info w-100">
                                 <mat-form-field *ngIf="_EditViewDetails || _AddAsset">
                                     <mat-select placeholder="Applicant Name" [(ngModel)]="_AssetDetailsObj.ApplicantID" name="applicantname" #applicantname="ngModel" required>
@@ -24,7 +24,7 @@
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_set">
                             <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Asset Type</label>
-                            <p *ngIf="_ViewDetails">{{_AssetDetailsObj.AssetType}}</p>
+                            <span *ngIf="_ViewDetails">{{_AssetDetailsObj.AssetType}}</span>
                             <div class="field_info w-100">
                                 <mat-form-field *ngIf="_EditViewDetails || _AddAsset">
                                     <mat-select placeholder="Asset Type" [(ngModel)]="_AssetDetailsObj.AssetTypeID" name="Assettype" #Assettype="ngModel" required>
@@ -42,7 +42,7 @@
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_set">
                             <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Details</label>
-                            <p *ngIf="_ViewDetails">{{_AssetDetailsObj.Description}}</p>
+                            <span *ngIf="_ViewDetails">{{_AssetDetailsObj.Description}}</span>
                             <div class="field_info w-100">
                                 <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddAsset" >
                                     <input matInput placeholder="Details" name="Details" [(ngModel)]="_AssetDetailsObj.Description" class="w-100" #Details="ngModel" required>
@@ -60,7 +60,7 @@
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_set">
                             <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Net Value</label>
-                            <p *ngIf="_ViewDetails">{{_AssetDetailsObj.NetValue}}</p>
+                            <span *ngIf="_ViewDetails">{{_AssetDetailsObj.NetValue}}</span>
                             <div class="field_info w-100">
                                 <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddAsset">
                                     <input matInput placeholder="Net Value" name="NetValue" [(ngModel)]="_AssetDetailsObj.NetValue" class="w-100" #NetValue="ngModel" required>
@@ -76,7 +76,7 @@
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_set">
                             <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Ownership</label>
-                            <p *ngIf="_ViewDetails">{{_AssetDetailsObj.Ownership}}</p>
+                            <span *ngIf="_ViewDetails">{{_AssetDetailsObj.Ownership}}</span>
                             <div class="field_info w-100">
                                 <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddAsset">
                                     <input matInput placeholder="Ownership" name="Ownership" [(ngModel)]="_AssetDetailsObj.Ownership" class="w-100" #Ownership="ngModel" required>

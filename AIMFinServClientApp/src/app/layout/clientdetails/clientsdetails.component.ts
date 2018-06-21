@@ -36,6 +36,7 @@ export class ClientsDetailsComponent implements OnInit {
     }
 
     GetAllClientsSuccess(Res) {
+        if (JSON.parse(Res._body) != null || JSON.parse(Res._body) != undefined)
         this.gridData = JSON.parse(Res._body);
     }
 

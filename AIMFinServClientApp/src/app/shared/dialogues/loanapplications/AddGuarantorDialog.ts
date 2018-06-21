@@ -130,7 +130,9 @@ export class AddGuarantorDialog {
     }
     GetAddedGuarantorGridSuccess(res)
     {
-        this.gridData = JSON.parse(res._body);
+        if (res._body != null || res._body != undefined || res._body.toString().trim().length > 0) {
+            this.gridData = JSON.parse(res._body);
+        }
     }
     GetAddedGuarantorGridError(res) { }
 

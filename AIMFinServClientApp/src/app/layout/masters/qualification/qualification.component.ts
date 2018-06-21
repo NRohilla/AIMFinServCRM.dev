@@ -40,8 +40,10 @@ export class QualificationComponent implements OnInit {
         };
     }
     GetQualificationSuccess(res) {
-        debugger;
-        this._QualificationTypes = JSON.parse(res._body);
+        if (res._body != null || res._body != undefined || res._body.toString().trim().length > 0) {
+            debugger;
+            this._QualificationTypes = JSON.parse(res._body);
+        }
     }
     GetQualificationError(res) { }
 

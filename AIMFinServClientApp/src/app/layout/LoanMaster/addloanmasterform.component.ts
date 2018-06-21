@@ -141,35 +141,45 @@ export class AddLoanmasterComponent implements OnInit {
 
     GetApplicationFormNoSuccess(res) {
         debugger;
-        this._LoanApplicationDetails = JSON.parse(res._body);
-        console.log(this._LoanApplicationDetails)
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            this._LoanApplicationDetails = JSON.parse(res._body);
+            console.log(this._LoanApplicationDetails)
+        }
     }
     
     GetLoanType() {
         this._MasterService.GetLoanTypes().subscribe(res => this.GetLoanTypesSuccess(res), error => this.errorMessage = <any>error);
     }
     GetLoanTypesSuccess(res) {
-        this._TypeOfLoanID = JSON.parse(res._body);
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            this._TypeOfLoanID = JSON.parse(res._body);
+        }
     }
 
     GetPropertyType() {
         this._MasterService.GetPropertyTypes().subscribe(res => this.GetPropertyTypeSuccess(res), error => this.errorMessage = <any>error);
     }
     GetPropertyTypeSuccess(res) {
-        this._PropertyTypeID = JSON.parse(res._body);
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            this._PropertyTypeID = JSON.parse(res._body);
+        }
     }
 
     GetStatusType() {
         this._MasterService.GetStatusTypes().subscribe(res => this.GetStatusTypeSuccess(res), error => this.errorMessage = <any>error);
     }
     GetStatusTypeSuccess(res) {
-        this._StatusID = JSON.parse(res._body);
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            this._StatusID = JSON.parse(res._body);
+        }
     }
     GetLoanrateTypes() {
         this._MasterService.GetLoanrateTypes().subscribe(res => this.GetLoanrateTypesSuccess(res), error => this.errorMessage = <any>error);
     }
     GetLoanrateTypesSuccess(res) {
-        this._RateTypeOffered = JSON.parse(res._body);
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            this._RateTypeOffered = JSON.parse(res._body);
+        }
     }
 
 

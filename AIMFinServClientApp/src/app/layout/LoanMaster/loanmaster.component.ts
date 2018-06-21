@@ -128,10 +128,13 @@ export class LoanmasterComponent implements OnInit {
     }
 
     GetAllLoanDetailSuccess(Res) {
-        debugger;
-        //this._LocalStorageService.set("LoanApplicationNo", this.LoanApplicationNo);
-        this._LoanMasterDetails = JSON.parse(Res._body);
-        //this._LoanMasterDetailsObj = JSON.parse(Res._body);
+        if (JSON.parse(Res._body) != null || JSON.parse(Res._body) != undefined) {
+
+            debugger;
+            //this._LocalStorageService.set("LoanApplicationNo", this.LoanApplicationNo);
+            this._LoanMasterDetails = JSON.parse(Res._body);
+            //this._LoanMasterDetailsObj = JSON.parse(Res._body);
+        }
     }
     GetAllLoanDetailError(Res) { }
 

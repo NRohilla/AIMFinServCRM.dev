@@ -95,7 +95,7 @@ export class PersonalComponent implements OnInit {
 
     GetPersonalDetailsByAppIDSuccess(res) {
         debugger;
-        if (JSON.parse(res._body) != null) {
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
             this.PersonalDetails = JSON.parse(res._body);
 
             this.URL = this.GetOriginalContentForPriview(this.PersonalDetails.FileType) + this.PersonalDetails.ApplicantImage;

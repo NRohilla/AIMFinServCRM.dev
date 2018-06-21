@@ -57,7 +57,7 @@ export class ClientscommunicationComponent extends AppBaseComponent implements O
 
     GetClientCommDetailsSuccess(res) {
         //debugger;
-        if (res._body != null && res._body != undefined && res._body.toString().trim().length > 0) {
+        if (res._body != null || res._body != undefined ) {
             this._ClientCommunicationDetails = this.trimObj(JSON.parse(res._body));
         }
     }

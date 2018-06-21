@@ -32,12 +32,14 @@ export class UploadDocumnetComponent implements OnInit {
     }
 
     GetDriveFilesSuccess(res) {
-        this.GetAllDriveFile = JSON.parse(res._body);
-        this.index = 1
-        this.GetDriveFinalData = this.GetAllDriveFile.map(object => {
-            return { Location: 'Google Drive', SerialNumber: this.index++, Name: object.Name, Id: object.Id };
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            this.GetAllDriveFile = JSON.parse(res._body);
+            this.index = 1
+            this.GetDriveFinalData = this.GetAllDriveFile.map(object => {
+                return { Location: 'Google Drive', SerialNumber: this.index++, Name: object.Name, Id: object.Id };
 
-        });
+            });
+        }
     }
 
     GetDriveFilesError(res) { }

@@ -1,4 +1,4 @@
-<div class="application-details">    
+<div class="">    
     <div class="section_box pl-0 pb-0 pr-0 mb-4 mt-3 clearfix">
         <form name="form" #AddLiabilityform="ngForm" novalidate>
             <div class="p-4">
@@ -6,7 +6,7 @@
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_set">
                             <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Applicant Name</label>
-                            <p *ngIf="_ViewDetails">{{_LiabilityDetailsObj.FirstName}}</p>
+                            <span *ngIf="_ViewDetails">{{_LiabilityDetailsObj.FirstName}}</span>
                             <div class="field_info w-100">
                                 <mat-form-field *ngIf="_EditViewDetails || _AddLiability">
                                     <mat-select placeholder="Applicant Name" [(ngModel)]="_LiabilityDetailsObj.ApplicantID" name="applicantname" #applicantname="ngModel" required>
@@ -24,7 +24,7 @@
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_set">
                             <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Liability Type</label>
-                            <p *ngIf="_ViewDetails">{{_LiabilityDetailsObj.LiabilityType}}</p>
+                            <span *ngIf="_ViewDetails">{{_LiabilityDetailsObj.LiabilityType}}</span>
                             <div class="field_info w-100">
                                 <mat-form-field *ngIf="_EditViewDetails || _AddLiability">
                                     <mat-select placeholder="Liability Type" [(ngModel)]="_LiabilityDetailsObj.LiabilityTypeID" name="LiabilityType" #LiabilityType="ngModel" required>
@@ -42,7 +42,7 @@
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_set">
                             <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Details</label>
-                            <p *ngIf="_ViewDetails">{{_LiabilityDetailsObj.Description}}</p>
+                            <span *ngIf="_ViewDetails">{{_LiabilityDetailsObj.Description}}</span>
                             <div class="field_info w-100">
                                 <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddLiability">
                                     <input matInput placeholder="Details" [(ngModel)]="_LiabilityDetailsObj.Description" class="w-100" name="Details" #Details="ngModel" required>
@@ -60,7 +60,7 @@
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_set">
                             <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Net Value</label>
-                            <p *ngIf="_ViewDetails">{{_LiabilityDetailsObj.NetValue}}</p>
+                            <span *ngIf="_ViewDetails">{{_LiabilityDetailsObj.NetValue}}</span>
                             <div class="field_info w-100">
                                 <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddLiability">
                                     <input matInput placeholder="Net Value" name="NetValue" [(ngModel)]="_LiabilityDetailsObj.NetValue" class="w-100" #NetValue="ngModel" required>
@@ -76,7 +76,7 @@
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                         <div class="field_set">
                             <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Ownership</label>
-                            <p *ngIf="_ViewDetails">{{_LiabilityDetailsObj.Ownership}}</p>
+                            <span *ngIf="_ViewDetails">{{_LiabilityDetailsObj.Ownership}}</span>
                             <div class="field_info w-100">
                                 <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddLiability">
                                     <input matInput placeholder="Ownership" name="Ownership" [(ngModel)]="_LiabilityDetailsObj.Ownership" class="w-100" #Ownership="ngModel" required>

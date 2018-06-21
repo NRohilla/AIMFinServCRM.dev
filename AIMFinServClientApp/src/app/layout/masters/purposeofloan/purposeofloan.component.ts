@@ -39,8 +39,10 @@ export class PurposeofloanComponent implements OnInit {
         };
     }
     GetPurposeofloanSuccess(res) {
-        debugger;
-        this._PurposeofloanTypes = JSON.parse(res._body);
+        if (res._body != null || res._body != undefined || res._body.toString().trim().length > 0) {
+            debugger;
+            this._PurposeofloanTypes = JSON.parse(res._body);
+        }
 
     }
     GetPurposeofloanError(res) { }

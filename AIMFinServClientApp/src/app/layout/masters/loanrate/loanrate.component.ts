@@ -40,8 +40,9 @@ export class LoanrateComponent implements OnInit {
         };
     }
     GetLoanrateSuccess(res) {
-        debugger;
-        this._LoanrateTypes = JSON.parse(res._body);
+        if (res._body != null || res._body != undefined || res._body.toString().trim().length > 0) {
+            this._LoanrateTypes = JSON.parse(res._body);
+        }
 
     }
     GetLoanrateError(res) { }

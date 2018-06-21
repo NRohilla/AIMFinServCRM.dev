@@ -84,7 +84,9 @@ export class QualificationsComponent implements OnInit {
     GetMatQualificationDataByAppIDError(res) { }
 
     GetQualificationDetailsSuccess(res) {
-        this.QualificationDetails = JSON.parse(res._body);
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            this.QualificationDetails = JSON.parse(res._body);
+        }
     }
 
     GetQualificationDetailsError(res) {

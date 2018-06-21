@@ -40,8 +40,10 @@ export class RelationshipComponent implements OnInit {
         };
     }
     GetRelationshipSuccess(res) {
-        debugger;
-        this._RelationshipTypes = JSON.parse(res._body);
+        if (res._body != null || res._body != undefined || res._body.toString().trim().length > 0) {
+            debugger;
+            this._RelationshipTypes = JSON.parse(res._body);
+        }
         
     }
     GetRelationshipError(res) { }

@@ -65,7 +65,9 @@ export class ClientqualificationComponent extends AppBaseComponent implements On
     }    
 
     GetClientQualDetailsSuccess(res) {
-        this._ClientQualificationDetails = this.trimObj(JSON.parse(res._body));
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            this._ClientQualificationDetails = this.trimObj(JSON.parse(res._body));
+        }
     }
     GetClientQualDetailsError(res) { }
 

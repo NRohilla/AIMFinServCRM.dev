@@ -70,8 +70,10 @@ export class AddLiabilityComponent implements OnInit {
     }
     GetAddedLiabilityGridSuccess(res)
     {
-        this.gridData = JSON.parse(res._body);
-        //this.AddLiabilityform.reset();
+        if (res._body != null || res._body != undefined || res._body.toString().trim().length > 0) {
+            this.gridData = JSON.parse(res._body);
+            //this.AddLiabilityform.reset();
+        }
     }
     GetAddedLiabilityGridError(res) { }
     //End - Liability Grid
@@ -148,7 +150,9 @@ export class AddLiabilityComponent implements OnInit {
         this._MasterService.GetLiabilityTypes().subscribe(res => this.GetLiabilityTypesSuccess(res), error => this.errorMessage = <any>error);
     }
     GetLiabilityTypesSuccess(res) {
-        this._objLiabilityTypeID = JSON.parse(res._body);
+        if (res._body != null || res._body != undefined || res._body.toString().trim().length > 0) {
+            this._objLiabilityTypeID = JSON.parse(res._body);
+        }
     }
 
     onNoClick(): void {

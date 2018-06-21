@@ -46,7 +46,7 @@ export class AssetsComponent implements OnInit {
     }
     GetAssetsSuccess(res) {
         debugger;
-        if (res._body != null && res._body != undefined && res._body.toString().trim().length > 0) {
+        if (res._body != null || res._body != undefined || res._body.toString().trim().length > 0) {
             this._AssetsTypes = JSON.parse(res._body);
         }
     }

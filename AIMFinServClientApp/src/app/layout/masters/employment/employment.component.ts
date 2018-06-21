@@ -40,8 +40,9 @@ export class EmploymentComponent implements OnInit {
         };
     }
     GetEmploymentSuccess(res) {
-        debugger;
-        this._EmploymentTypes = JSON.parse(res._body);
+        if (res._body != null || res._body != undefined || res._body.toString().trim().length > 0) {
+            this._EmploymentTypes = JSON.parse(res._body);
+        }
     }
     GetEmploymentError(res) { }
 

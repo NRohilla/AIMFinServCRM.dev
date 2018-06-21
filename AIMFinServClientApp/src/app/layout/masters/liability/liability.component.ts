@@ -45,8 +45,9 @@ export class LiabilityComponent implements OnInit {
         };
     }
     GetLiabilitySuccess(res) {
-        debugger;
-        this._LiabilityTypes = JSON.parse(res._body);
+        if (res._body != null || res._body != undefined || res._body.toString().trim().length > 0) {
+            this._LiabilityTypes = JSON.parse(res._body);
+        }
     }
     GetLiabilityError(res) { }
 

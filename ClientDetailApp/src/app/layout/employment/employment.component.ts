@@ -103,8 +103,10 @@ export class EmployementComponent implements OnInit {
         this._ClientsService.GetEmploymentDetailsByAppID(this.ApplicantID).subscribe(res => this.GetEmploymentDetailsByAppIDSuccess(res), res => this.GetEmploymentDetailsByAppIDError(res));
     }
     GetEmploymentDetailsByAppIDSuccess(res) {
-        debugger;
-        this.EmploymentDetails = JSON.parse(res._body);
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            debugger;
+            this.EmploymentDetails = JSON.parse(res._body);
+        }
     }
     GetEmploymentDetailsByAppIDError(res) {
     }
@@ -142,7 +144,9 @@ export class EmployementComponent implements OnInit {
     }
     GetEmploymentTypesSuccess(res) {
         debugger;
-        this._EmploymentType = JSON.parse(res._body);
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            this._EmploymentType = JSON.parse(res._body);
+        }
     }
     GetEmploymentTypesError(res) { }
 
@@ -151,7 +155,9 @@ export class EmployementComponent implements OnInit {
     }
     GetProfessionTypesSuccess(res) {
         debugger;
-        this._ProfessionType = JSON.parse(res._body);
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            this._ProfessionType = JSON.parse(res._body);
+        }
     }
     GetProfessionTypesError(res) { }
 
