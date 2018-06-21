@@ -24,8 +24,8 @@
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails._TypeOfLoanID.LoanType}}</p>
                                                         <div class="field_info w-100">
                                                             <mat-form-field *ngIf="_EditDetails">
-                                                                <mat-select placeholder="Type of loan" [(ngModel)]="_LoanApplicationDetails._TypeOfLoanID.ID" name="LoanType" #LoanType="ngModel" required>
-                                                                    <mat-option *ngFor="let TypeOfLoanID of _TypeOfLoanID" [value]="TypeOfLoanID.ID">{{TypeOfLoanID.LoanType}}</mat-option>
+                                                                <mat-select placeholder="Type of loan" [(ngModel)]="_LoanApplicationDetails._TypeOfLoanID.LoanType" name="LoanType" #LoanType="ngModel" required>
+                                                                    <mat-option *ngFor="let TypeOfLoanID of _TypeOfLoanID" [value]="TypeOfLoanID.LoanType">{{TypeOfLoanID.LoanType}}</mat-option>
                                                                 </mat-select>
                                                                 <div *ngIf="LoanType.invalid && (LoanType.dirty || LoanType.touched)" class="alert alert-danger">
                                                                     <div *ngIf="LoanType.errors.required ">
@@ -126,8 +126,8 @@
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails._RateTypeID.LoanRateType}}</p>
                                                         <div class="field_info w-100">
                                                             <mat-form-field *ngIf="_EditDetails">
-                                                                <mat-select placeholder="Rate Type" [(ngModel)]="_LoanApplicationDetails._RateTypeID.ID" name="RateType" #RateType="ngModel" required>
-                                                                    <mat-option *ngFor="let LoanrateTypeValues of _RateTypeID" [value]="LoanrateTypeValues.ID">{{LoanrateTypeValues.LoanRateType}}</mat-option>
+                                                                <mat-select placeholder="Rate Type" [(ngModel)]="_LoanApplicationDetails._RateTypeID.LoanRateType" name="RateType" #RateType="ngModel" required>
+                                                                    <mat-option *ngFor="let LoanrateTypeValues of _RateTypeID" [value]="LoanrateTypeValues.LoanRateType">{{LoanrateTypeValues.LoanRateType}}</mat-option>
                                                                 </mat-select>
                                                                 <div *ngIf="RateType.invalid && (RateType.dirty || RateType.touched)" class="alert alert-danger">
                                                                     <div *ngIf="RateType.errors.required ">
@@ -306,8 +306,8 @@
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails._PropertyTypeID.PropertyType}}</p>
                                                         <div class="field_info w-100">
                                                             <mat-form-field *ngIf="_EditDetails">
-                                                                <mat-select placeholder="Type of Property" [(ngModel)]="_LoanApplicationDetails._PropertyTypeID.ID" name="PropertyType" #PropertyType="ngModel" required>
-                                                                    <mat-option *ngFor="let PropertyTypeValues of _PropertyTypeID" [value]="PropertyTypeValues.ID">{{PropertyTypeValues.PropertyType}}</mat-option>
+                                                                <mat-select placeholder="Type of Property" [(ngModel)]="_LoanApplicationDetails._PropertyTypeID.PropertyType" name="PropertyType" #PropertyType="ngModel" required>
+                                                                    <mat-option *ngFor="let PropertyTypeValues of _PropertyTypeID" [value]="PropertyTypeValues.PropertyType">{{PropertyTypeValues.PropertyType}}</mat-option>
                                                                 </mat-select>
                                                                 <div *ngIf="PropertyType.invalid && (PropertyType.dirty || PropertyType.touched)" class="alert alert-danger">
                                                                     <div *ngIf="PropertyType.errors.required ">
@@ -358,8 +358,8 @@
                                                         <p *ngIf="!_EditDetails">{{_LoanApplicationDetails._StatusID.Status}}</p>
                                                         <div class="field_info w-100">
                                                             <mat-form-field *ngIf="_EditDetails">
-                                                                <mat-select placeholder="Current Status" [(ngModel)]="_LoanApplicationDetails._StatusID.ID" name="StatusID" (change)="updateDiv($event)" #StatusID="ngModel" required>
-                                                                    <mat-option *ngFor="let StatusTypeValues of _StatusID" [value]="StatusTypeValues.ID">{{StatusTypeValues.Status}}</mat-option>
+                                                                <mat-select placeholder="Current Status" [(ngModel)]="_LoanApplicationDetails._StatusID.Status" name="StatusID" (change)="updateDiv($event)" #StatusID="ngModel" required>
+                                                                    <mat-option *ngFor="let StatusTypeValues of _StatusID" [value]="StatusTypeValues.Status">{{StatusTypeValues.Status}}</mat-option>
                                                                 </mat-select>
                                                                 <div *ngIf="StatusID.invalid && (StatusID.dirty || StatusID.touched)" class="alert alert-danger">
                                                                     <div *ngIf="StatusID.errors.required ">

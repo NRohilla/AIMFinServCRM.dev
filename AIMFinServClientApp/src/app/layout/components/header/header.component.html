@@ -1,22 +1,22 @@
-<nav class="navbar navbar-expand-lg fixed-top">
-    <a class="navbar-brand" href="#">AIM Financial Services </a>
-    <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+<nav class="navbar navbar-expand fixed-top">
+    <a class="navbar-brand comany-name" href="#">AIM Financial Services </a>
+    <button class="navbar-toggler d-lg-none d-block" type="button" (click)="toggleSidebar()">
         <!-- <span class="navbar-toggler-icon"></span> -->
         <i class="fa fa-bars text-white" aria-hidden="true"></i>
     </button>
     <div class="collapse navbar-collapse">
-        <form class="form-inline my-2 my-lg-0">
+        <form class="form-inline my-2 my-lg-0 d-lg-block d-none">
             <input class="form-control mr-sm-2" type="text" placeholder="{{ 'Search' | translate }}" >
         </form>
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            <li class="nav-item d-lg-block d-none">
                 <a href="javascript:void(0)" class="nav-link mt-1"
                     style="padding: 0.375rem 1rem !important; border-color: #999;"
                     (click)="rltAndLtr()">
                     Toggle menu
                 </a>
             </li> &nbsp;
-            <li class="nav-item dropdown" ngbDropdown>
+            <li class="nav-item dropdown d-lg-block d-md-block d-sm-block d-none" ngbDropdown>
                 <a class="nav-link" href="javascript:void(0)" ngbDropdownToggle>
                     <i class="fa fa-envelope"></i> <b class="caret"></b><span class="sr-only">(current)</span>
                 </a>
@@ -55,7 +55,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item dropdown" ngbDropdown>
+            <li class="nav-item dropdown d-lg-block d-md-block d-sm-block d-none" ngbDropdown>
                 <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
                     <i class="fa fa-bell"></i> <b class="caret"></b><span class="sr-only">(current)</span>
                 </a>
@@ -69,13 +69,13 @@
                     <a href="javascript:void(0)" class="dropdown-item">
                         {{ 'Mail' | translate }} <span class="badge badge-info"> 45</span>
                     </a>
-                    <li class="dropdown-divider"></li>
+                    <div class="dropdown-divider"></div>
                     <a href="javascript:void(0)" class="dropdown-item">
                         {{ 'View All' | translate }}
                     </a>
                 </div>
             </li>
-            <li class="nav-item dropdown" ngbDropdown style="display:none;">
+            <li class="nav-item dropdown d-none" ngbDropdown>
                 <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
                     <i class="fa fa-language"></i> {{ 'Language' | translate }} <b class="caret"></b>
                 </a>
@@ -106,9 +106,9 @@
                     </a>
                 </div>
             </li>
-            <li class="nav-item dropdown" ngbDropdown>
+            <li class="nav-item dropdown d-block" ngbDropdown>
                 <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
-                    <i class="fa fa-user"></i> {{_UserDetails.DisplayName}} <b class="caret"></b>
+                    <i class="fa fa-user float-left pt-1 pr-1"></i> <span class="float-left d-lg-block d-md-block d-sm-block d-none">{{_UserDetails.DisplayName}}</span> <b class="caret"></b>
                 </a>
                 <div class="dropdown-menu-right" ngbDropdownMenu>
                     <a class="dropdown-item" href="javascript:void(0)">

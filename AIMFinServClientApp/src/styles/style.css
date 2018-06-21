@@ -316,6 +316,6 @@ a { outline: none; }
  }
 
 @media (max-width: 575px){
-
+    .comany-name { margin-right:0px; font-size:1.05rem; font-weight:600; }
         
  }

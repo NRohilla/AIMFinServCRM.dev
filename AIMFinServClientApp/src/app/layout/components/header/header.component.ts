@@ -77,7 +77,7 @@ export class HeaderComponent implements OnInit {
 
     UserInfoSuccess(result) {
         debugger;
-        if (JSON.parse(result._body) != null || JSON.parse(result._body) != undefined) {
+        if (JSON.parse((JSON.parse(result._body))) != null) {
             console.log(JSON.parse(result._body))
             this._UserDetails = JSON.parse((JSON.parse(result._body)));
         }

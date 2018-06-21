@@ -107,7 +107,7 @@ export class ClientSummaryComponent extends AppBaseComponent implements OnInit {
 
     GetClientDetailsSuccess(res) {
         debugger;
-        if (res._body != null && res._body != undefined && res._body.toString().trim().length > 0) {
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
             this._ApplicantSummaryDetails = this.trimObj(JSON.parse(res._body));
             if (this._ApplicantSummaryDetails.NZResidents == true) {
                 this._ApplicantSummaryDetails.DNZResidents = "Yes";

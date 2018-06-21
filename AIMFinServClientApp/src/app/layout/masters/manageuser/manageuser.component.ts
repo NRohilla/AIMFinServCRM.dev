@@ -31,7 +31,7 @@ export class ManageuserComponent implements OnInit {
 
     public _UserTypeRole: any = {}
 
-    public _RoleOfUser: {
+    public _RoleOfUser:any =  {
         Name: '',
         RoleId: '',
         Description: ''
@@ -118,6 +118,7 @@ export class ManageuserComponent implements OnInit {
     GetUserDetailsError(res) { }
 
     SelectUserType(role) {
+       
         this._EditUser = false;
         this._UserRecord = {}
         this._UserRecord.Role = role;
@@ -142,6 +143,8 @@ export class ManageuserComponent implements OnInit {
     }
 
     ValidateEmailSuccess(res) {
+        debugger;
+        this._UserRecord.RoleData = this._RoleOfUser.find(c => c.Name === this._UserTypeRole.Role);
         this.isEmailAllreadyExits = JSON.parse(res._body);
         if (!this.isEmailAllreadyExits) {
             this.IsErrorMsg = false;

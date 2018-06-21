@@ -1485,6 +1485,7 @@ namespace FinServUnitOfWork.Repository
                                 RoleId = UserRoleType.RoleId,
                                 Name = UserRoleType.Name,
                                 Description = UserRoleType.Description,
+                                RoleGuid = UserRoleType.RoleGuid
 
                             }).ToList();
                 }
@@ -1524,8 +1525,9 @@ namespace FinServUnitOfWork.Repository
                     _UserRole.UserGuid = _guid;
                     _UserRole.IsActive = true;
                     _UserRole.UsersRoleGuid = Guid.NewGuid();
-                    _UserRole.UsersRoleId = _UserRole.UsersRoleId;
-                    _UserRole.RoleGuid = Guid.NewGuid();
+                    _UserRole.UsersRoleId = UserDetails.RoleData.RoleId;
+
+                    _UserRole.RoleGuid = UserDetails.RoleData.RoleGuid;
                     db.tblUsersRoles.Add(_UserRole);
 
 

@@ -108,6 +108,7 @@ export class AddLoanApplicationComponent implements OnInit {
         console.log("theeeeee", this._LocalStorageService.get("LoanApplicationNo"))
         if (this._LocalStorageService.get("LoanApplicationNo") != undefined) {
             this._AddLoanApplicationDetails.LoanApplicationNo = this._LocalStorageService.get("LoanApplicationNo");
+            console.log("the value pof this add loan application details", this._AddLoanApplicationDetails);
             this._ClientsService.AddLoanApplicationDetails(this._AddLoanApplicationDetails).subscribe(res => this.AddLoanApplicationDetailsSuccess(res), res => this.AddLoanApplicationDetailsError(res));
         }
     }

@@ -69,7 +69,8 @@ export class ClientsEmployementComponent extends AppBaseComponent implements OnI
     GetClientEmploymentDetailsSuccess(res) {
         //debugger;
         if (res._body != null && res._body != undefined && res._body.toString().trim().length > 0) {
-            this._ClientEmploymentDetails = this.trimObj(JSON.parse(res._body));            
+            this._ClientEmploymentDetails = this.trimObj(JSON.parse(res._body));
+            console.log(this._ClientEmploymentDetails);
         }
     }
 

@@ -227,9 +227,9 @@ namespace FinServUnitOfWork.Repository
                         FetchLoanMasterDetails.PropertyCost = _objLoanMasterDetails.PropertyCost;
                         FetchLoanMasterDetails.FinanceDate = _objLoanMasterDetails.FinanceDate;
                         FetchLoanMasterDetails.SettlementDate = _objLoanMasterDetails.SettlementDate;
-                        FetchLoanMasterDetails.PropertyTypeID = _objLoanMasterDetails.PropertyTypeID;
-                        FetchLoanMasterDetails.StatusID = _objLoanMasterDetails.StatusID;
-                        FetchLoanMasterDetails.LoanTypeID = _objLoanMasterDetails.LoanTypeID;
+                        FetchLoanMasterDetails.PropertyTypeID = _objLoanMasterDetails._propertyTypeDetails.ID;
+                        FetchLoanMasterDetails.StatusID = _objLoanMasterDetails._typeOfStatusDetails.ID;
+                        FetchLoanMasterDetails.LoanTypeID = _objLoanMasterDetails._typeOfLoanDetails.ID;
                         FetchLoanMasterDetails.ModifiedOn = DateTime.Now;
 
                         db.SaveChanges();

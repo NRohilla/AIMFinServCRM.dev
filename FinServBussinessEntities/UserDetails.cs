@@ -33,8 +33,11 @@ namespace FinServBussinessEntities
         public bool IsActive { get; set; }
         public string Description { get; set; }
         public Nullable<int> LocationId { get; set; }
+        public System.Guid RoleGuid { get; set; }
+        public int UserRoleId { get; set; }
 
         public Nullable<bool> IsLoggedIn { get; set; }
-        public UserRole _UserRole { get; set; }
+        public UserRole RoleData { get; set; }
+
     }
 }

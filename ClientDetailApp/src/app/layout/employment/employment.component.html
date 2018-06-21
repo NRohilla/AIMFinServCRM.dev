@@ -6,27 +6,27 @@
                     <mat-table #table [dataSource]="dataSource">
                         <ng-container matColumnDef="Source of Income">
                             <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold">Source of Income</mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.EmployementType}} </mat-cell>
+                            <mat-cell *matCellDef="let element" title="Source of Income: "> {{element.EmployementType}} </mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="Profession">
                             <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold">Profession</mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.Profession}} </mat-cell>
+                            <mat-cell *matCellDef="let element" title="Profession: "> {{element.Profession}} </mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="Employer Name">
                             <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold">Employer Name</mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.EmployerName}} </mat-cell>
+                            <mat-cell *matCellDef="let element" title="Employer Name: "> {{element.EmployerName}} </mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="Duration">
                             <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold">Duration</mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.Duration}} </mat-cell>
+                            <mat-cell *matCellDef="let element" title="Duration: "> {{element.Duration}} </mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="Income">
                             <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold">Income</mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.Income}} </mat-cell>
+                            <mat-cell *matCellDef="let element" title="Income: "> {{element.Income}} </mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="Status">
                             <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold">Status</mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.Status}} <button type="submit" (click)="ViewDetails(element.EmploymentID)" class="btn btn-sm btn-secondary float-right"><i class="fa fa-eye"></i> View Details</button></mat-cell>
+                            <mat-cell *matCellDef="let element" title="Status: "> {{element.Status}} <button type="submit" (click)="ViewDetails(element.EmploymentID)" class="btn btn-sm btn-secondary float-right"><i class="fa fa-eye"></i> View Details</button></mat-cell>
                         </ng-container>
                         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

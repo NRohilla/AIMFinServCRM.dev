@@ -1,4 +1,4 @@
-<nav class="navbar-expand-lg fixed-top headsection" *ngIf="_ShowDetails">
+<nav class="navbar-expand fixed-top headsection" *ngIf="_ShowDetails">
     <div class="profile-section">
         <a href="/">
         <div class="profile w-100 pl-2 pr-2 pt-1 pb-1 float-left">
@@ -14,14 +14,14 @@
           </ul>
         </div>-->
       </div>
-    <div class="pull-right mt-3">
-        <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+    <div class="pull-left mt-3">
+        <button class="navbar-toggler d-lg-none d-block" type="button" (click)="toggleSidebar()">
             <!-- <span class="navbar-toggler-icon"></span> -->
             <i class="fa fa-bars text-muted" aria-hidden="true"></i>
         </button>
     </div>
     <div class="collapse navbar-collapse">
-        <ul class="p-0 m-0">
+        <ul class="p-0 m-0 d-lg-block d-none">
             <li><button type="submit" class="btn btn-sm btn-info">send email</button></li>
             <li><button type="submit" class="btn btn-sm btn-primary">change password</button></li>
             <li><button type="submit" class="btn btn-sm btn-success">upload image</button></li>
@@ -36,7 +36,7 @@
                     Toggle menu
                 </a>
             </li> &nbsp;-->
-            <li class="nav-item dropdown" ngbDropdown>
+            <li class="nav-item dropdown d-lg-block d-md-block d-sm-block d-none" ngbDropdown>
                 <a class="nav-link" href="javascript:void(0)" ngbDropdownToggle>
                     <i class="fa fa-envelope"></i> <b class="caret"></b><span class="sr-only">(current)</span>
                 </a>
@@ -75,7 +75,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item dropdown" ngbDropdown>
+            <li class="nav-item dropdown d-lg-block d-md-block d-sm-block d-none" ngbDropdown>
                 <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
                     <i class="fa fa-bell"></i> <b class="caret"></b><span class="sr-only">(current)</span>
                 </a>
@@ -89,13 +89,13 @@
                     <a href="javascript:void(0)" class="dropdown-item">
                         {{ 'Mail' | translate }} <span class="badge badge-info"> 45</span>
                     </a>
-                    <li class="dropdown-divider"></li>
+                    <div class="dropdown-divider"></div>
                     <a href="javascript:void(0)" class="dropdown-item">
                         {{ 'View All' | translate }}
                     </a>
                 </div>
             </li>
-            <li class="nav-item dropdown" ngbDropdown style="display:none;">
+            <li class="nav-item dropdown d-none" ngbDropdown>
                 <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
                     <i class="fa fa-language"></i> {{ 'Language' | translate }} <b class="caret"></b>
                 </a>
@@ -126,9 +126,9 @@
                     </a>
                 </div>
             </li>
-            <li class="nav-item dropdown" ngbDropdown>
+            <li class="nav-item dropdown d-block" ngbDropdown>
                 <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
-                    <i class="fa fa-user"></i> {{_UserDetails.DisplayName}} <b class="caret"></b>
+                    <i class="fa fa-user float-left pt-1 pr-1"></i> <span class="float-left d-lg-block d-md-block d-sm-block d-none">{{_UserDetails.DisplayName}}</span> <b class="caret"></b>
                 </a>
                 <div class="dropdown-menu-right" ngbDropdownMenu>
                     <a class="dropdown-item" href="javascript:void(0)">

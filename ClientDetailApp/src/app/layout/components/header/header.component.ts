@@ -120,17 +120,19 @@ export class HeaderComponent implements OnInit {
     }
 
     UserInfoSuccess(result) {
+        if (JSON.parse((JSON.parse(result._body))) != null) {
 
-        this._UserName = JSON.parse(JSON.parse(result._body)).FirstName + " " + JSON.parse(JSON.parse(result._body)).LastName;
-        this._UserDetails = JSON.parse((JSON.parse(result._body)));
-        console.log(this._UserDetails)
+            this._UserName = JSON.parse(JSON.parse(result._body)).FirstName + " " + JSON.parse(JSON.parse(result._body)).LastName;
+            this._UserDetails = JSON.parse((JSON.parse(result._body)));
+            console.log(this._UserDetails)
 
-        this.URL = this.GetOriginalContentForPriview(this._UserDetails.FileType) + this._UserDetails.ApplicantImage;
+            this.URL = this.GetOriginalContentForPriview(this._UserDetails.FileType) + this._UserDetails.ApplicantImage;
 
-        this._LocalStorageService.set('this._UserName', this._UserName);
-        this._LocalStorageService.set('this._UserDetails', this._UserDetails);
-        this._LocalStorageService.set('this.URL', this.URL);
-        window.location.href = environment.baseApplicationURL;
+            this._LocalStorageService.set('this._UserName', this._UserName);
+            this._LocalStorageService.set('this._UserDetails', this._UserDetails);
+            this._LocalStorageService.set('this.URL', this.URL);
+            window.location.href = environment.baseApplicationURL;
+        }
     }
 
     GetOriginalContentForPriview(FileType) {

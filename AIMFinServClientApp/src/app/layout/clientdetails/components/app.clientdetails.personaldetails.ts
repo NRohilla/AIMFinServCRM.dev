@@ -84,7 +84,8 @@ export class ClientsPersonalDetailsComponent extends AppBaseComponent implements
     }
 
     GetClientDetailsSuccess(res) {
-        if (res._body != null && res._body != undefined && res._body.toString().trim().length > 0) {
+        debugger;
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
             this._ApplicantDetails = this.trimObj(JSON.parse(res._body));
             if (this._ApplicantDetails.NZResidents == true) {
                 this._ApplicantDetails.DNZResidents = "Yes";
@@ -98,7 +99,9 @@ export class ClientsPersonalDetailsComponent extends AppBaseComponent implements
     GetClientDetailsError(res) { }
 
     GetClientCommDetailsSuccess(res) {
-        this._ApplicantCommunicationDetails = JSON.parse(res._body);
+        if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
+            this._ApplicantCommunicationDetails = JSON.parse(res._body);
+        }
     }
     GetClientCommDetailsError(res) { }
 

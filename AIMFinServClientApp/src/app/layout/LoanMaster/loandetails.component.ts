@@ -157,6 +157,7 @@ export class LoanDetails implements OnInit {
         //debugger;
         this._LoanDetailsObj = JSON.parse(res._body);
         this._LoanApplicationNumber = this._LoanDetailsObj.LoanApplicationNo;
+        console.log(this._LoanDetailsObj.LoanApplicationNo)
         this._LoanService.GetLoanMasterGrid(this._LoanApplicationNumber).subscribe(res => this.GetLoanMasterGridSuccess(res), res => this.GetLoanMasterGridError(res));
     }
     GetLoanMasterDetailsError(res) { }

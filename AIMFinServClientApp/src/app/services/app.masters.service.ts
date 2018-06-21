@@ -275,6 +275,7 @@ export class MastersService {
     }
 
     AddUser(ManageUserTypeMaster) {
+        debugger
         return this._http.post(this.baseurl + "Masters/AddUser", ManageUserTypeMaster, this.options);
     }
 

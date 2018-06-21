@@ -49,6 +49,13 @@
     padding-top: 12px;
 }
 
+.detailbox1, .detailbox2, .detailbox3 { border-radius: 5px; }
+.detailbox1 { background: linear-gradient(58deg,#f44336,#673ab7); }
+.detailbox2 { background: linear-gradient(58deg,#009688,#673ab7); }
+.detailbox3 { background: linear-gradient(58deg,#aaa315,#673ab7); }
+.bottom-value { font-size: 45px; }
+
+
 .content-section {
     margin-top: 20px;
 }
@@ -298,9 +305,33 @@ input[type="button"], input[type="submit"] {
 
 /* media query */
 
+@media (max-width: 1200px) {
+    
+    .detailbox1.p-4, .detailbox2.p-4, .detailbox3.p-4 {
+        padding: 15px !important;
+    }
+
+    .detailbox1 h3, .detailbox2 h3, .detailbox3 h3, .bottom-value {
+        font-size: 22px;
+    }
+
+}
+
+@media ( max-width: 991px ) {
+    .profile-section { width:auto; }
+    .profile { background:none; }
+    .profile-section h3 {color:#17a2b8 !important; }
+}
+
 @media ( max-width: 767px ) {
     .personal-innersection .top-btn { position:relative !important; top:0px; right:0px; text-align:center; }
     .profile-pic.mb-5 { margin-bottom:20px !important;}
     .personal-border { border-right:none;}
-    .top-btn { position:relative !important; float:right; }
+    .top-btn { position:relative !important; float:right; margin-bottom:10px; display:block; width:100%; }
+    .qualification-section .mat-header-row { display:none; }
+    .qualification-section .mat-row, .qualification-section .mat-cell { display: block; padding-top:5px; padding-bottom:5px; }
+    .qualification-section .mat-row { min-height:initial; border-top:1px solid #ffffff;}
+    .qualification-section .mat-cell:before { left: 6px; width: 45%; font-weight: 600; content: attr(title); }
+    .qualification-section .mat-cell { border-left:1px solid #ebebeb !important; border-right:1px solid #ebebeb !important; }
+    .personal-innersection .row { width:100%; }
 }

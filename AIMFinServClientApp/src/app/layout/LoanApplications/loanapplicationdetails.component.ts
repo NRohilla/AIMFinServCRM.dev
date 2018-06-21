@@ -225,8 +225,10 @@ export class LoanapplicationdetailsComponent implements OnInit {
     }
 
     UpdateLoanApplicationDetails() {
+        debugger
         this._EditDetails = false;
         this.formatvalues();
+        console.log(this._LoanApplicationDetails)
         this._ClientsService.UpdateLoanApplicationDetails(this._LoanApplicationDetails).subscribe(res => this.updateLoanApplicationSuccess(res), res => this.updateLoanApplicationError(res));
 
     }
@@ -245,9 +247,10 @@ export class LoanapplicationdetailsComponent implements OnInit {
     EditDetails() { this._EditDetails = true; }
 
     formatvalues() {
+        console.log("the value of this is", this._LoanApplicationDetails);
 
         if (this._LoanApplicationDetails.IsAnyGuarantor.toString() == "1") {
-            //true;
+            true;
         }
         else {
             this._LoanApplicationDetails.IsAnyGuarantor = false;

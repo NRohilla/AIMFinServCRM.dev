@@ -63,5 +63,7 @@ namespace FinServDataModel
         public virtual ICollection<tblAsset> tblAssets { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblLiability> tblLiabilities { get; set; }
+        public string FileType { get; set; }
+        public object tblMasterFileType { get; set; }
     }
 }

@@ -219,8 +219,10 @@ namespace FinServUnitOfWork.Repository
                         objApplicants.ApplicantImage = GetApplicantDetails.ApplicantImage;
                         objApplicants.FileTypeID = GetApplicantDetails.FileTypeID;
                         var GetFileDetails = db.tblMasterFileTypes.Where(p => p.ID == GetApplicantDetails.FileTypeID).FirstOrDefault();
-                        // tblMasterFileType _tblMasterFileType = new tblMasterFileType();
-                        objApplicants.FileType = GetFileDetails.FileType;
+                        if (GetFileDetails != null) {
+                            // tblMasterFileType _tblMasterFileType = new tblMasterFileType();
+                            objApplicants.FileType = GetFileDetails.FileType;
+                        }
                         objApplicants.FileName = GetApplicantDetails.FileName;
                         objApplicants._fileTypeMaster = new FileTypeMaster();
 
@@ -685,8 +687,9 @@ namespace FinServUnitOfWork.Repository
                         FetchLoanApplicationDetails.RateTypeID = LoanApplicationDetails.RateTypeID;
                         FetchLoanApplicationDetails.ReasonForNotApproval = LoanApplicationDetails.ReasonForNotApproval;
                         FetchLoanApplicationDetails.ShiftedDuration = LoanApplicationDetails.ShiftedDuration;
-                        FetchLoanApplicationDetails.StatusID = LoanApplicationDetails.StatusID;
+                       // FetchLoanApplicationDetails.StatusID = LoanApplicationDetails.StatusID;
                         FetchLoanApplicationDetails.TypeOfLoanID = LoanApplicationDetails.TypeOfLoanID;
+                        FetchLoanApplicationDetails.StatusID = LoanApplicationDetails._StatusID.ID;
                         FetchLoanApplicationDetails.ModifiedOn = DateTime.Now;
 
                         TotalRecordsUpdated += db.SaveChanges();
