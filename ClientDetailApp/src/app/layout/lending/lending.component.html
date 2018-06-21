@@ -34,7 +34,7 @@
 
                         <ng-container matColumnDef="Status">
                             <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold">Status</mat-header-cell>
-                            <mat-cell *matCellDef="let element" title="Status: "> {{element.Status}}  <button type="submit" (click)="ViewDetails(element.LANNumber)" class="btn btn-sm btn-secondary float-right"><i class="fa fa-eye"></i> View Details</button>  </mat-cell>
+                            <mat-cell *matCellDef="let element" title="Status: " class="mt-1 mb-1"> {{element.Status}}  <button type="submit" (click)="ViewDetails(element.LANNumber)" class="btn btn-sm btn-secondary float-right"><i class="fa fa-eye"></i> View Details</button>  </mat-cell>
                         </ng-container>
                    
                     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -59,6 +59,7 @@
                             <input type="button" value="&#xf00d; Cancel" (click)="CancelEditingDetails()" *ngIf="_EditDetails" class="btn btn-sm btn-secondary" />
                         </span>
                     </h4>
+                    <div class="clearfix"></div>
                     <div class="">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left mb-2">

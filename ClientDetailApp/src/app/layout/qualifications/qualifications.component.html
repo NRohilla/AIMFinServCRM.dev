@@ -22,7 +22,7 @@
 
                         <ng-container matColumnDef="PassingYear">
                             <mat-header-cell *matHeaderCellDef class="text-white text-uppercase font-weight-bold"> Passing Year </mat-header-cell>
-                            <mat-cell *matCellDef="let element" title="Passing Year: "> {{element.PassingYear}} <button type="submit" (click)="ViewDetails(element.QualificationID)" class="btn btn-sm btn-secondary float-right"><i class="fa fa-eye"></i> View Details</button> </mat-cell>
+                            <mat-cell *matCellDef="let element" title="Passing Year: " class="mt-1 mb-1"> {{element.PassingYear}} <button type="submit" (click)="ViewDetails(element.QualificationID)" class="btn btn-sm btn-secondary float-right"><i class="fa fa-eye"></i> View Details</button> </mat-cell>
                         </ng-container>
                         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
@@ -47,9 +47,10 @@
                             <input type="button" value="&#xf00d; Cancel" (click)="CancelEditingDetails()" *ngIf="_EditDetails" class="btn btn-sm btn-secondary" />
                         </span>
                     </h4>
+                    <div class="clearfix"></div>
                     <div class="">
-                        <div class="row mb-2">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-2 float-left">
                                 <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                         <span><i class="fa fa-user text-info"></i> University Name</span>
@@ -67,7 +68,7 @@
                                     </div>
                                 </mat-form-field>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-2 float-left">
                                 <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                         <span><i class="fa fa-mortar-board text-info"></i> Course Name</span>
@@ -87,7 +88,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-2 float-left">
                                 <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                         <span><i class="fa fa-book text-info"></i>Course Type</span>
@@ -109,7 +110,7 @@
                                     </mat-form-field>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-2 float-left">
                                 <div class="border bg-light pt-3 pb-3 clearfix" *ngIf="!_EditDetails">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left">
                                         <span><i class="fa fa-calendar text-info"></i> Passing Year</span>

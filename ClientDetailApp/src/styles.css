@@ -131,6 +131,8 @@
         color: #379ec5;
     }
 
+.communication-box address { max-height:105px; overflow:auto; }
+
 .border-bottom {
     border-bottom: 1px solid #cccccc;
 }
@@ -301,6 +303,7 @@ input[type="button"], input[type="submit"] {
 .personal-details { max-height:50vh; overflow-y:auto;}
 
 .personal-border { border-right: 2px solid #ccc; }
+.qualification-section .mat-row { min-height:initial;}
 
 
 /* media query */
@@ -321,6 +324,7 @@ input[type="button"], input[type="submit"] {
     .profile-section { width:auto; }
     .profile { background:none; }
     .profile-section h3 {color:#17a2b8 !important; }
+    .client-dialog { width:auto;}
 }
 
 @media ( max-width: 767px ) {
