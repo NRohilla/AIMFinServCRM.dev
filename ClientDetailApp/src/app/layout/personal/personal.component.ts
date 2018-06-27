@@ -97,11 +97,11 @@ export class PersonalComponent implements OnInit {
         debugger;
         if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
             this.PersonalDetails = JSON.parse(res._body);
-
+            console.log(this.PersonalDetails)
             this.URL = this.GetOriginalContentForPriview(this.PersonalDetails.FileType) + this.PersonalDetails.ApplicantImage;
            // console.log(this.URL)
            // this._LocalStorageService.set('this.URL', this.URL);
-            this._PersonInfo = this.PersonalDetails.FirstName + " " + this.PersonalDetails.MiddleName + " " + this.PersonalDetails.LastName
+            this._PersonInfo = this.PersonalDetails.Title + this.PersonalDetails.FirstName + " " + this.PersonalDetails.MiddleName + " " + this.PersonalDetails.LastName
             this._ClientsService.GetAddresses(this.ApplicantID).subscribe(res => this.GetAddSuccess(res), res => this.GetAddError(res));
             //this._HeaderComponent.UserInfo();
         }

@@ -48,6 +48,7 @@ export class CommunicationComponent implements OnInit {
         debugger;
         if (JSON.parse(res._body) != null || JSON.parse(res._body) != undefined) {
             this.CommunicationDetails = JSON.parse(res._body);
+            console.log(this.CommunicationDetails);
         }
     }
     GetCommunicationDetailsByAppIDError(res) {

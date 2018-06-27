@@ -7,7 +7,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12 pt-2 pb-2 float-left" *ngFor="let _Address of CommunicationDetails">
                     <div class="communication-box">
                         <div class="border-bottom mb-3">
-                            <h5 class="text-secondary text-uppercase"><i class="fa fa-address-card"></i> {{_Address.Type}}</h5>
+                            <h5 class="text-secondary text-uppercase"><i class="fa fa-address-card"></i> {{_Address._AddressTypeDetail.Type}}</h5>
                         </div>
                         <h6 class="font-weight-bold">{{_Address.FirstName}} {{_Address.MiddleName}} {{_Address.LastName}}</h6>
                         <address>

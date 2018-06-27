@@ -77,11 +77,14 @@ export class HeaderComponent implements OnInit {
     ngOnInit() {
         debugger;
         this._UserName = this.activatedRoute.snapshot.queryParams["LoggedInEmailId"];
-        console.log(this._UserName)
         if (this._UserName != undefined) {
+            debugger;
             this._AuthenticateService.AuthenticateLogin(this._UserName, "")
                 .subscribe(result => this.RequestSuccess(result), result => this.RequestError(result));
-            this.URL = this._LocalStorageService.get('this.URL');
+            
+                this.URL = this._LocalStorageService.get('this.URL');
+            
+            console.log(this.URL)
         }
         else {
             //check if logged in or not
@@ -100,6 +103,7 @@ export class HeaderComponent implements OnInit {
     }
 
     RequestSuccess(result) {
+        debugger
         if (JSON.parse(result._body) != null || JSON.parse(result._body) != undefined) {
             var resultReturned = JSON.parse(result._body);
             this._LocalStorageService.set('LoggedInEmailId', this._UserName);
@@ -114,14 +118,16 @@ export class HeaderComponent implements OnInit {
 
 
     UserInfo() {
+        debugger;
         if (this._LocalStorageService.get('LoggedInEmailId') != undefined && this._LocalStorageService.get('LoggedInEmailId') != null) {
             this.URL = this._UserDetails.ApplicantImage;
-            this._UserOperationService.GetLoggedInUserInfo(<string>this._LocalStorageService.get('LoggedInEmailId'))
-                .subscribe(result => this.UserInfoSuccess(result), result => this.UserInfoError(result));
+                this._UserOperationService.GetLoggedInUserInfo(<string>this._LocalStorageService.get('LoggedInEmailId'))
+                    .subscribe(result => this.UserInfoSuccess(result), result => this.UserInfoError(result));
         }
     }
 
     UserInfoSuccess(result) {
+        debugger
         if (JSON.parse((JSON.parse(result._body))) != null || JSON.parse((JSON.parse(result._body))) != undefined) {
 
             this._UserName = JSON.parse(JSON.parse(result._body)).FirstName + " " + JSON.parse(JSON.parse(result._body)).LastName;

@@ -310,7 +310,7 @@ namespace FinServUnitOfWork.Repository
                 str += @"</span></p>
                                                                                     <p style='color:#819196; font-size: 14px' align='center'><strong>Password:</strong> <span style='color:#626f78; font-size: 14px;'>";
                 str += objToReturn.Password;
-    str +=@" </span></p>
+    str += @" </span></p>
                                                                                 </td>
                                                                                 <td width='10%;'></td>
                                                                             </tr>
@@ -321,7 +321,7 @@ namespace FinServUnitOfWork.Repository
                                                                 <tr><td height='10'></td></tr>
                                                                 <tr>
                                                                     <td bgcolor='#ebebeb' align='center' valign='middle' height='120'>
-                                                                        <a href='#EmailUrl#' click='LoginHereClick()' style='width:170px; padding:15px; text-align:center; border-radius:20px; display:block; background:#269226; text-decoration:none; color:#FFF;'> Login Here</a>
+                                                                        <a href='http://www.loaner.co.nz/' click='LoginHereClick()' style='width:170px; padding:15px; text-align:center; border-radius:20px; display:block; background:#269226; text-decoration:none; color:#FFF;'> Login Here</a>
                                                                     </td>
                                                                 </tr>
                                                             </table>

@@ -178,6 +178,7 @@ export class AddGuarantorDialog {
     }
  
     onNoClick(): void {
+        console.log("jiii")
         this.dialogRef.close();
     }
 }

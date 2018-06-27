@@ -34,10 +34,13 @@ export class CommunicationDialog {
         Status: '',
         Country: '',
         ZipCode: '',
-        AddressType: '',
+        //AddressType: '',
         ApplicantID: '',
-        ID: 1,
+        //ID: 1,
         Type: '',
+            _AddressTypeDetail: {
+                ID: 1
+            }
     }
 
     constructor(
@@ -59,10 +62,13 @@ export class CommunicationDialog {
                 Status: '',
                 Country: '',
                 ZipCode: '',
-                AddressType: '',
+                //AddressType: '',
                 ApplicantID: '',
-                ID: 1,
+                //ID: 1,
                 Type: '',
+            _AddressTypeDetail: {
+                ID: 1
+            }
             }
         this.GetAddressType();
         if (this._ComId !== undefined) {
@@ -76,6 +82,7 @@ export class CommunicationDialog {
     }
 
     AddNewAddress() {
+        debugger;
         this.CommunicationDialogDetails.ApplicantID = this._LocalStorageService.get("LoggedInApplicantId");
         this._ClientsService.AddNewAddressByAppID(this.CommunicationDialogDetails).subscribe(res => this.AddNewAddressByAppIDSuccess(res), res => this.AddNewAddressByAppIDError(res));
     }

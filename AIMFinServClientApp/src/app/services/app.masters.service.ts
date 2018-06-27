@@ -283,4 +283,8 @@ export class MastersService {
         return this._http.get(this.baseurl + "Masters/ValidateEmail?email=" + email, this.options);
     }
 
+    GetAddressTypes() {
+        return this._http.get(this.baseurl + "Masters/GetAddressTypes", this.options);
+    }
+
 }

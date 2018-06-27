@@ -9,14 +9,16 @@ import 'rxjs/Rx';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { ClientsService } from '../../../services/app.clients.service';
 import { AppBaseComponent } from '../../../shared/app.basecomponent';
+import {MastersService} from '../../../services/app.masters.service';
 
 @Component({
     selector: `client-communication-details`,
     templateUrl: './app.clientdetails.communicationdetails.html',
     animations: [routerTransition()],
-    providers: [ClientsService]
+    providers: [ClientsService, MastersService]
 })
 export class ClientscommunicationComponent extends AppBaseComponent implements OnInit {
+    public _AddressType = []
     public _EditCommunicationDetails: boolean = false;
     public _Operationtitle: string = "Add";
     public _ClientCommDetailsObj = {
@@ -28,11 +30,14 @@ export class ClientscommunicationComponent extends AppBaseComponent implements O
         ApplicantID: "",
         Country: "",
         ZipCode: "",
-        CommunicationID: ""
+        CommunicationID: "",
+        _AddressTypeDetail:{
+            ID:''
+}
     };
     public _ClientCommunicationDetails = [];
 
-    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService) {
+    constructor(public router: Router, private _LocalStorageService: LocalStorageService, private _ClientsService: ClientsService, private _MastersServices: MastersService) {
         super();
     }
 
@@ -46,14 +51,27 @@ export class ClientscommunicationComponent extends AppBaseComponent implements O
             ApplicantID: "",
             Country: "",
             ZipCode: "",
-            CommunicationID: ""
+            CommunicationID: "",
+            _AddressTypeDetail:{
+            ID:''
+}
         };
         if (this._LocalStorageService.get("ApplicantID") != undefined && this._LocalStorageService.get("ApplicantID") != null) {
             this._ClientsService.GetClientCommunicationDetails(<string>this._LocalStorageService.get("ApplicantID"))
                 .subscribe(res => this.GetClientCommDetailsSuccess(res), res => this.GetClientCommDetailsError(res));
+            this._MastersServices.GetAddressTypes()
+                .subscribe(res => this.GetAddressTypeSuccess(res), res => this.GetAddressTypeError(res));
 
         }
     }
+
+    GetAddressTypeSuccess(res) {
+        if (res._body != null || res._body != undefined) {
+            this._AddressType = this.trimObj(JSON.parse(res._body));
+        }
+
+    }
+    GetAddressTypeError(res) {}
 
     GetClientCommDetailsSuccess(res) {
         //debugger;
@@ -76,13 +94,14 @@ export class ClientscommunicationComponent extends AppBaseComponent implements O
         this._Operationtitle = "Update";
         if (this._ClientCommunicationDetails != undefined) {
             var FetchedValues = this._ClientCommunicationDetails[event.index];
+            console.log(FetchedValues)
             if (FetchedValues != undefined) {
                 this._ClientCommDetailsObj.AddressLine1 = FetchedValues.AddressLine1;
                 this._ClientCommDetailsObj.AddressLine2 = FetchedValues.AddressLine2;
                 this._ClientCommDetailsObj.AddressLine3 = FetchedValues.AddressLine3;
                 this._ClientCommDetailsObj.Country = FetchedValues.Country;
                 this._ClientCommDetailsObj.ZipCode = FetchedValues.ZipCode;
-                this._ClientCommDetailsObj.AddressType = FetchedValues.AddressType.toString();
+                this._ClientCommDetailsObj._AddressTypeDetail = FetchedValues._AddressTypeDetail;
                 this._ClientCommDetailsObj.AutoID = FetchedValues.AutoID;
                 this._ClientCommDetailsObj.CommunicationID = FetchedValues.CommunicationID;
             }
@@ -135,7 +154,10 @@ export class ClientscommunicationComponent extends AppBaseComponent implements O
             ApplicantID: "",
             Country: "",
             ZipCode: "",
-            CommunicationID: ""
+            CommunicationID: "",
+            _AddressTypeDetail:{
+            ID:''
+}
         };
     }
 }

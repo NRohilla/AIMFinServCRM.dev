@@ -540,11 +540,17 @@ namespace FinServUnitOfWork.Repository
                                 Status = itemApplicantCommDetails.Status,
                                 Country = itemApplicantCommDetails.Country,
                                 ZipCode = itemApplicantCommDetails.ZipCode,
-                                AddressType = itemApplicantCommDetails.AddressType,
-                                _AddressTypeDetail = new AddressTypeMaster()
+                                //AddressType = itemApplicantCommDetails.AddressType,
+                                //_AddressTypeDetail = new AddressTypeMaster()
+                                //{
+                                //    Type = addresstype != null ? itemApplicantCommDetails.tblMasterAddressType.Type : ""
+                                //}
+                                _AddressTypeDetail = new AddressTypeMaster
                                 {
-                                    Type = addresstype != null ? itemApplicantCommDetails.tblMasterAddressType.Type : ""
-                                }
+                                    ID = itemApplicantCommDetails.tblMasterAddressType.ID,
+                                    Type = itemApplicantCommDetails.tblMasterAddressType.Type.Trim(),
+                                  
+                                },
                             });
                         }
                     }
@@ -571,9 +577,10 @@ namespace FinServUnitOfWork.Repository
                         _objAppCommDetails.AddressLine1 = _objApplicantCommDetails.AddressLine1;
                         _objAppCommDetails.AddressLine2 = _objApplicantCommDetails.AddressLine2;
                         _objAppCommDetails.AddressLine3 = _objApplicantCommDetails.AddressLine3;
-                        _objAppCommDetails.AddressType = _objApplicantCommDetails.AddressType;
+                       // _objAppCommDetails.AddressType = _objApplicantCommDetails.AddressType;
                         _objAppCommDetails.Country = _objApplicantCommDetails.Country;
                         _objAppCommDetails.ZipCode = _objApplicantCommDetails.ZipCode;
+                        _objAppCommDetails.AddressType = _objApplicantCommDetails._AddressTypeDetail.ID;
                         _objAppCommDetails.CreatedOn = DateTime.Now;
                         db.tblApplicantCommunicationDetails.Add(_objAppCommDetails);
                         db.SaveChanges();
@@ -603,7 +610,9 @@ namespace FinServUnitOfWork.Repository
                         FetchDetailsOfEmployment.Country = _objApplicantCommDetails.Country;
                         FetchDetailsOfEmployment.ZipCode = _objApplicantCommDetails.ZipCode;
                         FetchDetailsOfEmployment.ModifiedOn = DateTime.Now;
-                        FetchDetailsOfEmployment.AddressType = Convert.ToInt32(_objApplicantCommDetails.AddressType);
+                        FetchDetailsOfEmployment.AddressType = _objApplicantCommDetails._AddressTypeDetail.ID;
+
+                        // FetchDetailsOfEmployment.AddressType = Convert.ToInt32(_objApplicantCommDetails.AddressType);
                         TotalRecordsUpdated += db.SaveChanges();
                         return true;
                     }
@@ -1625,7 +1634,13 @@ namespace FinServUnitOfWork.Repository
                                                 _MiddleName = ta.MiddleName,
                                                 _LastName = ta.LastName,
                                                 _ApplicantID = ta.ApplicantID,
-                                                _AddressType = tlma.Type,
+                                                //_AddressType = tlma.Type,
+                                                _AddressTypeDetail = new AddressTypeMaster
+                                                {
+                                                    ID = tlma.ID,
+                                                    Type = tlma.Type,
+
+                                                },
                                                 _Type = tlc.AddressType,
                                                 _AddressLine1 = tlc.AddressLine1,
                                                 _AddressLine2 = tlc.AddressLine2,
@@ -1640,8 +1655,8 @@ namespace FinServUnitOfWork.Repository
                                                 MiddleName = x._MiddleName,
                                                 LastName = x._LastName,
                                                 ApplicantID = x._ApplicantID,
-                                                AddressType = x._Type,
-                                                Type = x._AddressType,
+                                               // AddressType = x._Type,
+                                                _AddressTypeDetail = x._AddressTypeDetail,
                                                 AddressLine1 = x._AddressLine1,
                                                 AddressLine2 = x._AddressLine2,
                                                 AddressLine3 = x._AddressLine3,
@@ -1712,7 +1727,8 @@ namespace FinServUnitOfWork.Repository
                             _objDetails.Country = _objApplicantComDetails.Country;
                             _objDetails.Duration = _objApplicantComDetails.Duration;
                             _objDetails.ZipCode = _objApplicantComDetails.ZipCode;
-                            _objDetails.AddressType = _objApplicantComDetails.ID;
+                            // _objDetails.AddressType = _objApplicantComDetails.ID;
+                            _objDetails.AddressType = _objApplicantComDetails._AddressTypeDetail.ID;
                             _objDetails.CreatedOn = DateTime.Now;
 
                             db.tblApplicantCommunicationDetails.Add(_objDetails);
@@ -1729,7 +1745,8 @@ namespace FinServUnitOfWork.Repository
                                 _objDetails.AddressLine1 = _objApplicantComDetails.AddressLine1;
                                 _objDetails.AddressLine2 = _objApplicantComDetails.AddressLine2;
                                 _objDetails.AddressLine3 = _objApplicantComDetails.AddressLine3;
-                                _objDetails.tblMasterAddressType.Type = _objApplicantComDetails.Type;
+                               // _objDetails.tblMasterAddressType.Type = _objApplicantComDetails.Type;
+                                _objDetails.AddressType = _objApplicantComDetails._AddressTypeDetail.ID;
                                 _objDetails.Country = _objApplicantComDetails.Country;
                                 _objDetails.Duration = _objApplicantComDetails.Duration;
                                 _objDetails.ZipCode = _objApplicantComDetails.ZipCode;
@@ -1763,7 +1780,12 @@ namespace FinServUnitOfWork.Repository
                                                       CommunicationID = tlc.CommunicationID,
                                                       ApplicantID = ta.ApplicantID,
                                                       Type = tlma.Type,
-                                                      AddressType = tlc.AddressType,
+                                                      _AddressTypeDetail = new AddressTypeMaster
+                                                      {
+                                                          ID = tlma.ID,
+                                                          Type = tlma.Type,
+
+                                                      },
                                                       AddressLine1 = tlc.AddressLine1,
                                                       AddressLine2 = tlc.AddressLine2,
                                                       AddressLine3 = tlc.AddressLine3,

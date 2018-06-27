@@ -73,7 +73,7 @@ export class ManageuserComponent implements OnInit {
         if (res._body != null || res._body != undefined || res._body.toString().trim().length > 0) {
             this._ManageUserGridData = JSON.parse(res._body);
             this._UserData = this._ManageUserGridData.find(c => c.EmailID === this.emailId);
-            if (this._UserData.UserGuid !== null) {
+            if (this._UserData.UserGuid != null) {
                 this._GoogleService.GenerateUserTemplate(this._UserData.UserGuid).subscribe(res => this.GenerateUserTemplateSuccess(res), res => this.GenerateUserTemplateError(res));
             }
         }

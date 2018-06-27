@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left" *ngIf="!_EditcommunicationDetails">
                     <mat-form-field>
-                        <mat-select placeholder="Address Type" [(ngModel)]="CommunicationDialogDetails.ID" name="AddressType" #AddressType="ngModel" required>
+                        <mat-select placeholder="Address Type" [(ngModel)]="CommunicationDialogDetails._AddressTypeDetail.ID" name="AddressType" #AddressType="ngModel" required>
                             <mat-option *ngFor="let AddressTyp of _AddressType" [value]="AddressTyp.ID">{{AddressTyp.Type}}</mat-option>
                         </mat-select>
                         <div *ngIf="AddressType.invalid && (AddressType.dirty || AddressType.touched)" class="alert alert-danger">
@@ -18,8 +18,8 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-12 float-left" *ngIf="_EditcommunicationDetails">
                     <mat-form-field>
-                        <mat-select placeholder="Address Type" [(ngModel)]="CommunicationDialogDetails.Type" name="AddressType" #AddressType="ngModel" required>
-                            <mat-option *ngFor="let AddressTyp of _AddressType" [value]="AddressTyp.Type">{{AddressTyp.Type}}</mat-option>
+                        <mat-select placeholder="Address Type" [(ngModel)]="CommunicationDialogDetails._AddressTypeDetail.ID" name="AddressType" #AddressType="ngModel" required>
+                            <mat-option *ngFor="let AddressTyp of _AddressType" [value]="AddressTyp.ID">{{AddressTyp.Type}}</mat-option>
                         </mat-select>
                         <div *ngIf="AddressType.invalid && (AddressType.dirty || AddressType.touched)" class="alert alert-danger">
                             <div *ngIf="AddressType.errors.required ">

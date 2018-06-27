@@ -244,7 +244,10 @@ export class LoanapplicationdetailsComponent implements OnInit {
 
     updateLoanApplicationError(res) { }
 
-    CancelEditingDetails() { this._EditDetails = false; }
+    CancelEditingDetails() {
+        this._EditDetails = false;
+        this._ClientsService.GetLoanApplicationDetails(this._LoanAppNo).subscribe(res => this.GetLoanApplicationDetailsSuccess(res), res => this.GetLoanApplicationDetailsError(res));
+    }
 
     EditDetails() { this._EditDetails = true; }
 

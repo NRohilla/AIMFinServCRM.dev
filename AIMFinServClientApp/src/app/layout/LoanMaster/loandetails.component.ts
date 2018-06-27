@@ -193,54 +193,55 @@ export class LoanDetails implements OnInit {
 
     UpdateLoanMasterDetailsSuccess(res) {
         debugger;
-        this._LoanService.GetAllLoanMasterDetails().subscribe(res => this.GetAllLoanDetailSuccess(res), res => this.GetAllLoanDetailError(res));
-        this._EditDetails = true;
-        this._LoanDetailsObj = {
-            LANNumber: '',
-            LoanApplicationNo: '',
-            ROIOffered: '',
-            LoanTermOffered: '',
-            RateTypeOffered: '',
-            FrequencyOffered: '',
-            LoanValueRatio: '',
-            LoanAmountOffered: '',
-            LoanTypeID: '',
-            ClientID: '',
-            StatusID: '',
-            EMIStartDay: '',
-            EMIStartMonth: '',
-            LoanProcessingFee: '',
-            AnyLegalCharges: '',
-            NoOfEMI: '',
-            Loanprovider: '',
-            PropertyCost: '',
-            PropertyTypeID: '',
-            FinanceDate: '',
-            SettlementDate: '',
-            ApplicationFormNumber: '',
-            LoanType: '',
-            PropertyType: '',
-            Status: '',
-            FirstName: '',
-            MiddleName: '',
-            LastName: '',
-            MobileNo: '',
-            EmailID: '',
-            ApplicantType: '',
-            _loanApplicationDetails: {
-                ApplicationFormNumber: '',
-                LoanApplicationNo: ''
-            },
-            _propertyTypeDetails: {
-                PropertyType: '',
-            },
-            _typeOfLoanDetails: {
-                LoanType: '',
-            },
-            _typeOfStatusDetails: {
-                Status: '',
-            }
-        }
+        //this._LoanService.GetAllLoanMasterDetails().subscribe(res => this.GetAllLoanDetailSuccess(res), res => this.GetAllLoanDetailError(res));
+        this._EditDetails = !this._EditDetails;
+        this._LoanService.GetLoanMasterDetails(this._LANNumber).subscribe(res => this.GetLoanMasterDetailsSuccess(res), res => this.GetLoanMasterDetailsError(res));
+        //this._LoanDetailsObj = {
+        //    LANNumber: '',
+        //    LoanApplicationNo: '',
+        //    ROIOffered: '',
+        //    LoanTermOffered: '',
+        //    RateTypeOffered: '',
+        //    FrequencyOffered: '',
+        //    LoanValueRatio: '',
+        //    LoanAmountOffered: '',
+        //    LoanTypeID: '',
+        //    ClientID: '',
+        //    StatusID: '',
+        //    EMIStartDay: '',
+        //    EMIStartMonth: '',
+        //    LoanProcessingFee: '',
+        //    AnyLegalCharges: '',
+        //    NoOfEMI: '',
+        //    Loanprovider: '',
+        //    PropertyCost: '',
+        //    PropertyTypeID: '',
+        //    FinanceDate: '',
+        //    SettlementDate: '',
+        //    ApplicationFormNumber: '',
+        //    LoanType: '',
+        //    PropertyType: '',
+        //    Status: '',
+        //    FirstName: '',
+        //    MiddleName: '',
+        //    LastName: '',
+        //    MobileNo: '',
+        //    EmailID: '',
+        //    ApplicantType: '',
+        //    _loanApplicationDetails: {
+        //        ApplicationFormNumber: '',
+        //        LoanApplicationNo: ''
+        //    },
+        //    _propertyTypeDetails: {
+        //        PropertyType: '',
+        //    },
+        //    _typeOfLoanDetails: {
+        //        LoanType: '',
+        //    },
+        //    _typeOfStatusDetails: {
+        //        Status: '',
+        //    }
+        //}
     }
     GetAllLoanDetailSuccess(res) {
         debugger;

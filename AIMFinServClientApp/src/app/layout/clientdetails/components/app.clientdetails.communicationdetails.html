@@ -54,14 +54,16 @@
                                 <div class="col-lg-3 col-md-3 col-sm-6 col-12 float-left">
                                     <div class="field_set">
                                         <div class="field_info w-100">
-                                            <mat-form-field>
-                                                <mat-select [(value)]="_ClientCommDetailsObj.AddressType" placeholder="Address Type">
-                                                    <mat-option>None</mat-option>
-                                                    <mat-option value="1">Work</mat-option>
-                                                    <mat-option value="2">Residence- Temporary</mat-option>
-                                                    <mat-option value="3">Residence- Permanent</mat-option>
-                                                </mat-select>
-                                            </mat-form-field>
+                                                <mat-form-field class="example-full-width">
+                                                    <mat-select placeholder="AddressType"  [(ngModel)]="_ClientCommDetailsObj._AddressTypeDetail.ID" name="AddressType" #AddressType="ngModel" required>
+                                                        <mat-option *ngFor="let AddressType of _AddressType" [value]="AddressType.ID">{{AddressType.Type}}</mat-option>
+                                                    </mat-select>
+                                                    <div *ngIf="AddressType.invalid && (AddressType.dirty || AddressType.touched)" class="alert alert-danger">
+                                                        <div *ngIf="AddressType.errors.required ">
+                                                            Please select AddressType.
+                                                        </div>
+                                                    </div>
+                                                </mat-form-field>
                                         </div>
                                     </div>
                                 </div>

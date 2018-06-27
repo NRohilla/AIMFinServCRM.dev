@@ -59,6 +59,7 @@ export class ManageUserDialog {
 
     GetUpdatedPasswordSuccess(res) {
         this.data.dataItem.Password = JSON.parse(res._body)[0].Password
+        this.onNoClick();
     }
 
     GetUpdatedPasswordError(res) { }
