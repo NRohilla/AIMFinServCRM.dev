@@ -2,13 +2,13 @@
     <div>
         <h3 class="text-uppercase sub-head">Manage Guarantor</h3>
         <div class="section_box pl-0 pb-0 pr-0 mb-4 mt-3 clearfix">
-            <form name="form" #AddGuarantorform="ngForm" novalidate>
+            <form name="form" #AddGuarantorform="ngForm" id="abc" novalidate>
                 <div class="p-4">
                     <div class="row m-0">
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Title</label>
-                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.Title}}</p>
+                                <span *ngIf="_ViewDetails">{{_AddGuarantorDetails.Title}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
                                         <input matInput placeholder="Title" name="Title" [(ngModel)]="_AddGuarantorDetails.Title" class="w-100" #Title="ngModel" required >
@@ -24,11 +24,11 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">First Name</label>
-                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.FirstName}}</p>
+                                <span *ngIf="_ViewDetails">{{_AddGuarantorDetails.FirstName}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
                                         <input matInput placeholder="First Name" name="FirstName" [(ngModel)]="_AddGuarantorDetails.FirstName" class="w-100" #FirstName="ngModel" required>
-                                        <div *ngIf="FirstName.invalid && (FirstName.dirty || FirstName.touched)" class="alert alert-danger" >
+                                        <div *ngIf="FirstName.invalid && (FirstName.dirty || FirstName.touched)" class="alert alert-danger">
                                             <div *ngIf="FirstName.errors.required ">
                                                 Please enter First Name.
                                             </div>
@@ -40,7 +40,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Middle Name</label>
-                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.MiddleName}}</p>
+                                <span *ngIf="_ViewDetails">{{_AddGuarantorDetails.MiddleName}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
                                         <input matInput placeholder="Middle Name" name="MiddleName" [(ngModel)]="_AddGuarantorDetails.MiddleName" class="w-100">
@@ -53,7 +53,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Last Name</label>
-                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.LastName}}</p>
+                                <span *ngIf="_ViewDetails">{{_AddGuarantorDetails.LastName}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
                                         <input matInput placeholder="Last Name" name="LastName" [(ngModel)]="_AddGuarantorDetails.LastName" class="w-100" #LastName="ngModel" required>
@@ -69,7 +69,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label for="name" class="field_label font-weight-bold" *ngIf="_ViewDetails">Gender</label>
-                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.Gender}}</p>
+                                <span *ngIf="_ViewDetails">{{_AddGuarantorDetails.Gender}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field *ngIf="_EditViewDetails || _AddGuarantor" class="w-100">
                                         <mat-select [(ngModel)]="_AddGuarantorDetails.Gender" name="Gender" placeholder="Gender" #Gender="ngModel" required>
@@ -89,7 +89,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Date Of Birth</label>
-                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.DateOfBirth}}</p>
+                                <span *ngIf="_ViewDetails">{{_AddGuarantorDetails.DateOfBirth}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
                                         <input matInput placeholder="Date Of Birth" [(ngModel)]="_AddGuarantorDetails.DateOfBirth" name="DateOfBirth" class="w-100" #DateOfBirth="ngModel" required>
@@ -107,7 +107,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Marital Status</label>
-                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.MaritalStatus}}</p>
+                                <span *ngIf="_ViewDetails">{{_AddGuarantorDetails.MaritalStatus}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
                                         <input matInput placeholder="Marital Status" [(ngModel)]="_AddGuarantorDetails.MaritalStatus" name="MaritalStatus" class="w-100" #MaritalStatus="ngModel" required>
@@ -123,7 +123,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label for="name" class="field_label font-weight-bold" *ngIf="_ViewDetails">NZResidents</label>
-                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.DNZResidents}}</p>
+                                <span *ngIf="_ViewDetails">{{_AddGuarantorDetails.DNZResidents}}</span>
                                 <div class="field_info w-100" *ngIf="_EditViewDetails || _AddGuarantor">
                                     <label class="custom-radio-label">NZ Residents</label>
                                     <mat-radio-group class="w-100" [(ngModel)]="_AddGuarantorDetails.NZResidents" name="NZResidents" #NZResidents="ngModel" required>
@@ -141,7 +141,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Country Of Birth</label>
-                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.CountryOfBirth}}</p>
+                                <span *ngIf="_ViewDetails">{{_AddGuarantorDetails.CountryOfBirth}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
                                         <input matInput placeholder="Country Of Birth" [(ngModel)]="_AddGuarantorDetails.CountryOfBirth" name="CountryOfBirth" class="w-100" #CountryOfBirth="ngModel" required>
@@ -159,7 +159,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Email ID</label>
-                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.EmailID}}</p>
+                                <span *ngIf="_ViewDetails">{{_AddGuarantorDetails.EmailID}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
                                         <input matInput placeholder="Email ID" [(ngModel)]="_AddGuarantorDetails.EmailID" name="EmailID" class="w-100" #EmailID="ngModel" required>
@@ -175,7 +175,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Mobile No</label>
-                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.MobileNo}}</p>
+                                <span *ngIf="_ViewDetails">{{_AddGuarantorDetails.MobileNo}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
                                         <input matInput placeholder="Mobile No." [(ngModel)]="_AddGuarantorDetails.MobileNo" name="MobileNo" class="w-100" #MobileNo="ngModel" required>
@@ -191,7 +191,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Home Phone No</label>
-                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.HomePhoneNo}}</p>
+                                <span *ngIf="_ViewDetails">{{_AddGuarantorDetails.HomePhoneNo}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
                                         <input matInput placeholder="Home Phone No." [(ngModel)]="_AddGuarantorDetails.HomePhoneNo" name="HomePhoneNo" class="w-100" #HomePhoneNo="ngModel" required>
@@ -209,7 +209,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Work Phone No</label>
-                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.WorkPhoneNo}}</p>
+                                <span *ngIf="_ViewDetails">{{_AddGuarantorDetails.WorkPhoneNo}}</span>
                                 <div class="field_info">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
                                         <input matInput placeholder="Work Phone No." [(ngModel)]="_AddGuarantorDetails.WorkPhoneNo" name="WorkPhoneNo" class="w-100" #WorkPhoneNo="ngModel" required>
@@ -225,7 +225,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Duration</label>
-                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.Duration}}</p>
+                                <span *ngIf="_ViewDetails">{{_AddGuarantorDetails.Duration}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
                                         <input matInput placeholder="Duration" [(ngModel)]="_AddGuarantorDetails.Duration" name="Duration" class="w-100" #Duration="ngModel" required>
@@ -241,7 +241,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Address Line 1</label>
-                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.AddressLine1}}</p>
+                                <span *ngIf="_ViewDetails">{{_AddGuarantorDetails.AddressLine1}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
                                         <input matInput placeholder="Address Line 1" [(ngModel)]="_AddGuarantorDetails.AddressLine1" name="AddressLine1" class="w-100" #AddressLine1="ngModel" required>
@@ -259,7 +259,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Address Line 2</label>
-                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.AddressLine2}}</p>
+                                <span *ngIf="_ViewDetails">{{_AddGuarantorDetails.AddressLine2}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
                                         <input matInput placeholder="Address Line 2" [(ngModel)]="_AddGuarantorDetails.AddressLine2" name="AddressLine2" class="w-100" #AddressLine2="ngModel" required>
@@ -275,7 +275,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Address Line 3</label>
-                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.AddressLine3}}</p>
+                                <span *ngIf="_ViewDetails">{{_AddGuarantorDetails.AddressLine3}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
                                         <input matInput placeholder="Address Line 3" [(ngModel)]="_AddGuarantorDetails.AddressLine3" name="AddressLine3" class="w-100" #AddressLine3="ngModel" required>
@@ -291,7 +291,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Country</label>
-                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.Country}}</p>
+                                <span *ngIf="_ViewDetails">{{_AddGuarantorDetails.Country}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
                                         <input matInput placeholder="Country" [(ngModel)]="_AddGuarantorDetails.Country" name="Country" class="w-100" #Country="ngModel" required>
@@ -309,7 +309,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left pl-0">
                             <div class="field_set">
                                 <label *ngIf="_ViewDetails" for="name" class="field_label font-weight-bold">Zip Code</label>
-                                <p *ngIf="_ViewDetails">{{_AddGuarantorDetails.ZipCode}}</p>
+                                <span *ngIf="_ViewDetails">{{_AddGuarantorDetails.ZipCode}}</span>
                                 <div class="field_info w-100">
                                     <mat-form-field class="w-100" *ngIf="_EditViewDetails || _AddGuarantor">
                                         <input matInput placeholder="Zip Code" [(ngModel)]="_AddGuarantorDetails.ZipCode" name="ZipCode" class="w-100" #ZipCode="ngModel" required>
@@ -329,7 +329,7 @@
                         <input type="submit" *ngIf="_AddGuarantor" (click)="AddGuarantor();AddGuarantorform.reset()" value="&#xf055; Add" [disabled]="!AddGuarantorform.form.valid" class="btn btn-success" />
                         <input type="button" *ngIf="_ViewDetails" value="&#xf040; Edit" (click)="EditDetails()" class="btn btn-success" />
                         <input type="button" *ngIf="_EditViewDetails" (click)="UpdateGuarantorDetails()" [disabled]="!AddGuarantorform.form.valid" value="&#xf0c7; Save" class="btn btn-success" />
-                        <input type="button" value="&#xf00d; Cancel" (click)="onNoClick()" class="btn btn-secondary" />
+                        <input type="button" value="&#xf00d; Cancel" id="btnCancel" class="btn btn-secondary" />
                     </div>
                 </div>
             </form>

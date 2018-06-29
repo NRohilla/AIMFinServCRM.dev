@@ -774,7 +774,8 @@ namespace FinServUnitOfWork.Repository
                         _tblApplicantQualificationDetails.PassingYear = ApplicantQualificationDetails.PassingYear;
                         _tblApplicantQualificationDetails.CourseName = ApplicantQualificationDetails.CourseName;
                         _tblApplicantQualificationDetails.UniversityName = ApplicantQualificationDetails.UniversityName;
-                        _tblApplicantQualificationDetails.TypeOfQualification = ApplicantQualificationDetails.TypeOfQualification;
+                        //_tblApplicantQualificationDetails.TypeOfQualification = ApplicantQualificationDetails.TypeOfQualification;
+                        _tblApplicantQualificationDetails.TypeOfQualification = ApplicantQualificationDetails._QualificationTypeDetail.ID;
                         _tblApplicantQualificationDetails.ApplicantID = applicantid;
                         _tblApplicantQualificationDetails.CreatedOn = DateTime.Now;
 

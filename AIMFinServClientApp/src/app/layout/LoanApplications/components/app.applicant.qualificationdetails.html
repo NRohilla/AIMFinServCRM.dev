@@ -3,19 +3,34 @@
         <div class="w-100 float-left">
             <form name="form" #AddQualificationform="ngForm" novalidate>
                 <div class="row m-0">
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                    <!--<div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
                         <div class="field_info">
                             <mat-form-field>
                                 <mat-select placeholder="Type Of Qualification" [(value)]="_ApplicantQualificationDetails.TypeOfQualification" name="TypeOfQualification" required>
                                     <mat-option>None</mat-option>
-                                    <mat-option value="1">Under-Graduate</mat-option>
-                                    <mat-option value="2">Graduate</mat-option>
-                                    <mat-option value="3">Post-Graduate</mat-option>
-                                    <mat-option value="4">Professional</mat-option>
-                                    <mat-option value="5">Diploma</mat-option>
+                    <mat-option value="1">Under-Graduate</mat-option>
+                    <mat-option value="2">Graduate</mat-option>
+                    <mat-option value="3">Post-Graduate</mat-option>
+                    <mat-option value="4">Professional</mat-option>
+                    <mat-option value="5">Diploma</mat-option>
                                 </mat-select>
                             </mat-form-field>
 
+                        </div>
+                    </div>-->
+
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 float-left">
+                        <div class="field_info">
+                            <mat-form-field class="example-full-width">
+                                <mat-select placeholder="Type of Qualification" [(ngModel)]="_ApplicantQualificationDetails._QualificationTypeDetail.ID" name="TypeOfQualification" #TypeOfQualification="ngModel" required>
+                                    <mat-option *ngFor="let qualificationType of GetQualificationTypes" [value]="qualificationType.ID">{{qualificationType.Qualifications}}</mat-option>
+                                </mat-select>
+                                <div *ngIf="TypeOfQualification.invalid && (TypeOfQualification.dirty || TypeOfQualification.touched)" class="alert alert-danger">
+                                    <div *ngIf="TypeOfQualification.errors.required ">
+                                        Please select Type of qualification.
+                                    </div>
+                                </div>
+                            </mat-form-field>
                         </div>
                     </div>
 
